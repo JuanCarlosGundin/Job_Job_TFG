@@ -1,35 +1,53 @@
 window.onload = function() {
+
     login();
 
 }
 
+
 function objetoAjax() {
+
     var xmlhttp = false;
+
     try {
+
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+
     } catch (e) {
+
         try {
+
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
         } catch (E) {
+
             xmlhttp = false;
+
         }
+
     }
+
     if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+
         xmlhttp = new XMLHttpRequest();
+
     }
+
     return xmlhttp;
+
 }
 
 function login() {
 
     var tabla = document.getElementById("main");
     var recarga = '';
+
     recarga += '<div class="botones">'
-    recarga += '<button style="background-color: white;" class="btn-signin" onclick="login()">Sign In</button>'
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-register" onclick="registrar()">Register</button>'
+    recarga += '<button style="background-color: white;" class="btn-signin" id="loginclick">Sign In</button>'
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-register" id="registrarclick">Registrar</button>'
     recarga += '</div>'
     recarga += '<div class="modal-content">'
-    recarga += '<form method="POST" onsubmit="loginP(); return false;"  id="loginP">'
+    recarga += '<form method="POST" id="loginuser">'
     recarga += '<h2>Bienvenido a JobJob</h2>'
     recarga += '<input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo"><br></br>'
     recarga += '<input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña"><br>'
@@ -37,15 +55,86 @@ function login() {
     recarga += '<p class="contraseña">¿contraseña olvidada?</p>'
     recarga += '</form>'
     recarga += '</div>'
-    tabla.innerHTML = recarga
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("loginuser").addEventListener("submit", loginuser);
+
 }
+
+
+function loginuser() {
+    let mail_login = document.getElementById('mail_login').value;
+    let contra_login = document.getElementById('contra_login').value;
+    if (mail_login == '' || contra_login == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail_login)) {
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (contra_login.length > 50) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña no puede ser más larga de 50 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (mail_login.length > 100) {
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    }
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('mail', document.getElementById('mail_login').value);
+    formData.append('contra', document.getElementById('contra_login').value);
+    var ajax = objetoAjax();
+    ajax.open("POST", "loginuser", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta.resultado)
+            if (respuesta.resultado == "no") {
+                swal.fire({
+                    title: "Error",
+                    text: 'No estas verificado porfavor ve a tu correo y comprueba la bandeja de entrada',
+                    icon: "error",
+                });
+                return false;
+            }
+            if (respuesta.resultado == "baneado") {
+                swal.fire({
+                    title: "Error",
+                    text: 'Cuenta inhabilitada',
+                    icon: "error",
+                });
+                return false;
+            }
+        }
+    }
+    ajax.send(formData)
+}
+
 
 function registrar() {
     var tabla = document.getElementById("main");
     var recarga = '';
     recarga += '<div class="botones">'
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" onclick="login()">Sign In</button>'
-    recarga += '<button style="background-color: white;" class="btn-register" onclick="registrar()">Register</button>'
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>'
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>'
     recarga += '<div id="main" class="modal-content-register-cuadrados">'
     recarga += '<h3>¿Cómo vas a usar JobJob?</h3>'
@@ -56,7 +145,10 @@ function registrar() {
     recarga += '<button class="cuadrado" onclick="empresa()"><i class="fa-solid fa-building"></i><br><br><p class="user-empresa">Empresa</p></button>'
     recarga += '</div>'
     recarga += '</div>'
-    tabla.innerHTML = recarga
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
 }
 
 /* Función implementada con AJAX */
@@ -209,7 +301,7 @@ function creartrabajadorJS() {
             icon: "error",
         });
         return false;
-    } 
+    }
     var formData = new FormData(document.getElementById("formregistro"));
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
@@ -241,84 +333,6 @@ function creartrabajadorJS() {
     ajax.send(formData)
 }
 
-function loginP() {
-    let mail_login = document.getElementById('mail_login').value;
-    let contra_login = document.getElementById('contra_login').value;
-    if (mail_login == '' || contra_login == '') {
-        swal.fire({
-            title: "Error",
-            text: "Tienes que rellenar todos los datos",
-            icon: "error",
-        });
-        return false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail_login)) {
-        swal.fire({
-            title: "Error",
-            text: "Introduce un email correcto",
-            icon: "error",
-        });
-        return false;
-    } else if (contra_login.length > 50) {
-        swal.fire({
-            title: "Error",
-            text: "La contraseña no puede ser más larga de 50 caracteres",
-            icon: "error",
-        });
-        return false;
-    } else if (mail_login.length > 100) {
-        swal.fire({
-            title: "Error",
-            text: "El email no puede ser más largo de 100 caracteres",
-            icon: "error",
-        });
-        return false;
-    }
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'POST');
-    formData.append('mail', document.getElementById('mail_login').value);
-    formData.append('contra', document.getElementById('contra_login').value);
-    var ajax = objetoAjax();
-    ajax.open("POST", "loginP", true);
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta.resultado)
-            if (respuesta.resultado == "no") {
-                swal.fire({
-                    title: "Error",
-                    text: 'No estas verificado porfavor ve a tu correo y comprueba la bandeja de entrada',
-                    icon: "error",
-                });
-                return false
-            }
-            if (respuesta.resultado == "baneado") {
-                swal.fire({
-                    title: "Error",
-                    text: 'Cuenta inhabilitada',
-                    icon: "error",
-                });
-                return false
-            }
-            if (respuesta.resultado == "admin") {
-                window.location.href = 'cPanelAdmin';
-            } else if (respuesta.resultado == "trabajador") {
-                window.location.href = 'home';
-            } else if (respuesta.resultado == "empresa") {
-                window.location.href = 'home';
-            } else {
-                swal.fire({
-                    title: "Error",
-                    text: 'La contraseña o el correo está mal introducido',
-                    icon: "error",
-                });
-                return false
-            }
-        }
-    }
-    ajax.send(formData)
-}
-
 function crearempresaJS() {
     let mail = document.getElementById('mail').value;
     let contra = document.getElementById('contra').value;
@@ -328,43 +342,43 @@ function crearempresaJS() {
     let mostrado = document.getElementById('mostrado').value;
     let about_emp = document.getElementById('about_emp').value;
     let logo_emp = document.getElementById('logo_emp').value;
-        //VALIDACIONES EMPRESA
-        if (mail == '' || contra == '' || nom_emp == '' || loc_emp == '' || campo_emp == '' || mostrado == '' || about_emp == '' || logo_emp == '') {
-            swal.fire({
-                title: "Error",
-                text: "Tienes que rellenar todos los datos",
-                icon: "error",
-            });
-            return false;
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
-            swal.fire({
-                title: "Error",
-                text: "Introduce un email correcto",
-                icon: "error",
-            });
-            return false;
-        } else if (mail.length > 100) {
-            swal.fire({
-                title: "Error",
-                text: "El email no puede ser más largo de 100 caracteres",
-                icon: "error",
-            });
-            return false;
-        } else if (contra.length < 8) {
-            swal.fire({
-                title: "Error",
-                text: "La contraseña debe tener mas de 8 caracteres",
-                icon: "error",
-            });
-            return false;
-        } else if (contra.length > 100) {
-            swal.fire({
-                title: "Error",
-                text: "La contraseña debe tener menos de 100 caracteres",
-                icon: "error",
-            });
-            return false;
-        }
+    //VALIDACIONES EMPRESA
+    if (mail == '' || contra == '' || nom_emp == '' || loc_emp == '' || campo_emp == '' || mostrado == '' || about_emp == '' || logo_emp == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (contra.length < 8) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener mas de 8 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (contra.length > 100) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener menos de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    }
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
@@ -393,7 +407,7 @@ function crearempresaJS() {
                 });
                 setTimeout(() => { window.location.href = 'login'; }, 2000);
 
-            }  else if (respuesta.resultado == "mal") {
+            } else if (respuesta.resultado == "mal") {
                 swal.fire({
                     title: "Error",
                     text: "Este correo ya está en uso",

@@ -4,41 +4,32 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\InicioController;
 
-Route::get('/', function () {
-    return view('login');
-});
-Route::get('/home', function () {
-    return view('home');
-});
 
-Route::get('verificar', function () {
-    return view('verificacion');
-});
+/* Route::get('home', function () {
+    return view("home");
+}); */
+/* ------------InicioController------------ */
 
-Route::get('login', function () {
-    return view('login');
-});
+Route::get('/', [InicioController::class, 'inicio']);
 
-Route::get('paginaempresa', function () {
-    return view('paginaempresa');
-});
+/* Login */
+//Login
+Route::post('loginuser', [InicioController::class, 'loginuser']);
+/* Login */
 
-Route::get('paginatrabajador', function () {
-    return view('paginatrabajador');
-});
+/* Registrar */
 
-Route::get('registrar', function () {
-    return view('registrar');
-});
+/* Registrar */
 
-Route::get('editarperfil', function () {
-    return view('editarperfil');
-});
+//Verificar correo
+Route::get('verificar', [InicioController::class, 'verificar']);
+
+/* ------------InicioController------------ */
 
 /*--------------RUTAS DAVID--------------*/
 /*LOGIN Y LOGOUT*/
-Route::post('login', [UsuarioController::class, 'loginP']);
 
 
 Route::get('logout', [UsuarioController::class, 'logout']);
