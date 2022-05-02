@@ -1,9 +1,12 @@
 @if (!Session::get('id_user'))
+
     <?php
         //Si la sesion no esta definida te redirige al login.
         return redirect()->to('/')->send();
     ?>
+
 @endif
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +16,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{asset('css/style-pol.css')}}">
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
     <title>Notificaciones</title>
 </head>

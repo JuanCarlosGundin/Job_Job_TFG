@@ -1,15 +1,23 @@
 window.onload = function() {
+
     mostrarperfilJS();
     //logica de modal
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
+
         var modal = document.getElementById("modal-eliminar");
+
         if (event.target == modal) {
+
             modal.style.display = "none";
+
         }
+
     }
+
 }
+
 
 ////////////////////////////REDIRECCIONES/////////////////////////////////
 var navbarProfile = document.getElementById("navbar-profile-icon");
@@ -17,54 +25,94 @@ var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
 
 navbarProfile.onclick = function() {
+
     window.location.href = "./perfil";
+
 }
+
 navbarAlerts.onclick = function() {
+
     window.location.href = "./notificaciones";
+
 }
+
 navbarMain.onclick = function() {
+
     window.location.href = "./home";
+
 }
 
 function objetoAjax() {
+
     var xmlhttp = false;
+
     try {
+
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+
     } catch (e) {
+
         try {
+
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
         } catch (E) {
+
             xmlhttp = false;
+
         }
+
     }
+
     if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+
         xmlhttp = new XMLHttpRequest();
+
     }
+
     return xmlhttp;
+
 }
 
+
 function mostrarperfilJS() {
+
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
+
     var ajax = objetoAjax();
+
     ajax.open("POST", "leerperfil", true);
+
     ajax.onreadystatechange = function() {
+
         if (ajax.readyState == 4 && ajax.status == 200) {
+
             var respuesta = JSON.parse(this.responseText);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
+
             if (id_perfil == 2) {
+
                 var trabajador = respuesta.trabajador[0];
+
                 /* Foto */
                 recarga += '<div class="user-vista">';
                 recarga += '<div class="user-ver-foto">';
                 recarga += '<div class="container-foto">';
+
                 if (trabajador.foto_perfil != null) {
-                    recarga += '<img class="user-profilefoto" src="./storage/' + trabajador.foto_perfil + '">';
+
+                    recarga += '<img class="user-profilefoto" src="storage/' + trabajador.foto_perfil + '">';
+
                 } else {
+
                     recarga += '<img class="user-profilefoto" src="storage/img/usuario.png">';
+
                 }
+
                 /* boton que cambia la vista a editar */
                 recarga += '<div class="user-edit-div">';
                 recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><i class="fa-solid fa-pen"></i></button>';
@@ -165,17 +213,27 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
+
             }
+
             if (id_perfil == 3) {
+
                 var empresa = respuesta.empresa[0];
+
                 recarga += '<div class="empresa-vista">';
                 /* Logo */
                 recarga += '<div class="empresa-ver-foto">';
+
                 if (empresa.logo_emp != null) {
+
                     recarga += '<img class="empresa-profilefoto" src="storage/' + empresa.logo_emp + '">';
+
                 } else {
+
                     recarga += '<img class="empresa-profilefoto" src="storage/img/usuario.png">';
+
                 }
+
                 /* boton que cambia la vista a editar */
                 recarga += '<div class="empresa-edit-div">';
                 recarga += '<button class="empresa-edit-btn" onclick="leermodperfilJS(); return false;"><i class="fa-solid fa-pen"></i></button>';
@@ -242,27 +300,43 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
+
             }
+
             contenidoajax.innerHTML = recarga;
+
         }
+
     }
 
     ajax.send(formData);
+
 }
 
+
 function leermodperfilJS() {
+
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
+
     var ajax = objetoAjax();
+
     ajax.open("POST", "leerperfil", true);
+
     ajax.onreadystatechange = function() {
+
         if (ajax.readyState == 4 && ajax.status == 200) {
+
             var respuesta = JSON.parse(this.responseText);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
+
             if (id_perfil == 2) {
+
                 var trabajador = respuesta.trabajador[0];
+
                 recarga += '<div class="user-edit">';
                 recarga += '<div class="return">';
                 recarga += '<button class="return-btn" onclick="mostrarperfilJS(); return false;">';
@@ -438,17 +512,23 @@ function leermodperfilJS() {
                 recarga += '<div class="contenedor">';
                 recarga += '<div class="user-input-desactivar">';
                 recarga += '<div class="user-icon-desactivar">';
+
                 if (trabajador.mostrado == 1) {
+
                     recarga += '<p>Mostrarse: <p>';
                     recarga += '</div>';
                     recarga += '<div class="inputs-desactivar">';
                     recarga += '<input type="checkbox" class="input-desactivar" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '" checked>';
+
                 } else {
+
                     recarga += '<p>Mostrarse: <p>';
                     recarga += '</div>';
                     recarga += '<div class="inputs-desactivar">';
                     recarga += '<input type="checkbox" class="input-desactivar" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '">';
+
                 }
+
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div> ';
@@ -464,9 +544,13 @@ function leermodperfilJS() {
                 recarga += '<p class="button"><i class="fa-solid fa-trash-can"></i> Eliminar cuenta</p>';
                 recarga += '</button>';
                 recarga += '</div>';
+
             }
+
             if (id_perfil == 3) {
+
                 var empresa = respuesta.empresa[0];
+
                 recarga += '<div class="empresa-edit">';
                 recarga += '<div class="return">';
                 recarga += '<button class="return-btn" onclick="mostrarperfilJS(); return false;">';
@@ -573,17 +657,23 @@ function leermodperfilJS() {
                 recarga += '<div class="contenedor">';
                 recarga += '<div class="empresa-input-desactivar">';
                 recarga += '<div class="empresa-icon-desactivar">';
+
                 if (empresa.mostrado == 1) {
+
                     recarga += '<p>Mostrarse: <p>';
                     recarga += '</div>';
                     recarga += '<div class="inputs-desactivar">';
                     recarga += '<input type="checkbox" class="input-desactivar" id="mostrado" name="mostrado" value="' + empresa.mostrado + '" checked>';
+
                 } else {
+
                     recarga += '<p>Mostrarse: <p>';
                     recarga += '</div>';
                     recarga += '<div class="inputs-desactivar">';
                     recarga += '<input type="checkbox" class="input-desactivar" id="mostrado" name="mostrado" value="' + empresa.mostrado + '">';
+
                 }
+
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
@@ -602,12 +692,17 @@ function leermodperfilJS() {
                 recarga += '</button>';
                 recarga += '</div>';
                 recarga += '</div>';
+
             }
+
             contenidoajax.innerHTML = recarga;
+
         }
+
     }
 
     ajax.send(formData);
+
 }
 
 
@@ -665,12 +760,15 @@ function editarperfilJS(id, id_perfil) {
         }
     } */
     var formData = new FormData();
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'PUT');
     formData.append('mail', document.getElementById('mail').value);
     formData.append('contra', document.getElementById('contra').value);
+
     /* modificar trabajador */
     if (id_perfil == 2) {
+
         formData.append('nombre', document.getElementById('nombre').value);
         formData.append('apellido', document.getElementById('apellido').value);
         formData.append('campo_user', document.getElementById('campo_user').value);
@@ -682,14 +780,22 @@ function editarperfilJS(id, id_perfil) {
         formData.append('disponibilidad', document.getElementById('disponibilidad').value);
         formData.append('about_user', document.getElementById('about_user').value);
         formData.append('foto_perfil', document.getElementById('foto_perfil').files[0]);
+
         if (document.getElementById('mostrado').checked == true) {
+
             formData.append('mostrado', '1');
+
         } else {
+
             formData.append('mostrado', '0');
+
         }
+
     }
+
     /* modificar empresa */
     if (id_perfil == 3) {
+
         formData.append('nom_emp', document.getElementById('nom_emp').value);
         formData.append('loc_emp', document.getElementById('loc_emp').value);
         formData.append('about_emp', document.getElementById('about_emp').value);
@@ -697,33 +803,53 @@ function editarperfilJS(id, id_perfil) {
         formData.append('searching', document.getElementById('searching').value);
         formData.append('vacante', document.getElementById('vacante').value);
         formData.append('logo_emp', document.getElementById('logo_emp').files[0]);
+
         if (document.getElementById('mostrado').checked == true) {
+
             formData.append('mostrado', '1');
+
         } else {
+
             formData.append('mostrado', '0');
+
         }
+
     }
+
     var ajax = objetoAjax();
+
     ajax.open("POST", "editarperfil/" + id + "/" + id_perfil, true);
+
     ajax.onreadystatechange = function() {
+
         if (ajax.readyState == 4 && ajax.status == 200) {
+
             var respuesta = JSON.parse(this.responseText);
+
             swal.fire({
                 title: "Correcto",
                 text: "Perfil modificado.",
                 showConfirmButton: false,
                 icon: "success",
             });
+
             leermodperfilJS();
+
         }
+
     }
+
     ajax.send(formData);
+
 }
 
+
 function modaleliminar(id, id_perfil) {
+
     var modal = document.getElementById("modal-eliminar");
     var modal_content = document.getElementById("modal_content");
     var recarga = "";
+
     recarga += '<h2 class="modal-title">¿Seguro que quieres eliminar la cuenta?</h2>';
     recarga += '<div class="eliminar-user-butons">';
     recarga += '<button class="cancelar-eliminar" onclick="cerrarmodal();return false;">Cancelar</button>';
@@ -731,30 +857,47 @@ function modaleliminar(id, id_perfil) {
     recarga += '</div>';
     modal_content.innerHTML = recarga;
     modal.style.display = "block";
+
 }
 
 function cerrarmodal() {
+
     var modal = document.getElementById("modal-eliminar");
     var modal_content = document.getElementById("modal_content");
+
     modal_content.innerHTML = "";
     modal.style.display = "none";
+
 }
 
 function estadouserJS(id) {
+
     var formData = new FormData();
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'PUT');
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
+
     ajax.open("POST", "estadouser/" + id, true);
+
     ajax.onreadystatechange = function() {
+
         if (ajax.readyState == 4 && ajax.status == 200) {
+
             var respuesta = JSON.parse(this.responseText);
+
             if (respuesta.resultado == "OK") {
+
                 window.location.href = 'logout';
+
             }
+
         }
+
     }
+
     ajax.send(formData)
+
 }
