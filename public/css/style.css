@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  background-color: #E5E5E5;
+}
+
+.region-navbar {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10vh;
+  height: calc(var(--vh, 1vh) * 10);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
+  /* DIVS NAVBAR*/
+  /* Curriculum */
+  /* Alertas */
+  /* Main */
+  /* Chat */
+  /* Perfil */
+  /* ICONS */
+}
+
+.region-navbar .alerts-navbar {
+  padding: 1%;
+  width: 30%;
+}
+
+.region-navbar .main-navbar {
+  padding: 1%;
+  width: 40%;
+  height: 10vh;
+}
+
+.region-navbar .profile-navbar {
+  padding: 1%;
+  width: 30%;
+}
+
+.region-navbar .active-left {
+  background-color: #E5E5E5;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-top-right-radius: 30px;
+}
+
+.region-navbar .active-right {
+  background-color: #E5E5E5;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-top-left-radius: 30px;
+}
+
+.region-navbar .active {
+  background-color: #E5E5E5;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.region-navbar .active-center {
+  background-color: #C5D1EB;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.region-navbar .icon {
+  color: #c0c0c0;
+  text-align: center;
+  font-size: 3.5vh;
+  background-color: white;
+  border-width: 0px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+
+.region-navbar .main-icon {
+  color: #0F084B;
+  font-size: 4vh;
+  background-color: white;
+  text-align: center;
+  border-width: 0px;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.region-navbar .active-icon {
+  color: #000000;
+  background-color: #E5E5E5;
+  font-size: 4.5vh;
+}
+
+.region-navbar .active-icon-center {
+  background-color: #C5D1EB;
+  font-size: 4.5vh;
+}
+/*# sourceMappingURL=style.css.map */

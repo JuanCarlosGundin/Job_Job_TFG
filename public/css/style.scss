@@ -1,0 +1,130 @@
+/////////////////////////////////MIXINS-IMPORTS////////////////////////////////
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+$first-color:#186CA7;
+$second-color: #005EA0;
+$third-color:#0081DC;
+$fourth-color:#2C7DB6;
+$fifth-color: #92AFD7;
+$movil:768px;
+$tablet:1200px;
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    background-color: #E5E5E5;
+}
+
+///////////////////////////////NAVBAR//////////////////////////////////////
+// .region-navbar {
+//     height: 10vh;
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     background-color: $first-color; //PROVISIONAL MIENTRAS POL NO HAGA LA NAVBAR
+// }
+///////////////////////////////NAVBAR//////////////////////////////////////
+.region-navbar {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    height: 10vh;
+    height: #{"calc(var(--vh, 1vh) * 10)"};
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
+    /* DIVS NAVBAR*/
+    /* Curriculum */
+    // .curriculum-navbar {
+    //     padding: 1%;
+    //     width: 20%;
+    // }
+    /* Alertas */
+    .alerts-navbar {
+        padding: 1%;
+        width: 30%;
+    }
+    // .alerts-navbar::before {
+    //     content: "";
+    //     position: absolute;
+    //     margin-top: 6vh;
+    //     width: 20px;
+    //     height: 20px;
+    //     background-color: blue;
+    //     box-shadow: 0px -10px 0 0 black;
+    // }
+    /* Main */
+    .main-navbar {
+        padding: 1%;
+        width: 40%;
+        height: 10vh;
+    }
+    /* Chat */
+    // .chat-navbar {
+    //     padding: 1%;
+    //     width: 20%;
+    // }
+    /* Perfil */
+    .profile-navbar {
+        padding: 1%;
+        width: 30%;
+    }
+    // DIVS ACTIVE //
+    .active-left {
+        background-color: #E5E5E5;
+        box-shadow: none;
+        border-top-right-radius: 30px;
+    }
+    .active-right {
+        background-color: #E5E5E5;
+        box-shadow: none;
+        border-top-left-radius: 30px;
+    }
+    .active {
+        background-color: #E5E5E5;
+        box-shadow: none;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+    }
+    .active-center {
+        background-color: #C5D1EB;
+        box-shadow: none;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+    }
+    /* ICONS */
+    .icon {
+        color: #c0c0c0;
+        text-align: center;
+        font-size: 3.5vh;
+        background-color: white;
+        border-width: 0px;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+    }
+    .main-icon {
+        color: #0F084B;
+        font-size: 4vh;
+        background-color: white;
+        text-align: center;
+        border-width: 0px;
+        width: 100%;
+        height: 100%;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+    }
+    .active-icon {
+        color: #000000;
+        background-color: #E5E5E5;
+        font-size: 4.5vh;
+    }
+    .active-icon-center {
+        background-color: #C5D1EB;
+        font-size: 4.5vh;
+    }
+}
