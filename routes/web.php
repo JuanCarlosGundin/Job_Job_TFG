@@ -6,6 +6,10 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 
 Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/login', function () {
     return view('login');
 });
 Route::get('/home', function () {
