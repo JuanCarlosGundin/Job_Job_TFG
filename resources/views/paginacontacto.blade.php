@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulario de contacto</title>
     <link rel="stylesheet" href="{!! asset('css/contacto.css') !!}">
-    <!-- GOOGLE FONTs -->
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <!-- ANIMATE CSS -->
+    <!-- animacion de rebote formulario -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    {{-- token --}}
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -26,29 +25,29 @@
         <div class="contact-wrapper animated bounceInUp">
             <div class="contact-form">
                 <h3>CONTÁCTANOS </h3>
-                <form action="">
+                <form method="POST" onsubmit="contactoJS(); return false;">
                     <p>
                         <label>Nombre</label>
-                        <input type="text" name="fullname" required>
+                        <input type="text" name="nombre" id="nombre">
                     </p>
                     <p>
                         <label>Email</label>
-                        <input type="email" name="email" required>
+                        <input type="text" name="email" id="email">
                     </p>
                     <p>
                         <label>Teléfono</label>
-                        <input type="tel" name="telefono" required>
+                        <input type="tel" name="telefono" id="telefono">
                     </p>
                     <p>
                         <label>Asunto</label>
-                        <input type="text" name="asunto" required>
+                        <input type="text" name="asunto" id="asunto">
                     </p>
                     <p class="block">
                         <label>Mensaje</label>
-                        <textarea name="mensaje" rows="3" required></textarea>
+                        <textarea name="mensaje" rows="3" id="mensaje"></textarea>
                     </p>
                     <p class="block">
-                        <button onclick="contactoJS()">
+                        <button type="submit">
                             Enviar
                         </button>
                     </p>
@@ -67,8 +66,8 @@
         </div>
 
     </div>
-    <script src="js/ajaxcontacto.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/ajaxcontacto.js"></script>
 </body>
 
 </html>

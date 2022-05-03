@@ -44,4 +44,17 @@ class MailController extends Controller
             return response()->json(array('resultado'=> 'NOKempresa: '.$th->getMessage()));
         }
     }
+    public function sendingcontacto(Request $request){
+        // $nombre = $request->input('nombre');
+        // $mail = $request->input('mail');
+        // $telefono = $request->input('telefono');
+        // $asunto = $request->input('asunto');
+        // $mensaje = $request->input('mensaje');
+        // try{
+            
+        //     }catch(\Throwable $th){
+        //         return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+        //     }
+        return response()->json("OK");  
+    }
 }
