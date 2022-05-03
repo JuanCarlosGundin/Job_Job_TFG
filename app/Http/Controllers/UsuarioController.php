@@ -15,7 +15,7 @@ class UsuarioController extends Controller
     public function loginP(Request $request){
         $datos= $request->except('_token','_method');
         try{
-        $user=DB::table("tbl_perfiles")->join('tbl_usuarios', 'tbl_perfiles.id', '=', 'tbl_usuarios.id_perfil')->where('mail','=',$datos['mail'])->where('contra','=',md5($datos['contra']))->first();
+        $user=DB::table("tbl_perfiles")->join('tbl_usuarios', 'tbl_perfiles.id', '=', 'tbl_usuarios.id_perfil')->where('mail','=',$datos['mail'])->where('contra','=',hash('sha256', $datos['contra']))->first();
         if($user->verificado=='0'){
             return response()->json(array('resultado'=> 'no'));
         }
