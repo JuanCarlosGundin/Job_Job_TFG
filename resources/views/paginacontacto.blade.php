@@ -47,7 +47,7 @@
                         <textarea name="mensaje" rows="3" id="mensaje"></textarea>
                     </p>
                     <p class="block">
-                        <button type="submit">
+                        <button type="submit" id="myBtn">
                             Enviar
                         </button>
                     </p>
@@ -66,8 +66,8 @@
         </div>
 
     </div>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/ajaxcontacto.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

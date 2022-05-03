@@ -15,8 +15,7 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-function contactoJS(evt) {
-    evt.preventDefault();
+function contactoJS() {
     let nombre = document.getElementById('nombre').value;
     let email = document.getElementById('email').value;
     let telefono = document.getElementById('telefono').value;
@@ -49,7 +48,7 @@ function contactoJS(evt) {
             icon: "error",
         });
         return false;
-    } else if (mail.length > 100) {
+    } else if (email.length > 100) {
         document.getElementById("mail").focus();
         document.getElementById("mail").style.borderColor = "red";
         swal.fire({
@@ -59,6 +58,7 @@ function contactoJS(evt) {
         });
         return false;
     }
+    document.getElementById("myBtn").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -79,14 +79,17 @@ function contactoJS(evt) {
                     text: "En breves nos pondremos en contacto contigo via email.",
                     showConfirmButton: false,
                     icon: "success",
+
                 });
-                setTimeout(() => { window.location.href = 'login'; }, 2000);
+                document.getElementById("myBtn").disabled = false;
+                setTimeout(() => { window.location.href = 'login'; }, 5000);
             } else {
                 swal.fire({
-                    title: "Oops!",
-                    text: "Parece que ha habido un error, prueba a rellenar el formulario de nuevo",
+                    title: "Oops",
+                    text: "Parece que ha habido un error, inténtalo de nuevo.",
                     icon: "error",
                 });
+                document.getElementById("myBtn").disabled = false;
             }
         }
     }
