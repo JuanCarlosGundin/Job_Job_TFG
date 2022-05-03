@@ -26,25 +26,25 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  height: 17vh;
+  position: fixed;
+  -webkit-box-shadow: 7px 4px 15px #656565;
+          box-shadow: 7px 4px 15px #656565;
 }
 
 .body-index .navbar-index .column-1 {
   width: 40%;
-  display: inline-block;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  padding-left: 5%;
 }
 
 .body-index .navbar-index .column-2 {
   width: 57%;
-  display: inline-block;
   text-align: right;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: right;
+      -ms-flex-align: right;
+          align-items: right;
   padding-top: 2.5%;
-  padding-right: 5%;
+  padding-right: 1%;
 }
 
 .body-index .navbar-index li {
@@ -59,11 +59,17 @@ body {
   font-size: 2.7vh;
 }
 
+.body-index .navbar-index li a:hover {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  color: #817f7f;
+}
+
 .body-index .navbar-index li .logo {
   width: 11vh;
   padding-top: 2vh;
   padding-bottom: 2vh;
-  position: left;
+  float: left;
 }
 
 .body-index .navbar-index .btn-register {
@@ -78,16 +84,28 @@ body {
 }
 
 .body-index .column-3 {
+  padding-top: 17vh;
   padding-left: 3%;
-  width: 40%;
+  width: 50%;
   float: left;
+  padding-left: 5%;
+  background-color: #186CA7;
+  height: 83vh;
 }
 
 .body-index .column-3 h2 {
-  text-align: center;
+  text-align: left;
   color: white;
   font-weight: bold;
   margin-top: 10vh;
+  font-size: 5vh;
+}
+
+.body-index .column-3 h3 {
+  text-align: left;
+  font-size: 3.5vh;
+  color: white;
+  padding-bottom: 5%;
 }
 
 .body-index .column-3 .btn-index {
@@ -98,17 +116,106 @@ body {
           box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
   color: #090216b0;
   font-weight: bold;
-  width: 20%;
-  height: 6vh;
+  width: 25%;
+  height: 7vh;
   margin-right: 3vh;
   margin-top: 5.5vh;
   margin-bottom: 4vh;
+  float: left;
+  font-size: 2.7vh;
 }
 
 .body-index .column-4 {
-  width: 60%;
-  background-color: red;
+  padding-top: 17vh;
+  width: 50%;
   float: left;
+  padding-right: 5%;
+  background-color: #186CA7;
+  height: 83vh;
+}
+
+.body-index .column-4 img {
+  margin-top: 3vh;
+  width: 80%;
+}
+
+.body-index #primera-columna {
+  padding-left: 5%;
+}
+
+.body-index #ultima-columna {
+  padding-right: 5%;
+}
+
+.body-index .column-5 {
+  background-color: #92AFD7;
+  padding-left: 3%;
+  padding-right: 3%;
+  width: 25%;
+  float: left;
+  height: 50vh;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.body-index .column-5 i {
+  padding-bottom: 12%;
+  color: white;
+  font-size: 6vh;
+}
+
+.body-index .column-5 h1 {
+  color: white;
+  font-size: 4vh;
+  font-weight: 550;
+}
+
+.body-index .column-5 h3 {
+  color: white;
+  font-size: 2.8vh;
+}
+
+.body-index .video {
+  margin: 0;
+  background-color: #0076CA;
+  height: 150vh;
+}
+
+.body-index .footer {
+  padding-top: 4%;
+  padding-bottom: 12%;
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 33.3%;
+  height: 20vh;
+  float: left;
+  background-color: #042944;
+  color: white;
+  text-align: left;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.body-index .footer h1 {
+  padding-bottom: 8%;
+  font-weight: bold;
+}
+
+.body-index .footer h2 {
+  padding-bottom: 10%;
+  font-weight: bold;
+  font-size: 2.5vh;
+}
+
+.body-index .footer a {
+  text-decoration: none;
+  color: white;
+}
+
+.body-index #footer-izquierda {
+  text-align: center;
+  padding-left: 5%;
 }
 
 .body-login {
