@@ -21,39 +21,6 @@ public function logout(Request $req){
     
 /*----------------------------------------FIN LOGIN Y LOGOUT------------------------------------------------------------------------*/
 
-/*----------------------------------------REGISTRAR TRABAJADOR---------------------------------------------------------------------------------*/
-public function registroPost(Request $request){
-    $datos = $request->except('_token');
-    
-    try{
-        $comprobarmail=DB::select('select mail from tbl_usuarios where mail=? ',[$datos['mail']]);
-        if (count($comprobarmail)>0){
-            return response()->json(array('resultado'=> 'mal'));
-        }else{
-        //añadir foto trabajador
-        $path=$request->file('foto_perfil')->store('uploads','public');
-        /*insertar datos en la base de datos*/
-        $metertablausuario=DB::table('tbl_usuarios')->insertGetId(["mail"=>$datos['mail'],"contra"=>md5($datos['contra']),"id_perfil"=>$datos['id_perfil'],"verificado"=>'0',"estado"=>'1']);
-            DB::table('tbl_trabajador')->insert(["id_usuario"=>$metertablausuario,"nombre"=>$datos['nombre'],"apellido"=>$datos['apellido'],"foto_perfil"=>$path,"campo_user"=>$datos['campo_user'],"experiencia"=>$datos['experiencia'],"estudios"=>$datos['estudios'],"idiomas"=>$datos['idiomas'],"disponibilidad"=>$datos['disponibilidad'],"about_user"=>$datos['about_user'],"mostrado"=>$datos['mostrado'],"loc_trabajador"=>$datos['loc_trabajador'],"edad"=>$datos['edad']]);
-        Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($metertablausuario) {
-            $id2=$metertablausuario;
-            $usuario=DB::select('select * from tbl_usuarios 
-            inner join tbl_trabajador on tbl_usuarios.id=tbl_trabajador.id_usuario
-            where tbl_usuarios.id=? ',[$id2]);
-            $message->to($usuario[0]->{'mail'})
-              ->subject('Link Para validar tu cuenta de Job Job');
-          });
-        return response()->json(array('resultado'=> 'OK'));
-    
-        }
-    
-    }catch(\Exception $e){
-        return response()->json($e->getMessage());
-    }
-}
-/*----------------------------------------FIN REGISTRAR TRABAJADOR---------------------------------------------------------------------------------*/
-
-
 /*----------------------------------------REGISTRAR EMPRESA---------------------------------------------------------------------------------*/
 public function registroEmpresaPost(Request $request){
     $datos = $request->except('_token');
@@ -83,54 +50,6 @@ public function registroEmpresaPost(Request $request){
     }
 }
 /*----------------------------------------FIN REGISTRAR EMPRESA---------------------------------------------------------------------------------*/
-/*----------------------------------------LEER TRABAJADOR--------------------------------------------------------------------------*/
-public function leertrabajadorController(Request $request){
-    $datos=DB::select('SELECT * FROM `tbl_ubicacion` INNER JOIN `tbl_tipo` ON tbl_ubicacion.id_tipo = tbl_tipo.id_tipo where nombre_ubicacion like ?',['%'.$request->input('filtro').'%']);
-    return response()->json($datos);
-}
-/*----------------------------------------FIN LEER TRABAJADOR--------------------------------------------------------------------------*/
-
-/*----------------------------------------MODIFICAR TRABAJADOR---------------------------------------------------------------------*/
-public function modificartrabajadorController(Request $request){
-    $datos=$request->except('_token','_method');
-    if ($request->hasFile('foto_perfil')) {
-        $foto = DB::table('tbl_trabajador')->select('foto_perfil')->where('id_usuario','=',$request['id_usuario'])->first();
-        if ($foto->foto_perfil != null) {
-            Storage::delete('public/'.$foto->foto_perfil);
-        }
-        $datos['foto_perfil'] = $request->file('foto_perfil')->store('uploads','public');
-    }else{
-        $foto = DB::table('tbl_trabajador')->select('foto_perfil')->where('id_usuario','=',$request['id_usuario'])->first();
-        $datos['foto_perfil'] = $foto->foto_perfil;
-    }
-    try {
-        DB::beginTransaction();
-        $path=$request->file('foto_perfil')->store('uploads','public');
-        DB::update('update tbl_ubicacion set nombre_ubicacion = ?, descripcion_ubicacion = ?, direccion_ubicacion = ?, foto_ubicacion = ? where id_ubicacion = ?', [$request->input('nombre_ubicacion'),$request->input('descripcion_ubicacion'),$request->input('direccion_ubicacion'),$path,$request->input('id_ubicacion')]);
-        DB::commit();
-        return response()->json(array('resultado'=> 'OK'));
-    } catch (\Throwable $th) {
-        return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
-    }
-}
-/*----------------------------------------FIN MODIFICAR TRABAJADOR---------------------------------------------------------------------*/
-/*----------------------------------------ACTIVAR CUENTA DE USUARIO--------------------------------------------------------------------*/
-public function ActivateACC(Request $request)
-    {   
-        $usuario = $request->input('user');
-        $contra = $request->input('contra');
-        try{
-            $user=DB::table("tbl_usuarios")->where('mail','=',$usuario)->where('contra','=',md5($contra))->first();
-            //return response()->json($user->id);
-            //AQUI VA LA FUNCIÓN DEL LOGIN PARA COMPROBAR CONTRASEÑA
-            //si la contraseña es correcta ejecuta esta función de abajo y nos indica que estamos verificados
-            DB::update('update tbl_usuarios set verificado = 1 where id=?',[$user->id]);
-              return response()->json("OK");
-        }catch(\Throwable $th){
-            return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
-        }
-    }
-/*-------------------------------------FIN ACTIVAR CUENTA DE USUARIO--------------------------------------------------------------------*/
 
 
 //
@@ -201,7 +120,6 @@ public function ActivateACC(Request $request)
 
     public function crearuser(Request $req) {
 
-        DB::beginTransaction();
         //añadir logo empresa si existe
 
         if($req->hasFile('logo_emp')){
@@ -227,6 +145,7 @@ public function ActivateACC(Request $request)
 
         try {
             
+            DB::beginTransaction();
             /* insertar usuarios */
             $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$req['mail'],"contra"=>md5($req['contra']),"id_perfil"=>$req['id_perfil'],"estado"=>'1',"verificado"=>'1']);
 

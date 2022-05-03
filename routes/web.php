@@ -6,13 +6,12 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 
-
-Route::get('home', function () {
-    return view("home");
-});
 /* ------------InicioController------------ */
 
 Route::get('/', [InicioController::class, 'inicio']);
+
+//Acceder al swapper
+Route::get('home', [InicioController::class, 'home']);
 
 /* Login */
 //Login
@@ -21,37 +20,26 @@ Route::post('loginuser', [InicioController::class, 'loginuser']);
 
 /* Registrar */
 
+//Trabajador
+Route::post('registrotrabajador', [InicioController::class, 'registrotrabajador']);
+
 /* Registrar */
 
-//Verificar correo
+
+/* Verificar cuenta */
+
+//Pagina verificar
 Route::get('verificar', [InicioController::class, 'verificar']);
+
+//Verificar y activar cuenta
+Route::post('activarcuenta', [InicioController::class, 'activarcuenta']);
+
+/* Verificar cuenta */
 
 //Logout
 Route::get('logout', [UsuarioController::class, 'logout']);
 
 /* ------------InicioController------------ */
-
-/*--------------RUTAS DAVID--------------*/
-/*LOGIN Y LOGOUT*/
-
-
-
-//Ruta para el registro de trabajadores
-Route::post('registroPost',[UsuarioController::class, 'registroPost']);
-
-// Route::get('registro',[UsuarioController::class, 'registro']);
-
-Route::post('registrar',[UsuarioController::class, 'registrar']);
-
-
-//Ruta para el registro de empresas
-// Route::get('registroEmpresa',[UsuarioController::class, 'registroEmpresa']);
-Route::post('registroEmpresaPost',[UsuarioController::class, 'registroEmpresaPost']);
-
-//Verificar//
-
-
-Route::post('verificarController', [UsuarioController::class, 'ActivateACC']);
 
 ///////////////////////MAIN/////////////////////
 

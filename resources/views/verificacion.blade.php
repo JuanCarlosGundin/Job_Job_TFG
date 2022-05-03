@@ -17,13 +17,13 @@
         </div>
         <div id="main" class="modal-login">
             <div class="modal-content">
-                <form method="POST" onsubmit="verificar(); return false;"  id="loginP">
+                <form method="POST" id="formverificar">
                     <h2>Introduce tus datos para verificar tu cuenta</h2>
                     <input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo"><br><br>
                     <input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña"><br>
                     <button class= "botonlogin" type="submit" value="register">Verificar</button>
         </div>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="js/verificar.js"> </script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>
