@@ -64,68 +64,117 @@ function login() {
 }
 
 
-function loginuser() {
+function loginuser(evt) {
+
+    evt.preventDefault();
+
     let mail_login = document.getElementById('mail_login').value;
     let contra_login = document.getElementById('contra_login').value;
+
     if (mail_login == '' || contra_login == '') {
+
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
             icon: "error",
         });
         return false;
+
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail_login)) {
+
         swal.fire({
             title: "Error",
             text: "Introduce un email correcto",
             icon: "error",
         });
         return false;
+
     } else if (contra_login.length > 50) {
+
         swal.fire({
             title: "Error",
             text: "La contraseña no puede ser más larga de 50 caracteres",
             icon: "error",
         });
         return false;
+
     } else if (mail_login.length > 100) {
+
         swal.fire({
             title: "Error",
             text: "El email no puede ser más largo de 100 caracteres",
             icon: "error",
         });
         return false;
+
     }
+
     var formData = new FormData();
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('mail', document.getElementById('mail_login').value);
     formData.append('contra', document.getElementById('contra_login').value);
+
     var ajax = objetoAjax();
+
     ajax.open("POST", "loginuser", true);
+
     ajax.onreadystatechange = function() {
+
         if (ajax.readyState == 4 && ajax.status == 200) {
+
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta.resultado)
-            if (respuesta.resultado == "no") {
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "noexiste") {
+
+                swal.fire({
+                    title: "Error",
+                    text: 'No existe un usuario con esas credenciales',
+                    icon: "error",
+                });
+                return false;
+
+            } else if (respuesta.resultado == "noverificado") {
+
                 swal.fire({
                     title: "Error",
                     text: 'No estas verificado porfavor ve a tu correo y comprueba la bandeja de entrada',
                     icon: "error",
                 });
                 return false;
-            }
-            if (respuesta.resultado == "baneado") {
+
+            } else if (respuesta.resultado == "baneado") {
+
                 swal.fire({
                     title: "Error",
                     text: 'Cuenta inhabilitada',
                     icon: "error",
                 });
                 return false;
+
+            } else {
+
+                if (respuesta.resultado == "admin") {
+
+                    window.location.href = 'cPanelAdmin';
+
+                } else if (respuesta.resultado == "OK") {
+
+                    window.location.href = 'home';
+
+                }
+
             }
+
         }
+
     }
+
     ajax.send(formData)
+
 }
 
 

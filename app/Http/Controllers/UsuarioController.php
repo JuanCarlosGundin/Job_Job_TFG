@@ -12,6 +12,12 @@ class UsuarioController extends Controller
 {
 
 /*----------------------------------------LOGIN Y LOGOUT------------------------------------------------------------------------*/
+public function logout(Request $req){
+    /* $req->session()->forget('id_user');
+    $req->session()->forget('id_perfil'); */
+    $req->session()->flush();
+    return redirect('/');
+}
     
 /*----------------------------------------FIN LOGIN Y LOGOUT------------------------------------------------------------------------*/
 

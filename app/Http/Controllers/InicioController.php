@@ -15,38 +15,58 @@ class InicioController extends Controller{
     ///Login
 
     public function loginuser(Request $req){
+
         try{
+
             $user=DB::table("tbl_usuarios")->where('mail','=',$req['mail'])->where('contra','=',md5($req['contra']))->first();
-            if($user->verificado==0){
-                return response()->json(array('resultado'=> 'no'));
+
+            if ($user == null){
+
+                return response()->json(array('resultado'=> 'noexiste'));
+
+            }else if($user->verificado==0){
+
+                return response()->json(array('resultado'=> 'noverificado'));
+
             }else if($user->estado==0){
+
                 return response()->json(array('resultado'=> 'baneado'));
+
             }else {
+
                 if($user->id_perfil==1){
-                return view('cPanelAdmin');
+
+                    $req->session()->put('id_user',$user->id);
+                    return response()->json(array('resultado'=> 'admin'));
+
                 }else{
-                    $req->session()->put('nombre',$req->mail);
+
+                    /* $req->session()->put('nombre',$req->mail); */
                     $req->session()->put('id_user',$user->id);
                     $req->session()->put('id_perfil',$user->id_perfil);
-                    return view('home');
+                    return response()->json(array('resultado'=> 'OK'));
+
                 }
+
             }
-        }catch(\Exception $e){
-            return response()->json(array('resultado'=> 'mal'));
+
+        }catch (\Throwable $th) {
+
+            return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+
         }   
+
     }
 
 
-    public function logout(Request $req){
-        /* $req->session()->forget('Admin'); */
-        $req->session()->flush();
-        return redirect('/');
-    }
+    
 
     ///Registro
 
     public function verificar(){
+
         return view('verificacion');
+        
     }
 
 }

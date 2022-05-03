@@ -7,9 +7,9 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 
 
-/* Route::get('home', function () {
+Route::get('home', function () {
     return view("home");
-}); */
+});
 /* ------------InicioController------------ */
 
 Route::get('/', [InicioController::class, 'inicio']);
@@ -26,13 +26,16 @@ Route::post('loginuser', [InicioController::class, 'loginuser']);
 //Verificar correo
 Route::get('verificar', [InicioController::class, 'verificar']);
 
+//Logout
+Route::get('logout', [UsuarioController::class, 'logout']);
+
 /* ------------InicioController------------ */
 
 /*--------------RUTAS DAVID--------------*/
 /*LOGIN Y LOGOUT*/
 
 
-Route::get('logout', [UsuarioController::class, 'logout']);
+
 //Ruta para el registro de trabajadores
 Route::post('registroPost',[UsuarioController::class, 'registroPost']);
 
@@ -40,7 +43,6 @@ Route::post('registroPost',[UsuarioController::class, 'registroPost']);
 
 Route::post('registrar',[UsuarioController::class, 'registrar']);
 
-Route::post('loginP',[UsuarioController::class, 'loginP']);
 
 //Ruta para el registro de empresas
 // Route::get('registroEmpresa',[UsuarioController::class, 'registroEmpresa']);
