@@ -45,16 +45,23 @@ class MailController extends Controller
         }
     }
     public function sendingcontacto(Request $request){
-        // $nombre = $request->input('nombre');
-        // $mail = $request->input('mail');
-        // $telefono = $request->input('telefono');
-        // $asunto = $request->input('asunto');
-        // $mensaje = $request->input('mensaje');
-        // try{
-            
-        //     }catch(\Throwable $th){
-        //         return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
-        //     }
-        return response()->json("OK");  
+        $mail = $request->input('mail');
+        $nombre = $request->input('nombre');
+        $email = $request->input('email');
+        $telefono = $request->input('telefono');
+        $asunto = $request->input('asunto');
+        $mensaje = $request->input('mensaje');
+        try{
+            Mail::raw($mail, function ($message) use($id, $id_receptor) {
+
+                $message->to($receptor[0]->{'mail'})
+                  ->subject('Mensaje de '.$emisor[0]->{'nombre'}.' '.$emisor[0]->{'apellido'});
+
+              });
+            return response()->json("OK");  
+            }catch(\Throwable $th){
+                return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+            }
+        
     }
 }
