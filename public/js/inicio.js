@@ -265,7 +265,7 @@ function formempresa() {
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
-    recarga += '<form method="POST" onsubmit="crearempresaJS(); return false;" id="formregistroempresa" enctype="multipart/form-data">';
+    recarga += '<form method="POST" id="crearempresaJS" enctype="multipart/form-data">';
     recarga += '<div class="column-2">';
     recarga += '<p>Email</p>';
     recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
@@ -297,8 +297,8 @@ function formempresa() {
     recarga += '<div class="column-2">';
     recarga += '<p>Quieres que se te muestre a los trabajadores?</p>';
     recarga += '<select name="mostrado" id="mostrado">';
-    recarga += '<option value="0" selected>Sí</option>';
-    recarga += '<option value="1">No</option>';
+    recarga += '<option value="1" selected>Sí</option>';
+    recarga += '<option value="0">No</option>';
     recarga += '</select><br><br>';
     recarga += '</div>';
     recarga += '<div class="column-2">';
@@ -309,7 +309,6 @@ function formempresa() {
     recarga += '<p>Vacante</p>';
     recarga += '<input type="text" class="inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
     recarga += '</div>';
-    recarga += '<input id="id_perfil" name="id_perfil" type="hidden" value="3">';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
     recarga += '</div>';
@@ -318,6 +317,7 @@ function formempresa() {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("crearempresaJS").addEventListener("submit", crearempresaJS);
 
 }
 
@@ -385,6 +385,8 @@ function creartrabajadorJS(evt) {
     formData.append('disponibilidad', document.getElementById('disponibilidad').value);
     formData.append('about_user', document.getElementById('about_user').value);
     formData.append('foto_perfil', document.getElementById('foto_perfil').files[0]);
+    formData.append('mostrado', document.getElementById('mostrado').value);
+
 
     var ajax = objetoAjax();
 
@@ -417,18 +419,23 @@ function creartrabajadorJS(evt) {
                 setTimeout(() => { window.location.href = './'; }, 2000);
 
             } else {
+
                 swal.fire({
                     title: "Error",
                     text: "No se ha podido registrar la cuenta",
                     icon: "error",
                 });
+
             }
         }
     }
     ajax.send(formData)
 }
 
-function crearempresaJS() {
+function crearempresaJS(evt) {
+
+    evt.preventDefault();
+
     let mail = document.getElementById('mail').value;
     let contra = document.getElementById('contra').value;
     let nom_emp = document.getElementById('nom_emp').value;
@@ -437,49 +444,61 @@ function crearempresaJS() {
     let mostrado = document.getElementById('mostrado').value;
     let about_emp = document.getElementById('about_emp').value;
     let logo_emp = document.getElementById('logo_emp').value;
+
     //VALIDACIONES EMPRESA
     if (mail == '' || contra == '' || nom_emp == '' || loc_emp == '' || campo_emp == '' || mostrado == '' || about_emp == '' || logo_emp == '') {
+
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
             icon: "error",
         });
         return false;
+
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
         swal.fire({
             title: "Error",
             text: "Introduce un email correcto",
             icon: "error",
         });
         return false;
+
     } else if (mail.length > 100) {
+
         swal.fire({
             title: "Error",
             text: "El email no puede ser más largo de 100 caracteres",
             icon: "error",
         });
         return false;
+
     } else if (contra.length < 8) {
+
         swal.fire({
             title: "Error",
             text: "La contraseña debe tener mas de 8 caracteres",
             icon: "error",
         });
         return false;
+
     } else if (contra.length > 100) {
+
         swal.fire({
             title: "Error",
             text: "La contraseña debe tener menos de 100 caracteres",
             icon: "error",
         });
         return false;
+
     }
+
     var formData = new FormData();
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('mail', document.getElementById('mail').value);
     formData.append('contra', document.getElementById('contra').value);
-    formData.append('id_perfil', document.getElementById('id_perfil').value);
     formData.append('nom_emp', document.getElementById('nom_emp').value);
     formData.append('loc_emp', document.getElementById('loc_emp').value);
     formData.append('campo_emp', document.getElementById('campo_emp').value);
@@ -488,30 +507,51 @@ function crearempresaJS() {
     formData.append('about_emp', document.getElementById('about_emp').value);
     formData.append('vacante', document.getElementById('vacante').value);
     formData.append('logo_emp', document.getElementById('logo_emp').files[0]);
+
     var ajax = objetoAjax();
-    ajax.open("POST", "registroEmpresaPost", true);
+
+    ajax.open("POST", "registroempresa", true);
+
     ajax.onreadystatechange = function() {
+
         if (ajax.readyState == 4 && ajax.status == 200) {
+
             var respuesta = JSON.parse(this.responseText);
-            if (respuesta.resultado == "OK") {
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "correoexiste") {
+
+                swal.fire({
+                    title: "Error",
+                    text: "Este correo ya está en uso",
+                    icon: "error",
+                });
+
+            } else if (respuesta.resultado == "OK") {
+
                 swal.fire({
                     title: "Registrado",
                     text: "Comprueba tu correo para verificarte.",
                     showConfirmButton: false,
                     icon: "success",
                 });
-                setTimeout(() => { window.location.href = 'login'; }, 2000);
+                setTimeout(() => { window.location.href = './'; }, 2000);
 
-            } else if (respuesta.resultado == "mal") {
+            } else {
+
                 swal.fire({
                     title: "Error",
-                    text: "Este correo ya está en uso",
+                    text: "No se ha podido registrar la cuenta",
                     icon: "error",
                 });
-            } else {
-                alert("error")
+
             }
+
         }
+
     }
+
     ajax.send(formData)
+
 }

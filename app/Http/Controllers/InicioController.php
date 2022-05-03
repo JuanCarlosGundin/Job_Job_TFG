@@ -111,6 +111,52 @@ class InicioController extends Controller{
 
     }
 
+    public function registroempresa(Request $req){
+
+        //Comprobar si el correo introducido ya existe en la BBDD
+        $comprobarmail=DB::select('select mail from tbl_usuarios where mail=? ',[$req['mail']]);
+        if (count($comprobarmail)>0){
+            return response()->json(array('resultado'=> 'correoexiste'));
+        }
+
+        //añadir foto trabajador si existe
+        if($req->hasFile('logo_emp')){
+
+            $logo_emp = $req->file('logo_emp')->store('uploads','public');
+
+        }else{
+
+            $logo_emp = NULL;
+
+        }
+
+        try {
+            
+            DB::beginTransaction();
+            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$req['mail'],"contra"=>md5($req['contra']),"id_perfil"=>'3',"estado"=>'1',"verificado"=>'0']);
+
+            DB::table('tbl_empresa')->insert(["id_usuario"=>$id,"nom_emp"=>$req['nom_emp'],"loc_emp"=>$req['loc_emp'],"about_emp"=>$req['about_emp'],"campo_emp"=>$req['campo_emp'],"searching"=>$req['searching'],"mostrado"=>$req['mostrado'],"vacante"=>$req['vacante'],"logo_emp"=>$logo_emp]);
+
+            Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
+                $usuario=DB::select('select * from tbl_usuarios 
+                inner join tbl_empresa on tbl_usuarios.id=tbl_empresa.id_usuario
+                where tbl_usuarios.id=? ',[$id]);
+                $message->to($usuario[0]->{'mail'})
+                  ->subject('Link Para validar tu cuenta de Job Job');
+              });
+
+            DB::commit();
+            return response()->json(array('resultado'=> 'OK'));
+
+        }   catch (\Exception $e) {
+
+            DB::rollback();
+            return response()->json(array('resultado'=> $e->getMessage()));
+
+        }
+
+    }
+
 
     public function verificar(){
 

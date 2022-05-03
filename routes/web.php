@@ -23,6 +23,9 @@ Route::post('loginuser', [InicioController::class, 'loginuser']);
 //Trabajador
 Route::post('registrotrabajador', [InicioController::class, 'registrotrabajador']);
 
+//Empresa
+Route::post('registroempresa', [InicioController::class, 'registroempresa']);
+
 /* Registrar */
 
 
