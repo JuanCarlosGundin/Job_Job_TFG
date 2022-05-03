@@ -13,6 +13,13 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
     <body class="body-login">
+        {{-- cambiar las clases del form de abajo de contactanos --}}
+        <form action="{{url('paginacontacto')}}" method="GET">
+            <div class="form-group">
+                <span><i class="fas fa-sign-out-alt"></i></span>
+                <button type="submit" value="contactanos" class="botoncPanel">contactanos</button><br><br>
+            </div>
+        </form>
         <div class="logo">
             <img src="storage/uploads/jobjob_logo.png">
         </div>

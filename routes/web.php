@@ -16,6 +16,10 @@ Route::get('verificar', function () {
     return view('verificacion');
 });
 
+Route::get('paginacontacto', function () {
+    return view('paginacontacto');
+});
+
 Route::get('login', function () {
     return view('login');
 });
