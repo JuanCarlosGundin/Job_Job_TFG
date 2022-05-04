@@ -58,6 +58,7 @@ function contactoJS() {
         });
         return false;
     }
+    document.getElementById("myBtn").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -80,7 +81,6 @@ function contactoJS() {
                     icon: "success",
 
                 });
-                document.getElementById("myBtn").disabled = true;
                 setTimeout(() => { window.location.href = 'login'; }, 5000);
             } else {
                 swal.fire({

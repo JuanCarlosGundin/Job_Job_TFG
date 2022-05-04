@@ -45,17 +45,19 @@ class MailController extends Controller
         }
     }
     public function sendingcontacto(Request $request){
-        $mail = $request->input('mail');
         $nombre = $request->input('nombre');
         $email = $request->input('email');
         $telefono = $request->input('telefono');
         $asunto = $request->input('asunto');
         $mensaje = $request->input('mensaje');
+        $cuerpo = 'Hola buenas, mi nombre es '.$nombre. "\n" . "\n" .'Aquí abajo te dejo mis datos '
+        . "\n" .'Email: '.$email. "\n" .'Teléfono: '.$telefono. "\n" . "\n" .'Mi asunto es:   '.
+        $asunto. "\n" . "\n" .'Mi mensaje es:   '.$mensaje;
         try{
-            Mail::raw($mail, function ($message) use($id, $id_receptor) {
+            Mail::raw($cuerpo, function ($message) use($nombre, $email, $telefono, $asunto, $mensaje) {
 
-                $message->to($receptor[0]->{'mail'})
-                  ->subject('Mensaje de '.$emisor[0]->{'nombre'}.' '.$emisor[0]->{'apellido'});
+                $message->to('100006394.joan23@fje.edu')
+                  ->subject('Solicitud de contacto con el asunto: '.$asunto);
 
               });
             return response()->json("OK");  
