@@ -17,8 +17,8 @@
             <li><img class="logo" src="storage/uploads/jobjob_logo_black.png"></li>
             </div>
             <div class="column-2">
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">¡Contactanos!</a></li>
+            <li><a href="">FAQ</a></li>
+            <li><a href="">¡Contactanos!</a></li>
             <li><form style="display:inline;" action="{{url('login')}}" method="GET">
                 <button class="btn-register">Iniciar sesión</button>
                 </form></li>
@@ -69,7 +69,7 @@
         </div>
         <div class="footer">
         <h2>¿Tienes alguna duda?</h2>
-        <p><i class="fa-solid fa-envelope"></i> jobjob@gmail.com</p>
+        <p><i class="fa-solid fa-envelope"></i> jobjobemp@gmail.com</p>
         <p><i class="fa-solid fa-phone"></i> +34 608 71 28 31</p>
         </div>
 </body>
