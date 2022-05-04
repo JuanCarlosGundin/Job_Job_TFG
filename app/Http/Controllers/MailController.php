@@ -45,6 +45,13 @@ class MailController extends Controller
         }
     }
     public function sendingcontacto(Request $request){
+        // $request->validate([
+        //     'nombre' => 'required',
+        //     'email' => 'required|email',
+        //     'telefono' => 'required',
+        //     'asunto' => 'required',
+        //     'mensaje' => 'required',
+        // ]);
         $nombre = $request->input('nombre');
         $email = $request->input('email');
         $telefono = $request->input('telefono');
@@ -54,6 +61,7 @@ class MailController extends Controller
         . "\n" .'Email: '.$email. "\n" .'Teléfono: '.$telefono. "\n" . "\n" .'Mi asunto es:   '.
         $asunto. "\n" . "\n" .'Mi mensaje es:   '.$mensaje;
         try{
+            
             Mail::raw($cuerpo, function ($message) use($nombre, $email, $telefono, $asunto, $mensaje) {
 
                 $message->to('100006394.joan23@fje.edu')
