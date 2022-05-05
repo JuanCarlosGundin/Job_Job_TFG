@@ -44,6 +44,16 @@ Route::get('logout', [UsuarioController::class, 'logout']);
 
 /* ------------InicioController------------ */
 
+
+
+
+
+
+
+
+
+
+
 ///////////////////////MAIN/////////////////////
 
 //LEER EL CONTENIDO

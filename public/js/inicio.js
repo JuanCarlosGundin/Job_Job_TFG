@@ -255,73 +255,6 @@ function formtrabajador() {
 }
 
 
-function formempresa() {
-
-    var tabla = document.getElementById("main");
-    var recarga = '';
-
-    recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
-    recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
-    recarga += '<form method="POST" id="crearempresaJS" enctype="multipart/form-data">';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Email</p>';
-    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Contraseña</p>';
-    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Nombre empresa</p>';
-    recarga += '<input type="text" class="inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre de empresa..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Dirección empresa</p>';
-    recarga += '<input type="text" class="inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Logo empresa</p>';
-    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp"><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Sector</p>';
-    recarga += '<input type="text" class="inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>¿Qué buscas para tu empresa?</p>';
-    recarga += '<input type="text" class="inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?"><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Quieres que se te muestre a los trabajadores?</p>';
-    recarga += '<select name="mostrado" id="mostrado">';
-    recarga += '<option value="1" selected>Sí</option>';
-    recarga += '<option value="0">No</option>';
-    recarga += '</select><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Sobre la empresa</p>';
-    recarga += '<input type="text" class="inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Vacante</p>';
-    recarga += '<input type="text" class="inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
-    recarga += '</div>';
-    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
-    recarga += '</form>';
-    recarga += '</div>';
-    recarga += '</div>';
-    tabla.innerHTML = recarga;
-
-    document.getElementById("loginclick").addEventListener("click", login);
-    document.getElementById("registrarclick").addEventListener("click", registrar);
-    document.getElementById("crearempresaJS").addEventListener("submit", crearempresaJS);
-
-}
-
-
 function creartrabajadorJS(evt) {
 
     evt.preventDefault();
@@ -430,6 +363,73 @@ function creartrabajadorJS(evt) {
         }
     }
     ajax.send(formData)
+}
+
+
+function formempresa() {
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="crearempresaJS" enctype="multipart/form-data">';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Email</p>';
+    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Contraseña</p>';
+    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Nombre empresa</p>';
+    recarga += '<input type="text" class="inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre de empresa..."><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Dirección empresa</p>';
+    recarga += '<input type="text" class="inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización..."><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Logo empresa</p>';
+    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp"><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Sector</p>';
+    recarga += '<input type="text" class="inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>¿Qué buscas para tu empresa?</p>';
+    recarga += '<input type="text" class="inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?"><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Quieres que se te muestre a los trabajadores?</p>';
+    recarga += '<select name="mostrado" id="mostrado">';
+    recarga += '<option value="1" selected>Sí</option>';
+    recarga += '<option value="0">No</option>';
+    recarga += '</select><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Sobre la empresa</p>';
+    recarga += '<input type="text" class="inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa..."><br><br>';
+    recarga += '</div>';
+    recarga += '<div class="column-2">';
+    recarga += '<p>Vacante</p>';
+    recarga += '<input type="text" class="inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
+    recarga += '</form>';
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("crearempresaJS").addEventListener("submit", crearempresaJS);
+
 }
 
 function crearempresaJS(evt) {
