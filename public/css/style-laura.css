@@ -92,6 +92,10 @@ body {
   border: black solid 3px;
 }
 
+.body-index .navbar-index li i {
+  display: none;
+}
+
 .body-index .column-3 {
   padding-top: 17vh;
   padding-left: 3%;
@@ -198,16 +202,16 @@ body {
 .body-index .video {
   margin: 0;
   background-color: #0076CA;
-  height: 150vh;
+  height: 160vh;
 }
 
 .body-index .footer {
   padding-top: 4%;
   padding-bottom: 12%;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 9%;
+  padding-right: 9%;
   width: 33.3%;
-  height: 20vh;
+  height: 40vh;
   float: left;
   background-color: #042944;
   color: white;
@@ -228,9 +232,12 @@ body {
   font-size: 2.5vh;
 }
 
-.body-index .footer a {
+.body-index .footer a,
+.body-index .footer p,
+.body-index .footer i {
   text-decoration: none;
   color: white;
+  font-size: 13px;
 }
 
 .body-index .footer a:hover {
@@ -242,33 +249,53 @@ body {
   padding-left: 5%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 450px) {
   .body-index .navbar-index {
     padding-top: 5px;
-    height: 11vh;
+    height: 9vh;
+    width: 100%;
   }
   .body-index .navbar-index .column-1 {
     display: none;
   }
   .body-index .navbar-index .column-2 {
     width: 100%;
-    text-align: left;
+    text-align: center;
+  }
+  .body-index .navbar-index .column-2 .btn-register {
+    display: none;
+  }
+  .body-index .navbar-index .column-2 a {
+    font-size: 23px !important;
+    padding-left: 2%;
+    padding-right: 2%;
   }
   .column-3 {
     width: 100% !important;
     text-align: center !important;
-    padding-top: 65px !important;
+    padding-top: 40px !important;
     padding-bottom: 0px !important;
-    height: 80vh !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    height: 70vh !important;
   }
   .column-3 .btn-index {
     float: none !important;
     position: center;
+    width: 35% !important;
+  }
+  .column-3 h2 {
+    text-align: center !important;
+    font-size: 4.5vh !important;
+  }
+  .column-3 h3 {
+    text-align: center !important;
+    font-size: 3vh !important;
   }
   .column-4 {
     width: 100% !important;
     padding-top: 0px !important;
-    height: 45vh !important;
+    height: 40vh !important;
   }
   .column-5 {
     width: 100% !important;
@@ -277,7 +304,7 @@ body {
     height: 40vh !important;
   }
   .video {
-    display: none;
+    height: 280vh !important;
   }
   .footer {
     width: 100% !important;
@@ -332,6 +359,15 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   height: 70vh;
+}
+
+.body-login .modal-login .modal-content .opciones .opcion {
+  width: 25%;
+  float: left;
+}
+
+.body-login .modal-login .modal-content .opciones .opcion img {
+  width: 60%;
 }
 
 .body-login .modal-login .modal-content h2 {
@@ -428,7 +464,7 @@ body {
   margin-right: 4px;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 900px) {
   .body-login .modal-login {
     margin-top: 10vh;
     padding-bottom: 0.2vh;
@@ -458,14 +494,14 @@ body {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 450px) {
   .body-login .logo {
     display: block !important;
     height: 18vh;
   }
   .body-login .logo img {
     width: 25%;
-    margin-top: 20%;
+    margin-top: 18%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -599,7 +635,7 @@ body {
   font-size: 3.2vh;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 450px) {
   .body-login {
     height: 60vh;
   }
@@ -716,7 +752,7 @@ body {
   margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 450px) {
   .body-login .modal-content-register {
     height: 75vh;
   }

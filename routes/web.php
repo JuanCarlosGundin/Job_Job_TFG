@@ -32,6 +32,19 @@ Route::get('paginatrabajador', function () {
 Route::get('registrar', function () {
     return view('registrar');
 });
+
+Route::get('registrar2', function () {
+    return view('registrar2');
+});
+
+Route::get('registrar3', function () {
+    return view('registrar3');
+});
+
+Route::get('registrar4', function () {
+    return view('registrar4');
+});
+
 Route::get('editarperfil', function () {
     return view('editarperfil');
 });

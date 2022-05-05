@@ -19,6 +19,7 @@
             <div class="column-2">
             <li><a href="">FAQ</a></li>
             <li><a href="">¡Contactanos!</a></li>
+            {{-- <li><a href="" class="fa-solid fa-right-to-bracket"></a></li> --}}
             <li><form style="display:inline;" action="{{url('login')}}" method="GET">
                 <button class="btn-register">Iniciar sesión</button>
                 </form></li>
@@ -56,6 +57,8 @@
     </div>
     <div class="video">
         <h1>aqui va el video</h1>
+        <p>aaa</p>
+        <p>pppp</p>
     </div>
         <div class="footer" id="footer-izquierda">
         <h1>JobJob</h1>
