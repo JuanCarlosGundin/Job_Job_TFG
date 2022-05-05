@@ -45,24 +45,40 @@ class MailController extends Controller
         }
     }
     public function sendingcontacto(Request $request){
-        // $request->validate([
-        //     'nombre' => 'required',
-        //     'email' => 'required|email',
-        //     'telefono' => 'required',
-        //     'asunto' => 'required',
-        //     'mensaje' => 'required',
-        // ]);
+        
         $nombre = $request->input('nombre');
         $email = $request->input('email');
         $telefono = $request->input('telefono');
         $asunto = $request->input('asunto');
         $mensaje = $request->input('mensaje');
         $cuerpo = 'Hola buenas, mi nombre es '.$nombre. "\n" . "\n" .'Aquí abajo te dejo mis datos '
-        . "\n" .'Email: '.$email. "\n" .'Teléfono: '.$telefono. "\n" . "\n" .'Mi asunto es:   '.
-        $asunto. "\n" . "\n" .'Mi mensaje es:   '.$mensaje;
+        . "\n" .'Email: '.$email. "\n" .'Teléfono: '.$telefono. "\n" . "\n" .'ASUNTO: '.
+        $asunto. "\n" . "\n" .'MENSAJE: '.$mensaje;
+
+        //---------Validación servidor---------
+        // primer array de validaciones donde ponemos las reglas
+        $request->validate($request, [
+            'nombre' => 'required',
+            'email' => 'required|email|max:100',
+            'telefono' => 'required|min:9|max:9',
+            'asunto' => 'required',
+            'mensaje' => 'required',
+        ],
+        // segundo array donde ponemos el mensaje personalizado para cada regla
+        [
+            'nombre.required' => 'El nombre no se puede quedar en blanco',
+            'email.required' => 'El email no se puede quedar en blanco',
+            'email.email' => 'Introduce un email correcto',
+            'email.max' => 'El email no puede ser más largo de 100 carácteres',
+            'telefono.required' => 'El telefono no se puede quedar en blanco',
+            'telefono.min' => 'Comprueba que el teléfono esté bien escrito',
+            'telefono.max' => 'Comprueba que el teléfono esté bien escrito',
+            'asunto.required' => 'El asunto no se puede quedar en blanco',
+            'mensaje.required' => 'El mensaje no se puede quedar en blanco',
+        ]);
         try{
             
-            Mail::raw($cuerpo, function ($message) use($nombre, $email, $telefono, $asunto, $mensaje) {
+            Mail::raw($cuerpo, function ($message) use($asunto) {
 
                 $message->to('100006394.joan23@fje.edu')
                   ->subject('Solicitud de contacto con el asunto: '.$asunto);

@@ -113,5 +113,6 @@ Route::put('editarperfil/{id}/{id_perfil}',[UsuarioController::class, 'editarper
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
 
+//ZONA CONTACTO
 //mandar correo a admin por la pagina de contacto
 Route::post('mandarcontacto', [MailController::class, 'sendingcontacto']);

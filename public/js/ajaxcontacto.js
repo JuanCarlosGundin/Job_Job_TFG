@@ -53,7 +53,7 @@ function contactoJS() {
         document.getElementById("mail").style.borderColor = "red";
         swal.fire({
             title: "Error",
-            text: "El email no puede ser más largo de 100 caracteres",
+            text: "El email no puede ser más largo de 100 carácteres",
             icon: "error",
         });
         return false;
