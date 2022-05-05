@@ -44,7 +44,7 @@ function contactoJS() {
         document.getElementById("telefono").style.borderColor = "red";
         swal.fire({
             title: "Error",
-            text: "Revisa que el número de teléfono esté bien escrito",
+            text: "Comprueba que el teléfono tenga 9 carácteres",
             icon: "error",
         });
         return false;

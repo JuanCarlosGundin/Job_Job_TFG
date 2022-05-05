@@ -55,9 +55,9 @@ class MailController extends Controller
         . "\n" .'Email: '.$email. "\n" .'Teléfono: '.$telefono. "\n" . "\n" .'ASUNTO: '.
         $asunto. "\n" . "\n" .'MENSAJE: '.$mensaje;
 
-        //---------Validación servidor---------
-        // primer array de validaciones donde ponemos las reglas
-        $request->validate($request, [
+        //---------Validaciones---------
+        //primer array de validaciones donde ponemos las reglas
+        $this->validate($request, [
             'nombre' => 'required',
             'email' => 'required|email|max:100',
             'telefono' => 'required|min:9|max:9',
@@ -71,8 +71,8 @@ class MailController extends Controller
             'email.email' => 'Introduce un email correcto',
             'email.max' => 'El email no puede ser más largo de 100 carácteres',
             'telefono.required' => 'El telefono no se puede quedar en blanco',
-            'telefono.min' => 'Comprueba que el teléfono esté bien escrito',
-            'telefono.max' => 'Comprueba que el teléfono esté bien escrito',
+            'telefono.min' => 'Comprueba que el teléfono tenga 9 carácteres',
+            'telefono.max' => 'Comprueba que el teléfono tenga 9 carácteres',
             'asunto.required' => 'El asunto no se puede quedar en blanco',
             'mensaje.required' => 'El mensaje no se puede quedar en blanco',
         ]);
