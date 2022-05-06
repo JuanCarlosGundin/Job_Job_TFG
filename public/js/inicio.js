@@ -1,9 +1,10 @@
-/* var jsonidiomas = (JSON.parse(idiomas)); */
-
 window.onload = function() {
     leeridiomas();
-    login();
     JSONidiomas = {};
+    k_idiomas = 1;
+    k_estudios = 1;
+    k_experiencias = 1;
+    login();
 
 }
 
@@ -386,6 +387,8 @@ function formtrabajador4(evt) {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
+    /* Estructura linea */
+    recarga += '<div id="lineaidioma">';
     //nombre_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_idioma</p>';
@@ -408,35 +411,31 @@ function formtrabajador4(evt) {
     recarga += '</select><br><br>';
     recarga += '</div>';
     recarga += '<div>';
-    recarga += '<button type="button" id="idiomamas">Mas</button>';
+    recarga += '<button type="button" id="mas">Mas</button>';
     recarga += '</div>';
-
-    recarga += '<div id="nuevoidioma"></div>';
-
+    recarga += '</div>';
+    /* Estructura linea */
     recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
 
-    ji = 1;
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
-    document.getElementById("idiomamas").addEventListener("click", insertaridioma);
-    document.getElementById("idiomamas").addEventListener("click", function() {
-        ji++;
+    document.getElementById("mas").addEventListener("click", insertaridioma);
+    document.getElementById("mas").addEventListener("click", function() {
+        k_idiomas++;
     });
     document.getElementById("formtrabajador4").addEventListener("submit", formtrabajador5);
 
 }
 
 function insertaridioma() {
-
-    var nuevoidioma = document.getElementById("nuevoidioma");
-    console.log(nuevoidioma);
-    console.log(ji);
+    var k = k_idiomas;
+    var lineaidioma = document.getElementById("lineaidioma");
     var recarga = "";
-    recarga += '<div id="nuevoidioma' + ji + '">';
+    recarga += '<div id="lineaidioma-' + k + '">';
     //nombre_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_idioma</p>';
@@ -459,20 +458,19 @@ function insertaridioma() {
     recarga += '</select><br><br>';
     recarga += '</div>';
     recarga += '<div>';
-    recarga += '<button type="button" id="idiomamenos' + ji + '">Menos</button>';
+    recarga += '<button type="button" id="menos' + k + '">Menos</button>';
     recarga += '</div>';
     recarga += '</div>';
-    nuevoidioma.insertAdjacentHTML('afterend', recarga);
-    var idiomamenos = "idiomamenos" + ji;
-    document.getElementById(idiomamenos).addEventListener("click", eliminaridioma);
-    document.getElementById(idiomamenos).myParam = ji;
+    lineaidioma.insertAdjacentHTML('afterend', recarga);
+    var menos = "menos" + k;
+    document.getElementById(menos).k = k;
+    document.getElementById(menos).addEventListener("click", eliminaridioma);
 }
 
 function eliminaridioma(evt) {
-    console.log(evt.currentTarget.myParam)
-    var jieliminiar = evt.currentTarget.myParam;
-    var nuevoidiomaji = "nuevoidioma" + jieliminiar;
-    document.getElementById(nuevoidiomaji).innerHTML = "";
+    var k = evt.currentTarget.k;
+    var lineaidiomak = "lineaidioma-" + k;
+    document.getElementById(lineaidiomak).innerHTML = "";
 
 }
 
@@ -491,6 +489,8 @@ function formtrabajador5(evt) {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
+    /* Estructura linea */
+    recarga += '<div id="lineaestudio">';
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_formación</p>';
@@ -511,6 +511,11 @@ function formtrabajador5(evt) {
     recarga += '<p>año_salida</p>';
     recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida"><br><br>';
     recarga += '</div>';
+    recarga += '<div>';
+    recarga += '<button type="button" id="mas">Mas</button>';
+    recarga += '</div>';
+    recarga += '</div>';
+    /* Estructura linea */
     recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
     recarga += '</form>';
     recarga += '</div>';
@@ -519,7 +524,53 @@ function formtrabajador5(evt) {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("mas").addEventListener("click", insertarestudio);
+    document.getElementById("mas").addEventListener("click", function() {
+        k_estudios++;
+    });
     document.getElementById("formtrabajador5").addEventListener("submit", formtrabajador6);
+
+}
+
+function insertarestudio() {
+    var k = k_estudios;
+    var lineaestudio = document.getElementById("lineaestudio");
+    var recarga = "";
+    recarga += '<div id="lineaestudio-' + k + '">';
+    //nombre_formación
+    recarga += '<div class="column-2">';
+    recarga += '<p>nombre_formación</p>';
+    recarga += '<input type="text" class="inputregister" id="nombre_formación" name="nombre_formación" placeholder="Introduce tu titulo"><br><br>';
+    recarga += '</div>';
+    //lugar_formación
+    recarga += '<div class="column-2">';
+    recarga += '<p>lugar_formación</p>';
+    recarga += '<input type="text" class="inputregister" id="lugar_formación" name="lugar_formación" placeholder="Introduce el centro de estudios"><br><br>';
+    recarga += '</div>';
+    //año_entrada
+    recarga += '<div class="column-2">';
+    recarga += '<p>año_entrada</p>';
+    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada"><br><br>';
+    recarga += '</div>';
+    //año_salida
+    recarga += '<div class="column-2">';
+    recarga += '<p>año_salida</p>';
+    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida"><br><br>';
+    recarga += '</div>';
+    recarga += '<div>';
+    recarga += '<button type="button" id="menos' + k + '">Menos</button>';
+    recarga += '</div>';
+    recarga += '</div>';
+    lineaestudio.insertAdjacentHTML('afterend', recarga);
+    var menos = "menos" + k;
+    document.getElementById(menos).k = k;
+    document.getElementById(menos).addEventListener("click", eliminarestudio);
+}
+
+function eliminarestudio(evt) {
+    var k = evt.currentTarget.k;
+    var lineaestudiok = "lineaestudio-" + k;
+    document.getElementById(lineaestudiok).innerHTML = "";
 
 }
 
@@ -538,6 +589,8 @@ function formtrabajador6(evt) {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
+    /* Estructura linea */
+    recarga += '<div id="lineaexperiencia">';
     //nombre_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_experiencia</p>';
@@ -563,6 +616,11 @@ function formtrabajador6(evt) {
     recarga += '<p>año_salida</p>';
     recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida""><br><br>';
     recarga += '</div>';
+    recarga += '<div>';
+    recarga += '<button type="button" id="mas">Mas</button>';
+    recarga += '</div>';
+    recarga += '</div>';
+    /* Estructura linea */
     recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
     recarga += '</form>';
     recarga += '</div>';
@@ -571,7 +629,58 @@ function formtrabajador6(evt) {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("mas").addEventListener("click", insertarexperiencia);
+    document.getElementById("mas").addEventListener("click", function() {
+        k_experiencias++;
+    });
     /* document.getElementById("creartrabajadorJS").addEventListener("submit", creartrabajadorJS); */
+
+}
+
+function insertarexperiencia() {
+    var k = k_experiencias;
+    var lineaexperiencia = document.getElementById("lineaexperiencia");
+    var recarga = "";
+    recarga += '<div id="lineaexperiencia-' + k + '">';
+    //nombre_experiencia
+    recarga += '<div class="column-2">';
+    recarga += '<p>nombre_experiencia</p>';
+    recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia" placeholder="Nombre puesto"><br><br>';
+    recarga += '</div>';
+    //lugar_experiencia
+    recarga += '<div class="column-2">';
+    recarga += '<p>lugar_experiencia</p>';
+    recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia" placeholder="Empresa"><br><br>';
+    recarga += '</div>';
+    //funciones
+    recarga += '<div class="column-1">';
+    recarga += '<p>funciones</p>';
+    recarga += '<input type="text" class="inputregister" id="funciones" name="funciones" placeholder="Funciones dentro de la empresa"><br><br>';
+    recarga += '</div>';
+    //año_entrada
+    recarga += '<div class="column-2">';
+    recarga += '<p>año_entrada</p>';
+    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada"><br><br>';
+    recarga += '</div>';
+    //año_salida
+    recarga += '<div class="column-2">';
+    recarga += '<p>año_salida</p>';
+    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida""><br><br>';
+    recarga += '</div>';
+    recarga += '<div>';
+    recarga += '<button type="button" id="menos' + k + '">Menos</button>';
+    recarga += '</div>';
+    recarga += '</div>';
+    lineaexperiencia.insertAdjacentHTML('afterend', recarga);
+    var menos = "menos" + k;
+    document.getElementById(menos).k = k;
+    document.getElementById(menos).addEventListener("click", eliminarexperiencia);
+}
+
+function eliminarexperiencia(evt) {
+    var k = evt.currentTarget.k;
+    var lineaexperienciak = "lineaexperiencia-" + k;
+    document.getElementById(lineaexperienciak).innerHTML = "";
 
 }
 
