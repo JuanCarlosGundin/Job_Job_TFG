@@ -11,11 +11,12 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
-
+Route::get('/chat', function () {
+    return view('chat');
+});
 Route::get('verificar', function () {
     return view('verificacion');
 });
-
 Route::get('login', function () {
     return view('login');
 });
@@ -32,9 +33,10 @@ Route::get('editarperfil', function () {
     return view('editarperfil');
 });
 /*--------------RUTAS DAVID--------------*/
-/*LOGIN Y LOGOUT*/
-Route::post('login', [UsuarioController::class, 'loginP']);
 
+/*LOGIN Y LOGOUT*/
+
+Route::post('login', [UsuarioController::class, 'loginP']);
 
 Route::get('logout', [UsuarioController::class, 'logout']);
 //Ruta para el registro de trabajadores
@@ -61,7 +63,9 @@ Route::post('si',[AppController::class, 'si']);
 Route::post('no',[AppController::class, 'no']);
 
 ////Diego_branch
+
 ///ZONA ADMINISTRADOR
+
 //Acceder a vista Admin
 Route::get('cPanelAdmin',[UsuarioController::class, 'vistaAdmin']);
 
@@ -85,26 +89,38 @@ Route::put('modificaruser/{id}/{id_perfil}',[UsuarioController::class,'modificar
 
 //eliminaruserJS
 Route::delete('eliminaruser/{id}/{id_perfil}',[UsuarioController::class,'eliminaruser']);
-///ZONA ADMINISTRADOR
+
+///FINAL ZONA ADMINISTRADOR
 
 ///ZONA NOTIFICACIONES
+
 //Acceder a vista Notificaciones
 Route::get('notificaciones',[UsuarioController::class, 'vistaNotificaciones']);
 
 //leernotificacionesJS
 Route::post('leernotificaciones',[UsuarioController::class, 'leernotificaciones']);
+
 //leerperfiloneuser
 Route::post('leerperfiluser/{id}/{id_perfil}',[UsuarioController::class, 'leerperfiloneuser']);
 
-///ZONA NOTIFICACIONES
+///FINAL ZONA NOTIFICACIONES
 
-/*EDITAR PERFIL*/
+//EDITAR PERFIL//
+
 //Vista perfil
 Route::get('perfil',[UsuarioController::class, 'vistaPerfil']);
+
 // mostrarperfil.
 Route::post('leerperfil',[UsuarioController::class, 'leerperfiledit']);
+
 // editarperfil
 Route::put('editarperfil/{id}/{id_perfil}',[UsuarioController::class, 'editarperfil']);
-/*FIN EDITAR PERFIL*/
+
+//FIN EDITAR PERFIL//
+
+//ZONA CHAT//
+
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
+
+//FINAL ZONA GIGACHAT//

@@ -1,7 +1,7 @@
 window.onload = function() {
-    leernotificacionesJS();
-}
-////////////////////////////REDIRECCIONES/////////////////////////////////
+        leernotificacionesJS();
+    }
+    ////////////////////////////REDIRECCIONES/////////////////////////////////
 var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
@@ -83,6 +83,7 @@ function leernotificacionesJS() {
                     recarga += '</div>';
                     recarga += '</div>';
                     recarga += '<hr class="alert-linea"></hr>';
+                    recarga += ''
                 }
             }
             //si estas iniciado como empresa te salen trabajadores

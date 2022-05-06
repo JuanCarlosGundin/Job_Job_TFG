@@ -23,25 +23,21 @@
 </head>
 <body class="page-home">
   <div class="region-navbar">
-    <!-- {{-- <div class="curriculum-navbar active-left">
-        <button id="navbar-curriculum-icon" class="icon active-icon"><i class="fa-solid fa-file-invoice"></i></button>
-    </div> --}} -->
+    <div class="curriculum-navbar">
+        <button id="navbar-PT-icon" class="icon"><i class="fa-solid fa-file-invoice"></i></button>
+    </div>
     <div class="alerts-navbar">
         <button id="navbar-alerts-icon" class="icon"><i class="fa-solid fa-bell"></i></button>
     </div>
     <div class="main-navbar active">
         <button id="navbar-main-icon" class="main-icon active-icon" ><i class="fa-solid fa-briefcase"></i></button>
     </div>
-    <!-- {{-- <div class="chat-navbar">
-       <button id="navbar-chat-icon" class="icon" onClick="window.location.href='prueba3';"><i class="fa-solid fa-comment-dots"></i></button>
-    </div> --}} -->
+    <div class="chat-navbar">
+       <button id="navbar-chat-icon" class="icon"><i class="fa-solid fa-comment-dots"></i></button>
+    </div>
     <div class="profile-navbar">
         <button id="navbar-profile-icon" class="icon"><i class="fa-solid fa-user"></i></button>
     </div>
-
-    <!-- {{-- <div class="curriculum">
-        <h1 class="curriculum-title">COMING SOON...</h1>
-    </div> --}} -->
   </div>
     <div class="region-content row">
         {{-- EMPIEZA TINDER --}}
