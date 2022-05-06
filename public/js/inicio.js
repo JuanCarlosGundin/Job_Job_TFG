@@ -1,6 +1,9 @@
-window.onload = function() {
+/* var jsonidiomas = (JSON.parse(idiomas)); */
 
+window.onload = function() {
+    leeridiomas();
     login();
+    JSONidiomas = {};
 
 }
 
@@ -34,6 +37,25 @@ function objetoAjax() {
     }
 
     return xmlhttp;
+
+}
+
+function leeridiomas() {
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "./js/idiomas.json", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            JSONidiomas = JSON.parse(this.responseText);
+        }
+
+    }
+
+    ajax.send(null)
 
 }
 
@@ -200,49 +222,90 @@ function registrar() {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
-    document.getElementById("formtrabajador").addEventListener("click", formtrabajador);
+    document.getElementById("formtrabajador").addEventListener("click", formtrabajador1);
     document.getElementById("formempresa").addEventListener("click", formempresa);
 
 }
 
-function formtrabajador() {
+//Correo-contraseñas
+function formtrabajador1(evt) {
+
+    evt.preventDefault();
 
     var tabla = document.getElementById("main");
     var recarga = '';
 
+    //Botones login/registro
     recarga += '<div class="botones">';
     recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
-    recarga += '<form method="POST" id="creartrabajadorJS" enctype="multipart/form-data">';
+    recarga += '<form method="POST" id="formtrabajador1" enctype="multipart/form-data">';
+    //Correo
     recarga += '<div class="column-2">';
     recarga += '<p>Email</p>';
     recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
     recarga += '</div>';
+    //Contraseña 1
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña</p>';
     recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
     recarga += '</div>';
+    //Contraseña 2
+    recarga += '<div class="column-2">';
+    recarga += '<p>Contraseña 2</p>';
+    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="repite la contraseña..."><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '</form>';
+    /* recarga += '<button class="botonregister">Registrar</button>'; */
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("formtrabajador1").addEventListener("submit", formtrabajador2);
+
+}
+
+//nombre-apellido-edad-foto
+function formtrabajador2(evt) {
+
+    evt.preventDefault();
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    //Botones login/registro
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
+    //Nombre
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre</p>';
     recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre..."><br><br>';
     recarga += '</div>';
+    //Apellido
     recarga += '<div class="column-2">';
     recarga += '<p>Apellido</p>';
     recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido..."><br><br>';
     recarga += '</div>';
-    recarga += '<div class="column-2"><p>Foto</p><input type="file" class="foto" name="foto_perfil" id="foto_perfil"><br><br></div>';
-    recarga += '<div class="column-2"><p>Sector</p><input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br></div>';
-    recarga += '<div class="column-2"><p>Experiencia</p><input type="text" class="inputregister" id="experiencia" name="experiencia" placeholder="Introduce tu experiencia..."><br><br></div>';
-    recarga += '<div class="column-2"><p>Estudios</p><input type="text" class="inputregister" id="estudios" name="estudios" placeholder="Introduce tus estudios..."><br><br></div>';
-    recarga += '<div class="column-2"><p>Idiomas</p><input type="text" class="inputregister" id="idiomas" name="idiomas" placeholder="idiomas..."><br><br></div>';
-    recarga += '<div class="column-2"><p>Disponibilidad</p><input type="text" class="inputregister" id="disponibilidad" name="disponibilidad" placeholder="Introduce tu disponibilidad..."><br><br></div>';
-    recarga += '<div class="column-2"><p>Localización</p><input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion..."><br><br></div>';
-    recarga += '<div class="column-2"><p>Edad</p><input type="text" class="inputregister" id="edad" name="edad" placeholder="Introduce tu edad..."><br><br></div>';
-    recarga += '<div class="column-2"><p>Quieres que se te muestre a las empresas?</p><select name="mostrado" id="mostrado"><option value="1" selected>Sí</option><option value="0">No</option></select><br><br></div>';
-    recarga += '<div class="column-2"><p>Introduce más información sobre tí</p><input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi..."><br><br></div>';
-    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
+    //Edad
+    recarga += '<div class="column-2">';
+    recarga += '<p>Fecha nacimiento</p>';
+    recarga += '<input type="date" class="inputregister" id="edad" name="edad"><br><br>';
+    recarga += '</div>';
+    //Foto
+    recarga += '<div class="column-2">';
+    recarga += '<p>Foto</p>';
+    recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil"><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -250,7 +313,208 @@ function formtrabajador() {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
-    document.getElementById("creartrabajadorJS").addEventListener("submit", creartrabajadorJS);
+    document.getElementById("formtrabajador2").addEventListener("submit", formtrabajador3);
+
+}
+
+//campo-about-loc-disponibilidad
+function formtrabajador3(evt) {
+
+    evt.preventDefault();
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    //Botones login/registro
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
+    //campo_user
+    recarga += '<div class="column-2">';
+    recarga += '<p>Sector</p>';
+    recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '</div>';
+    //about_user
+    recarga += '<div class="column-2">';
+    recarga += '<p>Introduce más información sobre tí</p><input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi..."><br><br>';
+    recarga += '</div>';
+    //loc_trabajador
+    recarga += '<div class="column-2">';
+    recarga += '<p>Localización</p>';
+    recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion..."><br><br>';
+    recarga += '</div>';
+    //disponibilidad
+    recarga += '<div class="column-2">';
+    recarga += '<p>Disponibilidad</p>';
+    recarga += '<select class="inputregister" name="disponibilidad" id="disponibilidad">';
+    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<option value="jornada completa">jornada completa (8 horas)</option>';
+    recarga += '<option value="jornada parcial">jornada parcial (4 horas)</option>';
+    recarga += '<option value="turno mañana">turno mañana</option>';
+    recarga += '<option value="turno noche">turno noche</option>';
+    recarga += '<option value="turno partida">turno partida</option>';
+    recarga += '<option value="fines de semana">fines de semana</option>';
+    recarga += '</select><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '</form>';
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("formtrabajador3").addEventListener("submit", formtrabajador4);
+
+}
+
+//idiomas
+function formtrabajador4(evt) {
+
+    evt.preventDefault();
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    //Botones login/registro
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
+    //nombre_idioma
+    recarga += '<div class="column-2">';
+    recarga += '<p>nombre_idioma</p>';
+    recarga += '<select class="inputregister" name="nombre_idioma" id="nombre_idioma">';
+    recarga += '<option selected>- selecciona -</option>';
+    for (let i = 0; i < JSONidiomas.length; i++) {
+        recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
+    }
+    recarga += '</select><br><br>';
+    recarga += '</div>';
+    //nivel_idioma
+    recarga += '<div class="column-2">';
+    recarga += '<p>nivel_idioma</p>';
+    recarga += '<select class="inputregister" name="nivel_idioma" id="nivel_idioma">';
+    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<option value="bajo">bajo</option>';
+    recarga += '<option value="medio">medio</option>';
+    recarga += '<option value="alto">alto</option>';
+    recarga += '<option value="nativo">nativo</option>';
+    recarga += '</select><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '</form>';
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("formtrabajador4").addEventListener("submit", formtrabajador5);
+
+}
+
+//estudios
+function formtrabajador5(evt) {
+
+    evt.preventDefault();
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    //Botones login/registro
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
+    //nombre_formación
+    recarga += '<div class="column-2">';
+    recarga += '<p>nombre_formación</p>';
+    recarga += '<input type="text" class="inputregister" id="nombre_formación" name="nombre_formación" placeholder="Introduce tu titulo"><br><br>';
+    recarga += '</div>';
+    //lugar_formación
+    recarga += '<div class="column-2">';
+    recarga += '<p>lugar_formación</p>';
+    recarga += '<input type="text" class="inputregister" id="lugar_formación" name="lugar_formación" placeholder="Introduce el centro de estudios"><br><br>';
+    recarga += '</div>';
+    //año_entrada
+    recarga += '<div class="column-2">';
+    recarga += '<p>año_entrada</p>';
+    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada"><br><br>';
+    recarga += '</div>';
+    //año_salida
+    recarga += '<div class="column-2">';
+    recarga += '<p>año_salida</p>';
+    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida"><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '</form>';
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("formtrabajador5").addEventListener("submit", formtrabajador6);
+
+}
+
+//experiencias
+function formtrabajador6(evt) {
+
+    evt.preventDefault();
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    //Botones login/registro
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
+    //nombre_experiencia
+    recarga += '<div class="column-2">';
+    recarga += '<p>nombre_experiencia</p>';
+    recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia" placeholder="Nombre puesto"><br><br>';
+    recarga += '</div>';
+    //lugar_experiencia
+    recarga += '<div class="column-2">';
+    recarga += '<p>lugar_experiencia</p>';
+    recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia" placeholder="Empresa"><br><br>';
+    recarga += '</div>';
+    //funciones
+    recarga += '<div class="column-1">';
+    recarga += '<p>funciones</p>';
+    recarga += '<input type="text" class="inputregister" id="funciones" name="funciones" placeholder="Funciones dentro de la empresa"><br><br>';
+    recarga += '</div>';
+    //año_entrada
+    recarga += '<div class="column-2">';
+    recarga += '<p>año_entrada</p>';
+    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada"><br><br>';
+    recarga += '</div>';
+    //año_salida
+    recarga += '<div class="column-2">';
+    recarga += '<p>año_salida</p>';
+    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida""><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '</form>';
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    /* document.getElementById("creartrabajadorJS").addEventListener("submit", creartrabajadorJS); */
 
 }
 

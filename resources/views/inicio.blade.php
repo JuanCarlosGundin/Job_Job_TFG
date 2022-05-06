@@ -18,6 +18,7 @@
         <div id="main" class="modal-login">
             {{-- Contenido Ajax --}}
         </div>
+        {{-- <script src="js/idiomas.json"></script> --}}
         <script src="js/inicio.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
