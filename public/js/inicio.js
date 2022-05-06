@@ -247,6 +247,11 @@ function formtrabajador1(evt) {
     recarga += '<p>Email</p>';
     recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
     recarga += '</div>';
+    //Nombre
+    recarga += '<div class="column-2">';
+    recarga += '<p>Nombre</p>';
+    recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre..."><br><br>';
+    recarga += '</div>';
     //Contraseña 1
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña</p>';
@@ -285,11 +290,6 @@ function formtrabajador2(evt) {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
-    //Nombre
-    recarga += '<div class="column-2">';
-    recarga += '<p>Nombre</p>';
-    recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre..."><br><br>';
-    recarga += '</div>';
     //Apellido
     recarga += '<div class="column-2">';
     recarga += '<p>Apellido</p>';
@@ -389,7 +389,7 @@ function formtrabajador4(evt) {
     //nombre_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_idioma</p>';
-    recarga += '<select class="inputregister" name="nombre_idioma" id="nombre_idioma">';
+    recarga += '<select class="inputregister" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
     recarga += '<option selected>- selecciona -</option>';
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
@@ -399,7 +399,7 @@ function formtrabajador4(evt) {
     //nivel_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>nivel_idioma</p>';
-    recarga += '<select class="inputregister" name="nivel_idioma" id="nivel_idioma">';
+    recarga += '<select class="inputregister" name="nivel_idioma[]" id="nivel_idioma">';
     recarga += '<option selected>- selecciona -</option>';
     recarga += '<option value="bajo">bajo</option>';
     recarga += '<option value="medio">medio</option>';
@@ -407,15 +407,72 @@ function formtrabajador4(evt) {
     recarga += '<option value="nativo">nativo</option>';
     recarga += '</select><br><br>';
     recarga += '</div>';
+    recarga += '<div>';
+    recarga += '<button type="button" id="idiomamas">Mas</button>';
+    recarga += '</div>';
+
+    recarga += '<div id="nuevoidioma"></div>';
+
     recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
 
+    ji = 1;
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("idiomamas").addEventListener("click", insertaridioma);
+    document.getElementById("idiomamas").addEventListener("click", function() {
+        ji++;
+    });
     document.getElementById("formtrabajador4").addEventListener("submit", formtrabajador5);
+
+}
+
+function insertaridioma() {
+
+    var nuevoidioma = document.getElementById("nuevoidioma");
+    console.log(nuevoidioma);
+    console.log(ji);
+    var recarga = "";
+    recarga += '<div id="nuevoidioma' + ji + '">';
+    //nombre_idioma
+    recarga += '<div class="column-2">';
+    recarga += '<p>nombre_idioma</p>';
+    recarga += '<select class="inputregister" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
+    recarga += '<option selected>- selecciona -</option>';
+    for (let i = 0; i < JSONidiomas.length; i++) {
+        recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
+    }
+    recarga += '</select><br><br>';
+    recarga += '</div>';
+    //nivel_idioma
+    recarga += '<div class="column-2">';
+    recarga += '<p>nivel_idioma</p>';
+    recarga += '<select class="inputregister" name="nivel_idioma[]" id="nivel_idioma">';
+    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<option value="bajo">bajo</option>';
+    recarga += '<option value="medio">medio</option>';
+    recarga += '<option value="alto">alto</option>';
+    recarga += '<option value="nativo">nativo</option>';
+    recarga += '</select><br><br>';
+    recarga += '</div>';
+    recarga += '<div>';
+    recarga += '<button type="button" id="idiomamenos' + ji + '">Menos</button>';
+    recarga += '</div>';
+    recarga += '</div>';
+    nuevoidioma.insertAdjacentHTML('afterend', recarga);
+    var idiomamenos = "idiomamenos" + ji;
+    document.getElementById(idiomamenos).addEventListener("click", eliminaridioma);
+    document.getElementById(idiomamenos).myParam = ji;
+}
+
+function eliminaridioma(evt) {
+    console.log(evt.currentTarget.myParam)
+    var jieliminiar = evt.currentTarget.myParam;
+    var nuevoidiomaji = "nuevoidioma" + jieliminiar;
+    document.getElementById(nuevoidiomaji).innerHTML = "";
 
 }
 
