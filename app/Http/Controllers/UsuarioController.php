@@ -547,6 +547,30 @@ public function ActivateACC(Request $request)
     ///ZONA PERFIL
 
     ////////Diego
+
+    //----------------------------------------------------CREAR REPORTE-------------------------------------------------------------//
+    public function crearreporte(Request $req) {
+        $datos = $req->except('_token');
+        DB::beginTransaction(); 
+        try {
+            DB::beginTransaction();
+            /*insertar datos en la base de datos*/
+            // $idequipo=DB::table('tbl_equipo')->insertGetId(["nombre_equipo"=>$datos['nombre_equipo'],"codigo_equipo"=>$datos['codigo_equipo']]);
+            $selectusuario1 = DB::table('tbl_usuario')->select('id_usuario')->where('correo_usuario','=',$datos['correo_usuario1'])->first();
+            $selectusuario1=$selectusuario1->id_usuario;
+            $selectusuario2 = DB::table('tbl_usuario')->select('id_usuario')->where('correo_usuario','=',$datos['correo_usuario2'])->first();
+            $selectusuario2=$selectusuario2->id_usuario;
+            $selectusuario3 = DB::table('tbl_usuario')->select('id_usuario')->where('correo_usuario','=',$datos['correo_usuario3'])->first();
+            $selectusuario3=$selectusuario3->id_usuario;
+            DB::table('tbl_reportes')->insert(["incidencia"=>$datos['incidencia'],"desarrollar_incidencia"=>$datos['desarrollar_incidencia']]);
+            DB::commit();
+            return response()->json(array('resultado'=> 'OK'));
+        }   catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(array('resultado'=> $e->getMessage()));
+        }
+    }
+    //--------------------------------------------------FIN CREAR REPORTE-----------------------------------------------------------//
 }
 
 

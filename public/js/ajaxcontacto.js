@@ -79,7 +79,7 @@ function contactoJS() {
                     text: "En breves nos pondremos en contacto contigo via email.",
                     showConfirmButton: false,
                     icon: "success",
-
+                    allowOutsideClick: false,
                 });
                 setTimeout(() => { window.location.href = 'login'; }, 5000);
             } else {

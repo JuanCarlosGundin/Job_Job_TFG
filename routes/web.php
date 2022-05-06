@@ -20,6 +20,12 @@ Route::get('paginacontacto', function () {
     return view('paginacontacto');
 });
 
+
+/*PRUEBA*/
+Route::get('reportesprueba', function () {
+    return view('reportesprueba');
+});
+/*FIN PRUEBA*/
 Route::get('login', function () {
     return view('login');
 });
@@ -116,3 +122,7 @@ Route::post('mandar', [MailController::class, 'sending']);
 //ZONA CONTACTO
 //mandar correo a admin por la pagina de contacto
 Route::post('mandarcontacto', [MailController::class, 'sendingcontacto']);
+
+//ZONA REPORTES
+//el usuario puede hacer reportes de otros usuarios.
+Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
