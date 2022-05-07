@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inicio;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -65,31 +66,65 @@ class InicioController extends Controller{
 
     ///Registro
 
-    public function registrotrabajador(Request $req){
+    public function sesionestrabajador(Request $req){
+        //Aqui se tiene que validar con laravel/php
+
+        try {
+            if ($req->has(['mail', 'nombre', 'contra'])) {
+                $req->session()->put('trabajador.mail', $req->mail);
+                $req->session()->put('trabajador.nombre', $req->nombre);
+                $req->session()->put('trabajador.contra', $req->contra);
+                return response()->json(array('resultado'=> 'OK'));
+            }
+
+        }   catch (\Exception $e) {
+
+            return response()->json(array('resultado'=> $e->getMessage()));
+
+        }
+
+    }
+
+    public function registrotrabajador(){
+
+        $trabajador = session()->get('trabajador');
 
         //Comprobar si el correo introducido ya existe en la BBDD
-        $comprobarmail=DB::select('select mail from tbl_usuarios where mail=? ',[$req['mail']]);
-        if (count($comprobarmail)>0){
+        $comprobarmail = DB::table("tbl_usuarios")->where('mail','=',$trabajador['mail'])->count();
+
+        if ($comprobarmail>0){
             return response()->json(array('resultado'=> 'correoexiste'));
         }
 
-        //añadir foto trabajador si existe
-        if($req->hasFile('foto_perfil')){
+        //obtener dia y hora
+        $date = Carbon::now('+02:00');
 
-            $foto_perfil = $req->file('foto_perfil')->store('uploads','public');
+        //formato correcto
+        $created_at = $date->toDateTimeString();
+
+        /* $datosusuario=array('res' => 'OK'); */
+
+        /* if (session("trabajador")->has('nombre')){
+            //
+        } */
+
+        /* //añadir foto trabajador si existe
+        if($trabajador->hasFile('foto_perfil')){
+
+            $foto_perfil = $trabajador->file('foto_perfil')->store('uploads','public');
 
         }else{
 
             $foto_perfil = NULL;
 
-        }
+        } */
 
         try {
             
             DB::beginTransaction();
-            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$req['mail'],"contra"=>md5($req['contra']),"id_perfil"=>'2',"estado"=>'1',"verificado"=>'0']);
+            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$trabajador['mail'],"contra"=>hash('sha256',$trabajador['contra']),"estado"=>'1',"verificado"=>'0',"created_at"=>$created_at,"id_perfil"=>'2']);
 
-            DB::table('tbl_trabajador')->insert(["id_usuario"=>$id,"nombre"=>$req['nombre'],"apellido"=>$req['apellido'],"foto_perfil"=>$foto_perfil,"campo_user"=>$req['campo_user'],"experiencia"=>$req['experiencia'],"estudios"=>$req['estudios'],"idiomas"=>$req['idiomas'],"disponibilidad"=>$req['disponibilidad'],"about_user"=>$req['about_user'],"loc_trabajador"=>$req['loc_trabajador'],"edad"=>$req['edad'],"mostrado"=>$req['mostrado']]);
+            /* DB::table('tbl_trabajador')->insert(["id_usuario"=>$id,"nombre"=>$trabajador['nombre'],"apellido"=>$trabajador['apellido'],"foto_perfil"=>$foto_perfil,"campo_user"=>$trabajador['campo_user'],"experiencia"=>$trabajador['experiencia'],"estudios"=>$trabajador['estudios'],"idiomas"=>$trabajador['idiomas'],"disponibilidad"=>$trabajador['disponibilidad'],"about_user"=>$trabajador['about_user'],"loc_trabajador"=>$trabajador['loc_trabajador'],"edad"=>$trabajador['edad'],"mostrado"=>$trabajador['mostrado']]);
 
             Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
                 $usuario=DB::select('select * from tbl_usuarios 
@@ -97,9 +132,10 @@ class InicioController extends Controller{
                 where tbl_usuarios.id=? ',[$id]);
                 $message->to($usuario[0]->{'mail'})
                   ->subject('Link Para validar tu cuenta de Job Job');
-              });
+              }); */
 
             DB::commit();
+            session()->forget('trabajador');
             return response()->json(array('resultado'=> 'OK'));
 
         }   catch (\Exception $e) {

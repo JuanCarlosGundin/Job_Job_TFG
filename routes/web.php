@@ -20,6 +20,9 @@ Route::post('loginuser', [InicioController::class, 'loginuser']);
 
 /* Registrar */
 
+//Sesiones trabajador
+Route::post('sesionestrabajador', [InicioController::class, 'sesionestrabajador']);
+
 //Trabajador
 Route::post('registrotrabajador', [InicioController::class, 'registrotrabajador']);
 
