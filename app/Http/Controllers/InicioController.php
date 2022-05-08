@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class InicioController extends Controller{
 
@@ -70,12 +71,38 @@ class InicioController extends Controller{
         //Aqui se tiene que validar con laravel/php
 
         try {
-            if ($req->has(['mail', 'nombre', 'contra'])) {
-                $req->session()->put('trabajador.mail', $req->mail);
-                $req->session()->put('trabajador.nombre', $req->nombre);
-                $req->session()->put('trabajador.contra', $req->contra);
+            if ($req->has(['mail', 'nombre', 'contra', 'contra2'])) {
+                $req->validate([
+                    'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
+                    'contra'=>'required|string|min:8|max:100',
+                    'contra2'=>'required|same:contra'
+                ]);
+                $req->session()->put('mail', $req->mail);
+                $req->session()->put('nombre', $req->nombre);
+                $req->session()->put('contra', $req->contra);
                 return response()->json(array('resultado'=> 'OK'));
             }
+
+            if ($req->has('apellido')){
+                $req->session()->put('apellido', $req->apellido);
+            }
+            if ($req->has('edad')){
+                $req->session()->put('edad', $req->edad);
+            }
+            if ($req->has('foto_perfil')){
+                //añadir foto trabajador si existe
+                if($req->hasFile('foto_perfil')){
+
+                    $foto_perfil = $req->file('foto_perfil')->store('temporal','public');
+
+                }else{
+
+                    $foto_perfil = NULL;
+
+                }
+                $req->session()->put('foto_perfil', $foto_perfil);
+            }
+            return response()->json(array('resultado'=> 'OK'));
 
         }   catch (\Exception $e) {
 
@@ -87,10 +114,8 @@ class InicioController extends Controller{
 
     public function registrotrabajador(){
 
-        $trabajador = session()->get('trabajador');
-
         //Comprobar si el correo introducido ya existe en la BBDD
-        $comprobarmail = DB::table("tbl_usuarios")->where('mail','=',$trabajador['mail'])->count();
+        $comprobarmail = DB::table("tbl_usuarios")->where('mail','=',session()->get('mail'))->count();
 
         if ($comprobarmail>0){
             return response()->json(array('resultado'=> 'correoexiste'));
@@ -102,29 +127,36 @@ class InicioController extends Controller{
         //formato correcto
         $created_at = $date->toDateTimeString();
 
-        /* $datosusuario=array('res' => 'OK'); */
 
-        /* if (session("trabajador")->has('nombre')){
-            //
-        } */
-
-        /* //añadir foto trabajador si existe
-        if($trabajador->hasFile('foto_perfil')){
-
-            $foto_perfil = $trabajador->file('foto_perfil')->store('uploads','public');
-
-        }else{
-
-            $foto_perfil = NULL;
-
-        } */
+        $data = array("nombre"=>session()->get('nombre'));
+        if (session()->has('apellido')){
+            $data += array("apellido"=>session()->get('apellido'));
+        }
+        if (session()->has('edad')){
+            $data += array("edad"=>session()->get('edad'));
+        }
+        if (session()->has('foto_perfil')){
+            $foto_perfil=explode('/',session()->get('foto_perfil'));
+            try {
+                Storage::move('public/'.session()->get('foto_perfil'), 'public/uploads/'.$foto_perfil[1]);
+            } catch (\Exception $e) {
+                return response()->json(array('resultado'=> $e->getMessage()));
+            }
+            
+            $data += array("foto_perfil"=>'uploads/'.$foto_perfil[1]);
+        }
+        //buscar una forma de eliminar archivos en temporal
+        $data += array("mostrado"=>"0");
+        /* return response()->json(array('resultado'=> $data)); */
+        $key = array_keys($data);
+        $value = array_values($data);
 
         try {
             
             DB::beginTransaction();
-            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$trabajador['mail'],"contra"=>hash('sha256',$trabajador['contra']),"estado"=>'1',"verificado"=>'0',"created_at"=>$created_at,"id_perfil"=>'2']);
+            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>session()->get('mail'),"contra"=>hash('sha256',session()->get('contra')),"estado"=>'1',"verificado"=>'0',"created_at"=>$created_at,"id_perfil"=>'2']);
 
-            /* DB::table('tbl_trabajador')->insert(["id_usuario"=>$id,"nombre"=>$trabajador['nombre'],"apellido"=>$trabajador['apellido'],"foto_perfil"=>$foto_perfil,"campo_user"=>$trabajador['campo_user'],"experiencia"=>$trabajador['experiencia'],"estudios"=>$trabajador['estudios'],"idiomas"=>$trabajador['idiomas'],"disponibilidad"=>$trabajador['disponibilidad'],"about_user"=>$trabajador['about_user'],"loc_trabajador"=>$trabajador['loc_trabajador'],"edad"=>$trabajador['edad'],"mostrado"=>$trabajador['mostrado']]);
+            DB::select("insert into tbl_trabajador (id_usuario,". implode(',' , $key) .") values (?,'". implode("','" , $value) ."')",[$id]);
 
             Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
                 $usuario=DB::select('select * from tbl_usuarios 
@@ -132,10 +164,10 @@ class InicioController extends Controller{
                 where tbl_usuarios.id=? ',[$id]);
                 $message->to($usuario[0]->{'mail'})
                   ->subject('Link Para validar tu cuenta de Job Job');
-              }); */
+              });
 
             DB::commit();
-            session()->forget('trabajador');
+            session()->flush();
             return response()->json(array('resultado'=> 'OK'));
 
         }   catch (\Exception $e) {

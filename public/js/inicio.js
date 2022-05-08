@@ -229,9 +229,7 @@ function registrar() {
 }
 
 //Correo-contraseñas
-function formtrabajador1(evt) {
-
-    evt.preventDefault();
+function formtrabajador1() {
 
     var tabla = document.getElementById("main");
     var recarga = '';
@@ -263,9 +261,8 @@ function formtrabajador1(evt) {
     recarga += '<p>Contraseña 2</p>';
     recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="repite la contraseña..."><br><br>';
     recarga += '</div>';
-    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
-    /* recarga += '<button class="botonregister">Registrar</button>'; */
     recarga += '</div>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
@@ -327,10 +324,10 @@ function sessiontrabajador1(evt) {
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
-    formData.append('mail', document.getElementById('mail').value);
-    formData.append('nombre', document.getElementById('nombre').value);
-    formData.append('contra', document.getElementById('contra').value);
-    formData.append('contra2', document.getElementById('contra2').value);
+    formData.append('mail', mail);
+    formData.append('nombre', nombre);
+    formData.append('contra', contra);
+    formData.append('contra2', contra2);
 
 
     var ajax = objetoAjax();
@@ -349,7 +346,7 @@ function sessiontrabajador1(evt) {
 
                 swal.fire({
                     title: "Registro",
-                    text: "Registrarse o introducir datos",
+                    text: "Datos guardados",
                     icon: "question",
                     showDenyButton: true,
                     showCancelButton: true,
@@ -387,6 +384,11 @@ function formtrabajador2() {
     recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
     recarga += '</div>';
+    //Flechas registro
+    recarga += '<div>';
+    recarga += '<button id="izquierda">Izquierda</button>';
+    recarga += '<button id="derecha">Derecha</button>';
+    recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
     //Apellido
@@ -404,7 +406,7 @@ function formtrabajador2() {
     recarga += '<p>Foto</p>';
     recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil"><br><br>';
     recarga += '</div>';
-    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -412,14 +414,83 @@ function formtrabajador2() {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
-    document.getElementById("formtrabajador2").addEventListener("submit", formtrabajador3);
+    document.getElementById("izquierda").addEventListener("click", formtrabajador1);
+    document.getElementById("derecha").addEventListener("click", formtrabajador3);
+    document.getElementById("formtrabajador2").addEventListener("submit", sessiontrabajador2);
+
+}
+
+function sessiontrabajador2(evt) {
+
+    evt.preventDefault();
+
+    //al momento de validar hay que tener en cuenta los espacios en blanco
+
+    let apellido = document.getElementById('apellido').value;
+    let edad = document.getElementById('edad').value;
+    let foto_perfil = document.getElementById('foto_perfil').files[0];
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (apellido) {
+        formData.append('apellido', apellido);
+    }
+    if (edad) {
+        formData.append('edad', edad);
+    }
+    if (foto_perfil) {
+        formData.append('foto_perfil', foto_perfil);
+    }
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionestrabajador", true);
+
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText);
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Registrarte",
+                    denyButtonText: "Introducir mas datos",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        creartrabajadorJS();
+                    } else if (result.isDenied) {
+                        formtrabajador3();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
 
 }
 
 //campo-about-loc-disponibilidad
-function formtrabajador3(evt) {
-
-    evt.preventDefault();
+function formtrabajador3() {
 
     var tabla = document.getElementById("main");
     var recarga = '';
@@ -428,6 +499,11 @@ function formtrabajador3(evt) {
     recarga += '<div class="botones">';
     recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    //Flechas registro
+    recarga += '<div>';
+    recarga += '<button id="izquierda">Izquierda</button>';
+    recarga += '<button id="derecha">Derecha</button>';
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
@@ -458,7 +534,7 @@ function formtrabajador3(evt) {
     recarga += '<option value="fines de semana">fines de semana</option>';
     recarga += '</select><br><br>';
     recarga += '</div>';
-    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -466,14 +542,14 @@ function formtrabajador3(evt) {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
-    document.getElementById("formtrabajador3").addEventListener("submit", formtrabajador4);
+    document.getElementById("izquierda").addEventListener("click", formtrabajador2);
+    document.getElementById("derecha").addEventListener("click", formtrabajador4);
+    /* document.getElementById("formtrabajador3").addEventListener("submit", formtrabajador4); */
 
 }
 
 //idiomas
-function formtrabajador4(evt) {
-
-    evt.preventDefault();
+function formtrabajador4() {
 
     var tabla = document.getElementById("main");
     var recarga = '';
@@ -482,6 +558,11 @@ function formtrabajador4(evt) {
     recarga += '<div class="botones">';
     recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    //Flechas registro
+    recarga += '<div>';
+    recarga += '<button id="izquierda">Izquierda</button>';
+    recarga += '<button id="derecha">Derecha</button>';
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
@@ -513,7 +594,7 @@ function formtrabajador4(evt) {
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -521,11 +602,13 @@ function formtrabajador4(evt) {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("izquierda").addEventListener("click", formtrabajador3);
+    document.getElementById("derecha").addEventListener("click", formtrabajador5);
     document.getElementById("mas").addEventListener("click", insertaridioma);
     document.getElementById("mas").addEventListener("click", function() {
         k_idiomas++;
     });
-    document.getElementById("formtrabajador4").addEventListener("submit", formtrabajador5);
+    /* document.getElementById("formtrabajador4").addEventListener("submit", formtrabajador5); */
 
 }
 
@@ -573,9 +656,7 @@ function eliminaridioma(evt) {
 }
 
 //estudios
-function formtrabajador5(evt) {
-
-    evt.preventDefault();
+function formtrabajador5() {
 
     var tabla = document.getElementById("main");
     var recarga = '';
@@ -584,6 +665,11 @@ function formtrabajador5(evt) {
     recarga += '<div class="botones">';
     recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    //Flechas registro
+    recarga += '<div>';
+    recarga += '<button id="izquierda">Izquierda</button>';
+    recarga += '<button id="derecha">Derecha</button>';
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
@@ -614,7 +700,7 @@ function formtrabajador5(evt) {
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -622,11 +708,13 @@ function formtrabajador5(evt) {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("izquierda").addEventListener("click", formtrabajador4);
+    document.getElementById("derecha").addEventListener("click", formtrabajador6);
     document.getElementById("mas").addEventListener("click", insertarestudio);
     document.getElementById("mas").addEventListener("click", function() {
         k_estudios++;
     });
-    document.getElementById("formtrabajador5").addEventListener("submit", formtrabajador6);
+    /* document.getElementById("formtrabajador5").addEventListener("submit", formtrabajador6); */
 
 }
 
@@ -673,9 +761,7 @@ function eliminarestudio(evt) {
 }
 
 //experiencias
-function formtrabajador6(evt) {
-
-    evt.preventDefault();
+function formtrabajador6() {
 
     var tabla = document.getElementById("main");
     var recarga = '';
@@ -684,6 +770,10 @@ function formtrabajador6(evt) {
     recarga += '<div class="botones">';
     recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    //Flechas registro
+    recarga += '<div>';
+    recarga += '<button id="izquierda">Izquierda</button>';
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
@@ -719,7 +809,7 @@ function formtrabajador6(evt) {
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Insertar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -727,6 +817,7 @@ function formtrabajador6(evt) {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("izquierda").addEventListener("click", formtrabajador5);
     document.getElementById("mas").addEventListener("click", insertarexperiencia);
     document.getElementById("mas").addEventListener("click", function() {
         k_experiencias++;
