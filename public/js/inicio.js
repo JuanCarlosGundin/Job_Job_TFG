@@ -525,7 +525,7 @@ function formtrabajador3() {
     recarga += '<div class="column-2">';
     recarga += '<p>Disponibilidad</p>';
     recarga += '<select class="inputregister" name="disponibilidad" id="disponibilidad">';
-    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<option value="" selected>- selecciona -</option>';
     recarga += '<option value="jornada completa">jornada completa (8 horas)</option>';
     recarga += '<option value="jornada parcial">jornada parcial (4 horas)</option>';
     recarga += '<option value="turno mañana">turno mañana</option>';
@@ -544,7 +544,80 @@ function formtrabajador3() {
     document.getElementById("registrarclick").addEventListener("click", registrar);
     document.getElementById("izquierda").addEventListener("click", formtrabajador2);
     document.getElementById("derecha").addEventListener("click", formtrabajador4);
-    /* document.getElementById("formtrabajador3").addEventListener("submit", formtrabajador4); */
+    document.getElementById("formtrabajador3").addEventListener("submit", sessiontrabajador3);
+
+}
+
+function sessiontrabajador3(evt) {
+
+    evt.preventDefault();
+
+    //al momento de validar hay que tener en cuenta los espacios en blanco
+
+    let campo_user = document.getElementById('campo_user').value;
+    let about_user = document.getElementById('about_user').value;
+    let loc_trabajador = document.getElementById('loc_trabajador').value;
+    let disponibilidad = document.getElementById('disponibilidad').value;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (campo_user) {
+        formData.append('campo_user', campo_user);
+    }
+    if (about_user) {
+        formData.append('about_user', about_user);
+    }
+    if (loc_trabajador) {
+        formData.append('loc_trabajador', loc_trabajador);
+    }
+    if (disponibilidad) {
+        formData.append('disponibilidad', disponibilidad);
+    }
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionestrabajador", true);
+
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText);
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Registrarte",
+                    denyButtonText: "Introducir mas datos",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        creartrabajadorJS();
+                    } else if (result.isDenied) {
+                        formtrabajador4();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
 
 }
 

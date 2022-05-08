@@ -102,6 +102,19 @@ class InicioController extends Controller{
                 }
                 $req->session()->put('foto_perfil', $foto_perfil);
             }
+            
+            if ($req->has('campo_user')){
+                $req->session()->put('campo_user', $req->campo_user);
+            }
+            if ($req->has('about_user')){
+                $req->session()->put('about_user', $req->about_user);
+            }
+            if ($req->has('loc_trabajador')){
+                $req->session()->put('loc_trabajador', $req->loc_trabajador);
+            }
+            if ($req->has('disponibilidad')){
+                $req->session()->put('disponibilidad', $req->disponibilidad);
+            }
             return response()->json(array('resultado'=> 'OK'));
 
         }   catch (\Exception $e) {
@@ -144,6 +157,18 @@ class InicioController extends Controller{
             }
             
             $data += array("foto_perfil"=>'uploads/'.$foto_perfil[1]);
+        }
+        if (session()->has('campo_user')){
+            $data += array("campo_user"=>session()->get('campo_user'));
+        }
+        if (session()->has('about_user')){
+            $data += array("about_user"=>session()->get('about_user'));
+        }
+        if (session()->has('loc_trabajador')){
+            $data += array("loc_trabajador"=>session()->get('loc_trabajador'));
+        }
+        if (session()->has('disponibilidad')){
+            $data += array("disponibilidad"=>session()->get('disponibilidad'));
         }
         //buscar una forma de eliminar archivos en temporal
         $data += array("mostrado"=>"0");
