@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PAL MODAL</title>
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
 <body>
     {{-- ESTILOS MODAL --}}
@@ -58,7 +59,7 @@
     
     {{-- MODAL --}}
     <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+<button id="myBtn">Reportar</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -66,24 +67,27 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form onsubmit="reportesJS(); return false;">
+    <form method="POST" onsubmit="reportesJS(); return false;">
         <p>Incidencia</p>
-        <select name="incidencia" id="incidencia">
+        <select name="incidencia" id="incidencia" required>
+            <option value="">Seleccione el motivo del reporte</option>
             <option value="Es spam">Es spam</option>
-            <option value="Esta cuenta se hace pasar por mí u otra persona">Esta cuenta se hace pasar por mí o alguien más</option>
-            <option value="Suicidio o autolesión">Suicidio o autolesión</option>
+            <option value="Esta cuenta se hace pasar por mi u otra persona">Esta cuenta se hace pasar por mí o alguien más</option>
+            <option value="Suicidio o autolesion">Suicidio o autolesión</option>
             <option value="Venta de productos ilegales o regulados">Venta de productos ilegales o regulados</option>
             <option value="Desnudos o actividad sexual">Desnudos o actividad sexual</option>
-            <option value="Lenguaje o símbolos que incitan al odio">Lenguaje o símbolos que incitan al odio</option>
+            <option value="Lenguaje o simbolos que incitan al odio">Lenguaje o símbolos que incitan al odio</option>
             <option value="Violencia u organizaciones peligrosas">Violencia u organizaciones peligrosas</option>
             <option value="Bullying o acoso">Bullying o acoso</option>
             <option value="Infracción de la propiedad intelectual">Infracción de la propiedad intelectual</option>
             <option value="Fraude">Fraude</option>
-            <option value="Información falsa">Información falsa</option>
+            <option value="Informacion falsa">Información falsa</option>
         </select>
         <p>Desarrollar incidencia</p>
-        <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia"></textarea>
+        <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia" required></textarea>
         <br><br>
+        <input type="hidden" name="id_reportado" id="id_reportado" value="60">
+        <input type="hidden" name="id_reportador" id="id_reportador" value="61">
         <input type="submit" value="Enviar reporte">
     </form>
   </div>

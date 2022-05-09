@@ -152,30 +152,7 @@ public function registroEmpresaPost(Request $request){
         return response()->json($e->getMessage());
     }
 }
-// public function registroEmpresaPost(Request $request){
-//     $datos = $request->except('_token');
-//     try{
-//         //añadir foto empresa
-//         $path=$request->file('logo_emp')->store('logo','public');
-//         /*insertar datos en la base de datos*/
-//         $metertablausuario=DB::table('tbl_usuarios')->insertGetId(["mail"=>$datos['mail'],"contra"=>md5($datos['contra']),"id_perfil"=>$datos['id_perfil'],"verificado"=>'0',"estado"=>'1']);
-//         // $selectidusuario = DB::table('tbl_usuarios')->select('id')->where('id','=',$metertablausuario)->first();
-//         // $selectidusuario=$selectidusuario->id;
-//         $metertablaempresa=DB::table('tbl_empresa')->insert(["id_usuario"=>$metertablausuario,"nom_emp"=>$datos['nom_emp'],"loc_emp"=>$datos['loc_emp'],"about_emp"=>$datos['about_emp'],"campo_emp"=>$datos['campo_emp'],"searching"=>$datos['searching'],"mostrado"=>$datos['mostrado'],"vacante"=>$datos['vacante'],"logo_emp"=>$path]);
-//         Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($metertablausuario) {
-//             $id2=$metertablausuario;
-//             $usuario=DB::select('select * from tbl_usuarios 
-//             inner join tbl_empresa on tbl_usuarios.id=tbl_empresa.id_usuario
-//             where tbl_usuarios.id=? ',[$id2]);
-//             $message->to($usuario[0]->{'mail'})
-//               ->subject('Link Para validar tu cuenta de Job Job');
-//           });
-//         return response()->json(array('resultado'=> 'OK'));
-//         // return redirect('login');
-//     }catch(\Exception $e){
-//         return response()->json($e->getMessage());
-//     }
-// }
+
 /*----------------------------------------FIN REGISTRAR EMPRESA---------------------------------------------------------------------------------*/
 /*----------------------------------------LEER TRABAJADOR--------------------------------------------------------------------------*/
 public function leertrabajadorController(Request $request){
@@ -549,20 +526,14 @@ public function ActivateACC(Request $request)
     ////////Diego
 
     //----------------------------------------------------CREAR REPORTE-------------------------------------------------------------//
-    public function crearreporte(Request $req) {
-        $datos = $req->except('_token');
-        DB::beginTransaction(); 
+    public function crearreporte(Request $request) {
+        // return response()->json(array('resultado'=> $request));
+        $datos = $request->except('_token');
         try {
             DB::beginTransaction();
             /*insertar datos en la base de datos*/
-            // $idequipo=DB::table('tbl_equipo')->insertGetId(["nombre_equipo"=>$datos['nombre_equipo'],"codigo_equipo"=>$datos['codigo_equipo']]);
-            $selectusuario1 = DB::table('tbl_usuario')->select('id_usuario')->where('correo_usuario','=',$datos['correo_usuario1'])->first();
-            $selectusuario1=$selectusuario1->id_usuario;
-            $selectusuario2 = DB::table('tbl_usuario')->select('id_usuario')->where('correo_usuario','=',$datos['correo_usuario2'])->first();
-            $selectusuario2=$selectusuario2->id_usuario;
-            $selectusuario3 = DB::table('tbl_usuario')->select('id_usuario')->where('correo_usuario','=',$datos['correo_usuario3'])->first();
-            $selectusuario3=$selectusuario3->id_usuario;
-            DB::table('tbl_reportes')->insert(["incidencia"=>$datos['incidencia'],"desarrollar_incidencia"=>$datos['desarrollar_incidencia']]);
+            DB::table("tbl_usuarios")->join('tbl_reportes', 'tbl_usuarios.id', '=', 'tbl_reportes.id_reportador')->where('id','=',$datos['id_reportador'])->where('id','=',$datos['id_reportado']); 
+            DB::table('tbl_reportes')->insert(["incidencia"=>$datos['incidencia'],"desarrollar_incidencia"=>$datos['desarrollar_incidencia'],"estado_incidencia"=>'abierta',"id_reportado"=>$datos['id_reportado'],"id_reportador"=>$datos['id_reportador']]);
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
         }   catch (\Exception $e) {
