@@ -31,6 +31,10 @@ class CreateTblTrabajadorTable extends Migration
             $table->string('mobilidad',45);
             $table->string('carnet_conducir',45);
             $table->string('vehiculo_propio',45);
+            $table->string('linkedin',100)->nullable();
+            $table->string('telefono',15)->nullable();
+            $table->string('github',100)->nullable();
+            $table->string('lenguaje_preferido',50)->nullable();
             
 
             $table->foreign('id_usuario')->references('id')->on('tbl_usuarios');

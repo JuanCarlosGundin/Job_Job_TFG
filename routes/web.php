@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\curriculumController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 
@@ -108,3 +109,12 @@ Route::put('editarperfil/{id}/{id_perfil}',[UsuarioController::class, 'editarper
 /*FIN EDITAR PERFIL*/
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
+
+//////////////////////////////////////CURRICULUM/////////////////////////////////////////
+Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
+Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);
+
+
+Route::get('/curriculum/plantilla1', [curriculumController::class, 'plantilla1']);
+Route::get('/curriculum/plantilla2', [curriculumController::class, 'plantilla2']);
+Route::get('/curriculum/plantilla3', [curriculumController::class, 'plantilla3']);
