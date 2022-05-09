@@ -46,6 +46,18 @@ function objetoAjax() {
 }
 
 function reportesJS() {
+    let incidencia = document.getElementById('incidencia').value;
+    let desarrollar_incidencia = document.getElementById('desarrollar_incidencia').value;
+
+    if (incidencia == '' || desarrollar_incidencia == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
     /* Si hace falta obtenemos el elemento HTML donde introduciremos la recarga (datos o mensajes) */
     /* Usar el objeto FormData para guardar los parámetros que se enviarán:
        formData.append('clave', valor);

@@ -159,7 +159,7 @@
                     <br>
                     <h2>Reportar a un usuario</h2>
                     <br>
-                    <select name="incidencia" id="incidencia" required>
+                    <select name="incidencia" id="incidencia" >
                         <option value="">Seleccione el motivo del reporte</option>
                         <option value="Es spam">Es spam</option>
                         <option value="Esta cuenta se hace pasar por mi u otra persona">Esta cuenta se hace pasar por mí o alguien más</option>
@@ -174,7 +174,7 @@
                         <option value="Informacion falsa">Información falsa</option>
                     </select>
                     <br><br>
-                    <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia." required></textarea>
+                    <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
                     <br><br>
                     <input type="hidden" name="id_reportado" id="id_reportado" value="60">
                     <input type="hidden" name="id_reportador" id="id_reportador" value="61">

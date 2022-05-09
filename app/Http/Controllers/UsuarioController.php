@@ -529,6 +529,13 @@ public function ActivateACC(Request $request)
     public function crearreporte(Request $request) {
         // return response()->json(array('resultado'=> $request));
         $datos = $request->except('_token');
+        // $this->validate($request, [
+        //     'id_reportador' => 'required',
+        //     'id_reportado' => 'required',
+        //     'incidencia' => 'required',
+        //     'desarrollar_incidencia' => 'required',
+        //     'estado_incidencia' => 'required',
+        // ]);
         try {
             DB::beginTransaction();
             /*insertar datos en la base de datos*/
