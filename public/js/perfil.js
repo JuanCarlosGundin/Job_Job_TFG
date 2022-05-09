@@ -25,7 +25,6 @@ navbarAlerts.onclick = function() {
 navbarMain.onclick = function() {
     window.location.href = "./home";
 }
-
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -61,7 +60,7 @@ function mostrarperfilJS() {
                 recarga += '<div class="user-ver-foto">';
                 recarga += '<div class="container-foto">';
                 if (trabajador.foto_perfil != null) {
-                    recarga += '<img class="user-profilefoto" src="./storage/' + trabajador.foto_perfil + '">';
+                    recarga += '<img class="user-profilefoto" src="storage/' + trabajador.foto_perfil + '">';
                 } else {
                     recarga += '<img class="user-profilefoto" src="storage/img/usuario.png">';
                 }

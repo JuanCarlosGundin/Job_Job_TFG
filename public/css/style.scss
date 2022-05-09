@@ -1,15 +1,10 @@
 /////////////////////////////////MIXINS-IMPORTS////////////////////////////////
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-$first-color:#186CA7;
-$second-color: #005EA0;
-$third-color:#0076CA;
-$fourth-color:#042944;
-$fifth-color: #92AFD7;
-//Colores basicos//
-$black:#000000;
-$white:#ffffff;
-$grey: #F0F0F0;
-//Tamaños//
+$first-color:#92AFD7;
+$second-color: #C5D1EB;
+$third-color:#5A7684;
+$fourth-color:#0F084B;
+$fifth-color: #0D0221;
 $movil:768px;
 $tablet:1200px;
 *,
@@ -33,6 +28,275 @@ body {
 //     width: 100%;
 //     background-color: $first-color; //PROVISIONAL MIENTRAS POL NO HAGA LA NAVBAR
 // }
+////////////////////////////////HOME///////////////////////////////////////
+.page-home {
+    .swal-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .swal-button-container {
+            width: 50%;
+        }
+    }
+    .region-content {
+        height: 90vh;
+        height: #{"calc(var(--vh, 1vh) * 90)"};
+        top: 10vh;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        .swiper {
+            //TINDER
+            width: 100vw;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            opacity: 0;
+            transition: opacity 0.1s ease-in-out;
+            .swiper--status {
+                position: absolute;
+                top: 50%;
+                margin-top: -30px;
+                z-index: 2;
+                width: 100%;
+                text-align: center;
+                pointer-events: none;
+                i {
+                    font-size: 100px;
+                    opacity: 0;
+                    transform: scale(0.3);
+                    transition: all 0.2s ease-in-out;
+                    position: absolute;
+                    width: 100px;
+                    margin-left: -50px;
+                }
+            }
+            .swiper--cards {
+                flex-grow: 1;
+                padding-top: 7vh;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                z-index: 1;
+                .swiper--card {
+                    padding: 15px;
+                    display: inline-block;
+                    width: 90vw;
+                    max-width: 400px;
+                    height: 70vh;
+                    background: #FFFFFF;
+                    padding-bottom: 40px;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    position: absolute;
+                    will-change: transform;
+                    transition: all 0.3s ease-in-out;
+                    cursor: -webkit-grab;
+                    cursor: -moz-grab;
+                    cursor: grab;
+                    img {
+                        max-width: 100%;
+                        pointer-events: none;
+                    }
+                    .content--card {
+                        pointer-events: none;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        &.content--empresa {
+                            height: 70%;
+                        }
+                        &.content--trabajador {
+                            height: 100%;
+                            p {
+                                font-size: 14px!important;
+                            }
+                        }
+                        &.content--final {
+                            justify-content: center!important;
+                            align-items: center;
+                            height: 100%;
+                            img {
+                                max-width: 300px;
+                            }
+                        }
+                        .titulo--card {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            pointer-events: none;
+                        }
+                        .misc--card {
+                            width: 100%;
+                            .vacante--empresa {
+                                text-align: left;
+                                margin-bottom: 0;
+                            }
+                            .campo--empresa {
+                                text-align: left;
+                            }
+                        }
+                        .cv--card {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            padding-bottom: 30px;
+                            align-items: center;
+                            h2 {
+                                text-align: left;
+                            }
+                            >div {
+                                width: 100%;
+                            }
+                        }
+                        .img--card {
+                            max-height: 20%;
+                            img {
+                                max-height: none;
+                                height: 100%;
+                                border-radius: 50px;
+                            }
+                        }
+                        h2 {
+                            padding: 0 16px;
+                        }
+                        h3 {
+                            margin-top: 0;
+                            margin-bottom: 0;
+                            font-size: 20px;
+                            padding: 0 16px;
+                            pointer-events: none;
+                        }
+                        h5 {
+                            margin: 0;
+                            padding: 0 16px;
+                            font-weight: normal;
+                            color: grey;
+                        }
+                        p {
+                            margin-top: 24px;
+                            font-size: 20px;
+                            padding: 0 16px;
+                            pointer-events: none;
+                            text-align: justify;
+                        }
+                    }
+                    &:nth-child(1) {
+                        padding-top: 15px;
+                        img {
+                            max-height: 25%;
+                        }
+                    }
+                }
+            }
+            .moving.swiper--card {
+                transition: none;
+                cursor: -webkit-grabbing;
+                cursor: -moz-grabbing;
+                cursor: grabbing;
+            }
+            // .swiper--buttons button {
+            //     border-radius: 50%;
+            //     line-height: 60px;
+            //     width: 60px;
+            //     border: 0;
+            //     background: #FFFFFF;
+            //     display: inline-block;
+            //     margin: 0 8px;
+            // }
+        }
+        .loaded.swiper {
+            opacity: 1!important;
+        }
+        .swiper_love .fa-briefcase {
+            opacity: 0.7!important;
+            transform: scale(1)!important;
+        }
+        .swiper_nope .fa-remove {
+            opacity: 0.7!important;
+            transform: scale(1)!important;
+        }
+        .fa-briefcase {
+            color: rgb(165, 95, 42);
+        }
+        .fa-remove {
+            color: $third-color;
+        }
+        .card-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 20px;
+            justify-content: center;
+            .card {
+                background-color: white;
+                width: 90vw;
+                height: 70vh;
+                border-radius: 30px;
+            }
+        }
+        .botones-home {
+            position: absolute;
+            bottom: 3vh;
+            width: 100%;
+            left: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-evenly;
+            z-index: 1;
+            button {
+                z-index: 2;
+                border-radius: 50%;
+                background-color: white;
+                box-shadow: 0 10px 10px #9d9d9d;
+                border: none;
+                &:focus {
+                    outline: 0;
+                }
+            }
+            .boton-cruz,
+            .boton-maletin {
+                >button {
+                    width: 60px;
+                    height: 60px;
+                    i {
+                        font-size: calc(#{"30px + 1vw"});
+                    }
+                }
+            }
+            .boton-info {
+                .icono-info {
+                    width: 50px;
+                    height: 50px;
+                    i {
+                        font-size: calc(#{"20px + 1vw"});
+                    }
+                }
+            }
+            .boton-maletin {
+                .icono-maletin {
+                    i {
+                        color: rgb(165, 95, 42);
+                    }
+                }
+            }
+            .boton-cruz {
+                .icono-cruz {
+                    i {
+                        color: $third-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
 ///////////////////////////////NAVBAR//////////////////////////////////////
 .region-navbar {
     background-color: rgb(255, 255, 255);
@@ -133,3 +397,1613 @@ body {
         font-size: 4.5vh;
     }
 }
+
+///////////////////////////////NOTIFICACIONES//////////////////////////////////////
+.alerts {
+    .filter {
+        margin-top: 2vh;
+        padding: 3%;
+        display: flex;
+        margin-bottom: 1vh;
+        .buscador {
+            float: right;
+            .input-buscar {
+                padding: 1vh;
+                width: 82vw;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-color: #92AFD7;
+                border-width: 1px;
+                height: 5vh;
+            }
+        }
+        .buscador-icon {
+            float: left;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            width: 13vw;
+            background-color: #92AFD7;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: white;
+            height: 5vh;
+        }
+    }
+    .alert {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        .alert-foto {
+            width: 15%;
+            align-content: right;
+            .alert-profilefoto {
+                border-radius: 50px;
+                height: 7vh;
+                width: 7vh;
+            }
+        }
+        .alert-mensaje {
+            width: 55%;
+            margin-left: 2vw;
+            .alert-mensaje-text {
+                padding: 0;
+                margin: 0;
+                font-size: 1.75vh;
+            }
+        }
+        .alert-user {
+            width: 10%;
+            text-align: right;
+            .alert-user-btn {
+                background-color: #E5E5E5;
+                border-width: 0;
+                font-size: 3vh;
+            }
+        }
+        .alert-chat {
+            text-align: right;
+            width: 10%;
+            .alert-chat-btn {
+                background-color: #E5E5E5;
+                border-width: 0;
+                font-size: 3vh;
+            }
+        }
+        .alert-nada {
+            width: 10%;
+            text-align: right;
+            color: transparent;
+            .alert-nada-btn {
+                background-color: #E5E5E5;
+                border-width: 0;
+                font-size: 3vh;
+                color: transparent;
+            }
+        }
+    }
+    .alert-linea {
+        width: 95vw;
+    }
+}
+
+/////////////////////////////////CURRICULUM/////////////////////////////////////////
+.curriculum {
+    display: flex;
+    padding: 10vh;
+    .curriculum-title {
+        font-size: 3vh;
+        font-weight: bolder;
+        text-align: center;
+    }
+}
+
+////////////////////////////////LOGIN//////////////////////////////////////
+/////////////////////////////////PERFIL-EDITAR////////////////////////////////////
+.user-edit {
+    padding: 2vh;
+    // .user-edit-foto {
+    //     width: 100%;
+    //     justify-content: center;
+    //     display: flex;
+    //     align-items: center;
+    //     .user-edit-profilefoto {
+    //         border-radius: 60px;
+    //         height: 14vh;
+    //         width: 14vh;
+    //     }
+    // }
+    // .edit-foto {
+    //     position: absolute;
+    //     margin: 50vw;
+    // }
+    .user-input {
+        margin-top: 2vh;
+        width: 100%;
+        .user-input-name {
+            width: 89vw;
+            border-radius: 2vw;
+            background-color: #92AFD7;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+            .user-icon-name {
+                width: 10%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                float: left;
+                margin-left: 1vw;
+            }
+            .inputs-name {
+                float: left;
+                width: 90%;
+                .input-name {
+                    margin-left: 1vw;
+                    width: 35%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+                .input-surname {
+                    width: 35%;
+                    margin-left: 1vw;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+                .input-age {
+                    width: 18%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                    float: right;
+                }
+            }
+        }
+        .user-input-house {
+            width: 89vw;
+            border-radius: 2vw;
+            background-color: #92AFD7;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+            .user-icon-house {
+                width: 10%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                float: left;
+                margin-left: 1vw;
+            }
+            .inputs-house {
+                float: right;
+                width: 90%;
+                .input-house {
+                    margin-left: 1vw;
+                    width: 100%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+            }
+        }
+        .user-input-studies {
+            width: 89vw;
+            border-radius: 2vw;
+            background-color: #92AFD7;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+            .user-icon-studies {
+                width: 10%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                float: left;
+                margin-left: 1vw;
+            }
+            .inputs-studies {
+                float: left;
+                width: 90%;
+                .input-studies {
+                    margin-left: 1vw;
+                    width: 100%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+            }
+        }
+        .user-input-experience {
+            width: 90vw;
+            border-radius: 2vw;
+            background-color: #92AFD7;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+            .user-icon-experience {
+                width: 10%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                float: left;
+                margin-left: 1vw;
+            }
+            .inputs-experience {
+                float: left;
+                width: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .input-experience {
+                    margin-left: 1vw;
+                    width: 50%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                    float: left;
+                }
+                .p-tiempo {
+                    margin-left: 1vw;
+                    width: 30%;
+                    color: white;
+                    font-weight: bold;
+                }
+                .input-years {
+                    width: 20%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                    float: right;
+                }
+            }
+        }
+        .user-input-conocimientos {
+            width: 90vw;
+            border-radius: 2vw;
+            background-color: #92AFD7;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+            .user-icon-conocimientos {
+                width: 10%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                float: left;
+                margin-left: 1vw;
+            }
+            .inputs-conocimientos {
+                float: left;
+                width: 90%;
+                .input-conocimientos {
+                    margin-left: 1vw;
+                    width: 100%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+            }
+        }
+        .user-input-idioma {
+            width: 90vw;
+            border-radius: 2vw;
+            background-color: #92AFD7;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+            .user-icon-idioma {
+                width: 10%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                float: left;
+                margin-left: 1vw;
+            }
+            .inputs-idioma {
+                float: left;
+                width: 90%;
+                .input-idioma {
+                    margin-left: 1vw;
+                    width: 100%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+            }
+        }
+        .user-input-desc {
+            width: 90vw;
+            border-radius: 2vw;
+            background-color: #92AFD7;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+            .user-icon-desc {
+                width: 30%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                float: left;
+                margin-left: 1vw;
+                color: white;
+                font-weight: bolder;
+            }
+            .inputs-desc {
+                float: left;
+                width: 90%;
+                .input-desc {
+                    float: left;
+                    margin-left: 1vw;
+                    width: 100%;
+                    height: 10vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+            }
+        }
+    }
+    .eliminar-cuenta-edit {
+        bottom: 0;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        .eliminar-cuenta-btn {
+            padding: 0;
+            border-width: 0px;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            color: rgb(151, 0, 0);
+            background-color: transparent;
+        }
+    }
+    .contenedor {
+        display: flex;
+        text-align: center;
+    }
+    .user-icon-more {
+        float: right;
+        position: absolute;
+        right: 1vh;
+        opacity: 0;
+        .user-icon-more-button {
+            padding: 0;
+            opacity: 0;
+            background-color: none;
+            border-width: 0px;
+            cursor: pointer;
+        }
+    }
+}
+
+.empresa-edit {
+    .empresa-input {
+        margin-top: 2vh;
+        width: 100%;
+        .user-input-name {
+            width: 89vw;
+            border-radius: 2vw;
+            background-color: #92AFD7;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+            .user-icon-name {
+                width: 10%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                float: left;
+                margin-left: 1vw;
+            }
+            .inputs-name {
+                float: left;
+                width: 90%;
+                .input-name {
+                    margin-left: 1vw;
+                    width: 35%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+                .input-surname {
+                    width: 35%;
+                    margin-left: 1vw;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                }
+                .input-age {
+                    width: 18%;
+                    height: 5vh;
+                    border-radius: 2vw;
+                    border-color: #92AFD7;
+                    float: right;
+                }
+            }
+        }
+    }
+    .eliminar-empresa-edit {
+        bottom: 0;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        .eliminar-empresa-btn {
+            padding: 0;
+            border-width: 0px;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            color: rgb(151, 0, 0);
+            background-color: transparent;
+        }
+    }
+}
+
+.modal-eliminar-user {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+    height: 15vh;
+    .modal-title {
+        color: #000000;
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    .eliminar-user-butons {
+        width: 100%;
+        .cancelar-eliminar {
+            width: 49%;
+            background-color: #92AFD7;
+            color: white;
+            border-width: 0;
+            padding: 1vh;
+            font-weight: bolder;
+            cursor: pointer;
+            border-radius: 2vw;
+            &:hover {
+                background-color: #758cad;
+            }
+        }
+        .aceptar-eliminar {
+            width: 49%;
+            background-color: rgb(151, 0, 0);
+            color: white;
+            border-width: 0;
+            padding: 1vh;
+            font-weight: bolder;
+            cursor: pointer;
+            border-radius: 2vw;
+            &:hover {
+                background-color: rgb(199, 0, 0);
+            }
+        }
+    }
+}
+
+.close-modal-eliminar-empresa {
+    color: #000000;
+    float: right;
+    font-size: 2vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-eliminar-empresa {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+    height: 15vh;
+    .modal-title {
+        color: #000000;
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    .eliminar-empresa-butons {
+        width: 100%;
+        .cancelar-eliminar {
+            width: 49%;
+            background-color: #92AFD7;
+            color: white;
+            border-width: 0;
+            padding: 1vh;
+            font-weight: bolder;
+            cursor: pointer;
+            border-radius: 2vw;
+            &:hover {
+                background-color: #758cad;
+            }
+        }
+        .aceptar-eliminar {
+            width: 49%;
+            background-color: rgb(151, 0, 0);
+            color: white;
+            border-width: 0;
+            padding: 1vh;
+            font-weight: bolder;
+            cursor: pointer;
+            border-radius: 2vw;
+            &:hover {
+                background-color: rgb(199, 0, 0);
+            }
+            .botonregister {
+                border-radius: 15px;
+                background-color: #92AFD7 !important;
+                border: #92AFD7 solid 1.5px;
+                box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+                color: white;
+                font-weight: bold;
+                width: 40%;
+                height: 40px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    //RESPONSIVE MOVIL
+    @media only screen and (max-width: $movil) {
+        .body-login {
+            .modal-content-register {
+                h3 {
+                    font-size: 3vh;
+                    padding-bottom: 4vh;
+                }
+                .column-2 {
+                    width: 100%;
+                    padding-left: 5%;
+                    padding-right: 5%;
+                    .inputregister {
+                        height: 6vh !important;
+                    }
+                    .inputregister::placeholder {
+                        font-size: 2.2vh;
+                    }
+                    .select {
+                        font-size: 2.2vh !important;
+                    }
+                    .foto {
+                        padding-bottom: 1rem;
+                    }
+                }
+            }
+            .botonregister {
+                width: 70% !important;
+                font-size: 2.1vh;
+                height: 5vh !important;
+            }
+        }
+    }
+    //////////////////////////////////////////////////////LANDING-PAGE///////////////////////////////////////
+    .body-index {
+        margin: 0;
+        background-color: $first-color;
+        text-align: center;
+        .menu-index {
+            text-align: right;
+            ///botón inicio de sesión///
+            .btn-register {
+                border-radius: 15px;
+                background-color: white;
+                border: white solid 1.5px;
+                box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+                color: #090216b0;
+                font-weight: bold;
+                width: 11%;
+                height: 6vh;
+                margin-right: 3vh;
+                margin-top: 2.5vh;
+                margin-bottom: 4vh;
+            }
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+        h2 {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            margin-top: 10vh;
+        }
+        ///boton registro
+        .btn-index {
+            border-radius: 15px;
+            background-color: white;
+            border: white solid 1.5px;
+            box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+            color: #090216b0;
+            font-weight: bold;
+            width: 15%;
+            height: 6vh;
+            margin-right: 3vh;
+            margin-top: 5.5vh;
+            margin-bottom: 4vh;
+        }
+        ///CSS DE LA OLA////
+        section {
+            width: 0%;
+            background: white;
+        }
+        #wave {
+            bottom: 0;
+            position: absolute;
+            width: 100%;
+        }
+        #wave path {
+            fill: $second-color;
+        }
+        section#content {
+            background: pink;
+        }
+    }
+    ///RESPONSIVE TABLET
+    @media only screen and (max-width: $tablet) {}
+    ///RESPONSIVE MOVIL
+    @media only screen and (max-width: $movil) {
+        .body-index {
+            .menu-index {
+                .btn-register {
+                    width: 40%;
+                }
+            }
+            h1 {
+                font-size: 5vh;
+            }
+            .btn-index {
+                width: 70%;
+            }
+        }
+    }
+    ///////////////////////////////////////////////////////LOGIN///////////////////////////////////////
+    .body-login {
+        background-color: $first-color;
+        .logo {
+            display: none;
+        }
+        .modal-login {
+            background-color: white;
+            border-radius: 55px;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+            margin-top: 10vh;
+            padding-bottom: 0.2vh;
+            margin-left: 30vh;
+            margin-right: 30vh;
+            box-shadow: 5px 3px 3px rgba(156, 155, 155, 0.591);
+            ///// botones de login y registrar
+            .botones {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+            ///contenido del modal
+            .modal-content {
+                border: white;
+                text-align: center;
+                width: 80%;
+                margin-left: 10%;
+                margin-right: 10%;
+                height: 70vh;
+                h2 {
+                    margin-top: 8vh;
+                    margin-bottom: 7vh;
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 3.5vh;
+                }
+                .user-empresa {
+                    font-weight: bold;
+                    color: white !important;
+                    text-align: center;
+                    padding-top: 10px;
+                }
+                .contraseña {
+                    font-weight: bold;
+                    font-size: 2.5vh;
+                    color: $second-color !important;
+                    text-align: center;
+                    padding-top: 10px;
+                }
+                .inputlogin {
+                    font-size: 15px;
+                    border-radius: 15px;
+                    border: #92AFD7 solid 1.5px;
+                    width: 70%;
+                    height: 7vh;
+                }
+                .inputlogin::placeholder {
+                    color: rgb(197, 191, 191);
+                    padding-left: 2%;
+                    font-weight: 440;
+                }
+                .botonlogin {
+                    border-radius: 15px;
+                    background-color: #92AFD7;
+                    border: #92AFD7 solid 1.5px;
+                    box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+                    color: white;
+                    font-weight: bold;
+                    width: 70%;
+                    height: 7vh;
+                    margin-top: 1rem;
+                }
+                .linea {
+                    position: flex;
+                    margin: auto;
+                    width: 55%;
+                    border-top: 1px solid #CDC0C0;
+                    height: 2px;
+                }
+                ////conectate con google
+                .google-login {
+                    font-weight: bold;
+                    color: white;
+                    background-color: #C5D1EB;
+                    border: #C5D1EB solid 1.5px;
+                    display: block;
+                    margin-top: 4vh;
+                    margin-bottom: 10vh;
+                    margin-left: auto;
+                    margin-right: auto;
+                    text-align: center;
+                }
+                .google-img {
+                    width: 2.3vh;
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+    // RESPONSIVE TABLET
+    @media only screen and (max-width: $tablet) and (min-width: 769px) {
+        .body-login {
+            .modal-login {
+                margin-top: 10vh;
+                padding-bottom: 0.2vh;
+                margin-left: 20vh;
+                margin-right: 20vh;
+                .botones {
+                    text-align: center;
+                    height: 9vh;
+                    .btn-signin {
+                        width: 100%;
+                    }
+                    .btn-register {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    // RESPONSIVE MÓVIL
+    @media only screen and (max-width: $movil) {
+        .body-login {
+            .logo {
+                display: block !important;
+                height: 25vh;
+            }
+            .logo img {
+                width: 30%;
+                margin-top: 15%;
+                margin-bottom: 10%;
+                border-radius: 20px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .modal-login {
+                width: 100%;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+                margin-top: 0vh;
+                margin-bottom: 0vh;
+                margin-left: 0vh;
+                margin-right: 0vh;
+                ///// botones de login y registrar
+                .botones {
+                    text-align: center;
+                    height: 9vh;
+                }
+                ///contenido del modal
+                .modal-content {
+                    width: 80%;
+                    height: 66vh;
+                    h2 {
+                        margin-top: 0vh;
+                        margin-bottom: 0vh;
+                        font-weight: bold;
+                        padding-top: 6vh;
+                        padding-bottom: 6vh;
+                        font-size: 3.5vh;
+                    }
+                    .inputlogin {
+                        width: 100% !important;
+                        height: 42px !important;
+                    }
+                    .botonlogin {
+                        width: 100%;
+                        height: 40px;
+                        margin-bottom: 3px;
+                    }
+                    p {
+                        padding-top: 3px;
+                        text-align: left;
+                        font-size: 1.7vh;
+                    }
+                    .linea {
+                        max-width: 100%;
+                        padding: 0;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .google-login {
+                        width: 80%;
+                        padding-top: 4px;
+                        padding-bottom: 7px;
+                    }
+                    .google-img {
+                        width: 2.5vh;
+                        margin-right: 12px;
+                    }
+                }
+            }
+        }
+    }
+    //////////////////////////////////////////////////////////REGISTRAR//////////////////////////////////////
+    //////////////////////////////////////////////////PÁGINA TRABAJADOR-EMPRESA//////////////////////////////
+    .body-login {
+        .botones {
+            ///// botones de login y registrar
+            .btn-signin {
+                width: 100%;
+                height: 8.5vh;
+                text-align: center;
+                color: #92AFD7;
+                font-weight: bold;
+                font-size: 2.5vh;
+                border: none;
+                border-top-left-radius: 53px;
+                border-bottom-right-radius: 60px;
+            }
+            .btn-register {
+                width: 100%;
+                height: 8.5vh;
+                text-align: center;
+                color: #92AFD7;
+                font-weight: bold;
+                font-size: 2.5vh;
+                background-color: white;
+                border: none;
+                border-top-right-radius: 53px;
+                border-bottom-left-radius: 60px;
+            }
+        }
+        ///contenido del modal
+        .modal-content-register-cuadrados {
+            width: 100%;
+            height: 72vh;
+            h3 {
+                font-weight: bold;
+                padding-top: 8vh;
+                padding-bottom: 8vh;
+                font-size: 3.5vh;
+            }
+            ///colocación y tamaño de los dos cuadrados (empresa y usuario)
+            .cuadrados {
+                width: 50%;
+                height: 45%;
+                display: flex;
+                float: left;
+                justify-content: center;
+                align-items: center;
+            }
+            .cuadrado {
+                width: 34vh;
+                height: 34vh;
+                background: $second-color;
+                border: $second-color solid 1.5px;
+                box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+                border-radius: 30px;
+                color: white;
+                font-weight: 600;
+            }
+            //iconos
+            i {
+                text-align: center;
+                font-size: 13vh;
+            }
+            p {
+                font-size: 3.2vh;
+            }
+        }
+    }
+    /// RESPONSIVE MÓVIL
+    @media only screen and (max-width: $movil) {
+        .body-login {
+            height: 60vh;
+            .modal-content-register-cuadrados {
+                h3 {
+                    font-size: 3vh;
+                    margin-bottom: 4vh;
+                    padding-top: 5vh;
+                    padding-bottom: 0vh;
+                }
+                .cuadrados {
+                    width: 100%;
+                    height: 21vh;
+                    .cuadrado {
+                        width: 19vh;
+                        height: 19vh;
+                    }
+                    i {
+                        padding-top: 3vh;
+                        font-size: 6.5vh;
+                    }
+                }
+            }
+        }
+    }
+}
+
+///////////////////////////////FORMULARIO REGISTRAR TRABAJADOR-EMPRESA////////////////////////////
+.body-login {
+    //barra de scroll del modal
+    .scrollbar {
+        width: 100%;
+        height: 72vh;
+        overflow-y: scroll;
+    }
+    //contenido del modal
+    .modal-content-register {
+        width: 100%;
+        height: auto;
+        h3 {
+            font-weight: bold;
+            padding-top: 8vh;
+            padding-bottom: 6vh;
+            font-size: 3.5vh;
+        }
+        //poner inputs en dos columnas distintas
+        .column-2 {
+            width: 50%;
+            float: left;
+            padding-left: 5%;
+            padding-right: 5%;
+            p {
+                font-size: 2.5vh !important;
+                font-weight: 600;
+                text-align: left;
+                color: rgba(0, 0, 0, 0.594);
+            }
+            //estilos inputs
+            .inputregister {
+                margin-bottom: 1rem;
+                font-size: 15px;
+                border-radius: 15px;
+                border: #92AFD7 solid 2px;
+                width: 100% !important;
+                height: 42px !important;
+            }
+            .inputregister::placeholder {
+                color: rgb(197, 191, 191);
+                padding-left: 2%;
+                font-weight: 440;
+            }
+            //estilos input foto
+            .foto {
+                width: 80%;
+                float: left;
+                margin-bottom: 1rem;
+            }
+            //estilos input select
+            select {
+                border-radius: 15px;
+                border: #92AFD7 solid 2px;
+                width: 15% !important;
+                height: 42px !important;
+                margin-bottom: 1rem;
+            }
+        }
+        .botonregister {
+            border-radius: 15px;
+            background-color: #92AFD7 !important;
+            border: #92AFD7 solid 1.5px;
+            box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+            color: white;
+            font-weight: bold;
+            width: 40%;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+//RESPONSIVE MOVIL
+@media only screen and (max-width: $movil) {
+    .body-login {
+        .modal-content-register {
+            h3 {
+                font-size: 3vh;
+                padding-bottom: 4vh;
+            }
+            .column-2 {
+                width: 100%;
+                padding-left: 5%;
+                padding-right: 5%;
+                .inputregister {
+                    height: 6vh !important;
+                }
+                .inputregister::placeholder {
+                    font-size: 2.2vh;
+                }
+                .select {
+                    font-size: 2.2vh !important;
+                }
+                .foto {
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+        .botonregister {
+            width: 70% !important;
+            font-size: 2.1vh;
+            height: 5vh !important;
+        }
+    }
+}
+    /////////////////////////////////MIXINS-IMPORTS////////////////////////////////
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    $first-color:#92AFD7;
+    $second-color: #C5D1EB;
+    $third-color:#5A7684;
+    $fourth-color:#0F084B;
+    $fifth-color: #0D0221;
+    $movil:700px;
+    $tablet:1200px;
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+
+    //////////////////////////////////////////////////////MAIN///////////////////////////////////////
+    .body-index {
+        margin: 0;
+        background-color: $first-color;
+        text-align: center;
+        .menu-index {
+            text-align: right;
+            ///botón inicio de sesión///
+            .btn-register {
+                border-radius: 15px;
+                background-color: white;
+                border: white solid 1.5px;
+                box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+                color: #090216b0;
+                font-weight: bold;
+                width: 11%;
+                height: 6vh;
+                margin-right: 3vh;
+                margin-top: 2.5vh;
+                margin-bottom: 4vh;
+            }
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+        h2 {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            margin-top: 10vh;
+        }
+        ///boton registro
+        .btn-index {
+            border-radius: 15px;
+            background-color: white;
+            border: white solid 1.5px;
+            box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+            color: #090216b0;
+            font-weight: bold;
+            width: 15%;
+            height: 6vh;
+            margin-right: 3vh;
+            margin-top: 5.5vh;
+            margin-bottom: 4vh;
+        }
+        ///CSS DE LA OLA////
+        section {
+            width: 0%;
+            background: white;
+        }
+        #wave {
+            bottom: 0;
+            position: absolute;
+            width: 100%;
+        }
+        #wave path {
+            fill: $second-color;
+        }
+        section#content {
+            background: pink;
+        }
+    }
+
+    ///RESPONSIVE TABLET
+    @media only screen and (max-width: $tablet) {}
+
+    ///RESPONSIVE MOVIL
+    @media only screen and (max-width: $movil) {
+        .body-index {
+            .menu-index {
+                .btn-register {
+                    width: 40%;
+                }
+            }
+            h1 {
+                font-size: 5vh;
+            }
+            .btn-index {
+                width: 70%;
+            }
+        }
+    }
+
+    ///////////////////////////////////////////////////////LOGIN///////////////////////////////////////
+    .body-login {
+        background-color: $first-color;
+        .logo {
+            display: none;
+        }
+        .modal-login {
+            background-color: white;
+            border-radius: 55px;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+            margin-top: 10vh;
+            padding-bottom: 0.2vh;
+            margin-left: 30vh;
+            margin-right: 30vh;
+            box-shadow: 5px 3px 3px rgba(156, 155, 155, 0.591);
+            ///// botones de login y registrar
+            .botones {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+            ///contenido del modal
+            .modal-content {
+                border: white;
+                text-align: center;
+                width: 80%;
+                margin-left: 10%;
+                margin-right: 10%;
+                height: 70vh;
+                h2 {
+                    margin-top: 11vh;
+                    margin-bottom: 7vh;
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 3.5vh;
+                }
+                .user-empresa {
+                    font-weight: bold;
+                    color: white !important;
+                    text-align: center;
+                    padding-top: 10px;
+                }
+                .contraseña {
+                    font-weight: bold;
+                    font-size: 2vh;
+                    color: $second-color !important;
+                    text-align: center;
+                    padding-top: 10px;
+                }
+                .inputlogin {
+                    font-size: 15px;
+                    border-radius: 15px;
+                    border: #92AFD7 solid 1.5px;
+                    width: 70%;
+                    height: 7vh;
+                }
+                .inputlogin::placeholder {
+                    color: rgb(197, 191, 191);
+                    padding-left: 2%;
+                    font-weight: 440;
+                }
+                .botonlogin {
+                    border-radius: 15px;
+                    background-color: #92AFD7;
+                    border: #92AFD7 solid 1.5px;
+                    box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+                    color: white;
+                    font-weight: bold;
+                    width: 70%;
+                    height: 7vh;
+                    margin-top: 1rem;
+                }
+                .linea {
+                    position: flex;
+                    margin: auto;
+                    width: 55%;
+                    border-top: 1px solid #CDC0C0;
+                    height: 2px;
+                }
+                ////conectate con google
+                .google-login {
+                    font-weight: bold;
+                    color: white;
+                    background-color: #C5D1EB;
+                    border: #C5D1EB solid 1.5px;
+                    display: block;
+                    margin-top: 4vh;
+                    margin-bottom: 10vh;
+                    margin-left: auto;
+                    margin-right: auto;
+                    text-align: center;
+                }
+                .google-img {
+                    width: 2.3vh;
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+
+    // RESPONSIVE TABLET
+    @media only screen and (max-width: $tablet) {
+        .body-login {
+            .modal-login {
+                margin-top: 10vh;
+                padding-bottom: 0.2vh;
+                margin-left: 3vh;
+                margin-right: 3vh;
+                .botones {
+                    text-align: center;
+                    height: 9vh;
+                    .btn-signin {
+                        width: 100%;
+                    }
+                    .btn-register {
+                        width: 100%;
+                    }
+                    .modal-content {
+                        width: 100%;
+                         .contraseña {
+                             font-size: 1vh;
+                             text-align: left;
+                         }
+                         .inputlogin {
+                            width: 90% !important;
+                            height: 2vh !important;
+                        }
+                     }
+                }
+            }
+        }
+    }
+
+    // RESPONSIVE MÓVIL
+    @media only screen and (max-width: $movil) {
+        .body-login {
+            .logo {
+                display: block !important;
+                height: 18vh;
+            }
+            .logo img {
+                width: 25%;
+                margin-top: 20%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .modal-login {
+                width: 100%;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+                margin-top: 0vh;
+                margin-bottom: 0vh;
+                margin-left: 0vh;
+                margin-right: 0vh;
+                ///// botones de login y registrar
+                .botones {
+                    text-align: center;
+                    height: 9vh;
+                }
+                ///contenido del modal
+                .modal-content {
+                    width: 80%;
+                    height: 65vh;
+                    h2 {
+                        margin-top: 4vh;
+                        margin-bottom: 0vh;
+                        font-weight: bold;
+                        padding-top: 6vh;
+                        padding-bottom: 6vh;
+                        font-size: 3.5vh;
+                    }
+                    .inputlogin {
+                        width: 100% !important;
+                        height: 42px !important;
+                    }
+                    .botonlogin {
+                        width: 100%;
+                        height: 40px;
+                        margin-bottom: 3px;
+                    }
+                    .contraseña {
+                        padding-top: 3px;
+                        font-size: 1.7vh;
+                        text-align: left;
+                        }
+                    .linea {
+                        max-width: 100%;
+                        padding: 0;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .google-login {
+                        width: 80%;
+                        padding-top: 4px;
+                        padding-bottom: 7px;
+                    }
+                    .google-img {
+                        width: 2.5vh;
+                        margin-right: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    //////////////////////////////////////////////////////////REGISTRAR//////////////////////////////////////
+    //////////////////////////////////////////////////PÁGINA TRABAJADOR-EMPRESA//////////////////////////////
+    .body-login {
+        .botones {
+            ///// botones de login y registrar
+            .btn-signin {
+                width: 100%;
+                height: 8.5vh;
+                text-align: center;
+                color: #92AFD7;
+                font-weight: bold;
+                font-size: 2.5vh;
+                border: none;
+                border-top-left-radius: 53px;
+                border-bottom-right-radius: 60px;
+            }
+            .btn-register {
+                width: 100%;
+                height: 8.5vh;
+                text-align: center;
+                color: #92AFD7;
+                font-weight: bold;
+                font-size: 2.5vh;
+                background-color: white;
+                border: none;
+                border-top-right-radius: 53px;
+                border-bottom-left-radius: 60px;
+            }
+        }
+        ///contenido del modal
+        .modal-content-register-cuadrados {
+            width: 100%;
+            height: 72vh;
+            h3 {
+                font-weight: bold;
+                padding-top: 11vh;
+                padding-bottom: 7vh;
+                font-size: 3.5vh;
+            }
+            ///colocación y tamaño de los dos cuadrados (empresa y usuario)
+            .cuadrados {
+                width: 50%;
+                height: 45%;
+                display: flex;
+                float: left;
+                justify-content: center;
+                align-items: center;
+            }
+            .cuadrado {
+                width: 30vh;
+                height: 30vh;
+                background: $second-color;
+                border: $second-color solid 1.5px;
+                box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+                border-radius: 30px;
+                color: white;
+                font-weight: 600;
+            }
+            //iconos
+            i {
+                text-align: center;
+                font-size: 13vh;
+            }
+            p {
+                font-size: 3.2vh;
+            }
+        }
+    }
+
+    /// RESPONSIVE MÓVIL
+    @media only screen and (max-width: $movil) {
+        .body-login {
+            height: 60vh;
+            .modal-content-register-cuadrados {
+                h3 {
+                    font-size: 3vh;
+                    margin-bottom: 4vh;
+                    padding-top: 5vh;
+                    padding-bottom: 0vh;
+                    margin-top: 1vh;
+                }
+                .cuadrados {
+                    width: 100%;
+                    height: 21vh;
+                    .cuadrado {
+                        width: 19vh;
+                        height: 19vh;
+                    }
+                    i {
+                        padding-top: 3vh;
+                        font-size: 6.5vh;
+                    }
+                }
+            }
+        }
+    }
+
+    ///////////////////////////////FORNULARIO REGISTRAR TRABAJADOR-EMPRESA////////////////////////////
+    .body-login {
+        //barra de scroll del modal
+        .scrollbar {
+            width: 100%;
+            height: 72vh;
+            overflow-y: scroll;
+        }
+        //contenido del modal
+        .modal-content-register {
+            width: 100%;
+            height: auto;
+            h3 {
+                font-weight: bold;
+                padding-top: 8vh;
+                padding-bottom: 6vh;
+                font-size: 3.5vh;
+            }
+            //poner inputs en dos columnas distintas
+            .column-2 {
+                width: 50%;
+                float: left;
+                padding-left: 5%;
+                padding-right: 5%;
+                p {
+                    font-size: 2.5vh !important;
+                    font-weight: 600;
+                    text-align: left;
+                    color: rgba(0, 0, 0, 0.594);
+                }
+                //estilos inputs
+                .inputregister {
+                    margin-bottom: 1rem;
+                    font-size: 15px;
+                    border-radius: 15px;
+                    border: #92AFD7 solid 2px;
+                    width: 100% !important;
+                    height: 42px !important;
+                }
+                .inputregister::placeholder {
+                    color: rgb(197, 191, 191);
+                    padding-left: 2%;
+                    font-weight: 440;
+                }
+                //estilos input foto
+                .foto {
+                    width: 80%;
+                    float: left;
+                    margin-bottom: 1rem;
+                }
+                //estilos input select
+                select {
+                    border-radius: 15px;
+                    border: #92AFD7 solid 2px;
+                    width: 15% !important;
+                    height: 42px !important;
+                    margin-bottom: 1rem;
+                }
+            }
+            .botonregister {
+                border-radius: 15px;
+                background-color: #92AFD7 !important;
+                border: #92AFD7 solid 1.5px;
+                box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+                color: white;
+                font-weight: bold;
+                width: 40%;
+                height: 40px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    //RESPONSIVE MOVIL
+    @media only screen and (max-width: $movil) {
+        .body-login {
+            .modal-content-register {
+                height: 75vh;
+                h3 {
+                    font-size: 3vh;
+                    padding-bottom: 4vh;
+                }
+                .column-2 {
+                    width: 100%;
+                    padding-left: 5%;
+                    padding-right: 5%;
+                    .inputregister {
+                        height: 6vh !important;
+                    }
+                    .inputregister::placeholder {
+                        font-size: 2.2vh;
+                    }
+                    .select {
+                        font-size: 2.2vh !important;
+                    }
+                    .foto {
+                        padding-bottom: 1rem;
+                    }
+                }
+            }
+            .botonregister {
+                width: 70% !important;
+                font-size: 2.1vh;
+                height: 5vh !important;
+            }
+        }
+    }
