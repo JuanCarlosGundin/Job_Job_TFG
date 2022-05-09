@@ -118,7 +118,19 @@ class InicioController extends Controller{
             if ($req->has(['nombre_idioma', 'nivel_idioma'])) {
                 $req->session()->put('nombre_idioma', $req->nombre_idioma);
                 $req->session()->put('nivel_idioma', $req->nivel_idioma);
-                /* return response()->json(array('nombre_idioma'=> session()->get('nombre_idioma'), 'nivel_idioma'=> session()->get('nivel_idioma'))); */
+            }
+            if ($req->has(['nombre_formación', 'lugar_formación', 'año_entradafor', 'año_salidafor'])) {
+                $req->session()->put('nombre_formación', $req->nombre_formación);
+                $req->session()->put('lugar_formación', $req->lugar_formación);
+                $req->session()->put('año_entradafor', $req->año_entradafor);
+                $req->session()->put('año_salidafor', $req->año_salidafor);
+            }
+            if ($req->has(['nombre_experiencia', 'lugar_experiencia', 'funciones', 'año_entradaexp', 'año_salidaexp'])) {
+                $req->session()->put('nombre_experiencia', $req->nombre_experiencia);
+                $req->session()->put('lugar_experiencia', $req->lugar_experiencia);
+                $req->session()->put('funciones', $req->funciones);
+                $req->session()->put('año_entradaexp', $req->año_entradaexp);
+                $req->session()->put('año_salidaexp', $req->año_salidaexp);
             }
             return response()->json(array('resultado'=> 'OK'));
 
@@ -175,20 +187,62 @@ class InicioController extends Controller{
         if (session()->has('disponibilidad')){
             $data += array("disponibilidad"=>session()->get('disponibilidad'));
         }
+        if (session()->has('nombre_idioma') || session()->has('nombre_formación') || session()->has('nombre_experiencia')){
+            $datoscurriculum=[];
+        }
         if (session()->has('nombre_idioma') && session()->has('nivel_idioma')){
             $nombre_idioma=explode(',',session()->get('nombre_idioma'));
             $nivel_idioma=explode(',',session()->get('nivel_idioma'));
             $dataidioma=[];
             for ($i=0; $i <count($nombre_idioma) ; $i++) {
-                $linea='"'.$i.'": {"nivel_idioma": "'.$nivel_idioma[$i].'","nombre_idioma": "'.$nombre_idioma[$i].'"}';
-                array_push($dataidioma, $linea);
+                $lineaidioma='"'.$i.'": {"nivel_idioma": "'.$nivel_idioma[$i].'","nombre_idioma": "'.$nombre_idioma[$i].'"}';
+                array_push($dataidioma, $lineaidioma);
                 
             }
             $idiomafase2= implode(",",$dataidioma);
-            //no esta bien, hay que quitar {} inicio final para construir en condiciones el json
-            $idiomas='{"idiomas": {'.$idiomafase2.'}}';
-            $data += array("curriculum"=>$idiomas);
+            $idiomas='"idiomas": {'.$idiomafase2.'}';
+            array_push($datoscurriculum, $idiomas);
             
+        }
+        if (session()->has('nombre_formación') && session()->has('lugar_formación') && session()->has('año_entradafor') && session()->has('año_salidafor')){
+            $nombre_formación=explode(',',session()->get('nombre_formación'));
+            $lugar_formación=explode(',',session()->get('lugar_formación'));
+            $año_entradafor=explode(',',session()->get('año_entradafor'));
+            $año_salidafor=explode(',',session()->get('año_salidafor'));
+            $dataformacion=[];
+            for ($i=0; $i <count($nombre_formación) ; $i++) {
+                $lineaformación='"'.$i.'": {"año_salida": "'.$año_salidafor[$i].'","año_entrada": "'.$año_entradafor[$i].'","lugar_formación": "'.$lugar_formación[$i].'","nombre_formación": "'.$nombre_formación[$i].'"}';
+                array_push($dataformacion, $lineaformación);
+                
+            }
+            $formacionfase2= implode(",",$dataformacion);
+            $formaciones='"estudios": {'.$formacionfase2.'}';
+            array_push($datoscurriculum, $formaciones);
+            
+        }
+        if (session()->has('nombre_experiencia') && session()->has('lugar_experiencia')&& session()->has('funciones') && session()->has('año_entradaexp') && session()->has('año_salidaexp')){
+            $nombre_experiencia=explode(',',session()->get('nombre_experiencia'));
+            $lugar_experiencia=explode(',',session()->get('lugar_experiencia'));
+            $funciones=explode(',',session()->get('funciones'));
+            $año_entradaexp=explode(',',session()->get('año_entradaexp'));
+            $año_salidaexp=explode(',',session()->get('año_salidaexp'));
+            $dataexperiencia=[];
+            for ($i=0; $i <count($nombre_experiencia) ; $i++) {
+                $lineaexperiencia='"'.$i.'": {"funciones": "'.$funciones[$i].'","año_salida": "'.$año_salidaexp[$i].'","año_entrada": "'.$año_entradaexp[$i].'","lugar_experiencia": "'.$lugar_experiencia[$i].'","nombre_experiencia": "'.$nombre_experiencia[$i].'"}';
+                array_push($dataexperiencia, $lineaexperiencia);
+                
+            }
+            $experienciafase2= implode(",",$dataexperiencia);
+            $experiencias='"experiencia": {'.$experienciafase2.'}';
+            array_push($datoscurriculum, $experiencias);
+            
+        }
+        if ((session()->has('nombre_idioma') && session()->has('nombre_formación')) ||
+        (session()->has('nombre_idioma') && session()->has('nombre_experiencia')) ||
+        (session()->has('nombre_formación') && session()->has('nombre_experiencia'))){
+            $arrcurriculum=implode(',',$datoscurriculum);
+            $curriculum= '{'.$arrcurriculum.'}';
+            $data += array("curriculum"=>$curriculum);
         }
         //buscar una forma de eliminar archivos en temporal
         $data += array("mostrado"=>"0");

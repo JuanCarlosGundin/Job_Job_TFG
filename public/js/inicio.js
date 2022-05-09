@@ -821,7 +821,7 @@ function formtrabajador5() {
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
     /* Estructura linea */
-    recarga += '<div id="lineaestudio">';
+    recarga += '<div id="lineaestudio-0">';
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_formación</p>';
@@ -861,13 +861,14 @@ function formtrabajador5() {
     document.getElementById("mas").addEventListener("click", function() {
         k_estudios++;
     });
-    /* document.getElementById("formtrabajador5").addEventListener("submit", formtrabajador6); */
+    document.getElementById("formtrabajador5").addEventListener("submit", sessiontrabajador5);
 
 }
 
 function insertarestudio() {
     var k = k_estudios;
-    var lineaestudio = document.getElementById("lineaestudio");
+    var lestudio = "lineaestudio-" + (k - 1);
+    var lineaestudio = document.getElementById(lestudio);
     var recarga = "";
     recarga += '<div id="lineaestudio-' + k + '">';
     //nombre_formación
@@ -907,6 +908,95 @@ function eliminarestudio(evt) {
 
 }
 
+function sessiontrabajador5(evt) {
+
+    evt.preventDefault();
+
+    //al momento de validar hay que tener en cuenta los espacios en blanco
+
+    let nombress_formación = document.getElementsByName('nombre_formación[]');
+    let lugareses_formación = document.getElementsByName('lugar_formación[]');
+    let años_entrada = document.getElementsByName('año_entrada[]');
+    let años_salida = document.getElementsByName('año_salida[]');
+    let nombre_formación = [];
+    let lugar_formación = [];
+    let año_entrada = [];
+    let año_salida = [];
+    for (let i = 0; i < nombress_formación.length; i++) {
+        nombre_formación.push(nombress_formación[i].value);
+    }
+    for (let i = 0; i < lugareses_formación.length; i++) {
+        lugar_formación.push(lugareses_formación[i].value);
+    }
+    for (let i = 0; i < años_entrada.length; i++) {
+        año_entrada.push(años_entrada[i].value);
+    }
+    for (let i = 0; i < años_salida.length; i++) {
+        año_salida.push(años_salida[i].value);
+    }
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (nombre_formación) {
+        formData.append('nombre_formación', nombre_formación);
+    }
+    if (lugar_formación) {
+        formData.append('lugar_formación', lugar_formación);
+    }
+    if (año_entrada) {
+        formData.append('año_entradafor', año_entrada);
+    }
+    if (año_salida) {
+        formData.append('año_salidafor', año_salida);
+    }
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionestrabajador", true);
+
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText);
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Registrarte",
+                    denyButtonText: "Introducir mas datos",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        creartrabajadorJS();
+                    } else if (result.isDenied) {
+                        formtrabajador6();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
 //experiencias
 function formtrabajador6() {
 
@@ -925,7 +1015,7 @@ function formtrabajador6() {
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
     /* Estructura linea */
-    recarga += '<div id="lineaexperiencia">';
+    recarga += '<div id="lineaexperiencia-0">';
     //nombre_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_experiencia</p>';
@@ -969,13 +1059,14 @@ function formtrabajador6() {
     document.getElementById("mas").addEventListener("click", function() {
         k_experiencias++;
     });
-    /* document.getElementById("creartrabajadorJS").addEventListener("submit", creartrabajadorJS); */
+    document.getElementById("formtrabajador6").addEventListener("submit", sessiontrabajador6);
 
 }
 
 function insertarexperiencia() {
     var k = k_experiencias;
-    var lineaexperiencia = document.getElementById("lineaexperiencia");
+    var lexperiencia = "lineaexperiencia-" + (k - 1);
+    var lineaexperiencia = document.getElementById(lexperiencia);
     var recarga = "";
     recarga += '<div id="lineaexperiencia-' + k + '">';
     //nombre_experiencia
@@ -1017,6 +1108,99 @@ function eliminarexperiencia(evt) {
     var k = evt.currentTarget.k;
     var lineaexperienciak = "lineaexperiencia-" + k;
     document.getElementById(lineaexperienciak).innerHTML = "";
+
+}
+
+function sessiontrabajador6(evt) {
+
+    evt.preventDefault();
+
+    //al momento de validar hay que tener en cuenta los espacios en blanco
+
+    let nombres_experiencia = document.getElementsByName('nombre_experiencia[]');
+    let lugares_experiencia = document.getElementsByName('lugar_experiencia[]');
+    let funcioness = document.getElementsByName('funciones[]');
+    let años_entrada = document.getElementsByName('año_entrada[]');
+    let años_salida = document.getElementsByName('año_salida[]');
+    let nombre_experiencia = [];
+    let lugar_experiencia = [];
+    let funciones = [];
+    let año_entrada = [];
+    let año_salida = [];
+    for (let i = 0; i < nombres_experiencia.length; i++) {
+        nombre_experiencia.push(nombres_experiencia[i].value);
+    }
+    for (let i = 0; i < lugares_experiencia.length; i++) {
+        lugar_experiencia.push(lugares_experiencia[i].value);
+    }
+    for (let i = 0; i < funcioness.length; i++) {
+        funciones.push(funcioness[i].value);
+    }
+    for (let i = 0; i < años_entrada.length; i++) {
+        año_entrada.push(años_entrada[i].value);
+    }
+    for (let i = 0; i < años_salida.length; i++) {
+        año_salida.push(años_salida[i].value);
+    }
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (nombre_experiencia) {
+        formData.append('nombre_experiencia', nombre_experiencia);
+    }
+    if (lugar_experiencia) {
+        formData.append('lugar_experiencia', lugar_experiencia);
+    }
+    if (funciones) {
+        formData.append('funciones', funciones);
+    }
+    if (año_entrada) {
+        formData.append('año_entradaexp', año_entrada);
+    }
+    if (año_salida) {
+        formData.append('año_salidaexp', año_salida);
+    }
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionestrabajador", true);
+
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText);
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Registrarte",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        creartrabajadorJS();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
 
 }
 
