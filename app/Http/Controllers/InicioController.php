@@ -115,6 +115,11 @@ class InicioController extends Controller{
             if ($req->has('disponibilidad')){
                 $req->session()->put('disponibilidad', $req->disponibilidad);
             }
+            if ($req->has(['nombre_idioma', 'nivel_idioma'])) {
+                $req->session()->put('nombre_idioma', $req->nombre_idioma);
+                $req->session()->put('nivel_idioma', $req->nivel_idioma);
+                /* return response()->json(array('nombre_idioma'=> session()->get('nombre_idioma'), 'nivel_idioma'=> session()->get('nivel_idioma'))); */
+            }
             return response()->json(array('resultado'=> 'OK'));
 
         }   catch (\Exception $e) {
@@ -261,7 +266,7 @@ class InicioController extends Controller{
         $usuario = $req->input('user');
         $contra = $req->input('contra');
         try{
-            $user=DB::table("tbl_usuarios")->where('mail','=',$usuario)->where('contra','=',md5($contra))->first();
+            $user=DB::table("tbl_usuarios")->where('mail','=',$usuario)->where('contra','=',hash('sha256',$contra))->first();
             //return response()->json($user->id);
             //AQUI VA LA FUNCIÓN DEL LOGIN PARA COMPROBAR CONTRASEÑA
             //si la contraseña es correcta ejecuta esta función de abajo y nos indica que estamos verificados

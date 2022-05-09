@@ -640,7 +640,7 @@ function formtrabajador4() {
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
     /* Estructura linea */
-    recarga += '<div id="lineaidioma">';
+    recarga += '<div id="lineaidioma-0">';
     //nombre_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_idioma</p>';
@@ -654,7 +654,7 @@ function formtrabajador4() {
     //nivel_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>nivel_idioma</p>';
-    recarga += '<select class="inputregister" name="nivel_idioma[]" id="nivel_idioma">';
+    recarga += '<select class="nivel_idioma inputregister" name="nivel_idioma[]" id="nivel_idioma">';
     recarga += '<option selected>- selecciona -</option>';
     recarga += '<option value="bajo">bajo</option>';
     recarga += '<option value="medio">medio</option>';
@@ -681,13 +681,14 @@ function formtrabajador4() {
     document.getElementById("mas").addEventListener("click", function() {
         k_idiomas++;
     });
-    /* document.getElementById("formtrabajador4").addEventListener("submit", formtrabajador5); */
+    document.getElementById("formtrabajador4").addEventListener("submit", sessiontrabajador4);
 
 }
 
 function insertaridioma() {
     var k = k_idiomas;
-    var lineaidioma = document.getElementById("lineaidioma");
+    var lidioma = "lineaidioma-" + (k - 1);
+    var lineaidioma = document.getElementById(lidioma);
     var recarga = "";
     recarga += '<div id="lineaidioma-' + k + '">';
     //nombre_idioma
@@ -725,6 +726,79 @@ function eliminaridioma(evt) {
     var k = evt.currentTarget.k;
     var lineaidiomak = "lineaidioma-" + k;
     document.getElementById(lineaidiomak).innerHTML = "";
+
+}
+
+function sessiontrabajador4(evt) {
+
+    evt.preventDefault();
+
+    //al momento de validar hay que tener en cuenta los espacios en blanco
+
+    let nombress_idioma = document.getElementsByName('nombre_idioma[]');
+    let niveles_idioma = document.getElementsByName('nivel_idioma[]');
+    let nombre_idioma = [];
+    let nivel_idioma = [];
+    for (let i = 0; i < nombress_idioma.length; i++) {
+        nombre_idioma.push(nombress_idioma[i].value);
+    }
+    for (let i = 0; i < niveles_idioma.length; i++) {
+        nivel_idioma.push(niveles_idioma[i].value);
+    }
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (nombre_idioma) {
+        formData.append('nombre_idioma', nombre_idioma);
+    }
+    if (nivel_idioma) {
+        formData.append('nivel_idioma', nivel_idioma);
+    }
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionestrabajador", true);
+
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText);
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Registrarte",
+                    denyButtonText: "Introducir mas datos",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        creartrabajadorJS();
+                    } else if (result.isDenied) {
+                        formtrabajador5();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
 
 }
 
