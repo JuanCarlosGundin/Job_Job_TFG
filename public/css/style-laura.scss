@@ -10,8 +10,8 @@ $black:#000000;
 $white:#ffffff;
 $grey: #F0F0F0;
 //Tamaños//
-$movil:768px;
-$tablet:1200px;
+$movil:450px;
+$tablet:900px;
 *,
 *:before,
 *:after {
@@ -30,83 +30,282 @@ body {
     margin: 0;
     background-color: $first-color;
     text-align: center;
-    .menu-index {
-        text-align: right;
-        ///botón inicio de sesión///
-        .btn-register {
-            border-radius: 15px;
-            background-color: white;
-            border: white solid 1.5px;
-            box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-            color: #090216b0;
-            font-weight: bold;
-            width: 11%;
-            height: 6vh;
-            margin-right: 3vh;
-            margin-top: 2.5vh;
-            margin-bottom: 4vh;
+    //////NAVBAR/////
+    .navbar-index {
+        background-color: white;
+        display: flex;
+        width: 100%;
+        height: 17vh;
+        position: fixed;
+        box-shadow: 7px 4px 15px rgb(101, 101, 101);
+        //columna imagen
+        .column-1 {
+            width: 40%;
+            padding-left: 5%;
+            //logo//
+            .logo {
+                width: 11vh;
+                padding-top: 2vh;
+                padding-bottom: 2vh;
+                float: left;
+            }
+        }
+        //columna botones
+        .column-2 {
+            width: 57%;
+            text-align: right;
+            align-items: right;
+            padding-top: 2.5%;
+            padding-right: 1%;
+        }
+        li {
+            display: inline;
+            padding-left: 5%;
+            //botones
+            a {
+                color: $black;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 2.7vh;
+            }
+            a:hover {
+                padding-top: 2%;
+                padding-bottom: 2%;
+                color: rgb(113, 112, 112);
+            }
+            ///botón inicio de sesión///
+            .btn-register {
+                border-radius: 15px;
+                border: $black solid;
+                background-color: $white;
+                color: $black;
+                font-weight: bold;
+                font-size: 2.7vh;
+                width: 23%;
+                height: 6vh;
+                -webkit-transition: all 0.3s linear;
+                transition: all 0.3s linear;
+            }
+            .btn-register:hover {
+                background-color: black;
+                color: white;
+                font-weight: none;
+                border: black solid 3px;
+            }
+            i {
+                display: none;
+            }
         }
     }
-    h1 {
-        text-align: center;
+    ////HEADER/////
+    //COLUMNA TEXTO//
+    .column-3 {
+        padding-top: 17vh;
+        padding-left: 3%;
+        width: 50%;
+        float: left;
+        padding-left: 5%;
+        background-color: $first-color;
+        height: 83vh;
+        h2 {
+            text-align: left;
+            color: white;
+            font-weight: bold;
+            margin-top: 10vh;
+            font-size: 5vh;
+        }
+        h3 {
+            text-align: left;
+            font-size: 3.5vh;
+            color: white;
+            padding-bottom: 5%;
+        }
+        ///boton registro
+        .btn-index {
+            background-color: white;
+            border-radius: 15px;
+            font-weight: bold;
+            width: 25%;
+            height: 7vh;
+            margin-right: 3vh;
+            margin-top: 5.5vh;
+            margin-bottom: 4vh;
+            float: left;
+            color: #090216b0;
+            font-size: 2.7vh;
+            box-shadow: 0 0 5px rgba(206, 203, 203, 0.993), 0 0 8px rgba(206, 203, 203, 0.993);
+            line-height: 42px;
+            border: none;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+        .btn-index:hover {
+            background-color: transparent;
+            color: white;
+            border: white solid 3px;
+            box-shadow: none;
+        }
+    }
+    ////IMAGEN COLUMNA /////
+    .column-4 {
+        padding-top: 17vh;
+        width: 50%;
+        float: left;
+        padding-right: 5%;
+        background-color: $first-color;
+        height: 83vh;
+        img {
+            margin-top: 3vh;
+            width: 80%;
+        }
+    }
+    ////SECCION 4 COLUMNAS/////
+    #primera-columna {
+        padding-left: 5%;
+    }
+    #ultima-columna {
+        padding-right: 5%;
+    }
+    .column-5 {
+        background-color: $fifth-color;
+        padding-left: 3%;
+        padding-right: 3%;
+        width: 25%;
+        float: left;
+        height: 50vh;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        //ICONS FONTAWESOME//
+        i {
+            padding-bottom: 12%;
+            color: white;
+            font-size: 6vh;
+        }
+        h1 {
+            color: white;
+            font-size: 4vh;
+            font-weight: 550;
+        }
+        h3 {
+            color: white;
+            font-size: 2.8vh;
+        }
+    }
+    ///COLUMNA VIDEO///
+    .video {
+        margin: 0;
+        background-color: $third-color;
+        height: 160vh;
+    }
+    ///FOOTER///
+    .footer {
+        padding-top: 4%;
+        padding-bottom: 12%;
+        padding-left: 9%;
+        padding-right: 9%;
+        width: 33.3%;
+        height: 40vh;
+        float: left;
+        background-color: $fourth-color;
         color: white;
-        font-weight: bold;
+        text-align: left;
+        justify-content: center;
+        h1 {
+            padding-bottom: 8%;
+            font-weight: bold;
+        }
+        h2 {
+            padding-bottom: 10%;
+            font-weight: bold;
+            font-size: 2.5vh;
+        }
+        a,
+        p,
+        i {
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+        }
+        a:hover {
+            font-weight: bold;
+        }
     }
-    h2 {
+    #footer-izquierda {
         text-align: center;
-        color: white;
-        font-weight: bold;
-        margin-top: 10vh;
-    }
-    ///boton registro
-    .btn-index {
-        border-radius: 15px;
-        background-color: white;
-        border: white solid 1.5px;
-        box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-        color: #090216b0;
-        font-weight: bold;
-        width: 15%;
-        height: 6vh;
-        margin-right: 3vh;
-        margin-top: 5.5vh;
-        margin-bottom: 4vh;
-    }
-    ///CSS DE LA OLA////
-    section {
-        width: 0%;
-        background: white;
-    }
-    #wave {
-        bottom: 0;
-        position: absolute;
-        width: 100%;
-    }
-    #wave path {
-        fill: $second-color;
-    }
-    section#content {
-        background: pink;
+        padding-left: 5%;
     }
 }
 
-///RESPONSIVE TABLET
-@media only screen and (max-width: $tablet) {}
-
-///RESPONSIVE MOVIL
+// ////RESPONSIVE TABLET
+// @media only screen and (max-width: $tablet) {}
+////RESPONSIVE MOVIL
 @media only screen and (max-width: $movil) {
     .body-index {
-        .menu-index {
-            .btn-register {
-                width: 40%;
+        .navbar-index {
+            padding-top: 5px;
+            height: 9vh;
+            width: 100%;
+            .column-1 {
+                display: none;
+            }
+            .column-2 {
+                width: 100%;
+                text-align: center;
+                .btn-register {
+                    display: none;
+                }
+                a {
+                    font-size: 23px !important;
+                    padding-left: 2%;
+                    padding-right: 2%;
+                }
             }
         }
-        h1 {
-            font-size: 5vh;
-        }
+    }
+    .column-3 {
+        width: 100% !important;
+        text-align: center !important;
+        padding-top: 40px !important;
+        padding-bottom: 0px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        height: 70vh !important;
         .btn-index {
-            width: 70%;
+            float: none !important;
+            position: center;
+            width: 35% !important;
         }
+        h2 {
+            text-align: center !important;
+            font-size: 4.5vh !important;
+        }
+        h3 {
+            text-align: center !important;
+            font-size: 3vh !important;
+        }
+    }
+    .column-4 {
+        width: 100% !important;
+        padding-top: 0px !important;
+        height: 40vh !important;
+    }
+    .column-5 {
+        width: 100% !important;
+        padding-top: 8vh !important;
+        padding-bottom: 8vh !important;
+        height: 40vh !important;
+    }
+    .video {
+        height: 280vh !important;
+    }
+    .footer {
+        width: 100% !important;
+        padding-top: 5vh !important;
+        height: 30vh !important;
+        text-align: center !important;
+    }
+    #footer-izquierda {
+        display: none;
     }
 }
 
@@ -141,6 +340,21 @@ body {
             margin-left: 10%;
             margin-right: 10%;
             height: 70vh;
+            .opciones {
+                .opcion {
+                    width: 25%;
+                    float: left;
+                    padding: 2%;
+                    padding-top: 4%;
+                    input {
+                        width: 50%;
+                    }
+                    input:hover {
+                        background-color: rgb(202, 224, 235);
+                        border-radius: 30%;
+                    }
+                }
+            }
             h2 {
                 margin-top: 11vh;
                 margin-bottom: 7vh;
@@ -157,7 +371,7 @@ body {
             .contraseña {
                 font-weight: bold;
                 font-size: 2vh;
-                color: $second-color !important;
+                color: $third-color !important;
                 text-align: center;
                 padding-top: 10px;
             }
@@ -254,7 +468,7 @@ body {
         }
         .logo img {
             width: 25%;
-            margin-top: 20%;
+            margin-top: 18%;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -292,6 +506,22 @@ body {
                     width: 100%;
                     height: 40px;
                     margin-bottom: 3px;
+                }
+                .opciones {
+                    .opcion {
+                        width: 25%;
+                        float: left;
+                        padding: 2%;
+                        padding-bottom: 15%;
+                        .img {
+                            width: 80%;
+                            border: none;
+                            background-color: white;
+                            cursor: pointer;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
                 }
                 .contraseña {
                     padding-top: 3px;
