@@ -57,8 +57,6 @@
     </div>
     <div class="video">
         <h1>aqui va el video</h1>
-        <p>aaa</p>
-        <p>pppp</p>
     </div>
         <div class="footer" id="footer-izquierda">
         <h1>JobJob</h1>

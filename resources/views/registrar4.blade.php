@@ -23,30 +23,30 @@
                 </div>
                 <div class="modal-content">
                 <form method="POST" onsubmit="loginP(); return false;"  id="loginP">
-                <h2>Escoge los lenguajes que te interesen</h2>
+                <h2>Escoge tu lenguaje favorito</h2>
                 <div class="opciones">
                     <div class="opcion">
                         <input type="image" src="storage/uploads/python.png">
                     </div>
                     <div class="opcion">
-                        <input type="image" src="storage/uploads/python.png">
+                        <input type="image" src="storage/uploads/php.png">
                     </div>
                     <div class="opcion">
-                        <input type="image" src="storage/uploads/python.png">
+                        <input type="image" src="storage/uploads/js.png">
                     </div>
                     <div class="opcion">
-                        <input type="image" src="storage/uploads/python.png">
+                        <input type="image" src="storage/uploads/c++.png">
                     </div>
                 </div>
                 <div class="opciones">
                     <div class="opcion">
-                        <input type="image" src="storage/uploads/python.png">
+                        <input type="image" src="storage/uploads/css.png">
                     </div>
                     <div class="opcion">
-                        <input type="image" src="storage/uploads/python.png">
+                        <input type="image" src="storage/uploads/c.png">
                     </div>
                     <div class="opcion">
-                        <input type="image" src="storage/uploads/python.png">
+                        <input type="image" src="storage/uploads/node.png">
                     </div>
                     <div class="opcion">
                         <input type="image" src="storage/uploads/python.png">

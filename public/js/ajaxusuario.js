@@ -25,7 +25,7 @@ function login() {
     var tabla = document.getElementById("main");
     var recarga = '';
     recarga += '<div class="botones">'
-    recarga += '<button style="background-color: white;" class="btn-signin" onclick="login()">Sign In</button>'
+    recarga += '<button class="btn-signin" onclick="login()">Sign In</button>'
     recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-register" onclick="registrar()">Register</button>'
     recarga += '</div>'
     recarga += '<div class="modal-content">'
@@ -45,7 +45,7 @@ function registrar() {
     var recarga = '';
     recarga += '<div class="botones">'
     recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" onclick="login()">Sign In</button>'
-    recarga += '<button style="background-color: white;" class="btn-register" onclick="registrar()">Register</button>'
+    recarga += '<button class="btn-register" onclick="registrar()">Register</button>'
     recarga += '</div>'
     recarga += '<div id="main" class="modal-content-register-cuadrados">'
     recarga += '<h3>¿Cómo vas a usar JobJob?</h3>'

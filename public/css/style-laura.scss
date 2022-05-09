@@ -38,7 +38,7 @@ body {
         height: 17vh;
         position: fixed;
         box-shadow: 7px 4px 15px rgb(101, 101, 101);
-        //columna imagen
+        //columna logo navbar
         .column-1 {
             width: 40%;
             padding-left: 5%;
@@ -50,7 +50,7 @@ body {
                 float: left;
             }
         }
-        //columna botones
+        //columna botones navbar
         .column-2 {
             width: 57%;
             text-align: right;
@@ -61,7 +61,7 @@ body {
         li {
             display: inline;
             padding-left: 5%;
-            //botones
+            //botones navbar
             a {
                 color: $black;
                 text-decoration: none;
@@ -73,7 +73,7 @@ body {
                 padding-bottom: 2%;
                 color: rgb(113, 112, 112);
             }
-            ///botón inicio de sesión///
+            ///botón inicio de sesión navbar///
             .btn-register {
                 border-radius: 15px;
                 border: $black solid;
@@ -91,9 +91,6 @@ body {
                 color: white;
                 font-weight: none;
                 border: black solid 3px;
-            }
-            i {
-                display: none;
             }
         }
     }
@@ -146,7 +143,7 @@ body {
             box-shadow: none;
         }
     }
-    ////IMAGEN COLUMNA /////
+    ////COLUMNA IMAGEN HEADER/////
     .column-4 {
         padding-top: 17vh;
         width: 50%;
@@ -193,9 +190,8 @@ body {
     }
     ///COLUMNA VIDEO///
     .video {
-        margin: 0;
         background-color: $third-color;
-        height: 160vh;
+        height: 150vh;
     }
     ///FOOTER///
     .footer {
@@ -237,7 +233,29 @@ body {
 }
 
 // ////RESPONSIVE TABLET
-// @media only screen and (max-width: $tablet) {}
+@media only screen and (min-width: $movil) and (max-width: $tablet) {
+    .body-index {
+        .navbar-index {
+            height: 13vh;
+            .column-1 {
+                display: none;
+            }
+            .column-2 {
+                margin-top: 3% !important;
+                margin-bottom: 3% !important;
+                width: 100%;
+                text-align: center;
+                padding: 0% !important;
+                .btn-register {
+                    width: 37% !important;
+                    padding-left: 2% !important;
+                    padding-right: 2% !important;
+                }
+            }
+        }
+    }
+}
+
 ////RESPONSIVE MOVIL
 @media only screen and (max-width: $movil) {
     .body-index {
@@ -252,12 +270,15 @@ body {
                 width: 100%;
                 text-align: center;
                 .btn-register {
-                    display: none;
+                    width: 40% !important;
+                    font-size: 16px !important;
+                    padding-left: 0%;
+                    padding-right: 0%;
                 }
                 a {
-                    font-size: 23px !important;
-                    padding-left: 2%;
-                    padding-right: 2%;
+                    font-size: 16px !important;
+                    padding-left: 1%;
+                    padding-right: 1%;
                 }
             }
         }
@@ -310,7 +331,7 @@ body {
 }
 
 ///////////////////////////////////////////////////////LOGIN///////////////////////////////////////
-.body-login {
+.bodylogin {
     background-color: $first-color;
     .logo {
         display: none;
@@ -321,7 +342,7 @@ body {
         align-items: center;
         align-content: center;
         text-align: center;
-        margin-top: 10vh;
+        margin-top: 5vh;
         padding-bottom: 0.2vh;
         margin-left: 30vh;
         margin-right: 30vh;
@@ -428,7 +449,7 @@ body {
 
 // RESPONSIVE TABLET
 @media only screen and (max-width: $tablet) {
-    .body-login {
+    .bodylogin {
         .modal-login {
             margin-top: 10vh;
             padding-bottom: 0.2vh;
@@ -461,7 +482,7 @@ body {
 
 // RESPONSIVE MÓVIL
 @media only screen and (max-width: $movil) {
-    .body-login {
+    .bodylogin {
         .logo {
             display: block !important;
             height: 18vh;
@@ -550,7 +571,7 @@ body {
 
 //////////////////////////////////////////////////////////REGISTRAR//////////////////////////////////////
 //////////////////////////////////////////////////PÁGINA TRABAJADOR-EMPRESA//////////////////////////////
-.body-login {
+.bodylogin {
     .botones {
         ///// botones de login y registrar
         .btn-signin {
@@ -560,6 +581,8 @@ body {
             color: $first-color;
             font-weight: bold;
             font-size: 2.5vh;
+            border: none;
+            background-color: white;
             border: none;
             border-top-left-radius: 53px;
             border-bottom-right-radius: 60px;
@@ -619,7 +642,7 @@ body {
 
 /// RESPONSIVE MÓVIL
 @media only screen and (max-width: $movil) {
-    .body-login {
+    .bodylogin {
         height: 60vh;
         .modal-content-register-cuadrados {
             h3 {
@@ -646,7 +669,7 @@ body {
 }
 
 ///////////////////////////////FORNULARIO REGISTRAR TRABAJADOR-EMPRESA////////////////////////////
-.body-login {
+.bodylogin {
     //barra de scroll del modal
     .scrollbar {
         width: 100%;
@@ -720,7 +743,7 @@ body {
 
 //RESPONSIVE MOVIL
 @media only screen and (max-width: $movil) {
-    .body-login {
+    .bodylogin {
         .modal-content-register {
             height: 75vh;
             h3 {

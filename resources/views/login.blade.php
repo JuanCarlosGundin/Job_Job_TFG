@@ -8,11 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Login</title>
     <link rel="stylesheet" href="{!! asset('css/style-laura.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
-    <body class="body-login">
+    <body class="bodylogin">
+        <button type="button" class="darkmodeswitch" id="switch" onclick="cambiarModo()"><span><i class="fa fa-sun-o"></i></span>   
+            <span><i class="fa fa-moon-o"></i></span>
+      </button>
         <div class="logo">
             <img src="storage/uploads/jobjob_logo.png">
         </div>
@@ -20,6 +24,7 @@
             
         </div>
         <script src="js/ajaxusuario.js"></script>
+        <script src="js/modo_nocturno.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>
