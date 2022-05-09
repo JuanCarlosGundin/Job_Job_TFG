@@ -401,15 +401,21 @@ function getchanel(){
         //console.log(ajax.responseText)
         if (ajax.readyState == 4 && ajax.status == 200) {
             chatInfo = JSON.parse(this.responseText);
-            console.log(chatInfo)
+            //console.log(chatInfo)
         }
     }
     ajax.send(formData);
 }
 
-window.onload=function(){
+window.onload=function() {
+
     getchanel()
-    console.log(chatInfo.chanel[0].id)
+    //console.log(chatInfo)
+    if(chatInfo.perfil==3) { 
+        document.getElementById('nombre').innerHTML='<p> Estas chateando con '+chatInfo.other[0].nombre+'</p>'
+    } else {
+        document.getElementById('nombre').innerHTML='<p> Estas chateando con '+chatInfo.other[0].nom_emp+'</p>'
+    }
 }
 
 //ZONA VARIABLES
@@ -460,8 +466,10 @@ function cerrar() {
 }
 
 function sender() {
+
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
     getchanel()
     console.log(chatInfo)
     if(chatInfo.perfil==3) { 

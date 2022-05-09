@@ -14,7 +14,7 @@ class Chat extends Controller {
     function getchat(Request $request) {
         try {
             $id=session()->get('id_user');
-            $idOTRO= 61;
+            $idOTRO= 62;
             $perfil=session()->get('id_perfil');
 
             $chanel=DB::select('SELECT id FROM tbl_chat 

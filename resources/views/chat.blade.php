@@ -25,7 +25,7 @@
 <body>
     <input type="hidden" id=Chanel value="none">
     <p id="estado"></p><br/>
-    <p>NOMBRE DE USUARIO</p>
+    <div id="nombre"> </div>
     <button onclick=sender()>Enviar</button><button onclick=cerrar()>Cerra</button><button onclick=abrir()>abrir</button><br>
     <input type="text" id="test"><br>
 
