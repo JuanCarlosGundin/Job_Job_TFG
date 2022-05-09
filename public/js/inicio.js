@@ -223,12 +223,147 @@ function registrar() {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
-    document.getElementById("formtrabajador").addEventListener("click", formtrabajador1);
+    document.getElementById("formtrabajador").addEventListener("click", formtrabajador0);
     document.getElementById("formempresa").addEventListener("click", formempresa);
 
 }
 
 //Correo-contraseñas
+function formtrabajador0() {
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    //Botones login/registro
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="formtrabajador0" enctype="multipart/form-data">';
+    //Correo
+    recarga += '<div class="column-2">';
+    recarga += '<p>Email</p>';
+    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
+    recarga += '</div>';
+    //Contraseña 1
+    recarga += '<div class="column-2">';
+    recarga += '<p>Contraseña</p>';
+    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '</div>';
+    //Contraseña 2
+    recarga += '<div class="column-2">';
+    recarga += '<p>Contraseña 2</p>';
+    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="repite la contraseña..."><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '</form>';
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("formtrabajador0").addEventListener("submit", sessiontrabajador0);
+
+}
+
+function sessiontrabajador0(evt) {
+
+    evt.preventDefault();
+
+    let mail = document.getElementById('mail').value;
+    let contra = document.getElementById('contra').value;
+    let contra2 = document.getElementById('contra2').value;
+
+    if (!mail || !contra || !contra2) {
+
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+
+    } else if (contra !== contra2) {
+
+        swal.fire({
+            title: "Error",
+            text: "No coinciden las contraseñas",
+            icon: "error",
+        });
+        return false;
+
+    }
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('mail', mail);
+    formData.append('nombre', nombre);
+    formData.append('contra', contra);
+    formData.append('contra2', contra2);
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionestrabajador", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Continuar",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        formtrabajador1();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+//Nombre-apellido-edad
 function formtrabajador1() {
 
     var tabla = document.getElementById("main");
@@ -241,25 +376,20 @@ function formtrabajador1() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador1" enctype="multipart/form-data">';
-    //Correo
-    recarga += '<div class="column-2">';
-    recarga += '<p>Email</p>';
-    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
-    recarga += '</div>';
     //Nombre
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre</p>';
     recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre..."><br><br>';
     recarga += '</div>';
-    //Contraseña 1
+    //Apellido
     recarga += '<div class="column-2">';
-    recarga += '<p>Contraseña</p>';
-    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<p>Apellido</p>';
+    recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido..."><br><br>';
     recarga += '</div>';
-    //Contraseña 2
+    //Edad
     recarga += '<div class="column-2">';
-    recarga += '<p>Contraseña 2</p>';
-    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="repite la contraseña..."><br><br>';
+    recarga += '<p>Fecha nacimiento</p>';
+    recarga += '<input type="date" class="inputregister" id="edad" name="edad"><br><br>';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
@@ -391,16 +521,6 @@ function formtrabajador2() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
-    //Apellido
-    recarga += '<div class="column-2">';
-    recarga += '<p>Apellido</p>';
-    recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido..."><br><br>';
-    recarga += '</div>';
-    //Edad
-    recarga += '<div class="column-2">';
-    recarga += '<p>Fecha nacimiento</p>';
-    recarga += '<input type="date" class="inputregister" id="edad" name="edad"><br><br>';
-    recarga += '</div>';
     //Foto
     recarga += '<div class="column-2">';
     recarga += '<p>Foto</p>';

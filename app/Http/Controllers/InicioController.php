@@ -23,27 +23,25 @@ class InicioController extends Controller{
 
     public function loginuser(Request $req){
 
-        try{
+        try {
 
             $user=DB::table("tbl_usuarios")->where('mail','=',$req['mail'])->where('contra','=',md5($req['contra']))->first();
 
-            if ($user == null){
+            if ($user == null) {
 
                 return response()->json(array('resultado'=> 'noexiste'));
-
-            }else if($user->verificado==0){
+            } else if ($user->verificado==0) {
 
                 return response()->json(array('resultado'=> 'noverificado'));
-
-            }else if($user->estado==0){
+            } else if ($user->estado==0) {
 
                 return response()->json(array('resultado'=> 'baneado'));
-
-            }else {
+            } else {
 
                 if($user->id_perfil==1){
 
                     $req->session()->put('id_user',$user->id);
+
                     return response()->json(array('resultado'=> 'admin'));
 
                 }else{
@@ -51,18 +49,14 @@ class InicioController extends Controller{
                     /* $req->session()->put('nombre',$req->mail); */
                     $req->session()->put('id_user',$user->id);
                     $req->session()->put('id_perfil',$user->id_perfil);
+
                     return response()->json(array('resultado'=> 'OK'));
-
                 }
-
             }
-
-        }catch (\Throwable $th) {
+        } catch (\Throwable $th) {
 
             return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
-
         }   
-
     }
 
     ///Registro
@@ -71,67 +65,76 @@ class InicioController extends Controller{
         //Aqui se tiene que validar con laravel/php
 
         try {
-            if ($req->has(['mail', 'nombre', 'contra', 'contra2'])) {
+
+            if ($req->has(['mail', 'contra', 'contra2'])) {
                 $req->validate([
                     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
                     'contra'=>'required|string|min:8|max:100',
                     'contra2'=>'required|same:contra'
                 ]);
                 $req->session()->put('mail', $req->mail);
-                $req->session()->put('nombre', $req->nombre);
+                /* $req->session()->put('nombre', $req->nombre); */
                 $req->session()->put('contra', $req->contra);
                 return response()->json(array('resultado'=> 'OK'));
             }
-
             if ($req->has('apellido')){
+
                 $req->session()->put('apellido', $req->apellido);
             }
             if ($req->has('edad')){
+
                 $req->session()->put('edad', $req->edad);
             }
             if ($req->has('foto_perfil')){
+
                 //añadir foto trabajador si existe
                 if($req->hasFile('foto_perfil')){
 
                     $foto_perfil = $req->file('foto_perfil')->store('temporal','public');
-
                 }else{
 
                     $foto_perfil = NULL;
-
                 }
+
                 $req->session()->put('foto_perfil', $foto_perfil);
             }
-            
             if ($req->has('campo_user')){
+
                 $req->session()->put('campo_user', $req->campo_user);
             }
             if ($req->has('about_user')){
+
                 $req->session()->put('about_user', $req->about_user);
             }
             if ($req->has('loc_trabajador')){
+
                 $req->session()->put('loc_trabajador', $req->loc_trabajador);
             }
             if ($req->has('disponibilidad')){
+
                 $req->session()->put('disponibilidad', $req->disponibilidad);
             }
             if ($req->has(['nombre_idioma', 'nivel_idioma'])) {
+
                 $req->session()->put('nombre_idioma', $req->nombre_idioma);
                 $req->session()->put('nivel_idioma', $req->nivel_idioma);
             }
             if ($req->has(['nombre_formación', 'lugar_formación', 'año_entradafor', 'año_salidafor'])) {
+
                 $req->session()->put('nombre_formación', $req->nombre_formación);
                 $req->session()->put('lugar_formación', $req->lugar_formación);
                 $req->session()->put('año_entradafor', $req->año_entradafor);
                 $req->session()->put('año_salidafor', $req->año_salidafor);
             }
             if ($req->has(['nombre_experiencia', 'lugar_experiencia', 'funciones', 'año_entradaexp', 'año_salidaexp'])) {
+
                 $req->session()->put('nombre_experiencia', $req->nombre_experiencia);
                 $req->session()->put('lugar_experiencia', $req->lugar_experiencia);
                 $req->session()->put('funciones', $req->funciones);
                 $req->session()->put('año_entradaexp', $req->año_entradaexp);
                 $req->session()->put('año_salidaexp', $req->año_salidaexp);
             }
+
             return response()->json(array('resultado'=> 'OK'));
 
         }   catch (\Exception $e) {
@@ -221,29 +224,33 @@ class InicioController extends Controller{
             
         }
         if (session()->has('nombre_experiencia') && session()->has('lugar_experiencia')&& session()->has('funciones') && session()->has('año_entradaexp') && session()->has('año_salidaexp')){
+
             $nombre_experiencia=explode(',',session()->get('nombre_experiencia'));
             $lugar_experiencia=explode(',',session()->get('lugar_experiencia'));
             $funciones=explode(',',session()->get('funciones'));
             $año_entradaexp=explode(',',session()->get('año_entradaexp'));
             $año_salidaexp=explode(',',session()->get('año_salidaexp'));
             $dataexperiencia=[];
+
             for ($i=0; $i <count($nombre_experiencia) ; $i++) {
+
                 $lineaexperiencia='"'.$i.'": {"funciones": "'.$funciones[$i].'","año_salida": "'.$año_salidaexp[$i].'","año_entrada": "'.$año_entradaexp[$i].'","lugar_experiencia": "'.$lugar_experiencia[$i].'","nombre_experiencia": "'.$nombre_experiencia[$i].'"}';
-                array_push($dataexperiencia, $lineaexperiencia);
-                
+                array_push($dataexperiencia, $lineaexperiencia); 
             }
+
             $experienciafase2= implode(",",$dataexperiencia);
             $experiencias='"experiencia": {'.$experienciafase2.'}';
             array_push($datoscurriculum, $experiencias);
-            
         }
         if ((session()->has('nombre_idioma') && session()->has('nombre_formación')) ||
         (session()->has('nombre_idioma') && session()->has('nombre_experiencia')) ||
-        (session()->has('nombre_formación') && session()->has('nombre_experiencia'))){
+        (session()->has('nombre_formación') && session()->has('nombre_experiencia'))) {
+
             $arrcurriculum=implode(',',$datoscurriculum);
             $curriculum= '{'.$arrcurriculum.'}';
             $data += array("curriculum"=>$curriculum);
         }
+
         //buscar una forma de eliminar archivos en temporal
         $data += array("mostrado"=>"0");
         /* return response()->json(array('resultado'=> $data)); */
@@ -258,6 +265,7 @@ class InicioController extends Controller{
             DB::select("insert into tbl_trabajador (id_usuario,". implode(',' , $key) .") values (?,'". implode("','" , $value) ."')",[$id]);
 
             Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
+
                 $usuario=DB::select('select * from tbl_usuarios 
                 inner join tbl_trabajador on tbl_usuarios.id=tbl_trabajador.id_usuario
                 where tbl_usuarios.id=? ',[$id]);
@@ -269,7 +277,7 @@ class InicioController extends Controller{
             session()->flush();
             return response()->json(array('resultado'=> 'OK'));
 
-        }   catch (\Exception $e) {
+        } catch (\Exception $e) {
 
             DB::rollback();
             return response()->json(array('resultado'=> $e->getMessage()));
