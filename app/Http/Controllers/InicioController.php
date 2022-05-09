@@ -175,6 +175,21 @@ class InicioController extends Controller{
         if (session()->has('disponibilidad')){
             $data += array("disponibilidad"=>session()->get('disponibilidad'));
         }
+        if (session()->has('nombre_idioma') && session()->has('nivel_idioma')){
+            $nombre_idioma=explode(',',session()->get('nombre_idioma'));
+            $nivel_idioma=explode(',',session()->get('nivel_idioma'));
+            $dataidioma=[];
+            for ($i=0; $i <count($nombre_idioma) ; $i++) {
+                $linea='"'.$i.'": {"nivel_idioma": "'.$nivel_idioma[$i].'","nombre_idioma": "'.$nombre_idioma[$i].'"}';
+                array_push($dataidioma, $linea);
+                
+            }
+            $idiomafase2= implode(",",$dataidioma);
+            //no esta bien, hay que quitar {} inicio final para construir en condiciones el json
+            $idiomas='{"idiomas": {'.$idiomafase2.'}}';
+            $data += array("curriculum"=>$idiomas);
+            
+        }
         //buscar una forma de eliminar archivos en temporal
         $data += array("mostrado"=>"0");
         /* return response()->json(array('resultado'=> $data)); */
