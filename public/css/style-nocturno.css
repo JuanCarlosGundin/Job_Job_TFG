@@ -1,0 +1,110 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.darkmodeswitch {
+  margin-left: 2%;
+  margin-top: 1.5%;
+  background: #3494b1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+}
+
+.darkmodeswitch span {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+}
+
+.darkmodeswitch::after {
+  display: block;
+  background: #fffbf5;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: unset;
+  border-radius: 3rem;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
+  content: "";
+}
+
+.darkmodeswitch.active {
+  background: #fdd384;
+}
+
+.darkmodeswitch.active::after {
+  left: unset;
+  right: 0;
+}
+
+.bodylogin.oscuro {
+  background-color: #012A4A;
+}
+
+.bodylogin.oscuro .modal-login {
+  background-color: #0B4B78;
+  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+}
+
+.bodylogin.oscuro .modal-login .modal-content {
+  background-color: #0B4B78;
+}
+
+.bodylogin.oscuro .modal-login h2,
+.bodylogin.oscuro .modal-login h3,
+.bodylogin.oscuro .modal-login .contraseña {
+  color: white !important;
+}
+
+.bodylogin.oscuro .modal-login .inputlogin {
+  background-color: white;
+  border: white;
+}
+
+.bodylogin.oscuro .modal-login .botonlogin {
+  background-color: #0060A4;
+  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+}
+
+.bodylogin.oscuro .modal-login .btn-signin {
+  /*PROVISIONAL*/
+  background-color: #0B4B78 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: white;
+}
+
+.bodylogin.oscuro .modal-login .btn-register {
+  /*PROVISIONAL*/
+  background-color: #0B4B78 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: white;
+}
+
+.bodylogin.oscuro .modal-login .cuadrado {
+  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+  background: #0060A4;
+  border: #0060A4 solid 1.5px;
+}
+/*# sourceMappingURL=style-nocturno.css.map */

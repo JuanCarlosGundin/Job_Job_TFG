@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class InicioController extends Controller{
 
+    public function index(){
+        return view('index');
+    }
+
     public function inicio(){
         return view('inicio');
     }

@@ -6,9 +6,26 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 
-/* ------------InicioController------------ */
 
-Route::get('/', [InicioController::class, 'inicio']);
+Route::get('registrar', function () {
+    return view('registrar');
+});
+
+Route::get('registrar2', function () {
+    return view('registrar2');
+});
+
+Route::get('registrar3', function () {
+    return view('registrar3');
+});
+
+Route::get('registrar4', function () {
+    return view('registrar4');
+});
+
+Route::get('/', [InicioController::class, 'index']);
+
+Route::get('/inicio', [InicioController::class, 'inicio']);
 
 //Acceder al swapper
 Route::get('home', [InicioController::class, 'home']);
