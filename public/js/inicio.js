@@ -1333,7 +1333,7 @@ function creartrabajadorJS() {
                     showConfirmButton: false,
                     icon: "success",
                 });
-                setTimeout(() => { window.location.href = './'; }, 2000);
+                setTimeout(() => { window.location.href = './inicio'; }, 2000);
 
             } else {
 
@@ -1520,7 +1520,7 @@ function crearempresaJS(evt) {
                     showConfirmButton: false,
                     icon: "success",
                 });
-                setTimeout(() => { window.location.href = './'; }, 2000);
+                setTimeout(() => { window.location.href = './inicio'; }, 2000);
 
             } else {
 
