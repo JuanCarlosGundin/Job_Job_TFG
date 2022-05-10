@@ -572,6 +572,14 @@ body {
 //////////////////////////////////////////////////////////REGISTRAR//////////////////////////////////////
 //////////////////////////////////////////////////PÁGINA TRABAJADOR-EMPRESA//////////////////////////////
 .bodylogin {
+    h3 {
+        margin-top: 2vh;
+        margin-bottom: 0vh;
+        font-weight: bold;
+        padding-top: 6vh;
+        padding-bottom: 6vh;
+        font-size: 3.5vh;
+    }
     .botones {
         ///// botones de login y registrar
         .btn-signin {

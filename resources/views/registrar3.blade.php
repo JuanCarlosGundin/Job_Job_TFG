@@ -30,14 +30,12 @@
         <div class="modal-content">
             <form method="POST" onsubmit="loginP(); return false;" id="loginP">
                 <h3>¡Registrate en JobJob!</h3>
-                <input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo"><br><br>
-                <input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña"><br><br>
-                <input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Repite la contraseña"><br>
+                <input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu nombre"><br><br>
+                <input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu apellido"><br><br>
+                <input class="inputlogin" type="date" name="contra" id="contra_login" placeholder="Introduce la fecha"><br>
                 <button class="botonlogin" type="submit" value="register">Continuar</button>
             </form>
         </div>
     </div>
     <script src="js/modo_nocturno.js"></script>
 </body>
-
-</html>
