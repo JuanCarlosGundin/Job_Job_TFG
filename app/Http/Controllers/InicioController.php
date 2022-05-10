@@ -29,7 +29,7 @@ class InicioController extends Controller{
 
         try {
 
-            $user=DB::table("tbl_usuarios")->where('mail','=',$req['mail'])->where('contra','=',md5($req['contra']))->first();
+            $user=DB::table("tbl_usuarios")->where('mail','=',$req['mail'])->where('contra','=',hash('sha256',$req['contra']))->first();
 
             if ($user == null) {
 
