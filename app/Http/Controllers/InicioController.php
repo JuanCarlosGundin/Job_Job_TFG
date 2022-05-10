@@ -65,7 +65,7 @@ class InicioController extends Controller{
         //Aqui se tiene que validar con laravel/php
 
         try {
-
+            //sessiontrabajador0
             if ($req->has(['mail', 'contra', 'contra2'])) {
                 $req->validate([
                     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
@@ -76,11 +76,34 @@ class InicioController extends Controller{
                 $req->session()->put('contra', $req->contra);
                 return response()->json(array('resultado'=> 'OK'));
             }
+            //sessiontrabajador1
             if ($req->has(['nombre', 'apellido', 'edad'])){
 
                 $req->session()->put('nombre', $req->nombre);
                 $req->session()->put('apellido', $req->apellido);
                 $req->session()->put('edad', $req->edad);
+            }
+            //sessiontrabajador2
+            if ($req->has('campo_user')){
+
+                $req->session()->put('campo_user', $req->campo_user);
+            }
+            if ($req->has('about_user')){
+
+                $req->session()->put('about_user', $req->about_user);
+            }
+            if ($req->has('lenguaje_preferido')){
+
+                $req->session()->put('lenguaje_preferido', $req->lenguaje_preferido);
+            }
+            //sessiontrabajador3
+            if ($req->has('loc_trabajador')){
+
+                $req->session()->put('loc_trabajador', $req->loc_trabajador);
+            }
+            if ($req->has('disponibilidad')){
+
+                $req->session()->put('disponibilidad', $req->disponibilidad);
             }
             if ($req->has('foto_perfil')){
 
@@ -95,27 +118,13 @@ class InicioController extends Controller{
 
                 $req->session()->put('foto_perfil', $foto_perfil);
             }
-            if ($req->has('campo_user')){
-
-                $req->session()->put('campo_user', $req->campo_user);
-            }
-            if ($req->has('about_user')){
-
-                $req->session()->put('about_user', $req->about_user);
-            }
-            if ($req->has('loc_trabajador')){
-
-                $req->session()->put('loc_trabajador', $req->loc_trabajador);
-            }
-            if ($req->has('disponibilidad')){
-
-                $req->session()->put('disponibilidad', $req->disponibilidad);
-            }
+            //sessiontrabajador4
             if ($req->has(['nombre_idioma', 'nivel_idioma'])) {
 
                 $req->session()->put('nombre_idioma', $req->nombre_idioma);
                 $req->session()->put('nivel_idioma', $req->nivel_idioma);
             }
+            //sessiontrabajador5
             if ($req->has(['nombre_formación', 'lugar_formación', 'año_entradafor', 'año_salidafor'])) {
 
                 $req->session()->put('nombre_formación', $req->nombre_formación);
@@ -123,6 +132,7 @@ class InicioController extends Controller{
                 $req->session()->put('año_entradafor', $req->año_entradafor);
                 $req->session()->put('año_salidafor', $req->año_salidafor);
             }
+            //sessiontrabajador6
             if ($req->has(['nombre_experiencia', 'lugar_experiencia', 'funciones', 'año_entradaexp', 'año_salidaexp'])) {
 
                 $req->session()->put('nombre_experiencia', $req->nombre_experiencia);
@@ -157,13 +167,26 @@ class InicioController extends Controller{
         //formato correcto
         $created_at = $date->toDateTimeString();
 
-
+        //sessiontrabajador1
         $data = array("nombre"=>session()->get('nombre'));
-        if (session()->has('apellido')){
-            $data += array("apellido"=>session()->get('apellido'));
+        $data += array("apellido"=>session()->get('apellido'));
+        $data += array("edad"=>session()->get('edad'));
+        //sessiontrabajador2
+        if (session()->has('campo_user')){
+            $data += array("campo_user"=>session()->get('campo_user'));
         }
-        if (session()->has('edad')){
-            $data += array("edad"=>session()->get('edad'));
+        if (session()->has('about_user')){
+            $data += array("about_user"=>session()->get('about_user'));
+        }
+        if (session()->has('lenguaje_preferido')){
+            $data += array("lenguaje_preferido"=>session()->get('lenguaje_preferido'));
+        }
+        //sessiontrabajador3
+        if (session()->has('loc_trabajador')){
+            $data += array("loc_trabajador"=>session()->get('loc_trabajador'));
+        }
+        if (session()->has('disponibilidad')){
+            $data += array("disponibilidad"=>session()->get('disponibilidad'));
         }
         if (session()->has('foto_perfil')){
             $foto_perfil=explode('/',session()->get('foto_perfil'));
@@ -175,24 +198,15 @@ class InicioController extends Controller{
             
             $data += array("foto_perfil"=>'uploads/'.$foto_perfil[1]);
         }
-        if (session()->has('campo_user')){
-            $data += array("campo_user"=>session()->get('campo_user'));
-        }
-        if (session()->has('about_user')){
-            $data += array("about_user"=>session()->get('about_user'));
-        }
-        if (session()->has('loc_trabajador')){
-            $data += array("loc_trabajador"=>session()->get('loc_trabajador'));
-        }
-        if (session()->has('disponibilidad')){
-            $data += array("disponibilidad"=>session()->get('disponibilidad'));
-        }
+
         if (session()->has('nombre_idioma') || session()->has('nombre_formación') || session()->has('nombre_experiencia')){
             $datoscurriculum=[];
         }
+        //sessiontrabajador4
         if (session()->has('nombre_idioma') && session()->has('nivel_idioma')){
             $nombre_idioma=explode(',',session()->get('nombre_idioma'));
             $nivel_idioma=explode(',',session()->get('nivel_idioma'));
+            //modificar registros idiomas.json
             $dataidioma=[];
             for ($i=0; $i <count($nombre_idioma) ; $i++) {
                 $lineaidioma='"'.$i.'": {"nivel_idioma": "'.$nivel_idioma[$i].'","nombre_idioma": "'.$nombre_idioma[$i].'"}';
@@ -204,6 +218,7 @@ class InicioController extends Controller{
             array_push($datoscurriculum, $idiomas);
             
         }
+        //sessiontrabajador5
         if (session()->has('nombre_formación') && session()->has('lugar_formación') && session()->has('año_entradafor') && session()->has('año_salidafor')){
             $nombre_formación=explode(',',session()->get('nombre_formación'));
             $lugar_formación=explode(',',session()->get('lugar_formación'));
@@ -220,6 +235,7 @@ class InicioController extends Controller{
             array_push($datoscurriculum, $formaciones);
             
         }
+        //sessiontrabajador6
         if (session()->has('nombre_experiencia') && session()->has('lugar_experiencia')&& session()->has('funciones') && session()->has('año_entradaexp') && session()->has('año_salidaexp')){
 
             $nombre_experiencia=explode(',',session()->get('nombre_experiencia'));
@@ -245,6 +261,9 @@ class InicioController extends Controller{
 
             $arrcurriculum=implode(',',$datoscurriculum);
             $curriculum= '{'.$arrcurriculum.'}';
+            $data += array("curriculum"=>$curriculum);
+        } elseif (session()->has('nombre_idioma') || session()->has('nombre_formación') || session()->has('nombre_experiencia')){
+            $curriculum= '{'.$datoscurriculum[0].'}';
             $data += array("curriculum"=>$curriculum);
         }
 

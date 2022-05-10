@@ -139,7 +139,7 @@
         "ISO_639_2": "che"
     },
     {
-        "nombre_idioma": "Chichewa, Chewa, Nyanja",
+        "nombre_idioma": "Chichewa-Chewa-Nyanja",
         "ISO_639_1": "ny",
         "ISO_639_2": "nya"
     },
@@ -184,7 +184,7 @@
         "ISO_639_2": "dan"
     },
     {
-        "nombre_idioma": "Divehi, Dhivehi, Maldivas",
+        "nombre_idioma": "Divehi-Dhivehi-Maldivas",
         "ISO_639_1": "dv",
         "ISO_639_2": "div"
     },
@@ -239,7 +239,7 @@
         "ISO_639_2": "fra"
     },
     {
-        "nombre_idioma": "Fula, Fulah, Pulaar, Pular",
+        "nombre_idioma": "Fula-Fulah-Pulaar-Pular",
         "ISO_639_1": "ff",
         "ISO_639_2": "ful"
     },
@@ -274,7 +274,7 @@
         "ISO_639_2": "guj"
     },
     {
-        "nombre_idioma": "Haitiano, creole haitiano",
+        "nombre_idioma": "Haitiano-creole haitiano",
         "ISO_639_1": "ht",
         "ISO_639_2": "hat"
     },
@@ -369,7 +369,7 @@
         "ISO_639_2": "jav"
     },
     {
-        "nombre_idioma": "Kalaallisut, Groenlandia",
+        "nombre_idioma": "Kalaallisut-Groenlandia",
         "ISO_639_1": "kl",
         "ISO_639_2": "kal"
     },
@@ -399,7 +399,7 @@
         "ISO_639_2": "khm"
     },
     {
-        "nombre_idioma": "Kikuyu, Gikuyu",
+        "nombre_idioma": "Kikuyu-Gikuyu",
         "ISO_639_1": "ki",
         "ISO_639_2": "kik"
     },
@@ -409,7 +409,7 @@
         "ISO_639_2": "kin"
     },
     {
-        "nombre_idioma": "Kirguises, Kirguistán",
+        "nombre_idioma": "Kirguises-Kirguistán",
         "ISO_639_1": "ky",
         "ISO_639_2": "kir"
     },
@@ -434,7 +434,7 @@
         "ISO_639_2": "kur"
     },
     {
-        "nombre_idioma": "Kwanyama, Kuanyama",
+        "nombre_idioma": "Kwanyama-Kuanyama",
         "ISO_639_1": "kj",
         "ISO_639_2": "kua"
     },
@@ -444,7 +444,7 @@
         "ISO_639_2": "lat"
     },
     {
-        "nombre_idioma": "Luxemburgués, Luxemburgués",
+        "nombre_idioma": "Luxemburgués-Luxemburgués",
         "ISO_639_1": "lb",
         "ISO_639_2": "ltz"
     },
@@ -454,7 +454,7 @@
         "ISO_639_2": "lug"
     },
     {
-        "nombre_idioma": "Limburgués, Limburgan, Limburger",
+        "nombre_idioma": "Limburgués-Limburgan-Limburger",
         "ISO_639_1": "li",
         "ISO_639_2": "lim"
     },
@@ -594,7 +594,7 @@
         "ISO_639_2": "oji"
     },
     {
-        "nombre_idioma": "Antiguo eslavo eclesiástico, Iglesia eslava, eslavo eclesiástico, antiguo Búlgaro, Esclavo viejo",
+        "nombre_idioma": "Antiguo eslavo eclesiástico-Iglesia eslava, eslavo eclesiástico-antiguo Búlgaro-Esclavo viejo",
         "ISO_639_1": "cu",
         "ISO_639_2": "chu"
     },
@@ -659,7 +659,7 @@
         "ISO_639_2": "run"
     },
     {
-        "nombre_idioma": "Rumania, Moldavia, Moldavan",
+        "nombre_idioma": "Rumania-Moldavia-Moldavan",
         "ISO_639_1": "ro",
         "ISO_639_2": "ron"
     },
@@ -704,7 +704,7 @@
         "ISO_639_2": "srp"
     },
     {
-        "nombre_idioma": "Gaélico escocés, gaélico",
+        "nombre_idioma": "Gaélico escocés-gaélico",
         "ISO_639_1": "gd",
         "ISO_639_2": "gla"
     },
@@ -714,7 +714,7 @@
         "ISO_639_2": "sna"
     },
     {
-        "nombre_idioma": "Cingalés, singalés",
+        "nombre_idioma": "Cingalés-singalés",
         "ISO_639_1": "si",
         "ISO_639_2": "sin"
     },
@@ -739,7 +739,7 @@
         "ISO_639_2": "sot"
     },
     {
-        "nombre_idioma": "Español, castellano",
+        "nombre_idioma": "Español-castellano",
         "ISO_639_1": "es",
         "ISO_639_2": "spa"
     },
@@ -789,7 +789,7 @@
         "ISO_639_2": "tir"
     },
     {
-        "nombre_idioma": "Tibetano estándar, Tibetano, Central",
+        "nombre_idioma": "Tibetano estándar-Tibetano, Central",
         "ISO_639_1": "bo",
         "ISO_639_2": "bod"
     },
@@ -839,7 +839,7 @@
         "ISO_639_2": "tah"
     },
     {
-        "nombre_idioma": "Uighur, Uyghur",
+        "nombre_idioma": "Uighur-Uyghur",
         "ISO_639_1": "ug",
         "ISO_639_2": "uig"
     },
@@ -909,7 +909,7 @@
         "ISO_639_2": "yor"
     },
     {
-        "nombre_idioma": "Zhuang, Chuang",
+        "nombre_idioma": "Zhuang-Chuang",
         "ISO_639_1": "za",
         "ISO_639_2": "zha"
     },

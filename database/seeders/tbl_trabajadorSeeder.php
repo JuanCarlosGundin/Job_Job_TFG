@@ -64,6 +64,20 @@ class tbl_trabajadorSeeder extends Seeder
                         "nombre_idioma": "Inglés",
                         "nivel_idioma": "Medio"
                     }
+                },
+                "habilidades":{
+                    "0": {
+                        "nombre_habilidad": "PHP",
+                        "nivel_habilidad": "Experto"
+                    },
+                    "1": {
+                        "nombre_habilidad": "Bases de Datos",
+                        "nivel_habilidad": "Medio"
+                    },
+                    "2": {
+                        "nombre_habilidad": "JavaScript",
+                        "nivel_habilidad": "Avanzado"
+                    }
                 }
             }',
             'disponibilidad' => '1',
@@ -74,6 +88,9 @@ class tbl_trabajadorSeeder extends Seeder
             'mobilidad' => '1',
             'carnet_conducir' => '1',
             'vehiculo_propio' => '1',
+            'telefono' => '639928467',
+            'github' =>'github.com/sergiojimenez',
+            'lenguaje_preferido' => 'PHP',
         ]);
         DB::table('tbl_trabajador')->insert([
             'id_usuario'=>3,
@@ -129,6 +146,16 @@ class tbl_trabajadorSeeder extends Seeder
                         "nombre_idioma": "Francés",
                         "nivel_idioma": "Alto"
                     }
+                },
+                "habilidades":{
+                    "0": {
+                        "nombre_habilidad": "Bases de Datos",
+                        "nivel_habilidad": "Experto"
+                    },
+                    "1": {
+                        "nombre_habilidad": "CSS",
+                        "nivel_habilidad": "Alto"
+                    }
                 }
             }',
             'disponibilidad' => '1',
@@ -139,6 +166,9 @@ class tbl_trabajadorSeeder extends Seeder
             'mobilidad' => '1',
             'carnet_conducir' => '1',
             'vehiculo_propio' => '1',
+            'telefono' => '639928560',
+            'linkedin' => 'linkedin.com/agnesplans',
+            'lenguaje_preferido' => 'SQL',
         ]);
         DB::table('tbl_trabajador')->insert([
             'id_usuario'=>4,
@@ -190,6 +220,20 @@ class tbl_trabajadorSeeder extends Seeder
                         "nombre_idioma": "Inglés",
                         "nivel_idioma": "Bajo"
                     }
+                },
+                "habilidades":{
+                    "0": {
+                        "nombre_habilidad": "Java",
+                        "nivel_habilidad": "Experto"
+                    },
+                    "1": {
+                        "nombre_habilidad": "GitHub",
+                        "nivel_habilidad": "Experto"
+                    },
+                    "2": {
+                        "nombre_habilidad": "Python",
+                        "nivel_habilidad": "Medio"
+                    }
                 }
             }',
             'disponibilidad' => '1',
@@ -200,6 +244,10 @@ class tbl_trabajadorSeeder extends Seeder
             'mobilidad' => '1',
             'carnet_conducir' => '1',
             'vehiculo_propio' => '1',
+            'telefono' => '645928437',
+            'linkedin' => 'linkedin.com/dannylarrea',
+            'github' =>'github.com/dannylarrea',
+            'lenguaje_preferido' => 'Java',
         ]);
         DB::table('tbl_trabajador')->insert([
             'id_usuario'=>5,
@@ -245,6 +293,16 @@ class tbl_trabajadorSeeder extends Seeder
                         "nombre_idioma": "Inglés",
                         "nivel_idioma": "Medio"
                     }
+                },
+                "habilidades":{
+                    "0": {
+                        "nombre_habilidad": "JavaScript",
+                        "nivel_habilidad": "Experto"
+                    },
+                    "1": {
+                        "nombre_habilidad": "Java",
+                        "nivel_habilidad": "Alto"
+                    }
                 }
             }',
             'disponibilidad' => '1',
@@ -255,6 +313,10 @@ class tbl_trabajadorSeeder extends Seeder
             'mobilidad' => '1',
             'carnet_conducir' => '1',
             'vehiculo_propio' => '1',
+            'telefono' => '637859201',
+            'linkedin' => 'linkedin.com/ignasiromero',
+            'github' =>'github.com/ignasiromero',
+            'lenguaje_preferido' => 'JavaScript',
         ]);
     }
 }

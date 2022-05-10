@@ -319,7 +319,6 @@ function sessiontrabajador0(evt) {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('mail', mail);
-    formData.append('nombre', nombre);
     formData.append('contra', contra);
     formData.append('contra2', contra2);
 
@@ -474,7 +473,7 @@ function sessiontrabajador1(evt) {
 
 }
 
-//nombre-apellido-edad-foto
+//campo-about-loc-lenguaje_preferido
 function formtrabajador2() {
 
     var tabla = document.getElementById("main");
@@ -492,10 +491,20 @@ function formtrabajador2() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
-    //Foto
+    //campo_user
     recarga += '<div class="column-2">';
-    recarga += '<p>Foto</p>';
-    recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil"><br><br>';
+    recarga += '<p>Sector</p>';
+    recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '</div>';
+    //about_user
+    recarga += '<div class="column-2">';
+    recarga += '<p>Introduce más información sobre tí</p>';
+    recarga += '<input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi..."><br><br>';
+    recarga += '</div>';
+    //lenguaje_preferido
+    recarga += '<div class="column-2">';
+    recarga += '<p>Lenguaje preferido</p>';
+    recarga += '<input type="text" class="inputregister" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="lenguaje preferido..."><br><br>';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
@@ -517,21 +526,22 @@ function sessiontrabajador2(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-
-    let foto_perfil = document.getElementById('foto_perfil').files[0];
+    let campo_user = document.getElementById('campo_user').value;
+    let about_user = document.getElementById('about_user').value;
+    let lenguaje_preferido = document.getElementById('lenguaje_preferido').value;
 
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
-    if (apellido) {
-        formData.append('apellido', apellido);
+    if (campo_user) {
+        formData.append('campo_user', campo_user);
     }
-    if (edad) {
-        formData.append('edad', edad);
+    if (about_user) {
+        formData.append('about_user', about_user);
     }
-    if (foto_perfil) {
-        formData.append('foto_perfil', foto_perfil);
+    if (lenguaje_preferido) {
+        formData.append('lenguaje_preferido', lenguaje_preferido);
     }
 
 
@@ -579,7 +589,7 @@ function sessiontrabajador2(evt) {
 
 }
 
-//campo-about-loc-disponibilidad
+//loc_traba-disponibilidad-foto_perfil
 function formtrabajador3() {
 
     var tabla = document.getElementById("main");
@@ -597,15 +607,6 @@ function formtrabajador3() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
-    //campo_user
-    recarga += '<div class="column-2">';
-    recarga += '<p>Sector</p>';
-    recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br>';
-    recarga += '</div>';
-    //about_user
-    recarga += '<div class="column-2">';
-    recarga += '<p>Introduce más información sobre tí</p><input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi..."><br><br>';
-    recarga += '</div>';
     //loc_trabajador
     recarga += '<div class="column-2">';
     recarga += '<p>Localización</p>';
@@ -623,6 +624,11 @@ function formtrabajador3() {
     recarga += '<option value="turno partida">turno partida</option>';
     recarga += '<option value="fines de semana">fines de semana</option>';
     recarga += '</select><br><br>';
+    recarga += '</div>';
+    //Foto
+    recarga += '<div class="column-2">';
+    recarga += '<p>Foto</p>';
+    recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil"><br><br>';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
@@ -643,27 +649,22 @@ function sessiontrabajador3(evt) {
     evt.preventDefault();
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
-
-    let campo_user = document.getElementById('campo_user').value;
-    let about_user = document.getElementById('about_user').value;
     let loc_trabajador = document.getElementById('loc_trabajador').value;
     let disponibilidad = document.getElementById('disponibilidad').value;
+    let foto_perfil = document.getElementById('foto_perfil').files[0];
 
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
-    if (campo_user) {
-        formData.append('campo_user', campo_user);
-    }
-    if (about_user) {
-        formData.append('about_user', about_user);
-    }
     if (loc_trabajador) {
         formData.append('loc_trabajador', loc_trabajador);
     }
     if (disponibilidad) {
         formData.append('disponibilidad', disponibilidad);
+    }
+    if (foto_perfil) {
+        formData.append('foto_perfil', foto_perfil);
     }
 
 
@@ -745,7 +746,7 @@ function formtrabajador4() {
     recarga += '<div class="column-2">';
     recarga += '<p>nivel_idioma</p>';
     recarga += '<select class="nivel_idioma inputregister" name="nivel_idioma[]" id="nivel_idioma">';
-    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<option value="" selected>- selecciona -</option>';
     recarga += '<option value="bajo">bajo</option>';
     recarga += '<option value="medio">medio</option>';
     recarga += '<option value="alto">alto</option>';
@@ -785,7 +786,7 @@ function insertaridioma() {
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_idioma</p>';
     recarga += '<select class="inputregister" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
-    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<option value="" selected>- selecciona -</option>';
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
@@ -795,7 +796,7 @@ function insertaridioma() {
     recarga += '<div class="column-2">';
     recarga += '<p>nivel_idioma</p>';
     recarga += '<select class="inputregister" name="nivel_idioma[]" id="nivel_idioma">';
-    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<option value="" selected>- selecciona -</option>';
     recarga += '<option value="bajo">bajo</option>';
     recarga += '<option value="medio">medio</option>';
     recarga += '<option value="alto">alto</option>';
