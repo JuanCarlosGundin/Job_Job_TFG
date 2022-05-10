@@ -5,7 +5,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
-
+use App\Http\Controllers\PerfilController;
 
 Route::get('registrar', function () {
     return view('registrar');
@@ -23,17 +23,19 @@ Route::get('registrar4', function () {
     return view('registrar4');
 });
 
+/* ------------InicioController------------ */
+
+//Landing page
 Route::get('/', [InicioController::class, 'index']);
 
+//pagina inicio
 Route::get('/inicio', [InicioController::class, 'inicio']);
 
-//Acceder al swapper
+//Acceder a pagina swapper
 Route::get('home', [InicioController::class, 'home']);
 
-/* Login */
 //Login
 Route::post('loginuser', [InicioController::class, 'loginuser']);
-/* Login */
 
 /* Registrar */
 
@@ -63,6 +65,19 @@ Route::post('activarcuenta', [InicioController::class, 'activarcuenta']);
 Route::get('logout', [UsuarioController::class, 'logout']);
 
 /* ------------InicioController------------ */
+
+/* ------------PerfilController------------ */
+
+//Vista perfil
+Route::get('perfil',[PerfilController::class, 'vistaPerfil']);
+
+// mostrarperfil.
+Route::post('leerperfil',[PerfilController::class, 'leerperfiledit']);
+
+// editarperfil
+Route::put('editarperfil/{id}/{id_perfil}',[PerfilController::class, 'editarperfil']);
+
+/* ------------PerfilController------------ */
 
 
 
@@ -121,17 +136,5 @@ Route::post('leerperfiluser/{id}/{id_perfil}',[UsuarioController::class, 'leerpe
 
 ///ZONA NOTIFICACIONES
 
-/*EDITAR PERFIL*/
-
-//Vista perfil
-Route::get('perfil',[UsuarioController::class, 'vistaPerfil']);
-
-// mostrarperfil.
-Route::post('leerperfil',[UsuarioController::class, 'leerperfiledit']);
-
-// editarperfil
-Route::put('editarperfil/{id}/{id_perfil}',[UsuarioController::class, 'editarperfil']);
-
-/*FIN EDITAR PERFIL*/
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
