@@ -20,17 +20,13 @@
             <li><a href="">FAQ</a></li>
             <li><a href="">¡Contactanos!</a></li>
             {{-- <li><a href="" class="fa-solid fa-right-to-bracket"></a></li> --}}
-            <li><form style="display:inline;" action="{{url('login')}}" method="GET">
-                <button class="btn-register">Iniciar sesión</button>
-                </form></li>
+            <li><button class="btn-register" onClick="window.location.href='inicio';">Iniciar sesión</button></li>
             </div>
     </div>
     <div class="column-3">
     <h2>Encuentra trabajo con tan solo deslizar</h2><br>
     <h3>Gracias a JobJob podrás encontrar el trabajo de tus sueños ya que contamos con las mejores empresas del sector tecnológico.</h3>
-    <form action="{{url('registrar')}}" method="GET">
-        <button class="btn-index">Empezar</button>
-    </form>
+    <button class="btn-index" onClick="window.location.href='registrar';">Empezar</button>
     </div>
     <div class="column-4">
         <img src="storage/uploads/movil_ordenador.png">
