@@ -1120,7 +1120,7 @@ function formtrabajador6() {
     //funciones
     recarga += '<div class="column-1">';
     recarga += '<p>funciones</p>';
-    recarga += '<input type="text" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
+    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
@@ -1173,7 +1173,7 @@ function insertarexperiencia() {
     //funciones
     recarga += '<div class="column-1">';
     recarga += '<p>funciones</p>';
-    recarga += '<input type="text" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
+    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';

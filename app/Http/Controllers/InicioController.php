@@ -71,11 +71,11 @@ class InicioController extends Controller{
         try {
             //sessiontrabajador0
             if ($req->has(['mail', 'contra', 'contra2'])) {
-                $req->validate([
+                /* $req->validate([
                     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
                     'contra'=>'required|string|min:8|max:100',
                     'contra2'=>'required|same:contra'
-                ]);
+                ]); */
                 $req->session()->put('mail', $req->mail);
                 $req->session()->put('contra', $req->contra);
                 return response()->json(array('resultado'=> 'OK'));
