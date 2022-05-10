@@ -73,16 +73,13 @@ class InicioController extends Controller{
                     'contra2'=>'required|same:contra'
                 ]);
                 $req->session()->put('mail', $req->mail);
-                /* $req->session()->put('nombre', $req->nombre); */
                 $req->session()->put('contra', $req->contra);
                 return response()->json(array('resultado'=> 'OK'));
             }
-            if ($req->has('apellido')){
+            if ($req->has(['nombre', 'apellido', 'edad'])){
 
+                $req->session()->put('nombre', $req->nombre);
                 $req->session()->put('apellido', $req->apellido);
-            }
-            if ($req->has('edad')){
-
                 $req->session()->put('edad', $req->edad);
             }
             if ($req->has('foto_perfil')){

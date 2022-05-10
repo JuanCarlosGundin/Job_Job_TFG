@@ -407,43 +407,15 @@ function sessiontrabajador1(evt) {
 
     evt.preventDefault();
 
-    let mail = document.getElementById('mail').value;
     let nombre = document.getElementById('nombre').value;
-    let contra = document.getElementById('contra').value;
-    let contra2 = document.getElementById('contra2').value;
+    let apellido = document.getElementById('apellido').value;
+    let edad = document.getElementById('edad').value;
 
-    if (!mail || !nombre || !contra || !contra2) {
+    if (!nombre || !apellido || !edad) {
 
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
-            icon: "error",
-        });
-        return false;
-
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
-
-        swal.fire({
-            title: "Error",
-            text: "Introduce un email correcto",
-            icon: "error",
-        });
-        return false;
-
-    } else if (mail.length > 100) {
-
-        swal.fire({
-            title: "Error",
-            text: "El email no puede ser más largo de 100 caracteres",
-            icon: "error",
-        });
-        return false;
-
-    } else if (contra !== contra2) {
-
-        swal.fire({
-            title: "Error",
-            text: "No coinciden las contraseñas",
             icon: "error",
         });
         return false;
@@ -454,10 +426,9 @@ function sessiontrabajador1(evt) {
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
-    formData.append('mail', mail);
     formData.append('nombre', nombre);
-    formData.append('contra', contra);
-    formData.append('contra2', contra2);
+    formData.append('apellido', apellido);
+    formData.append('edad', edad);
 
 
     var ajax = objetoAjax();
@@ -546,8 +517,7 @@ function sessiontrabajador2(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let apellido = document.getElementById('apellido').value;
-    let edad = document.getElementById('edad').value;
+
     let foto_perfil = document.getElementById('foto_perfil').files[0];
 
     var formData = new FormData();
