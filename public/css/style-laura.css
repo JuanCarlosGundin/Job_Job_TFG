@@ -428,25 +428,25 @@ body {
 }
 
 .bodylogin .modal-login .modal-content .inputlogin::-webkit-input-placeholder {
-  color: #c5bfbf;
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
 .bodylogin .modal-login .modal-content .inputlogin:-ms-input-placeholder {
-  color: #c5bfbf;
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
 .bodylogin .modal-login .modal-content .inputlogin::-ms-input-placeholder {
-  color: #c5bfbf;
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
 .bodylogin .modal-login .modal-content .inputlogin::placeholder {
-  color: #c5bfbf;
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
@@ -559,11 +559,23 @@ body {
   }
   .bodylogin .modal-login .modal-content .inputlogin {
     width: 100% !important;
-    height: 42px !important;
+    height: 6vh !important;
+  }
+  .bodylogin .modal-login .modal-content .inputlogin::-webkit-input-placeholder {
+    font-size: 2.2vh;
+  }
+  .bodylogin .modal-login .modal-content .inputlogin:-ms-input-placeholder {
+    font-size: 2.2vh;
+  }
+  .bodylogin .modal-login .modal-content .inputlogin::-ms-input-placeholder {
+    font-size: 2.2vh;
+  }
+  .bodylogin .modal-login .modal-content .inputlogin::placeholder {
+    font-size: 2.2vh;
   }
   .bodylogin .modal-login .modal-content .botonlogin {
     width: 100%;
-    height: 40px;
+    height: 6vh;
     margin-bottom: 3px;
   }
   .bodylogin .modal-login .modal-content .opciones .opcion {
@@ -582,7 +594,7 @@ body {
   }
   .bodylogin .modal-login .modal-content .contraseña {
     padding-top: 3px;
-    font-size: 1.7vh;
+    font-size: 2vh;
     text-align: left;
   }
   .bodylogin .modal-login .modal-content .linea {
@@ -645,7 +657,7 @@ body {
 
 .bodylogin .modal-content-register-cuadrados h3 {
   font-weight: bold;
-  padding-top: 11vh;
+  padding-top: 10vh;
   padding-bottom: 7vh;
   font-size: 3.5vh;
 }
@@ -693,7 +705,7 @@ body {
   .bodylogin .modal-content-register-cuadrados h3 {
     font-size: 3vh;
     margin-bottom: 4vh;
-    padding-top: 5vh;
+    padding-top: 6vh;
     padding-bottom: 0vh;
     margin-top: 1vh;
   }
@@ -718,13 +730,37 @@ body {
 }
 
 .bodylogin .modal-content-register {
+  border: white;
+  text-align: center;
   width: 100%;
-  height: auto;
+  height: 70vh;
+}
+
+.bodylogin .modal-content-register .izquierda-derecha .izquierda,
+.bodylogin .modal-content-register .izquierda-derecha .derecha,
+.bodylogin .modal-content-register .izquierda-derecha .mas,
+.bodylogin .modal-content-register .izquierda-derecha .menos {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  color: #186CA7;
+  border: none;
+  background-color: transparent;
+  font-size: 35px;
+}
+
+.bodylogin .modal-content-register .izquierda-derecha .izquierda {
+  padding-left: 9vh;
+  float: left;
+}
+
+.bodylogin .modal-content-register .izquierda-derecha .derecha {
+  padding-right: 9vh;
+  float: right;
 }
 
 .bodylogin .modal-content-register h3 {
   font-weight: bold;
-  padding-top: 8vh;
+  padding-top: 6vh;
   padding-bottom: 6vh;
   font-size: 3.5vh;
 }
@@ -736,53 +772,53 @@ body {
   padding-right: 5%;
 }
 
-.bodylogin .modal-content-register .column-2 p {
+.bodylogin .modal-content-register p {
   font-size: 2.5vh !important;
   font-weight: 600;
   text-align: left;
   color: rgba(0, 0, 0, 0.594);
 }
 
-.bodylogin .modal-content-register .column-2 .inputregister {
-  margin-bottom: 1rem;
+.bodylogin .modal-content-register .inputregister {
   font-size: 15px;
   border-radius: 15px;
-  border: #186CA7 solid 2px;
-  width: 100% !important;
-  height: 42px !important;
+  border: #186CA7 solid 1.5px;
+  width: 60% !important;
+  height: 7vh !important;
 }
 
-.bodylogin .modal-content-register .column-2 .inputregister::-webkit-input-placeholder {
-  color: #c5bfbf;
+.bodylogin .modal-content-register .inputregister::-webkit-input-placeholder {
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .column-2 .inputregister:-ms-input-placeholder {
-  color: #c5bfbf;
+.bodylogin .modal-content-register .inputregister:-ms-input-placeholder {
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .column-2 .inputregister::-ms-input-placeholder {
-  color: #c5bfbf;
+.bodylogin .modal-content-register .inputregister::-ms-input-placeholder {
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .column-2 .inputregister::placeholder {
-  color: #c5bfbf;
+.bodylogin .modal-content-register .inputregister::placeholder {
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .column-2 .foto {
+.bodylogin .modal-content-register .foto {
   width: 80%;
-  float: left;
+  display: inline-block;
+  text-align: center;
   margin-bottom: 1rem;
 }
 
-.bodylogin .modal-content-register .column-2 select {
+.bodylogin .modal-content-register select {
   border-radius: 15px;
   border: #186CA7 solid 2px;
   width: 15% !important;
@@ -798,7 +834,7 @@ body {
           box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
   color: white;
   font-weight: bold;
-  width: 40%;
+  width: 60% !important;
   height: 40px;
   margin-bottom: 20px;
 }
@@ -806,41 +842,40 @@ body {
 @media only screen and (max-width: 450px) {
   .bodylogin .modal-content-register {
     height: 75vh;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   .bodylogin .modal-content-register h3 {
     font-size: 3vh;
     padding-bottom: 4vh;
   }
-  .bodylogin .modal-content-register .column-2 {
-    width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-  .bodylogin .modal-content-register .column-2 .inputregister {
+  .bodylogin .modal-content-register .inputregister {
     height: 6vh !important;
+    width: 90% !important;
   }
-  .bodylogin .modal-content-register .column-2 .inputregister::-webkit-input-placeholder {
+  .bodylogin .modal-content-register .inputregister::-webkit-input-placeholder {
     font-size: 2.2vh;
   }
-  .bodylogin .modal-content-register .column-2 .inputregister:-ms-input-placeholder {
+  .bodylogin .modal-content-register .inputregister:-ms-input-placeholder {
     font-size: 2.2vh;
   }
-  .bodylogin .modal-content-register .column-2 .inputregister::-ms-input-placeholder {
+  .bodylogin .modal-content-register .inputregister::-ms-input-placeholder {
     font-size: 2.2vh;
   }
-  .bodylogin .modal-content-register .column-2 .inputregister::placeholder {
+  .bodylogin .modal-content-register .inputregister::placeholder {
     font-size: 2.2vh;
   }
-  .bodylogin .modal-content-register .column-2 .select {
+  .bodylogin .modal-content-register .select {
     font-size: 2.2vh !important;
   }
-  .bodylogin .modal-content-register .column-2 .foto {
+  .bodylogin .modal-content-register .foto {
     padding-bottom: 1rem;
   }
-  .bodylogin .botonregister {
-    width: 70% !important;
+  .bodylogin .modal-content-register .botonregister {
+    width: 90% !important;
     font-size: 2.1vh;
-    height: 5vh !important;
+    height: 6vh !important;
   }
 }
 /*# sourceMappingURL=style-laura.css.map */

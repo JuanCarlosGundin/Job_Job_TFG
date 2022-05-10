@@ -26,7 +26,7 @@
     <div class="column-3">
     <h2>Encuentra trabajo con tan solo deslizar</h2><br>
     <h3>Gracias a JobJob podrás encontrar el trabajo de tus sueños ya que contamos con las mejores empresas del sector tecnológico.</h3>
-    <button class="btn-index" onClick="window.location.href='registrar';">Empezar</button>
+    <button class="btn-index" onClick="window.location.href='inicio';">Empezar</button>
     </div>
     <div class="column-4">
         <img src="storage/uploads/movil_ordenador.png">

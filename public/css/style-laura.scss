@@ -404,7 +404,7 @@ body {
                 height: 7vh;
             }
             .inputlogin::placeholder {
-                color: rgb(197, 191, 191);
+                color: rgb(124, 123, 123);
                 padding-left: 2%;
                 font-weight: 440;
             }
@@ -521,11 +521,14 @@ body {
                 }
                 .inputlogin {
                     width: 100% !important;
-                    height: 42px !important;
+                    height: 6vh !important;
+                }
+                .inputlogin::placeholder {
+                    font-size: 2.2vh;
                 }
                 .botonlogin {
                     width: 100%;
-                    height: 40px;
+                    height: 6vh;
                     margin-bottom: 3px;
                 }
                 .opciones {
@@ -546,7 +549,7 @@ body {
                 }
                 .contraseña {
                     padding-top: 3px;
-                    font-size: 1.7vh;
+                    font-size: 2vh;
                     text-align: left;
                 }
                 .linea {
@@ -614,7 +617,7 @@ body {
         height: 72vh;
         h3 {
             font-weight: bold;
-            padding-top: 11vh;
+            padding-top: 10vh;
             padding-bottom: 7vh;
             font-size: 3.5vh;
         }
@@ -656,7 +659,7 @@ body {
             h3 {
                 font-size: 3vh;
                 margin-bottom: 4vh;
-                padding-top: 5vh;
+                padding-top: 6vh;
                 padding-bottom: 0vh;
                 margin-top: 1vh;
             }
@@ -686,54 +689,77 @@ body {
     }
     //contenido del modal
     .modal-content-register {
+        border: white;
+        text-align: center;
         width: 100%;
-        height: auto;
+        height: 70vh;
+        .izquierda-derecha {
+            .izquierda,
+            .derecha,
+            .mas,
+            .menos {
+                padding-top: 3vh;
+                padding-bottom: 3vh;
+                color: $first-color;
+                border: none;
+                background-color: transparent;
+                font-size: 35px;
+            }
+            .izquierda {
+                padding-left: 9vh;
+                float: left;
+            }
+            .derecha {
+                padding-right: 9vh;
+                float: right;
+            }
+        }
         h3 {
             font-weight: bold;
-            padding-top: 8vh;
+            padding-top: 6vh;
             padding-bottom: 6vh;
             font-size: 3.5vh;
         }
-        //poner inputs en dos columnas distintas
         .column-2 {
             width: 50%;
             float: left;
             padding-left: 5%;
             padding-right: 5%;
-            p {
-                font-size: 2.5vh !important;
-                font-weight: 600;
-                text-align: left;
-                color: rgba(0, 0, 0, 0.594);
-            }
-            //estilos inputs
-            .inputregister {
-                margin-bottom: 1rem;
-                font-size: 15px;
-                border-radius: 15px;
-                border: $first-color solid 2px;
-                width: 100% !important;
-                height: 42px !important;
-            }
-            .inputregister::placeholder {
-                color: rgb(197, 191, 191);
-                padding-left: 2%;
-                font-weight: 440;
-            }
-            //estilos input foto
-            .foto {
-                width: 80%;
-                float: left;
-                margin-bottom: 1rem;
-            }
-            //estilos input select
-            select {
-                border-radius: 15px;
-                border: $first-color solid 2px;
-                width: 15% !important;
-                height: 42px !important;
-                margin-bottom: 1rem;
-            }
+        }
+        //poner inputs en dos columnas distintas
+        p {
+            font-size: 2.5vh !important;
+            font-weight: 600;
+            text-align: left;
+            color: rgba(0, 0, 0, 0.594);
+        }
+        //estilos inputs
+        .inputregister {
+            font-size: 15px;
+            border-radius: 15px;
+            border: $first-color solid 1.5px;
+            width: 60% !important;
+            height: 7vh !important;
+        }
+        .inputregister::placeholder {
+            color: rgb(124, 123, 123);
+            padding-left: 2%;
+            font-weight: 440;
+        }
+        //estilos input foto
+        .foto {
+            width: 80%;
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        //estilos input select
+        select {
+            border-radius: 15px;
+            border: $first-color solid 2px;
+            width: 15% !important;
+            height: 42px !important;
+            margin-bottom: 1rem;
         }
         .botonregister {
             border-radius: 15px;
@@ -742,7 +768,7 @@ body {
             box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
             color: white;
             font-weight: bold;
-            width: 40%;
+            width: 60% !important;
             height: 40px;
             margin-bottom: 20px;
         }
@@ -758,28 +784,27 @@ body {
                 font-size: 3vh;
                 padding-bottom: 4vh;
             }
-            .column-2 {
-                width: 100%;
-                padding-left: 5%;
-                padding-right: 5%;
-                .inputregister {
-                    height: 6vh !important;
-                }
-                .inputregister::placeholder {
-                    font-size: 2.2vh;
-                }
-                .select {
-                    font-size: 2.2vh !important;
-                }
-                .foto {
-                    padding-bottom: 1rem;
-                }
+            width: 100%;
+            padding-left: 5%;
+            padding-right: 5%;
+            .inputregister {
+                height: 6vh !important;
+                width: 90% !important;
             }
-        }
-        .botonregister {
-            width: 70% !important;
-            font-size: 2.1vh;
-            height: 5vh !important;
+            .inputregister::placeholder {
+                font-size: 2.2vh;
+            }
+            .select {
+                font-size: 2.2vh !important;
+            }
+            .foto {
+                padding-bottom: 1rem;
+            }
+            .botonregister {
+                width: 90% !important;
+                font-size: 2.1vh;
+                height: 6vh !important;
+            }
         }
     }
 }

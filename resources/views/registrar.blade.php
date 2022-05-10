@@ -10,7 +10,6 @@
     <title>JobJob</title>
     <link rel="stylesheet" href="{!! asset('css/style-laura.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">
-    <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
 </head>
 <body class="bodylogin">
     <button type="button" class="darkmodeswitch" id="switch" onclick="cambiarModo()"><span><i class="fa fa-sun-o"></i></span>   
