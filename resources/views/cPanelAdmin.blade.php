@@ -52,7 +52,7 @@
                     <div class="modal-content">
                       <span class="close">&times;</span>
 
-                                  <form method="POST" onsubmit="enviarcorreoadminJS(); return false;">
+                                  {{-- <form method="POST" onsubmit="enviarcorreoadminJS(); return false;">
                                       <h2>CONTACTAR USUARIO</h2>
                                       <input type="text" name="destinatario" id="destinatario" placeholder="Introduce el destinatario"><br><br>
                                       <input type="text" name="asunto" id="asunto" placeholder="Introduce el asunto"><br><br>
@@ -61,7 +61,7 @@
                                             Enviar
                                       </button>
                                     
-                                  </form><br><br>
+                                  </form><br><br> --}}
                                   <form method="POST" onsubmit="enviarcorreoadmintrabajadoresJS(); return false;">
                                     <h2>CONTACTAR TRABAJADORES</h2>
                                     <input type="text" name="asunto" id="asunto" placeholder="Introduce el asunto"><br><br>

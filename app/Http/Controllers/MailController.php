@@ -90,43 +90,43 @@ class MailController extends Controller
             }
         
     }
-    public function enviarcorreoadmin(Request $request){
+    // public function enviarcorreoadmin(Request $request){
         
-        $destinatario = $request->input('destinatario');
-        $asunto = $request->input('asunto');
-        $mensaje = $request->input('mensaje');
-        $cuerpo = 'Hola, te contactamos desde JobJob. '. "\n" .'Te escribimos para decirte que '.$mensaje;
+    //     $destinatario = $request->input('destinatario');
+    //     $asunto = $request->input('asunto');
+    //     $mensaje = $request->input('mensaje');
+    //     $cuerpo = 'Hola, te contactamos desde JobJob. '. "\n" .'Te escribimos para decirte que '.$mensaje;
 
-        //---------Validaciones---------
-        //primer array de validaciones donde ponemos las reglas
-        $this->validate($request, [
-            'destinatario' => 'required',
-            'asunto' => 'required',
-            'mensaje' => 'required',
-        ],
-        // segundo array donde ponemos el mensaje personalizado para cada regla
-        [
-            'destinatario.required' => 'El destinatario no se puede quedar en blanco',
-            'asunto.required' => 'El asunto no se puede quedar en blanco',
-            'mensaje.required' => 'El mensaje no se puede quedar en blanco',
-        ]);
-        try{
+    //     //---------Validaciones---------
+    //     //primer array de validaciones donde ponemos las reglas
+    //     $this->validate($request, [
+    //         'destinatario' => 'required',
+    //         'asunto' => 'required',
+    //         'mensaje' => 'required',
+    //     ],
+    //     // segundo array donde ponemos el mensaje personalizado para cada regla
+    //     [
+    //         'destinatario.required' => 'El destinatario no se puede quedar en blanco',
+    //         'asunto.required' => 'El asunto no se puede quedar en blanco',
+    //         'mensaje.required' => 'El mensaje no se puede quedar en blanco',
+    //     ]);
+    //     try{
             
-            Mail::raw($cuerpo, function ($message) use($asunto, $destinatario) {
+    //         Mail::raw($cuerpo, function ($message) use($asunto, $destinatario) {
 
-                $message->to($destinatario)
-                  ->subject('Solicitud de contacto de JobJob con el asunto: '.$asunto);
+    //             $message->to($destinatario)
+    //               ->subject('Solicitud de contacto de JobJob con el asunto: '.$asunto);
 
-              });
-            return response()->json("OK");  
-            }catch(\Throwable $th){
-                return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
-            }
+    //           });
+    //         return response()->json("OK");  
+    //         }catch(\Throwable $th){
+    //             return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+    //         }
         
-    }
+    // }
     public function enviarcorreoadmintrabajadores(Request $request){
         $trabajadores = DB::table('tbl_usuarios')->select('mail')->where('id_perfil','=','2')->get();
-        return $trabajadores;
+        $trabajadores=$trabajadores->mail;
         $asunto = $request->input('asunto');
         $mensaje = $request->input('mensaje');
         $cuerpo = 'Hola, te contactamos desde JobJob. '. "\n" .'Te escribimos para decirte que '.$mensaje;
@@ -134,21 +134,20 @@ class MailController extends Controller
         //---------Validaciones---------
         //primer array de validaciones donde ponemos las reglas
         $this->validate($request, [
-            'destinatario' => 'required',
             'asunto' => 'required',
             'mensaje' => 'required',
         ],
         // segundo array donde ponemos el mensaje personalizado para cada regla
         [
-            'destinatario.required' => 'El destinatario no se puede quedar en blanco',
             'asunto.required' => 'El asunto no se puede quedar en blanco',
             'mensaje.required' => 'El mensaje no se puede quedar en blanco',
         ]);
+        foreach($trabajadores as $trabajador){
         try{
             
-            Mail::raw($cuerpo, function ($message) use($asunto, $destinatario) {
+            Mail::raw($cuerpo, function ($message) use($asunto, $trabajador) {
 
-                $message->to($destinatario)
+                $message->to($trabajador)
                   ->subject('Solicitud de contacto de JobJob con el asunto: '.$asunto);
 
               });
@@ -157,5 +156,5 @@ class MailController extends Controller
                 return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
             }
         
-    }
+    }}
 }
