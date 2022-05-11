@@ -44,42 +44,7 @@
     </div> --}} -->
   </div>
     <div class="region-content row" id="carta">
-        {{-- EMPIEZA TINDER --}}
-        <div class="swiper">
-            <div class="swiper--status">
-              <i class="fa fa-remove"></i>
-              <i class="fa fa-briefcase"></i>
-            </div>
-            <div class="swiper--cards">
-              <div class="swiper--card" id="mainCard">
-              </div>
-              <div class="swiper--card no-swipe">
-                <img src="img/jobjob_tarjeta.png">
-              </div>
-              <div class="swiper--card no-swipe">
-                <img src="img/jobjob_tarjeta.png">
-              </div>
-              <div class="swiper--card no-swipe">
-                <img src="img/jobjob_tarjeta.png">
-              </div>
-              <div class="swiper--card no-swipe">
-                <img src="img/jobjob_tarjeta.png">
-              </div>
-            </div>
-          
-        </div>
-          <!-- {{-- ACABA TINDER --}} -->
-        <div class="botones-home row swiper--buttons">
-            <div class="boton-cruz">
-                <button class="icono-cruz" id="nope"><i class="fa-solid fa-remove"></i></button>
-            </div>
-            <div class="boton-info">
-                <button class="icono-info" id="info"><i class="fa-solid fa-info"></i></button>
-            </div>
-            <div class="boton-maletin">
-                <button class="icono-maletin" id="love"><i class="fa-solid fa-briefcase"></i></button>
-            </div>
-        </div>
+        
     </div>
     <script src="js/swiper.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

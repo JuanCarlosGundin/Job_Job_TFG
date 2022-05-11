@@ -4,6 +4,7 @@ window.onload = function() {
         let vh = window.innerHeight * 0.01;
         // Then we set the value in the --vh custom property to the root of the document
         document.documentElement.style.setProperty('--vh', `${vh}px`);
+        estructura();
         reload();
         mostrar()
     }
@@ -20,6 +21,48 @@ navbarAlerts.onclick = function() {
 }
 navbarMain.onclick = function() {
     window.location.href = "./home";
+}
+
+function estructura() {
+    var carta = document.getElementById("carta");
+    var recarga = "";
+
+    //EMPIEZA TINDER
+    recarga += '<div class="swiper">';
+    recarga += '<div class="swiper--status">';
+    recarga += '<i class="fa fa-remove"></i>';
+    recarga += '<i class="fa fa-briefcase"></i>';
+    recarga += '</div>';
+    recarga += '<div class="swiper--cards">';
+    recarga += '<div class="swiper--card" id="mainCard">';
+    recarga += '</div>';
+    recarga += '<div class="swiper--card no-swipe">';
+    recarga += '<img src="img/jobjob_tarjeta.png">';
+    recarga += '</div>';
+    recarga += '<div class="swiper--card no-swipe">';
+    recarga += '<img src="img/jobjob_tarjeta.png">';
+    recarga += '</div>';
+    recarga += '<div class="swiper--card no-swipe">';
+    recarga += '<img src="img/jobjob_tarjeta.png">';
+    recarga += '</div>';
+    recarga += '<div class="swiper--card no-swipe">';
+    recarga += '<img src="img/jobjob_tarjeta.png">';
+    recarga += '</div>';
+    recarga += '</div>';
+    recarga += '</div>';
+    //ACABA TINDER
+    recarga += '<div class="botones-home row swiper--buttons">';
+    recarga += '<div class="boton-cruz">';
+    recarga += '<button class="icono-cruz" id="nope"><i class="fa-solid fa-remove"></i></button>';
+    recarga += '</div>';
+    recarga += '<div class="boton-info">';
+    recarga += '<button class="icono-info" id="info"><i class="fa-solid fa-info"></i></button>';
+    recarga += '</div>';
+    recarga += '<div class="boton-maletin">';
+    recarga += '<button class="icono-maletin" id="love"><i class="fa-solid fa-briefcase"></i></button>';
+    recarga += '</div>';
+    recarga += '</div>';
+    carta.innerHTML = recarga;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -378,7 +421,7 @@ function perfilcarta(evt) {
                 recarga += '<div class="user-vista">';
                 //Volver
                 recarga += '<div class="return">';
-                /* recarga += '<button class="return-btn" onclick="leernotificacionesJS(); return false;">'; */
+                recarga += '<button class="return-btn" id="volver">';
                 recarga += '<i class="fa-solid fa-angle-left"></i>';
                 recarga += '</button>';
                 recarga += '</div>';
@@ -391,7 +434,7 @@ function perfilcarta(evt) {
 
                 } else {
 
-                    recarga += '<img class="img--trabajador" src="storage/img/usuario.png">';
+                    recarga += '<img class="img--trabajador" src="storage/img/usuario.png" width="100px">';
 
                 }
 
@@ -487,6 +530,11 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
+                carta.innerHTML = recarga;
+                var volver = document.getElementById("volver");
+                volver.addEventListener("click", estructura);
+                volver.addEventListener("click", mostrar);
+                volver.addEventListener("click", reload);
 
             }
 
@@ -497,7 +545,7 @@ function perfilcarta(evt) {
                 recarga += '<div class="empresa-vista">';
                 //Volver
                 recarga += '<div class="return">';
-                recarga += '<button class="return-btn" onclick="mostrar(); reload(); return false;">';
+                recarga += '<button class="return-btn" id="volver">';
                 recarga += '<i class="fa-solid fa-angle-left"></i>';
                 recarga += '</button>';
                 recarga += '</div>';
@@ -572,10 +620,13 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
+                carta.innerHTML = recarga;
+                var volver = document.getElementById("volver");
+                volver.addEventListener("click", estructura);
+                volver.addEventListener("click", mostrar);
+                volver.addEventListener("click", reload);
 
             }
-            console.log(recarga);
-            carta.innerHTML = recarga;
 
         }
 
