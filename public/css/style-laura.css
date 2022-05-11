@@ -736,10 +736,18 @@ body {
   height: 70vh;
 }
 
+.bodylogin .modal-content-register .mas,
+.bodylogin .modal-content-register .menos {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color: #186CA7;
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+}
+
 .bodylogin .modal-content-register .izquierda-derecha .izquierda,
-.bodylogin .modal-content-register .izquierda-derecha .derecha,
-.bodylogin .modal-content-register .izquierda-derecha .mas,
-.bodylogin .modal-content-register .izquierda-derecha .menos {
+.bodylogin .modal-content-register .izquierda-derecha .derecha {
   padding-top: 3vh;
   padding-bottom: 3vh;
   color: #186CA7;
@@ -811,8 +819,12 @@ body {
   font-weight: 440;
 }
 
+.bodylogin .modal-content-register .inputcolumn2 {
+  width: 100% !important;
+}
+
 .bodylogin .modal-content-register .foto {
-  width: 80%;
+  width: 60%;
   display: inline-block;
   text-align: center;
   margin-bottom: 1rem;

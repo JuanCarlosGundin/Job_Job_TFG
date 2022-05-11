@@ -12,7 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{asset('css/style-laura.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style-arnau.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style-nocturno.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 
@@ -43,6 +44,9 @@
         <h1 class="curriculum-title">COMING SOON...</h1>
     </div> --}} -->
   </div>
+    <button type="button" class="darkmodeswitch" id="switch" onclick="cambiarModo()"><span><i class="fa fa-sun-o"></i></span>   
+        <span><i class="fa fa-moon-o"></i></span>
+  </button><br><br>
     <div class="region-content row">
         {{-- EMPIEZA TINDER --}}
         <div class="swiper">
@@ -120,6 +124,7 @@
         </div>
     </div>
     <script src="js/swiper.js"></script>
+    <script src="js/modo_nocturno.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 

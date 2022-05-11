@@ -693,11 +693,18 @@ body {
         text-align: center;
         width: 100%;
         height: 70vh;
+        .mas,
+        .menos {
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            color: $first-color;
+            border: none;
+            background-color: transparent;
+            font-size: 25px;
+        }
         .izquierda-derecha {
             .izquierda,
-            .derecha,
-            .mas,
-            .menos {
+            .derecha {
                 padding-top: 3vh;
                 padding-bottom: 3vh;
                 color: $first-color;
@@ -746,9 +753,12 @@ body {
             padding-left: 2%;
             font-weight: 440;
         }
+        .inputcolumn2 {
+            width: 100% !important;
+        }
         //estilos input foto
         .foto {
-            width: 80%;
+            width: 60%;
             display: inline-block;
             text-align: center;
             margin-bottom: 1rem;

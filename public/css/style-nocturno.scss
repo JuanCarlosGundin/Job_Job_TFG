@@ -20,6 +20,7 @@ $tablet:900px;
 
 ////BOTON MODO DIA-NOCTURNO////
 .darkmodeswitch {
+    z-index: 2;
     margin-left: 2%;
     margin-top: 1.5%;
     background: #3494b1;
@@ -104,4 +105,9 @@ $tablet:900px;
             border: $second-color solid 1.5px;
         }
     }
+}
+
+/////////////////////////////////////////HOME////////////////////////////////////
+.page-home.oscuro {
+    background-color: $first-color;
 }

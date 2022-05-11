@@ -8,6 +8,7 @@
 }
 
 .darkmodeswitch {
+  z-index: 2;
   margin-left: 2%;
   margin-top: 1.5%;
   background: #3494b1;
@@ -108,5 +109,9 @@
           box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
   background: #0060A4;
   border: #0060A4 solid 1.5px;
+}
+
+.page-home.oscuro {
+  background-color: #012A4A;
 }
 /*# sourceMappingURL=style-nocturno.css.map */
