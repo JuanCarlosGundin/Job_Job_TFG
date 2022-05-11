@@ -367,9 +367,11 @@
 //LOGICA CHAT
 
 //hace referencia a el id de la conversación
-
-
-
+function htmlEncode(str){
+    return String(str).replace(/[^\w. ]/gi, function(c){
+        return '&#'+c.charCodeAt(0)+';';
+    });
+}
 
 function objetoAjax() {
     var xmlhttp = false;
@@ -407,6 +409,25 @@ function getchanel(){
     ajax.send(formData);
 }
 
+function insert() {
+
+    var formData = new FormData();
+    var ajax = objetoAjax();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    //formData.append('filter', document.getElementById('filter').value);
+
+    ajax.open("POST", "insert", false);
+    ajax.onreadystatechange = function() {
+        //console.log(ajax.responseText)
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            //console.log(chatInfo)
+        }
+    }
+    ajax.send(formData);
+}
+
 window.onload=function() {
 
     getchanel()
@@ -416,6 +437,7 @@ window.onload=function() {
     } else {
         document.getElementById('nombre').innerHTML='<p> Estas chateando con '+chatInfo.other[0].nom_emp+'</p>'
     }
+    start()
 }
 
 //ZONA VARIABLES
@@ -453,17 +475,17 @@ function start(){
     }
 
 
-function abrir() {
+//function abrir() {
 
-    start()
+//    start()
     //socket = new ReconnectingWebSocket('ws://192.168.1.42:8000/'+document.getElementById('canal').value);
-}
+//}
 
-function cerrar() {
+//function cerrar() {
 
-    socket.close()
+//    socket.close()
 
-}
+//}
 
 function sender() {
 
@@ -472,10 +494,12 @@ function sender() {
 
     getchanel()
     console.log(chatInfo)
+
     if(chatInfo.perfil==3) { 
-        socket.send(chatInfo.name[0].nom_emp+ " : " + document.getElementById('test').value+'<br>'+time);
+
+        socket.send(chatInfo.name[0].nom_emp+ " : " +htmlEncode(document.getElementById('test').value) +'<br>'+time);
     } else {
-        socket.send(chatInfo.name[0].nombre+ " : " + document.getElementById('test').value+'<br>'+time);
+        socket.send(chatInfo.name[0].nombre+ " : " +htmlEncode(document.getElementById('test').value) +'<br>'+time);
     }
     document.getElementById('test').value=''
 
