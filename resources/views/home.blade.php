@@ -43,7 +43,7 @@
         <h1 class="curriculum-title">COMING SOON...</h1>
     </div> --}} -->
   </div>
-    <div class="region-content row">
+    <div class="region-content row" id="carta">
         {{-- EMPIEZA TINDER --}}
         <div class="swiper">
             <div class="swiper--status">
@@ -51,45 +51,7 @@
               <i class="fa fa-briefcase"></i>
             </div>
             <div class="swiper--cards">
-              <!-- {{-- <div class="swiper--card" id="mainCard">
-                <img src="https://www.enter.co/wp-content/uploads/2012/08/logoms_660.jpg">
-                <div class="content--card content--empresa">
-                  <input type="hidden" id="userID" value="2">
-                  <div class="misc--card">
-                    <h2 class="vacante--empresa">Programador web (Back-End)</h2>
-                    <h5 class="campo--empresa">Informática</h5>
-                  </div>
-                  <div class="cuerpo--card">
-                    <p class="searching--empresa">Buscamos a un programador/a web con 2 años de experiencia en el sector, preparado para llevar proyectos y en un futuro tener a gente a su cargo.</p>
-                  </div>
-                  <div class="titulo--card">
-                    <h3 class="nombre--usuario">Microsoft</h3>
-                    <h5 class="ubicacion--usuario">Barcelona</h5>
-                  </div>
-                </div>
-              </div> --}} -->
               <div class="swiper--card" id="mainCard">
-                <!-- {{-- <div class="content--card content--trabajador">
-                  <input type="hidden" id="userID" value="2">
-                  <div class="cv--card">
-                    <div class="objetivo--card">
-                      <h2 class="titulo--objetivo">Objetivo Profesional</h2>
-                      <p class="content--objetivo">Mi principal objetivo es formar parte de un equipo profesional, en el que los logros y éxitos de cada uno sean reconocidos en un ambiente de trabajo óptimo y agradable.</p>
-                    </div>
-                    <div class="formacion--card">
-                      <h2 class="titulo--formacion">Formación</h2>
-                      <p class="content--formacion">Grado en ingeniería informática - UPC - 2017 -> 2022</p>
-                    </div>
-                    <div class="experiencia--card">
-                      <h2 class="titulo--experiencia">Experiencia</h2>
-                      <p class="content--experiencia">Programador Junior Back-End - Amazon - 2021 -> 2022</p>
-                    </div>
-                  </div>
-                  <div class="titulo--card">
-                    <h2 class="nombreEdad--usuario">Juan Pérez, 23</h2>
-                    <h5 class="ubicacion--usuario">Barcelona</h5>
-                  </div>
-                </div> --}} -->
               </div>
               <div class="swiper--card no-swipe">
                 <img src="img/jobjob_tarjeta.png">

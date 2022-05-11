@@ -1,13 +1,13 @@
 ////////////////////////////GENERAL///////////////////////////////////////
 window.onload = function() {
-    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-    let vh = window.innerHeight * 0.01;
-    // Then we set the value in the --vh custom property to the root of the document
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-    reload();
-    mostrar()
-}
-////////////////////////////REDIRECCIONES/////////////////////////////////
+        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+        let vh = window.innerHeight * 0.01;
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        reload();
+        mostrar()
+    }
+    ////////////////////////////REDIRECCIONES/////////////////////////////////
 var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
@@ -282,6 +282,10 @@ function mostrar() {
                 contenedor.classList.add('no-swipe');
                 contenedor.style.pointerEvents = "none";
             }
+            var info = document.getElementById("info");
+            info.id_usuario = respuesta[0].id_usuario;
+            info.id_perfil = respuesta[0].id_perfil;
+            info.addEventListener("click", perfilcarta);
         }
         contenedor.innerHTML = recarga;
     }
@@ -342,4 +346,241 @@ function cumNO() {
         }
     }
     ajax.send(formData)
+}
+
+function perfilcarta(evt) {
+
+    var carta = document.getElementById("carta");
+    var id_usuario = evt.currentTarget.id_usuario;
+    var id_perfil = evt.currentTarget.id_perfil;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfiluser/" + id_usuario + "/" + id_perfil, true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            var id_perfil = respuesta.id_perfil;
+            var recarga = '';
+
+            if (id_perfil == 2) {
+
+                var trabajador = respuesta.trabajador[0];
+
+                // Foto
+                recarga += '<div class="user-vista">';
+                //Volver
+                recarga += '<div class="return">';
+                /* recarga += '<button class="return-btn" onclick="leernotificacionesJS(); return false;">'; */
+                recarga += '<i class="fa-solid fa-angle-left"></i>';
+                recarga += '</button>';
+                recarga += '</div>';
+                recarga += '<div class="user-ver-foto">';
+                recarga += '<div class="container-foto">';
+
+                if (trabajador.foto_perfil != null) {
+
+                    recarga += '<img class="img--trabajador" src="storage/' + trabajador.foto_perfil + '">';
+
+                } else {
+
+                    recarga += '<img class="img--trabajador" src="storage/img/usuario.png">';
+
+                }
+
+                recarga += '</div>';
+                recarga += '</div>';
+                // Inputs para editar el usuario
+                recarga += '<div class="user-ver">';
+                // Nombre, apellido y edad
+                recarga += '<div class="user-div-name">';
+                recarga += '<div class="user-icon-name">';
+                recarga += '<i class="fa-solid fa-user"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-name">';
+                recarga += '<span class="p-name">  ' + trabajador.nombre + ' </span>';
+                recarga += '<span class="p-surname">  ' + trabajador.apellido + ' </span>';
+                recarga += '<i class="fa-solid fa-cake-candles"></i>';
+                recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                recarga += '<hr>';
+                // Correo
+                recarga += '<div class="user-div-house">';
+                recarga += '<div class="user-icon-name">';
+                recarga += '<i class="fa-solid fa-at"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + trabajador.mail + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                // Vivienda
+                recarga += '<div class="user-div-house">';
+                recarga += '<div class="user-icon-name">';
+                recarga += '<i class="fa-solid fa-house-chimney"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + trabajador.loc_trabajador + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                /* // Estudios y cursos
+                recarga += '<div class="user-div-house">';
+                recarga += '<div class="user-icon-name">';
+                recarga += '<i class="fa-solid fa-book-open"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + trabajador.estudios + '</span>';
+                recarga += '</div>';
+                recarga += '</div>'; */
+                /* // Experiencia
+                recarga += '<div class="user-div-house">';
+                recarga += '<div class="user-icon-name">';
+                recarga += '<i class="fa-solid fa-briefcase"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + trabajador.experiencia + '</span>';
+                recarga += '</div>';
+                recarga += '</div>'; */
+                /* // Idioma
+                recarga += '<div class="user-div-house">';
+                recarga += '<div class="user-icon-name">';
+                recarga += '<i class="fa-solid fa-language"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + trabajador.idiomas + '</span>';
+                recarga += '</div>';
+                recarga += '</div>'; */
+                // Sector
+                recarga += '<div class="user-div-house">';
+                recarga += '<div class="user-icon-name">';
+                recarga += '<i class="fa-solid fa-building"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + trabajador.campo_user + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                // Jornada
+                recarga += '<div class="user-div-house">';
+                recarga += '<div class="user-icon-name">';
+                recarga += '<i class="fa-solid fa-business-time"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + trabajador.disponibilidad + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                // Descripcion
+                recarga += '<hr>';
+                recarga += '<div class="user-div-desc">';
+                recarga += '<div class="user-icon-desc">';
+                recarga += '<span class="sobre-mi-desc">Sobre mi:</span>';
+                recarga += '</div>';
+                recarga += '<div class="divs-desc">';
+                recarga += '<span class="p-desc">' + trabajador.about_user + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                recarga += '</div>';
+                recarga += '</div>';
+
+            }
+
+            if (id_perfil == 3) {
+
+                var empresa = respuesta.empresa[0];
+
+                recarga += '<div class="empresa-vista">';
+                //Volver
+                recarga += '<div class="return">';
+                recarga += '<button class="return-btn" onclick="mostrar(); reload(); return false;">';
+                recarga += '<i class="fa-solid fa-angle-left"></i>';
+                recarga += '</button>';
+                recarga += '</div>';
+                // Logo
+                recarga += '<div class="empresa-ver-foto">';
+
+                if (empresa.logo_emp != null) {
+
+                    recarga += '<img class="img--trabajador" src="storage/' + empresa.logo_emp + '">';
+
+                } else {
+
+                    recarga += '<img class="img--trabajador" src="storage/img/usuario.png" width="100px">';
+
+                }
+
+                recarga += '</div>';
+                // Ver empresa
+                recarga += '<div class="empresa-ver">';
+                // Nombre
+                recarga += '<div class="empresa-div-name">';
+                recarga += '<div class="divs-name">';
+                recarga += '<span class="p-name">' + empresa.nom_emp + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                // Sede
+                recarga += '<hr>';
+                recarga += '<div class="empresa-div-house">';
+                recarga += '<div class="empresa-icon-name">';
+                recarga += '<i class="fa-solid fa-building"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + empresa.loc_emp + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                // Campo
+                recarga += '<div class="empresa-div-house">';
+                recarga += '<div class="empresa-icon-name">';
+                recarga += '<i class="fa-solid fa-briefcase"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + empresa.campo_emp + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                // Que busca
+                recarga += '<div class="empresa-div-house">';
+                recarga += '<div class="empresa-icon-name">';
+                recarga += '<i class="fa-solid fa-file-signature"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + empresa.searching + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                // Vacante
+                recarga += '<div class="empresa-div-house">';
+                recarga += '<div class="empresa-icon-name">';
+                recarga += '<i class="fa-solid fa-handshake"></i>';
+                recarga += '</div>';
+                recarga += '<div class="divs-house">';
+                recarga += '<span class="p-house">' + empresa.vacante + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                // Descripcion
+                recarga += '<hr>';
+                recarga += '<div class="empresa-div-desc">';
+                recarga += '<div class="empresa-icon-desc">';
+                recarga += '<span class="sobre-mi-desc">Acerca de:</span>';
+                recarga += '</div>';
+                recarga += '<div class="divs-desc">';
+                recarga += '<span class="p-desc">' + empresa.about_emp + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
+                recarga += '</div>';
+                recarga += '</div>';
+
+            }
+            console.log(recarga);
+            carta.innerHTML = recarga;
+
+        }
+
+    }
+
+    ajax.send(formData);
+
 }

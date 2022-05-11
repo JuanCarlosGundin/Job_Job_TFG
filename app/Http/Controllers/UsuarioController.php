@@ -405,7 +405,7 @@ public function logout(Request $req){
 
 
     public function leerperfiloneuser($id, $id_perfil) {
-
+        // si eres trabajador
         if ($id_perfil == 2){
 
             $trabajador = DB::select('select * from tbl_usuarios
@@ -413,7 +413,7 @@ public function logout(Request $req){
             return response()->json(array('trabajador' => $trabajador, 'id_perfil' =>$id_perfil));
 
         }
-
+        //si eres empresa
         if ($id_perfil == 3) {
 
             $empresa = DB::select('select * from tbl_usuarios
