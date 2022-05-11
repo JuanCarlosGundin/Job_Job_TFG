@@ -15,7 +15,7 @@
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/style-pol.css')}}">
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
-    <title>Notificaciones</title>
+    <title>Chat</title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <div class="chat">
+    {{-- <div class="chat">
         <div class="chats">
             <button class="chat-foto-btn">
                 <div class="chat-foto">
@@ -79,6 +79,114 @@
         </div>
         <div class="div-linea">
             <hr class="chat-linea">
+        </div>
+    </div> --}}
+
+    <div class="main-chat">
+        <div class="chat-main-sticky">
+            <div class="chat-main-user">
+                <div class="chat-main-return">
+                    <button class="return-btn" onclick="(); return false;">
+                        <div class="return-icon">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </div>
+                    </button>
+                </div>                
+                <div class="chat-main-foto">
+                    <img class="chat-profilefoto" src="storage/uploads/usuario.png">
+                </div>
+                <div class="chat-main-name">
+                    <p class="chat-name">Nombre de muestra<p>
+                </div>
+            </div>
+            <div class="chat-main-curve">
+            </div>
+        </div>
+        <div class="chat-main-content">
+            
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
+            
+        </div>
+        <div class="chat-main-send">
+            <div class="chat-input">
+                <input type="text" class="chat-input-mensaje" id="nombre" name="nombre" value="" placeholder="Mensaje...">
+            </div>
+            <div class="chat-send">
+                <button class="boton-send">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
         </div>
     </div>
 

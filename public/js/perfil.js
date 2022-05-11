@@ -66,8 +66,8 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '<div class="user-poligon">';
                 recarga += '</div>';
-                recarga += '<div class="user-div-foto">';
-                recarga += '<div class="edit-input">';
+                recarga += '<div class="div-foto">';
+                recarga += '<div class="edit-foto">';
                 recarga += '<label class="input-file">';
                 recarga += '<i class="fa-solid fa-image"></i>';
                 recarga += '<input type="file" class="input" id="foto_perfil" name="foto_perfil">';
@@ -106,21 +106,10 @@ function mostrarperfilJS() {
                 recarga += '<div class="user-div-category">';
                 recarga += '<button class="user-btn-category">';
                 recarga += '<div class="user-category-icon">';
-                recarga += '<i class="fa-solid fa-house-chimney"></i>';
+                recarga += '<i class="fa-solid fa-address-card"></i>';
                 recarga += '</div>';
                 recarga += '<div class="user-category-text">';
-                recarga += '<p class="p-category">Vivienda</p>';
-                recarga += '</div>';
-                recarga += '</button>';
-                recarga += '</div>';
-
-                recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
-                recarga += '<div class="user-category-icon">';
-                recarga += '<i class="fa-solid fa-graduation-cap"></i>';
-                recarga += '</div>';
-                recarga += '<div class="user-category-text">';
-                recarga += '<p class="p-category">Estudios</p>';
+                recarga += '<p class="p-category">Sobre mi</p>';
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
@@ -132,6 +121,17 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '<div class="user-category-text">';
                 recarga += '<p class="p-category">Idiomas</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-graduation-cap"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Estudios</p>';
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
@@ -164,7 +164,7 @@ function mostrarperfilJS() {
                 recarga += '<i class="fa-solid fa-brain"></i>';
                 recarga += '</div>';
                 recarga += '<div class="user-category-text">';
-                recarga += '<p class="p-category">Conocimientos</p>';
+                recarga += '<p class="p-category">Habilidades</p>';
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
@@ -175,7 +175,7 @@ function mostrarperfilJS() {
                 recarga += '<i class="fa-solid fa-clock"></i>';
                 recarga += '</div>';
                 recarga += '<div class="user-category-text">';
-                recarga += '<p class="p-category">Sobre mi</p>';
+                recarga += '<p class="p-category">Disponibilidad</p>';
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
@@ -198,9 +198,9 @@ function mostrarperfilJS() {
 
                 recarga += '</div>';
                 recarga += '</div>';
-                recarga += '<div class="wave-div">';
-                recarga += '<img class="wave" src="./storage/uploads/wave.svg">';
-                recarga += '</div>';
+                // recarga += '<div class="wave-div">';
+                // recarga += '<img class="wave" src="./storage/uploads/wave.svg">';
+                // recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
             }
@@ -341,7 +341,7 @@ function leermodperfilJS() {
                 recarga += '<p class="p-text">Edad</p>';
                 recarga += '</div>';
                 recarga += '<div class="input-edit">';
-                recarga += '<input type="number" class="input" id="nombre" name="nombre" value="' + trabajador.edad + '">';
+                recarga += '<input type="date" class="input" id="nombre" name="nombre" value="' + trabajador.edad + '">';
                 recarga += '</div>';
                 recarga += '</div>';
 
@@ -355,18 +355,6 @@ function leermodperfilJS() {
                 recarga += '</div>';
                 recarga += '</div>';
 
-                /* Foto */
-                // recarga += '<div class="edit-input">';
-                // recarga += '<div class="input-text">';
-                // recarga += '<p class="p-text">Foto de perfil</p>';
-                // recarga += '</div>';
-                // recarga += '<div class="inputs-edit">';
-                // recarga += '<label class="input-file">';
-                // recarga += '<input type="file" class="input" id="foto_perfil" name="foto_perfil">';
-                // recarga += '</label>';
-                // recarga += '</div>';
-                // recarga += '</div>';
-
                 recarga += '</form>';
                 recarga += '</div>';
 
@@ -377,6 +365,18 @@ function leermodperfilJS() {
                 recarga += '</button>';
                 recarga += '</div>';
                 recarga += '</div>';
+                recarga += '</div>';
+
+                recarga += '<div class="boton-mas-div">';
+                recarga += '<button class="boton-mas">'
+                recarga += '<i class="fa-solid fa-plus"></i>'
+                recarga += '</button>'
+                recarga += '</div>';
+
+                recarga += '<div class="boton-menos-div">';
+                recarga += '<button class="boton-menos">'
+                recarga += '<i class="fa-solid fa-minus"></i>'
+                recarga += '</button>'
                 recarga += '</div>';
 
 

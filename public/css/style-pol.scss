@@ -61,27 +61,28 @@ body {
             background-color: $white;
             height: 20vh;
         }
-        .user-div-foto {
+        .div-foto {
             padding: 2vh;
             justify-content: center;
             display: flex;
             align-items: center;
             position: absolute;
             top: 0;
-            .input[type="file"] {
-                display: none;
-            }
-            .input-file {
-                border-width: 0%;
-                display: inline-block;
-                width: 20%;
-                padding: 1vh;
-                background-color: $third-color;
-                position: absolute;
-                bottom: 13%;
-                right: 13%;
-                color: $white;
-                border-radius: 20vh;
+            .edit-foto {
+                .input[type="file"] {
+                    display: none;
+                }
+                .input-file {
+                    border-width: 0%;
+                    display: inline-block;
+                    padding: 1vh;
+                    background-color: $third-color;
+                    position: absolute;
+                    bottom: 13%;
+                    right: 13%;
+                    color: $white;
+                    border-radius: 20vh;
+                }
             }
             .user-ver-foto {
                 width: 100%;
@@ -280,6 +281,7 @@ body {
                     border-color: $fifth-color;
                     width: 100%;
                     padding: 1vh;
+                    height: 36.1px;
                     &:focus {
                         outline: none;
                     }
@@ -345,18 +347,30 @@ body {
         display: flex;
         text-align: center;
     }
-    .user-icon-more {
-        float: right;
-        position: absolute;
-        right: 1vh;
-        opacity: 0;
-        .user-icon-more-button {
-            padding: 0;
-            opacity: 0;
-            background-color: none;
-            border-width: 0px;
-            cursor: pointer;
-        }
+}
+
+////////////////////////////////////////////////// BOTONES AÑADIR Y QUITAR INPUTS ////////////////////////////////////////////////////////7
+.boton-mas-div {
+    .boton-mas {
+        border-width: 0px;
+        background-color: $fifth-color;
+        color: white;
+        width: 36.1px;
+        height: 36.1px;
+        padding: 0;
+        font-size: medium;
+    }
+}
+
+.boton-menos-div {
+    .boton-menos {
+        border-width: 0px;
+        background-color: rgb(133, 11, 11);
+        color: white;
+        width: 36.1px;
+        height: 36.1px;
+        padding: 0;
+        font-size: medium;
     }
 }
 
@@ -1127,7 +1141,7 @@ body {
     }
 }
 
-///////////////////////////////NOTIFICACIONES//////////////////////////////////////
+///////////////////////////////CHAT//////////////////////////////////////
 .chat {
     margin-top: 1.5vh;
     .chats {
@@ -1192,6 +1206,146 @@ body {
             width: 95vw;
             margin: 0;
             color: $grey;
+        }
+    }
+}
+
+///////////////////////////////CHAT INDIVIDUAL//////////////////////////////////////
+.main-chat {
+    display: flex;
+    flex-direction: column;
+    .chat-main-sticky {
+        position: sticky;
+        top: 0;
+        background-color: #E5E5E5;
+        .chat-main-user {
+            background-color: transparent;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            padding: 1vh;
+            .chat-main-return {
+                width: 3%;
+                .return-btn {
+                    background-color: transparent;
+                    border-width: 0px;
+                    font-size: large;
+                }
+            }
+            .chat-main-foto {
+                padding: 0;
+                margin: 0;
+                border-width: 0;
+                background-color: transparent;
+                width: 22%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                .chat-profilefoto {
+                    border-radius: 50px;
+                    height: 7vh;
+                    width: 7vh;
+                }
+            }
+            .chat-main-name {
+                width: 75%;
+                font-weight: bolder;
+                font-size: large;
+            }
+        }
+        .chat-main-curve {
+            background-color: $white;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            height: 5vh;
+            position: relative;
+            &:before {
+                content: "";
+                position: absolute;
+                top: 5vh;
+                left: 0;
+                width: 100%;
+                height: 3.5vh;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 0) 100%);
+            }
+        }
+    }
+    .chat-main-content {
+        bottom: 0;
+        background-color: $white;
+        padding: 2vh;
+        height: auto;
+        .chat-mensaje-1 {
+            background-color: $fifth-color;
+            padding: 1vh;
+            float: left;
+            width: 55%;
+            border-radius: 10px;
+            margin-top: 1vh;
+            .mensaje-text {
+                margin: 0;
+            }
+            .mensaje-hora {
+                margin: 0;
+                float: right;
+                font-size: x-small;
+            }
+        }
+        .chat-mensaje-2 {
+            background-color: #bebebe;
+            padding: 1vh;
+            float: right;
+            width: 55%;
+            border-radius: 10px;
+            margin-top: 1vh;
+            .mensaje-text {
+                margin: 0;
+                float: left;
+            }
+            .mensaje-hora {
+                margin: 0;
+                float: right;
+                font-size: x-small;
+                margin: 0;
+            }
+        }
+    }
+    .chat-main-send {
+        bottom: 0;
+        position: sticky;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 1vh;
+        background-color: $white;
+        .chat-input {
+            width: 100%;
+            border-radius: 30px;
+            .chat-input-mensaje {
+                border-width: 2px;
+                border-color: $third-color;
+                padding: 1vh;
+                height: 50px;
+                width: 100%;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        .chat-send {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            .boton-send {
+                border-width: 0px;
+                background-color: $third-color;
+                color: white;
+                width: 50px;
+                height: 50px;
+                padding: 0;
+                font-size: large;
+            }
         }
     }
 }
