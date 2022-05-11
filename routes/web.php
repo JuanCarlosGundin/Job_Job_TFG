@@ -122,6 +122,12 @@ Route::post('mandar', [MailController::class, 'sending']);
 //ZONA CONTACTO
 //mandar correo a admin por la pagina de contacto
 Route::post('mandarcontacto', [MailController::class, 'sendingcontacto']);
+//ZONA CONTACTO
+//mandar correo a usuario individual desde la página de admin
+Route::post('enviarcorreoadmin', [MailController::class, 'enviarcorreoadmin']);
+//mandar correo a usuario individual desde la página de admin
+Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorreoadmintrabajadores']);
+
 
 //ZONA REPORTES
 //el usuario puede hacer reportes de otros usuarios.

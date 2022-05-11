@@ -41,9 +41,9 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Categorias
               </a>
-              {{-- MODAL --}}
+              {{-- MODAL USUARIO --}}
                       <!-- Trigger/Open The Modal -->
-                  <button id="myBtn">Contactar usuario</button>
+                  <button id="myBtn">ENVIAR CORREO</button>
 
                   <!-- The Modal -->
                   <div id="myModal" class="modal">
@@ -51,15 +51,32 @@
                     <!-- Modal content -->
                     <div class="modal-content">
                       <span class="close">&times;</span>
-                      
+
                                   <form method="POST" onsubmit="enviarcorreoadminJS(); return false;">
-                                      
-                                  </form>
+                                      <h2>CONTACTAR USUARIO</h2>
+                                      <input type="text" name="destinatario" id="destinatario" placeholder="Introduce el destinatario"><br><br>
+                                      <input type="text" name="asunto" id="asunto" placeholder="Introduce el asunto"><br><br>
+                                      <textarea name="mensaje" rows="3" id="mensaje" placeholder="Introduce el mensaje"></textarea><br><br>
+                                      <button type="submit" id="myBtn">
+                                            Enviar
+                                      </button>
+                                    
+                                  </form><br><br>
+                                  <form method="POST" onsubmit="enviarcorreoadmintrabajadoresJS(); return false;">
+                                    <h2>CONTACTAR TRABAJADORES</h2>
+                                    <input type="text" name="asunto" id="asunto" placeholder="Introduce el asunto"><br><br>
+                                    <textarea name="mensaje" rows="3" id="mensaje" placeholder="Introduce el mensaje"></textarea><br><br>
+                                    <button type="submit" id="myBtn">
+                                          Enviar
+                                    </button>
+                                  
+                                </form>
                               
                     </div>
 
                   </div>
-              {{-- FIN MODAL --}}
+              {{-- FIN MODAL USUARIO --}}
+              
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
                       <div class="form-check">
@@ -111,5 +128,6 @@
         </div>
     </div>
     <script src="js/admin.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
