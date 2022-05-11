@@ -24,7 +24,7 @@ class PerfilController extends Controller{
 
             $trabajador = DB::select('select * from tbl_usuarios
             INNER JOIN tbl_trabajador on tbl_trabajador.id_usuario=tbl_usuarios.id where id=?',[$id]);
-            return response()->json(array('trabajador' => $trabajador, 'id_perfil' =>$id_perfil));
+            return response()->json(array('resultado' => $trabajador, 'id_perfil' =>$id_perfil));
 
         }
 
@@ -32,7 +32,7 @@ class PerfilController extends Controller{
 
             $empresa = DB::select('select * from tbl_usuarios
             INNER JOIN tbl_empresa on tbl_empresa.id_usuario=tbl_usuarios.id where id=?',[$id]);
-            return response()->json(array('empresa' => $empresa, 'id_perfil' =>$id_perfil));
+            return response()->json(array('resultado' => $empresa, 'id_perfil' =>$id_perfil));
 
         }
 
