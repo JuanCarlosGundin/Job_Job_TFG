@@ -233,7 +233,6 @@ function mostrarperfilJS() {
             contenidoajax.innerHTML = recarga;
 
             var boton_sobre_mi = document.getElementById("boton_sobre_mi");
-
             boton_sobre_mi.campo_user = trabajador.campo_user;
             boton_sobre_mi.about_user = trabajador.about_user;
             boton_sobre_mi.loc_trabajador = trabajador.loc_trabajador;
@@ -241,32 +240,36 @@ function mostrarperfilJS() {
             boton_sobre_mi.linkedin = trabajador.linkedin;
             boton_sobre_mi.telefono = trabajador.telefono;
             boton_sobre_mi.github = trabajador.github;
-
-
             boton_sobre_mi.addEventListener("click", leer_sobre_mi);
 
             var boton_idiomas = document.getElementById("boton_idiomas");
-
             boton_idiomas.idiomas = curriculum.idiomas;
-
             boton_idiomas.addEventListener("click", leer_idiomas);
 
             var boton_estudios = document.getElementById("boton_estudios");
+            boton_estudios.estudios = curriculum.estudios;
             boton_estudios.addEventListener("click", leer_estudios);
 
             var boton_experiencia = document.getElementById("boton_experiencia");
+            boton_experiencia.experiencia = curriculum.experiencia;
             boton_experiencia.addEventListener("click", leer_experiencia);
 
             var boton_curriculum = document.getElementById("boton_curriculum");
             boton_curriculum.addEventListener("click", leer_curriculum);
 
             var boton_habilidades = document.getElementById("boton_habilidades");
+            boton_habilidades.habilidades = curriculum.habilidades;
             boton_habilidades.addEventListener("click", leer_habilidades);
 
             var boton_disponibilidad = document.getElementById("boton_disponibilidad");
+            boton_disponibilidad.disponibilidad = trabajador.disponibilidad;
+            boton_disponibilidad.mobilidad = trabajador.mobilidad;
+            boton_disponibilidad.carnet_conducir = trabajador.carnet_conducir;
+            boton_disponibilidad.vehiculo_propio = trabajador.vehiculo_propio;
             boton_disponibilidad.addEventListener("click", leer_disponibilidad);
 
             var boton_configuracion = document.getElementById("boton_configuracion");
+            boton_configuracion.mostrado = trabajador.mostrado;
             boton_configuracion.addEventListener("click", leer_configuracion);
 
         }
@@ -276,6 +279,7 @@ function mostrarperfilJS() {
 }
 
 function leer_sobre_mi(evt) {
+    var contenidoajax = document.getElementById("contenidoajax");
     var campo_user = evt.currentTarget.campo_user;
     var about_user = evt.currentTarget.about_user;
     var loc_trabajador = evt.currentTarget.loc_trabajador;
@@ -283,35 +287,77 @@ function leer_sobre_mi(evt) {
     var linkedin = evt.currentTarget.linkedin;
     var telefono = evt.currentTarget.telefono;
     var github = evt.currentTarget.github;
-    console.log(campo_user);
-    console.log(about_user);
-    console.log(loc_trabajador);
-    console.log(lenguaje_preferido);
-    console.log(linkedin);
-    console.log(telefono);
-    console.log(github);
+    var recarga = "";
+    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += "<div>";
+    recarga += '<p>' + campo_user + '</p>';
+    recarga += '<p>' + about_user + '</p>';
+    recarga += '<p>' + loc_trabajador + '</p>';
+    recarga += '<p>' + lenguaje_preferido + '</p>';
+    recarga += '<p>' + linkedin + '</p>';
+    recarga += '<p>' + telefono + '</p>';
+    recarga += '<p>' + github + '</p>';
+    recarga += "</div>";
+    contenidoajax.innerHTML = recarga;
 }
 
 function leer_idiomas(evt) {
     var contenidoajax = document.getElementById("contenidoajax");
     var idiomas = evt.currentTarget.idiomas;
     var recarga = "";
-    recarga += "<div>";
-    for (let i = 0; i < idiomas.length; i++) {
+    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    if (idiomas) {
         recarga += "<div>";
-        recarga += '<p>' + idiomas[i].nombre_idioma + '</p>';
-        recarga += '<p>' + idiomas[i].nivel_idioma + '</p>';
+        for (let i = 0; i < idiomas.length; i++) {
+            recarga += "<div>";
+            recarga += '<p>' + idiomas[i].nombre_idioma + '</p>';
+            recarga += '<p>' + idiomas[i].nivel_idioma + '</p>';
+            recarga += "</div>";
+        }
         recarga += "</div>";
     }
-    recarga += "</div>";
     contenidoajax.innerHTML = recarga;
 }
 
 function leer_estudios(evt) {
-
+    var contenidoajax = document.getElementById("contenidoajax");
+    var estudios = evt.currentTarget.estudios;
+    var recarga = "";
+    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    if (estudios) {
+        recarga += "<div>";
+        for (let i = 0; i < estudios.length; i++) {
+            recarga += "<div>";
+            recarga += '<p>' + estudios[i].nombre_formación + '</p>';
+            recarga += '<p>' + estudios[i].lugar_formación + '</p>';
+            recarga += '<p>' + estudios[i].año_entrada + '</p>';
+            recarga += '<p>' + estudios[i].año_salida + '</p>';
+            recarga += "</div>";
+        }
+        recarga += "</div>";
+    }
+    contenidoajax.innerHTML = recarga;
 }
 
 function leer_experiencia(evt) {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var experiencia = evt.currentTarget.experiencia;
+    var recarga = "";
+    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    if (experiencia) {
+        recarga += "<div>";
+        for (let i = 0; i < experiencia.length; i++) {
+            recarga += "<div>";
+            recarga += '<p>' + experiencia[i].lugar_experiencia + '</p>';
+            recarga += '<p>' + experiencia[i].nombre_experiencia + '</p>';
+            recarga += '<p>' + experiencia[i].año_entrada + '</p>';
+            recarga += '<p>' + experiencia[i].año_salida + '</p>';
+            recarga += '<p>' + experiencia[i].funciones + '</p>';
+            recarga += "</div>";
+        }
+        recarga += "</div>";
+    }
+    contenidoajax.innerHTML = recarga;
 
 }
 
@@ -320,13 +366,47 @@ function leer_curriculum(evt) {
 }
 
 function leer_habilidades(evt) {
-
+    var contenidoajax = document.getElementById("contenidoajax");
+    var habilidades = evt.currentTarget.habilidades;
+    var recarga = "";
+    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    if (habilidades) {
+        recarga += "<div>";
+        for (let i = 0; i < habilidades.length; i++) {
+            recarga += "<div>";
+            recarga += '<p>' + habilidades[i].nombre_habilidad + '</p>';
+            recarga += '<p>' + habilidades[i].nivel_habilidad + '</p>';
+            recarga += "</div>";
+        }
+        recarga += "</div>";
+    }
+    contenidoajax.innerHTML = recarga;
 }
 
 function leer_disponibilidad(evt) {
-
+    var contenidoajax = document.getElementById("contenidoajax");
+    var disponibilidad = evt.currentTarget.disponibilidad;
+    var mobilidad = evt.currentTarget.mobilidad;
+    var carnet_conducir = evt.currentTarget.carnet_conducir;
+    var vehiculo_propio = evt.currentTarget.vehiculo_propio;
+    var recarga = "";
+    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += "<div>";
+    recarga += '<p>' + disponibilidad + '</p>';
+    recarga += '<p>' + mobilidad + '</p>';
+    recarga += '<p>' + carnet_conducir + '</p>';
+    recarga += '<p>' + vehiculo_propio + '</p>';
+    recarga += "</div>";
+    contenidoajax.innerHTML = recarga;
 }
 
 function leer_configuracion(evt) {
-
+    var contenidoajax = document.getElementById("contenidoajax");
+    var mostrado = evt.currentTarget.mostrado;
+    var recarga = "";
+    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += "<div>";
+    recarga += '<p>' + mostrado + '</p>';
+    recarga += "</div>";
+    contenidoajax.innerHTML = recarga;
 }
