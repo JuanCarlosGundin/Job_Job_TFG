@@ -469,7 +469,8 @@ function formtrabajador2() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br><br>';
+    recarga += '</div>';
+    recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
     //campo_user
     recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br>';
@@ -576,6 +577,7 @@ function formtrabajador3() {
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
     recarga += '</div>';
+    recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
     //loc_trabajador
     recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion..."><br><br>';
@@ -690,7 +692,7 @@ function formtrabajador4() {
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
     recarga += '</div>';
-    recarga += '<h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<h3>¿Qué idiomas hablas?</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
     /* Estructura linea */
     recarga += '<div id="lineaidioma-0">';
@@ -872,7 +874,7 @@ function formtrabajador5() {
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
     recarga += '</div>';
-    recarga += '<h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<h3>¿Dónde has estudiado?</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
     /* Estructura linea */
     recarga += '<div id="lineaestudio-0">';
@@ -1067,7 +1069,7 @@ function formtrabajador6() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '</div>';
-    recarga += '<h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<h3>¿Dónde has trabajado?</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
     /* Estructura linea */
     recarga += '<div id="lineaexperiencia-0">';
