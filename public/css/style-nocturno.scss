@@ -20,6 +20,7 @@ $tablet:900px;
 
 ////BOTON MODO DIA-NOCTURNO////
 .darkmodeswitch {
+    z-index: 2;
     margin-left: 2%;
     margin-top: 1.5%;
     background: #3494b1;
@@ -67,7 +68,7 @@ $tablet:900px;
     background-color: $first-color;
     .modal-login {
         background-color: $third-color;
-        box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+        box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
         .modal-content {
             background-color: $third-color;
         }
@@ -76,13 +77,15 @@ $tablet:900px;
         .contraseña {
             color: white !important;
         }
-        .inputlogin {
+        .inputlogin,
+        .inputregister {
             background-color: white;
             border: white;
         }
-        .botonlogin {
+        .botonlogin,
+        .botonregister {
             background-color: $second-color;
-            box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+            box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
         }
         .btn-signin {
             /*PROVISIONAL*/
@@ -97,9 +100,14 @@ $tablet:900px;
             color: white;
         }
         .cuadrado {
-            box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.993);
+            box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
             background: $second-color;
             border: $second-color solid 1.5px;
         }
     }
+}
+
+/////////////////////////////////////////HOME////////////////////////////////////
+.page-home.oscuro {
+    background-color: $first-color;
 }

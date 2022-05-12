@@ -9,7 +9,6 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="{!! asset('css/style-laura.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
     <body class="bodylogin">
