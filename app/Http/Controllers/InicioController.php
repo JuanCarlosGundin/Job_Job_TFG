@@ -417,7 +417,7 @@ class InicioController extends Controller{
         try {
             
             DB::beginTransaction();
-            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>session()->get('mail'),"contra"=>hash('sha256',session()->get('contra')),"estado"=>'1',"verificado"=>'0',"created_at"=>$created_at,"id_perfil"=>'2']);
+            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>session()->get('mail'),"contra"=>hash('sha256',session()->get('contra')),"estado"=>'1',"verificado"=>'0',"created_at"=>$created_at,"id_perfil"=>'3']);
 
             DB::select("insert into tbl_empresa (id_usuario,". implode(',' , $key) .") values (?,'". implode("','" , $value) ."')",[$id]);
 
