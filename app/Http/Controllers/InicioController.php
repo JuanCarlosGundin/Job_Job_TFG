@@ -156,6 +156,62 @@ class InicioController extends Controller{
 
     }
 
+    public function sesionesempresa(Request $req){
+        try {
+            //sessionempresa0
+            if ($req->has(['mail', 'nom_emp', 'contra', 'contra2'])) {
+                /* $req->validate([
+                    'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
+                    'contra'=>'required|string|min:8|max:100',
+                    'contra2'=>'required|same:contra'
+                ]); */
+                $req->session()->put('mail', $req->mail);
+                $req->session()->put('nom_emp', $req->nom_emp);
+                $req->session()->put('contra', $req->contra);
+                return response()->json(array('resultado'=> 'OK'));
+            }
+            //sessionempresa1
+            if ($req->has('about_emp')){
+
+                $req->session()->put('about_emp', $req->about_emp);
+            }
+            if ($req->has('campo_emp')){
+
+                $req->session()->put('campo_emp', $req->campo_emp);
+            }
+            if ($req->has('searching')){
+
+                $req->session()->put('searching', $req->searching);
+            }
+            //sessionempresa2
+            if ($req->has('logo_emp')){
+
+                //añadir foto trabajador si existe
+                if($req->hasFile('logo_emp')){
+
+                    $logo_emp = $req->file('logo_emp')->store('temporal','public');
+                }else{
+
+                    $logo_emp = NULL;
+                }
+
+                $req->session()->put('logo_emp', $logo_emp);
+            }
+            if ($req->has('loc_emp')){
+
+                $req->session()->put('loc_emp', $req->loc_emp);
+            }
+            if ($req->has('vacante')){
+
+                $req->session()->put('vacante', $req->vacante);
+            }
+
+            return response()->json(array('resultado'=> 'OK'));
+        } catch (\Exception $e) {
+            return response()->json(array('resultado'=> $e->getMessage()));
+        }
+    }
+
     public function registrotrabajador(){
 
         //Comprobar si el correo introducido ya existe en la BBDD
@@ -306,31 +362,64 @@ class InicioController extends Controller{
 
     }
 
-    public function registroempresa(Request $req){
+    public function registroempresa(){
 
         //Comprobar si el correo introducido ya existe en la BBDD
-        $comprobarmail=DB::select('select mail from tbl_usuarios where mail=? ',[$req['mail']]);
-        if (count($comprobarmail)>0){
+        $comprobarmail = DB::table("tbl_usuarios")->where('mail','=',session()->get('mail'))->count();
+
+        if ($comprobarmail>0){
             return response()->json(array('resultado'=> 'correoexiste'));
         }
 
-        //añadir foto trabajador si existe
-        if($req->hasFile('logo_emp')){
+        //obtener dia y hora
+        $date = Carbon::now('+02:00');
 
-            $logo_emp = $req->file('logo_emp')->store('uploads','public');
+        //formato correcto
+        $created_at = $date->toDateTimeString();
 
-        }else{
-
-            $logo_emp = NULL;
-
+        //sessionempresa0
+        $data = array("nom_emp"=>session()->get('nom_emp'));
+        //sessionempresa1
+        if (session()->has('about_emp')){
+            $data += array("about_emp"=>session()->get('about_emp'));
         }
+        if (session()->has('campo_emp')){
+            $data += array("campo_emp"=>session()->get('campo_emp'));
+        }
+        if (session()->has('searching')){
+            $data += array("searching"=>session()->get('searching'));
+        }
+        //sessionempresa2
+        if (session()->has('logo_emp')){
+            $logo_emp=explode('/',session()->get('logo_emp'));
+            try {
+                Storage::move('public/'.session()->get('logo_emp'), 'public/uploads/'.$logo_emp[1]);
+            } catch (\Exception $e) {
+                return response()->json(array('resultado'=> $e->getMessage()));
+            }
+            
+            $data += array("logo_emp"=>'uploads/'.$logo_emp[1]);
+        }
+        if (session()->has('loc_emp')){
+            $data += array("loc_emp"=>session()->get('loc_emp'));
+        }
+        if (session()->has('vacante')){
+            $data += array("vacante"=>session()->get('vacante'));
+        }
+
+        //buscar una forma de eliminar archivos en temporal
+        $data += array("mostrado"=>"0");
+        /* return response()->json(array('resultado'=> $data)); */
+        $key = array_keys($data);
+        $value = array_values($data);
+
 
         try {
             
             DB::beginTransaction();
-            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$req['mail'],"contra"=>md5($req['contra']),"id_perfil"=>'3',"estado"=>'1',"verificado"=>'0']);
+            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>session()->get('mail'),"contra"=>hash('sha256',session()->get('contra')),"estado"=>'1',"verificado"=>'0',"created_at"=>$created_at,"id_perfil"=>'2']);
 
-            DB::table('tbl_empresa')->insert(["id_usuario"=>$id,"nom_emp"=>$req['nom_emp'],"loc_emp"=>$req['loc_emp'],"about_emp"=>$req['about_emp'],"campo_emp"=>$req['campo_emp'],"searching"=>$req['searching'],"mostrado"=>$req['mostrado'],"vacante"=>$req['vacante'],"logo_emp"=>$logo_emp]);
+            DB::select("insert into tbl_empresa (id_usuario,". implode(',' , $key) .") values (?,'". implode("','" , $value) ."')",[$id]);
 
             Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
                 $usuario=DB::select('select * from tbl_usuarios 
@@ -341,6 +430,7 @@ class InicioController extends Controller{
               });
 
             DB::commit();
+            session()->flush();
             return response()->json(array('resultado'=> 'OK'));
 
         }   catch (\Exception $e) {

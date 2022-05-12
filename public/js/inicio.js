@@ -224,7 +224,7 @@ function registrar() {
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
     document.getElementById("formtrabajador").addEventListener("click", formtrabajador0);
-    document.getElementById("formempresa").addEventListener("click", formempresa);
+    document.getElementById("formempresa").addEventListener("click", formempresa0);
 
 }
 
@@ -1350,7 +1350,7 @@ function creartrabajadorJS() {
 }
 
 
-function formempresa() {
+function formempresa0() {
 
     var tabla = document.getElementById("main");
     var recarga = '';
@@ -1360,49 +1360,26 @@ function formempresa() {
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
-    recarga += '<form method="POST" id="crearempresaJS" enctype="multipart/form-data">';
+    recarga += '<form method="POST" id="formempresa0" enctype="multipart/form-data">';
+    //Correo
     recarga += '<div class="column-2">';
     recarga += '<p>Email</p>';
     recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
     recarga += '</div>';
+    //Nombre
+    recarga += '<div class="column-2">';
+    recarga += '<p>Nombre</p>';
+    recarga += '<input type="text" class="inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre..."><br><br>';
+    recarga += '</div>';
+    //Contra 1
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña</p>';
     recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
     recarga += '</div>';
+    //Contra 2
     recarga += '<div class="column-2">';
-    recarga += '<p>Nombre empresa</p>';
-    recarga += '<input type="text" class="inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre de empresa..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Dirección empresa</p>';
-    recarga += '<input type="text" class="inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Logo empresa</p>';
-    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp"><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Sector</p>';
-    recarga += '<input type="text" class="inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>¿Qué buscas para tu empresa?</p>';
-    recarga += '<input type="text" class="inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?"><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Quieres que se te muestre a los trabajadores?</p>';
-    recarga += '<select name="mostrado" id="mostrado">';
-    recarga += '<option value="1" selected>Sí</option>';
-    recarga += '<option value="0">No</option>';
-    recarga += '</select><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Sobre la empresa</p>';
-    recarga += '<input type="text" class="inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa..."><br><br>';
-    recarga += '</div>';
-    recarga += '<div class="column-2">';
-    recarga += '<p>Vacante</p>';
-    recarga += '<input type="text" class="inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
+    recarga += '<p>Contraseña 2</p>';
+    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña..."><br><br>';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
@@ -1412,25 +1389,19 @@ function formempresa() {
 
     document.getElementById("loginclick").addEventListener("click", login);
     document.getElementById("registrarclick").addEventListener("click", registrar);
-    document.getElementById("crearempresaJS").addEventListener("submit", crearempresaJS);
+    document.getElementById("formempresa0").addEventListener("submit", sessionempresa0);
 
 }
 
-function crearempresaJS(evt) {
-
+function sessionempresa0(evt) {
     evt.preventDefault();
 
     let mail = document.getElementById('mail').value;
-    let contra = document.getElementById('contra').value;
     let nom_emp = document.getElementById('nom_emp').value;
-    let loc_emp = document.getElementById('loc_emp').value;
-    let campo_emp = document.getElementById('campo_emp').value;
-    let mostrado = document.getElementById('mostrado').value;
-    let about_emp = document.getElementById('about_emp').value;
-    let logo_emp = document.getElementById('logo_emp').value;
+    let contra = document.getElementById('contra').value;
+    let contra2 = document.getElementById('contra2').value;
 
-    //VALIDACIONES EMPRESA
-    if (mail == '' || contra == '' || nom_emp == '' || loc_emp == '' || campo_emp == '' || mostrado == '' || about_emp == '' || logo_emp == '') {
+    if (!mail || !nom_emp || !contra || !contra2) {
 
         swal.fire({
             title: "Error",
@@ -1457,20 +1428,11 @@ function crearempresaJS(evt) {
         });
         return false;
 
-    } else if (contra.length < 8) {
+    } else if (contra !== contra2) {
 
         swal.fire({
             title: "Error",
-            text: "La contraseña debe tener mas de 8 caracteres",
-            icon: "error",
-        });
-        return false;
-
-    } else if (contra.length > 100) {
-
-        swal.fire({
-            title: "Error",
-            text: "La contraseña debe tener menos de 100 caracteres",
+            text: "No coinciden las contraseñas",
             icon: "error",
         });
         return false;
@@ -1481,16 +1443,260 @@ function crearempresaJS(evt) {
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
-    formData.append('mail', document.getElementById('mail').value);
-    formData.append('contra', document.getElementById('contra').value);
-    formData.append('nom_emp', document.getElementById('nom_emp').value);
-    formData.append('loc_emp', document.getElementById('loc_emp').value);
-    formData.append('campo_emp', document.getElementById('campo_emp').value);
-    formData.append('searching', document.getElementById('searching').value);
-    formData.append('mostrado', document.getElementById('mostrado').value);
-    formData.append('about_emp', document.getElementById('about_emp').value);
-    formData.append('vacante', document.getElementById('vacante').value);
-    formData.append('logo_emp', document.getElementById('logo_emp').files[0]);
+    formData.append('mail', mail);
+    formData.append('nom_emp', nom_emp);
+    formData.append('contra', contra);
+    formData.append('contra2', contra2);
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionesempresa", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Registrarte",
+                    denyButtonText: "Introducir mas datos",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        crearempresaJS();
+                    } else if (result.isDenied) {
+                        formempresa1();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function formempresa1() {
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    //Flechas registro
+    recarga += '<div>';
+    recarga += '<button id="izquierda">Izquierda</button>';
+    recarga += '<button id="derecha">Derecha</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="formempresa1" enctype="multipart/form-data">';
+    //about_emp
+    recarga += '<div class="column-2">';
+    recarga += '<p>Sobre la empresa</p>';
+    recarga += '<input type="text" class="inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa..."><br><br>';
+    recarga += '</div>';
+    //campo_emp
+    recarga += '<div class="column-2">';
+    recarga += '<p>Sector</p>';
+    recarga += '<input type="text" class="inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '</div>';
+    //searching
+    recarga += '<div class="column-2">';
+    recarga += '<p>¿Qué buscas para tu empresa?</p>';
+    recarga += '<input type="text" class="inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?"><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
+    recarga += '</form>';
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("izquierda").addEventListener("click", formempresa0);
+    document.getElementById("derecha").addEventListener("click", formempresa2);
+    document.getElementById("formempresa1").addEventListener("submit", sessionempresa1);
+
+}
+
+function sessionempresa1(evt) {
+    evt.preventDefault();
+
+    let about_emp = document.getElementById('about_emp').value;
+    let campo_emp = document.getElementById('campo_emp').value;
+    let searching = document.getElementById('searching').value;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('about_emp', about_emp);
+    formData.append('campo_emp', campo_emp);
+    formData.append('searching', searching);
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionesempresa", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Registrarte",
+                    denyButtonText: "Introducir mas datos",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        crearempresaJS();
+                    } else if (result.isDenied) {
+                        formempresa2();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function formempresa2() {
+
+    var tabla = document.getElementById("main");
+    var recarga = '';
+
+    recarga += '<div class="botones">';
+    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
+    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '</div>';
+    //Flechas registro
+    recarga += '<div>';
+    recarga += '<button id="izquierda">Izquierda</button>';
+    recarga += '</div>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<form method="POST" id="formempresa2" enctype="multipart/form-data">';
+    //logo_emp
+    recarga += '<div class="column-2">';
+    recarga += '<p>Logo empresa</p>';
+    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp"><br><br>';
+    recarga += '</div>';
+    //loc_emp
+    recarga += '<div class="column-2">';
+    recarga += '<p>Dirección empresa</p>';
+    recarga += '<input type="text" class="inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización..."><br><br>';
+    recarga += '</div>';
+    //vacante
+    recarga += '<div class="column-2">';
+    recarga += '<p>Vacante</p>';
+    recarga += '<input type="text" class="inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
+    recarga += '</div>';
+    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
+    recarga += '</form>';
+    recarga += '</div>';
+    recarga += '</div>';
+    tabla.innerHTML = recarga;
+
+    document.getElementById("loginclick").addEventListener("click", login);
+    document.getElementById("registrarclick").addEventListener("click", registrar);
+    document.getElementById("izquierda").addEventListener("click", formempresa1);
+    document.getElementById("formempresa2").addEventListener("submit", sessionempresa2);
+
+}
+
+function sessionempresa2(evt) {
+    evt.preventDefault();
+
+    let logo_emp = document.getElementById('logo_emp').files[0];
+    let loc_emp = document.getElementById('loc_emp').value;
+    let vacante = document.getElementById('vacante').value;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('logo_emp', logo_emp);
+    formData.append('loc_emp', loc_emp);
+    formData.append('vacante', vacante);
+
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "sesionesempresa", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            console.log(respuesta);
+
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos guardados",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Registrarte",
+                    cancelButtonText: "Cancelar",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        crearempresaJS();
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function crearempresaJS() {
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
 
     var ajax = objetoAjax();
 
