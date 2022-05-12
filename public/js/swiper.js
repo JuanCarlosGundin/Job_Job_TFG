@@ -416,6 +416,7 @@ function perfilcarta(evt) {
             if (id_perfil == 2) {
 
                 var trabajador = respuesta.trabajador[0];
+                console.log(trabajador);
 
                 // Foto
                 recarga += '<div class="user-vista">';
@@ -455,7 +456,7 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '<hr>';
-                // Correo
+                // mail
                 recarga += '<div class="user-div-house">';
                 recarga += '<div class="user-icon-name">';
                 recarga += '<i class="fa-solid fa-at"></i>';
@@ -464,7 +465,7 @@ function perfilcarta(evt) {
                 recarga += '<span class="p-house">' + trabajador.mail + '</span>';
                 recarga += '</div>';
                 recarga += '</div>';
-                // Vivienda
+                // loc_trabajador
                 recarga += '<div class="user-div-house">';
                 recarga += '<div class="user-icon-name">';
                 recarga += '<i class="fa-solid fa-house-chimney"></i>';
@@ -473,33 +474,74 @@ function perfilcarta(evt) {
                 recarga += '<span class="p-house">' + trabajador.loc_trabajador + '</span>';
                 recarga += '</div>';
                 recarga += '</div>';
-                /* // Estudios y cursos
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-book-open"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.estudios + '</span>';
-                recarga += '</div>';
-                recarga += '</div>'; */
-                /* // Experiencia
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-briefcase"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.experiencia + '</span>';
-                recarga += '</div>';
-                recarga += '</div>'; */
-                /* // Idioma
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-language"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.idiomas + '</span>';
-                recarga += '</div>';
-                recarga += '</div>'; */
+                //si JSON curriculum existe dentro de trabajador 
+                if (trabajador.hasOwnProperty('curriculum')) {
+                    var curriculum = JSON.parse(trabajador.curriculum);
+                    console.log(curriculum);
+                    if (curriculum.hasOwnProperty('estudios')) {
+                        // Estudios
+                        recarga += '<div class="user-div-house">';
+                        recarga += '<div class="user-icon-name">';
+                        recarga += '<i class="fa-solid fa-book-open"></i>';
+                        recarga += '</div>';
+                        for (let i = 0; i < curriculum.estudios.length; i++) {
+                            recarga += '<div class="divs-house">';
+                            recarga += '<span class="p-house">' + curriculum.estudios[i].nombre_formación + '</span>';
+                            recarga += '<span class="p-house">' + curriculum.estudios[i].lugar_formación + '</span>';
+                            recarga += '<span class="p-house">' + curriculum.estudios[i].año_entrada + '</span>';
+                            recarga += '<span class="p-house">' + curriculum.estudios[i].año_salida + '</span>';
+                            recarga += '</div>';
+                        }
+                        recarga += '</div>';
+                    }
+                    if (curriculum.hasOwnProperty('experiencia')) {
+                        // Experiencia
+                        recarga += '<div class="user-div-house">';
+                        recarga += '<div class="user-icon-name">';
+                        recarga += '<i class="fa-solid fa-briefcase"></i>';
+                        recarga += '</div>';
+                        for (let i = 0; i < curriculum.experiencia.length; i++) {
+                            recarga += '<div class="divs-house">';
+                            recarga += '<span class="p-house">' + curriculum.experiencia[i].nombre_experiencia + '</span>';
+                            recarga += '<span class="p-house">' + curriculum.experiencia[i].lugar_experiencia + '</span>';
+                            recarga += '<span class="p-house">' + curriculum.experiencia[i].año_entrada + '</span>';
+                            recarga += '<span class="p-house">' + curriculum.experiencia[i].año_salida + '</span>';
+                            recarga += '<span class="p-house">' + curriculum.experiencia[i].funciones + '</span>';
+                            recarga += '</div>';
+                        }
+                        recarga += '</div>';
+                    }
+                    if (curriculum.hasOwnProperty('idiomas')) {
+                        // Idioma
+                        recarga += '<div>';
+                        recarga += '<div>';
+                        recarga += '<i class="fa-solid fa-language"></i>';
+                        recarga += '</div>';
+                        for (let i = 0; i < curriculum.idiomas.length; i++) {
+                            recarga += '<div>';
+                            recarga += '<span>' + curriculum.idiomas[i].nombre_idioma + '</span>';
+                            recarga += '<span>' + curriculum.idiomas[i].nivel_idioma + '</span>';
+                            recarga += '</div>';
+
+                        }
+                        recarga += '</div>';
+                    }
+                    if (curriculum.hasOwnProperty('habilidades')) {
+                        // Habilidades
+                        recarga += '<div>';
+                        recarga += '<div>';
+                        recarga += '<i class="fa-solid fa-language"></i>';
+                        recarga += '</div>';
+                        for (let i = 0; i < curriculum.habilidades.length; i++) {
+                            recarga += '<div>';
+                            recarga += '<span>' + curriculum.habilidades[i].nombre_habilidad + '</span>';
+                            recarga += '<span>' + curriculum.habilidades[i].nivel_habilidad + '</span>';
+                            recarga += '</div>';
+
+                        }
+                        recarga += '</div>';
+                    }
+                }
                 // Sector
                 recarga += '<div class="user-div-house">';
                 recarga += '<div class="user-icon-name">';

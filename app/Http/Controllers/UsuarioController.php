@@ -409,7 +409,7 @@ public function logout(Request $req){
         if ($id_perfil == 2){
 
             $trabajador = DB::select('select * from tbl_usuarios
-            INNER JOIN tbl_trabajador on tbl_trabajador.id_usuario=tbl_usuarios.id where id=?',[$id]);
+            INNER JOIN tbl_trabajador on tbl_trabajador.id_usuario=tbl_usuarios.id where id=?',[17]);
             return response()->json(array('trabajador' => $trabajador, 'id_perfil' =>$id_perfil));
 
         }
