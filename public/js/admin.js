@@ -651,78 +651,78 @@ function eliminarJS(id, id_perfil) {
 }
 // ------------------------------------------CORREOS ADMIN---------------------------------------------------------
 
-// function enviarcorreoadminJS() {
-//     let destinatario = document.getElementById('destinatario').value;
-//     let asunto = document.getElementById('asunto').value;
-//     let mensaje = document.getElementById('mensaje').value;
-
-//     if (destinatario == '' || asunto == '' || mensaje == '') {
-//         swal.fire({
-//             title: "Error",
-//             text: "Tienes que rellenar todos los datos",
-//             icon: "error",
-//         });
-//         return false;
-
-//     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(destinatario)) { //mirar lo de poner solo por gmail
-//         document.getElementById("email").focus();
-//         document.getElementById("email").style.borderColor = "red";
-//         swal.fire({
-//             title: "Error",
-//             text: "Introduce un email correcto",
-//             icon: "error",
-//         });
-//         return false;
-//     } else if (destinatario.length > 100) {
-//         document.getElementById("mail").focus();
-//         document.getElementById("mail").style.borderColor = "red";
-//         swal.fire({
-//             title: "Error",
-//             text: "El email no puede ser más largo de 100 carácteres",
-//             icon: "error",
-//         });
-//         return false;
-//     }
-//     document.getElementById("myBtn").disabled = true;
-//     var formData = new FormData();
-//     formData.append('_token', document.getElementById('token').getAttribute("content"));
-//     formData.append('_method', "POST");
-//     formData.append('destinatario', destinatario);
-//     formData.append('asunto', asunto);
-//     formData.append('mensaje', mensaje);
-//     var ajax = objetoAjax();
-//     ajax.open("POST", "enviarcorreoadmin", true);
-//     ajax.onreadystatechange = function() {
-//         console.log(ajax.responseText)
-//         if (ajax.readyState == 4 && ajax.status == 200) {
-//             var respuesta = JSON.parse(this.responseText);
-//             if (respuesta == "OK") {
-//                 swal.fire({
-//                     title: "Mensaje Enviado",
-//                     text: "El destinatario recibirá tu mensaje en breves.",
-//                     showConfirmButton: false,
-//                     icon: "success",
-//                     allowOutsideClick: false,
-//                 });
-//                 setTimeout(() => { window.location.href = 'cPanelAdmin'; }, 5000);
-//             } else {
-//                 swal.fire({
-//                     title: "Oops",
-//                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
-//                     icon: "error",
-//                 });
-//                 document.getElementById("myBtn").disabled = false;
-//             }
-//         }
-//     }
-//     ajax.send(formData)
-// }
-
-function enviarcorreoadmintrabajadoresJS() {
+function enviarcorreoadminJS() {
+    let destinatario = document.getElementById('destinatario').value;
     let asunto = document.getElementById('asunto').value;
     let mensaje = document.getElementById('mensaje').value;
 
-    if (asunto == '' || mensaje == '') {
+    if (destinatario == '' || asunto == '' || mensaje == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(destinatario)) { //mirar lo de poner solo por gmail
+        document.getElementById("email").focus();
+        document.getElementById("email").style.borderColor = "red";
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (destinatario.length > 100) {
+        document.getElementById("mail").focus();
+        document.getElementById("mail").style.borderColor = "red";
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 carácteres",
+            icon: "error",
+        });
+        return false;
+    }
+    document.getElementById("myBtn").disabled = true;
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', "POST");
+    formData.append('destinatario', destinatario);
+    formData.append('asunto', asunto);
+    formData.append('mensaje', mensaje);
+    var ajax = objetoAjax();
+    ajax.open("POST", "enviarcorreoadmin", true);
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText)
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta == "OK") {
+                swal.fire({
+                    title: "Mensaje Enviado",
+                    text: "El destinatario recibirá tu mensaje en breves.",
+                    showConfirmButton: false,
+                    icon: "success",
+                    allowOutsideClick: false,
+                });
+                setTimeout(() => { window.location.href = 'cPanelAdmin'; }, 5000);
+            } else {
+                swal.fire({
+                    title: "Oops",
+                    text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
+                    icon: "error",
+                });
+                document.getElementById("myBtn").disabled = false;
+            }
+        }
+    }
+    ajax.send(formData)
+}
+
+function enviarcorreoadmintrabajadoresJS() {
+    let asuntotrabajador = document.getElementById('asuntotrabajador').value;
+    let mensajetrabajador = document.getElementById('mensajetrabajador').value;
+
+    if (asuntotrabajador == '' || mensajetrabajador == '') {
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
@@ -735,8 +735,8 @@ function enviarcorreoadmintrabajadoresJS() {
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
-    formData.append('asunto', asunto);
-    formData.append('mensaje', mensaje);
+    formData.append('asuntotrabajador', asuntotrabajador);
+    formData.append('mensajetrabajador', mensajetrabajador);
     var ajax = objetoAjax();
     ajax.open("POST", "enviarcorreoadmintrabajadores", true);
     ajax.onreadystatechange = function() {
