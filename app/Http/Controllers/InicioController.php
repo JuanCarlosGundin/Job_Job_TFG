@@ -213,12 +213,12 @@ class InicioController extends Controller{
             //modificar registros idiomas.json
             $dataidioma=[];
             for ($i=0; $i <count($nombre_idioma) ; $i++) {
-                $lineaidioma='"'.$i.'": {"nivel_idioma": "'.$nivel_idioma[$i].'","nombre_idioma": "'.$nombre_idioma[$i].'"}';
+                $lineaidioma='{"nivel_idioma": "'.$nivel_idioma[$i].'","nombre_idioma": "'.$nombre_idioma[$i].'"}';
                 array_push($dataidioma, $lineaidioma);
                 
             }
             $idiomafase2= implode(",",$dataidioma);
-            $idiomas='"idiomas": {'.$idiomafase2.'}';
+            $idiomas='"idiomas": ['.$idiomafase2.']';
             array_push($datoscurriculum, $idiomas);
             
         }
@@ -230,12 +230,12 @@ class InicioController extends Controller{
             $año_salidafor=explode(',',session()->get('año_salidafor'));
             $dataformacion=[];
             for ($i=0; $i <count($nombre_formación) ; $i++) {
-                $lineaformación='"'.$i.'": {"año_salida": "'.$año_salidafor[$i].'","año_entrada": "'.$año_entradafor[$i].'","lugar_formación": "'.$lugar_formación[$i].'","nombre_formación": "'.$nombre_formación[$i].'"}';
+                $lineaformación='{"año_salida": "'.$año_salidafor[$i].'","año_entrada": "'.$año_entradafor[$i].'","lugar_formación": "'.$lugar_formación[$i].'","nombre_formación": "'.$nombre_formación[$i].'"}';
                 array_push($dataformacion, $lineaformación);
                 
             }
             $formacionfase2= implode(",",$dataformacion);
-            $formaciones='"estudios": {'.$formacionfase2.'}';
+            $formaciones='"estudios": ['.$formacionfase2.']';
             array_push($datoscurriculum, $formaciones);
             
         }
@@ -251,12 +251,12 @@ class InicioController extends Controller{
 
             for ($i=0; $i <count($nombre_experiencia) ; $i++) {
 
-                $lineaexperiencia='"'.$i.'": {"funciones": "'.$funciones[$i].'","año_salida": "'.$año_salidaexp[$i].'","año_entrada": "'.$año_entradaexp[$i].'","lugar_experiencia": "'.$lugar_experiencia[$i].'","nombre_experiencia": "'.$nombre_experiencia[$i].'"}';
+                $lineaexperiencia='{"funciones": "'.$funciones[$i].'","año_salida": "'.$año_salidaexp[$i].'","año_entrada": "'.$año_entradaexp[$i].'","lugar_experiencia": "'.$lugar_experiencia[$i].'","nombre_experiencia": "'.$nombre_experiencia[$i].'"}';
                 array_push($dataexperiencia, $lineaexperiencia); 
             }
 
             $experienciafase2= implode(",",$dataexperiencia);
-            $experiencias='"experiencia": {'.$experienciafase2.'}';
+            $experiencias='"experiencia": ['.$experienciafase2.']';
             array_push($datoscurriculum, $experiencias);
         }
         if ((session()->has('nombre_idioma') && session()->has('nombre_formación')) ||
