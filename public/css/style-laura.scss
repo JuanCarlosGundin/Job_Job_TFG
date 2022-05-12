@@ -687,12 +687,35 @@ body {
         height: 72vh;
         overflow-y: scroll;
     }
+    /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+    * {
+        scrollbar-width: auto;
+        scrollbar-color: #a6a5a7 #ffffff;
+    }
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        width: 16px;
+    }
+    *::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    *::-webkit-scrollbar-thumb {
+        background-color: #a6a5a7;
+        border-radius: 10px;
+        border: -3px solid #ffffff;
+    }
     //contenido del modal
     .modal-content-register {
         border: white;
         text-align: center;
         width: 100%;
         height: 70vh;
+        .mas-menos {
+            width: 100%;
+            text-align: right !important;
+            margin-right: -30px;
+        }
         .mas,
         .menos {
             padding-top: 1vh;
@@ -700,17 +723,18 @@ body {
             color: $first-color;
             border: none;
             background-color: transparent;
-            font-size: 25px;
+            font-size: 30px;
+            position: absolute;
         }
         .izquierda-derecha {
             .izquierda,
             .derecha {
                 padding-top: 3vh;
-                padding-bottom: 3vh;
+                padding-bottom: 1vh;
                 color: $first-color;
                 border: none;
                 background-color: transparent;
-                font-size: 35px;
+                font-size: 30px;
             }
             .izquierda {
                 padding-left: 9vh;
@@ -727,11 +751,16 @@ body {
             padding-bottom: 6vh;
             font-size: 3.5vh;
         }
+        .column-1 {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
         .column-2 {
             width: 50%;
             float: left;
             padding-left: 5%;
             padding-right: 5%;
+            position: relative;
         }
         //poner inputs en dos columnas distintas
         p {
@@ -793,6 +822,19 @@ body {
             h3 {
                 font-size: 3vh;
                 padding-bottom: 4vh;
+            }
+            .izquierda-derecha {
+                .izquierda,
+                .derecha {
+                    padding-bottom: 3vh;
+                    font-size: 50px;
+                }
+                .izquierda {
+                    padding-left: 2vh;
+                }
+                .derecha {
+                    padding-right: 2vh;
+                }
             }
             width: 100%;
             padding-left: 5%;

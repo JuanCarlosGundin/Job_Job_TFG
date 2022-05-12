@@ -20,21 +20,21 @@
 // }
 
 const switchButton = document.getElementById('switch');
+const workContainer = document.getElementById('work');
 
 switchButton.addEventListener('click', () => {
-    document.body.classList.toggle('oscuro'); //cambiar el cuerpo del HTML por la clase 'dark'
-    switchButton.classList.toggle('active'); //cambiar el botón HTML con el id='switch' con la clase 'active'
-    workContainer.classList.toggle('oscuro');
+    document.body.classList.toggle('oscuro'); //body del html se cambia a la clase 'oscuro'
+    switchButton.classList.toggle('active'); //el boton se cambia a la clase "active"
 
-    if (document.body.classList.contains('oscuro')) { //cuando el cuerpo tiene la clase 'dark' actualmente
-        localStorage.setItem('oscuro', 'enabled'); //almacenar estos datos si el modo oscuro está activado
+    if (document.body.classList.contains('oscuro')) { //si el body tiene la clase 'oscuro'
+        localStorage.setItem('darkMode', 'enabled'); //activa el modo oscuro
     } else {
-        localStorage.setItem('oscuro', 'disabled'); //almacenar estos datos si el modo oscuro está desactivado
+        localStorage.setItem('darkMode', 'disabled'); //si no, desactiva el modo oscuro
     }
 });
 
-if (localStorage.getItem('oscuro') == 'enabled') {
+//si el modo oscuro está activado almacenara el cambio de body y el botón en LocalStorage
+if (localStorage.getItem('darkMode') == 'enabled') {
     document.body.classList.toggle('oscuro');
     switchButton.classList.toggle('active');
-    workContainer.classList.toggle('oscuro');
 }
