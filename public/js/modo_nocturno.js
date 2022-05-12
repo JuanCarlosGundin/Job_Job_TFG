@@ -33,8 +33,8 @@ switchButton.addEventListener('click', () => {
     }
 });
 
-if (localStorage.getItem('darkMode') == 'enabled') {
-    document.body.classList.toggle('dark');
+if (localStorage.getItem('oscuro') == 'enabled') {
+    document.body.classList.toggle('oscuro');
     switchButton.classList.toggle('active');
-    workContainer.classList.toggle('dark');
+    workContainer.classList.toggle('oscuro');
 }
