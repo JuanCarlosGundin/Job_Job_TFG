@@ -121,4 +121,4 @@ Route::post('mandar', [MailController::class, 'sending']);
 Route::post('getchat', [Chat::class, 'getchat']);
 
 //insertar mensaje del chat
-Route::post('insertar', [Chat::class, 'insertar']);
+Route::post('insert', [Chat::class, 'insert']);

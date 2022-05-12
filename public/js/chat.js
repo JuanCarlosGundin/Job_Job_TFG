@@ -409,24 +409,6 @@ function getchanel(){
     ajax.send(formData);
 }
 
-function insert() {
-
-    var formData = new FormData();
-    var ajax = objetoAjax();
-
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    //formData.append('filter', document.getElementById('filter').value);
-
-    ajax.open("POST", "insert", false);
-    ajax.onreadystatechange = function() {
-        //console.log(ajax.responseText)
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            //console.log(chatInfo)
-        }
-    }
-    ajax.send(formData);
-}
 
 window.onload=function() {
 
@@ -437,7 +419,21 @@ window.onload=function() {
     } else {
         document.getElementById('nombre').innerHTML='<p> Estas chateando con '+chatInfo.other[0].nom_emp+'</p>'
     }
+
     start()
+    var mensajes=JSON.parse(chatInfo.chanel[0].json_chat)
+    mensajes=mensajes.mensajes
+
+    console.log(mensajes)
+    var recarga = "";
+
+    for (var i = 0; i < mensajes.length; i+=1) {
+       
+        recarga += '<p>'+mensajes[i].nombre+ " : " +htmlEncode(mensajes[i].mensaje) +'<br>'+mensajes[i].hora+'<p>';
+      }
+
+      document.getElementById('chat').innerHTML += recarga
+    
 }
 
 //ZONA VARIABLES
@@ -470,7 +466,6 @@ function start(){
     socket.onmessage = function(event) {
 
         document.getElementById('chat').innerHTML += '<p>' + event.data + '<p>'
-        console.log(event.data);
     }
     }
 
@@ -486,11 +481,31 @@ function start(){
 //    socket.close()
 
 //}
+function insert() {
+
+    var formData = new FormData();
+    var ajax = objetoAjax();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    //formData.append('filter', document.getElementById('filter').value);
+
+    ajax.open("POST", "insert", false);
+    ajax.onreadystatechange = function() {
+        //console.log(ajax.responseText)
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta)
+        }
+    }
+    ajax.send(formData);
+}
+
 
 function sender() {
 
     var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    if(today.getMinutes()<10){ var time = today.getHours() + ":0"+ today.getMinutes(); } else { var time = today.getHours() + ":"+ today.getMinutes();}
+    
 
     getchanel()
     console.log(chatInfo)
@@ -499,6 +514,7 @@ function sender() {
 
         socket.send(chatInfo.name[0].nom_emp+ " : " +htmlEncode(document.getElementById('test').value) +'<br>'+time);
     } else {
+
         socket.send(chatInfo.name[0].nombre+ " : " +htmlEncode(document.getElementById('test').value) +'<br>'+time);
     }
     document.getElementById('test').value=''

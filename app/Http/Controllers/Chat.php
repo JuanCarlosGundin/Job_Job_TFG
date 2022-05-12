@@ -14,10 +14,10 @@ class Chat extends Controller {
     function getchat(Request $request) {
         try {
             $id=session()->get('id_user');
-            $idOTRO= 61;
+            $idOTRO= 62;
             $perfil=session()->get('id_perfil');
 
-            $chanel=DB::select('SELECT id FROM tbl_chat 
+            $chanel=DB::select('SELECT * FROM tbl_chat 
             where (id_iniciador_chat= ? and id_interactuado_chat = ?) 
             or (id_interactuado_chat= ? and id_iniciador_chat = ?)'
             ,[$id,$idOTRO,$id,$idOTRO]);
@@ -53,13 +53,15 @@ class Chat extends Controller {
 
         try {
             $id=session()->get('id_user');
-            $idOTRO= 62;
+            $idOTRO= 61;
             //$perfil=session()->get('id_perfil');
 
-            $chanel=DB::select('SELECT * FROM tbl_chat 
+            $chanel=DB::select('SELECT json_chat FROM tbl_chat 
             where (id_iniciador_chat= ? and id_interactuado_chat = ?) 
             or (id_interactuado_chat= ? and id_iniciador_chat = ?)'
             ,[$id,$idOTRO,$id,$idOTRO]);
+            
+            return response()->json($chanel);
 
 
         } catch(\Exception $e) {
