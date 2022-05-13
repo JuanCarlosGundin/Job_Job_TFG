@@ -104,7 +104,7 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '<div class="user-ver-foto">';
                 if (trabajador.foto_perfil != null) {
-                    recarga += '<img class="user-profilefoto" src="./storage/uploads/' + trabajador.foto_perfil + '">';
+                    recarga += '<img class="user-profilefoto" src="./storage/' + trabajador.foto_perfil + '">';
                 } else {
                     recarga += '<img class="user-profilefoto" src="./storage/img/usuario.png">';
                 }
@@ -281,17 +281,167 @@ function leer_sobre_mi() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = "";
-            recarga += '<button id="volver">Volver</button>';
-            recarga += '<button id="editar_sobre_mi">Editar</button>';
-            recarga += "<div>";
-            recarga += '<p>' + trabajador.campo_user + '</p>';
-            recarga += '<p>' + trabajador.about_user + '</p>';
-            recarga += '<p>' + trabajador.loc_trabajador + '</p>';
-            recarga += '<p>' + trabajador.lenguaje_preferido + '</p>';
-            recarga += '<p>' + trabajador.linkedin + '</p>';
-            recarga += '<p>' + trabajador.telefono + '</p>';
-            recarga += '<p>' + trabajador.github + '</p>';
-            recarga += "</div>";
+
+
+            recarga += '<div class="vista-profile">';
+            recarga += '<div class="categoria-edit">';
+            //volver a la vista anterior
+            recarga += '<div class="return">';
+            recarga += '<button class="return-btn" id="volver">';
+            recarga += '<div class="return-icon">';
+            recarga += '<i class="fa-solid fa-angle-left"></i>';
+            recarga += '</div>';
+            recarga += '<p class="return-text">VOLVER</p>';
+            recarga += '</button>';
+            recarga += '</div>';
+            //ir a vista editar
+            recarga += '<div class="logout">';
+            recarga += '<button class="logout-btn" id="editar_sobre_mi"><i class="fa-solid fa-pen"></i></button>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-profile">';
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-address-card"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Sobre mi</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.campo_user + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            //bloque pequeño
+            //bloque grande
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-address-card"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Sobre mi</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.about_user + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            //bloque grande
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-address-card"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Sobre mi</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.loc_trabajador + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            //bloque pequeño
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-address-card"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Sobre mi</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.lenguaje_preferido + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            //bloque pequeño
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-address-card"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Sobre mi</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.linkedin + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            //bloque pequeño
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-address-card"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Sobre mi</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.telefono + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            //bloque pequeño
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-address-card"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Sobre mi</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.github + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            //bloque pequeño
+            recarga += '</div>';
+            recarga += '</div>';
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
