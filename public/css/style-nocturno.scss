@@ -4,7 +4,7 @@ $first-color:#012A4A;
 $second-color: #0060A4;
 $third-color: #0B4B78;
 $fourth-color:#03365E;
-$fifth-color: #012A4A;
+$fifth-color: #437EA9;
 //Colores basicos//
 $black:#000000;
 $white:#ffffff;
@@ -74,7 +74,10 @@ $tablet:900px;
         }
         h2,
         h3,
-        .contraseña {
+        .contraseña,
+        .izquierda,
+        .derecha,
+        p {
             color: white !important;
         }
         .inputlogin,
@@ -104,10 +107,73 @@ $tablet:900px;
             background: $second-color;
             border: $second-color solid 1.5px;
         }
+        .izquierda,
+        .derecha {
+            color: white;
+        }
+    }
+}
+
+///////////////////////////////////////NAVBAR////////////////////////////////////
+.oscuro {
+    background-color: $first-color;
+    .region-navbar {
+        background-color: $third-color;
+        .main-icon {
+            background-color: $third-color;
+        }
+        .icon {
+            color: $white;
+            background-color: $third-color;
+        }
+        .main-icon {
+            color: white;
+            background-color: $third-color;
+        }
+        .active-icon {
+            background-color: $first-color;
+        }
+        .active-left {
+            background-color: $first-color;
+        }
+        .active-right {
+            background-color: $first-color;
+        }
+        .active {
+            background-color: $first-color;
+        }
+        .active-center {
+            background-color: $first-color;
+        }
     }
 }
 
 /////////////////////////////////////////HOME////////////////////////////////////
 .page-home.oscuro {
     background-color: $first-color;
+    .botones-home {
+        button {
+            background-color: $third-color;
+            box-shadow: none;
+        }
+        .boton-info,
+        .boton-maletin,
+        .boton-cruz {
+            .icono-maletin {
+                i {
+                    color: rgb(174, 137, 110);
+                }
+            }
+            .icono-info {
+                i {
+                    color: rgb(164, 163, 163);
+                }
+            }
+            .icono-cruz {
+                i {
+                    color: rgb(247, 135, 135);
+                }
+            }
+        }
+    }
 }

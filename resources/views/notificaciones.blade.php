@@ -17,6 +17,7 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
+    <link rel="stylesheet" href="{{asset('css/style-nocturno.css')}}">
     <title>Notificaciones</title>
 </head>
 
@@ -30,7 +31,7 @@
         </div>
         <div class="main-navbar">
             <button id="navbar-main-icon" class="main-icon"><i class="fa-solid fa-briefcase"></i></button>
-        </div>
+        </div>  
         {{-- <div class="chat-navbar">
            <button class="icon" onClick="window.location.href='prueba3';"><i class="fa-solid fa-comment-dots"></i></button>
         </div> --}}
@@ -38,6 +39,9 @@
             <button id="navbar-profile-icon" class="icon" ><i class="fa-solid fa-user"></i></button>
         </div>
     </div>
+    <button type="button" class="darkmodeswitch" id="switch"><span><i class="fa fa-sun-o"></i></span>   
+        <span><i class="fa fa-moon-o"></i></span>
+    </button>
     <div class="alerts">
         <div class="filter">
             <div class="buscador">
@@ -52,6 +56,7 @@
         </div>
     </div>
     <script src="js/notificaciones.js"></script>
+    <script src="js/modo_nocturno.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 

@@ -16,6 +16,7 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
+    <link rel="stylesheet" href="{{asset('css/style-nocturno.css')}}">
     <title>PERFIL</title>
 </head>
 <body>
@@ -36,6 +37,9 @@
             <button id="navbar-profile-icon" class="icon active-icon"><i class="fa-solid fa-user"></i></button>
         </div>
     </div>
+    <button type="button" class="darkmodeswitch" id="switch"><span><i class="fa fa-sun-o"></i></span>   
+        <span><i class="fa fa-moon-o"></i></span>
+    </button>
     <div id="contenidoajax">
         {{-- contenido ajax --}}
     </div>
@@ -45,6 +49,7 @@
         </div>
     </div>
     <script src="js/perfil.js"></script>
+    <script src="js/modo_nocturno.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
