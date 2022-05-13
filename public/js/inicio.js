@@ -469,7 +469,7 @@ function formtrabajador2() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div>';
+    recarga += '</div><br>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
     //campo_user
@@ -576,7 +576,7 @@ function formtrabajador3() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div>';
+    recarga += '</div><br>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
     //loc_trabajador
@@ -691,12 +691,15 @@ function formtrabajador4() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div>';
+    recarga += '</div><br>';
     recarga += '<h3>¿Qué idiomas hablas?</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
     /* Estructura linea */
     recarga += '<div id="lineaidioma-0">';
     //nombre_idioma
+    recarga += '<div class="mas-menos">'
+    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
+    recarga += '</div>'
     recarga += '<div class="column-2">';
     recarga += '<p>Idioma</p>';
     recarga += '<select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
@@ -718,7 +721,6 @@ function formtrabajador4() {
     recarga += '</select><br><br>';
     recarga += '</div>';
     recarga += '<div>';
-    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
@@ -748,8 +750,8 @@ function insertaridioma() {
     recarga += '<div id="lineaidioma-' + k + '">';
     //nombre_idioma
     recarga += '<div class="column-2">';
-    recarga += '<p>nombre_idioma</p>';
-    recarga += '<select class="inputregister" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
+    recarga += '<p>Idioma</p>';
+    recarga += '<select class="inputcolumn2 inputregister" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
     recarga += '<option value="" selected>- selecciona -</option>';
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
@@ -758,8 +760,8 @@ function insertaridioma() {
     recarga += '</div>';
     //nivel_idioma
     recarga += '<div class="column-2">';
-    recarga += '<p>nivel_idioma</p>';
-    recarga += '<select class="inputregister" name="nivel_idioma[]" id="nivel_idioma">';
+    recarga += '<p>Nivel</p>';
+    recarga += '<select class="inputcolumn2 inputregister" name="nivel_idioma[]" id="nivel_idioma">';
     recarga += '<option value="" selected>- selecciona -</option>';
     recarga += '<option value="bajo">bajo</option>';
     recarga += '<option value="medio">medio</option>';
@@ -873,7 +875,7 @@ function formtrabajador5() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div>';
+    recarga += '</div><br>';
     recarga += '<h3>¿Dónde has estudiado?</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
     /* Estructura linea */
@@ -929,22 +931,22 @@ function insertarestudio() {
     recarga += '<div id="lineaestudio-' + k + '">';
     //nombre_formación
     recarga += '<div class="column-2">';
-    recarga += '<p>nombre_formación</p>';
+    recarga += '<p>Nombre de formación</p>';
     recarga += '<input type="text" class="inputregister" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo"><br><br>';
     recarga += '</div>';
     //lugar_formación
     recarga += '<div class="column-2">';
-    recarga += '<p>lugar_formación</p>';
+    recarga += '<p>Lugar de formación</p>';
     recarga += '<input type="text" class="inputregister" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios"><br><br>';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
-    recarga += '<p>año_entrada</p>';
+    recarga += '<p>Año de entrada</p>';
     recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
-    recarga += '<p>año_salida</p>';
+    recarga += '<p>Año de salida</p>';
     recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]"><br><br>';
     recarga += '</div>';
     recarga += '<div>';
@@ -1068,39 +1070,30 @@ function formtrabajador6() {
     recarga += '<div class="modal-content-register"><div class="scrollbar">';
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
-    recarga += '</div>';
+    recarga += '</div><br>';
     recarga += '<h3>¿Dónde has trabajado?</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
     /* Estructura linea */
     recarga += '<div id="lineaexperiencia-0">';
     //nombre_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>nombre_experiencia</p>';
-    recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto"><br><br>';
+    recarga += '<p>Nombre de empresa</p>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="Nombre de empresa..." placeholder="Nombre puesto"><br><br>';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>lugar_experiencia</p>';
-    recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa"><br><br>';
-    recarga += '</div>';
-    //funciones
-    recarga += '<div class="column-1">';
-    recarga += '<p>funciones</p>';
-    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
-    recarga += '</div>';
-    recarga += '<div>';
-    recarga += '<button type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
-    recarga += '</div>';
+    recarga += '<p>Lugar</p>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="Lugar..." placeholder="Empresa"><br><br>';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
-    recarga += '<p>año_entrada</p>';
-    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<p>Año de entrada</p>';
+    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
-    recarga += '<p>año_salida</p>';
-    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]"><br><br>';
+    recarga += '<p>Año de salida</p>';
+    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_salida" name="año_salida[]"><br><br>';
     recarga += '</div>';
     //funciones
     recarga += '<div class="column-1">';
@@ -1108,7 +1101,7 @@ function formtrabajador6() {
     recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
     recarga += '</div>';
     recarga += '<div>';
-    recarga += '<button type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
+    recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
@@ -1339,22 +1332,22 @@ function formempresa0() {
     //Correo
     recarga += '<div class="column-2">';
     recarga += '<p>Email</p>';
-    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
     recarga += '</div>';
     //Nombre
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre</p>';
-    recarga += '<input type="text" class="inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre..."><br><br>';
     recarga += '</div>';
     //Contra 1
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña</p>';
-    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
     recarga += '</div>';
     //Contra 2
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña 2</p>';
-    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña..."><br><br>';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
@@ -1476,26 +1469,27 @@ function formempresa1() {
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div>';
-    recarga += '<button id="izquierda">Izquierda</button>';
-    recarga += '<button id="derecha">Derecha</button>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="izquierda-derecha">';
+    recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
+    recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa1" enctype="multipart/form-data">';
     //about_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Sobre la empresa</p>';
-    recarga += '<input type="text" class="inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa..."><br><br>';
     recarga += '</div>';
     //campo_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Sector</p>';
-    recarga += '<input type="text" class="inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector..."><br><br>';
     recarga += '</div>';
     //searching
     recarga += '<div class="column-2">';
     recarga += '<p>¿Qué buscas para tu empresa?</p>';
-    recarga += '<input type="text" class="inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?"><br><br>';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
@@ -1579,29 +1573,29 @@ function formempresa2() {
     recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div>';
-    recarga += '<button id="izquierda">Izquierda</button>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="izquierda-derecha">';
+    recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button><br>';
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa2" enctype="multipart/form-data">';
-    //logo_emp
-    recarga += '<div class="column-2">';
-    recarga += '<p>Logo empresa</p>';
-    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp"><br><br>';
-    recarga += '</div>';
     //loc_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Dirección empresa</p>';
-    recarga += '<input type="text" class="inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización..."><br><br>';
     recarga += '</div>';
     //vacante
     recarga += '<div class="column-2">';
     recarga += '<p>Vacante</p>';
-    recarga += '<input type="text" class="inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
+    recarga += '</div>';
+    //logo_emp
+    recarga += '<div class="column-1">';
+    recarga += '<p>Logo empresa</p>';
+    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp"><br><br>';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
-    recarga += '</div>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
 

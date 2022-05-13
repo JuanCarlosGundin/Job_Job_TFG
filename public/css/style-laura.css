@@ -723,10 +723,35 @@ body {
   }
 }
 
+.bodylogin {
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  /* Chrome, Edge, and Safari */
+}
+
 .bodylogin .scrollbar {
   width: 100%;
   height: 72vh;
   overflow-y: scroll;
+}
+
+.bodylogin * {
+  scrollbar-width: auto;
+  scrollbar-color: #a6a5a7 #ffffff;
+}
+
+.bodylogin *::-webkit-scrollbar {
+  width: 16px;
+}
+
+.bodylogin *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bodylogin *::-webkit-scrollbar-thumb {
+  background-color: #a6a5a7;
+  border-radius: 10px;
+  border: -3px solid #ffffff;
 }
 
 .bodylogin .modal-content-register {
@@ -736,6 +761,12 @@ body {
   height: 70vh;
 }
 
+.bodylogin .modal-content-register .mas-menos {
+  width: 100%;
+  text-align: right !important;
+  margin-right: -30px;
+}
+
 .bodylogin .modal-content-register .mas,
 .bodylogin .modal-content-register .menos {
   padding-top: 1vh;
@@ -743,17 +774,18 @@ body {
   color: #186CA7;
   border: none;
   background-color: transparent;
-  font-size: 25px;
+  font-size: 30px;
+  position: absolute;
 }
 
 .bodylogin .modal-content-register .izquierda-derecha .izquierda,
 .bodylogin .modal-content-register .izquierda-derecha .derecha {
   padding-top: 3vh;
-  padding-bottom: 3vh;
+  padding-bottom: 1vh;
   color: #186CA7;
   border: none;
   background-color: transparent;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 .bodylogin .modal-content-register .izquierda-derecha .izquierda {
@@ -773,11 +805,17 @@ body {
   font-size: 3.5vh;
 }
 
+.bodylogin .modal-content-register .column-1 {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 .bodylogin .modal-content-register .column-2 {
   width: 50%;
   float: left;
   padding-left: 5%;
   padding-right: 5%;
+  position: relative;
 }
 
 .bodylogin .modal-content-register p {
@@ -861,6 +899,17 @@ body {
   .bodylogin .modal-content-register h3 {
     font-size: 3vh;
     padding-bottom: 4vh;
+  }
+  .bodylogin .modal-content-register .izquierda-derecha .izquierda,
+  .bodylogin .modal-content-register .izquierda-derecha .derecha {
+    padding-bottom: 3vh;
+    font-size: 50px;
+  }
+  .bodylogin .modal-content-register .izquierda-derecha .izquierda {
+    padding-left: 2vh;
+  }
+  .bodylogin .modal-content-register .izquierda-derecha .derecha {
+    padding-right: 2vh;
   }
   .bodylogin .modal-content-register .inputregister {
     height: 6vh !important;
