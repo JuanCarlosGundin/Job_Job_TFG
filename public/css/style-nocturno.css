@@ -174,18 +174,18 @@
 .page-home.oscuro .botones-home .boton-info .icono-maletin i,
 .page-home.oscuro .botones-home .boton-maletin .icono-maletin i,
 .page-home.oscuro .botones-home .boton-cruz .icono-maletin i {
-  color: #ae896e;
+  color: white;
 }
 
 .page-home.oscuro .botones-home .boton-info .icono-info i,
 .page-home.oscuro .botones-home .boton-maletin .icono-info i,
 .page-home.oscuro .botones-home .boton-cruz .icono-info i {
-  color: #a4a3a3;
+  color: white;
 }
 
 .page-home.oscuro .botones-home .boton-info .icono-cruz i,
 .page-home.oscuro .botones-home .boton-maletin .icono-cruz i,
 .page-home.oscuro .botones-home .boton-cruz .icono-cruz i {
-  color: #f78787;
+  color: white;
 }
 /*# sourceMappingURL=style-nocturno.css.map */

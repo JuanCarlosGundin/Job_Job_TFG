@@ -11,12 +11,20 @@ Route::get('registrar', function () {
     return view('registrar');
 });
 
-Route::get('registrar2', function () {
-    return view('registrar2');
+Route::get('/chat', function () {
+    return view('chat');
 });
-
-Route::get('registrar3', function () {
-    return view('registrar3');
+Route::get('verificar', function () {
+    return view('verificacion');
+});
+Route::get('login', function () {
+    return view('login');
+});
+Route::get('paginaempresa', function () {
+    return view('paginaempresa');
+});
+Route::get('paginatrabajador', function () {
+    return view('paginatrabajador');
 });
 
 Route::get('registrar4', function () {
@@ -53,6 +61,7 @@ Route::post('registroempresa', [InicioController::class, 'registroempresa']);
 
 /* Registrar */
 
+Route::post('login', [UsuarioController::class, 'loginP']);
 
 /* Verificar cuenta */
 
@@ -82,16 +91,6 @@ Route::post('editarperfil',[PerfilController::class,'editarperfil']);
 
 /* ------------PerfilController------------ */
 
-
-
-
-
-
-
-
-
-
-
 ///////////////////////MAIN/////////////////////
 
 //LEER EL CONTENIDO
@@ -102,7 +101,9 @@ Route::post('si',[AppController::class, 'si']);
 Route::post('no',[AppController::class, 'no']);
 
 ////Diego_branch
+
 ///ZONA ADMINISTRADOR
+
 //Acceder a vista Admin
 Route::get('cPanelAdmin',[UsuarioController::class, 'vistaAdmin']);
 
@@ -126,18 +127,38 @@ Route::put('modificaruser/{id}/{id_perfil}',[UsuarioController::class,'modificar
 
 //eliminaruserJS
 Route::delete('eliminaruser/{id}/{id_perfil}',[UsuarioController::class,'eliminaruser']);
-///ZONA ADMINISTRADOR
+
+///FINAL ZONA ADMINISTRADOR
 
 ///ZONA NOTIFICACIONES
+
 //Acceder a vista Notificaciones
 Route::get('notificaciones',[UsuarioController::class, 'vistaNotificaciones']);
 
 //leernotificacionesJS
 Route::post('leernotificaciones',[UsuarioController::class, 'leernotificaciones']);
+
 //leerperfiloneuser
 Route::post('leerperfiluser/{id}/{id_perfil}',[UsuarioController::class, 'leerperfiloneuser']);
 
-///ZONA NOTIFICACIONES
+///FINAL ZONA NOTIFICACIONES
+
+//EDITAR PERFIL//
+
+//Vista perfil
+Route::get('perfil',[UsuarioController::class, 'vistaPerfil']);
+
+// mostrarperfil.
+Route::post('leerperfil',[UsuarioController::class, 'leerperfiledit']);
+
+// editarperfil
+Route::put('editarperfil/{id}/{id_perfil}',[UsuarioController::class, 'editarperfil']);
+
+//FIN EDITAR PERFIL//
+
+//ZONA CHAT//
 
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
+
+//FINAL ZONA GIGACHAT//
