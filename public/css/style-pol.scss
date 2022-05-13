@@ -9,7 +9,7 @@ $fifth-color: #92AFD7;
 //Colores basicos//
 $black:#000000;
 $white:#ffffff;
-$grey: #F0F0F0;
+$grey: #E5E5E5;
 //Medidas
 $movil:768px;
 $tablet:1200px;
@@ -35,7 +35,7 @@ body {
 }
 
 /////////////////////////////////VER-PERFIL////////////////////////////////////
-.user-fondo {
+.ver-profile {
     height: 100vh;
     .container-user-poligon {
         position: relative;
@@ -226,6 +226,85 @@ body {
     }
 }
 
+/////////////////////////////////VER-CATEGORIA-PERFIL////////////////////////////////////
+.vista-profile {
+    width: 100;
+    padding: 2vh;
+    .categoria-edit {
+        .return {
+            width: 50%;
+            .return-btn {
+                border-width: 0px;
+                font-size: 3vh;
+                background-color: transparent;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                padding: 0;
+                .return-icon {
+                    float: left;
+                    margin-right: 5px;
+                }
+                .return-text {
+                    margin: 0;
+                    float: left;
+                    font-size: medium;
+                    font-weight: bold;
+                }
+            }
+        }
+        .logout {
+            width: 50%;
+            .logout-btn {
+                height: 5vh;
+                width: 5vh;
+                padding: 0;
+                border-width: 0px;
+                cursor: pointer;
+                padding: 0;
+                margin: 0;
+                border-radius: 60px;
+                color: white;
+                background-color: $first-color;
+                font-size: 2vh;
+            }
+        }
+    }
+    .categoria-profile {
+        .categoria {
+            padding: 4vh;
+            .categoria-icon {
+                float: left;
+                font-size: larger;
+                margin-right: 10px;
+            }
+            .categoria-name {
+                .categoria-p-name {
+                    margin: 0;
+                    font-weight: bolder;
+                    font-size: large;
+                }
+            }
+            .categoria-text {
+                .categoria-p-text {
+                    margin: 0;
+                    font-size: medium;
+                }
+            }
+            .categoria-linea {
+                width: 100%;
+                margin-top: 2vh;
+                margin-bottom: 2vh;
+                .linea-divisoria {
+                    margin: 0;
+                    color: $grey;
+                }
+            }
+        }
+    }
+}
+
 /////////////////////////////////EDITAR-PERFIL////////////////////////////////////
 .edit-profile {
     width: 100;
@@ -243,7 +322,7 @@ body {
             padding: 0;
             .return-icon {
                 float: left;
-                margin-right: 1vw;
+                margin-right: 5px;
             }
             .return-text {
                 margin: 0;
@@ -592,13 +671,13 @@ body {
                 display: flex;
                 align-items: center;
                 float: left;
-                margin-left: 1vw;
+                margin-left: 5px;
             }
             .divs-house {
                 float: right;
                 width: 90%;
                 .p-house {
-                    margin-left: 1vw;
+                    margin-left: 5px;
                     width: 100%;
                     height: 5vh;
                     border-radius: 2vw;
@@ -624,7 +703,7 @@ body {
                 float: right;
                 width: 75%;
                 .p-desc {
-                    margin-left: 1vw;
+                    margin-left: 5px;
                     width: 100%;
                     height: 5vh;
                     border-radius: 2vw;
@@ -634,340 +713,339 @@ body {
     }
 }
 
-/////////////////////////////////EDITAR-EMPRESA////////////////////////////////////
-.empresa-edit {
-    width: 100;
-    padding: 2vh;
-    .return {
-        margin-bottom: 2vh;
-        .return-btn {
-            border-width: 0px;
-            font-size: 3vh;
-            background-color: transparent;
-            cursor: pointer;
-        }
-    }
-    .empresa-input {
-        margin-top: 2vh;
-        width: 100%;
-        .empresa-input-name {
-            width: 89vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-name {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-            }
-            .inputs-name {
-                float: left;
-                width: 90%;
-                .input-name {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-        .empresa-input-sede {
-            width: 89vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-sede {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-            }
-            .inputs-sede {
-                float: left;
-                width: 90%;
-                .input-sede {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-        .empresa-input-campo {
-            width: 89vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-campo {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-            }
-            .inputs-campo {
-                float: left;
-                width: 90%;
-                .input-campo {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-        .empresa-input-buscando {
-            width: 89vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-buscando {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-            }
-            .inputs-buscando {
-                float: left;
-                width: 90%;
-                .input-buscando {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-        .empresa-input-vacante {
-            width: 89vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-vacante {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-            }
-            .inputs-vacante {
-                float: left;
-                width: 90%;
-                .input-vacante {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-        .empresa-input-logo {
-            width: 89vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-logo {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-            }
-            .inputs-logo {
-                float: left;
-                width: 90%;
-                .input-logo {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-        .empresa-input-email {
-            width: 89vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-email {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-            }
-            .inputs-email {
-                float: left;
-                width: 90%;
-                .input-email {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-        .empresa-input-passwd {
-            width: 89vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-passwd {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-            }
-            .inputs-passwd {
-                float: left;
-                width: 90%;
-                .input-passwd {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-        .empresa-input-desactivar {
-            width: 89vw;
-            border-radius: 2vw;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-desactivar {
-                width: 80%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-                color: rgb(0, 0, 0);
-                font-weight: bolder;
-            }
-            .inputs-desactivar {
-                float: left;
-                width: 20%;
-                .input-desactivar {
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 2vh;
-                    border-radius: 2vw;
-                }
-            }
-        }
-        .empresa-input-desc {
-            width: 90vw;
-            border-radius: 2vw;
-            background-color: #92AFD7;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            .empresa-icon-desc {
-                width: 30%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 1vw;
-                color: white;
-                font-weight: bolder;
-            }
-            .inputs-desc {
-                float: left;
-                width: 90%;
-                .input-desc {
-                    float: left;
-                    margin-left: 1vw;
-                    width: 100%;
-                    height: 10vh;
-                    border-radius: 2vw;
-                    border-color: #92AFD7;
-                }
-            }
-        }
-    }
-    .eliminar-empresa-edit {
-        bottom: 0;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        .eliminar-empresa-btn {
-            padding: 0;
-            border-width: 0px;
-            cursor: pointer;
-            padding: 0;
-            margin: 0;
-            color: rgb(151, 0, 0);
-            background-color: transparent;
-        }
-    }
-    .aceptar-empresa-edit {
-        bottom: 0;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        .aceptar-empresa-btn {
-            border-radius: 5vh;
-            width: 50%;
-            padding: 0;
-            border-width: 0px;
-            cursor: pointer;
-            padding: 0;
-            margin: 0;
-            color: rgb(255, 255, 255);
-            background-color: rgb(39, 138, 0);
-        }
-    }
-}
-
+// /////////////////////////////////EDITAR-EMPRESA////////////////////////////////////
+// .empresa-edit {
+//     width: 100;
+//     padding: 2vh;
+//     .return {
+//         margin-bottom: 2vh;
+//         .return-btn {
+//             border-width: 0px;
+//             font-size: 3vh;
+//             background-color: transparent;
+//             cursor: pointer;
+//         }
+//     }
+//     .empresa-input {
+//         margin-top: 2vh;
+//         width: 100%;
+//         .empresa-input-name {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-name {
+//                 width: 10%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 5px;
+//             }
+//             .inputs-name {
+//                 float: left;
+//                 width: 90%;
+//                 .input-name {
+//                     margin-left: 5px;
+//                     width: 100%;
+//                     height: 5vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//         .empresa-input-sede {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-sede {
+//                 width: 10%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 5px;
+//             }
+//             .inputs-sede {
+//                 float: left;
+//                 width: 90%;
+//                 .input-sede {
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 5vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//         .empresa-input-campo {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-campo {
+//                 width: 10%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 1vw;
+//             }
+//             .inputs-campo {
+//                 float: left;
+//                 width: 90%;
+//                 .input-campo {
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 5vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//         .empresa-input-buscando {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-buscando {
+//                 width: 10%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 1vw;
+//             }
+//             .inputs-buscando {
+//                 float: left;
+//                 width: 90%;
+//                 .input-buscando {
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 5vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//         .empresa-input-vacante {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-vacante {
+//                 width: 10%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 1vw;
+//             }
+//             .inputs-vacante {
+//                 float: left;
+//                 width: 90%;
+//                 .input-vacante {
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 5vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//         .empresa-input-logo {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-logo {
+//                 width: 10%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 1vw;
+//             }
+//             .inputs-logo {
+//                 float: left;
+//                 width: 90%;
+//                 .input-logo {
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 5vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//         .empresa-input-email {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-email {
+//                 width: 10%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 1vw;
+//             }
+//             .inputs-email {
+//                 float: left;
+//                 width: 90%;
+//                 .input-email {
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 5vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//         .empresa-input-passwd {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-passwd {
+//                 width: 10%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 1vw;
+//             }
+//             .inputs-passwd {
+//                 float: left;
+//                 width: 90%;
+//                 .input-passwd {
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 5vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//         .empresa-input-desactivar {
+//             width: 89vw;
+//             border-radius: 2vw;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-desactivar {
+//                 width: 80%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 1vw;
+//                 color: rgb(0, 0, 0);
+//                 font-weight: bolder;
+//             }
+//             .inputs-desactivar {
+//                 float: left;
+//                 width: 20%;
+//                 .input-desactivar {
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 2vh;
+//                     border-radius: 2vw;
+//                 }
+//             }
+//         }
+//         .empresa-input-desc {
+//             width: 90vw;
+//             border-radius: 2vw;
+//             background-color: #92AFD7;
+//             justify-content: center;
+//             display: flex;
+//             align-items: center;
+//             margin-bottom: 2vh;
+//             .empresa-icon-desc {
+//                 width: 30%;
+//                 justify-content: center;
+//                 display: flex;
+//                 align-items: center;
+//                 float: left;
+//                 margin-left: 1vw;
+//                 color: white;
+//                 font-weight: bolder;
+//             }
+//             .inputs-desc {
+//                 float: left;
+//                 width: 90%;
+//                 .input-desc {
+//                     float: left;
+//                     margin-left: 1vw;
+//                     width: 100%;
+//                     height: 10vh;
+//                     border-radius: 2vw;
+//                     border-color: #92AFD7;
+//                 }
+//             }
+//         }
+//     }
+//     .eliminar-empresa-edit {
+//         bottom: 0;
+//         justify-content: center;
+//         display: flex;
+//         align-items: center;
+//         .eliminar-empresa-btn {
+//             padding: 0;
+//             border-width: 0px;
+//             cursor: pointer;
+//             padding: 0;
+//             margin: 0;
+//             color: rgb(151, 0, 0);
+//             background-color: transparent;
+//         }
+//     }
+//     .aceptar-empresa-edit {
+//         bottom: 0;
+//         justify-content: center;
+//         display: flex;
+//         align-items: center;
+//         .aceptar-empresa-btn {
+//             border-radius: 5vh;
+//             width: 50%;
+//             padding: 0;
+//             border-width: 0px;
+//             cursor: pointer;
+//             padding: 0;
+//             margin: 0;
+//             color: rgb(255, 255, 255);
+//             background-color: rgb(39, 138, 0);
+//         }
+//     }
+// }
 /////////////////////////////////ENVIAR-MENSAJE////////////////////////////////////
 .div-enviar-title {
     width: 100%;
@@ -1099,7 +1177,7 @@ body {
         }
         .alert-mensaje {
             width: 55%;
-            margin-left: 2vw;
+            margin-left: 10px;
             .alert-mensaje-text {
                 padding: 0;
                 margin: 0;
@@ -1173,7 +1251,7 @@ body {
                 .chat-name-text {
                     padding: 0;
                     margin: 0;
-                    font-size: 2vh;
+                    font-size: medium;
                     font-weight: bolder;
                 }
             }
@@ -1182,7 +1260,7 @@ body {
                 .chat-mensaje-text {
                     padding: 0;
                     margin: 0;
-                    font-size: 1.5vh;
+                    font-size: small;
                 }
             }
         }
@@ -1218,6 +1296,7 @@ body {
         position: sticky;
         top: 0;
         background-color: #E5E5E5;
+        z-index: 100;
         .chat-main-user {
             background-color: transparent;
             justify-content: center;
@@ -1257,12 +1336,12 @@ body {
             background-color: $white;
             border-top-left-radius: 30px;
             border-top-right-radius: 30px;
-            height: 5vh;
+            height: 2.5vh;
             position: relative;
             &:before {
                 content: "";
                 position: absolute;
-                top: 5vh;
+                top: 2.5vh;
                 left: 0;
                 width: 100%;
                 height: 3.5vh;
@@ -1275,13 +1354,56 @@ body {
         background-color: $white;
         padding: 2vh;
         height: auto;
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0vh;
+            width: 100%;
+            height: 65px;
+            background: $white;
+        }
+        .chat-mensaje-inicio {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            .mensaje-inicio {
+                border-radius: 10px;
+                width: 50%;
+                background-color: $grey;
+                padding: 0.5vh;
+                font-size: small;
+                font-style: italic;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                .mensaje-text {
+                    margin: 0;
+                }
+            }
+        }
         .chat-mensaje-1 {
-            background-color: $fifth-color;
+            background-color: #bebebe;
             padding: 1vh;
             float: left;
             width: 55%;
-            border-radius: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
             margin-top: 1vh;
+            position: relative;
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: -8px;
+                width: 15px;
+                height: 3vh;
+                background-color: #bebebe;
+                clip-path: polygon(100% 10%, 0% 100%, 100% 100%);
+            }
             .mensaje-text {
                 margin: 0;
             }
@@ -1292,12 +1414,25 @@ body {
             }
         }
         .chat-mensaje-2 {
-            background-color: #bebebe;
+            background-color: $fifth-color;
             padding: 1vh;
             float: right;
             width: 55%;
-            border-radius: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
             margin-top: 1vh;
+            position: relative;
+            &:before {
+                content: "";
+                position: absolute;
+                width: 15px;
+                height: 3vh;
+                bottom: 0;
+                right: -8px;
+                background-color: $fifth-color;
+                clip-path: polygon(0 10%, 0% 100%, 100% 100%);
+            }
             .mensaje-text {
                 margin: 0;
                 float: left;
@@ -1318,16 +1453,18 @@ body {
         align-items: center;
         width: 100%;
         padding: 1vh;
-        background-color: $white;
+        background-color: transparent;
         .chat-input {
             width: 100%;
             border-radius: 30px;
             .chat-input-mensaje {
-                border-width: 2px;
+                border-top-width: 2px;
                 border-color: $third-color;
                 padding: 1vh;
                 height: 50px;
                 width: 100%;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
                 &:focus {
                     outline: none;
                 }
@@ -1345,6 +1482,9 @@ body {
                 height: 50px;
                 padding: 0;
                 font-size: large;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                padding-right: 4px;
             }
         }
     }

@@ -32,6 +32,8 @@ Route::get('registrar', function () {
 Route::get('editarperfil', function () {
     return view('editarperfil');
 });
+
+
 /*--------------RUTAS DAVID--------------*/
 
 /*LOGIN Y LOGOUT*/

@@ -103,14 +103,10 @@
             </div>
         </div>
         <div class="chat-main-content">
-            
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
+            <div class="chat-mensaje-inicio">
+                <div class="mensaje-inicio">
+                    <p class="mensaje-text">Bienvenido al chat</p>
+                </div>
             </div>
             <div class="chat-mensaje-1">
                 <p class="mensaje-text">nvfnvfnj</p>
@@ -176,7 +172,14 @@
                 <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
                 <p class="mensaje-hora">20:45</p>                    
             </div>
-            
+            <div class="chat-mensaje-1">
+                <p class="mensaje-text">nvfnvfnj</p>
+                <p class="mensaje-hora">20:45</p>          
+            </div>
+            <div class="chat-mensaje-2">
+                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
+                <p class="mensaje-hora">20:45</p>                    
+            </div>
         </div>
         <div class="chat-main-send">
             <div class="chat-input">
