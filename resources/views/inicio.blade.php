@@ -12,7 +12,6 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
     <body class="body-login">
-        <button class="btn-index" onClick="window.location.href='paginacontacto';">contactanos</button>
     <body class="bodylogin">
         <button type="button" class="darkmodeswitch" id="switch" onclick="cambiarModo()"><span><i class="fa fa-sun-o"></i></span>   
             <span><i class="fa fa-moon-o"></i></span>
