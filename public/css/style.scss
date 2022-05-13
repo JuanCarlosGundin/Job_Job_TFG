@@ -1,10 +1,17 @@
 /////////////////////////////////MIXINS-IMPORTS////////////////////////////////
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+//Colores principales
 $first-color:#186CA7;
 $second-color: #005EA0;
-$third-color:#0081DC;
-$fourth-color:#2C7DB6;
+$third-color:#0076CA;
+$fourth-color:#042944;
 $fifth-color: #92AFD7;
+//Colores basicos//
+$black:#000000;
+$white:#ffffff;
+$grey: #F0F0F0;
+$background: #E5E5E5;
+//Medidas
 $movil:768px;
 $tablet:1200px;
 *,
@@ -17,7 +24,7 @@ body {
     margin: 0;
     position: relative;
     font-family: 'Inter', sans-serif;
-    background-color: #E5E5E5;
+    background-color: $background;
 }
 
 ///////////////////////////////NAVBAR//////////////////////////////////////
@@ -30,7 +37,7 @@ body {
 // }
 ///////////////////////////////NAVBAR//////////////////////////////////////
 .region-navbar {
-    background-color: rgb(255, 255, 255);
+    background-color: $white;
     display: flex;
     height: 10vh;
     height: #{"calc(var(--vh, 1vh) * 10)"};
@@ -39,53 +46,44 @@ body {
     /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
     /* DIVS NAVBAR*/
     /* Curriculum */
-    // .curriculum-navbar {
-    //     padding: 1%;
-    //     width: 20%;
-    // }
+    .curriculum-navbar {
+        padding: 1%;
+        width: 20%;
+    }
     /* Alertas */
     .alerts-navbar {
         padding: 1%;
-        width: 30%;
+        width: 20%;
     }
-    // .alerts-navbar::before {
-    //     content: "";
-    //     position: absolute;
-    //     margin-top: 6vh;
-    //     width: 20px;
-    //     height: 20px;
-    //     background-color: blue;
-    //     box-shadow: 0px -10px 0 0 black;
-    // }
     /* Main */
     .main-navbar {
         padding: 1%;
-        width: 40%;
+        width: 20%;
         height: 10vh;
     }
     /* Chat */
-    // .chat-navbar {
-    //     padding: 1%;
-    //     width: 20%;
-    // }
+    .chat-navbar {
+        padding: 1%;
+        width: 20%;
+    }
     /* Perfil */
     .profile-navbar {
         padding: 1%;
-        width: 30%;
+        width: 20%;
     }
     // DIVS ACTIVE //
     .active-left {
-        background-color: #E5E5E5;
+        background-color: $background;
         box-shadow: none;
         border-top-right-radius: 30px;
     }
     .active-right {
-        background-color: #E5E5E5;
+        background-color: $background;
         box-shadow: none;
         border-top-left-radius: 30px;
     }
     .active {
-        background-color: #E5E5E5;
+        background-color: $background;
         box-shadow: none;
         border-top-right-radius: 30px;
         border-top-left-radius: 30px;
@@ -101,16 +99,16 @@ body {
         color: #c0c0c0;
         text-align: center;
         font-size: 3.5vh;
-        background-color: white;
+        background-color: $white;
         border-width: 0px;
         width: 100%;
         height: 100%;
         border-radius: 50px;
     }
     .main-icon {
-        color: #0F084B;
+        color: #c0c0c0;
         font-size: 4vh;
-        background-color: white;
+        background-color: $white;
         text-align: center;
         border-width: 0px;
         width: 100%;
@@ -120,7 +118,7 @@ body {
     }
     .active-icon {
         color: #000000;
-        background-color: #E5E5E5;
+        background-color: $background;
         font-size: 4.5vh;
     }
     .active-icon-center {
