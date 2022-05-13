@@ -44,6 +44,9 @@
         <h1 class="curriculum-title">COMING SOON...</h1>
     </div> --}} -->
   </div>
+  <button type="button" class="darkmodeswitch" id="switch"><span><i class="fa fa-sun-o"></i></span>   
+    <span><i class="fa fa-moon-o"></i></span>
+</button>
     <div class="region-content row" id="carta">
         
     </div>
