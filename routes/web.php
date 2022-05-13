@@ -7,6 +7,10 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
 
+Route::get('/chat', function () {
+    return view('chat');
+});
+
 Route::get('registrar', function () {
     return view('registrar');
 });
@@ -53,6 +57,7 @@ Route::post('registroempresa', [InicioController::class, 'registroempresa']);
 
 /* Registrar */
 
+Route::post('login', [UsuarioController::class, 'loginP']);
 
 /* Verificar cuenta */
 
@@ -102,7 +107,9 @@ Route::post('si',[AppController::class, 'si']);
 Route::post('no',[AppController::class, 'no']);
 
 ////Diego_branch
+
 ///ZONA ADMINISTRADOR
+
 //Acceder a vista Admin
 Route::get('cPanelAdmin',[UsuarioController::class, 'vistaAdmin']);
 
@@ -126,18 +133,25 @@ Route::put('modificaruser/{id}/{id_perfil}',[UsuarioController::class,'modificar
 
 //eliminaruserJS
 Route::delete('eliminaruser/{id}/{id_perfil}',[UsuarioController::class,'eliminaruser']);
-///ZONA ADMINISTRADOR
+
+///FINAL ZONA ADMINISTRADOR
 
 ///ZONA NOTIFICACIONES
+
 //Acceder a vista Notificaciones
 Route::get('notificaciones',[UsuarioController::class, 'vistaNotificaciones']);
 
 //leernotificacionesJS
 Route::post('leernotificaciones',[UsuarioController::class, 'leernotificaciones']);
+
 //leerperfiloneuser
 Route::post('leerperfiluser/{id}/{id_perfil}',[UsuarioController::class, 'leerperfiloneuser']);
 
-///ZONA NOTIFICACIONES
+///FINAL ZONA NOTIFICACIONES
+
+//EDITAR PERFIL//
 
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
+
+//FINAL ZONA GIGACHAT//

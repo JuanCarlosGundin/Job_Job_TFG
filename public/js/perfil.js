@@ -104,7 +104,7 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '<div class="user-ver-foto">';
                 if (trabajador.foto_perfil != null) {
-                    recarga += '<img class="user-profilefoto" src="./storage/' + trabajador.foto_perfil + '">';
+                    recarga += '<img class="user-profilefoto" src="./storage/uploads/' + trabajador.foto_perfil + '">';
                 } else {
                     recarga += '<img class="user-profilefoto" src="./storage/img/usuario.png">';
                 }
@@ -125,6 +125,7 @@ function mostrarperfilJS() {
                 recarga += '<div class="user-edit-div">';
                 /* recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><p class="edit-btn-p">EDITAR</p></button>'; */
                 recarga += '</div>';
+                recarga += '</button>';
                 recarga += '</div>';
 
                 recarga += '<hr class="linea-divisoria">';
