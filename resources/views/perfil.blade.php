@@ -84,8 +84,8 @@
         </div>
     </div>
     
-    {{-- <div id="contenidoajax">
-    </div> --}}
+    <div id="contenidoajax">
+    </div>
     {{-- Eliminar cuenta modalbox --}}
     <div id="modal-eliminar" class="modal-eliminar-user">
         <div class="modal-content" id="modal_content">
