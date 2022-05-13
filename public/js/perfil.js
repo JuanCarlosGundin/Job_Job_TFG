@@ -394,26 +394,47 @@ function form_editar_sobre_mi(evt) {
 
 }
 
-function leer_idiomas(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    if (idiomas) {
-        recarga += "<div>";
-        for (let i = 0; i < idiomas.length; i++) {
-            recarga += "<div>";
-            recarga += '<p>' + idiomas[i].nombre_idioma + '</p>';
-            recarga += '<p>' + idiomas[i].nivel_idioma + '</p>';
-            recarga += "</div>";
+function leer_idiomas() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = "";
+            recarga += '<button id="volver">Volver</button>';
+            recarga += '<button id="editar_idiomas">Editar</button>';
+            if (idiomas) {
+                for (let i = 0; i < idiomas.length; i++) {
+                    recarga += "<div>";
+                    recarga += '<p>' + idiomas[i].nombre_idioma + '</p>';
+                    recarga += '<p>' + idiomas[i].nivel_idioma + '</p>';
+                    recarga += "</div>";
+                }
+            }
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar_idiomas = document.getElementById("editar_idiomas");
+            editar_idiomas.addEventListener("click", feditar_sobre_mi);
+
         }
-        recarga += "</div>";
+
     }
-    contenidoajax.innerHTML = recarga;
 
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_idiomas = document.getElementById("editar_idiomas");
-    editar_idiomas.addEventListener("click", feditar_idiomas); */
+    ajax.send(formData)
 }
 
 function feditar_idiomas(evt) {
