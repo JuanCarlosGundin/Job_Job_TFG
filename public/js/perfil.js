@@ -1,21 +1,14 @@
 window.onload = function() {
-
     mostrarperfilJS();
     //logica de modal
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-
         var modal = document.getElementById("modal-eliminar");
-
         if (event.target == modal) {
-
             modal.style.display = "none";
-
         }
-
     }
-
 }
 
 ////////////////////////////REDIRECCIONES/////////////////////////////////
@@ -24,53 +17,32 @@ var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
 
 navbarProfile.onclick = function() {
-
     window.location.href = "./perfil";
-
 }
 
 navbarAlerts.onclick = function() {
-
     window.location.href = "./notificaciones";
-
 }
 
 navbarMain.onclick = function() {
-
     window.location.href = "./home";
-
 }
 
 function objetoAjax() {
-
     var xmlhttp = false;
-
     try {
-
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-
     } catch (e) {
-
         try {
-
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-
         } catch (E) {
-
             xmlhttp = false;
-
         }
-
     }
-
     if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-
         xmlhttp = new XMLHttpRequest();
-
     }
-
     return xmlhttp;
-
 }
 
 function mostrarperfilJS() {
@@ -82,11 +54,10 @@ function mostrarperfilJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
             if (id_perfil == 2) {
-                var trabajador = respuesta.resultado;
+                var trabajador = respuesta.trabajador[0];
                 /* Foto */
                 recarga += '<div class="ver-profile">';
                 recarga += '<div class="container-user-poligon">';
@@ -116,6 +87,7 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '<div class="user-poligon2">';
                 recarga += '<div class="user-vista">';
+
                 recarga += '<div class="user-div-name">';
                 recarga += '<div class="divs-name">';
                 recarga += '<span class="p-name">  ' + trabajador.nombre + '  </span>';
@@ -230,11 +202,6 @@ function mostrarperfilJS() {
                 // recarga += '<img class="wave" src="./storage/uploads/wave.svg">';
                 // recarga += '</div>';
                 recarga += '</div>';
-                //estudios
-                recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category" id="boton_estudios">';
-                recarga += '<div class="user-category-icon">';
-                recarga += '<i class="fa-solid fa-graduation-cap"></i>';
                 recarga += '</div>';
             }
             if (id_perfil == 3) {
@@ -264,11 +231,6 @@ function mostrarperfilJS() {
                 recarga += '</div>';
 
                 recarga += '</div>';
-                //experiencia
-                recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category" id="boton_experiencia">';
-                recarga += '<div class="user-category-icon">';
-                recarga += '<i class="fa-solid fa-briefcase"></i>';
                 recarga += '</div>';
                 recarga += '<div class="user-poligon2">';
                 recarga += '<div class="user-vista">';
@@ -341,53 +303,20 @@ function mostrarperfilJS() {
                 recarga += '</div>';
             }
             contenidoajax.innerHTML = recarga;
-
-            var boton_sobre_mi = document.getElementById("boton_sobre_mi");
-            boton_sobre_mi.addEventListener("click", leer_sobre_mi);
-
-            var boton_idiomas = document.getElementById("boton_idiomas");
-            boton_idiomas.addEventListener("click", leer_idiomas);
-
-            var boton_estudios = document.getElementById("boton_estudios");
-            boton_estudios.addEventListener("click", leer_estudios);
-
-            var boton_experiencia = document.getElementById("boton_experiencia");
-            boton_experiencia.addEventListener("click", leer_experiencia);
-
-            var boton_curriculum = document.getElementById("boton_curriculum");
-            boton_curriculum.addEventListener("click", leer_curriculum);
-
-            var boton_habilidades = document.getElementById("boton_habilidades");
-            boton_habilidades.addEventListener("click", leer_habilidades);
-
-            var boton_disponibilidad = document.getElementById("boton_disponibilidad");
-            boton_disponibilidad.addEventListener("click", leer_disponibilidad);
-
-            var boton_configuracion = document.getElementById("boton_configuracion");
-            boton_configuracion.addEventListener("click", leer_configuracion);
-
         }
     }
 
     ajax.send(formData);
 }
 
-function leer_sobre_mi() {
+function leermodperfilJS() {
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
-
     formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'POST');
-
-    /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
-
     ajax.open("POST", "leerperfil", true);
-
     ajax.onreadystatechange = function() {
-
         if (ajax.readyState == 4 && ajax.status == 200) {
-
             var respuesta = JSON.parse(this.responseText);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
@@ -523,17 +452,10 @@ function leer_sobre_mi() {
                 recarga += '</div>';
             }
             contenidoajax.innerHTML = recarga;
-
-            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-            var editar_sobre_mi = document.getElementById("editar_sobre_mi");
-            editar_sobre_mi.addEventListener("click", feditar_sobre_mi);
-
         }
-
     }
 
-    ajax.send(formData)
+    ajax.send(formData);
 }
 
 // EDITAR //
@@ -591,255 +513,96 @@ function editarperfilJS(id, id_perfil) {
         }
     } */
     var formData = new FormData();
-
     formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'POST');
-
-    /* Inicializar un objeto AJAX */
-    var ajax = objetoAjax();
-
-    ajax.open("POST", "leerperfil", true);
-
-    ajax.onreadystatechange = function() {
-
-        if (ajax.readyState == 4 && ajax.status == 200) {
-
-            var respuesta = JSON.parse(this.responseText);
-            var trabajador = respuesta.resultado;
-            var recarga = "";
-            recarga += '<button id="volver">Volver</button>';
-            recarga += '<div>';
-            recarga += '<form id=form_editar_sobre_mi>';
-            recarga += '<input type="text" class="" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
-            recarga += '<input type="text" class="" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
-            recarga += '<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="' + trabajador.loc_trabajador + '">';
-            recarga += '<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="' + trabajador.lenguaje_preferido + '">';
-            recarga += '<input type="text" class="" id="linkedin" name="linkedin" value="' + trabajador.linkedin + '">';
-            recarga += '<input type="text" class="" id="telefono" name="telefono" value="' + trabajador.telefono + '">';
-            recarga += '<input type="text" class="" id="github" name="github" value="' + trabajador.github + '">';
-            recarga += '<button>Realizar cambios</button>';
-            recarga += '</form>';
-            recarga += '</div>';
-            contenidoajax.innerHTML = recarga;
-
-            document.getElementById("volver").addEventListener("click", leer_sobre_mi);
-            document.getElementById("form_editar_sobre_mi").addEventListener("submit", form_editar_sobre_mi);
-
+    formData.append('_method', 'PUT');
+    formData.append('mail', document.getElementById('mail').value);
+    formData.append('contra', document.getElementById('contra').value);
+    /* modificar trabajador */
+    if (id_perfil == 2) {
+        formData.append('nombre', document.getElementById('nombre').value);
+        formData.append('apellido', document.getElementById('apellido').value);
+        formData.append('campo_user', document.getElementById('campo_user').value);
+        formData.append('loc_trabajador', document.getElementById('loc_trabajador').value);
+        formData.append('experiencia', document.getElementById('experiencia').value);
+        formData.append('edad', document.getElementById('edad').value);
+        formData.append('estudios', document.getElementById('estudios').value);
+        formData.append('idiomas', document.getElementById('idiomas').value);
+        formData.append('disponibilidad', document.getElementById('disponibilidad').value);
+        formData.append('about_user', document.getElementById('about_user').value);
+        formData.append('foto_perfil', document.getElementById('foto_perfil').files[0]);
+        if (document.getElementById('mostrado').checked == true) {
+            formData.append('mostrado', '1');
+        } else {
+            formData.append('mostrado', '0');
         }
-
     }
-
-    ajax.send(formData)
-
+    /* modificar empresa */
+    if (id_perfil == 3) {
+        formData.append('nom_emp', document.getElementById('nom_emp').value);
+        formData.append('loc_emp', document.getElementById('loc_emp').value);
+        formData.append('about_emp', document.getElementById('about_emp').value);
+        formData.append('campo_emp', document.getElementById('campo_emp').value);
+        formData.append('searching', document.getElementById('searching').value);
+        formData.append('vacante', document.getElementById('vacante').value);
+        formData.append('logo_emp', document.getElementById('logo_emp').files[0]);
+        if (document.getElementById('mostrado').checked == true) {
+            formData.append('mostrado', '1');
+        } else {
+            formData.append('mostrado', '0');
+        }
+    }
+    var ajax = objetoAjax();
+    ajax.open("POST", "editarperfil/" + id + "/" + id_perfil, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            swal.fire({
+                title: "Correcto",
+                text: "Perfil modificado.",
+                showConfirmButton: false,
+                icon: "success",
+            });
+            leermodperfilJS();
+        }
+    }
+    ajax.send(formData);
 }
 
-function form_editar_sobre_mi(evt) {
+function modaleliminar(id, id_perfil) {
+    var modal = document.getElementById("modal-eliminar");
+    var modal_content = document.getElementById("modal_content");
+    var recarga = "";
+    recarga += '<h2 class="modal-title">¿Seguro que quieres eliminar la cuenta?</h2>';
+    recarga += '<div class="eliminar-user-butons">';
+    recarga += '<button class="cancelar-eliminar" onclick="cerrarmodal();return false;">Cancelar</button>';
+    recarga += '<button class="aceptar-eliminar" onclick="estadouserJS(\'' + id + '\');return false;">Eliminar</button>';
+    recarga += '</div>';
+    modal_content.innerHTML = recarga;
+    modal.style.display = "block";
+}
 
-    evt.preventDefault();
+function cerrarmodal() {
+    var modal = document.getElementById("modal-eliminar");
+    var modal_content = document.getElementById("modal_content");
+    modal_content.innerHTML = "";
+    modal.style.display = "none";
+}
 
-    var campo_user = document.getElementById("campo_user").value;
-    var about_user = document.getElementById("about_user").value;
-    var loc_trabajador = document.getElementById("loc_trabajador").value;
-    var lenguaje_preferido = document.getElementById("lenguaje_preferido").value;
-    var linkedin = document.getElementById("linkedin").value;
-    var telefono = document.getElementById("telefono").value;
-    var github = document.getElementById("github").value;
-
+function estadouserJS(id) {
     var formData = new FormData();
-
     formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'POST');
-    formData.append('campo_user', campo_user);
-    formData.append('about_user', about_user);
-    formData.append('loc_trabajador', loc_trabajador);
-    formData.append('lenguaje_preferido', lenguaje_preferido);
-    formData.append('linkedin', linkedin);
-    formData.append('telefono', telefono);
-    formData.append('github', github);
+    formData.append('_method', 'PUT');
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
-
-    ajax.open("POST", "editarperfil", true);
-
+    ajax.open("POST", "estadouser/" + id, true);
     ajax.onreadystatechange = function() {
-
         if (ajax.readyState == 4 && ajax.status == 200) {
-
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
-
+            if (respuesta.resultado == "OK") {
+                window.location.href = 'logout';
+            }
         }
-
     }
-
     ajax.send(formData)
-
-}
-
-function leer_idiomas(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    if (idiomas) {
-        recarga += "<div>";
-        for (let i = 0; i < idiomas.length; i++) {
-            recarga += "<div>";
-            recarga += '<p>' + idiomas[i].nombre_idioma + '</p>';
-            recarga += '<p>' + idiomas[i].nivel_idioma + '</p>';
-            recarga += "</div>";
-        }
-        recarga += "</div>";
-    }
-    contenidoajax.innerHTML = recarga;
-
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_idiomas = document.getElementById("editar_idiomas");
-    editar_idiomas.addEventListener("click", feditar_idiomas); */
-}
-
-function feditar_idiomas(evt) {
-
-}
-
-function leer_estudios(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    if (estudios) {
-        recarga += "<div>";
-        for (let i = 0; i < estudios.length; i++) {
-            recarga += "<div>";
-            recarga += '<p>' + estudios[i].nombre_formación + '</p>';
-            recarga += '<p>' + estudios[i].lugar_formación + '</p>';
-            recarga += '<p>' + estudios[i].año_entrada + '</p>';
-            recarga += '<p>' + estudios[i].año_salida + '</p>';
-            recarga += "</div>";
-        }
-        recarga += "</div>";
-    }
-    contenidoajax.innerHTML = recarga;
-
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_estudios = document.getElementById("editar_estudios");
-    editar_estudios.addEventListener("click", feditar_estudios); */
-}
-
-function feditar_estudios(evt) {
-
-}
-
-function leer_experiencia(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    recarga += '<button id="editar_experiencia">Editar</button>';
-    if (experiencia) {
-        recarga += "<div>";
-        for (let i = 0; i < experiencia.length; i++) {
-            recarga += "<div>";
-            recarga += '<p>' + experiencia[i].lugar_experiencia + '</p>';
-            recarga += '<p>' + experiencia[i].nombre_experiencia + '</p>';
-            recarga += '<p>' + experiencia[i].año_entrada + '</p>';
-            recarga += '<p>' + experiencia[i].año_salida + '</p>';
-            recarga += '<p>' + experiencia[i].funciones + '</p>';
-            recarga += "</div>";
-        }
-        recarga += "</div>";
-    }
-    contenidoajax.innerHTML = recarga;
-
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_experiencia = document.getElementById("editar_experiencia");
-    editar_experiencia.experiencia = experiencia;
-    editar_experiencia.addEventListener("click", feditar_experiencia); */
-}
-
-function feditar_experiencia(evt) {
-
-}
-
-function leer_curriculum(evt) {
-
-}
-
-function leer_habilidades(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var habilidades = evt.currentTarget.habilidades;
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    recarga += '<button id="editar_habilidades">Editar</button>';
-    if (habilidades) {
-        recarga += "<div>";
-        for (let i = 0; i < habilidades.length; i++) {
-            recarga += "<div>";
-            recarga += '<p>' + habilidades[i].nombre_habilidad + '</p>';
-            recarga += '<p>' + habilidades[i].nivel_habilidad + '</p>';
-            recarga += "</div>";
-        }
-        recarga += "</div>";
-    }
-    contenidoajax.innerHTML = recarga;
-
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_habilidades = document.getElementById("editar_habilidades");
-    editar_habilidades.habilidades = habilidades;
-    editar_habilidades.addEventListener("click", feditar_habilidades); */
-}
-
-function feditar_habilidades(evt) {
-
-}
-
-function leer_disponibilidad(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var disponibilidad = evt.currentTarget.disponibilidad;
-    var mobilidad = evt.currentTarget.mobilidad;
-    var carnet_conducir = evt.currentTarget.carnet_conducir;
-    var vehiculo_propio = evt.currentTarget.vehiculo_propio;
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    recarga += '<button id="editar_disponibilidad">Editar</button>';
-    recarga += "<div>";
-    recarga += '<p>' + disponibilidad + '</p>';
-    recarga += '<p>' + mobilidad + '</p>';
-    recarga += '<p>' + carnet_conducir + '</p>';
-    recarga += '<p>' + vehiculo_propio + '</p>';
-    recarga += "</div>";
-    contenidoajax.innerHTML = recarga;
-
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_disponibilidad = document.getElementById("editar_disponibilidad");
-    editar_disponibilidad.addEventListener("click", feditar_disponibilidad); */
-}
-
-function feditar_disponibilidad(evt) {
-
-}
-
-function leer_configuracion(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var mostrado = evt.currentTarget.mostrado;
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    recarga += '<button id="editar_configuracion">Editar</button>';
-    recarga += "<div>";
-    recarga += '<p>' + mostrado + '</p>';
-    recarga += "</div>";
-    contenidoajax.innerHTML = recarga;
-
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_configuracion = document.getElementById("editar_configuracion");
-    editar_configuracion.mostrado = mostrado;
-    editar_configuracion.addEventListener("click", feditar_configuracion); */
-}
-
-function feditar_configuracion(evt) {
-
 }
