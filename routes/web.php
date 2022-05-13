@@ -118,3 +118,4 @@ Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);
 Route::get('/curriculum/plantilla1', [curriculumController::class, 'plantilla1']);
 Route::get('/curriculum/plantilla2', [curriculumController::class, 'plantilla2']);
 Route::get('/curriculum/plantilla3', [curriculumController::class, 'plantilla3']);
+Route::get('/curriculum/plantilla4', [curriculumController::class, 'plantilla4']);

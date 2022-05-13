@@ -16,21 +16,21 @@ class CreateTblTrabajadorTable extends Migration
         Schema::create('tbl_trabajador', function (Blueprint $table) {
             $table->unsignedBigInteger('id_usuario');
             $table->string('nombre',100);
-            $table->string('apellido',300)->nullable();
+            $table->string('apellido',300);
             $table->string('foto_perfil',100)->nullable();
-            $table->string('campo_user',45);
-            $table->json('curriculum');//JSON
+            $table->string('campo_user',45)->nullable();
+            $table->json('curriculum')->nullable();//JSON
             // $table->json('experiencia');//JSON
             // $table->json('estudios');//JSON
             // $table->json('idiomas');//JSON
-            $table->string('disponibilidad',45);
-            $table->string('about_user',300);
+            $table->string('disponibilidad',45)->nullable();
+            $table->string('about_user',300)->nullable();
             $table->string('mostrado',45);
-            $table->string('loc_trabajador',100);
+            $table->string('loc_trabajador',100)->nullable();
             $table->date('edad');//MODIFICAR EN LA APP
-            $table->string('mobilidad',45);
-            $table->string('carnet_conducir',45);
-            $table->string('vehiculo_propio',45);
+            $table->string('mobilidad',45)->nullable();
+            $table->string('carnet_conducir',45)->nullable();
+            $table->string('vehiculo_propio',45)->nullable();
             $table->string('linkedin',100)->nullable();
             $table->string('telefono',15)->nullable();
             $table->string('github',100)->nullable();

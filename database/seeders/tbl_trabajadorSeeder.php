@@ -21,64 +21,58 @@ class tbl_trabajadorSeeder extends Seeder
             'campo_user' => 'Back-end',
             'foto_perfil' => NULL,
             'curriculum' => '{
-                "experiencia":{
-                    "0": {
+                "experiencia":[
+                    {
                         "nombre_experiencia": "Programador Back-End en Prácticas",
                         "lugar_experiencia": "Everis",
                         "año_entrada": "2015",
                         "año_salida": "2017",
                         "funciones": "Involucrado en proyectos con Laravel y AJAX"
-                    },
-                    "1": {
+                    },{
                         "nombre_experiencia": "Profesor de CFGS De Informática",
                         "lugar_experiencia": "Jesuïtes Bellvitge Joan XXIII",
                         "año_entrada": "2017",
                         "año_salida": "actualidad",
                         "funciones": "Profesor de programación y sistemas operativos en el CFGS de DAW."
                     }
-                },
-                "estudios":{
-                    "0": {
+                ],
+                "estudios":[
+                    {
                         "nombre_formación": "Grado en Matemáticas",
                         "lugar_formación": "Universitat de Barcelona",
                         "año_entrada": "2005",
                         "año_salida": "2009"
-                    },
-                    "1": {
+                    },{
                         "nombre_formación": "Grado en Ingeniería Informática",
                         "lugar_formación": "Universitat Oberta de Catalunya",
                         "año_entrada": "2010",
                         "año_salida": "2014"
                     }
-                },
-                "idiomas":{
-                    "0": {
+                ],
+                "idiomas":[
+                    {
                         "nombre_idioma": "Catalán",
                         "nivel_idioma": "Alto"
-                    },
-                    "1": {
+                    },{
                         "nombre_idioma": "Español",
                         "nivel_idioma": "Nativo"
-                    },
-                    "2": {
+                    },{
                         "nombre_idioma": "Inglés",
                         "nivel_idioma": "Medio"
                     }
-                },
-                "habilidades":{
-                    "0": {
+                ],
+                "habilidades":[
+                    {
                         "nombre_habilidad": "PHP",
                         "nivel_habilidad": "Experto"
-                    },
-                    "1": {
+                    },{
                         "nombre_habilidad": "Bases de Datos",
                         "nivel_habilidad": "Medio"
-                    },
-                    "2": {
+                    },{
                         "nombre_habilidad": "JavaScript",
                         "nivel_habilidad": "Avanzado"
                     }
-                }
+                ]
             }',
             'disponibilidad' => '1',
             'about_user' => 'Soy un intrépido programador con ganas de seguir aprendiendo en este maravilloso mundo de la informática',
@@ -99,64 +93,58 @@ class tbl_trabajadorSeeder extends Seeder
             'campo_user' => 'Bases de Datos',
             'foto_perfil' => NULL,
             'curriculum' => '{
-                "experiencia":{
-                    "0": {
+                "experiencia":[
+                    {
                         "nombre_experiencia": "Administrador de bases de datos",
                         "lugar_experiencia": "Oracle",
                         "año_entrada": "2016",
                         "año_salida": "2017",
                         "funciones": "Estuve gestionando diferentes bases de datos, tanto su creación como su edición."
-                    },
-                    "1": {
+                    },{
                         "nombre_experiencia": "Profesora de CFGS De Informática",
                         "lugar_experiencia": "Jesuïtes Bellvitge Joan XXIII",
                         "año_entrada": "2018",
                         "año_salida": "actualidad",
                         "funciones": "Profesora de bases de datos y CSS en el CFGS de DAW."
                     }
-                },
-                "estudios":{
-                    "0": {
+                ],
+                "estudios":[
+                    {
                         "nombre_formación": "CFGS - ASIX",
                         "lugar_formación": "Joan XXIII",
                         "año_entrada": "2005",
                         "año_salida": "2007"
-                    },
-                    "1": {
+                    },{
                         "nombre_formación": "Grado en Ingeniería de Telecomunicaciones",
                         "lugar_formación": "UPC",
                         "año_entrada": "2010",
                         "año_salida": "2014"
                     }
-                },
-                "idiomas":{
-                    "0": {
+                ],
+                "idiomas":[
+                    {
                         "nombre_idioma": "Catalán",
                         "nivel_idioma": "Nativo"
-                    },
-                    "1": {
+                    },{
                         "nombre_idioma": "Español",
                         "nivel_idioma": "Nativo"
-                    },
-                    "2": {
+                    },{
                         "nombre_idioma": "Inglés",
                         "nivel_idioma": "Medio"
-                    },
-                    "3": {
+                    },{
                         "nombre_idioma": "Francés",
                         "nivel_idioma": "Alto"
                     }
-                },
-                "habilidades":{
-                    "0": {
+                ],
+                "habilidades":[
+                    {
                         "nombre_habilidad": "Bases de Datos",
                         "nivel_habilidad": "Experto"
-                    },
-                    "1": {
+                    },{
                         "nombre_habilidad": "CSS",
                         "nivel_habilidad": "Alto"
                     }
-                }
+                ]
             }',
             'disponibilidad' => '1',
             'about_user' => 'Me gustan las Bases de datos y el Bootstrap',
@@ -177,64 +165,58 @@ class tbl_trabajadorSeeder extends Seeder
             'campo_user' => 'Programador Java y Python',
             'foto_perfil' => NULL,
             'curriculum' => '{
-                "experiencia":{
-                    "0": {
+                "experiencia":[
+                    {
                         "nombre_experiencia": "Programador Back-end",
                         "lugar_experiencia": "Everis",
                         "año_entrada": "2016",
                         "año_salida": "2017",
                         "funciones": "Llevé proyectos de programación como junior programmer."
-                    },
-                    "1": {
+                    },{
                         "nombre_experiencia": "Profesor de CFGS De Informática",
                         "lugar_experiencia": "Jesuïtes Bellvitge Joan XXIII",
                         "año_entrada": "2018",
                         "año_salida": "actualidad",
                         "funciones": "Profesor de programación, lenguajes de marcas y Git en el CFGS de DAW."
                     }
-                },
-                "estudios":{
-                    "0": {
+                ],
+                "estudios":[
+                    {
                         "nombre_formación": "Grado en Matemáticas",
                         "lugar_formación": "UAB",
                         "año_entrada": "2005",
                         "año_salida": "2009"
-                    },
-                    "1": {
+                    },{
                         "nombre_formación": "Grado en Ingeniería informática",
                         "lugar_formación": "UPC",
                         "año_entrada": "2010",
                         "año_salida": "2014"
                     }
-                },
-                "idiomas":{
-                    "0": {
+                ],
+                "idiomas":[
+                    {
                         "nombre_idioma": "Catalán",
                         "nivel_idioma": "Alto"
-                    },
-                    "1": {
+                    },{
                         "nombre_idioma": "Español",
                         "nivel_idioma": "Nativo"
-                    },
-                    "2": {
+                    },{
                         "nombre_idioma": "Inglés",
-                        "nivel_idioma": "Bajo"
+                        "nivel_idioma": "Medio"
                     }
-                },
-                "habilidades":{
-                    "0": {
+                ],
+                "habilidades":[
+                    {
                         "nombre_habilidad": "Java",
                         "nivel_habilidad": "Experto"
-                    },
-                    "1": {
+                    },{
                         "nombre_habilidad": "GitHub",
                         "nivel_habilidad": "Experto"
-                    },
-                    "2": {
+                    },{
                         "nombre_habilidad": "Python",
                         "nivel_habilidad": "Medio"
                     }
-                }
+                ]
             }',
             'disponibilidad' => '1',
             'about_user' => 'Me gustan los scripts y Github',
@@ -256,54 +238,50 @@ class tbl_trabajadorSeeder extends Seeder
             'campo_user' => 'Programador Full-Stack',
             'foto_perfil' => NULL,
             'curriculum' => '{
-                "experiencia":{
-                    "0": {
+                "experiencia":[
+                    {
                         "nombre_experiencia": "Programador Full-Stack",
                         "lugar_experiencia": "Microsoft",
                         "año_entrada": "2016",
                         "año_salida": "2017",
                         "funciones": "Programador Senior JavaScript"
-                    },
-                    "1": {
+                    },{
                         "nombre_experiencia": "Profesor de CFGS De Informática",
                         "lugar_experiencia": "Jesuïtes Bellvitge, Jesuïtes Sarrià",
                         "año_entrada": "2018",
                         "año_salida": "actualidad",
                         "funciones": "Profesor de programación en el CFGS de DAW."
                     }
-                },
-                "estudios":{
-                    "0": {
+                ],
+                "estudios":[
+                    {
                         "nombre_formación": "CFGS de DAW",
                         "lugar_formación": "Joan XXIII",
                         "año_entrada": "2005",
                         "año_salida": "2009"
                     }
-                },
-                "idiomas":{
-                    "0": {
+                ],
+                "idiomas":[
+                    {
                         "nombre_idioma": "Catalán",
                         "nivel_idioma": "Nativo"
-                    },
-                    "1": {
+                    },{
                         "nombre_idioma": "Español",
                         "nivel_idioma": "Nativo"
-                    },
-                    "2": {
+                    },{
                         "nombre_idioma": "Inglés",
                         "nivel_idioma": "Medio"
                     }
-                },
-                "habilidades":{
-                    "0": {
+                ],
+                "habilidades":[
+                    {
                         "nombre_habilidad": "JavaScript",
                         "nivel_habilidad": "Experto"
-                    },
-                    "1": {
+                    },{
                         "nombre_habilidad": "Java",
                         "nivel_habilidad": "Alto"
                     }
-                }
+                ]
             }',
             'disponibilidad' => '1',
             'about_user' => 'Me gustan las motos, las cryptos y JavaScript',
@@ -317,6 +295,78 @@ class tbl_trabajadorSeeder extends Seeder
             'linkedin' => 'linkedin.com/ignasiromero',
             'github' =>'github.com/ignasiromero',
             'lenguaje_preferido' => 'JavaScript',
+        ]);
+        DB::table('tbl_trabajador')->insert([
+            'id_usuario'=>6,
+            'nombre' => 'Juan',
+            'apellido' => 'López',
+            'campo_user' => 'Back-end',
+            'foto_perfil' => NULL,
+            'curriculum' => '{
+                "experiencia":[
+                    {
+                        "nombre_experiencia": "Programador Back-End en Prácticas",
+                        "lugar_experiencia": "Everis",
+                        "año_entrada": "2015",
+                        "año_salida": "2017",
+                        "funciones": "Involucrado en proyectos con Laravel y AJAX"
+                    },{
+                        "nombre_experiencia": "Profesor de CFGS De Informática",
+                        "lugar_experiencia": "Jesuïtes Bellvitge Joan XXIII",
+                        "año_entrada": "2017",
+                        "año_salida": "actualidad",
+                        "funciones": "Profesor de programación y sistemas operativos en el CFGS de DAW."
+                    }
+                ],
+                "estudios":[
+                    {
+                        "nombre_formación": "Grado en Matemáticas",
+                        "lugar_formación": "Universitat de Barcelona",
+                        "año_entrada": "2005",
+                        "año_salida": "2009"
+                    },{
+                        "nombre_formación": "Grado en Ingeniería Informática",
+                        "lugar_formación": "Universitat Oberta de Catalunya",
+                        "año_entrada": "2010",
+                        "año_salida": "2014"
+                    }
+                ],
+                "idiomas":[
+                    {
+                        "nombre_idioma": "Catalán",
+                        "nivel_idioma": "Alto"
+                    },{
+                        "nombre_idioma": "Español",
+                        "nivel_idioma": "Nativo"
+                    },{
+                        "nombre_idioma": "Inglés",
+                        "nivel_idioma": "Medio"
+                    }
+                ],
+                "habilidades":[
+                    {
+                        "nombre_habilidad": "PHP",
+                        "nivel_habilidad": "Experto"
+                    },{
+                        "nombre_habilidad": "Bases de Datos",
+                        "nivel_habilidad": "Medio"
+                    },{
+                        "nombre_habilidad": "JavaScript",
+                        "nivel_habilidad": "Avanzado"
+                    }
+                ]
+            }',
+            'disponibilidad' => '1',
+            'about_user' => 'Soy un intrépido programador con ganas de seguir aprendiendo en este maravilloso mundo de la informática',
+            'mostrado' => '1',
+            'loc_trabajador' => 'Hospitalet de Llobregat',
+            'edad' => '1975-10-02',
+            'mobilidad' => '1',
+            'carnet_conducir' => '1',
+            'vehiculo_propio' => '1',
+            'telefono' => '639928467',
+            'github' =>'github.com/sergiojimenez',
+            'lenguaje_preferido' => 'PHP',
         ]);
     }
 }
