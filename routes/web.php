@@ -74,11 +74,11 @@ Route::get('logout', [UsuarioController::class, 'logout']);
 //Vista perfil
 Route::get('perfil',[PerfilController::class, 'vistaPerfil']);
 
-// mostrarperfil.
+// mostrarperfil
 Route::post('leerperfil',[PerfilController::class, 'leerperfiledit']);
 
-// editarperfil
-Route::put('editarperfil/{id}/{id_perfil}',[PerfilController::class, 'editarperfil']);
+// editar sobre_mi
+Route::post('editarperfil',[PerfilController::class,'editarperfil']);
 
 /* ------------PerfilController------------ */
 

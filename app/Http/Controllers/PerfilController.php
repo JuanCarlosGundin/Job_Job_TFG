@@ -19,36 +19,63 @@ class PerfilController extends Controller{
 
         $id=session()->get('id_user');
         $id_perfil=session()->get('id_perfil');
+        try {
+            if ($id_perfil == 2){
 
-        if ($id_perfil == 2){
+                $trabajador=DB::table('tbl_usuarios')
+                ->join('tbl_trabajador', 'tbl_usuarios.id', '=', 'tbl_trabajador.id_usuario')
+                ->where('id', '=', $id)->first();
+                return response()->json(array('resultado' => $trabajador, 'id_perfil' =>$id_perfil));
 
-            $trabajador = DB::select('select * from tbl_usuarios
-            INNER JOIN tbl_trabajador on tbl_trabajador.id_usuario=tbl_usuarios.id where id=?',[$id]);
-            return response()->json(array('resultado' => $trabajador, 'id_perfil' =>$id_perfil));
+            }
+            if ($id_perfil == 3) {
 
-        }
+                $empresa=DB::table('tbl_usuarios')
+                ->join('tbl_empresa', 'tbl_usuarios.id', '=', 'tbl_empresa.id_usuario')
+                ->where('id', '=', $id)->first();
+                return response()->json(array('resultado' => $empresa, 'id_perfil' =>$id_perfil));
 
-        if ($id_perfil == 3) {
-
-            $empresa = DB::select('select * from tbl_usuarios
-            INNER JOIN tbl_empresa on tbl_empresa.id_usuario=tbl_usuarios.id where id=?',[$id]);
-            return response()->json(array('resultado' => $empresa, 'id_perfil' =>$id_perfil));
-
+            }
+        } catch (\Exception $e) {
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
         }
 
     }
 
+    public function editarperfil(Request $req){
+        $id=session()->get('id_user');
+        try {
+            $data=array();
+            //form_editar_sobre_mi
+            if ($req->has(['campo_user', 'about_user', 'loc_trabajador', 'lenguaje_preferido', 'linkedin', 'telefono', 'github'])){
+                $data[]= "campo_user='".$req['campo_user']."'";
+                $data[]= "about_user='".$req['about_user']."'";
+                $data[]= "loc_trabajador='".$req['loc_trabajador']."'";
+                $data[]= "lenguaje_preferido='".$req['lenguaje_preferido']."'";
+                $data[]= "linkedin='".$req['linkedin']."'";
+                $data[]= "telefono='".$req['telefono']."'";
+                $data[]= "github='".$req['github']."'";
+            }
+            DB::beginTransaction();
+            DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
+            DB::commit();
+            return response()->json(array('resultado'=> 'OK'));
+        } catch (\Exception $e) {
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
+    }
 
-    public function editarperfil(Request $req, $id, $id_perfil){
+
+    /* public function editarperfil(Request $req, $id, $id_perfil){
 
         DB::beginTransaction();
 
         try{
 
-            /* si es trabajador */
+            // si es trabajador
             if ($id_perfil == 2){
 
-                /* si existe una foto */
+                // si existe una foto
                 if ($req->hasFile('foto_perfil')) {
 
                     $foto = DB::table('tbl_trabajador')->select('foto_perfil')->where('id_usuario','=',$id)->first();
@@ -72,10 +99,10 @@ class PerfilController extends Controller{
 
             }
 
-            /* si es empresa */
+            // si es empresa
             if ($id_perfil == 3){
 
-                /* si existe un logo */
+                // si existe un logo
                 if ($req->hasFile('logo_emp')) {
 
                     $logo = DB::table('tbl_empresa')->select('logo_emp')->where('id_usuario','=',$id)->first();
@@ -99,7 +126,7 @@ class PerfilController extends Controller{
 
             }
 
-            /* si la contraseña la modificas, que tenga md5, si no que conserve valor */
+            // si la contraseña la modificas, que tenga md5, si no que conserve valor
             $uscontra = DB::table('tbl_usuarios')->where('id','=',$id)->select('contra')->first();
 
             if ($req['contra'] == $uscontra->contra){
@@ -122,5 +149,5 @@ class PerfilController extends Controller{
 
         }
 
-    }
+    } */
 }

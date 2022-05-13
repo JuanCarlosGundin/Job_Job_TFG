@@ -86,9 +86,8 @@ function mostrarperfilJS() {
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
             if (id_perfil == 2) {
-                var trabajador = respuesta.resultado[0];
-                var curriculum = JSON.parse(trabajador.curriculum)
-                    /* Foto */
+                var trabajador = respuesta.resultado;
+                /* Foto */
                 recarga += '<div class="user-fondo">';
                 recarga += '<div class="container-user-poligon">';
                 recarga += '<div class="logout">';
@@ -233,43 +232,27 @@ function mostrarperfilJS() {
             contenidoajax.innerHTML = recarga;
 
             var boton_sobre_mi = document.getElementById("boton_sobre_mi");
-            boton_sobre_mi.campo_user = trabajador.campo_user;
-            boton_sobre_mi.about_user = trabajador.about_user;
-            boton_sobre_mi.loc_trabajador = trabajador.loc_trabajador;
-            boton_sobre_mi.lenguaje_preferido = trabajador.lenguaje_preferido;
-            boton_sobre_mi.linkedin = trabajador.linkedin;
-            boton_sobre_mi.telefono = trabajador.telefono;
-            boton_sobre_mi.github = trabajador.github;
             boton_sobre_mi.addEventListener("click", leer_sobre_mi);
 
             var boton_idiomas = document.getElementById("boton_idiomas");
-            boton_idiomas.idiomas = curriculum.idiomas;
             boton_idiomas.addEventListener("click", leer_idiomas);
 
             var boton_estudios = document.getElementById("boton_estudios");
-            boton_estudios.estudios = curriculum.estudios;
             boton_estudios.addEventListener("click", leer_estudios);
 
             var boton_experiencia = document.getElementById("boton_experiencia");
-            boton_experiencia.experiencia = curriculum.experiencia;
             boton_experiencia.addEventListener("click", leer_experiencia);
 
             var boton_curriculum = document.getElementById("boton_curriculum");
             boton_curriculum.addEventListener("click", leer_curriculum);
 
             var boton_habilidades = document.getElementById("boton_habilidades");
-            boton_habilidades.habilidades = curriculum.habilidades;
             boton_habilidades.addEventListener("click", leer_habilidades);
 
             var boton_disponibilidad = document.getElementById("boton_disponibilidad");
-            boton_disponibilidad.disponibilidad = trabajador.disponibilidad;
-            boton_disponibilidad.mobilidad = trabajador.mobilidad;
-            boton_disponibilidad.carnet_conducir = trabajador.carnet_conducir;
-            boton_disponibilidad.vehiculo_propio = trabajador.vehiculo_propio;
             boton_disponibilidad.addEventListener("click", leer_disponibilidad);
 
             var boton_configuracion = document.getElementById("boton_configuracion");
-            boton_configuracion.mostrado = trabajador.mostrado;
             boton_configuracion.addEventListener("click", leer_configuracion);
 
         }
@@ -278,34 +261,143 @@ function mostrarperfilJS() {
     ajax.send(formData);
 }
 
-function leer_sobre_mi(evt) {
+function leer_sobre_mi() {
     var contenidoajax = document.getElementById("contenidoajax");
-    var campo_user = evt.currentTarget.campo_user;
-    var about_user = evt.currentTarget.about_user;
-    var loc_trabajador = evt.currentTarget.loc_trabajador;
-    var lenguaje_preferido = evt.currentTarget.lenguaje_preferido;
-    var linkedin = evt.currentTarget.linkedin;
-    var telefono = evt.currentTarget.telefono;
-    var github = evt.currentTarget.github;
-    var recarga = "";
-    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
-    recarga += "<div>";
-    recarga += '<p>' + campo_user + '</p>';
-    recarga += '<p>' + about_user + '</p>';
-    recarga += '<p>' + loc_trabajador + '</p>';
-    recarga += '<p>' + lenguaje_preferido + '</p>';
-    recarga += '<p>' + linkedin + '</p>';
-    recarga += '<p>' + telefono + '</p>';
-    recarga += '<p>' + github + '</p>';
-    recarga += "</div>";
-    contenidoajax.innerHTML = recarga;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = "";
+            recarga += '<button id="volver">Volver</button>';
+            recarga += '<button id="editar_sobre_mi">Editar</button>';
+            recarga += "<div>";
+            recarga += '<p>' + trabajador.campo_user + '</p>';
+            recarga += '<p>' + trabajador.about_user + '</p>';
+            recarga += '<p>' + trabajador.loc_trabajador + '</p>';
+            recarga += '<p>' + trabajador.lenguaje_preferido + '</p>';
+            recarga += '<p>' + trabajador.linkedin + '</p>';
+            recarga += '<p>' + trabajador.telefono + '</p>';
+            recarga += '<p>' + trabajador.github + '</p>';
+            recarga += "</div>";
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar_sobre_mi = document.getElementById("editar_sobre_mi");
+            editar_sobre_mi.addEventListener("click", feditar_sobre_mi);
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function feditar_sobre_mi() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = "";
+            recarga += '<button id="volver">Volver</button>';
+            recarga += '<div>';
+            recarga += '<form id=form_editar_sobre_mi>';
+            recarga += '<input type="text" class="" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
+            recarga += '<input type="text" class="" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
+            recarga += '<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="' + trabajador.loc_trabajador + '">';
+            recarga += '<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="' + trabajador.lenguaje_preferido + '">';
+            recarga += '<input type="text" class="" id="linkedin" name="linkedin" value="' + trabajador.linkedin + '">';
+            recarga += '<input type="text" class="" id="telefono" name="telefono" value="' + trabajador.telefono + '">';
+            recarga += '<input type="text" class="" id="github" name="github" value="' + trabajador.github + '">';
+            recarga += '<button>Realizar cambios</button>';
+            recarga += '</form>';
+            recarga += '</div>';
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_sobre_mi);
+            document.getElementById("form_editar_sobre_mi").addEventListener("submit", form_editar_sobre_mi);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_sobre_mi(evt) {
+
+    evt.preventDefault();
+
+    var campo_user = document.getElementById("campo_user").value;
+    var about_user = document.getElementById("about_user").value;
+    var loc_trabajador = document.getElementById("loc_trabajador").value;
+    var lenguaje_preferido = document.getElementById("lenguaje_preferido").value;
+    var linkedin = document.getElementById("linkedin").value;
+    var telefono = document.getElementById("telefono").value;
+    var github = document.getElementById("github").value;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('campo_user', campo_user);
+    formData.append('about_user', about_user);
+    formData.append('loc_trabajador', loc_trabajador);
+    formData.append('lenguaje_preferido', lenguaje_preferido);
+    formData.append('linkedin', linkedin);
+    formData.append('telefono', telefono);
+    formData.append('github', github);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
 }
 
 function leer_idiomas(evt) {
-    var contenidoajax = document.getElementById("contenidoajax");
-    var idiomas = evt.currentTarget.idiomas;
+    /* var contenidoajax = document.getElementById("contenidoajax");
     var recarga = "";
-    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += '<button id="volver">Volver</button>';
     if (idiomas) {
         recarga += "<div>";
         for (let i = 0; i < idiomas.length; i++) {
@@ -317,13 +409,21 @@ function leer_idiomas(evt) {
         recarga += "</div>";
     }
     contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_idiomas = document.getElementById("editar_idiomas");
+    editar_idiomas.addEventListener("click", feditar_idiomas); */
+}
+
+function feditar_idiomas(evt) {
+
 }
 
 function leer_estudios(evt) {
-    var contenidoajax = document.getElementById("contenidoajax");
-    var estudios = evt.currentTarget.estudios;
+    /* var contenidoajax = document.getElementById("contenidoajax");
     var recarga = "";
-    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += '<button id="volver">Volver</button>';
     if (estudios) {
         recarga += "<div>";
         for (let i = 0; i < estudios.length; i++) {
@@ -337,13 +437,22 @@ function leer_estudios(evt) {
         recarga += "</div>";
     }
     contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_estudios = document.getElementById("editar_estudios");
+    editar_estudios.addEventListener("click", feditar_estudios); */
+}
+
+function feditar_estudios(evt) {
+
 }
 
 function leer_experiencia(evt) {
-    var contenidoajax = document.getElementById("contenidoajax");
-    var experiencia = evt.currentTarget.experiencia;
+    /* var contenidoajax = document.getElementById("contenidoajax");
     var recarga = "";
-    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<button id="editar_experiencia">Editar</button>';
     if (experiencia) {
         recarga += "<div>";
         for (let i = 0; i < experiencia.length; i++) {
@@ -359,6 +468,15 @@ function leer_experiencia(evt) {
     }
     contenidoajax.innerHTML = recarga;
 
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_experiencia = document.getElementById("editar_experiencia");
+    editar_experiencia.experiencia = experiencia;
+    editar_experiencia.addEventListener("click", feditar_experiencia); */
+}
+
+function feditar_experiencia(evt) {
+
 }
 
 function leer_curriculum(evt) {
@@ -366,10 +484,11 @@ function leer_curriculum(evt) {
 }
 
 function leer_habilidades(evt) {
-    var contenidoajax = document.getElementById("contenidoajax");
+    /* var contenidoajax = document.getElementById("contenidoajax");
     var habilidades = evt.currentTarget.habilidades;
     var recarga = "";
-    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<button id="editar_habilidades">Editar</button>';
     if (habilidades) {
         recarga += "<div>";
         for (let i = 0; i < habilidades.length; i++) {
@@ -381,16 +500,27 @@ function leer_habilidades(evt) {
         recarga += "</div>";
     }
     contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_habilidades = document.getElementById("editar_habilidades");
+    editar_habilidades.habilidades = habilidades;
+    editar_habilidades.addEventListener("click", feditar_habilidades); */
+}
+
+function feditar_habilidades(evt) {
+
 }
 
 function leer_disponibilidad(evt) {
-    var contenidoajax = document.getElementById("contenidoajax");
+    /* var contenidoajax = document.getElementById("contenidoajax");
     var disponibilidad = evt.currentTarget.disponibilidad;
     var mobilidad = evt.currentTarget.mobilidad;
     var carnet_conducir = evt.currentTarget.carnet_conducir;
     var vehiculo_propio = evt.currentTarget.vehiculo_propio;
     var recarga = "";
-    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<button id="editar_disponibilidad">Editar</button>';
     recarga += "<div>";
     recarga += '<p>' + disponibilidad + '</p>';
     recarga += '<p>' + mobilidad + '</p>';
@@ -398,15 +528,35 @@ function leer_disponibilidad(evt) {
     recarga += '<p>' + vehiculo_propio + '</p>';
     recarga += "</div>";
     contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_disponibilidad = document.getElementById("editar_disponibilidad");
+    editar_disponibilidad.addEventListener("click", feditar_disponibilidad); */
+}
+
+function feditar_disponibilidad(evt) {
+
 }
 
 function leer_configuracion(evt) {
-    var contenidoajax = document.getElementById("contenidoajax");
+    /* var contenidoajax = document.getElementById("contenidoajax");
     var mostrado = evt.currentTarget.mostrado;
     var recarga = "";
-    recarga += '<button onClick="mostrarperfilJS(); return false;">Volver</button>';
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<button id="editar_configuracion">Editar</button>';
     recarga += "<div>";
     recarga += '<p>' + mostrado + '</p>';
     recarga += "</div>";
     contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_configuracion = document.getElementById("editar_configuracion");
+    editar_configuracion.mostrado = mostrado;
+    editar_configuracion.addEventListener("click", feditar_configuracion); */
+}
+
+function feditar_configuracion(evt) {
+
 }
