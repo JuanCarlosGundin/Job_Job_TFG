@@ -34,7 +34,7 @@
             <button id="navbar-profile-icon" class="icon active-icon"><i class="fa-solid fa-user"></i></button>
         </div>
     </div>
-    <div class="vista-profile">
+    {{-- <div class="vista-profile">
         <div class="categoria-edit">
             <div class="return">
                 <button class="return-btn" onclick="mostrarperfilJS(); return false;">
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     
     <div id="contenidoajax">
     </div>

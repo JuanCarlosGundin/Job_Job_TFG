@@ -691,185 +691,6 @@ body {
   cursor: pointer;
 }
 
-.empresa-vista {
-  width: 100;
-  padding: 2vh;
-}
-
-.empresa-vista .empresa-ver-foto {
-  width: 100%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-}
-
-.empresa-vista .empresa-ver-foto .empresa-profilefoto {
-  border-radius: 60px;
-  height: 14vh;
-  width: 14vh;
-}
-
-.empresa-vista .empresa-ver-foto .empresa-edit-div {
-  float: left;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.empresa-vista .empresa-ver-foto .empresa-edit-div .empresa-edit-btn {
-  height: 5vh;
-  width: 5vh;
-  padding: 0;
-  border-width: 0px;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  border-radius: 60px;
-  color: white;
-  background-color: #0076CA;
-  font-size: 2vh;
-}
-
-.empresa-vista .empresa-ver-foto .logout {
-  float: left;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.empresa-vista .empresa-ver-foto .logout .logout-btn {
-  height: 5vh;
-  width: 5vh;
-  padding: 0;
-  border-width: 0px;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  border-radius: 60px;
-  color: white;
-  background-color: #042944;
-  font-size: 2vh;
-}
-
-.empresa-vista .empresa-ver {
-  margin-top: 2vh;
-  width: 100%;
-}
-
-.empresa-vista .empresa-ver .empresa-div-name {
-  width: 89vw;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 2vh;
-  margin-top: 2vh;
-}
-
-.empresa-vista .empresa-ver .empresa-div-name .divs-name {
-  float: left;
-  width: 100%;
-}
-
-.empresa-vista .empresa-ver .empresa-div-name .divs-name .p-name {
-  width: 35%;
-  height: 5vh;
-  font-size: 3vh;
-  font-weight: bolder;
-}
-
-.empresa-vista .empresa-ver .empresa-div-house {
-  width: 89vw;
-  border-radius: 2vw;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 2vh;
-  margin-top: 2vh;
-}
-
-.empresa-vista .empresa-ver .empresa-div-house .empresa-icon-house {
-  width: 10%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  float: left;
-  margin-left: 5px;
-}
-
-.empresa-vista .empresa-ver .empresa-div-house .divs-house {
-  float: right;
-  width: 90%;
-}
-
-.empresa-vista .empresa-ver .empresa-div-house .divs-house .p-house {
-  margin-left: 5px;
-  width: 100%;
-  height: 5vh;
-  border-radius: 2vw;
-}
-
-.empresa-vista .empresa-ver .empresa-div-desc {
-  width: 89vw;
-  border-radius: 2vw;
-  margin-bottom: 2vh;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.empresa-vista .empresa-ver .empresa-div-desc .empresa-icon-desc {
-  width: 25%;
-  float: left;
-  margin-left: 1vw;
-}
-
-.empresa-vista .empresa-ver .empresa-div-desc .empresa-icon-desc .sobre-mi-desc {
-  font-weight: bolder;
-}
-
-.empresa-vista .empresa-ver .empresa-div-desc .divs-desc {
-  float: right;
-  width: 75%;
-}
-
-.empresa-vista .empresa-ver .empresa-div-desc .divs-desc .p-desc {
-  margin-left: 5px;
-  width: 100%;
-  height: 5vh;
-  border-radius: 2vw;
-}
-
 .div-enviar-title {
   width: 100%;
   padding-top: 3vh;
@@ -1274,7 +1095,6 @@ body {
   background-color: #ffffff;
   padding: 2vh;
   height: auto;
-  height: 100vh;
 }
 
 .main-chat .chat-main-content:before {
@@ -1324,7 +1144,8 @@ body {
 }
 
 .main-chat .chat-main-content .mensaje-1 {
-  width: 70%;
+  width: 75%;
+  float: left;
 }
 
 .main-chat .chat-main-content .mensaje-1 .chat-mensaje-1 {
@@ -1350,18 +1171,23 @@ body {
           clip-path: polygon(100% 10%, 0% 100%, 100% 100%);
 }
 
-.main-chat .chat-main-content .mensaje-1 .chat-mensaje-1 .mensaje-text {
+.main-chat .chat-main-content .mensaje-1 .chat-mensaje-1 .mensaje-text-div .mensaje-text {
   margin: 0;
 }
 
-.main-chat .chat-main-content .mensaje-1 .chat-mensaje-1 .mensaje-hora {
+.main-chat .chat-main-content .mensaje-1 .chat-mensaje-1 .mensaje-hora-div {
+  float: right;
+}
+
+.main-chat .chat-main-content .mensaje-1 .chat-mensaje-1 .mensaje-hora-div .mensaje-hora {
   margin: 0;
   float: right;
   font-size: x-small;
+  margin-top: 5px;
 }
 
 .main-chat .chat-main-content .mensaje-2 {
-  width: 70%;
+  width: 75%;
   float: right;
 }
 
@@ -1369,7 +1195,6 @@ body {
   background-color: #92AFD7;
   padding: 1vh;
   float: right;
-  width: 55%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -1389,16 +1214,17 @@ body {
           clip-path: polygon(0 10%, 0% 100%, 100% 100%);
 }
 
-.main-chat .chat-main-content .mensaje-2 .chat-mensaje-2 .mensaje-text {
+.main-chat .chat-main-content .mensaje-2 .chat-mensaje-2 .mensaje-text-div .mensaje-text {
   margin: 0;
   float: left;
 }
 
-.main-chat .chat-main-content .mensaje-2 .chat-mensaje-2 .mensaje-hora {
-  margin: 0;
+.main-chat .chat-main-content .mensaje-2 .chat-mensaje-2 .mensaje-hora-div .mensaje-hora {
   float: right;
+  margin: 0;
   font-size: x-small;
   margin: 0;
+  margin-top: 5px;
 }
 
 .main-chat .chat-main-send {
@@ -1421,7 +1247,7 @@ body {
 
 .main-chat .chat-main-send .chat-input {
   width: 100%;
-  padding: 2px;
+  padding: 1.5px;
   border-radius: 30px;
 }
 
@@ -1439,7 +1265,7 @@ body {
 }
 
 .main-chat .chat-main-send .chat-send {
-  padding: 2px;
+  padding: 1.5px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;

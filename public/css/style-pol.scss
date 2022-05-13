@@ -582,470 +582,6 @@ body {
     cursor: pointer;
 }
 
-///////////////////////////////VER-EMPRESA//////////////////////////////////////
-.empresa-vista {
-    width: 100;
-    padding: 2vh;
-    .empresa-ver-foto {
-        width: 100%;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        position: relative;
-        .empresa-profilefoto {
-            border-radius: 60px;
-            height: 14vh;
-            width: 14vh;
-        }
-        .empresa-edit-div {
-            float: left;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            .empresa-edit-btn {
-                height: 5vh;
-                width: 5vh;
-                padding: 0;
-                border-width: 0px;
-                cursor: pointer;
-                padding: 0;
-                margin: 0;
-                border-radius: 60px;
-                color: white;
-                background-color: $third-color;
-                font-size: 2vh;
-            }
-        }
-        .logout {
-            float: left;
-            position: absolute;
-            top: 0;
-            right: 0;
-            .logout-btn {
-                height: 5vh;
-                width: 5vh;
-                padding: 0;
-                border-width: 0px;
-                cursor: pointer;
-                padding: 0;
-                margin: 0;
-                border-radius: 60px;
-                color: white;
-                background-color: $fourth-color;
-                font-size: 2vh;
-            }
-        }
-    }
-    .empresa-ver {
-        margin-top: 2vh;
-        width: 100%;
-        .empresa-div-name {
-            width: 89vw;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            margin-top: 2vh;
-            .divs-name {
-                float: left;
-                width: 100%;
-                .p-name {
-                    width: 35%;
-                    height: 5vh;
-                    font-size: 3vh;
-                    font-weight: bolder;
-                }
-            }
-        }
-        .empresa-div-house {
-            width: 89vw;
-            border-radius: 2vw;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2vh;
-            margin-top: 2vh;
-            .empresa-icon-house {
-                width: 10%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                float: left;
-                margin-left: 5px;
-            }
-            .divs-house {
-                float: right;
-                width: 90%;
-                .p-house {
-                    margin-left: 5px;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                }
-            }
-        }
-        .empresa-div-desc {
-            width: 89vw;
-            border-radius: 2vw;
-            margin-bottom: 2vh;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            .empresa-icon-desc {
-                width: 25%;
-                float: left;
-                margin-left: 1vw;
-                .sobre-mi-desc {
-                    font-weight: bolder;
-                }
-            }
-            .divs-desc {
-                float: right;
-                width: 75%;
-                .p-desc {
-                    margin-left: 5px;
-                    width: 100%;
-                    height: 5vh;
-                    border-radius: 2vw;
-                }
-            }
-        }
-    }
-}
-
-// /////////////////////////////////EDITAR-EMPRESA////////////////////////////////////
-// .empresa-edit {
-//     width: 100;
-//     padding: 2vh;
-//     .return {
-//         margin-bottom: 2vh;
-//         .return-btn {
-//             border-width: 0px;
-//             font-size: 3vh;
-//             background-color: transparent;
-//             cursor: pointer;
-//         }
-//     }
-//     .empresa-input {
-//         margin-top: 2vh;
-//         width: 100%;
-//         .empresa-input-name {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-name {
-//                 width: 10%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 5px;
-//             }
-//             .inputs-name {
-//                 float: left;
-//                 width: 90%;
-//                 .input-name {
-//                     margin-left: 5px;
-//                     width: 100%;
-//                     height: 5vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//         .empresa-input-sede {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-sede {
-//                 width: 10%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 5px;
-//             }
-//             .inputs-sede {
-//                 float: left;
-//                 width: 90%;
-//                 .input-sede {
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 5vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//         .empresa-input-campo {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-campo {
-//                 width: 10%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 1vw;
-//             }
-//             .inputs-campo {
-//                 float: left;
-//                 width: 90%;
-//                 .input-campo {
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 5vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//         .empresa-input-buscando {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-buscando {
-//                 width: 10%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 1vw;
-//             }
-//             .inputs-buscando {
-//                 float: left;
-//                 width: 90%;
-//                 .input-buscando {
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 5vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//         .empresa-input-vacante {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-vacante {
-//                 width: 10%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 1vw;
-//             }
-//             .inputs-vacante {
-//                 float: left;
-//                 width: 90%;
-//                 .input-vacante {
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 5vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//         .empresa-input-logo {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-logo {
-//                 width: 10%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 1vw;
-//             }
-//             .inputs-logo {
-//                 float: left;
-//                 width: 90%;
-//                 .input-logo {
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 5vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//         .empresa-input-email {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-email {
-//                 width: 10%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 1vw;
-//             }
-//             .inputs-email {
-//                 float: left;
-//                 width: 90%;
-//                 .input-email {
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 5vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//         .empresa-input-passwd {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-passwd {
-//                 width: 10%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 1vw;
-//             }
-//             .inputs-passwd {
-//                 float: left;
-//                 width: 90%;
-//                 .input-passwd {
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 5vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//         .empresa-input-desactivar {
-//             width: 89vw;
-//             border-radius: 2vw;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-desactivar {
-//                 width: 80%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 1vw;
-//                 color: rgb(0, 0, 0);
-//                 font-weight: bolder;
-//             }
-//             .inputs-desactivar {
-//                 float: left;
-//                 width: 20%;
-//                 .input-desactivar {
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 2vh;
-//                     border-radius: 2vw;
-//                 }
-//             }
-//         }
-//         .empresa-input-desc {
-//             width: 90vw;
-//             border-radius: 2vw;
-//             background-color: #92AFD7;
-//             justify-content: center;
-//             display: flex;
-//             align-items: center;
-//             margin-bottom: 2vh;
-//             .empresa-icon-desc {
-//                 width: 30%;
-//                 justify-content: center;
-//                 display: flex;
-//                 align-items: center;
-//                 float: left;
-//                 margin-left: 1vw;
-//                 color: white;
-//                 font-weight: bolder;
-//             }
-//             .inputs-desc {
-//                 float: left;
-//                 width: 90%;
-//                 .input-desc {
-//                     float: left;
-//                     margin-left: 1vw;
-//                     width: 100%;
-//                     height: 10vh;
-//                     border-radius: 2vw;
-//                     border-color: #92AFD7;
-//                 }
-//             }
-//         }
-//     }
-//     .eliminar-empresa-edit {
-//         bottom: 0;
-//         justify-content: center;
-//         display: flex;
-//         align-items: center;
-//         .eliminar-empresa-btn {
-//             padding: 0;
-//             border-width: 0px;
-//             cursor: pointer;
-//             padding: 0;
-//             margin: 0;
-//             color: rgb(151, 0, 0);
-//             background-color: transparent;
-//         }
-//     }
-//     .aceptar-empresa-edit {
-//         bottom: 0;
-//         justify-content: center;
-//         display: flex;
-//         align-items: center;
-//         .aceptar-empresa-btn {
-//             border-radius: 5vh;
-//             width: 50%;
-//             padding: 0;
-//             border-width: 0px;
-//             cursor: pointer;
-//             padding: 0;
-//             margin: 0;
-//             color: rgb(255, 255, 255);
-//             background-color: rgb(39, 138, 0);
-//         }
-//     }
-// }
 /////////////////////////////////ENVIAR-MENSAJE////////////////////////////////////
 .div-enviar-title {
     width: 100%;
@@ -1353,7 +889,6 @@ body {
         background-color: $white;
         padding: 2vh;
         height: auto;
-        height: 100vh;
         &:before {
             content: "";
             position: absolute;
@@ -1385,7 +920,8 @@ body {
             }
         }
         .mensaje-1 {
-            width: 70%;
+            width: 75%;
+            float: left;
             .chat-mensaje-1 {
                 background-color: #bebebe;
                 padding: 1vh;
@@ -1405,24 +941,29 @@ body {
                     background-color: #bebebe;
                     clip-path: polygon(100% 10%, 0% 100%, 100% 100%);
                 }
-                .mensaje-text {
-                    margin: 0;
+                .mensaje-text-div {
+                    .mensaje-text {
+                        margin: 0;
+                    }
                 }
-                .mensaje-hora {
-                    margin: 0;
+                .mensaje-hora-div {
                     float: right;
-                    font-size: x-small;
+                    .mensaje-hora {
+                        margin: 0;
+                        float: right;
+                        font-size: x-small;
+                        margin-top: 5px;
+                    }
                 }
             }
         }
         .mensaje-2 {
-            width: 70%;
+            width: 75%;
             float: right;
             .chat-mensaje-2 {
                 background-color: $fifth-color;
                 padding: 1vh;
                 float: right;
-                width: 55%;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 border-bottom-left-radius: 10px;
@@ -1438,15 +979,20 @@ body {
                     background-color: $fifth-color;
                     clip-path: polygon(0 10%, 0% 100%, 100% 100%);
                 }
-                .mensaje-text {
-                    margin: 0;
-                    float: left;
+                .mensaje-text-div {
+                    .mensaje-text {
+                        margin: 0;
+                        float: left;
+                    }
                 }
-                .mensaje-hora {
-                    margin: 0;
-                    float: right;
-                    font-size: x-small;
-                    margin: 0;
+                .mensaje-hora-div {
+                    .mensaje-hora {
+                        float: right;
+                        margin: 0;
+                        font-size: x-small;
+                        margin: 0;
+                        margin-top: 5px;
+                    }
                 }
             }
         }
@@ -1462,7 +1008,7 @@ body {
         background-color: transparent;
         .chat-input {
             width: 100%;
-            padding: 2px;
+            padding: 1.5px;
             border-radius: 30px;
             .chat-input-mensaje {
                 border-width: 0px;
@@ -1477,7 +1023,7 @@ body {
             }
         }
         .chat-send {
-            padding: 2px;
+            padding: 1.5px;
             justify-content: center;
             display: flex;
             align-items: center;
