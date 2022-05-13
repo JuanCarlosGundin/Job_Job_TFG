@@ -296,7 +296,7 @@ function leer_sobre_mi() {
             recarga += '</div>';
             //ir a vista editar
             recarga += '<div class="logout">';
-            recarga += '<button class="logout-btn" id="editar_sobre_mi"><i class="fa-solid fa-pen"></i></button>';
+            recarga += '<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>';
             recarga += '</div>';
             recarga += '</div>';
             recarga += '<div class="categoria-profile">';
@@ -446,8 +446,8 @@ function leer_sobre_mi() {
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
 
-            var editar_sobre_mi = document.getElementById("editar_sobre_mi");
-            editar_sobre_mi.addEventListener("click", feditar_sobre_mi);
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", editar_sobre_mi);
 
         }
 
@@ -456,7 +456,7 @@ function leer_sobre_mi() {
     ajax.send(formData)
 }
 
-function feditar_sobre_mi() {
+function editar_sobre_mi() {
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
 
@@ -546,6 +546,7 @@ function form_editar_sobre_mi(evt) {
 }
 
 function leer_idiomas() {
+    //tengo que editar por cada idioma, no por todos a la vez
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
 
@@ -563,14 +564,15 @@ function leer_idiomas() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
+            var curriculum = JSON.parse(trabajador.curriculum);
             var recarga = "";
             recarga += '<button id="volver">Volver</button>';
-            recarga += '<button id="editar_idiomas">Editar</button>';
-            if (idiomas) {
-                for (let i = 0; i < idiomas.length; i++) {
+            recarga += '<button id="editar">Editar</button>';
+            if (curriculum.idiomas) {
+                for (let i = 0; i < curriculum.idiomas.length; i++) {
                     recarga += "<div>";
-                    recarga += '<p>' + idiomas[i].nombre_idioma + '</p>';
-                    recarga += '<p>' + idiomas[i].nivel_idioma + '</p>';
+                    recarga += '<p>' + curriculum.idiomas[i].nombre_idioma + '</p>';
+                    recarga += '<p>' + curriculum.idiomas[i].nivel_idioma + '</p>';
                     recarga += "</div>";
                 }
             }
@@ -578,8 +580,8 @@ function leer_idiomas() {
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
 
-            var editar_idiomas = document.getElementById("editar_idiomas");
-            editar_idiomas.addEventListener("click", feditar_sobre_mi);
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", editar_idiomas);
 
         }
 
@@ -588,7 +590,50 @@ function leer_idiomas() {
     ajax.send(formData)
 }
 
-function feditar_idiomas(evt) {
+function editar_idiomas() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var curriculum = JSON.parse(trabajador.curriculum);
+            var recarga = "";
+            recarga += '<button id="volver">Volver</button>';
+            recarga += '<div>';
+            recarga += '<form id=form_idiomas>';
+            if (curriculum.idiomas) {
+                recarga += '<input type="text" class="" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
+                recarga += '<input type="text" class="" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
+            }
+
+            recarga += '<button>Realizar cambios</button>';
+            recarga += '</form>';
+            recarga += '</div>';
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_sobre_mi);
+            document.getElementById("form_idiomas").addEventListener("submit", form_idiomas);
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function form_idiomas(evt) {
 
 }
 

@@ -81,7 +81,7 @@ function contactoJS() {
                     icon: "success",
                     allowOutsideClick: false,
                 });
-                setTimeout(() => { window.location.href = 'login'; }, 5000);
+                setTimeout(() => { window.location.href = './'; }, 5000);
             } else {
                 swal.fire({
                     title: "Oops",
