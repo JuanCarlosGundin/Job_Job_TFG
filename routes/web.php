@@ -27,10 +27,6 @@ Route::get('paginatrabajador', function () {
     return view('paginatrabajador');
 });
 
-Route::get('registrar4', function () {
-    return view('registrar4');
-});
-
 /* ------------InicioController------------ */
 
 //Landing page
