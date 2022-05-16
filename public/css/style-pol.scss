@@ -670,32 +670,38 @@ body {
 ///////////////////////////////NOTIFICACIONES//////////////////////////////////////
 .alerts {
     .filter {
-        padding: 3vh;
+        padding: 2vh;
         display: flex;
         position: sticky;
         .buscador {
             float: right;
+            width: 100%;
+            border-radius: 50px;
+            border-width: 0px;
+            outline: none;
+            background-color: $white;
+            padding: 0.40vh;
             .input-buscar {
-                padding: 1vh;
-                width: 80vw;
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-                border-color: $first-color;
-                border-width: 1px;
-                height: 5vh;
+                outline: none;
+                border-radius: 50px;
+                border-width: 0px;
+                width: 80%;
+                padding: 0;
+                height: 35px;
+                margin-left: 5px;
             }
-        }
-        .buscador-icon {
-            float: left;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            width: 10vw;
-            background-color: $first-color;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-            color: white;
-            height: 5vh;
+            .icon-buscar {
+                float: right;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                width: 20%;
+                background-color: $third-color;
+                border-radius: 50px;
+                color: white;
+                height: 35px;
+                width: 35px;
+            }
         }
     }
     .alert {
@@ -920,7 +926,7 @@ body {
             }
         }
         .mensaje-1 {
-            width: 75%;
+            width: 80%;
             float: left;
             .chat-mensaje-1 {
                 background-color: #bebebe;
@@ -958,7 +964,7 @@ body {
             }
         }
         .mensaje-2 {
-            width: 75%;
+            width: 80%;
             float: right;
             .chat-mensaje-2 {
                 background-color: $fifth-color;
@@ -1036,7 +1042,7 @@ body {
                 padding: 0;
                 font-size: large;
                 border-radius: 25px;
-                padding-right: 2px;
+                padding-right: 3px;
             }
         }
     }
