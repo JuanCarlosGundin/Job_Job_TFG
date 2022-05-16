@@ -47,13 +47,25 @@ class PerfilController extends Controller{
         try {
             $data=array();
             //form_editar_sobre_mi
-            if ($req->has(['campo_user', 'about_user', 'loc_trabajador', 'lenguaje_preferido', 'linkedin', 'telefono', 'github'])){
+            if ($req->has('campo_user')){
                 $data[]= "campo_user='".$req['campo_user']."'";
+            }
+            if ($req->has('about_user')){
                 $data[]= "about_user='".$req['about_user']."'";
+            }
+            if ($req->has('loc_trabajador')){
                 $data[]= "loc_trabajador='".$req['loc_trabajador']."'";
+            }
+            if ($req->has('lenguaje_preferido')){
                 $data[]= "lenguaje_preferido='".$req['lenguaje_preferido']."'";
+            }
+            if ($req->has('linkedin')){
                 $data[]= "linkedin='".$req['linkedin']."'";
+            }
+            if ($req->has('telefono')){
                 $data[]= "telefono='".$req['telefono']."'";
+            }
+            if ($req->has('github')){
                 $data[]= "github='".$req['github']."'";
             }
             DB::beginTransaction();

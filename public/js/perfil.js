@@ -478,13 +478,49 @@ function editar_sobre_mi() {
             recarga += '<button id="volver">Volver</button>';
             recarga += '<div>';
             recarga += '<form id=form_editar_sobre_mi>';
-            recarga += '<input type="text" class="" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
-            recarga += '<input type="text" class="" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
-            recarga += '<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="' + trabajador.loc_trabajador + '">';
-            recarga += '<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="' + trabajador.lenguaje_preferido + '">';
-            recarga += '<input type="text" class="" id="linkedin" name="linkedin" value="' + trabajador.linkedin + '">';
-            recarga += '<input type="text" class="" id="telefono" name="telefono" value="' + trabajador.telefono + '">';
-            recarga += '<input type="text" class="" id="github" name="github" value="' + trabajador.github + '">';
+
+            if (!trabajador.campo_user) {
+                recarga += '<input type="text" class="" id="campo_user" name="campo_user" placeholder="sin informar">';
+            } else {
+                recarga += '<input type="text" class="" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
+            }
+
+            if (!trabajador.about_user) {
+                recarga += '<input type="text" class="" id="about_user" name="about_user" placeholder="sin informar">';
+            } else {
+                recarga += '<input type="text" class="" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
+            }
+
+            if (!trabajador.loc_trabajador) {
+                recarga += '<input type="text" class="" id="loc_trabajador" name="loc_trabajador" placeholder="sin informar">';
+            } else {
+                recarga += '<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="' + trabajador.loc_trabajador + '">';
+            }
+
+            if (!trabajador.lenguaje_preferido) {
+                recarga += '<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="sin informar">';
+            } else {
+                recarga += '<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="' + trabajador.lenguaje_preferido + '">';
+            }
+
+            if (!trabajador.linkedin) {
+                recarga += '<input type="text" class="" id="linkedin" name="linkedin" placeholder="sin informar">';
+            } else {
+                recarga += '<input type="text" class="" id="linkedin" name="linkedin" value="' + trabajador.linkedin + '">';
+            }
+
+            if (!trabajador.telefono) {
+                recarga += '<input type="text" class="" id="telefono" name="telefono" placeholder="sin informar">';
+            } else {
+                recarga += '<input type="text" class="" id="telefono" name="telefono" value="' + trabajador.telefono + '">';
+            }
+
+            if (!trabajador.github) {
+                recarga += '<input type="text" class="" id="github" name="github" placeholder="sin informar">';
+            } else {
+                recarga += '<input type="text" class="" id="github" name="github" value="' + trabajador.github + '">';
+            }
+
             recarga += '<button>Realizar cambios</button>';
             recarga += '</form>';
             recarga += '</div>';
@@ -512,18 +548,39 @@ function form_editar_sobre_mi(evt) {
     var linkedin = document.getElementById("linkedin").value;
     var telefono = document.getElementById("telefono").value;
     var github = document.getElementById("github").value;
+    /* console.log(github);
+    console.log(typeof github);
+    if (github) {
+        console.log("si");
+    } else {
+        console.log("no");
+    } */
 
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
-    formData.append('campo_user', campo_user);
-    formData.append('about_user', about_user);
-    formData.append('loc_trabajador', loc_trabajador);
-    formData.append('lenguaje_preferido', lenguaje_preferido);
-    formData.append('linkedin', linkedin);
-    formData.append('telefono', telefono);
-    formData.append('github', github);
+    if (campo_user) {
+        formData.append('campo_user', campo_user);
+    }
+    if (about_user) {
+        formData.append('about_user', about_user);
+    }
+    if (loc_trabajador) {
+        formData.append('loc_trabajador', loc_trabajador);
+    }
+    if (lenguaje_preferido) {
+        formData.append('lenguaje_preferido', lenguaje_preferido);
+    }
+    if (linkedin) {
+        formData.append('linkedin', linkedin);
+    }
+    if (telefono) {
+        formData.append('telefono', telefono);
+    }
+    if (github) {
+        formData.append('github', github);
+    }
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
