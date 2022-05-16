@@ -548,14 +548,6 @@ function form_editar_sobre_mi(evt) {
     var linkedin = document.getElementById("linkedin").value;
     var telefono = document.getElementById("telefono").value;
     var github = document.getElementById("github").value;
-    /* console.log(github);
-    console.log(typeof github);
-    if (github) {
-        console.log("si");
-    } else {
-        console.log("no");
-    } */
-
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -621,24 +613,29 @@ function leer_idiomas() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            var curriculum = JSON.parse(trabajador.curriculum);
             var recarga = "";
             recarga += '<button id="volver">Volver</button>';
-            recarga += '<button id="editar">Editar</button>';
-            if (curriculum.idiomas) {
-                for (let i = 0; i < curriculum.idiomas.length; i++) {
-                    recarga += "<div>";
-                    recarga += '<p>' + curriculum.idiomas[i].nombre_idioma + '</p>';
-                    recarga += '<p>' + curriculum.idiomas[i].nivel_idioma + '</p>';
-                    recarga += "</div>";
+            if (trabajador.hasOwnProperty('curriculum')) {
+                var curriculum = JSON.parse(trabajador.curriculum);
+                if (curriculum.hasOwnProperty('idiomas')) {
+                    for (let i = 0; i < curriculum.idiomas.length; i++) {
+                        recarga += '<div>';
+                        recarga += '<p>' + curriculum.idiomas[i].nombre_idioma + '</p>';
+                        recarga += '<p>' + curriculum.idiomas[i].nivel_idioma + '</p>';
+                        recarga += '<button class="editar">Editar</button>';
+                        recarga += '</div>';
+                    }
+                    contenidoajax.innerHTML = recarga;
+                    for (let i = 0; i < curriculum.idiomas.length; i++) {
+                        document.getElementsByClassName("editar")[i].i = i;
+                        document.getElementsByClassName("editar")[i].addEventListener("click", editar_idiomas);
+
+                    }
+                } else {
+                    recarga += '<p>Aun no has añadido ningun idioma</p>';
                 }
             }
-            contenidoajax.innerHTML = recarga;
-
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-            var editar = document.getElementById("editar");
-            editar.addEventListener("click", editar_idiomas);
 
         }
 
@@ -647,14 +644,15 @@ function leer_idiomas() {
     ajax.send(formData)
 }
 
-function editar_idiomas() {
+function editar_idiomas(evt) {
+
+    var i = evt.currentTarget.i;
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
 
-    /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
     ajax.open("POST", "leerperfil", true);
@@ -664,23 +662,21 @@ function editar_idiomas() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            var trabajador = respuesta.resultado;
-            var curriculum = JSON.parse(trabajador.curriculum);
+            var curriculum = JSON.parse(respuesta.resultado.curriculum);
+            var idioma = curriculum.idiomas[i];
             var recarga = "";
             recarga += '<button id="volver">Volver</button>';
             recarga += '<div>';
             recarga += '<form id=form_idiomas>';
-            if (curriculum.idiomas) {
-                recarga += '<input type="text" class="" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
-                recarga += '<input type="text" class="" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
-            }
-
+            recarga += '<input type="text" class="" id="nombre_idioma" name="nombre_idioma" value="' + idioma.nombre_idioma + '">';
+            recarga += '<input type="text" class="" id="nivel_idioma" name="nivel_idioma" value="' + idioma.nivel_idioma + '">';
             recarga += '<button>Realizar cambios</button>';
             recarga += '</form>';
             recarga += '</div>';
             contenidoajax.innerHTML = recarga;
 
-            document.getElementById("volver").addEventListener("click", leer_sobre_mi);
+            document.getElementById("volver").addEventListener("click", leer_idiomas);
+            document.getElementById("form_idiomas").i = i;
             document.getElementById("form_idiomas").addEventListener("submit", form_idiomas);
 
         }
@@ -691,6 +687,41 @@ function editar_idiomas() {
 }
 
 function form_idiomas(evt) {
+
+    evt.preventDefault();
+    var i = evt.currentTarget.i;
+
+    var nombre_idioma = document.getElementById("nombre_idioma").value;
+    var nivel_idioma = document.getElementById("nivel_idioma").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (nombre_idioma) {
+        formData.append('nombre_idioma', nombre_idioma);
+    }
+    if (nivel_idioma) {
+        formData.append('nivel_idioma', nivel_idioma);
+    }
+    formData.append('numero_idioma', i);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
 
 }
 

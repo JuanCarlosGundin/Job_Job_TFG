@@ -68,6 +68,10 @@ class PerfilController extends Controller{
             if ($req->has('github')){
                 $data[]= "github='".$req['github']."'";
             }
+            //form_idiomas
+            if ($req->has(['nombre_idioma','nivel_idioma'])){
+                
+            }
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
             DB::commit();
