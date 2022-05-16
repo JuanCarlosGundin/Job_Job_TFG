@@ -58,12 +58,13 @@ class MailController extends Controller{
 
     }
     public function sendingcontacto(Request $request){
-        
+        //aqui pillamos los inputs del formulario
         $nombre = $request->input('nombre');
         $email = $request->input('email');
         $telefono = $request->input('telefono');
         $asunto = $request->input('asunto');
         $mensaje = $request->input('mensaje');
+        //$cuerpo es el cuerpo que le vamos a dar al correo, por decir así la estructura.
         $cuerpo = 'Hola buenas, mi nombre es '.$nombre. "\n" . "\n" .'Aquí abajo te dejo mis datos '
         . "\n" .'Email: '.$email. "\n" .'Teléfono: '.$telefono. "\n" . "\n" .'ASUNTO: '.
         $asunto. "\n" . "\n" .'MENSAJE: '.$mensaje;
@@ -89,14 +90,16 @@ class MailController extends Controller{
             'asunto.required' => 'El asunto no se puede quedar en blanco',
             'mensaje.required' => 'El mensaje no se puede quedar en blanco',
         ]);
+        //hacemos un try catch donde intentamos enviar el correo al admin
         try{
-            
+            //pillamos el $cuerpo y utilizamos el $asunto para utilizarlo donde el subject(asunto)
             Mail::raw($cuerpo, function ($message) use($asunto) {
 
                 $message->to('100006394.joan23@fje.edu')
                   ->subject('Solicitud de contacto con el asunto: '.$asunto);
 
               });
+              //si funciona nos returnea el json que nos va al sweetalert del javascript
             return response()->json("OK");  
             }catch(\Throwable $th){
                 return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
@@ -104,10 +107,11 @@ class MailController extends Controller{
         
     }
     public function enviarcorreoadmin(Request $request){
-        
+        //pillamos los inputs del formulario del correo individual.
         $destinatario = $request->input('destinatario');
         $asunto = $request->input('asunto');
         $mensaje = $request->input('mensaje');
+        //$cuerpo es la estructura que le vamos a dar al mensaje.
         $cuerpo = 'Hola, te contactamos desde JobJob. '. "\n" .'Te escribimos para decirte que '.$mensaje;
 
         //---------Validaciones---------
@@ -124,13 +128,14 @@ class MailController extends Controller{
             'mensaje.required' => 'El mensaje no se puede quedar en blanco',
         ]);
         try{
-            
+            //pillamos el $cuerpo y utilizamos el $asunto para utilizarlo donde el subject(asunto) y $destinatario para poder saber a quien enviamos el correo.
             Mail::raw($cuerpo, function ($message) use($asunto, $destinatario) {
 
                 $message->to($destinatario)
                   ->subject('Solicitud de contacto de JobJob con el asunto: '.$asunto);
 
               });
+            //si funciona nos returnea el json que nos va al sweetalert del javascript
             return response()->json("OK");  
             }catch(\Throwable $th){
                 return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
@@ -162,6 +167,42 @@ class MailController extends Controller{
 
                 $message->to($trabajador-> {'mail'})
                   ->subject('Mensaje de JobJob con el asunto: '.$asuntotrabajador);
+
+              });
+              
+        } catch(\Throwable $th) {
+            return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+         }
+        
+        }
+    return response()->json("OK");
+    }
+
+    public function enviarcorreoadminempresas(Request $request){
+        $empresas = DB::table('tbl_usuarios')->select('mail')->where('id_perfil','=','3')->get();
+        // $trabajadoresarray=$trabajadores[0];
+        $asuntoempresa = $request->input('asuntoempresa');
+        $mensajeempresa = $request->input('mensajeempresa');
+        $cuerpoempresa = 'Hola, te contactamos desde JobJob. '. "\n" .$mensajeempresa;
+
+        //---------Validaciones---------
+        //primer array de validaciones donde ponemos las reglas
+        $this->validate($request, [
+            'asuntoempresa' => 'required',
+            'mensajeempresa' => 'required',
+        ],
+        // segundo array donde ponemos el mensaje personalizado para cada regla
+        [
+            'asuntoempresa.required' => 'El asunto no se puede quedar en blanco',
+            'mensajeempresa.required' => 'El mensaje no se puede quedar en blanco',
+        ]);
+        foreach ($empresas as $empresa) {
+        try{
+            
+            Mail::raw($cuerpoempresa, function ($message) use($asuntoempresa, $empresa) {
+
+                $message->to($empresa-> {'mail'})
+                  ->subject('Mensaje de JobJob con el asunto: '.$asuntoempresa);
 
               });
               

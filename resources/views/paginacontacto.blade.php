@@ -17,9 +17,6 @@
 <body>
 
     <div class="content">
-
-        {{--
-        <h1 class="logo"><span>Contáctanos </span></h1> --}}
         <br><br><br><br>
 
         <div class="contact-wrapper animated bounceInUp">

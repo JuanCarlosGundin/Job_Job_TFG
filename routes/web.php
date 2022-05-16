@@ -174,8 +174,10 @@ Route::post('mandarcontacto', [MailController::class, 'sendingcontacto']);
 //ZONA CONTACTO
 //mandar correo a usuario individual desde la página de admin
 Route::post('enviarcorreoadmin', [MailController::class, 'enviarcorreoadmin']);
-//mandar correo a usuario individual desde la página de admin
+//mandar correo masivo a trabajadores desde la página de admin
 Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorreoadmintrabajadores']);
+//mandar correo masivo a empresas desde la página de admin
+Route::post('enviarcorreoadminempresas', [MailController::class, 'enviarcorreoadminempresas']);
 
 
 //ZONA REPORTES

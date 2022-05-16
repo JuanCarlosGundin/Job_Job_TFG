@@ -46,21 +46,21 @@
               </a>
               {{-- MODAL USUARIO --}}
                       <!-- Trigger/Open The Modal -->
-                  <button id="myBtn">ENVIAR CORREO</button>
+                  <button id="myBtncorreo">ENVIAR CORREO</button>
 
                   <!-- The Modal -->
-                  <div id="myModal" class="modal">
+                  <div id="myModalcorreo" class="modal">
 
                     <!-- Modal content -->
                     <div class="modal-content">
-                      <span class="close">&times;</span>
+                      <span class="closecorreo">&times;</span>
 
                                   <form method="POST" onsubmit="enviarcorreoadminJS(); return false;">
                                       <h2>CONTACTAR USUARIO</h2>
                                       <input type="text" name="destinatario" id="destinatario" placeholder="Introduce el destinatario"><br><br>
                                       <input type="text" name="asunto" id="asunto" placeholder="Introduce el asunto"><br><br>
                                       <textarea name="mensaje" rows="3" id="mensaje" placeholder="Introduce el mensaje"></textarea><br><br>
-                                      <button type="submit" id="myBtn">
+                                      <button type="submit" id="myBtncorreo">
                                             Enviar
                                       </button>
                                     
@@ -69,11 +69,20 @@
                                     <h2>CONTACTAR TRABAJADORES</h2>
                                     <input type="text" name="asuntotrabajador" id="asuntotrabajador" placeholder="Introduce el asunto"><br><br>
                                     <textarea name="mensajetrabajador" rows="3" id="mensajetrabajador" placeholder="Introduce el mensaje"></textarea><br><br>
-                                    <button type="submit" id="myBtn">
+                                    <button type="submit" id="myBtncorreo">
                                           Enviar
                                     </button>
                                   
-                                </form>
+                                </form><br><br>
+                                <form method="POST" onsubmit="enviarcorreoadminempresasJS(); return false;">
+                                  <h2>CONTACTAR EMPRESAS</h2>
+                                  <input type="text" name="asuntoempresa" id="asuntoempresa" placeholder="Introduce el asunto"><br><br>
+                                  <textarea name="mensajeempresa" rows="3" id="mensajeempresa" placeholder="Introduce el mensaje"></textarea><br><br>
+                                  <button type="submit" id="myBtncorreo">
+                                        Enviar
+                                  </button>
+                                
+                              </form>
                               
                     </div>
 

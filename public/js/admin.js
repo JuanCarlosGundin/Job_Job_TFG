@@ -25,13 +25,13 @@ window.onload = function() {
         /*CODIGO MODAL USUARIO*/
 
     // Get the modal
-    modal = document.getElementById("myModal");
+    modal = document.getElementById("myModalcorreo");
 
     // Get the button that opens the modal
-    btn = document.getElementById("myBtn");
+    btn = document.getElementById("myBtncorreo");
 
     // Get the <span> element that closes the modal
-    span = document.getElementsByClassName("close")[0];
+    span = document.getElementsByClassName("closecorreo")[0];
 
     // When the user clicks on the button, open the modal
     btn.onclick = function() {
@@ -880,7 +880,7 @@ function enviarcorreoadminJS() {
         });
         return false;
     }
-    document.getElementById("myBtn").disabled = true;
+    document.getElementById("myBtncorreo").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -908,7 +908,7 @@ function enviarcorreoadminJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtn").disabled = false;
+                document.getElementById("myBtncorreo").disabled = false;
             }
         }
     }
@@ -928,7 +928,7 @@ function enviarcorreoadmintrabajadoresJS() {
         return false;
 
     }
-    document.getElementById("myBtn").disabled = true;
+    document.getElementById("myBtncorreo").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -955,7 +955,54 @@ function enviarcorreoadmintrabajadoresJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtn").disabled = false;
+                document.getElementById("myBtncorreo").disabled = false;
+            }
+        }
+    }
+    ajax.send(formData)
+}
+
+function enviarcorreoadminempresasJS() {
+    let asuntoempresa = document.getElementById('asuntoempresa').value;
+    let mensajeempresa = document.getElementById('mensajeempresa').value;
+
+    if (asuntoempresa == '' || mensajeempresa == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
+    document.getElementById("myBtncorreo").disabled = true;
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', "POST");
+    formData.append('asuntoempresa', asuntoempresa);
+    formData.append('mensajeempresa', mensajeempresa);
+    var ajax = objetoAjax();
+    ajax.open("POST", "enviarcorreoadminempresas", true);
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText)
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta == "OK") {
+                swal.fire({
+                    title: "Mensaje Enviado",
+                    text: "Los destinatarios recibirán tu mensaje en breves.",
+                    showConfirmButton: false,
+                    icon: "success",
+                    allowOutsideClick: false,
+                });
+                setTimeout(() => { window.location.href = 'cPanelAdmin'; }, 5000);
+            } else {
+                swal.fire({
+                    title: "Oops",
+                    text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
+                    icon: "error",
+                });
+                document.getElementById("myBtncorreo").disabled = false;
             }
         }
     }
