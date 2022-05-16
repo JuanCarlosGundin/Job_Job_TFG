@@ -57,9 +57,20 @@ function chartCreate() {
         }]
     };
     const config = {
-        type: 'line',
+        type: 'bar',
         data: data,
-        options: {}
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Bar Chart'
+                }
+            }
+        },
     };
     const myChart = new Chart(
         document.getElementById('myChart'),
