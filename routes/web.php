@@ -7,6 +7,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\GraficaController;
 
 Route::get('/chat', function () {
     return view('chat');
@@ -24,6 +25,9 @@ Route::get('paginacontacto', function () {
 /*PRUEBA*/
 Route::get('reportesprueba', function () {
     return view('reportesprueba');
+});
+Route::get('graficas', function () {
+    return view('graficas');
 });
 /*FIN PRUEBA*/
 Route::get('login', function () {
@@ -178,6 +182,9 @@ Route::post('enviarcorreoadmin', [MailController::class, 'enviarcorreoadmin']);
 Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorreoadmintrabajadores']);
 //mandar correo masivo a empresas desde la página de admin
 Route::post('enviarcorreoadminempresas', [MailController::class, 'enviarcorreoadminempresas']);
+
+//ZONA GRAFICAS-ESTADISTICAS
+Route::get('numerousers',[GraficaController::class,'numerousers']);
 
 
 //ZONA REPORTES
