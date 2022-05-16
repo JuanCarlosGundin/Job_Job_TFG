@@ -880,7 +880,7 @@ function enviarcorreoadminJS() {
         });
         return false;
     }
-    document.getElementById("myBtncorreo").disabled = true;
+    document.getElementById("myBtnadmin").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -908,7 +908,7 @@ function enviarcorreoadminJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtncorreo").disabled = false;
+                document.getElementById("myBtnadmin").disabled = false;
             }
         }
     }
@@ -928,7 +928,7 @@ function enviarcorreoadmintrabajadoresJS() {
         return false;
 
     }
-    document.getElementById("myBtncorreo").disabled = true;
+    document.getElementById("myBtntrabajador").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -955,7 +955,7 @@ function enviarcorreoadmintrabajadoresJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtncorreo").disabled = false;
+                document.getElementById("myBtntrabajador").disabled = false;
             }
         }
     }
@@ -975,7 +975,7 @@ function enviarcorreoadminempresasJS() {
         return false;
 
     }
-    document.getElementById("myBtncorreo").disabled = true;
+    document.getElementById("myBtnempresa").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -1002,7 +1002,7 @@ function enviarcorreoadminempresasJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtncorreo").disabled = false;
+                document.getElementById("myBtnempresa").disabled = false;
             }
         }
     }

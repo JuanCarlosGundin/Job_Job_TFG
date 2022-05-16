@@ -60,7 +60,7 @@
                                       <input type="text" name="destinatario" id="destinatario" placeholder="Introduce el destinatario"><br><br>
                                       <input type="text" name="asunto" id="asunto" placeholder="Introduce el asunto"><br><br>
                                       <textarea name="mensaje" rows="3" id="mensaje" placeholder="Introduce el mensaje"></textarea><br><br>
-                                      <button type="submit" id="myBtncorreo">
+                                      <button type="submit" id="myBtnadmin">
                                             Enviar
                                       </button>
                                     
@@ -69,7 +69,7 @@
                                     <h2>CONTACTAR TRABAJADORES</h2>
                                     <input type="text" name="asuntotrabajador" id="asuntotrabajador" placeholder="Introduce el asunto"><br><br>
                                     <textarea name="mensajetrabajador" rows="3" id="mensajetrabajador" placeholder="Introduce el mensaje"></textarea><br><br>
-                                    <button type="submit" id="myBtncorreo">
+                                    <button type="submit" id="myBtntrabajador">
                                           Enviar
                                     </button>
                                   
@@ -78,7 +78,7 @@
                                   <h2>CONTACTAR EMPRESAS</h2>
                                   <input type="text" name="asuntoempresa" id="asuntoempresa" placeholder="Introduce el asunto"><br><br>
                                   <textarea name="mensajeempresa" rows="3" id="mensajeempresa" placeholder="Introduce el mensaje"></textarea><br><br>
-                                  <button type="submit" id="myBtncorreo">
+                                  <button type="submit" id="myBtnempresa">
                                         Enviar
                                   </button>
                                 
