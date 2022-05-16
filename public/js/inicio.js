@@ -100,6 +100,7 @@ function loginuser(evt) {
             title: "Error",
             text: "Tienes que rellenar todos los datos",
             icon: "error",
+
         });
         return false;
 
@@ -275,6 +276,15 @@ function sessiontrabajador0(evt) {
         });
         return false;
 
+        //no poder poner espacios en blanco
+    } else if (/^ *$/.test(mail) || /^ *$/.test(contra) || /^ *$/.test(contra2)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
 
         swal.fire({
@@ -292,6 +302,16 @@ function sessiontrabajador0(evt) {
             icon: "error",
         });
         return false;
+
+    } else if (contra.length < 8 || contra2.lenght < 8) {
+
+        swal.fire({
+            title: "Error",
+            text: "La contraseña tiene que tener mínimo 8 carácteres",
+            icon: "error",
+        });
+        return false;
+
 
     } else if (contra !== contra2) {
 
@@ -395,6 +415,32 @@ function sessiontrabajador1(evt) {
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    } else if (/^ *$/.test(nombre) || /^ *$/.test(apellido) || /^ *$/.test(edad)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
+    } else if (nombre.length < 2 || nombre.length > 60) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un nombre correcto",
+            icon: "error",
+        });
+        return false;
+
+    } else if (apellido.length < 2 || apellido.length > 60) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un apellido correcto",
             icon: "error",
         });
         return false;
@@ -515,7 +561,6 @@ function sessiontrabajador2(evt) {
         formData.append('lenguaje_preferido', lenguaje_preferido);
     }
 
-
     var ajax = objetoAjax();
 
     ajax.open("POST", "sesionestrabajador", true);
@@ -628,6 +673,14 @@ function sessiontrabajador3(evt) {
     }
     if (foto_perfil) {
         formData.append('foto_perfil', foto_perfil);
+    }
+    if (/^ *$/.test(loc_trabajador) || /^ *$/.test(disponibilidad)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
     }
 
 
@@ -811,7 +864,15 @@ function sessiontrabajador4(evt) {
     if (nivel_idioma) {
         formData.append('nivel_idioma', nivel_idioma);
     }
+    if (!nombre_idioma || !nivel_idioma) {
 
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -1219,7 +1280,14 @@ function sessiontrabajador6(evt) {
     if (año_salida) {
         formData.append('año_salidaexp', año_salida);
     }
-
+    if (/^ *$/.test(nombre_experiencia) || /^ *$/.test(lugar_experiencia)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -1376,11 +1444,28 @@ function sessionempresa0(evt) {
         });
         return false;
 
+    } else if (/^ *$/.test(mail) || /^ *$/.test(nom_emp) || /^ *$/.test(contra) || /^ *$/.test(contra2)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
 
         swal.fire({
             title: "Error",
             text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+
+    } else if (nom_emp.length < 2 || nom_emp.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un nombre correcto",
             icon: "error",
         });
         return false;
@@ -1393,6 +1478,16 @@ function sessionempresa0(evt) {
             icon: "error",
         });
         return false;
+
+    } else if (contra.length < 8) {
+
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener mínimo 8 carácteres",
+            icon: "error",
+        });
+        return false;
+
 
     } else if (contra !== contra2) {
 

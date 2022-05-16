@@ -232,31 +232,7 @@ body {
     }
 }
 
-// ////RESPONSIVE TABLET
-@media only screen and (min-width: $movil) and (max-width: $tablet) {
-    .body-index {
-        .navbar-index {
-            height: 13vh;
-            .column-1 {
-                display: none;
-            }
-            .column-2 {
-                margin-top: 3% !important;
-                margin-bottom: 3% !important;
-                width: 100%;
-                text-align: center;
-                padding: 0% !important;
-                .btn-register {
-                    width: 37% !important;
-                    padding-left: 2% !important;
-                    padding-right: 2% !important;
-                }
-            }
-        }
-    }
-}
-
-////RESPONSIVE MOVIL
+//////RESPONSIVE MOVIL
 @media only screen and (max-width: $movil) {
     .body-index {
         .navbar-index {
@@ -327,6 +303,51 @@ body {
     }
     #footer-izquierda {
         display: none;
+    }
+}
+
+/////////////RESPONSIVE TABLET
+@media only screen and (min-width: $movil) and (max-width: $tablet) {
+    .body-index {
+        .navbar-index {
+            height: 13vh;
+            .column-1 {
+                display: none;
+            }
+            .column-2 {
+                margin-top: 3% !important;
+                margin-bottom: 3% !important;
+                width: 100%;
+                text-align: center;
+                padding: 0% !important;
+                .btn-register {
+                    width: 37% !important;
+                    padding-left: 2% !important;
+                    padding-right: 2% !important;
+                }
+            }
+        }
+        .column-3 {
+            width: 50% !important;
+            text-align: center !important;
+        }
+        .column-4 {
+            width: 50%;
+            img {
+                width: 40%;
+            }
+        }
+        .column-5 {
+            width: 50%;
+            height: 45vh;
+        }
+        .footer {
+            width: 50%;
+            text-align: center;
+        }
+        #footer-izquierda {
+            width: 100%;
+        }
     }
 }
 
