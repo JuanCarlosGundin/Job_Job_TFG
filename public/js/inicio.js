@@ -697,9 +697,6 @@ function formtrabajador4() {
     /* Estructura linea */
     recarga += '<div id="lineaidioma-0">';
     //nombre_idioma
-    recarga += '<div class="mas-menos">'
-    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
-    recarga += '</div>'
     recarga += '<div class="column-2">';
     recarga += '<p>Idioma</p>';
     recarga += '<select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
@@ -722,6 +719,7 @@ function formtrabajador4() {
     recarga += '</div>';
     recarga += '<div>';
     recarga += '</div>';
+    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     /* Estructura linea */
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';

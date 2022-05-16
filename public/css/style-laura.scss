@@ -711,11 +711,11 @@ body {
         text-align: center;
         width: 100%;
         height: 70vh;
-        .mas-menos {
-            width: 100%;
-            text-align: right !important;
-            margin-right: -30px;
-        }
+        // .mas-menos {
+        //     width: 100%;
+        //     text-align: right !important;
+        //     margin-right: -30px;
+        // }
         .mas,
         .menos {
             padding-top: 1vh;
@@ -724,7 +724,7 @@ body {
             border: none;
             background-color: transparent;
             font-size: 30px;
-            position: absolute;
+            //position: absolute;
         }
         .izquierda-derecha {
             .izquierda,
