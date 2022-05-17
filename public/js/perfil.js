@@ -694,15 +694,14 @@ function form_idiomas(evt) {
     var nombre_idioma = document.getElementById("nombre_idioma").value;
     var nivel_idioma = document.getElementById("nivel_idioma").value;
     var formData = new FormData();
+    console.log(nombre_idioma);
+    console.log(nivel_idioma);
+    console.log(i);
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
-    if (nombre_idioma) {
-        formData.append('nombre_idioma', nombre_idioma);
-    }
-    if (nivel_idioma) {
-        formData.append('nivel_idioma', nivel_idioma);
-    }
+    formData.append('nombre_idioma', nombre_idioma);
+    formData.append('nivel_idioma', nivel_idioma);
     formData.append('numero_idioma', i);
 
     /* Inicializar un objeto AJAX */

@@ -68,9 +68,8 @@ class PerfilController extends Controller{
             if ($req->has('github')){
                 $data[]= "github='".$req['github']."'";
             }
-            //form_idiomas
-            if ($req->has(['nombre_idioma','nivel_idioma'])){
-                
+            if ($req->has(['nombre_idioma', 'nivel_idioma', 'numero_idioma'])){
+                $data[]= "curriculum=JSON_REPLACE(curriculum, '$.idiomas[".$req['numero_idioma']."].nivel_idioma', '".$req['nivel_idioma']."', '$.idiomas[".$req['numero_idioma']."].nombre_idioma', '".$req['nombre_idioma']."')";
             }
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
