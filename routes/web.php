@@ -184,7 +184,11 @@ Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorr
 Route::post('enviarcorreoadminempresas', [MailController::class, 'enviarcorreoadminempresas']);
 
 //ZONA GRAFICAS-ESTADISTICAS
+//Muestra la comparativa de trabajadores y empresas registradas.
 Route::get('numerousers',[GraficaController::class,'numerousers']);
+//Cuenta cuantas empresas hay en cada localización.
+Route::get('localizacionempresas',[GraficaController::class,'localizacionempresas']);
+
 
 
 //ZONA REPORTES

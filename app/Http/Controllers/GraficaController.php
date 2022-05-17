@@ -17,4 +17,13 @@ class GraficaController extends Controller
         return $usuarios;
         return response()->json($usuarios);
     }
+
+    public function localizacionempresas()
+    {
+        //consulta donde me cuenta el numero que hay de administradores, trabajadores y empresas.
+        $empresas=DB::select('SELECT tbl_empresa.loc_emp, count(tbl_empresa.id_usuario) AS empresas from tbl_empresa INNER JOIN tbl_usuarios ON tbl_empresa.id_usuario=tbl_usuarios.id GROUP BY tbl_empresa.loc_emp');
+        return $empresas;
+        return response()->json($empresas);
+    }
+
 }

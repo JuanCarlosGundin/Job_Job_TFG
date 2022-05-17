@@ -8,9 +8,15 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 
 </head>
+<style>
+    div{
+        width:30%;
+    }
+</style>
 <body>
     <div>
         <canvas id="myChart"></canvas>
+        <canvas id="locaempresas"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/graficas.js"></script>
