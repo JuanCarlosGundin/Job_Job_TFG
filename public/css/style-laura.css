@@ -79,7 +79,7 @@ body {
   color: #000000;
   font-weight: bold;
   font-size: 2.7vh;
-  width: 23%;
+  width: 28%;
   height: 6vh;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
@@ -92,17 +92,20 @@ body {
   border: black solid 3px;
 }
 
-.body-index .column-3 {
+.body-index .fila-1 {
+  height: 83vh;
+}
+
+.body-index .fila-1 .column-3 {
   padding-top: 17vh;
   padding-left: 3%;
   width: 50%;
   float: left;
   padding-left: 5%;
   background-color: #186CA7;
-  height: 83vh;
 }
 
-.body-index .column-3 h2 {
+.body-index .fila-1 .column-3 h2 {
   text-align: left;
   color: white;
   font-weight: bold;
@@ -110,14 +113,14 @@ body {
   font-size: 5vh;
 }
 
-.body-index .column-3 h3 {
+.body-index .fila-1 .column-3 h3 {
   text-align: left;
   font-size: 3.5vh;
   color: white;
   padding-bottom: 5%;
 }
 
-.body-index .column-3 .btn-index {
+.body-index .fila-1 .column-3 .btn-index {
   background-color: white;
   border-radius: 15px;
   font-weight: bold;
@@ -137,7 +140,7 @@ body {
   transition: all 0.3s linear;
 }
 
-.body-index .column-3 .btn-index:hover {
+.body-index .fila-1 .column-3 .btn-index:hover {
   background-color: transparent;
   color: white;
   border: white solid 3px;
@@ -145,69 +148,66 @@ body {
           box-shadow: none;
 }
 
-.body-index .column-4 {
+.body-index .fila-1 .column-4 {
   padding-top: 17vh;
   width: 50%;
   float: left;
   padding-right: 5%;
   background-color: #186CA7;
-  height: 83vh;
 }
 
-.body-index .column-4 img {
+.body-index .fila-1 .column-4 img {
   margin-top: 3vh;
   width: 80%;
 }
 
-.body-index #primera-columna {
+.body-index .fila-1 #primera-columna {
   padding-left: 5%;
 }
 
-.body-index #ultima-columna {
+.body-index .fila-1 #ultima-columna {
   padding-right: 5%;
 }
 
-.body-index .column-5 {
-  background-color: #92AFD7;
-  padding-left: 3%;
-  padding-right: 3%;
-  width: 25%;
-  float: left;
-  height: 50vh;
-  padding-top: 5%;
-  padding-bottom: 5%;
+.body-index .fila-2 {
+  height: 48vh;
 }
 
-.body-index .column-5 i {
+.body-index .fila-2 i {
   padding-bottom: 12%;
   color: white;
   font-size: 6vh;
 }
 
-.body-index .column-5 h1 {
+.body-index .fila-2 h1 {
   color: white;
   font-size: 4vh;
   font-weight: 550;
 }
 
-.body-index .column-5 h3 {
+.body-index .fila-2 h3 {
   color: white;
   font-size: 2.8vh;
 }
 
+.body-index .fila-2 .column-5 {
+  background-color: #92AFD7;
+  padding-left: 3%;
+  padding-right: 3%;
+  width: 25%;
+  height: 100%;
+  float: left;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
 .body-index .video {
   background-color: #0076CA;
-  height: 150vh;
+  height: 40vh;
 }
 
 .body-index .footer {
-  padding-top: 4%;
-  padding-bottom: 12%;
-  padding-left: 9%;
-  padding-right: 9%;
-  width: 33.3%;
   height: 40vh;
-  float: left;
   background-color: #042944;
   color: white;
   text-align: left;
@@ -216,30 +216,54 @@ body {
           justify-content: center;
 }
 
-.body-index .footer h1 {
+.body-index .footer .footer-2,
+.body-index .footer .footer-3 {
+  padding-top: 4%;
+  padding-bottom: 12%;
+  padding-left: 9%;
+  padding-right: 9%;
+  width: 33.3%;
+  height: 100%;
+  float: left;
+}
+
+.body-index .footer .footer-2 h1,
+.body-index .footer .footer-3 h1 {
   padding-bottom: 8%;
   font-weight: bold;
 }
 
-.body-index .footer h2 {
+.body-index .footer .footer-2 h2,
+.body-index .footer .footer-3 h2 {
   padding-bottom: 10%;
   font-weight: bold;
   font-size: 2.5vh;
 }
 
-.body-index .footer a,
-.body-index .footer p,
-.body-index .footer i {
+.body-index .footer .footer-2 a,
+.body-index .footer .footer-2 p,
+.body-index .footer .footer-2 i,
+.body-index .footer .footer-3 a,
+.body-index .footer .footer-3 p,
+.body-index .footer .footer-3 i {
   text-decoration: none;
   color: white;
   font-size: 13px;
 }
 
-.body-index .footer a:hover {
+.body-index .footer .footer-2 a:hover,
+.body-index .footer .footer-3 a:hover {
   font-weight: bold;
 }
 
-.body-index #footer-izquierda {
+.body-index .footer .footer-1 {
+  padding-top: 4%;
+  padding-bottom: 12%;
+  padding-left: 9%;
+  padding-right: 9%;
+  width: 33.3%;
+  height: 100%;
+  float: left;
   text-align: center;
   padding-left: 5%;
 }
@@ -302,15 +326,25 @@ body {
     height: 40vh !important;
   }
   .video {
-    height: 280vh !important;
+    height: 20vh !important;
   }
   .footer {
+    height: 80vh;
+    background-color: #042944 !important;
+  }
+  .footer p,
+  .footer a {
+    font-size: 20px !important;
+  }
+  .footer .footer-2,
+  .footer .footer-3 {
     width: 100% !important;
     padding-top: 5vh !important;
-    height: 30vh !important;
+    height: 70% !important;
     text-align: center !important;
+    background-color: #042944 !important;
   }
-  #footer-izquierda {
+  .footer .footer-1 {
     display: none;
   }
 }
@@ -330,30 +364,44 @@ body {
     padding: 0% !important;
   }
   .body-index .navbar-index .column-2 .btn-register {
-    width: 37% !important;
+    width: 30% !important;
     padding-left: 2% !important;
     padding-right: 2% !important;
   }
-  .body-index .column-3 {
-    width: 50% !important;
+  .body-index .fila-1 .column-3 {
+    width: 100% !important;
     text-align: center !important;
   }
-  .body-index .column-4 {
+  .body-index .fila-1 .column-4 {
+    padding-top: 0;
+    padding-bottom: 7vh;
+    width: 100%;
+  }
+  .body-index .fila-1 .column-4 img {
     width: 50%;
   }
-  .body-index .column-4 img {
-    width: 40%;
+  .body-index .fila-2 {
+    height: 40vh;
   }
-  .body-index .column-5 {
+  .body-index .fila-2 .column-5 {
     width: 50%;
     height: 45vh;
   }
   .body-index .footer {
-    width: 50%;
-    text-align: center;
+    height: 40vh;
   }
-  .body-index #footer-izquierda {
-    width: 100%;
+  .body-index .footer p,
+  .body-index .footer a {
+    font-size: 13px !important;
+  }
+  .body-index .footer .footer-2,
+  .body-index .footer .footer-3 {
+    width: 50% !important;
+    height: 100%;
+    background-color: #042944 !important;
+  }
+  .body-index .footer .footer-1 {
+    display: none;
   }
 }
 
@@ -780,6 +828,12 @@ body {
   text-align: center;
   width: 100%;
   height: 70vh;
+}
+
+.bodylogin .modal-content-register .mas-menos {
+  width: 100%;
+  text-align: right !important;
+  margin-right: -90px;
 }
 
 .bodylogin .modal-content-register .mas,

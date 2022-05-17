@@ -560,6 +560,17 @@ function sessiontrabajador2(evt) {
     if (lenguaje_preferido) {
         formData.append('lenguaje_preferido', lenguaje_preferido);
     }
+    if (/^\s+$/.test(campo_user) || /^\s+$/.test(about_user) || /^\s+$/.test(lenguaje_preferido)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
+
 
     var ajax = objetoAjax();
 
@@ -674,11 +685,13 @@ function sessiontrabajador3(evt) {
     if (foto_perfil) {
         formData.append('foto_perfil', foto_perfil);
     }
-    if (/^ *$/.test(loc_trabajador) || /^ *$/.test(disponibilidad)) {
+    if (/^\s+$/.test(loc_trabajador)) {
+
         swal.fire({
             title: "Error",
-            text: "No puedes poner solo campos en blanco",
+            text: "No puedes poner espacios en blanco",
             icon: "error",
+
         });
         return false;
     }
@@ -1068,6 +1081,17 @@ function sessiontrabajador5(evt) {
     if (año_salida) {
         formData.append('año_salidafor', año_salida);
     }
+    if (/^\s+$/.test(nombre_formación) || /^\s+$/.test(lugar_formación)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
+
 
 
     var ajax = objetoAjax();
@@ -1280,11 +1304,13 @@ function sessiontrabajador6(evt) {
     if (año_salida) {
         formData.append('año_salidaexp', año_salida);
     }
-    if (/^ *$/.test(nombre_experiencia) || /^ *$/.test(lugar_experiencia)) {
+    if (/^\s+$/.test(nombre_experiencia) || /^\s+$/.test(lugar_experiencia) || /^\s+$/.test(funciones)) {
+
         swal.fire({
             title: "Error",
-            text: "No puedes poner solo campos en blanco",
+            text: "No puedes poner espacios en blanco",
             icon: "error",
+
         });
         return false;
     }
@@ -1613,6 +1639,16 @@ function sessionempresa1(evt) {
     formData.append('campo_emp', campo_emp);
     formData.append('searching', searching);
 
+    if (/^\s+$/.test(about_emp) || /^\s+$/.test(campo_emp) || /^\s+$/.test(searching)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -1713,6 +1749,17 @@ function sessionempresa2(evt) {
     formData.append('logo_emp', logo_emp);
     formData.append('loc_emp', loc_emp);
     formData.append('vacante', vacante);
+
+    if (/^\s+$/.test(loc_emp) || /^\s+$/.test(vacante)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
 
     var ajax = objetoAjax();

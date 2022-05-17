@@ -111,6 +111,10 @@
                 .derecha {
                     color: white;
                 }
+                .mas,
+                .menos {
+                    color: white;
+                }
             }
         }
         
@@ -178,18 +182,18 @@
             }
         }
         
-        /////////////////////////////////////////EDITAR-PERFIL//////////////////////////////
+        /////////////////////////////////////////VER-PERFIL//////////////////////////////
         .oscuro {
             .ver-profile {
                 .user-div-category {
-                    background-color: $first-color !important;
-                    border-color: $first-color !important;
+                    background-color: $fourth-color !important;
+                    border-color: $fourth-color !important;
                 }
                 .user-vista {
                     background-color: $third-color !important;
                 }
                 .user-poligon {
-                    background-color: $third-color !important;
+                    background-color: $first-color !important;
                 }
                 .p-name,
                 .p-surname,
@@ -198,5 +202,26 @@
                 .user-category-icon {
                     color: white !important;
                 }
+                .logout-btn,
+                .input-file {
+                    background-color: $fifth-color !important;
+                }
+                .linea-divisoria {
+                    background-color: grey !important;
+                }
             }
+        }
+        
+        ////////////////////////////////////////////////VER-PERFIL/////////////////////////////////
+        .edit-profile {
+            .p-text,
+            .return-text,
+            i {
+                color: white !important;
+            }
+        }
+        
+        ////////////////////////////////////////NOTIFICACIONES///////////////////////////////////////
+        .buscador {
+            background-color: $first-color !important;
         }

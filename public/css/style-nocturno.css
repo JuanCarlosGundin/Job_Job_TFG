@@ -119,6 +119,11 @@
   color: white;
 }
 
+.bodylogin.oscuro .modal-login .mas,
+.bodylogin.oscuro .modal-login .menos {
+  color: white;
+}
+
 .oscuro {
   background-color: #012A4A;
 }
@@ -190,8 +195,8 @@
 }
 
 .oscuro .ver-profile .user-div-category {
-  background-color: #012A4A !important;
-  border-color: #012A4A !important;
+  background-color: #03365E !important;
+  border-color: #03365E !important;
 }
 
 .oscuro .ver-profile .user-vista {
@@ -199,7 +204,7 @@
 }
 
 .oscuro .ver-profile .user-poligon {
-  background-color: #0B4B78 !important;
+  background-color: #012A4A !important;
 }
 
 .oscuro .ver-profile .p-name,
@@ -208,5 +213,24 @@
 .oscuro .ver-profile .p-category,
 .oscuro .ver-profile .user-category-icon {
   color: white !important;
+}
+
+.oscuro .ver-profile .logout-btn,
+.oscuro .ver-profile .input-file {
+  background-color: #437EA9 !important;
+}
+
+.oscuro .ver-profile .linea-divisoria {
+  background-color: grey !important;
+}
+
+.edit-profile .p-text,
+.edit-profile .return-text,
+.edit-profile i {
+  color: white !important;
+}
+
+.buscador {
+  background-color: #012A4A !important;
 }
 /*# sourceMappingURL=style-nocturno.css.map */

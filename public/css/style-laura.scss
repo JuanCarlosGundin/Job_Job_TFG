@@ -81,7 +81,7 @@ body {
                 color: $black;
                 font-weight: bold;
                 font-size: 2.7vh;
-                width: 23%;
+                width: 28%;
                 height: 6vh;
                 -webkit-transition: all 0.3s linear;
                 transition: all 0.3s linear;
@@ -96,82 +96,76 @@ body {
     }
     ////HEADER/////
     //COLUMNA TEXTO//
-    .column-3 {
-        padding-top: 17vh;
-        padding-left: 3%;
-        width: 50%;
-        float: left;
-        padding-left: 5%;
-        background-color: $first-color;
+    .fila-1 {
         height: 83vh;
-        h2 {
-            text-align: left;
-            color: white;
-            font-weight: bold;
-            margin-top: 10vh;
-            font-size: 5vh;
-        }
-        h3 {
-            text-align: left;
-            font-size: 3.5vh;
-            color: white;
-            padding-bottom: 5%;
-        }
-        ///boton registro
-        .btn-index {
-            background-color: white;
-            border-radius: 15px;
-            font-weight: bold;
-            width: 25%;
-            height: 7vh;
-            margin-right: 3vh;
-            margin-top: 5.5vh;
-            margin-bottom: 4vh;
+        .column-3 {
+            padding-top: 17vh;
+            padding-left: 3%;
+            width: 50%;
             float: left;
-            color: #090216b0;
-            font-size: 2.7vh;
-            box-shadow: 0 0 5px rgba(206, 203, 203, 0.993), 0 0 8px rgba(206, 203, 203, 0.993);
-            line-height: 42px;
-            border: none;
-            -webkit-transition: all 0.3s linear;
-            transition: all 0.3s linear;
+            padding-left: 5%;
+            background-color: $first-color;
+            h2 {
+                text-align: left;
+                color: white;
+                font-weight: bold;
+                margin-top: 10vh;
+                font-size: 5vh;
+            }
+            h3 {
+                text-align: left;
+                font-size: 3.5vh;
+                color: white;
+                padding-bottom: 5%;
+            }
+            ///boton registro
+            .btn-index {
+                background-color: white;
+                border-radius: 15px;
+                font-weight: bold;
+                width: 25%;
+                height: 7vh;
+                margin-right: 3vh;
+                margin-top: 5.5vh;
+                margin-bottom: 4vh;
+                float: left;
+                color: #090216b0;
+                font-size: 2.7vh;
+                box-shadow: 0 0 5px rgba(206, 203, 203, 0.993), 0 0 8px rgba(206, 203, 203, 0.993);
+                line-height: 42px;
+                border: none;
+                -webkit-transition: all 0.3s linear;
+                transition: all 0.3s linear;
+            }
+            .btn-index:hover {
+                background-color: transparent;
+                color: white;
+                border: white solid 3px;
+                box-shadow: none;
+            }
         }
-        .btn-index:hover {
-            background-color: transparent;
-            color: white;
-            border: white solid 3px;
-            box-shadow: none;
+        ////COLUMNA IMAGEN HEADER/////
+        .column-4 {
+            padding-top: 17vh;
+            width: 50%;
+            float: left;
+            padding-right: 5%;
+            background-color: $first-color;
+            img {
+                margin-top: 3vh;
+                width: 80%;
+            }
+        }
+        ////SECCION 4 COLUMNAS/////
+        #primera-columna {
+            padding-left: 5%;
+        }
+        #ultima-columna {
+            padding-right: 5%;
         }
     }
-    ////COLUMNA IMAGEN HEADER/////
-    .column-4 {
-        padding-top: 17vh;
-        width: 50%;
-        float: left;
-        padding-right: 5%;
-        background-color: $first-color;
-        height: 83vh;
-        img {
-            margin-top: 3vh;
-            width: 80%;
-        }
-    }
-    ////SECCION 4 COLUMNAS/////
-    #primera-columna {
-        padding-left: 5%;
-    }
-    #ultima-columna {
-        padding-right: 5%;
-    }
-    .column-5 {
-        background-color: $fifth-color;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 25%;
-        float: left;
-        height: 50vh;
-        padding-top: 5%;
-        padding-bottom: 5%;
+    .fila-2 {
+        height: 48vh;
         //ICONS FONTAWESOME//
         i {
             padding-bottom: 12%;
@@ -187,48 +181,69 @@ body {
             color: white;
             font-size: 2.8vh;
         }
+        .column-5 {
+            background-color: $fifth-color;
+            padding-left: 3%;
+            padding-right: 3%;
+            width: 25%;
+            height: 100%;
+            float: left;
+            padding-top: 5%;
+            padding-bottom: 5%;
+        }
     }
     ///COLUMNA VIDEO///
     .video {
         background-color: $third-color;
-        height: 150vh;
+        height: 40vh;
     }
     ///FOOTER///
     .footer {
-        padding-top: 4%;
-        padding-bottom: 12%;
-        padding-left: 9%;
-        padding-right: 9%;
-        width: 33.3%;
         height: 40vh;
-        float: left;
         background-color: $fourth-color;
         color: white;
         text-align: left;
         justify-content: center;
-        h1 {
-            padding-bottom: 8%;
-            font-weight: bold;
+        .footer-2,
+        .footer-3 {
+            padding-top: 4%;
+            padding-bottom: 12%;
+            padding-left: 9%;
+            padding-right: 9%;
+            width: 33.3%;
+            height: 100%;
+            float: left;
+            h1 {
+                padding-bottom: 8%;
+                font-weight: bold;
+            }
+            h2 {
+                padding-bottom: 10%;
+                font-weight: bold;
+                font-size: 2.5vh;
+            }
+            a,
+            p,
+            i {
+                text-decoration: none;
+                color: white;
+                font-size: 13px;
+            }
+            a:hover {
+                font-weight: bold;
+            }
         }
-        h2 {
-            padding-bottom: 10%;
-            font-weight: bold;
-            font-size: 2.5vh;
+        .footer-1 {
+            padding-top: 4%;
+            padding-bottom: 12%;
+            padding-left: 9%;
+            padding-right: 9%;
+            width: 33.3%;
+            height: 100%;
+            float: left;
+            text-align: center;
+            padding-left: 5%;
         }
-        a,
-        p,
-        i {
-            text-decoration: none;
-            color: white;
-            font-size: 13px;
-        }
-        a:hover {
-            font-weight: bold;
-        }
-    }
-    #footer-izquierda {
-        text-align: center;
-        padding-left: 5%;
     }
 }
 
@@ -293,16 +308,26 @@ body {
         height: 40vh !important;
     }
     .video {
-        height: 280vh !important;
+        height: 20vh !important;
     }
     .footer {
-        width: 100% !important;
-        padding-top: 5vh !important;
-        height: 30vh !important;
-        text-align: center !important;
-    }
-    #footer-izquierda {
-        display: none;
+        height: 80vh;
+        background-color: $fourth-color !important;
+        p,
+        a {
+            font-size: 20px !important;
+        }
+        .footer-2,
+        .footer-3 {
+            width: 100% !important;
+            padding-top: 5vh !important;
+            height: 70% !important;
+            text-align: center !important;
+            background-color: $fourth-color !important;
+        }
+        .footer-1 {
+            display: none;
+        }
     }
 }
 
@@ -321,32 +346,48 @@ body {
                 text-align: center;
                 padding: 0% !important;
                 .btn-register {
-                    width: 37% !important;
+                    width: 30% !important;
                     padding-left: 2% !important;
                     padding-right: 2% !important;
                 }
             }
         }
-        .column-3 {
-            width: 50% !important;
-            text-align: center !important;
-        }
-        .column-4 {
-            width: 50%;
-            img {
-                width: 40%;
+        .fila-1 {
+            .column-3 {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            .column-4 {
+                padding-top: 0;
+                padding-bottom: 7vh;
+                width: 100%;
+                img {
+                    width: 50%;
+                }
             }
         }
-        .column-5 {
-            width: 50%;
-            height: 45vh;
+        .fila-2 {
+            height: 40vh;
+            .column-5 {
+                width: 50%;
+                height: 45vh;
+            }
         }
         .footer {
-            width: 50%;
-            text-align: center;
-        }
-        #footer-izquierda {
-            width: 100%;
+            height: 40vh;
+            p,
+            a {
+                font-size: 13px !important;
+            }
+            .footer-2,
+            .footer-3 {
+                width: 50% !important;
+                height: 100%;
+                background-color: $fourth-color !important;
+            }
+            .footer-1 {
+                display: none;
+            }
         }
     }
 }
@@ -732,11 +773,11 @@ body {
         text-align: center;
         width: 100%;
         height: 70vh;
-        // .mas-menos {
-        //     width: 100%;
-        //     text-align: right !important;
-        //     margin-right: -30px;
-        // }
+        .mas-menos {
+            width: 100%;
+            text-align: right !important;
+            margin-right: -90px;
+        }
         .mas,
         .menos {
             padding-top: 1vh;
@@ -745,7 +786,9 @@ body {
             border: none;
             background-color: transparent;
             font-size: 30px;
-            //position: absolute;
+            // position: absolute;
+            // text-align: right !important;
+            // margin-right: -90px;
         }
         .izquierda-derecha {
             .izquierda,
