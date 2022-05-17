@@ -1,10 +1,13 @@
 window.onload = function() {
     numerousersJS();
     localizacionempresasJS();
+    usuarioscreadosJS();
     labelsX = [];
     dataY = [];
     labelsXempresa = [];
     dataYempresa = [];
+    labelsXusuario = [];
+    dataYusuario = [];
 }
 
 function objetoAjax() {
@@ -151,6 +154,86 @@ function graficolocalizacion() {
     };
     const locaempresas = new Chart(
         document.getElementById('locaempresas'),
+        config
+    );
+
+}
+//------------------------------------------------------------------------------------------------------------------------------//
+function usuarioscreadosJS() {
+
+    var ajax = objetoAjax();
+    formdata = new FormData();
+    formdata.append('_token', document.getElementById('token').getAttribute("content"));
+    formdata.append('_method', 'GET');
+
+    ajax.open("POST", "usuarioscreados", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+
+            for (var i = 0; i < respuesta.length; i++) {
+                labelsXusuario.push(respuesta[i].fecha_creacion);
+                dataYusuario.push(respuesta[i].usuarios);
+            }
+            // creamos el chart/grafico
+            graficousuarioscreados();
+        }
+    }
+
+    ajax.send(formdata)
+}
+
+function graficousuarioscreados() {
+    const data = {
+        labels: labelsXusuario,
+        datasets: [{
+            label: 'usuarios creados por mes',
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(249, 188, 63)',
+                'rgb(97, 77, 35)',
+                'rgb(65, 216, 26)',
+                'rgb(254, 173, 0)',
+                'rgb(62, 90, 155)',
+                'rgb(6, 13, 32)',
+                'rgb(81, 82, 72)',
+                'rgb(248, 0, 255)',
+                'rgb(255, 0, 108)',
+                'rgb(218, 223, 240)',
+                'rgb(94, 78, 159)',
+                'rgb(187, 158, 186)'
+
+            ],
+            borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(249, 188, 63)',
+                'rgb(97, 77, 35)',
+                'rgb(65, 216, 26)',
+                'rgb(254, 173, 0)',
+                'rgb(62, 90, 155)',
+                'rgb(6, 13, 32)',
+                'rgb(81, 82, 72)',
+                'rgb(248, 0, 255)',
+                'rgb(255, 0, 108)',
+                'rgb(218, 223, 240)',
+                'rgb(94, 78, 159)',
+                'rgb(187, 158, 186)'
+
+            ],
+            data: dataYusuario,
+        }]
+    };
+    const config = {
+        type: 'bar',
+        data: data,
+    };
+    const myChart = new Chart(
+        document.getElementById('usuarioscreados'),
         config
     );
 
