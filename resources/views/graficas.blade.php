@@ -17,6 +17,7 @@
     <div>
         <canvas id="myChart"></canvas>
         <canvas id="locaempresas"></canvas>
+        <canvas id="usuarioscreados"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/graficas.js"></script>

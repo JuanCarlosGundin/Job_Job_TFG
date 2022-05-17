@@ -188,6 +188,8 @@ Route::post('enviarcorreoadminempresas', [MailController::class, 'enviarcorreoad
 Route::get('numerousers',[GraficaController::class,'numerousers']);
 //Cuenta cuantas empresas hay en cada localización.
 Route::get('localizacionempresas',[GraficaController::class,'localizacionempresas']);
+//Mira cuantos usuarios se han creado mensualmente.
+Route::get('usuarioscreados',[GraficaController::class,'usuarioscreados']);
 
 
 
