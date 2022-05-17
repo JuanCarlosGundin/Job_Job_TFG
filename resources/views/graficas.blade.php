@@ -15,8 +15,13 @@
 </style>
 <body>
     <div>
-        <canvas id="myChart"></canvas>
+        <h2>Trabajadores y empresas registradas</h2>
+        <canvas id="numerousers"></canvas>
+        <h2>Localización empresas</h2>
         <canvas id="locaempresas"></canvas>
+        <h2>Localización trabajadores</h2>
+        <canvas id="locatrabajadores"></canvas>
+        <h2>Usuarios creados por mes</h2>
         <canvas id="usuarioscreados"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
