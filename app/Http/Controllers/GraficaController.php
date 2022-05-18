@@ -41,7 +41,51 @@ class GraficaController extends Controller
         return $usuarios;
         return response()->json($usuarios);
     }
+    public function mediaedad()
+    {
+        //consulta donde me dice cuantas empresas hay en cada localidad.
+        $mediaedad=DB::select('SELECT AVG(TIMESTAMPDIFF(YEAR, tbl_trabajador.edad, CURDATE())) AS edad, count(tbl_trabajador.id_usuario) AS trabajadores_totales from tbl_trabajador INNER JOIN tbl_usuarios ON tbl_trabajador.id_usuario=tbl_usuarios.id GROUP BY (tbl_usuarios.id_perfil )');
+        return $mediaedad;
+        return response()->json($mediaedad);
+    }
+
+    public function usuariosmostrados()
+    {
+        //consulta donde me dice cuantas empresas hay en cada localidad.
+        $mostradotrabajador=DB::select('SELECT tbl_perfiles.nom_perfil, count(tbl_trabajador.id_usuario) AS trabajador  
+        FROM tbl_usuarios
+        JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
+        JOIN tbl_trabajador ON tbl_trabajador.id_usuario = tbl_usuarios.id WHERE tbl_trabajador.mostrado=1 
+        GROUP BY tbl_usuarios.id_perfil');
+        $mostradoempresa=DB::select('SELECT tbl_perfiles.nom_perfil, count(tbl_empresa.id_usuario) AS empresa
+        FROM tbl_usuarios
+        JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
+        JOIN tbl_empresa ON tbl_empresa.id_usuario = tbl_usuarios.id WHERE tbl_empresa.mostrado=1 
+        GROUP BY tbl_usuarios.id_perfil;
+        ');
+        print_r ($mostradotrabajador[0]);
+        $mostradotrabajador[0]->nom_perfil="Empresa";
+
+        print_r ($mostradoempresa[0]);
+        print_r ($mostradotrabajador[0]);
+        return response()->json($mostradotrabajador );
+    }
+
 
 }
 
 // SELECT tbl_usuarios.created_at AS fecha_creacion, count(tbl_usuarios.id) AS usuarios from tbl_usuarios where ((tbl_usuarios.created_at) BETWEEN '2022-04-01' AND '2022-04-30') or ((tbl_usuarios.created_at) BETWEEN '2022-05-01' AND '2022-05-31') or ((tbl_usuarios.created_at) BETWEEN '2022-06-01' AND '2022-06-30') or ((tbl_usuarios.created_at) BETWEEN '2022-07-01' AND '2022-07-30') or ((tbl_usuarios.created_at) BETWEEN '2022-08-01' AND '2022-08-31') or ((tbl_usuarios.created_at) BETWEEN '2022-09-01' AND '2022-09-30') or ((tbl_usuarios.created_at) BETWEEN '2022-10-01' AND '2022-10-31') or ((tbl_usuarios.created_at) BETWEEN '2022-11-01' AND '2022-11-30') or ((tbl_usuarios.created_at) BETWEEN '2022-12-01' AND '2022-12-31') GROUP BY tbl_usuarios.created_at;
+
+
+// SELECT tbl_perfiles.nom_perfil, count(tbl_usuarios.id) AS trabajador  
+// FROM tbl_usuarios
+// JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
+// WHERE id_perfil=2 or id_perfil=3  GROUP BY tbl_usuarios.id_perfil;
+
+// SELECT tbl_perfiles.nom_perfil, tbl_trabajador.id_usuario, tbl_empresa.id_usuario, count(tbl_trabajador.id_usuario) AS trabajador, count(tbl_empresa.id_usuario) AS empresa  
+// FROM tbl_usuarios
+// JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
+// JOIN tbl_trabajador ON tbl_trabajador.id_usuario = tbl_usuarios.id
+// JOIN tbl_empresa ON tbl_empresa.id_usuario = tbl_usuarios.id
+// WHERE tbl_trabajador.mostrado=1 or tbl_empresa.mostrado=1 AND id_perfil=2 or id_perfil=3  GROUP BY tbl_usuarios.id_perfil;
+

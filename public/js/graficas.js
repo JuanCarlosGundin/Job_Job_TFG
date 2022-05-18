@@ -3,6 +3,7 @@ window.onload = function() {
     localizacionempresasJS();
     usuarioscreadosJS();
     localizaciontrabajadoresJS();
+    mediaedadJS();
     labelsX = [];
     dataY = [];
     labelsXempresa = [];
@@ -11,6 +12,8 @@ window.onload = function() {
     dataYtrabajador = [];
     labelsXusuario = [];
     dataYusuario = [];
+    labelsXedad = [];
+    dataYedad = [];
 }
 
 function objetoAjax() {
@@ -312,11 +315,123 @@ function graficousuarioscreados() {
         }]
     };
     const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart'
+                }
+            }
+        },
+    };
+    const myChart = new Chart(
+        document.getElementById('usuarioscreados'),
+        config
+    );
+
+}
+//------------------------------------------------------------------------------------------------------------------------------//
+function mediaedadJS() {
+
+    var ajax = objetoAjax();
+    formdata = new FormData();
+    formdata.append('_token', document.getElementById('token').getAttribute("content"));
+    formdata.append('_method', 'GET');
+
+    ajax.open("POST", "mediaedad", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+
+            for (var i = 0; i < respuesta.length; i++) {
+                labelsXedad.push(respuesta[i].edad);
+                dataYedad.push(respuesta[i].trabajadores_totales);
+            }
+            // creamos el chart/grafico
+            graficoedad();
+        }
+    }
+
+    ajax.send(formdata)
+}
+
+function graficoedad() {
+    const data = {
+        labels: labelsXedad,
+        datasets: [{
+            label: 'Media de edad trabajadores',
+            backgroundColor: ['rgb(54, 162, 235)',
+                'rgb(146, 175, 215)'
+            ],
+            borderColor: ['rgb(54, 162, 235)',
+                'rgb(146, 175, 215)'
+            ],
+            data: dataYedad,
+        }]
+    };
+    const config = {
         type: 'bar',
         data: data,
     };
     const myChart = new Chart(
-        document.getElementById('usuarioscreados'),
+        document.getElementById('mediaedad'),
+        config
+    );
+
+}
+//------------------------------------------------------------------------------------------------------------------------------//
+function usuariosmostradosJS() {
+
+    var ajax = objetoAjax();
+    formdata = new FormData();
+    formdata.append('_token', document.getElementById('token').getAttribute("content"));
+    formdata.append('_method', 'GET');
+
+    ajax.open("POST", "usuariosmostrados", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+
+            for (var i = 0; i < respuesta.length; i++) {
+                labelsXedad.push(respuesta[i].edad);
+                dataYedad.push(respuesta[i].trabajadores_totales);
+            }
+            // creamos el chart/grafico
+            graficoedad();
+        }
+    }
+
+    ajax.send(formdata)
+}
+
+function graficoedad() {
+    const data = {
+        labels: labelsXedad,
+        datasets: [{
+            label: 'Usuarios mostrados',
+            backgroundColor: ['rgb(54, 162, 235)',
+                'rgb(146, 175, 215)'
+            ],
+            borderColor: ['rgb(54, 162, 235)',
+                'rgb(146, 175, 215)'
+            ],
+            data: dataYedad,
+        }]
+    };
+    const config = {
+        type: 'bar',
+        data: data,
+    };
+    const myChart = new Chart(
+        document.getElementById('mediaedad'),
         config
     );
 
