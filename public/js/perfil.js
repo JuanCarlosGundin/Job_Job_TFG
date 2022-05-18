@@ -640,7 +640,6 @@ function leer_idiomas() {
             recarga += '<button id="crear">crear</button>';
             if (trabajador.curriculum != null) {
                 var curriculum = JSON.parse(trabajador.curriculum);
-                console.log(curriculum);
                 if (curriculum.hasOwnProperty('idiomas')) {
                     for (let i = 0; i < curriculum.idiomas.length; i++) {
                         recarga += '<div>';

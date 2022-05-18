@@ -72,25 +72,17 @@ class PerfilController extends Controller{
                 $data[]= "curriculum=JSON_REPLACE(curriculum, '$.idiomas[".$req['numero_idioma']."].nivel_idioma', '".$req['nivel_idioma']."', '$.idiomas[".$req['numero_idioma']."].nombre_idioma', '".$req['nombre_idioma']."')";
             } elseif ($req->has(['nombre_idioma', 'nivel_idioma'])) {
                 $existecurriculum= DB::table('tbl_trabajador')->select('curriculum')->where('id_usuario','=',$id)->first();
-                return response()->json(array('resultado'=> $existecurriculum));
-                if ($existecurriculum==null) {
-                    return response()->json(array('resultado'=> 'si'));
-                } else{
-                    return response()->json(array('resultado'=> 'no'));
-                }
-                /* $existecurriculum=DB::select("select count(curriculum) from tbl_trabajador WHERE id_usuario=?",[$id]);
-                return response()->json(array('resultado'=> $existecurriculum));
-                if ($existecurriculum[0]=="1"){
-                    $existeidiomas=DB::select("select count(curriculum->'$.idiomas') from tbl_trabajador WHERE id_usuario=?",[$id]);
-                    if($existeidiomas[0]=="1"){
-                        //appendear nuevo idioma
-                        $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.idiomas', JSON_OBJECT('nivel_idioma', '".$req['nivel_idioma']."', 'nombre_idioma', '".$req['nombre_idioma']."'))";
-                    }else{
-                        // insertas JSON idioma
-                    }
-                }else{
+                if ($existecurriculum->curriculum==null) {
                     //crear JSON curriculum
-                } */
+                } else{
+                    $existeidiomas= DB::table('tbl_trabajador')->select('curriculum->idiomas as idiomas')->where('id_usuario','=',$id)->first();
+                    if ($existeidiomas->idiomas==null){
+                        //Crear JSON idiomas
+                    }else{
+                        //appendear idiomas
+                        $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.idiomas', JSON_OBJECT('nivel_idioma', '".$req['nivel_idioma']."', 'nombre_idioma', '".$req['nombre_idioma']."'))";
+                    }
+                }
             }
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
