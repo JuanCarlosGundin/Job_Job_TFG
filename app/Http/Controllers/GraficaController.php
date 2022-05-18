@@ -52,23 +52,20 @@ class GraficaController extends Controller
     public function usuariosmostrados()
     {
         //consulta donde me dice cuantas empresas hay en cada localidad.
-        $mostradotrabajador=DB::select('SELECT tbl_perfiles.nom_perfil, count(tbl_trabajador.id_usuario) AS trabajador  
+        $mostrado=DB::select('SELECT tbl_perfiles.nom_perfil, count(tbl_trabajador.id_usuario) AS total_mostrados  
         FROM tbl_usuarios
         JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
-        JOIN tbl_trabajador ON tbl_trabajador.id_usuario = tbl_usuarios.id WHERE tbl_trabajador.mostrado=1 
+        JOIN tbl_trabajador ON tbl_trabajador.id_usuario = tbl_usuarios.id 
+        WHERE tbl_trabajador.mostrado=1
+        UNION ALL
+        SELECT tbl_perfiles.nom_perfil, count(tbl_empresa.id_usuario) AS empresa 
+        FROM tbl_usuarios
+        JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
+        JOIN tbl_empresa ON tbl_empresa.id_usuario = tbl_usuarios.id
+        WHERE tbl_empresa.mostrado=1
         GROUP BY tbl_usuarios.id_perfil');
-        $mostradoempresa=DB::select('SELECT tbl_perfiles.nom_perfil, count(tbl_empresa.id_usuario) AS empresa
-        FROM tbl_usuarios
-        JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
-        JOIN tbl_empresa ON tbl_empresa.id_usuario = tbl_usuarios.id WHERE tbl_empresa.mostrado=1 
-        GROUP BY tbl_usuarios.id_perfil;
-        ');
-        print_r ($mostradotrabajador[0]);
-        $mostradotrabajador[0]->nom_perfil="Empresa";
-
-        print_r ($mostradoempresa[0]);
-        print_r ($mostradotrabajador[0]);
-        return response()->json($mostradotrabajador );
+        return $mostrado;
+        return response()->json($mostrado );
     }
 
 
@@ -89,3 +86,15 @@ class GraficaController extends Controller
 // JOIN tbl_empresa ON tbl_empresa.id_usuario = tbl_usuarios.id
 // WHERE tbl_trabajador.mostrado=1 or tbl_empresa.mostrado=1 AND id_perfil=2 or id_perfil=3  GROUP BY tbl_usuarios.id_perfil;
 
+
+
+// SELECT tbl_perfiles.nom_perfil, count(tbl_trabajador.id_usuario) AS trabajador  
+// FROM tbl_usuarios
+// JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
+// JOIN tbl_trabajador ON tbl_trabajador.id_usuario = tbl_usuarios.id 
+// UNION ALL
+// SELECT tbl_perfiles.nom_perfil, count(tbl_empresa.id_usuario) AS empresa 
+// FROM tbl_usuarios
+// JOIN tbl_perfiles ON tbl_usuarios.id_perfil=tbl_perfiles.id
+// JOIN tbl_empresa ON tbl_empresa.id_usuario = tbl_usuarios.id WHERE empresa.mostrado=1 
+// GROUP BY tbl_usuarios.id_perfil;

@@ -4,6 +4,7 @@ window.onload = function() {
     usuarioscreadosJS();
     localizaciontrabajadoresJS();
     mediaedadJS();
+    usuariosmostradosJS();
     labelsX = [];
     dataY = [];
     labelsXempresa = [];
@@ -14,6 +15,10 @@ window.onload = function() {
     dataYusuario = [];
     labelsXedad = [];
     dataYedad = [];
+    labelsXedad = [];
+    dataYedad = [];
+    labelsXmostrado = [];
+    dataYmostrado = [];
 }
 
 function objetoAjax() {
@@ -325,7 +330,6 @@ function graficousuarioscreados() {
                 },
                 title: {
                     display: true,
-                    text: 'Chart.js Line Chart'
                 }
             }
         },
@@ -401,20 +405,20 @@ function usuariosmostradosJS() {
             var respuesta = JSON.parse(this.responseText);
 
             for (var i = 0; i < respuesta.length; i++) {
-                labelsXedad.push(respuesta[i].edad);
-                dataYedad.push(respuesta[i].trabajadores_totales);
+                labelsXmostrado.push(respuesta[i].nom_perfil);
+                dataYmostrado.push(respuesta[i].total_mostrados);
             }
             // creamos el chart/grafico
-            graficoedad();
+            graficomostrados();
         }
     }
 
     ajax.send(formdata)
 }
 
-function graficoedad() {
+function graficomostrados() {
     const data = {
-        labels: labelsXedad,
+        labels: labelsXmostrado,
         datasets: [{
             label: 'Usuarios mostrados',
             backgroundColor: ['rgb(54, 162, 235)',
@@ -423,7 +427,7 @@ function graficoedad() {
             borderColor: ['rgb(54, 162, 235)',
                 'rgb(146, 175, 215)'
             ],
-            data: dataYedad,
+            data: dataYmostrado,
         }]
     };
     const config = {
@@ -431,7 +435,7 @@ function graficoedad() {
         data: data,
     };
     const myChart = new Chart(
-        document.getElementById('mediaedad'),
+        document.getElementById('usuariosmostrados'),
         config
     );
 
