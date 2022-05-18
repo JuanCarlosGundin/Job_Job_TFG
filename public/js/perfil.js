@@ -1,5 +1,7 @@
 window.onload = function() {
 
+    leeridiomas();
+    JSONidiomas = {};
     mostrarperfilJS();
     //logica de modal
 
@@ -70,6 +72,25 @@ function objetoAjax() {
     }
 
     return xmlhttp;
+
+}
+
+function leeridiomas() {
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "./js/idiomas.json", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            JSONidiomas = JSON.parse(this.responseText);
+        }
+
+    }
+
+    ajax.send(null)
 
 }
 
@@ -447,7 +468,7 @@ function leer_sobre_mi() {
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
 
             var editar = document.getElementById("editar");
-            editar.addEventListener("click", editar_sobre_mi);
+            editar.addEventListener("click", form_editar_sobre_mi);
 
         }
 
@@ -456,7 +477,7 @@ function leer_sobre_mi() {
     ajax.send(formData)
 }
 
-function editar_sobre_mi() {
+function form_editar_sobre_mi() {
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
 
@@ -527,7 +548,7 @@ function editar_sobre_mi() {
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", leer_sobre_mi);
-            document.getElementById("form_editar_sobre_mi").addEventListener("submit", form_editar_sobre_mi);
+            document.getElementById("form_editar_sobre_mi").addEventListener("submit", editar_sobre_mi);
 
         }
 
@@ -537,7 +558,7 @@ function editar_sobre_mi() {
 
 }
 
-function form_editar_sobre_mi(evt) {
+function editar_sobre_mi(evt) {
 
     evt.preventDefault();
 
@@ -617,7 +638,9 @@ function leer_idiomas() {
             recarga += '<button id="volver">Volver</button>';
             if (trabajador.hasOwnProperty('curriculum')) {
                 var curriculum = JSON.parse(trabajador.curriculum);
+                console.log(curriculum);
                 if (curriculum.hasOwnProperty('idiomas')) {
+                    console.log("porque==");
                     for (let i = 0; i < curriculum.idiomas.length; i++) {
                         recarga += '<div>';
                         recarga += '<p>' + curriculum.idiomas[i].nombre_idioma + '</p>';
@@ -625,17 +648,21 @@ function leer_idiomas() {
                         recarga += '<button class="editar">Editar</button>';
                         recarga += '</div>';
                     }
+                    recarga += '<button id="crear">crear</button>';
                     contenidoajax.innerHTML = recarga;
                     for (let i = 0; i < curriculum.idiomas.length; i++) {
                         document.getElementsByClassName("editar")[i].i = i;
-                        document.getElementsByClassName("editar")[i].addEventListener("click", editar_idiomas);
+                        document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_idiomas);
 
                     }
                 } else {
                     recarga += '<p>Aun no has añadido ningun idioma</p>';
+                    recarga += '<button id="crear">crear</button>';
+                    contenidoajax.innerHTML = recarga;
                 }
             }
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+            document.getElementById("crear").addEventListener("click", form_crear_idiomas);
 
         }
 
@@ -644,7 +671,67 @@ function leer_idiomas() {
     ajax.send(formData)
 }
 
-function editar_idiomas(evt) {
+function form_crear_idiomas() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var recarga = "";
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<div>';
+    recarga += '<form id=form_idiomas>';
+    recarga += '<select class="" name="nombre_idioma" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
+    recarga += '<option value="" selected>- selecciona -</option>';
+    for (let i = 0; i < JSONidiomas.length; i++) {
+        recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
+    }
+    recarga += '</select>';
+    recarga += '<select class="" name="nivel_idioma" id="nivel_idioma">';
+    recarga += '<option value="" selected>- selecciona -</option>';
+    recarga += '<option value="bajo">bajo</option>';
+    recarga += '<option value="medio">medio</option>';
+    recarga += '<option value="alto">alto</option>';
+    recarga += '<option value="nativo">nativo</option>';
+    recarga += '</select>';
+    recarga += '<button>Realizar cambios</button>';
+    recarga += '</form>';
+    recarga += '</div>';
+    contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", leer_idiomas);
+    document.getElementById("form_idiomas").addEventListener("submit", crear_idiomas);
+
+}
+
+function crear_idiomas() {
+    var nombre_idioma = document.getElementById("nombre_idioma").value;
+    var nivel_idioma = document.getElementById("nivel_idioma").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('nombre_idioma', nombre_idioma);
+    formData.append('nivel_idioma', nivel_idioma);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_idiomas(evt) {
 
     var i = evt.currentTarget.i;
     var contenidoajax = document.getElementById("contenidoajax");
@@ -664,12 +751,27 @@ function editar_idiomas(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var idioma = curriculum.idiomas[i];
+            console.log(idioma);
             var recarga = "";
             recarga += '<button id="volver">Volver</button>';
             recarga += '<div>';
             recarga += '<form id=form_idiomas>';
-            recarga += '<input type="text" class="" id="nombre_idioma" name="nombre_idioma" value="' + idioma.nombre_idioma + '">';
-            recarga += '<input type="text" class="" id="nivel_idioma" name="nivel_idioma" value="' + idioma.nivel_idioma + '">';
+            recarga += '<select class="" name="nombre_idioma" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
+            for (let i = 0; i < JSONidiomas.length; i++) {
+                if (idioma.nombre_idioma == JSONidiomas[i].nombre_idioma) {
+                    recarga += '<option value="' + idioma.nombre_idioma + '" selected>' + idioma.nombre_idioma + '</option>';
+                } else {
+                    recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
+                }
+            }
+            recarga += '</select>';
+            recarga += '<select class="" name="nivel_idioma" id="nivel_idioma">';
+            recarga += '<option value="' + idioma.nivel_idioma + '" selected>' + idioma.nivel_idioma + '</option>';
+            recarga += '<option value="bajo">bajo</option>';
+            recarga += '<option value="medio">medio</option>';
+            recarga += '<option value="alto">alto</option>';
+            recarga += '<option value="nativo">nativo</option>';
+            recarga += '</select>';
             recarga += '<button>Realizar cambios</button>';
             recarga += '</form>';
             recarga += '</div>';
@@ -677,7 +779,7 @@ function editar_idiomas(evt) {
 
             document.getElementById("volver").addEventListener("click", leer_idiomas);
             document.getElementById("form_idiomas").i = i;
-            document.getElementById("form_idiomas").addEventListener("submit", form_idiomas);
+            document.getElementById("form_idiomas").addEventListener("submit", editar_idiomas);
 
         }
 
@@ -686,7 +788,7 @@ function editar_idiomas(evt) {
     ajax.send(formData)
 }
 
-function form_idiomas(evt) {
+function editar_idiomas(evt) {
 
     evt.preventDefault();
     var i = evt.currentTarget.i;
