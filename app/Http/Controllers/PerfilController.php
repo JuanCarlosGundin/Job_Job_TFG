@@ -74,10 +74,13 @@ class PerfilController extends Controller{
                 $existecurriculum= DB::table('tbl_trabajador')->select('curriculum')->where('id_usuario','=',$id)->first();
                 if ($existecurriculum->curriculum==null) {
                     //crear JSON curriculum
+                    $lineaidioma='{"idiomas":[{"nivel_idioma": "'.$req['nivel_idioma'].'","nombre_idioma": "'.$req['nombre_idioma'].'"}]}';
+                    $data[]="curriculum='".$lineaidioma."'";
                 } else{
                     $existeidiomas= DB::table('tbl_trabajador')->select('curriculum->idiomas as idiomas')->where('id_usuario','=',$id)->first();
                     if ($existeidiomas->idiomas==null){
                         //Crear JSON idiomas
+                        $data[]="curriculum = JSON_INSERT(curriculum, '$.idiomas', JSON_ARRAY(JSON_OBJECT('nivel_idioma', '".$req['nivel_idioma']."', 'nombre_idioma', '".$req['nombre_idioma']."')))";
                     }else{
                         //appendear idiomas
                         $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.idiomas', JSON_OBJECT('nivel_idioma', '".$req['nivel_idioma']."', 'nombre_idioma', '".$req['nombre_idioma']."'))";
