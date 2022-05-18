@@ -634,13 +634,14 @@ function leer_idiomas() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
+            console.log(trabajador);
             var recarga = "";
             recarga += '<button id="volver">Volver</button>';
-            if (trabajador.hasOwnProperty('curriculum')) {
+            recarga += '<button id="crear">crear</button>';
+            if (trabajador.curriculum != null) {
                 var curriculum = JSON.parse(trabajador.curriculum);
                 console.log(curriculum);
                 if (curriculum.hasOwnProperty('idiomas')) {
-                    console.log("porque==");
                     for (let i = 0; i < curriculum.idiomas.length; i++) {
                         recarga += '<div>';
                         recarga += '<p>' + curriculum.idiomas[i].nombre_idioma + '</p>';
@@ -648,18 +649,19 @@ function leer_idiomas() {
                         recarga += '<button class="editar">Editar</button>';
                         recarga += '</div>';
                     }
-                    recarga += '<button id="crear">crear</button>';
-                    contenidoajax.innerHTML = recarga;
+                } else {
+                    recarga += '<p>Aun no has añadido ningun idioma</p>';
+                }
+                contenidoajax.innerHTML = recarga;
+                if (curriculum.hasOwnProperty('idiomas')) {
                     for (let i = 0; i < curriculum.idiomas.length; i++) {
                         document.getElementsByClassName("editar")[i].i = i;
                         document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_idiomas);
-
                     }
-                } else {
-                    recarga += '<p>Aun no has añadido ningun idioma</p>';
-                    recarga += '<button id="crear">crear</button>';
-                    contenidoajax.innerHTML = recarga;
                 }
+            } else {
+                recarga += '<p>Aun no has añadido ningun idioma</p>';
+                contenidoajax.innerHTML = recarga;
             }
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
             document.getElementById("crear").addEventListener("click", form_crear_idiomas);
@@ -701,7 +703,9 @@ function form_crear_idiomas() {
 
 }
 
-function crear_idiomas() {
+function crear_idiomas(evt) {
+
+    evt.preventDefault();
     var nombre_idioma = document.getElementById("nombre_idioma").value;
     var nivel_idioma = document.getElementById("nivel_idioma").value;
     var formData = new FormData();

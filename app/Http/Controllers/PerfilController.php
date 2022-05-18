@@ -70,8 +70,27 @@ class PerfilController extends Controller{
             }
             if ($req->has(['nombre_idioma', 'nivel_idioma', 'numero_idioma'])){
                 $data[]= "curriculum=JSON_REPLACE(curriculum, '$.idiomas[".$req['numero_idioma']."].nivel_idioma', '".$req['nivel_idioma']."', '$.idiomas[".$req['numero_idioma']."].nombre_idioma', '".$req['nombre_idioma']."')";
-            }elseif ($req->has(['nombre_idioma', 'nivel_idioma'])) {
-                # code...
+            } elseif ($req->has(['nombre_idioma', 'nivel_idioma'])) {
+                $existecurriculum= DB::table('tbl_trabajador')->select('curriculum')->where('id_usuario','=',$id)->first();
+                return response()->json(array('resultado'=> $existecurriculum));
+                if ($existecurriculum==null) {
+                    return response()->json(array('resultado'=> 'si'));
+                } else{
+                    return response()->json(array('resultado'=> 'no'));
+                }
+                /* $existecurriculum=DB::select("select count(curriculum) from tbl_trabajador WHERE id_usuario=?",[$id]);
+                return response()->json(array('resultado'=> $existecurriculum));
+                if ($existecurriculum[0]=="1"){
+                    $existeidiomas=DB::select("select count(curriculum->'$.idiomas') from tbl_trabajador WHERE id_usuario=?",[$id]);
+                    if($existeidiomas[0]=="1"){
+                        //appendear nuevo idioma
+                        $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.idiomas', JSON_OBJECT('nivel_idioma', '".$req['nivel_idioma']."', 'nombre_idioma', '".$req['nombre_idioma']."'))";
+                    }else{
+                        // insertas JSON idioma
+                    }
+                }else{
+                    //crear JSON curriculum
+                } */
             }
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
