@@ -13,15 +13,38 @@ body {
   background-color: #E5E5E5;
 }
 
+.barra-navbar {
+  background-color: white;
+  height: 15vh;
+  z-index: 100;
+}
+
+.barra-navbar img {
+  margin-top: 20px;
+  width: 5%;
+  margin-left: 10vh;
+}
+
+.barra-navbar .darkmodeswitch {
+  margin-top: 30px;
+  float: right;
+  margin-right: 30px;
+}
+
+p {
+  padding-left: 20px;
+  float: right;
+  font-size: 20px;
+  margin: 0;
+}
+
 .region-navbar {
   background-color: #ffffff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 10vh;
+  height: 85vh !important;
+  width: 20%;
   height: calc(var(--vh, 1vh) * 10);
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  padding-top: 5% !important;
+  padding-left: 2%;
   /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
   /* DIVS NAVBAR*/
   /* Curriculum */
@@ -34,91 +57,99 @@ body {
 
 .region-navbar .curriculum-navbar {
   padding: 1%;
-  width: 20%;
+  padding-bottom: 20px;
+  border: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
 }
 
 .region-navbar .alerts-navbar {
   padding: 1%;
-  width: 20%;
+  padding-bottom: 20px;
+  width: 100% !important;
+  border: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
 }
 
 .region-navbar .main-navbar {
   padding: 1%;
-  width: 20%;
-  height: 10vh;
+  padding-bottom: 20px;
+  width: 70%;
+  border: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
 }
 
 .region-navbar .chat-navbar {
   padding: 1%;
-  width: 20%;
+  padding-bottom: 20px;
+  width: 70%;
+  border: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
 }
 
 .region-navbar .profile-navbar {
   padding: 1%;
-  width: 20%;
+  padding-bottom: 20px;
+  width: 70%;
+  border: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
 }
 
 .region-navbar .active-left {
   background-color: #E5E5E5;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border-top-right-radius: 30px;
 }
 
 .region-navbar .active-right {
   background-color: #E5E5E5;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border-top-left-radius: 30px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .region-navbar .active {
   background-color: #E5E5E5;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px;
 }
 
 .region-navbar .active-center {
-  background-color: #C5D1EB;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px;
+  background-color: #E5E5E5;
 }
 
 .region-navbar .icon {
-  color: #c0c0c0;
-  text-align: center;
-  font-size: 3.5vh;
+  color: black;
+  margin: 0;
   background-color: #ffffff;
   border-width: 0px;
-  width: 100%;
-  height: 100%;
   border-radius: 50px;
+  font-size: 20px;
 }
 
 .region-navbar .main-icon {
-  color: #c0c0c0;
-  font-size: 4vh;
+  color: black;
   background-color: #ffffff;
-  text-align: center;
   border-width: 0px;
-  width: 100%;
-  height: 100%;
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px;
+  border-radius: 50px;
+  font-size: 20px;
 }
 
 .region-navbar .active-icon {
-  color: #000000;
   background-color: #E5E5E5;
-  font-size: 4.5vh;
 }
 
 .region-navbar .active-icon-center {
-  background-color: #C5D1EB;
-  font-size: 4.5vh;
+  background-color: #E5E5E5;
 }
 /*# sourceMappingURL=style.css.map */

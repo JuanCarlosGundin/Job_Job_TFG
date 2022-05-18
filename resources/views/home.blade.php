@@ -23,6 +23,8 @@
     <title>Home</title>
 </head>
 <body class="page-home">
+    <div class="barra-navbar">
+    </div>
   <div class="region-navbar">
     <div class="curriculum-navbar">
         <button id="navbar-PT-icon" class="icon"><i class="fa-solid fa-file-invoice"></i></button>
@@ -40,9 +42,9 @@
         <button id="navbar-profile-icon" class="icon"><i class="fa-solid fa-user"></i></button>
     </div>
   </div>
-  <button type="button" class="darkmodeswitch" id="switch"><span><i class="fa fa-sun-o"></i></span>   
+  {{-- <button type="button" class="darkmodeswitch" id="switch"><span><i class="fa fa-sun-o"></i></span>   
     <span><i class="fa fa-moon-o"></i></span>
-</button>
+</button> --}}
     <div class="region-content row" id="carta">
         
     </div>

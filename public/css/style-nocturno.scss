@@ -121,6 +121,9 @@
         ///////////////////////////////////////NAVBAR////////////////////////////////////
         .oscuro {
             background-color: $first-color;
+            .barra-navbar {
+                background-color: $third-color;
+            }
             .region-navbar {
                 background-color: $third-color;
                 .main-icon {
