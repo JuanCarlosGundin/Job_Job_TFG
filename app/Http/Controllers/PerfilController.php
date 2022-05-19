@@ -86,6 +86,8 @@ class PerfilController extends Controller{
                         $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.idiomas', JSON_OBJECT('nivel_idioma', '".$req['nivel_idioma']."', 'nombre_idioma', '".$req['nombre_idioma']."'))";
                     }
                 }
+            } elseif ($req->has('numero_idioma')) {
+                $data[]= "curriculum=JSON_REMOVE(curriculum, '$.idiomas[".$req['numero_idioma']."]')";
             }
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);

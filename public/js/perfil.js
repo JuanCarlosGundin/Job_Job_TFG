@@ -641,12 +641,16 @@ function leer_idiomas() {
             if (trabajador.curriculum != null) {
                 var curriculum = JSON.parse(trabajador.curriculum);
                 if (curriculum.hasOwnProperty('idiomas')) {
-                    for (let i = 0; i < curriculum.idiomas.length; i++) {
-                        recarga += '<div>';
-                        recarga += '<p>' + curriculum.idiomas[i].nombre_idioma + '</p>';
-                        recarga += '<p>' + curriculum.idiomas[i].nivel_idioma + '</p>';
-                        recarga += '<button class="editar">Editar</button>';
-                        recarga += '</div>';
+                    if (curriculum.idiomas.length != 0) {
+                        for (let i = 0; i < curriculum.idiomas.length; i++) {
+                            recarga += '<div>';
+                            recarga += '<p>' + curriculum.idiomas[i].nombre_idioma + '</p>';
+                            recarga += '<p>' + curriculum.idiomas[i].nivel_idioma + '</p>';
+                            recarga += '<button class="editar">Editar</button>';
+                            recarga += '</div>';
+                        }
+                    } else {
+                        recarga += '<p>Aun no has añadido ningun idioma</p>';
                     }
                 } else {
                     recarga += '<p>Aun no has añadido ningun idioma</p>';
@@ -777,12 +781,15 @@ function form_editar_idiomas(evt) {
             recarga += '</select>';
             recarga += '<button>Realizar cambios</button>';
             recarga += '</form>';
+            recarga += '<button id="eliminar">Eliminar idioma</button>';
             recarga += '</div>';
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", leer_idiomas);
             document.getElementById("form_idiomas").i = i;
             document.getElementById("form_idiomas").addEventListener("submit", editar_idiomas);
+            document.getElementById("eliminar").i = i;
+            document.getElementById("eliminar").addEventListener("click", eliminar_idiomas);
 
         }
 
@@ -820,6 +827,37 @@ function editar_idiomas(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function eliminar_idiomas(evt) {
+
+    var i = evt.currentTarget.i;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('numero_idioma', i);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            leer_idiomas();
 
         }
 
