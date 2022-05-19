@@ -431,7 +431,6 @@ public function logout(Request $req){
     public function crearreporte(Request $request) {
         // return response()->json(array('resultado'=> $request));
         $datos = $request->except('_token');
-        return $datos;
         // $this->validate($request, [
         //     'id_reportador' => 'required',
         //     'id_reportado' => 'required',
@@ -442,7 +441,8 @@ public function logout(Request $req){
         try {
             DB::beginTransaction();
             /*insertar datos en la base de datos*/
-            DB::table("tbl_usuarios")->join('tbl_reportes', 'tbl_usuarios.id', '=', 'tbl_reportes.id_reportador')->where('id','=',$datos['id_reportador'])->where('id','=',$datos['id_reportado']); 
+            $tetas=DB::table("tbl_usuarios")->join('tbl_reportes', 'tbl_usuarios.id', '=', 'tbl_reportes.id_reportador')->where('id','=',$datos['id_reportador'])->where('id','=',$datos['id_reportado']); 
+            return $tetas;
             DB::table('tbl_reportes')->insert(["incidencia"=>$datos['incidencia'],"desarrollar_incidencia"=>$datos['desarrollar_incidencia'],"estado_incidencia"=>'abierta',"id_reportado"=>$datos['id_reportado'],"id_reportador"=>$datos['id_reportador']]);
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
@@ -451,14 +451,26 @@ public function logout(Request $req){
             return response()->json(array('resultado'=> $e->getMessage()));
         }
     }
+
+//     When you need join the same table two or more time you must use a proper alias for the tables
+
+//  $qry = $conn->query("select 
+//               table_order.*
+//             , a.name AS order_name
+//             , b.name AS taker_name 
+//             FROM table_order 
+//             INNER JOIN table_user as a ON a.id_user = table_order.id_user_order 
+//             INNER JOIN table_user as b ON b.id_user = table_order.id_user_taker ");
     //--------------------------------------------------FIN CREAR REPORTE-----------------------------------------------------------//
+    //-----------------------------------------------------GESTIONAR REPORTES----------------------------------------------------------//
+    
+    public function leerreportes(Request $request){
+        $datos=DB::select('select * from tbl_reportes where incidencia like ?',['%'.$request->input('reporte').'%']);
+        return response()->json($datos);
+    }
+
+    //--------------------------------------------------FIN GESTIONAR REPORTES----------------------------------------------------------//
+    
+
 }
 
-//-----------------------------------------------------GESTIONAR REPORTES----------------------------------------------------------//
-
-
-
-
-
-
-//--------------------------------------------------FIN GESTIONAR REPORTES----------------------------------------------------------//

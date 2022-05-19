@@ -62,17 +62,17 @@ function leerreportesJS() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = '';
-            recarga += '<tr><td>ID</td><td>INCIDENCIA</td><td>ESTADO INCIDENCIA</td><td>ID_REPORTADOR</td><td>ID_REPORTADO</td><td>ELIMINAR</td></tr>';
+            recarga += '<tr><td>ID</td><td>INCIDENCIA</td><td>INCIDENCIA DESARROLLADA</td><td>ESTADO INCIDENCIA</td><td>ID_REPORTADOR</td><td>ID_REPORTADO</td><td>ELIMINAR</td></tr>';
             for (let i = 0; i < respuesta.length; i++) {
                 recarga += `<tr>`;
                 recarga += '<td>' + respuesta[i].id + '</td>'
                 recarga += '<td>' + respuesta[i].incidencia + '</td>'
+                recarga += '<td>' + respuesta[i].desarrollar_incidencia + '</td>'
                 recarga += '<td>' + respuesta[i].estado_incidencia + '</td>'
                 recarga += '<td>' + respuesta[i].id_reportador + '</td>'
                 recarga += '<td>' + respuesta[i].id_reportado + '</td>'
-                recarga += '<td><img src="storage/' + respuesta[i].foto + '" style="width:15px;"></td>'
                 recarga += '<td><button onclick="eliminarJS(' + respuesta[i].id + ')">Eliminar</button></td>'
-                recarga += '<td><button type="submit" value="Modificar" onclick="abrirModal(' + respuesta[i].id + ',\'' + respuesta[i].nombre + '\');return false;">Modificar</button></td>'
+                    // recarga += '<td><button type="submit" value="Modificar" onclick="abrirModal(' + respuesta[i].id + ',\'' + respuesta[i].nombre + '\');return false;">Modificar</button></td>'
                 recarga += '</tr>';
 
             }

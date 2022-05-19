@@ -176,8 +176,8 @@
                     <br><br>
                     <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
                     <br><br>
-                    <input type="hidden" name="id_reportado" id="id_reportado" value="60">
-                    <input type="hidden" name="id_reportador" id="id_reportador" value="61">
+                    <input type="hidden" name="id_reportado" id="id_reportado" value="4">
+                    <input type="hidden" name="id_reportador" id="id_reportador" value="6">
                     <input type="submit" value="Enviar reporte"><br>
                 </form>
             

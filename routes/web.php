@@ -206,6 +206,9 @@ Route::get('usuariosmostrados',[GraficaController::class,'usuariosmostrados']);
 //ZONA REPORTES
 //el usuario puede hacer reportes de otros usuarios.
 Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
+
+// ruta para leer
+Route::post('leerreportes',[RepasoajaxController::class, 'leerreportes']);
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
 Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
 Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);

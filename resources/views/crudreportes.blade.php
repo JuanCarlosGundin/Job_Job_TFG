@@ -76,7 +76,7 @@
     <hr>
     <form onsubmit="insertarJS(); return false;">
         <input type="text" id="nombre">
-        <input type="file" id="foto">
+        {{-- <input type="file" id="foto"> --}}
         <input type="submit">
     </form>
     <hr>
