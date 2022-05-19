@@ -192,9 +192,9 @@ Route::get('localizacionempresas',[GraficaController::class,'localizacionempresa
 Route::get('localizaciontrabajadores',[GraficaController::class,'localizaciontrabajadores']);
 //Mira cuantos usuarios se han creado mensualmente.
 Route::get('usuarioscreados',[GraficaController::class,'usuarioscreados']);
-//Mira cuantos usuarios se han creado mensualmente.
+//Muestra la edad media de los usuarios.
 Route::get('mediaedad',[GraficaController::class,'mediaedad']);
-//Mira cuantos usuarios se han creado mensualmente.
+//Muestra la comparativa de trabajadores y empresas registradas Y QUE SE MUESTREN (mostrado=1).
 Route::get('usuariosmostrados',[GraficaController::class,'usuariosmostrados']);
 
 
