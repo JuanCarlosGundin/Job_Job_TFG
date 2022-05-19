@@ -20,93 +20,331 @@ body {
   text-align: center;
 }
 
-.body-index .menu-index {
-  text-align: right;
-}
-
-.body-index .menu-index .btn-register {
-  border-radius: 15px;
+.body-index .navbar-index {
   background-color: white;
-  border: white solid 1.5px;
-  -webkit-box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-          box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-  color: #090216b0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 17vh;
+  position: fixed;
+  -webkit-box-shadow: 7px 4px 15px #656565;
+          box-shadow: 7px 4px 15px #656565;
+}
+
+.body-index .navbar-index .column-1 {
+  width: 40%;
+  padding-left: 5%;
+}
+
+.body-index .navbar-index .column-1 .logo {
+  width: 11vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  float: left;
+}
+
+.body-index .navbar-index .column-2 {
+  width: 57%;
+  text-align: right;
+  -webkit-box-align: right;
+      -ms-flex-align: right;
+          align-items: right;
+  padding-top: 2.5%;
+  padding-right: 1%;
+}
+
+.body-index .navbar-index li {
+  display: inline;
+  padding-left: 5%;
+}
+
+.body-index .navbar-index li a {
+  color: #000000;
+  text-decoration: none;
   font-weight: bold;
-  width: 11%;
+  font-size: 2.7vh;
+}
+
+.body-index .navbar-index li a:hover {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  color: #717070;
+}
+
+.body-index .navbar-index li .btn-register {
+  border-radius: 15px;
+  border: #000000 solid;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  font-size: 2.7vh;
+  width: 23%;
   height: 6vh;
-  margin-right: 3vh;
-  margin-top: 2.5vh;
-  margin-bottom: 4vh;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 
-.body-index h1 {
-  text-align: center;
+.body-index .navbar-index li .btn-register:hover {
+  background-color: black;
   color: white;
-  font-weight: bold;
+  font-weight: none;
+  border: black solid 3px;
 }
 
-.body-index h2 {
-  text-align: center;
+.body-index .column-3 {
+  padding-top: 17vh;
+  padding-left: 3%;
+  width: 50%;
+  float: left;
+  padding-left: 5%;
+  background-color: #186CA7;
+  height: 83vh;
+}
+
+.body-index .column-3 h2 {
+  text-align: left;
   color: white;
   font-weight: bold;
   margin-top: 10vh;
+  font-size: 5vh;
 }
 
-.body-index .btn-index {
-  border-radius: 15px;
+.body-index .column-3 h3 {
+  text-align: left;
+  font-size: 3.5vh;
+  color: white;
+  padding-bottom: 5%;
+}
+
+.body-index .column-3 .btn-index {
   background-color: white;
-  border: white solid 1.5px;
-  -webkit-box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-          box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-  color: #090216b0;
+  border-radius: 15px;
   font-weight: bold;
-  width: 15%;
-  height: 6vh;
+  width: 25%;
+  height: 7vh;
   margin-right: 3vh;
   margin-top: 5.5vh;
   margin-bottom: 4vh;
+  float: left;
+  color: #090216b0;
+  font-size: 2.7vh;
+  -webkit-box-shadow: 0 0 5px rgba(206, 203, 203, 0.993), 0 0 8px rgba(206, 203, 203, 0.993);
+          box-shadow: 0 0 5px rgba(206, 203, 203, 0.993), 0 0 8px rgba(206, 203, 203, 0.993);
+  line-height: 42px;
+  border: none;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 
-.body-index section {
-  width: 0%;
-  background: white;
+.body-index .column-3 .btn-index:hover {
+  background-color: transparent;
+  color: white;
+  border: white solid 3px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
-.body-index #wave {
-  bottom: 0;
-  position: absolute;
-  width: 100%;
+.body-index .column-4 {
+  padding-top: 17vh;
+  width: 50%;
+  float: left;
+  padding-right: 5%;
+  background-color: #186CA7;
+  height: 83vh;
 }
 
-.body-index #wave path {
-  fill: #005EA0;
+.body-index .column-4 img {
+  margin-top: 3vh;
+  width: 80%;
 }
 
-.body-index section#content {
-  background: pink;
+.body-index #primera-columna {
+  padding-left: 5%;
 }
 
-@media only screen and (max-width: 768px) {
-  .body-index .menu-index .btn-register {
-    width: 40%;
+.body-index #ultima-columna {
+  padding-right: 5%;
+}
+
+.body-index .column-5 {
+  background-color: #92AFD7;
+  padding-left: 3%;
+  padding-right: 3%;
+  width: 25%;
+  float: left;
+  height: 50vh;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.body-index .column-5 i {
+  padding-bottom: 12%;
+  color: white;
+  font-size: 6vh;
+}
+
+.body-index .column-5 h1 {
+  color: white;
+  font-size: 4vh;
+  font-weight: 550;
+}
+
+.body-index .column-5 h3 {
+  color: white;
+  font-size: 2.8vh;
+}
+
+.body-index .video {
+  background-color: #0076CA;
+  height: 150vh;
+}
+
+.body-index .footer {
+  padding-top: 4%;
+  padding-bottom: 12%;
+  padding-left: 9%;
+  padding-right: 9%;
+  width: 33.3%;
+  height: 40vh;
+  float: left;
+  background-color: #042944;
+  color: white;
+  text-align: left;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.body-index .footer h1 {
+  padding-bottom: 8%;
+  font-weight: bold;
+}
+
+.body-index .footer h2 {
+  padding-bottom: 10%;
+  font-weight: bold;
+  font-size: 2.5vh;
+}
+
+.body-index .footer a,
+.body-index .footer p,
+.body-index .footer i {
+  text-decoration: none;
+  color: white;
+  font-size: 13px;
+}
+
+.body-index .footer a:hover {
+  font-weight: bold;
+}
+
+.body-index #footer-izquierda {
+  text-align: center;
+  padding-left: 5%;
+}
+
+@media only screen and (min-width: 450px) and (max-width: 900px) {
+  .body-index .navbar-index {
+    height: 13vh;
   }
-  .body-index h1 {
-    font-size: 5vh;
+  .body-index .navbar-index .column-1 {
+    display: none;
   }
-  .body-index .btn-index {
-    width: 70%;
+  .body-index .navbar-index .column-2 {
+    margin-top: 3% !important;
+    margin-bottom: 3% !important;
+    width: 100%;
+    text-align: center;
+    padding: 0% !important;
+  }
+  .body-index .navbar-index .column-2 .btn-register {
+    width: 37% !important;
+    padding-left: 2% !important;
+    padding-right: 2% !important;
   }
 }
 
-.body-login {
+@media only screen and (max-width: 450px) {
+  .body-index .navbar-index {
+    padding-top: 5px;
+    height: 9vh;
+    width: 100%;
+  }
+  .body-index .navbar-index .column-1 {
+    display: none;
+  }
+  .body-index .navbar-index .column-2 {
+    width: 100%;
+    text-align: center;
+  }
+  .body-index .navbar-index .column-2 .btn-register {
+    width: 40% !important;
+    font-size: 16px !important;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+  .body-index .navbar-index .column-2 a {
+    font-size: 16px !important;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  .column-3 {
+    width: 100% !important;
+    text-align: center !important;
+    padding-top: 40px !important;
+    padding-bottom: 0px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    height: 70vh !important;
+  }
+  .column-3 .btn-index {
+    float: none !important;
+    position: center;
+    width: 35% !important;
+  }
+  .column-3 h2 {
+    text-align: center !important;
+    font-size: 4.5vh !important;
+  }
+  .column-3 h3 {
+    text-align: center !important;
+    font-size: 3vh !important;
+  }
+  .column-4 {
+    width: 100% !important;
+    padding-top: 0px !important;
+    height: 40vh !important;
+  }
+  .column-5 {
+    width: 100% !important;
+    padding-top: 8vh !important;
+    padding-bottom: 8vh !important;
+    height: 40vh !important;
+  }
+  .video {
+    height: 280vh !important;
+  }
+  .footer {
+    width: 100% !important;
+    padding-top: 5vh !important;
+    height: 30vh !important;
+    text-align: center !important;
+  }
+  #footer-izquierda {
+    display: none;
+  }
+}
+
+.bodylogin {
   background-color: #186CA7;
 }
 
-.body-login .logo {
+.bodylogin .logo {
   display: none;
 }
 
-.body-login .modal-login {
+.bodylogin .modal-login {
   background-color: white;
   border-radius: 55px;
   -webkit-box-align: center;
@@ -115,7 +353,7 @@ body {
   -ms-flex-line-pack: center;
       align-content: center;
   text-align: center;
-  margin-top: 10vh;
+  margin-top: 5vh;
   padding-bottom: 0.2vh;
   margin-left: 30vh;
   margin-right: 30vh;
@@ -123,7 +361,7 @@ body {
           box-shadow: 5px 3px 3px rgba(156, 155, 155, 0.591);
 }
 
-.body-login .modal-login .botones {
+.bodylogin .modal-login .botones {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -133,7 +371,7 @@ body {
           justify-content: center;
 }
 
-.body-login .modal-login .modal-content {
+.bodylogin .modal-login .modal-content {
   border: white;
   text-align: center;
   width: 80%;
@@ -142,7 +380,23 @@ body {
   height: 70vh;
 }
 
-.body-login .modal-login .modal-content h2 {
+.bodylogin .modal-login .modal-content .opciones .opcion {
+  width: 25%;
+  float: left;
+  padding: 2%;
+  padding-top: 4%;
+}
+
+.bodylogin .modal-login .modal-content .opciones .opcion input {
+  width: 50%;
+}
+
+.bodylogin .modal-login .modal-content .opciones .opcion input:hover {
+  background-color: #cae0eb;
+  border-radius: 30%;
+}
+
+.bodylogin .modal-login .modal-content h2 {
   margin-top: 11vh;
   margin-bottom: 7vh;
   text-align: center;
@@ -150,22 +404,22 @@ body {
   font-size: 3.5vh;
 }
 
-.body-login .modal-login .modal-content .user-empresa {
+.bodylogin .modal-login .modal-content .user-empresa {
   font-weight: bold;
   color: white !important;
   text-align: center;
   padding-top: 10px;
 }
 
-.body-login .modal-login .modal-content .contraseña {
+.bodylogin .modal-login .modal-content .contraseña {
   font-weight: bold;
   font-size: 2vh;
-  color: #005EA0 !important;
+  color: #0076CA !important;
   text-align: center;
   padding-top: 10px;
 }
 
-.body-login .modal-login .modal-content .inputlogin {
+.bodylogin .modal-login .modal-content .inputlogin {
   font-size: 15px;
   border-radius: 15px;
   border: #186CA7 solid 1.5px;
@@ -173,31 +427,31 @@ body {
   height: 7vh;
 }
 
-.body-login .modal-login .modal-content .inputlogin::-webkit-input-placeholder {
-  color: #c5bfbf;
+.bodylogin .modal-login .modal-content .inputlogin::-webkit-input-placeholder {
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.body-login .modal-login .modal-content .inputlogin:-ms-input-placeholder {
-  color: #c5bfbf;
+.bodylogin .modal-login .modal-content .inputlogin:-ms-input-placeholder {
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.body-login .modal-login .modal-content .inputlogin::-ms-input-placeholder {
-  color: #c5bfbf;
+.bodylogin .modal-login .modal-content .inputlogin::-ms-input-placeholder {
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.body-login .modal-login .modal-content .inputlogin::placeholder {
-  color: #c5bfbf;
+.bodylogin .modal-login .modal-content .inputlogin::placeholder {
+  color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.body-login .modal-login .modal-content .botonlogin {
+.bodylogin .modal-login .modal-content .botonlogin {
   border-radius: 15px;
   background-color: #186CA7;
   border: #186CA7 solid 1.5px;
@@ -210,7 +464,7 @@ body {
   margin-top: 1rem;
 }
 
-.body-login .modal-login .modal-content .linea {
+.bodylogin .modal-login .modal-content .linea {
   position: flex;
   margin: auto;
   width: 55%;
@@ -218,7 +472,7 @@ body {
   height: 2px;
 }
 
-.body-login .modal-login .modal-content .google-login {
+.bodylogin .modal-login .modal-content .google-login {
   font-weight: bold;
   color: white;
   background-color: #C5D1EB;
@@ -231,54 +485,54 @@ body {
   text-align: center;
 }
 
-.body-login .modal-login .modal-content .google-img {
+.bodylogin .modal-login .modal-content .google-img {
   width: 2.3vh;
   margin-right: 4px;
 }
 
-@media only screen and (max-width: 1200px) {
-  .body-login .modal-login {
+@media only screen and (max-width: 900px) {
+  .bodylogin .modal-login {
     margin-top: 10vh;
     padding-bottom: 0.2vh;
     margin-left: 3vh;
     margin-right: 3vh;
   }
-  .body-login .modal-login .botones {
+  .bodylogin .modal-login .botones {
     text-align: center;
     height: 9vh;
   }
-  .body-login .modal-login .botones .btn-signin {
+  .bodylogin .modal-login .botones .btn-signin {
     width: 100%;
   }
-  .body-login .modal-login .botones .btn-register {
+  .bodylogin .modal-login .botones .btn-register {
     width: 100%;
   }
-  .body-login .modal-login .botones .modal-content {
+  .bodylogin .modal-login .botones .modal-content {
     width: 100%;
   }
-  .body-login .modal-login .botones .modal-content .contraseña {
+  .bodylogin .modal-login .botones .modal-content .contraseña {
     font-size: 1vh;
     text-align: left;
   }
-  .body-login .modal-login .botones .modal-content .inputlogin {
+  .bodylogin .modal-login .botones .modal-content .inputlogin {
     width: 90% !important;
     height: 2vh !important;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .body-login .logo {
+@media only screen and (max-width: 450px) {
+  .bodylogin .logo {
     display: block !important;
     height: 18vh;
   }
-  .body-login .logo img {
+  .bodylogin .logo img {
     width: 25%;
-    margin-top: 20%;
+    margin-top: 18%;
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-  .body-login .modal-login {
+  .bodylogin .modal-login {
     width: 100%;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -287,15 +541,15 @@ body {
     margin-left: 0vh;
     margin-right: 0vh;
   }
-  .body-login .modal-login .botones {
+  .bodylogin .modal-login .botones {
     text-align: center;
     height: 9vh;
   }
-  .body-login .modal-login .modal-content {
+  .bodylogin .modal-login .modal-content {
     width: 80%;
     height: 65vh;
   }
-  .body-login .modal-login .modal-content h2 {
+  .bodylogin .modal-login .modal-content h2 {
     margin-top: 4vh;
     margin-bottom: 0vh;
     font-weight: bold;
@@ -303,38 +557,73 @@ body {
     padding-bottom: 6vh;
     font-size: 3.5vh;
   }
-  .body-login .modal-login .modal-content .inputlogin {
+  .bodylogin .modal-login .modal-content .inputlogin {
     width: 100% !important;
-    height: 42px !important;
+    height: 6vh !important;
   }
-  .body-login .modal-login .modal-content .botonlogin {
+  .bodylogin .modal-login .modal-content .inputlogin::-webkit-input-placeholder {
+    font-size: 2.2vh;
+  }
+  .bodylogin .modal-login .modal-content .inputlogin:-ms-input-placeholder {
+    font-size: 2.2vh;
+  }
+  .bodylogin .modal-login .modal-content .inputlogin::-ms-input-placeholder {
+    font-size: 2.2vh;
+  }
+  .bodylogin .modal-login .modal-content .inputlogin::placeholder {
+    font-size: 2.2vh;
+  }
+  .bodylogin .modal-login .modal-content .botonlogin {
     width: 100%;
-    height: 40px;
+    height: 6vh;
     margin-bottom: 3px;
   }
-  .body-login .modal-login .modal-content .contraseña {
+  .bodylogin .modal-login .modal-content .opciones .opcion {
+    width: 25%;
+    float: left;
+    padding: 2%;
+    padding-bottom: 15%;
+  }
+  .bodylogin .modal-login .modal-content .opciones .opcion .img {
+    width: 80%;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+  }
+  .bodylogin .modal-login .modal-content .contraseña {
     padding-top: 3px;
-    font-size: 1.7vh;
+    font-size: 2vh;
     text-align: left;
   }
-  .body-login .modal-login .modal-content .linea {
+  .bodylogin .modal-login .modal-content .linea {
     max-width: 100%;
     padding: 0;
     margin-top: 20px;
     margin-bottom: 10px;
   }
-  .body-login .modal-login .modal-content .google-login {
+  .bodylogin .modal-login .modal-content .google-login {
     width: 80%;
     padding-top: 4px;
     padding-bottom: 7px;
   }
-  .body-login .modal-login .modal-content .google-img {
+  .bodylogin .modal-login .modal-content .google-img {
     width: 2.5vh;
     margin-right: 12px;
   }
 }
 
-.body-login .botones .btn-signin {
+.bodylogin h3 {
+  margin-top: 2vh;
+  margin-bottom: 0vh;
+  font-weight: bold;
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+  font-size: 3.5vh;
+}
+
+.bodylogin .botones .btn-signin {
   width: 100%;
   height: 8.5vh;
   text-align: center;
@@ -342,11 +631,13 @@ body {
   font-weight: bold;
   font-size: 2.5vh;
   border: none;
+  background-color: white;
+  border: none;
   border-top-left-radius: 53px;
   border-bottom-right-radius: 60px;
 }
 
-.body-login .botones .btn-register {
+.bodylogin .botones .btn-register {
   width: 100%;
   height: 8.5vh;
   text-align: center;
@@ -359,19 +650,19 @@ body {
   border-bottom-left-radius: 60px;
 }
 
-.body-login .modal-content-register-cuadrados {
+.bodylogin .modal-content-register-cuadrados {
   width: 100%;
   height: 72vh;
 }
 
-.body-login .modal-content-register-cuadrados h3 {
+.bodylogin .modal-content-register-cuadrados h3 {
   font-weight: bold;
-  padding-top: 11vh;
+  padding-top: 10vh;
   padding-bottom: 7vh;
   font-size: 3.5vh;
 }
 
-.body-login .modal-content-register-cuadrados .cuadrados {
+.bodylogin .modal-content-register-cuadrados .cuadrados {
   width: 50%;
   height: 45%;
   display: -webkit-box;
@@ -386,7 +677,7 @@ body {
           align-items: center;
 }
 
-.body-login .modal-content-register-cuadrados .cuadrado {
+.bodylogin .modal-content-register-cuadrados .cuadrado {
   width: 30vh;
   height: 30vh;
   background: #005EA0;
@@ -398,112 +689,186 @@ body {
   font-weight: 600;
 }
 
-.body-login .modal-content-register-cuadrados i {
+.bodylogin .modal-content-register-cuadrados i {
   text-align: center;
   font-size: 13vh;
 }
 
-.body-login .modal-content-register-cuadrados p {
+.bodylogin .modal-content-register-cuadrados p {
   font-size: 3.2vh;
 }
 
-@media only screen and (max-width: 768px) {
-  .body-login {
+@media only screen and (max-width: 450px) {
+  .bodylogin {
     height: 60vh;
   }
-  .body-login .modal-content-register-cuadrados h3 {
+  .bodylogin .modal-content-register-cuadrados h3 {
     font-size: 3vh;
     margin-bottom: 4vh;
-    padding-top: 5vh;
+    padding-top: 6vh;
     padding-bottom: 0vh;
     margin-top: 1vh;
   }
-  .body-login .modal-content-register-cuadrados .cuadrados {
+  .bodylogin .modal-content-register-cuadrados .cuadrados {
     width: 100%;
     height: 21vh;
   }
-  .body-login .modal-content-register-cuadrados .cuadrados .cuadrado {
+  .bodylogin .modal-content-register-cuadrados .cuadrados .cuadrado {
     width: 19vh;
     height: 19vh;
   }
-  .body-login .modal-content-register-cuadrados .cuadrados i {
+  .bodylogin .modal-content-register-cuadrados .cuadrados i {
     padding-top: 3vh;
     font-size: 6.5vh;
   }
 }
 
-.body-login .scrollbar {
+.bodylogin {
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  /* Chrome, Edge, and Safari */
+}
+
+.bodylogin .scrollbar {
   width: 100%;
   height: 72vh;
   overflow-y: scroll;
 }
 
-.body-login .modal-content-register {
-  width: 100%;
-  height: auto;
+.bodylogin * {
+  scrollbar-width: auto;
+  scrollbar-color: #a6a5a7 #ffffff;
 }
 
-.body-login .modal-content-register h3 {
+.bodylogin *::-webkit-scrollbar {
+  width: 16px;
+}
+
+.bodylogin *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bodylogin *::-webkit-scrollbar-thumb {
+  background-color: #a6a5a7;
+  border-radius: 10px;
+  border: -3px solid #ffffff;
+}
+
+.bodylogin .modal-content-register {
+  border: white;
+  text-align: center;
+  width: 100%;
+  height: 70vh;
+}
+
+.bodylogin .modal-content-register .mas-menos {
+  width: 100%;
+  text-align: right !important;
+  margin-right: -30px;
+}
+
+.bodylogin .modal-content-register .mas,
+.bodylogin .modal-content-register .menos {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color: #186CA7;
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  position: absolute;
+}
+
+.bodylogin .modal-content-register .izquierda-derecha .izquierda,
+.bodylogin .modal-content-register .izquierda-derecha .derecha {
+  padding-top: 3vh;
+  padding-bottom: 1vh;
+  color: #186CA7;
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+}
+
+.bodylogin .modal-content-register .izquierda-derecha .izquierda {
+  padding-left: 9vh;
+  float: left;
+}
+
+.bodylogin .modal-content-register .izquierda-derecha .derecha {
+  padding-right: 9vh;
+  float: right;
+}
+
+.bodylogin .modal-content-register h3 {
   font-weight: bold;
-  padding-top: 8vh;
+  padding-top: 6vh;
   padding-bottom: 6vh;
   font-size: 3.5vh;
 }
 
-.body-login .modal-content-register .column-2 {
-  width: 50%;
-  float: left;
+.bodylogin .modal-content-register .column-1 {
   padding-left: 5%;
   padding-right: 5%;
 }
 
-.body-login .modal-content-register .column-2 p {
+.bodylogin .modal-content-register .column-2 {
+  width: 50%;
+  float: left;
+  padding-left: 5%;
+  padding-right: 5%;
+  position: relative;
+}
+
+.bodylogin .modal-content-register p {
   font-size: 2.5vh !important;
   font-weight: 600;
   text-align: left;
   color: rgba(0, 0, 0, 0.594);
 }
 
-.body-login .modal-content-register .column-2 .inputregister {
-  margin-bottom: 1rem;
+.bodylogin .modal-content-register .inputregister {
   font-size: 15px;
   border-radius: 15px;
-  border: #186CA7 solid 2px;
+  border: #186CA7 solid 1.5px;
+  width: 60% !important;
+  height: 7vh !important;
+}
+
+.bodylogin .modal-content-register .inputregister::-webkit-input-placeholder {
+  color: #7c7b7b;
+  padding-left: 2%;
+  font-weight: 440;
+}
+
+.bodylogin .modal-content-register .inputregister:-ms-input-placeholder {
+  color: #7c7b7b;
+  padding-left: 2%;
+  font-weight: 440;
+}
+
+.bodylogin .modal-content-register .inputregister::-ms-input-placeholder {
+  color: #7c7b7b;
+  padding-left: 2%;
+  font-weight: 440;
+}
+
+.bodylogin .modal-content-register .inputregister::placeholder {
+  color: #7c7b7b;
+  padding-left: 2%;
+  font-weight: 440;
+}
+
+.bodylogin .modal-content-register .inputcolumn2 {
   width: 100% !important;
-  height: 42px !important;
 }
 
-.body-login .modal-content-register .column-2 .inputregister::-webkit-input-placeholder {
-  color: #c5bfbf;
-  padding-left: 2%;
-  font-weight: 440;
-}
-
-.body-login .modal-content-register .column-2 .inputregister:-ms-input-placeholder {
-  color: #c5bfbf;
-  padding-left: 2%;
-  font-weight: 440;
-}
-
-.body-login .modal-content-register .column-2 .inputregister::-ms-input-placeholder {
-  color: #c5bfbf;
-  padding-left: 2%;
-  font-weight: 440;
-}
-
-.body-login .modal-content-register .column-2 .inputregister::placeholder {
-  color: #c5bfbf;
-  padding-left: 2%;
-  font-weight: 440;
-}
-
-.body-login .modal-content-register .column-2 .foto {
-  width: 80%;
-  float: left;
+.bodylogin .modal-content-register .foto {
+  width: 60%;
+  display: inline-block;
+  text-align: center;
   margin-bottom: 1rem;
 }
 
-.body-login .modal-content-register .column-2 select {
+.bodylogin .modal-content-register select {
   border-radius: 15px;
   border: #186CA7 solid 2px;
   width: 15% !important;
@@ -511,7 +876,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.body-login .modal-content-register .botonregister {
+.bodylogin .modal-content-register .botonregister {
   border-radius: 15px;
   background-color: #186CA7 !important;
   border: #186CA7 solid 1.5px;
@@ -519,49 +884,59 @@ body {
           box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
   color: white;
   font-weight: bold;
-  width: 40%;
+  width: 60% !important;
   height: 40px;
   margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 768px) {
-  .body-login .modal-content-register {
+@media only screen and (max-width: 450px) {
+  .bodylogin .modal-content-register {
     height: 75vh;
-  }
-  .body-login .modal-content-register h3 {
-    font-size: 3vh;
-    padding-bottom: 4vh;
-  }
-  .body-login .modal-content-register .column-2 {
     width: 100%;
     padding-left: 5%;
     padding-right: 5%;
   }
-  .body-login .modal-content-register .column-2 .inputregister {
+  .bodylogin .modal-content-register h3 {
+    font-size: 3vh;
+    padding-bottom: 4vh;
+  }
+  .bodylogin .modal-content-register .izquierda-derecha .izquierda,
+  .bodylogin .modal-content-register .izquierda-derecha .derecha {
+    padding-bottom: 3vh;
+    font-size: 50px;
+  }
+  .bodylogin .modal-content-register .izquierda-derecha .izquierda {
+    padding-left: 2vh;
+  }
+  .bodylogin .modal-content-register .izquierda-derecha .derecha {
+    padding-right: 2vh;
+  }
+  .bodylogin .modal-content-register .inputregister {
     height: 6vh !important;
+    width: 90% !important;
   }
-  .body-login .modal-content-register .column-2 .inputregister::-webkit-input-placeholder {
+  .bodylogin .modal-content-register .inputregister::-webkit-input-placeholder {
     font-size: 2.2vh;
   }
-  .body-login .modal-content-register .column-2 .inputregister:-ms-input-placeholder {
+  .bodylogin .modal-content-register .inputregister:-ms-input-placeholder {
     font-size: 2.2vh;
   }
-  .body-login .modal-content-register .column-2 .inputregister::-ms-input-placeholder {
+  .bodylogin .modal-content-register .inputregister::-ms-input-placeholder {
     font-size: 2.2vh;
   }
-  .body-login .modal-content-register .column-2 .inputregister::placeholder {
+  .bodylogin .modal-content-register .inputregister::placeholder {
     font-size: 2.2vh;
   }
-  .body-login .modal-content-register .column-2 .select {
+  .bodylogin .modal-content-register .select {
     font-size: 2.2vh !important;
   }
-  .body-login .modal-content-register .column-2 .foto {
+  .bodylogin .modal-content-register .foto {
     padding-bottom: 1rem;
   }
-  .body-login .botonregister {
-    width: 70% !important;
+  .bodylogin .modal-content-register .botonregister {
+    width: 90% !important;
     font-size: 2.1vh;
-    height: 5vh !important;
+    height: 6vh !important;
   }
 }
 /*# sourceMappingURL=style-laura.css.map */

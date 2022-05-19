@@ -2,58 +2,114 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\curriculumController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\PerfilController;
 
-Route::get('/', function () {
-    return view('login');
-});
-Route::get('/home', function () {
-    return view('home');
-});
 Route::get('/chat', function () {
     return view('chat');
 });
-Route::get('verificar', function () {
-    return view('verificacion');
+
+Route::get('registrar', function () {
+    return view('registrar');
 });
+
+Route::get('paginacontacto', function () {
+    return view('paginacontacto');
+});
+
+
+/*PRUEBA*/
+Route::get('reportesprueba', function () {
+    return view('reportesprueba');
+});
+/*FIN PRUEBA*/
 Route::get('login', function () {
     return view('login');
 });
 Route::get('paginaempresa', function () {
     return view('paginaempresa');
 });
-Route::get('paginatrabajador', function () {
-    return view('paginatrabajador');
-});
-Route::get('registrar', function () {
-    return view('registrar');
-});
-Route::get('editarperfil', function () {
-    return view('editarperfil');
+
+Route::get('registrar3', function () {
+    return view('registrar3');
 });
 
+Route::get('registrar4', function () {
+    return view('registrar4');
+});
 
-/*--------------RUTAS DAVID--------------*/
+/* ------------InicioController------------ */
 
-/*LOGIN Y LOGOUT*/
+//Landing page
+Route::get('/', [InicioController::class, 'index']);
+
+//pagina inicio
+Route::get('/inicio', [InicioController::class, 'inicio']);
+
+//Acceder a pagina swapper
+Route::get('home', [InicioController::class, 'home']);
+
+//Login
+Route::post('loginuser', [InicioController::class, 'loginuser']);
+
+/* Registrar */
+
+//Sesiones trabajador
+Route::post('sesionestrabajador', [InicioController::class, 'sesionestrabajador']);
+
+//Sesiones empresa
+Route::post('sesionesempresa', [InicioController::class, 'sesionesempresa']);
+
+//Trabajador
+Route::post('registrotrabajador', [InicioController::class, 'registrotrabajador']);
+
+//Empresa
+Route::post('registroempresa', [InicioController::class, 'registroempresa']);
+
+/* Registrar */
 
 Route::post('login', [UsuarioController::class, 'loginP']);
 
+/* Verificar cuenta */
+
+//Pagina verificar
+Route::get('verificar', [InicioController::class, 'verificar']);
+
+//Verificar y activar cuenta
+Route::post('activarcuenta', [InicioController::class, 'activarcuenta']);
+
+/* Verificar cuenta */
+
+//Logout
 Route::get('logout', [UsuarioController::class, 'logout']);
-//Ruta para el registro de trabajadores
-Route::post('registroPost',[UsuarioController::class, 'registroPost']);
-// Route::get('registro',[UsuarioController::class, 'registro']);
-Route::post('registrar',[UsuarioController::class, 'registrar']);
-Route::post('loginP',[UsuarioController::class, 'loginP']);
-//Ruta para el registro de empresas
-// Route::get('registroEmpresa',[UsuarioController::class, 'registroEmpresa']);
-Route::post('registroEmpresaPost',[UsuarioController::class, 'registroEmpresaPost']);
 
-//Verificar//
+/* ------------InicioController------------ */
+
+/* ------------PerfilController------------ */
+
+//Vista perfil
+Route::get('perfil',[PerfilController::class, 'vistaPerfil']);
+
+// mostrarperfil
+Route::post('leerperfil',[PerfilController::class, 'leerperfiledit']);
+
+// editar sobre_mi
+Route::post('editarperfil',[PerfilController::class,'editarperfil']);
+
+/* ------------PerfilController------------ */
 
 
-Route::post('verificarController', [UsuarioController::class, 'ActivateACC']);
+
+
+
+
+
+
+
+
 
 ///////////////////////MAIN/////////////////////
 
@@ -109,20 +165,28 @@ Route::post('leerperfiluser/{id}/{id_perfil}',[UsuarioController::class, 'leerpe
 
 //EDITAR PERFIL//
 
-//Vista perfil
-Route::get('perfil',[UsuarioController::class, 'vistaPerfil']);
-
-// mostrarperfil.
-Route::post('leerperfil',[UsuarioController::class, 'leerperfiledit']);
-
-// editarperfil
-Route::put('editarperfil/{id}/{id_perfil}',[UsuarioController::class, 'editarperfil']);
-
-//FIN EDITAR PERFIL//
-
-//ZONA CHAT//
-
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
 
-//FINAL ZONA GIGACHAT//
+//ZONA CONTACTO
+//mandar correo a admin por la pagina de contacto
+Route::post('mandarcontacto', [MailController::class, 'sendingcontacto']);
+//ZONA CONTACTO
+//mandar correo a usuario individual desde la página de admin
+Route::post('enviarcorreoadmin', [MailController::class, 'enviarcorreoadmin']);
+//mandar correo a usuario individual desde la página de admin
+Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorreoadmintrabajadores']);
+
+
+//ZONA REPORTES
+//el usuario puede hacer reportes de otros usuarios.
+Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
+//////////////////////////////////////CURRICULUM/////////////////////////////////////////
+Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
+Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);
+
+
+Route::get('/curriculum/plantilla1', [curriculumController::class, 'plantilla1']);
+Route::get('/curriculum/plantilla2', [curriculumController::class, 'plantilla2']);
+Route::get('/curriculum/plantilla3', [curriculumController::class, 'plantilla3']);
+Route::get('/curriculum/plantilla4', [curriculumController::class, 'plantilla4']);

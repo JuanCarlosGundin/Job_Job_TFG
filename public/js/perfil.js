@@ -1,14 +1,21 @@
 window.onload = function() {
+
     mostrarperfilJS();
     //logica de modal
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
+
         var modal = document.getElementById("modal-eliminar");
+
         if (event.target == modal) {
+
             modal.style.display = "none";
+
         }
+
     }
+
 }
 
 ////////////////////////////REDIRECCIONES/////////////////////////////////
@@ -17,32 +24,53 @@ var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
 
 navbarProfile.onclick = function() {
+
     window.location.href = "./perfil";
+
 }
 
 navbarAlerts.onclick = function() {
+
     window.location.href = "./notificaciones";
+
 }
 
 navbarMain.onclick = function() {
+
     window.location.href = "./home";
+
 }
 
 function objetoAjax() {
+
     var xmlhttp = false;
+
     try {
+
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+
     } catch (e) {
+
         try {
+
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
         } catch (E) {
+
             xmlhttp = false;
+
         }
+
     }
+
     if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+
         xmlhttp = new XMLHttpRequest();
+
     }
+
     return xmlhttp;
+
 }
 
 function mostrarperfilJS() {
@@ -54,12 +82,13 @@ function mostrarperfilJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
             if (id_perfil == 2) {
-                var trabajador = respuesta.trabajador[0];
+                var trabajador = respuesta.resultado;
                 /* Foto */
-                recarga += '<div class="ver-profile">';
+                recarga += '<div class="user-fondo">';
                 recarga += '<div class="container-user-poligon">';
                 recarga += '<div class="logout">';
                 recarga += '<button class="logout-btn" onClick="window.location.href=`logout`;"><i class="fa-solid fa-right-from-bracket"></i></button>';
@@ -74,9 +103,8 @@ function mostrarperfilJS() {
                 recarga += '</label>';
                 recarga += '</div>';
                 recarga += '<div class="user-ver-foto">';
-                // recarga += '<img class="user-profilefoto" src="./storage/uploads/usuario.png">';
                 if (trabajador.foto_perfil != null) {
-                    recarga += '<img class="user-profilefoto" src="./storage/uploads/' + trabajador.foto_perfil + '">';
+                    recarga += '<img class="user-profilefoto" src="./storage/' + trabajador.foto_perfil + '">';
                 } else {
                     recarga += '<img class="user-profilefoto" src="./storage/img/usuario.png">';
                 }
@@ -87,24 +115,25 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '<div class="user-poligon2">';
                 recarga += '<div class="user-vista">';
-
+                //nombre-apellido-edad
                 recarga += '<div class="user-div-name">';
                 recarga += '<div class="divs-name">';
                 recarga += '<span class="p-name">  ' + trabajador.nombre + '  </span>';
                 recarga += '<span class="p-surname">  ' + trabajador.apellido + ',' + '  </span>';
-                recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
+                // recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
                 recarga += '</div>';
                 recarga += '<div class="user-edit-div">';
                 recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><p class="edit-btn-p">EDITAR</p></button>';
                 recarga += '</div>';
+                recarga += '</button>';
                 recarga += '</div>';
 
                 recarga += '<hr class="linea-divisoria">';
 
                 recarga += '<div class="user-categories">';
-
+                //sobre mi
                 recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
+                recarga += '<button class="user-btn-category" id="boton_sobre_mi">';
                 recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-address-card"></i>';
                 recarga += '</div>';
@@ -113,9 +142,9 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
-
+                //idiomas
                 recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
+                recarga += '<button class="user-btn-category" id="boton_idiomas">';
                 recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-language"></i>';
                 recarga += '</div>';
@@ -124,9 +153,9 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
-
+                //estudios
                 recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
+                recarga += '<button class="user-btn-category" id="boton_estudios">';
                 recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-graduation-cap"></i>';
                 recarga += '</div>';
@@ -135,9 +164,9 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
-
+                //experiencia
                 recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
+                recarga += '<button class="user-btn-category" id="boton_experiencia">';
                 recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-briefcase"></i>';
                 recarga += '</div>';
@@ -146,9 +175,9 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
-
+                //curriculum
                 recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
+                recarga += '<button class="user-btn-category" id="boton_curriculum">';
                 recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-file-invoice"></i>';
                 recarga += '</div>';
@@ -157,9 +186,9 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
-
+                //habilidades
                 recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
+                recarga += '<button class="user-btn-category" id="boton_habilidades">';
                 recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-brain"></i>';
                 recarga += '</div>';
@@ -168,9 +197,9 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
-
+                //disponibilidad
                 recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
+                recarga += '<button class="user-btn-category" id="boton_disponibilidad">';
                 recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-clock"></i>';
                 recarga += '</div>';
@@ -179,110 +208,9 @@ function mostrarperfilJS() {
                 recarga += '</div>';
                 recarga += '</button>';
                 recarga += '</div>';
-
+                //configuracion
                 recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
-
-                recarga += '<div class="user-category-icon">';
-                recarga += '<i class="fa-solid fa-gear"></i>';
-                recarga += '</div>';
-
-                recarga += '<div class="user-category-text">';
-                recarga += '<p class="p-category">Configuracón</p>';
-                recarga += '</div>';
-
-                recarga += '</button>';
-                recarga += '</div>';
-
-                recarga += '</div>';
-
-                recarga += '</div>';
-                recarga += '</div>';
-                // recarga += '<div class="wave-div">';
-                // recarga += '<img class="wave" src="./storage/uploads/wave.svg">';
-                // recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-            }
-            if (id_perfil == 3) {
-                var empresa = respuesta.empresa[0];
-                recarga += '<div class="ver-profile">';
-                recarga += '<div class="container-user-poligon">';
-                recarga += '<div class="logout">';
-                recarga += '<button class="logout-btn" onClick="window.location.href=`logout`;"><i class="fa-solid fa-right-from-bracket"></i></button>';
-                recarga += '</div>';
-                recarga += '<div class="user-poligon">';
-                recarga += '</div>';
-                recarga += '<div class="div-foto">';
-                recarga += '<div class="edit-foto">';
-                recarga += '<label class="input-file">';
-                recarga += '<i class="fa-solid fa-image"></i>';
-                recarga += '<input type="file" class="input" id="foto_perfil" name="foto_perfil">';
-                recarga += '</label>';
-                recarga += '</div>';
-                recarga += '<div class="user-ver-foto">';
-                // recarga += '<img class="user-profilefoto" src="./storage/uploads/usuario.png">';
-                if (empresa.logo_emp != null) {
-                    recarga += '<img class="user-profilefoto" src="./storage/uploads/' + empresa.logo_emp + '">';
-                } else {
-                    recarga += '<img class="user-profilefoto" src="./storage/img/usuario.png">';
-                }
-
-                recarga += '</div>';
-
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-poligon2">';
-                recarga += '<div class="user-vista">';
-
-                recarga += '<div class="user-div-name">';
-                recarga += '<div class="divs-name">';
-                recarga += '<span class="p-name">  ' + empresa.nom_emp + '  </span>';
-                recarga += '</div>';
-                recarga += '<div class="user-edit-div">';
-                recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><p class="edit-btn-p">EDITAR</p></button>';
-                recarga += '</div>';
-                recarga += '</div>';
-
-                recarga += '<hr class="linea-divisoria">';
-
-                recarga += '<div class="user-categories">';
-
-                recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
-                recarga += '<div class="user-category-icon">';
-                recarga += '<i class="fa-solid fa-address-card"></i>';
-                recarga += '</div>';
-                recarga += '<div class="user-category-text">';
-                recarga += '<p class="p-category">Localización</p>';
-                recarga += '</div>';
-                recarga += '</button>';
-                recarga += '</div>';
-
-                recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
-                recarga += '<div class="user-category-icon">';
-                recarga += '<i class="fa-solid fa-gear"></i>';
-                recarga += '</div>';
-                recarga += '<div class="user-category-text">';
-                recarga += '<p class="p-category">Que buscamos</p>';
-                recarga += '</div>';
-                recarga += '</button>';
-                recarga += '</div>';
-
-                recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
-                recarga += '<div class="user-category-icon">';
-                recarga += '<i class="fa-solid fa-gear"></i>';
-                recarga += '</div>';
-                recarga += '<div class="user-category-text">';
-                recarga += '<p class="p-category">Sobre nosotros</p>';
-                recarga += '</div>';
-                recarga += '</button>';
-                recarga += '</div>';
-
-                recarga += '<div class="user-div-category">';
-                recarga += '<button class="user-btn-category">';
+                recarga += '<button class="user-btn-category" id="boton_configuracion">';
                 recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-gear"></i>';
                 recarga += '</div>';
@@ -303,306 +231,559 @@ function mostrarperfilJS() {
                 recarga += '</div>';
             }
             contenidoajax.innerHTML = recarga;
+
+            var boton_sobre_mi = document.getElementById("boton_sobre_mi");
+            boton_sobre_mi.addEventListener("click", leer_sobre_mi);
+
+            var boton_idiomas = document.getElementById("boton_idiomas");
+            boton_idiomas.addEventListener("click", leer_idiomas);
+
+            var boton_estudios = document.getElementById("boton_estudios");
+            boton_estudios.addEventListener("click", leer_estudios);
+
+            var boton_experiencia = document.getElementById("boton_experiencia");
+            boton_experiencia.addEventListener("click", leer_experiencia);
+
+            var boton_curriculum = document.getElementById("boton_curriculum");
+            boton_curriculum.addEventListener("click", leer_curriculum);
+
+            var boton_habilidades = document.getElementById("boton_habilidades");
+            boton_habilidades.addEventListener("click", leer_habilidades);
+
+            var boton_disponibilidad = document.getElementById("boton_disponibilidad");
+            boton_disponibilidad.addEventListener("click", leer_disponibilidad);
+
+            var boton_configuracion = document.getElementById("boton_configuracion");
+            boton_configuracion.addEventListener("click", leer_configuracion);
+
         }
     }
 
     ajax.send(formData);
 }
 
-function leermodperfilJS() {
+function leer_sobre_mi() {
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
-    var ajax = objetoAjax();
-    ajax.open("POST", "leerperfil", true);
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            var id_perfil = respuesta.id_perfil;
-            var recarga = '';
-            if (id_perfil == 2) {
-                var trabajador = respuesta.trabajador[0];
-                recarga += '<div class="edit-profile">';
-                recarga += '<div class="return">';
-                recarga += '<button class="return-btn" onclick="mostrarperfilJS(); return false;">';
-                recarga += '<div class="return-icon">';
-                recarga += '<i class="fa-solid fa-angle-left"></i>';
-                recarga += '</div>';
-                recarga += '<p class="return-text">VOLVER</p>';
-                recarga += '</button>';
-                recarga += '</div>';
-
-                /* Inputs para editar el usuario */
-                recarga += '<div class="edit-inputs">';
-                recarga += '<form method="POST" id="formeditar" enctype="multipart/form-data">';
-
-                /* Nombre */
-                recarga += '<div class="edit-input">';
-                recarga += '<div class="input-text">';
-                recarga += '<p class="p-text">Nombre</p>';
-                recarga += '</div>';
-                recarga += '<div class="input-edit">';
-                recarga += '<input type="text" class="input" id="nombre" name="nombre" value="' + trabajador.nombre + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-
-                /* Apellido */
-                recarga += '<div class="edit-input">';
-                recarga += '<div class="input-text">';
-                recarga += '<p class="p-text">Apellido</p>';
-                recarga += '</div>';
-                recarga += '<div class="input-edit">';
-                recarga += '<input type="text" class="input" id="nombre" name="nombre" value="' + trabajador.apellido + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-
-                /* Edad */
-                recarga += '<div class="edit-input">';
-                recarga += '<div class="input-text">';
-                recarga += '<p class="p-text">Edad</p>';
-                recarga += '</div>';
-                recarga += '<div class="input-edit">';
-                recarga += '<input type="date" class="input" id="nombre" name="nombre" value="' + trabajador.edad + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-
-                /* Password */
-                recarga += '<div class="edit-input">';
-                recarga += '<div class="input-text">';
-                recarga += '<p class="p-text">Contraseña</p>';
-                recarga += '</div>';
-                recarga += '<div class="input-edit">';
-                recarga += '<input type="password" class="input" id="nombre" name="nombre" value="' + trabajador.contra + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-
-                recarga += '</form>';
-                recarga += '</div>';
-
-                /* Realizar cambios */
-                recarga += '<div class="aceptar-cuenta-edit">';
-                recarga += '<button class="aceptar-cuenta-btn" onclick="editarperfilJS(\'' + trabajador.id + '\',\'' + id_perfil + '\'); return false;">';
-                recarga += '<p class="button-text">EDITAR</p>';
-                recarga += '</button>';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-
-                recarga += '<div class="boton-mas-div">';
-                recarga += '<button class="boton-mas">'
-                recarga += '<i class="fa-solid fa-plus"></i>'
-                recarga += '</button>'
-                recarga += '</div>';
-
-                recarga += '<div class="boton-menos-div">';
-                recarga += '<button class="boton-menos">'
-                recarga += '<i class="fa-solid fa-minus"></i>'
-                recarga += '</button>'
-                recarga += '</div>';
-
-            }
-            if (id_perfil == 3) {
-                var empresa = respuesta.empresa[0];
-                recarga += '<div class="edit-profile">';
-                recarga += '<div class="return">';
-                recarga += '<button class="return-btn" onclick="mostrarperfilJS(); return false;">';
-                recarga += '<div class="return-icon">';
-                recarga += '<i class="fa-solid fa-angle-left"></i>';
-                recarga += '</div>';
-                recarga += '<p class="return-text">VOLVER</p>';
-                recarga += '</button>';
-                recarga += '</div>';
-
-                /* Inputs para editar el usuario */
-                recarga += '<div class="edit-inputs">';
-                recarga += '<form method="POST" id="formeditar" enctype="multipart/form-data">';
-
-                /* Nombre */
-                recarga += '<div class="edit-input">';
-                recarga += '<div class="input-text">';
-                recarga += '<p class="p-text">Nombre</p>';
-                recarga += '</div>';
-                recarga += '<div class="input-edit">';
-                recarga += '<input type="text" class="input" id="nombre" name="nombre" value="' + empresa.nom_emp + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-
-                recarga += '</form>';
-                recarga += '</div>';
-
-                /* Realizar cambios */
-                recarga += '<div class="aceptar-cuenta-edit">';
-                recarga += '<button class="aceptar-cuenta-btn" onclick="editarperfilJS(\'' + empresa.id + '\',\'' + id_perfil + '\'); return false;">';
-                recarga += '<p class="button-text">EDITAR</p>';
-                recarga += '</button>';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-
-                recarga += '<div class="boton-mas-div">';
-                recarga += '<button class="boton-mas">'
-                recarga += '<i class="fa-solid fa-plus"></i>'
-                recarga += '</button>'
-                recarga += '</div>';
-
-                recarga += '<div class="boton-menos-div">';
-                recarga += '<button class="boton-menos">'
-                recarga += '<i class="fa-solid fa-minus"></i>'
-                recarga += '</button>'
-                recarga += '</div>';
-            }
-            contenidoajax.innerHTML = recarga;
-        }
-    }
-
-    ajax.send(formData);
-}
-
-// EDITAR //
-
-function editarperfilJS(id, id_perfil) {
-    /* if (id_perfil == 2) {
-        let contra = document.getElementById('contra').value;
-        let mail = document.getElementById('mail').value;
-        let nombre = document.getElementById('nombre').value;
-        let apellido = document.getElementById('apellido').value;
-        let campo_user = document.getElementById('campo_user').value;
-        let loc_trabajador = document.getElementById('loc_trabajador').value;
-        let experiencia = document.getElementById('experiencia').value;
-        let edad = document.getElementById('edad').value;
-        let estudios = document.getElementById('estudios').value;
-        let idiomas = document.getElementById('idiomas').value;
-        let disponibilidad = document.getElementById('disponibilidad').value;
-        let about_user = document.getElementById('about_user').value;
-        let foto_perfil = document.getElementById('foto_perfil').value;
-        if (mail == '' || contra == '' || nombre == '' || apellido == '' || campo_user == '' || experiencia == '' || estudios == '' || idiomas == '' || disponibilidad == '' || about_user == '' || foto_perfil == '' || loc_trabajador == '' || edad == '') {
-            swal.fire({
-                title: "Error",
-                text: "Tienes que rellenar todos los datos",
-                icon: "error",
-            });
-            return false;
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
-            swal.fire({
-                title: "Error",
-                text: "Introduce un email correcto",
-                icon: "error",
-            });
-            return false;
-        } else if (contra.length > 50) {
-            swal.fire({
-                title: "Error",
-                text: "La contraseña no puede ser más larga de 50 caracteres",
-                icon: "error",
-            });
-            return false;
-        } else if (contra.length < 8) {
-            swal.fire({
-                title: "Error",
-                text: "La contraseña debe tener mas de 8 caracteres",
-                icon: "error",
-            });
-            return false;
-        } else if (mail.length > 100) {
-            swal.fire({
-                title: "Error",
-                text: "El email no puede ser más largo de 100 caracteres",
-                icon: "error",
-            });
-            return false;
-        }
-    } */
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'PUT');
-    formData.append('mail', document.getElementById('mail').value);
-    formData.append('contra', document.getElementById('contra').value);
-    /* modificar trabajador */
-    if (id_perfil == 2) {
-        formData.append('nombre', document.getElementById('nombre').value);
-        formData.append('apellido', document.getElementById('apellido').value);
-        formData.append('campo_user', document.getElementById('campo_user').value);
-        formData.append('loc_trabajador', document.getElementById('loc_trabajador').value);
-        formData.append('experiencia', document.getElementById('experiencia').value);
-        formData.append('edad', document.getElementById('edad').value);
-        formData.append('estudios', document.getElementById('estudios').value);
-        formData.append('idiomas', document.getElementById('idiomas').value);
-        formData.append('disponibilidad', document.getElementById('disponibilidad').value);
-        formData.append('about_user', document.getElementById('about_user').value);
-        formData.append('foto_perfil', document.getElementById('foto_perfil').files[0]);
-        if (document.getElementById('mostrado').checked == true) {
-            formData.append('mostrado', '1');
-        } else {
-            formData.append('mostrado', '0');
-        }
-    }
-    /* modificar empresa */
-    if (id_perfil == 3) {
-        formData.append('nom_emp', document.getElementById('nom_emp').value);
-        formData.append('loc_emp', document.getElementById('loc_emp').value);
-        formData.append('about_emp', document.getElementById('about_emp').value);
-        formData.append('campo_emp', document.getElementById('campo_emp').value);
-        formData.append('searching', document.getElementById('searching').value);
-        formData.append('vacante', document.getElementById('vacante').value);
-        formData.append('logo_emp', document.getElementById('logo_emp').files[0]);
-        if (document.getElementById('mostrado').checked == true) {
-            formData.append('mostrado', '1');
-        } else {
-            formData.append('mostrado', '0');
-        }
-    }
-    var ajax = objetoAjax();
-    ajax.open("POST", "editarperfil/" + id + "/" + id_perfil, true);
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            swal.fire({
-                title: "Correcto",
-                text: "Perfil modificado.",
-                showConfirmButton: false,
-                icon: "success",
-            });
-            leermodperfilJS();
-        }
-    }
-    ajax.send(formData);
-}
-
-function modaleliminar(id, id_perfil) {
-    var modal = document.getElementById("modal-eliminar");
-    var modal_content = document.getElementById("modal_content");
-    var recarga = "";
-    recarga += '<h2 class="modal-title">¿Seguro que quieres eliminar la cuenta?</h2>';
-    recarga += '<div class="eliminar-user-butons">';
-    recarga += '<button class="cancelar-eliminar" onclick="cerrarmodal();return false;">Cancelar</button>';
-    recarga += '<button class="aceptar-eliminar" onclick="estadouserJS(\'' + id + '\');return false;">Eliminar</button>';
-    recarga += '</div>';
-    modal_content.innerHTML = recarga;
-    modal.style.display = "block";
-}
-
-function cerrarmodal() {
-    var modal = document.getElementById("modal-eliminar");
-    var modal_content = document.getElementById("modal_content");
-    modal_content.innerHTML = "";
-    modal.style.display = "none";
-}
-
-function estadouserJS(id) {
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'PUT');
+    formData.append('_method', 'POST');
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
-    ajax.open("POST", "estadouser/" + id, true);
+
+    ajax.open("POST", "leerperfil", true);
+
     ajax.onreadystatechange = function() {
+
         if (ajax.readyState == 4 && ajax.status == 200) {
+
             var respuesta = JSON.parse(this.responseText);
-            if (respuesta.resultado == "OK") {
-                window.location.href = 'logout';
-            }
+            var trabajador = respuesta.resultado;
+            var recarga = "";
+
+
+            recarga += '<div class="vista-profile">';
+            recarga += '<div class="categoria-edit">';
+            //volver a la vista anterior
+            recarga += '<div class="return">';
+            recarga += '<button class="return-btn" id="volver">';
+            recarga += '<div class="return-icon">';
+            recarga += '<i class="fa-solid fa-angle-left"></i>';
+            recarga += '</div>';
+            recarga += '<p class="return-text">VOLVER</p>';
+            recarga += '</button>';
+            recarga += '</div>';
+            //ir a vista editar
+            recarga += '<div class="logout">';
+            recarga += '<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-profile">';
+
+            //ESPECIALIZACION//
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-user-graduate"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Especialización</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.campo_user + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+
+            //DESCRIPCION//
+            //bloque pequeño
+            //bloque grande
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-address-card"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Sobre mi</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.about_user + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+
+            //VIVIENDA//
+            //bloque grande
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-house-chimney"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Donde vivo</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.loc_trabajador + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+
+            //LENGUAJE FAV//
+            //bloque pequeño
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="categoria-icon">';
+            recarga += '<i class="fa-solid fa-code"></i>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            //titulo
+            recarga += '<p class="categoria-p-name">Lenguaje preferido</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-text">';
+            //contenido
+            recarga += '<p class="categoria-p-text">' + trabajador.lenguaje_preferido + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+
+            recarga += '<div class="categoria-linea">';
+            recarga += '<hr class="linea-divisoria">';
+            recarga += '</div>';
+            recarga += '<div class="categoria-name">';
+            recarga += '<p class="categoria-p-name">Redes sociales</p>';
+            recarga += '</div>';
+
+            //LINKEDIN//
+            //bloque pequeño
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="redes-sociales-icon">';
+            recarga += '<i class="fa-brands fa-linkedin"></i>';
+            recarga += '</div>';
+            //titulo
+            recarga += '</div>';
+            recarga += '<div class="redes-sociales-text">';
+            //contenido
+            recarga += '<p class="redes-sociales-p-text">' + trabajador.linkedin + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+
+            //TELEFONO//
+            //bloque pequeño
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="redes-sociales-icon-2">';
+            recarga += '<i class="fa-solid fa-phone"></i>';
+            recarga += '</div>';
+            //titulo
+            recarga += '</div>';
+            recarga += '<div class="redes-sociales-text-2">';
+            //contenido
+            recarga += '<p class="redes-sociales-p-text">' + trabajador.telefono + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+
+            //GITHUB//
+            //bloque pequeño
+            //bloque pequeño
+            recarga += '<div class="categoria">';
+            recarga += '<div class="categoria-icon-name">';
+            recarga += '<div class="redes-sociales-icon-3">';
+            recarga += '<i class="fa-brands fa-github"></i>';
+            recarga += '</div>';
+            //titulo
+            recarga += '</div>';
+            recarga += '<div class="redes-sociales-text-3">';
+            //contenido
+            recarga += '<p class="redes-sociales-p-text">' + trabajador.github + '</p>';
+            recarga += '</div>';
+            recarga += '</div>';
+            //bloque pequeño
+            recarga += '</div>';
+            recarga += '</div>';
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", editar_sobre_mi);
+
         }
+
     }
+
     ajax.send(formData)
+}
+
+function editar_sobre_mi() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = "";
+            recarga += '<div class="return">';
+            recarga += '<button class="return-btn" id="volver">';
+            recarga += '<div class="return-icon">';
+            recarga += '<i class="fa-solid fa-angle-left"></i>';
+            recarga += '</div>';
+            recarga += '<p class="return-text">VOLVER</p>';
+            recarga += '</button>';
+            recarga += '</div>';
+            recarga += '<div>';
+            recarga += '<form id=form_editar_sobre_mi>';
+            recarga += '<input type="text" class="" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
+            recarga += '<input type="text" class="" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
+            recarga += '<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="' + trabajador.loc_trabajador + '">';
+            recarga += '<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="' + trabajador.lenguaje_preferido + '">';
+            recarga += '<input type="text" class="" id="linkedin" name="linkedin" value="' + trabajador.linkedin + '">';
+            recarga += '<input type="text" class="" id="telefono" name="telefono" value="' + trabajador.telefono + '">';
+            recarga += '<input type="text" class="" id="github" name="github" value="' + trabajador.github + '">';
+            recarga += '<button>Realizar cambios</button>';
+            recarga += '</form>';
+            recarga += '</div>';
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_sobre_mi);
+            document.getElementById("form_editar_sobre_mi").addEventListener("submit", form_editar_sobre_mi);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_sobre_mi(evt) {
+
+    evt.preventDefault();
+
+    var campo_user = document.getElementById("campo_user").value;
+    var about_user = document.getElementById("about_user").value;
+    var loc_trabajador = document.getElementById("loc_trabajador").value;
+    var lenguaje_preferido = document.getElementById("lenguaje_preferido").value;
+    var linkedin = document.getElementById("linkedin").value;
+    var telefono = document.getElementById("telefono").value;
+    var github = document.getElementById("github").value;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('campo_user', campo_user);
+    formData.append('about_user', about_user);
+    formData.append('loc_trabajador', loc_trabajador);
+    formData.append('lenguaje_preferido', lenguaje_preferido);
+    formData.append('linkedin', linkedin);
+    formData.append('telefono', telefono);
+    formData.append('github', github);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function leer_idiomas() {
+    //tengo que editar por cada idioma, no por todos a la vez
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var curriculum = JSON.parse(trabajador.curriculum);
+            var recarga = "";
+            recarga += '<button id="volver">Volver</button>';
+            recarga += '<button id="editar">Editar</button>';
+            if (curriculum.idiomas) {
+                for (let i = 0; i < curriculum.idiomas.length; i++) {
+                    recarga += "<div>";
+                    recarga += '<p>' + curriculum.idiomas[i].nombre_idioma + '</p>';
+                    recarga += '<p>' + curriculum.idiomas[i].nivel_idioma + '</p>';
+                    recarga += "</div>";
+                }
+            }
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", editar_idiomas);
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function editar_idiomas() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var curriculum = JSON.parse(trabajador.curriculum);
+            var recarga = "";
+            recarga += '<button id="volver">Volver</button>';
+            recarga += '<div>';
+            recarga += '<form id=form_idiomas>';
+            if (curriculum.idiomas) {
+                recarga += '<input type="text" class="" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
+                recarga += '<input type="text" class="" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
+            }
+
+            recarga += '<button>Realizar cambios</button>';
+            recarga += '</form>';
+            recarga += '</div>';
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_sobre_mi);
+            document.getElementById("form_idiomas").addEventListener("submit", form_idiomas);
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function form_idiomas(evt) {
+
+}
+
+function leer_estudios(evt) {
+    /* var contenidoajax = document.getElementById("contenidoajax");
+    var recarga = "";
+    recarga += '<button id="volver">Volver</button>';
+    if (estudios) {
+        recarga += "<div>";
+        for (let i = 0; i < estudios.length; i++) {
+            recarga += "<div>";
+            recarga += '<p>' + estudios[i].nombre_formación + '</p>';
+            recarga += '<p>' + estudios[i].lugar_formación + '</p>';
+            recarga += '<p>' + estudios[i].año_entrada + '</p>';
+            recarga += '<p>' + estudios[i].año_salida + '</p>';
+            recarga += "</div>";
+        }
+        recarga += "</div>";
+    }
+    contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_estudios = document.getElementById("editar_estudios");
+    editar_estudios.addEventListener("click", feditar_estudios); */
+}
+
+function feditar_estudios(evt) {
+
+}
+
+function leer_experiencia(evt) {
+    /* var contenidoajax = document.getElementById("contenidoajax");
+    var recarga = "";
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<button id="editar_experiencia">Editar</button>';
+    if (experiencia) {
+        recarga += "<div>";
+        for (let i = 0; i < experiencia.length; i++) {
+            recarga += "<div>";
+            recarga += '<p>' + experiencia[i].lugar_experiencia + '</p>';
+            recarga += '<p>' + experiencia[i].nombre_experiencia + '</p>';
+            recarga += '<p>' + experiencia[i].año_entrada + '</p>';
+            recarga += '<p>' + experiencia[i].año_salida + '</p>';
+            recarga += '<p>' + experiencia[i].funciones + '</p>';
+            recarga += "</div>";
+        }
+        recarga += "</div>";
+    }
+    contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_experiencia = document.getElementById("editar_experiencia");
+    editar_experiencia.experiencia = experiencia;
+    editar_experiencia.addEventListener("click", feditar_experiencia); */
+}
+
+function feditar_experiencia(evt) {
+
+}
+
+function leer_curriculum(evt) {
+
+}
+
+function leer_habilidades(evt) {
+    /* var contenidoajax = document.getElementById("contenidoajax");
+    var habilidades = evt.currentTarget.habilidades;
+    var recarga = "";
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<button id="editar_habilidades">Editar</button>';
+    if (habilidades) {
+        recarga += "<div>";
+        for (let i = 0; i < habilidades.length; i++) {
+            recarga += "<div>";
+            recarga += '<p>' + habilidades[i].nombre_habilidad + '</p>';
+            recarga += '<p>' + habilidades[i].nivel_habilidad + '</p>';
+            recarga += "</div>";
+        }
+        recarga += "</div>";
+    }
+    contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_habilidades = document.getElementById("editar_habilidades");
+    editar_habilidades.habilidades = habilidades;
+    editar_habilidades.addEventListener("click", feditar_habilidades); */
+}
+
+function feditar_habilidades(evt) {
+
+}
+
+function leer_disponibilidad(evt) {
+    /* var contenidoajax = document.getElementById("contenidoajax");
+    var disponibilidad = evt.currentTarget.disponibilidad;
+    var mobilidad = evt.currentTarget.mobilidad;
+    var carnet_conducir = evt.currentTarget.carnet_conducir;
+    var vehiculo_propio = evt.currentTarget.vehiculo_propio;
+    var recarga = "";
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<button id="editar_disponibilidad">Editar</button>';
+    recarga += "<div>";
+    recarga += '<p>' + disponibilidad + '</p>';
+    recarga += '<p>' + mobilidad + '</p>';
+    recarga += '<p>' + carnet_conducir + '</p>';
+    recarga += '<p>' + vehiculo_propio + '</p>';
+    recarga += "</div>";
+    contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_disponibilidad = document.getElementById("editar_disponibilidad");
+    editar_disponibilidad.addEventListener("click", feditar_disponibilidad); */
+}
+
+function feditar_disponibilidad(evt) {
+
+}
+
+function leer_configuracion(evt) {
+    /* var contenidoajax = document.getElementById("contenidoajax");
+    var mostrado = evt.currentTarget.mostrado;
+    var recarga = "";
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<button id="editar_configuracion">Editar</button>';
+    recarga += "<div>";
+    recarga += '<p>' + mostrado + '</p>';
+    recarga += "</div>";
+    contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+    var editar_configuracion = document.getElementById("editar_configuracion");
+    editar_configuracion.mostrado = mostrado;
+    editar_configuracion.addEventListener("click", feditar_configuracion); */
+}
+
+function feditar_configuracion(evt) {
+
 }
