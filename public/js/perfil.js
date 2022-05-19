@@ -346,7 +346,13 @@ function leer_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
-            recarga += `<p class="categoria-p-text">${trabajador.campo_user}</p>`;
+            if (!trabajador.campo_user) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${trabajador.campo_user}</p>`;
+            }
             recarga += `</div>`;
             recarga += `</div>`;
             //bloque pequeño
@@ -366,7 +372,13 @@ function leer_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
-            recarga += `<p class="categoria-p-text">${trabajador.about_user}</p>`;
+            if (!trabajador.about_user) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${trabajador.about_user}</p>`;
+            }
             recarga += `</div>`;
             recarga += `</div>`;
             //bloque grande
@@ -386,7 +398,13 @@ function leer_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
-            recarga += `<p class="categoria-p-text">${trabajador.loc_trabajador}</p>`;
+            if (!trabajador.loc_trabajador) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${trabajador.loc_trabajador}</p>`;
+            }
             recarga += `</div>`;
             recarga += `</div>`;
             //bloque pequeño
@@ -406,7 +424,13 @@ function leer_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
-            recarga += `<p class="categoria-p-text">${trabajador.lenguaje_preferido}</p>`;
+            if (!trabajador.lenguaje_preferido) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${trabajador.lenguaje_preferido}</p>`;
+            }
             recarga += `</div>`;
             recarga += `</div>`;
             //bloque pequeño
@@ -426,7 +450,13 @@ function leer_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
-            recarga += `<p class="categoria-p-text">${trabajador.linkedin}</p>`;
+            if (!trabajador.linkedin) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${trabajador.linkedin}</p>`;
+            }
             recarga += `</div>`;
             recarga += `</div>`;
             //bloque pequeño
@@ -446,7 +476,13 @@ function leer_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
-            recarga += `<p class="categoria-p-text">${trabajador.telefono}</p>`;
+            if (!trabajador.telefono) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${trabajador.telefono}</p>`;
+            }
             recarga += `</div>`;
             recarga += `</div>`;
             //bloque pequeño
@@ -466,7 +502,13 @@ function leer_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
-            recarga += `<p class="categoria-p-text">${trabajador.github}</p>`;
+            if (!trabajador.github) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${trabajador.github}</p>`;
+            }
             recarga += `</div>`;
             recarga += `</div>`;
             //bloque pequeño
@@ -510,44 +552,58 @@ function form_editar_sobre_mi() {
             recarga += `<form id=form_editar_sobre_mi>`;
 
             if (!trabajador.campo_user) {
+
                 recarga += `<input type="text" class="" id="campo_user" name="campo_user" placeholder="sin informar">`;
             } else {
+
                 recarga += `<input type="text" class="" id="campo_user" name="campo_user" value="${trabajador.campo_user}">`;
             }
 
             if (!trabajador.about_user) {
+
                 recarga += `<input type="text" class="" id="about_user" name="about_user" placeholder="sin informar">`;
             } else {
+
                 recarga += `<input type="text" class="" id="about_user" name="about_user" value="${trabajador.about_user}">`;
             }
 
             if (!trabajador.loc_trabajador) {
+
                 recarga += `<input type="text" class="" id="loc_trabajador" name="loc_trabajador" placeholder="sin informar">`;
             } else {
+
                 recarga += `<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="${trabajador.loc_trabajador}">`;
             }
 
             if (!trabajador.lenguaje_preferido) {
+
                 recarga += `<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="sin informar">`;
             } else {
+
                 recarga += `<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="${trabajador.lenguaje_preferido}">`;
             }
 
             if (!trabajador.linkedin) {
+
                 recarga += `<input type="text" class="" id="linkedin" name="linkedin" placeholder="sin informar">`;
             } else {
+
                 recarga += `<input type="text" class="" id="linkedin" name="linkedin" value="${trabajador.linkedin}">`;
             }
 
             if (!trabajador.telefono) {
+
                 recarga += `<input type="text" class="" id="telefono" name="telefono" placeholder="sin informar">`;
             } else {
+
                 recarga += `<input type="text" class="" id="telefono" name="telefono" value="${trabajador.telefono}">`;
             }
 
             if (!trabajador.github) {
+
                 recarga += `<input type="text" class="" id="github" name="github" placeholder="sin informar">`;
             } else {
+
                 recarga += `<input type="text" class="" id="github" name="github" value="${trabajador.github}">`;
             }
 
@@ -583,24 +639,31 @@ function editar_sobre_mi(evt) {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     if (campo_user) {
+
         formData.append('campo_user', campo_user);
     }
     if (about_user) {
+
         formData.append('about_user', about_user);
     }
     if (loc_trabajador) {
+
         formData.append('loc_trabajador', loc_trabajador);
     }
     if (lenguaje_preferido) {
+
         formData.append('lenguaje_preferido', lenguaje_preferido);
     }
     if (linkedin) {
+
         formData.append('linkedin', linkedin);
     }
     if (telefono) {
+
         formData.append('telefono', telefono);
     }
     if (github) {
+
         formData.append('github', github);
     }
 
@@ -647,10 +710,14 @@ function leer_idiomas() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<button id="crear">crear</button>`;
             if (trabajador.curriculum != null) {
+
                 var curriculum = JSON.parse(trabajador.curriculum);
                 if (curriculum.hasOwnProperty('idiomas')) {
+
                     if (curriculum.idiomas.length != 0) {
+
                         for (let i = 0; i < curriculum.idiomas.length; i++) {
+
                             recarga += `<div>`;
                             recarga += `<p>${curriculum.idiomas[i].nombre_idioma}</p>`;
                             recarga += `<p>${curriculum.idiomas[i].nivel_idioma}</p>`;
@@ -658,19 +725,24 @@ function leer_idiomas() {
                             recarga += `</div>`;
                         }
                     } else {
+
                         recarga += `<p>Aun no has añadido ningun idioma</p>`;
                     }
                 } else {
+
                     recarga += `<p>Aun no has añadido ningun idioma</p>`;
                 }
                 contenidoajax.innerHTML = recarga;
                 if (curriculum.hasOwnProperty('idiomas')) {
+
                     for (let i = 0; i < curriculum.idiomas.length; i++) {
+
                         document.getElementsByClassName("editar")[i].i = i;
                         document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_idiomas);
                     }
                 }
             } else {
+
                 recarga += '<p>Aun no has añadido ningun idioma</p>';
                 contenidoajax.innerHTML = recarga;
             }
@@ -694,6 +766,7 @@ function form_crear_idiomas() {
     recarga += `<select class="" name="nombre_idioma" id="nombre_idioma" data-show-subtext="false" data-live-search="true">`;
     recarga += `<option value="" selected>- selecciona -</option>`;
     for (let i = 0; i < JSONidiomas.length; i++) {
+
         recarga += `<option value="${JSONidiomas[i].nombre_idioma}">${JSONidiomas[i].nombre_idioma}</option>`;
     }
     recarga += `</select>`;
@@ -772,9 +845,12 @@ function form_editar_idiomas(evt) {
             recarga += `<form id=form_idiomas>`;
             recarga += `<select class="" name="nombre_idioma" id="nombre_idioma" data-show-subtext="false" data-live-search="true">`;
             for (let i = 0; i < JSONidiomas.length; i++) {
+
                 if (idioma.nombre_idioma == JSONidiomas[i].nombre_idioma) {
+
                     recarga += `<option value="${idioma.nombre_idioma}" selected>${idioma.nombre_idioma}</option>`;
                 } else {
+
                     recarga += `<option value="${JSONidiomas[i].nombre_idioma}">${JSONidiomas[i].nombre_idioma}</option>`;
                 }
             }
@@ -892,10 +968,14 @@ function leer_estudios() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<button id="crear">crear</button>`;
             if (trabajador.curriculum != null) {
+
                 var curriculum = JSON.parse(trabajador.curriculum);
                 if (curriculum.hasOwnProperty('estudios')) {
+
                     if (curriculum.estudios.length != 0) {
+
                         for (let i = 0; i < curriculum.estudios.length; i++) {
+
                             recarga += `<div>`;
                             recarga += `<p>${curriculum.estudios[i].nombre_formación}</p>`;
                             recarga += `<p>${curriculum.estudios[i].lugar_formación}</p>`;
@@ -905,19 +985,24 @@ function leer_estudios() {
                             recarga += `</div>`;
                         }
                     } else {
+
                         recarga += `<p>Aun no has añadido ningun estudio</p>`;
                     }
                 } else {
+
                     recarga += `<p>Aun no has añadido ningun estudio</p>`;
                 }
                 contenidoajax.innerHTML = recarga;
                 if (curriculum.hasOwnProperty('estudios')) {
+
                     for (let i = 0; i < curriculum.estudios.length; i++) {
+
                         document.getElementsByClassName("editar")[i].i = i;
                         document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_estudios);
                     }
                 }
             } else {
+
                 recarga += `<p>Aun no has añadido ningun estudio</p>`;
                 contenidoajax.innerHTML = recarga;
             }
@@ -1127,10 +1212,14 @@ function leer_experiencia() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<button id="crear">crear</button>`;
             if (trabajador.curriculum != null) {
+
                 var curriculum = JSON.parse(trabajador.curriculum);
                 if (curriculum.hasOwnProperty('experiencia')) {
+
                     if (curriculum.experiencia.length != 0) {
+
                         for (let i = 0; i < curriculum.experiencia.length; i++) {
+
                             recarga += `<div>`;
                             recarga += `<p>${curriculum.experiencia[i].lugar_experiencia}</p>`;
                             recarga += `<p>${curriculum.experiencia[i].nombre_experiencia}</p>`;
@@ -1141,19 +1230,24 @@ function leer_experiencia() {
                             recarga += `</div>`;
                         }
                     } else {
+
                         recarga += `<p>Aun no has añadido ninguna experiencia</p>`;
                     }
                 } else {
+
                     recarga += `<p>Aun no has añadido ninguna experiencia</p>`;
                 }
                 contenidoajax.innerHTML = recarga;
                 if (curriculum.hasOwnProperty('experiencia')) {
+
                     for (let i = 0; i < curriculum.experiencia.length; i++) {
+
                         document.getElementsByClassName("editar")[i].i = i;
                         document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_experiencias);
                     }
                 }
             } else {
+
                 recarga += `<p>Aun no has añadido ninguna experiencia</p>`;
                 contenidoajax.innerHTML = recarga;
             }
@@ -1374,10 +1468,14 @@ function leer_habilidades() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<button id="crear">crear</button>`;
             if (trabajador.curriculum != null) {
+
                 var curriculum = JSON.parse(trabajador.curriculum);
                 if (curriculum.hasOwnProperty('habilidades')) {
+
                     if (curriculum.habilidades.length != 0) {
+
                         for (let i = 0; i < curriculum.habilidades.length; i++) {
+
                             recarga += `<div>`;
                             recarga += `<p>${curriculum.habilidades[i].nombre_habilidad}</p>`;
                             recarga += `<p>${curriculum.habilidades[i].nivel_habilidad}</p>`;
@@ -1385,19 +1483,24 @@ function leer_habilidades() {
                             recarga += `</div>`;
                         }
                     } else {
+
                         recarga += `<p>Aun no has añadido ninguna habilidad</p>`;
                     }
                 } else {
+
                     recarga += `<p>Aun no has añadido ninguna habilidad</p>`;
                 }
                 contenidoajax.innerHTML = recarga;
                 if (curriculum.hasOwnProperty('habilidades')) {
+
                     for (let i = 0; i < curriculum.habilidades.length; i++) {
+
                         document.getElementsByClassName("editar")[i].i = i;
                         document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_habilidades);
                     }
                 }
             } else {
+
                 recarga += `<p>Aun no has añadido ninguna habilidad</p>`;
                 contenidoajax.innerHTML = recarga;
             }
@@ -1584,9 +1687,171 @@ function eliminar_habilidades(evt) {
 }
 
 function leer_disponibilidad() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button class="" id="volver">Volver</button>`;
+            recarga += `<button class="" id="editar">Editar</button>`;
+            if (!trabajador.disponibilidad) {
+
+                recarga += `<p class="">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="">${trabajador.disponibilidad}</p>`;
+            }
+            if (!trabajador.mobilidad) {
+
+                recarga += `<p class="">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="">${trabajador.mobilidad}</p>`;
+            }
+            if (!trabajador.carnet_conducir) {
+
+                recarga += `<p class="">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="">${trabajador.carnet_conducir}</p>`;
+            }
+            if (!trabajador.vehiculo_propio) {
+
+                recarga += `<p class="">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="">${trabajador.vehiculo_propio}</p>`;
+            }
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", form_disponibilidad);
+        }
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_sobre_mi() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_editar_sobre_mi>`;
+
+            if (!trabajador.disponibilidad) {
+
+                recarga += `<input type="text" class="" id="campo_user" name="campo_user" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="text" class="" id="campo_user" name="campo_user" value="${trabajador.campo_user}">`;
+            }
+
+            if (!trabajador.mobilidad) {
+
+                recarga += `<input type="text" class="" id="about_user" name="about_user" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="text" class="" id="about_user" name="about_user" value="${trabajador.about_user}">`;
+            }
+
+            if (!trabajador.carnet_conducir) {
+
+                recarga += `<input type="text" class="" id="loc_trabajador" name="loc_trabajador" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="${trabajador.loc_trabajador}">`;
+            }
+
+            if (!trabajador.vehiculo_propio) {
+
+                recarga += `<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="${trabajador.lenguaje_preferido}">`;
+            }
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_sobre_mi);
+            document.getElementById("form_editar_sobre_mi").addEventListener("submit", editar_sobre_mi);
+
+        }
+
+    }
+
+    ajax.send(formData)
 
 }
 
 function leer_configuracion() {
+    //desactivar cuenta
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button class="" id="volver">Volver</button>`;
+            recarga += `<button class="" id="editar">Editar</button>`;
+            if (trabajador.mostrado == "1") {
+                recarga += `<p class="">SI</p>`;
+            } else {
+                recarga += `<p class="">NO</p>`;
+            }
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            /* var editar = document.getElementById("editar");
+            editar.addEventListener("click", form_editar_sobre_mi); */
+        }
+    }
+
+    ajax.send(formData)
 
 }
