@@ -24,37 +24,37 @@
             </div>
     </div>
     <div class="fila-1">
-    <div class="column-3">
-    <h2>Encuentra trabajo con tan solo deslizar</h2><br>
-    <h3>Gracias a JobJob podrás encontrar el trabajo de tus sueños ya que contamos con las mejores empresas del sector tecnológico.</h3>
-    <button class="btn-index" onClick="window.location.href='inicio';">Empezar</button>
+        <div class="column-3">
+        <h2>Encuentra trabajo con tan solo deslizar</h2><br>
+        <h3>Gracias a JobJob podrás encontrar el trabajo de tus sueños ya que contamos con las mejores empresas del sector tecnológico.</h3>
+        <button class="btn-index" onClick="window.location.href='inicio';">Empezar</button>
+        </div>
+        <div class="column-4">
+            <img src="storage/uploads/movil_ordenador.png">
+        </div>
     </div>
-    <div class="column-4">
-        <img src="storage/uploads/movil_ordenador.png">
+    <div class="fila-2">
+        <div class="column-5" id="primera-columna">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            <h1>Swipe</h1>
+            <h3>Desliza a la derecha si te interesa, desliza a la izquierda para descartar</h3>
+        </div>
+        <div class="column-5">
+            <i class="fa-solid fa-file-lines"></i>
+            <h1>Curriculum</h1>
+            <h3>Te ayudamos a crear tu propio curriculum</h3>
+        </div>
+        <div class="column-5">
+            <i class="fa-solid fa-comments"></i>
+            <h1>Chat</h1>
+            <h3>La empresa y el trabajador podrán comunicarse con comodidad mediante mensajes</h3>
+        </div>
+        <div class="column-5" id="ultima-columna">
+            <i class="fa-solid fa-user"></i>
+            <h1>Perfil</h1>
+            <h3>Podrás ver el perfil de las empresas y trabajadores que te interesen</h3>
+        </div>
     </div>
-</div>
-<div class="fila-2">
-    <div class="column-5" id="primera-columna">
-        <i class="fa-solid fa-arrow-right-arrow-left"></i>
-        <h1>Swipe</h1>
-        <h3>Desliza a la derecha si te interesa, desliza a la izquierda para descartar</h3>
-    </div>
-    <div class="column-5">
-        <i class="fa-solid fa-file-lines"></i>
-        <h1>Curriculum</h1>
-        <h3>Te ayudamos a crear tu propio curriculum</h3>
-    </div>
-    <div class="column-5">
-        <i class="fa-solid fa-comments"></i>
-        <h1>Chat</h1>
-        <h3>La empresa y el trabajador podrán comunicarse con comodidad mediante mensajes</h3>
-    </div>
-    <div class="column-5" id="ultima-columna">
-        <i class="fa-solid fa-user"></i>
-        <h1>Perfil</h1>
-        <h3>Podrás ver el perfil de las empresas y trabajadores que te interesen</h3>
-    </div>
-</div>
     <div class="video">
         <h1>aqui va el video</h1>
     </div>
@@ -65,8 +65,8 @@
         </div>
         <div class="footer-2">
         <h2>Más información</h2>
-        <a href="">Home</a><br><br>
-        <a href="">FAQ</a><br><br>
+        <a href="">Home</a>
+        <a href="">FAQ</a>
         <a href="">Contacto</a>
         </div>
         <div class="footer-3">

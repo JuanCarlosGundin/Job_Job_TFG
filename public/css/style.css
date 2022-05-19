@@ -152,4 +152,126 @@ p {
 .region-navbar .active-icon-center {
   background-color: #E5E5E5;
 }
+
+@media only screen and (max-width: 768px) {
+  .barra-navbar {
+    display: none;
+  }
+  .barra-navbar img {
+    display: none;
+  }
+  .barra-navbar .darkmodeswitch {
+    display: none;
+  }
+  .region-navbar {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    height: 15vh !important;
+    width: 100% !important;
+    height: calc(var(--vh, 1vh) * 10) !important;
+    padding: 0 !important;
+    border-bottom-left-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
+    /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
+    /* DIVS NAVBAR*/
+    /* Curriculum */
+    /* Alertas */
+    /* Main */
+    /* Chat */
+    /* Perfil */
+    /* ICONS */
+  }
+  .region-navbar p {
+    display: none;
+  }
+  .region-navbar .curriculum-navbar {
+    padding: 1% !important;
+    width: 20% !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: absolute !important;
+  }
+  .region-navbar .alerts-navbar {
+    padding: 1% !important;
+    width: 20% !important;
+    padding-bottom: 0 !important;
+    display: absolute !important;
+  }
+  .region-navbar .main-navbar {
+    padding: 1% !important;
+    width: 20% !important;
+    padding-bottom: 0 !important;
+    display: absolute !important;
+    height: 10vh !important;
+  }
+  .region-navbar .chat-navbar {
+    padding: 1% !important;
+    width: 20% !important;
+    padding-bottom: 0 !important;
+    display: absolute !important;
+  }
+  .region-navbar .profile-navbar {
+    padding: 1% !important;
+    width: 20% !important;
+    padding-bottom: 0 !important;
+    display: absolute !important;
+  }
+  .region-navbar .active-left {
+    background-color: #E5E5E5;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border-top-right-radius: 30px;
+  }
+  .region-navbar .active-right {
+    background-color: #E5E5E5;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border-top-left-radius: 30px;
+  }
+  .region-navbar .active {
+    background-color: #E5E5E5;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+  }
+  .region-navbar .active-center {
+    background-color: #C5D1EB;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+  }
+  .region-navbar .icon {
+    color: #c0c0c0 !important;
+    text-align: center !important;
+    font-size: 4.5vh !important;
+    background-color: #ffffff;
+    border-width: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50px !important;
+  }
+  .region-navbar .main-icon {
+    color: #c0c0c0 !important;
+    font-size: 4vh;
+    background-color: #ffffff;
+    text-align: center !important;
+    border-width: 0px;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+  }
+  .region-navbar .active-icon {
+    color: #000000 !important;
+    background-color: #E5E5E5 !important;
+    font-size: 4.5vh !important;
+  }
+  .region-navbar .active-icon-center {
+    background-color: #C5D1EB !important;
+    font-size: 4.5vh !important;
+  }
+}
 /*# sourceMappingURL=style.css.map */

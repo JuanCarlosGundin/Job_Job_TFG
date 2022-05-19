@@ -93,7 +93,9 @@ body {
 }
 
 .body-index .fila-1 {
-  height: 83vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .body-index .fila-1 .column-3 {
@@ -170,7 +172,9 @@ body {
 }
 
 .body-index .fila-2 {
-  height: 48vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .body-index .fila-2 i {
@@ -195,7 +199,6 @@ body {
   padding-left: 3%;
   padding-right: 3%;
   width: 25%;
-  height: 100%;
   float: left;
   padding-top: 5%;
   padding-bottom: 5%;
@@ -203,7 +206,10 @@ body {
 
 .body-index .video {
   background-color: #0076CA;
-  height: 40vh;
+}
+
+.body-index .video h1 {
+  margin: 0;
 }
 
 .body-index .footer {
@@ -214,6 +220,10 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.body-index .footer p {
+  font-size: 16px;
 }
 
 .body-index .footer .footer-2,
@@ -248,7 +258,16 @@ body {
 .body-index .footer .footer-3 i {
   text-decoration: none;
   color: white;
-  font-size: 13px;
+  font-size: 14px;
+  float: left;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.body-index .footer .footer-2 i,
+.body-index .footer .footer-3 i {
+  padding-right: 9px;
 }
 
 .body-index .footer .footer-2 a:hover,
@@ -292,7 +311,16 @@ body {
     padding-left: 1%;
     padding-right: 1%;
   }
-  .column-3 {
+  .fila-1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+  }
+  .fila-1 .column-3 {
     width: 100% !important;
     text-align: center !important;
     padding-top: 40px !important;
@@ -301,25 +329,34 @@ body {
     padding-right: 15px !important;
     height: 70vh !important;
   }
-  .column-3 .btn-index {
+  .fila-1 .column-3 .btn-index {
     float: none !important;
     position: center;
     width: 35% !important;
   }
-  .column-3 h2 {
+  .fila-1 .column-3 h2 {
     text-align: center !important;
     font-size: 4.5vh !important;
   }
-  .column-3 h3 {
+  .fila-1 .column-3 h3 {
     text-align: center !important;
     font-size: 3vh !important;
   }
-  .column-4 {
+  .fila-1 .column-4 {
     width: 100% !important;
     padding-top: 0px !important;
     height: 40vh !important;
   }
-  .column-5 {
+  .fila-2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+  }
+  .fila-2 .column-5 {
     width: 100% !important;
     padding-top: 8vh !important;
     padding-bottom: 8vh !important;
@@ -341,8 +378,21 @@ body {
     width: 100% !important;
     padding-top: 5vh !important;
     height: 70% !important;
-    text-align: center !important;
     background-color: #042944 !important;
+    text-align: center !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .footer .footer-1 {
     display: none;
@@ -368,6 +418,9 @@ body {
     padding-left: 2% !important;
     padding-right: 2% !important;
   }
+  .body-index .fila-1 {
+    display: block;
+  }
   .body-index .fila-1 .column-3 {
     width: 100% !important;
     text-align: center !important;
@@ -381,24 +434,31 @@ body {
     width: 50%;
   }
   .body-index .fila-2 {
-    height: 40vh;
+    display: block;
   }
   .body-index .fila-2 .column-5 {
     width: 50%;
     height: 45vh;
-  }
-  .body-index .footer {
-    height: 40vh;
-  }
-  .body-index .footer p,
-  .body-index .footer a {
-    font-size: 13px !important;
   }
   .body-index .footer .footer-2,
   .body-index .footer .footer-3 {
     width: 50% !important;
     height: 100%;
     background-color: #042944 !important;
+    text-align: center !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .body-index .footer .footer-1 {
     display: none;

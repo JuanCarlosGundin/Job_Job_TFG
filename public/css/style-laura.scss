@@ -97,7 +97,8 @@ body {
     ////HEADER/////
     //COLUMNA TEXTO//
     .fila-1 {
-        height: 83vh;
+        // height: 83vh;
+        display: flex;
         .column-3 {
             padding-top: 17vh;
             padding-left: 3%;
@@ -165,7 +166,8 @@ body {
         }
     }
     .fila-2 {
-        height: 48vh;
+        // height: 48vh;
+        display: flex;
         //ICONS FONTAWESOME//
         i {
             padding-bottom: 12%;
@@ -186,7 +188,6 @@ body {
             padding-left: 3%;
             padding-right: 3%;
             width: 25%;
-            height: 100%;
             float: left;
             padding-top: 5%;
             padding-bottom: 5%;
@@ -195,7 +196,10 @@ body {
     ///COLUMNA VIDEO///
     .video {
         background-color: $third-color;
-        height: 40vh;
+        // height: 40vh;
+        h1 {
+            margin: 0;
+        }
     }
     ///FOOTER///
     .footer {
@@ -204,6 +208,9 @@ body {
         color: white;
         text-align: left;
         justify-content: center;
+        p {
+            font-size: 16px;
+        }
         .footer-2,
         .footer-3 {
             padding-top: 4%;
@@ -227,7 +234,14 @@ body {
             i {
                 text-decoration: none;
                 color: white;
-                font-size: 13px;
+                font-size: 14px;
+                float: left;
+                text-align: left;
+                margin: 0;
+                padding: 0;
+            }
+            i {
+                padding-right: 9px;
             }
             a:hover {
                 font-weight: bold;
@@ -274,38 +288,46 @@ body {
             }
         }
     }
-    .column-3 {
-        width: 100% !important;
-        text-align: center !important;
-        padding-top: 40px !important;
-        padding-bottom: 0px !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-        height: 70vh !important;
-        .btn-index {
-            float: none !important;
-            position: center;
-            width: 35% !important;
-        }
-        h2 {
+    .fila-1 {
+        display: flex;
+        flex-flow: row wrap;
+        .column-3 {
+            width: 100% !important;
             text-align: center !important;
-            font-size: 4.5vh !important;
+            padding-top: 40px !important;
+            padding-bottom: 0px !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+            height: 70vh !important;
+            .btn-index {
+                float: none !important;
+                position: center;
+                width: 35% !important;
+            }
+            h2 {
+                text-align: center !important;
+                font-size: 4.5vh !important;
+            }
+            h3 {
+                text-align: center !important;
+                font-size: 3vh !important;
+            }
         }
-        h3 {
-            text-align: center !important;
-            font-size: 3vh !important;
+        .column-4 {
+            width: 100% !important;
+            padding-top: 0px !important;
+            height: 40vh !important;
         }
     }
-    .column-4 {
-        width: 100% !important;
-        padding-top: 0px !important;
-        height: 40vh !important;
-    }
-    .column-5 {
-        width: 100% !important;
-        padding-top: 8vh !important;
-        padding-bottom: 8vh !important;
-        height: 40vh !important;
+    .fila-2 {
+        display: flex;
+        flex-flow: row wrap;
+        .column-5 {
+            width: 100% !important;
+            padding-top: 8vh !important;
+            padding-bottom: 8vh !important;
+            height: 40vh !important;
+        }
     }
     .video {
         height: 20vh !important;
@@ -322,8 +344,12 @@ body {
             width: 100% !important;
             padding-top: 5vh !important;
             height: 70% !important;
-            text-align: center !important;
             background-color: $fourth-color !important;
+            text-align: center !important;
+            justify-content: center !important;
+            align-items: center !important;
+            display: flex;
+            flex-direction: column;
         }
         .footer-1 {
             display: none;
@@ -353,6 +379,7 @@ body {
             }
         }
         .fila-1 {
+            display: block;
             .column-3 {
                 width: 100% !important;
                 text-align: center !important;
@@ -367,23 +394,23 @@ body {
             }
         }
         .fila-2 {
-            height: 40vh;
+            display: block;
             .column-5 {
                 width: 50%;
                 height: 45vh;
             }
         }
         .footer {
-            height: 40vh;
-            p,
-            a {
-                font-size: 13px !important;
-            }
             .footer-2,
             .footer-3 {
                 width: 50% !important;
                 height: 100%;
                 background-color: $fourth-color !important;
+                text-align: center !important;
+                justify-content: center !important;
+                align-items: center !important;
+                display: flex;
+                flex-direction: column;
             }
             .footer-1 {
                 display: none;
