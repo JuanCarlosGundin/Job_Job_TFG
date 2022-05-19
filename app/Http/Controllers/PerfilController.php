@@ -144,6 +144,39 @@ class PerfilController extends Controller{
                 $data[]= "curriculum=JSON_REMOVE(curriculum, '$.estudios[".$req['numero_estudio']."]')";
             }
 
+            //Actualizar experiencias
+            if ($req->has(['nombre_experiencia', 'lugar_experiencia', 'año_entrada', 'año_salida', 'funciones', 'numero_experiencia'])) {
+
+                //Modificar una sola experiencia
+                $data[]= "curriculum=JSON_REPLACE(curriculum, '$.experiencia[".$req['numero_experiencia']."].funciones', '".$req['funciones']."', '$.experiencia[".$req['numero_experiencia']."].año_salida', '".$req['año_salida']."', '$.experiencia[".$req['numero_experiencia']."].año_entrada', '".$req['año_entrada']."', '$.experiencia[".$req['numero_experiencia']."].lugar_experiencia', '".$req['lugar_experiencia']."', '$.experiencia[".$req['numero_experiencia']."].nombre_experiencia', '".$req['nombre_experiencia']."')";
+            } elseif ($req->has(['nombre_experiencia', 'lugar_experiencia', 'año_entrada', 'año_salida', 'funciones'])) {
+
+                //Crear experiencia
+                $existecurriculum= DB::table('tbl_trabajador')->select('curriculum')->where('id_usuario','=',$id)->first();
+                if ($existecurriculum->curriculum==null) {
+
+                    //crear JSON curriculum
+                    $lineaexperiencia='{"experiencia":[{"funciones": "'.$req['funciones'].'","año_salida": "'.$req['año_salida'].'","año_entrada": "'.$req['año_entrada'].'","lugar_experiencia": "'.$req['lugar_experiencia'].'","nombre_experiencia": "'.$req['nombre_experiencia'].'"}]}';
+                    $data[]="curriculum='".$lineaexperiencia."'";
+                } else {
+
+                    $existeexperiencia= DB::table('tbl_trabajador')->select('curriculum->experiencia as experiencia')->where('id_usuario','=',$id)->first();
+                    if ($existeexperiencia->experiencia==null) {
+
+                        //Crear JSON experiencia
+                        $data[]="curriculum = JSON_INSERT(curriculum, '$.experiencia', JSON_ARRAY(JSON_OBJECT('funciones', '".$req['funciones']."','año_salida', '".$req['año_salida']."', 'año_entrada', '".$req['año_entrada']."', 'lugar_experiencia', '".$req['lugar_experiencia']."', 'nombre_experiencia', '".$req['nombre_experiencia']."')))";
+                    } else {
+
+                        //appendear experiencia
+                        $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.experiencia', JSON_OBJECT('funciones', '".$req['funciones']."','año_salida', '".$req['año_salida']."', 'año_entrada', '".$req['año_entrada']."', 'lugar_experiencia', '".$req['lugar_experiencia']."', 'nombre_experiencia', '".$req['nombre_experiencia']."'))";
+                    }
+                }
+            } elseif ($req->has('numero_experiencia')) {
+
+                // Eliminar una sola experiencia
+                $data[]= "curriculum=JSON_REMOVE(curriculum, '$.experiencia[".$req['numero_experiencia']."]')";
+            }
+
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
             DB::commit();

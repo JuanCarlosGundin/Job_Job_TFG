@@ -312,17 +312,14 @@ function leer_sobre_mi() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            var recarga = "";
-
-
-            recarga += ` < div class = "vista-profile" > `;
-            recarga += ` < div class = "categoria-edit" > `;
+            var recarga = ``;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
             //volver a la vista anterior
-            recarga += ` < div class = "return" > `;
-            recarga += ` < button class = "return-btn"
-                id = "volver" > `;
-            recarga += ` < div class = "return-icon" > `;
-            recarga += ` < i class = "fa-solid fa-angle-left" > < /i>`;
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
             recarga += `</div>`;
             recarga += `<p class="return-text">VOLVER</p>`;
             recarga += `</button>`;
@@ -1107,38 +1104,254 @@ function eliminar_estudios(evt) {
 
 }
 
-function leer_experiencia(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    recarga += '<button id="editar_experiencia">Editar</button>';
-    if (experiencia) {
-        recarga += "<div>";
-        for (let i = 0; i < experiencia.length; i++) {
-            recarga += "<div>";
-            recarga += '<p>' + experiencia[i].lugar_experiencia + '</p>';
-            recarga += '<p>' + experiencia[i].nombre_experiencia + '</p>';
-            recarga += '<p>' + experiencia[i].año_entrada + '</p>';
-            recarga += '<p>' + experiencia[i].año_salida + '</p>';
-            recarga += '<p>' + experiencia[i].funciones + '</p>';
-            recarga += "</div>";
+function leer_experiencia() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            console.log(trabajador);
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<button id="crear">crear</button>`;
+            if (trabajador.curriculum != null) {
+                var curriculum = JSON.parse(trabajador.curriculum);
+                if (curriculum.hasOwnProperty('experiencia')) {
+                    if (curriculum.experiencia.length != 0) {
+                        for (let i = 0; i < curriculum.experiencia.length; i++) {
+                            recarga += `<div>`;
+                            recarga += `<p>${curriculum.experiencia[i].lugar_experiencia}</p>`;
+                            recarga += `<p>${curriculum.experiencia[i].nombre_experiencia}</p>`;
+                            recarga += `<p>${curriculum.experiencia[i].año_entrada}</p>`;
+                            recarga += `<p>${curriculum.experiencia[i].año_salida}</p>`;
+                            recarga += `<p>${curriculum.experiencia[i].funciones}</p>`;
+                            recarga += `<button class="editar">Editar</button>`;
+                            recarga += `</div>`;
+                        }
+                    } else {
+                        recarga += `<p>Aun no has añadido ninguna experiencia</p>`;
+                    }
+                } else {
+                    recarga += `<p>Aun no has añadido ninguna experiencia</p>`;
+                }
+                contenidoajax.innerHTML = recarga;
+                if (curriculum.hasOwnProperty('experiencia')) {
+                    for (let i = 0; i < curriculum.experiencia.length; i++) {
+                        document.getElementsByClassName("editar")[i].i = i;
+                        document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_experiencias);
+                    }
+                }
+            } else {
+                recarga += `<p>Aun no has añadido ninguna experiencia</p>`;
+                contenidoajax.innerHTML = recarga;
+            }
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+            document.getElementById("crear").addEventListener("click", form_crear_experiencia);
+
         }
-        recarga += "</div>";
+
     }
+
+    ajax.send(formData)
+
+}
+
+function form_crear_experiencia() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var recarga = ``;
+    recarga += `<button id="volver">Volver</button>`;
+    recarga += `<div>`;
+    recarga += `<form id=form_experiencia>`;
+    recarga += `<input type="text" class="" id="nombre_experiencia" name="Nombre de empresa..." placeholder="Nombre puesto">`;
+    recarga += `<input type="text" class="" id="lugar_experiencia" name="Lugar..." placeholder="Empresa">`;
+    recarga += `<input type="date" class="" id="año_entrada" name="año_entrada">`;
+    recarga += `<input type="date" class="" id="año_salida" name="año_salida">`;
+    recarga += `<input type="textarea" class="inputregister" id="funciones" name="funciones" placeholder="Funciones dentro de la empresa">`;
+    recarga += `<button>Realizar cambios</button>`;
+    recarga += `</form>`;
+    recarga += `</div>`;
     contenidoajax.innerHTML = recarga;
 
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_experiencia = document.getElementById("editar_experiencia");
-    editar_experiencia.experiencia = experiencia;
-    editar_experiencia.addEventListener("click", feditar_experiencia); */
-}
-
-function leer_curriculum(evt) {
+    document.getElementById("volver").addEventListener("click", leer_experiencia);
+    document.getElementById("form_experiencia").addEventListener("submit", crear_experiencia);
 
 }
 
-function leer_habilidades(evt) {
+function crear_experiencia(evt) {
+
+    evt.preventDefault();
+    var nombre_experiencia = document.getElementById("nombre_experiencia").value;
+    var lugar_experiencia = document.getElementById("lugar_experiencia").value;
+    var año_entrada = document.getElementById("año_entrada").value;
+    var año_salida = document.getElementById("año_salida").value;
+    var funciones = document.getElementById("funciones").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('nombre_experiencia', nombre_experiencia);
+    formData.append('lugar_experiencia', lugar_experiencia);
+    formData.append('año_entrada', año_entrada);
+    formData.append('año_salida', año_salida);
+    formData.append('funciones', funciones);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_experiencias(evt) {
+
+    var i = evt.currentTarget.i;
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var curriculum = JSON.parse(respuesta.resultado.curriculum);
+            var experiencia = curriculum.experiencia[i];
+            console.log(experiencia);
+            var recarga = ``;
+
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_experiencias>`;
+            recarga += `<input type="text" class="" id="nombre_experiencia" name="Nombre de empresa..." value="${experiencia.nombre_experiencia}">`;
+            recarga += `<input type="text" class="" id="lugar_experiencia" name="Lugar..." value="${experiencia.lugar_experiencia}">`;
+            recarga += `<input type="date" class="" id="año_entrada" name="año_entrada" value="${experiencia.año_entrada}">`;
+            recarga += `<input type="date" class="" id="año_salida" name="año_salida" value="${experiencia.año_salida}">`;
+            recarga += `<input type="textarea" class="inputregister" id="funciones" name="funciones" value="${experiencia.funciones}">`;
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `<button id="eliminar">Eliminar experiencia</button>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_experiencia);
+            document.getElementById("form_experiencias").i = i;
+            document.getElementById("form_experiencias").addEventListener("submit", editar_experiencias);
+            document.getElementById("eliminar").i = i;
+            document.getElementById("eliminar").addEventListener("click", eliminar_experiencias);
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function editar_experiencias(evt) {
+
+    evt.preventDefault();
+    var i = evt.currentTarget.i;
+
+    var nombre_experiencia = document.getElementById("nombre_experiencia").value;
+    var lugar_experiencia = document.getElementById("lugar_experiencia").value;
+    var año_entrada = document.getElementById("año_entrada").value;
+    var año_salida = document.getElementById("año_salida").value;
+    var funciones = document.getElementById("funciones").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('nombre_experiencia', nombre_experiencia);
+    formData.append('lugar_experiencia', lugar_experiencia);
+    formData.append('año_entrada', año_entrada);
+    formData.append('año_salida', año_salida);
+    formData.append('funciones', funciones);
+    formData.append('numero_experiencia', i);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function eliminar_experiencias(evt) {
+
+    var i = evt.currentTarget.i;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('numero_experiencia', i);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            leer_experiencia();
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function leer_curriculum() {
+
+}
+
+function leer_habilidades() {
     /* var contenidoajax = document.getElementById("contenidoajax");
     var habilidades = evt.currentTarget.habilidades;
     var recarga = "";
@@ -1163,7 +1376,7 @@ function leer_habilidades(evt) {
     editar_habilidades.addEventListener("click", feditar_habilidades); */
 }
 
-function leer_disponibilidad(evt) {
+function leer_disponibilidad() {
     /* var contenidoajax = document.getElementById("contenidoajax");
     var disponibilidad = evt.currentTarget.disponibilidad;
     var mobilidad = evt.currentTarget.mobilidad;
@@ -1186,7 +1399,7 @@ function leer_disponibilidad(evt) {
     editar_disponibilidad.addEventListener("click", feditar_disponibilidad); */
 }
 
-function leer_configuracion(evt) {
+function leer_configuracion() {
     /* var contenidoajax = document.getElementById("contenidoajax");
     var mostrado = evt.currentTarget.mostrado;
     var recarga = "";
