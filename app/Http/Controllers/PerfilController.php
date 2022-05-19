@@ -44,51 +44,106 @@ class PerfilController extends Controller{
 
     public function editarperfil(Request $req){
         $id=session()->get('id_user');
+
         try {
             $data=array();
             //form_editar_sobre_mi
-            if ($req->has('campo_user')){
+            if ($req->has('campo_user')) {
+
                 $data[]= "campo_user='".$req['campo_user']."'";
             }
-            if ($req->has('about_user')){
+            if ($req->has('about_user')) {
+
                 $data[]= "about_user='".$req['about_user']."'";
             }
-            if ($req->has('loc_trabajador')){
+            if ($req->has('loc_trabajador')) {
+                
                 $data[]= "loc_trabajador='".$req['loc_trabajador']."'";
             }
-            if ($req->has('lenguaje_preferido')){
+            if ($req->has('lenguaje_preferido')) {
+
                 $data[]= "lenguaje_preferido='".$req['lenguaje_preferido']."'";
             }
-            if ($req->has('linkedin')){
+            if ($req->has('linkedin')) {
+
                 $data[]= "linkedin='".$req['linkedin']."'";
             }
-            if ($req->has('telefono')){
+            if ($req->has('telefono')) {
+
                 $data[]= "telefono='".$req['telefono']."'";
             }
-            if ($req->has('github')){
+            if ($req->has('github')) {
+
                 $data[]= "github='".$req['github']."'";
             }
-            if ($req->has(['nombre_idioma', 'nivel_idioma', 'numero_idioma'])){
+
+            //Actualizar idiomas
+            if ($req->has(['nombre_idioma', 'nivel_idioma', 'numero_idioma'])) {
+
+                //Modificar un solo idioma
                 $data[]= "curriculum=JSON_REPLACE(curriculum, '$.idiomas[".$req['numero_idioma']."].nivel_idioma', '".$req['nivel_idioma']."', '$.idiomas[".$req['numero_idioma']."].nombre_idioma', '".$req['nombre_idioma']."')";
             } elseif ($req->has(['nombre_idioma', 'nivel_idioma'])) {
+
+                //Crear idioma
                 $existecurriculum= DB::table('tbl_trabajador')->select('curriculum')->where('id_usuario','=',$id)->first();
                 if ($existecurriculum->curriculum==null) {
+
                     //crear JSON curriculum
                     $lineaidioma='{"idiomas":[{"nivel_idioma": "'.$req['nivel_idioma'].'","nombre_idioma": "'.$req['nombre_idioma'].'"}]}';
                     $data[]="curriculum='".$lineaidioma."'";
-                } else{
+                } else {
+
                     $existeidiomas= DB::table('tbl_trabajador')->select('curriculum->idiomas as idiomas')->where('id_usuario','=',$id)->first();
-                    if ($existeidiomas->idiomas==null){
+                    if ($existeidiomas->idiomas==null) {
+
                         //Crear JSON idiomas
                         $data[]="curriculum = JSON_INSERT(curriculum, '$.idiomas', JSON_ARRAY(JSON_OBJECT('nivel_idioma', '".$req['nivel_idioma']."', 'nombre_idioma', '".$req['nombre_idioma']."')))";
-                    }else{
+                    } else {
+
                         //appendear idiomas
                         $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.idiomas', JSON_OBJECT('nivel_idioma', '".$req['nivel_idioma']."', 'nombre_idioma', '".$req['nombre_idioma']."'))";
                     }
                 }
+
             } elseif ($req->has('numero_idioma')) {
+
+                //eliminar un solo idioma
                 $data[]= "curriculum=JSON_REMOVE(curriculum, '$.idiomas[".$req['numero_idioma']."]')";
             }
+
+            //Actualizar estudios
+            if ($req->has(['nombre_formación', 'lugar_formación', 'año_entrada', 'año_salida', 'numero_estudio'])) {
+
+                //Modificar un solo estudio
+                $data[]= "curriculum=JSON_REPLACE(curriculum, '$.estudios[".$req['numero_estudio']."].año_salida', '".$req['año_salida']."', '$.estudios[".$req['numero_estudio']."].año_entrada', '".$req['año_entrada']."', '$.estudios[".$req['numero_estudio']."].lugar_formación', '".$req['lugar_formación']."', '$.estudios[".$req['numero_estudio']."].nombre_formación', '".$req['nombre_formación']."')";
+            } elseif ($req->has(['nombre_formación', 'lugar_formación', 'año_entrada', 'año_salida'])) {
+
+                //Crear estudio
+                $existecurriculum= DB::table('tbl_trabajador')->select('curriculum')->where('id_usuario','=',$id)->first();
+                if ($existecurriculum->curriculum==null) {
+
+                    //crear JSON curriculum
+                    $lineaestudio='{"estudios":[{"año_salida": "'.$req['año_salida'].'","año_entrada": "'.$req['año_entrada'].'","lugar_formación": "'.$req['lugar_formación'].'","nombre_formación": "'.$req['nombre_formación'].'"}]}';
+                    $data[]="curriculum='".$lineaestudio."'";
+                } else {
+
+                    $existeestudio= DB::table('tbl_trabajador')->select('curriculum->estudios as estudios')->where('id_usuario','=',$id)->first();
+                    if ($existeestudio->estudios==null) {
+
+                        //Crear JSON estudios
+                        $data[]="curriculum = JSON_INSERT(curriculum, '$.estudios', JSON_ARRAY(JSON_OBJECT('año_salida', '".$req['año_salida']."', 'año_entrada', '".$req['año_entrada']."', 'lugar_formación', '".$req['lugar_formación']."', 'nombre_formación', '".$req['nombre_formación']."')))";
+                    } else {
+
+                        //appendear estudios
+                        $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.estudios', JSON_OBJECT('año_salida', '".$req['año_salida']."', 'año_entrada', '".$req['año_entrada']."', 'lugar_formación', '".$req['lugar_formación']."', 'nombre_formación', '".$req['nombre_formación']."'))";
+                    }
+                }
+            } elseif ($req->has('numero_estudio')) {
+
+                // Eliminar un solo estudio
+                $data[]= "curriculum=JSON_REMOVE(curriculum, '$.estudios[".$req['numero_estudio']."]')";
+            }
+
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
             DB::commit();

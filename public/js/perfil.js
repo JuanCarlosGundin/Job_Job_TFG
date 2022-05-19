@@ -815,9 +815,6 @@ function editar_idiomas(evt) {
     var nombre_idioma = document.getElementById("nombre_idioma").value;
     var nivel_idioma = document.getElementById("nivel_idioma").value;
     var formData = new FormData();
-    console.log(nombre_idioma);
-    console.log(nivel_idioma);
-    console.log(i);
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
@@ -919,7 +916,7 @@ function leer_estudios() {
                 if (curriculum.hasOwnProperty('estudios')) {
                     for (let i = 0; i < curriculum.estudios.length; i++) {
                         document.getElementsByClassName("editar")[i].i = i;
-                        /* document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_idiomas); */
+                        document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_estudios);
                     }
                 }
             } else {
@@ -952,9 +949,161 @@ function form_crear_estudios() {
     recarga += '</div>';
     contenidoajax.innerHTML = recarga;
 
-    document.getElementById("volver").addEventListener("click", leer_idiomas);
-    /* document.getElementById("form_idiomas").addEventListener("submit", crear_idiomas);
-     */
+    document.getElementById("volver").addEventListener("click", leer_estudios);
+    document.getElementById("form_estudios").addEventListener("submit", crear_estudios);
+
+}
+
+function crear_estudios(evt) {
+
+    evt.preventDefault();
+    var nombre_formación = document.getElementById("nombre_formación").value;
+    var lugar_formación = document.getElementById("lugar_formación").value;
+    var año_entrada = document.getElementById("año_entrada").value;
+    var año_salida = document.getElementById("año_salida").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('nombre_formación', nombre_formación);
+    formData.append('lugar_formación', lugar_formación);
+    formData.append('año_entrada', año_entrada);
+    formData.append('año_salida', año_salida);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_estudios(evt) {
+
+    var i = evt.currentTarget.i;
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var curriculum = JSON.parse(respuesta.resultado.curriculum);
+            var estudios = curriculum.estudios[i];
+            console.log(estudios);
+            var recarga = ``;
+
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_estudios>`;
+            recarga += `<input type="text" class="" id="nombre_formación" name="nombre_formación" value="${estudios.nombre_formación}">`;
+            recarga += `<input type="text" class="" id="lugar_formación" name="lugar_formación" value="${estudios.lugar_formación}">`;
+            recarga += `<input type="date" class="" id="año_entrada" name="año_entrada" value="${estudios.año_entrada}">`;
+            recarga += `<input type="date" class="" id="año_salida" name="año_salida" value="${estudios.año_salida}">`;
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `<button id="eliminar">Eliminar idioma</button>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_estudios);
+            document.getElementById("form_estudios").i = i;
+            document.getElementById("form_estudios").addEventListener("submit", editar_estudios);
+            document.getElementById("eliminar").i = i;
+            document.getElementById("eliminar").addEventListener("click", eliminar_estudios);
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function editar_estudios(evt) {
+
+    evt.preventDefault();
+    var i = evt.currentTarget.i;
+
+    var nombre_formación = document.getElementById("nombre_formación").value;
+    var lugar_formación = document.getElementById("lugar_formación").value;
+    var año_entrada = document.getElementById("año_entrada").value;
+    var año_salida = document.getElementById("año_salida").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('nombre_formación', nombre_formación);
+    formData.append('lugar_formación', lugar_formación);
+    formData.append('año_entrada', año_entrada);
+    formData.append('año_salida', año_salida);
+    formData.append('numero_estudio', i);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function eliminar_estudios(evt) {
+
+    var i = evt.currentTarget.i;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('numero_estudio', i);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            leer_estudios();
+
+        }
+
+    }
+
+    ajax.send(formData)
+
 }
 
 function leer_experiencia(evt) {
