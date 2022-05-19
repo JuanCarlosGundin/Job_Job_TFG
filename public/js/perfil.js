@@ -141,7 +141,7 @@ function mostrarperfilJS() {
                 recarga += '<div class="divs-name">';
                 recarga += '<span class="p-name">  ' + trabajador.nombre + '  </span>';
                 recarga += '<span class="p-surname">  ' + trabajador.apellido + ',' + '  </span>';
-                recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
+                recarga += '<span class="p-age"> ' + edad(trabajador.edad) + '</span>';
                 recarga += '</div>';
                 recarga += '<div class="user-edit-div">';
                 /* recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><p class="edit-btn-p">EDITAR</p></button>'; */
@@ -281,6 +281,17 @@ function mostrarperfilJS() {
     }
 
     ajax.send(formData);
+}
+
+function edad(fecha_string) {
+    var hoy = new Date();
+    var fecha_nacimiento = new Date(fecha_string);
+    var edad = hoy.getFullYear() - fecha_nacimiento.getFullYear();
+    var m = hoy.getMonth() - fecha_nacimiento.getMonth();
+    if (m < 0 || (m === 0 && hoy.getDate() < fecha_nacimiento.getDate())) {
+        edad--;
+    }
+    return edad;
 }
 
 function leer_sobre_mi() {
