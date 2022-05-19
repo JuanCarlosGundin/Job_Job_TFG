@@ -177,6 +177,40 @@ class PerfilController extends Controller{
                 $data[]= "curriculum=JSON_REMOVE(curriculum, '$.experiencia[".$req['numero_experiencia']."]')";
             }
 
+            //Actualizar habilidades
+            if ($req->has(['nombre_habilidad', 'nivel_habilidad', 'numero_habilidad'])) {
+
+                //Modificar una sola habilidad
+                $data[]= "curriculum=JSON_REPLACE(curriculum, '$.habilidades[".$req['numero_habilidad']."].nivel_habilidad', '".$req['nivel_habilidad']."', '$.idiomas[".$req['numero_habilidad']."].nombre_habilidad', '".$req['nombre_habilidad']."')";
+            } elseif ($req->has(['nombre_habilidad', 'nivel_habilidad'])) {
+
+                //Crear habilidad
+                $existecurriculum= DB::table('tbl_trabajador')->select('curriculum')->where('id_usuario','=',$id)->first();
+                if ($existecurriculum->curriculum==null) {
+
+                    //crear JSON curriculum
+                    $lineahabilidad='{"habilidades":[{"nivel_habilidad": "'.$req['nivel_habilidad'].'","nombre_habilidad": "'.$req['nombre_habilidad'].'"}]}';
+                    $data[]="curriculum='".$lineahabilidad."'";
+                } else {
+
+                    $existehabilidades= DB::table('tbl_trabajador')->select('curriculum->habilidades as habilidades')->where('id_usuario','=',$id)->first();
+                    if ($existehabilidades->habilidades==null) {
+
+                        //Crear JSON habilidades
+                        $data[]="curriculum = JSON_INSERT(curriculum, '$.habilidades', JSON_ARRAY(JSON_OBJECT('nivel_habilidad', '".$req['nivel_habilidad']."', 'nombre_habilidad', '".$req['nombre_habilidad']."')))";
+                    } else {
+
+                        //appendear habilidades
+                        $data[]="curriculum = JSON_ARRAY_APPEND(curriculum, '$.habilidades', JSON_OBJECT('nivel_habilidad', '".$req['nivel_habilidad']."', 'nombre_habilidad', '".$req['nombre_habilidad']."'))";
+                    }
+                }
+
+            } elseif ($req->has('numero_habilidad')) {
+
+                //eliminar una sola habilidad
+                $data[]= "curriculum=JSON_REMOVE(curriculum, '$.habilidades[".$req['numero_habilidad']."]')";
+            }
+
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
             DB::commit();

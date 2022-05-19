@@ -1353,6 +1353,234 @@ function leer_curriculum() {
 
 function leer_habilidades() {
 
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            console.log(trabajador);
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<button id="crear">crear</button>`;
+            if (trabajador.curriculum != null) {
+                var curriculum = JSON.parse(trabajador.curriculum);
+                if (curriculum.hasOwnProperty('habilidades')) {
+                    if (curriculum.habilidades.length != 0) {
+                        for (let i = 0; i < curriculum.habilidades.length; i++) {
+                            recarga += `<div>`;
+                            recarga += `<p>${curriculum.habilidades[i].nombre_habilidad}</p>`;
+                            recarga += `<p>${curriculum.habilidades[i].nivel_habilidad}</p>`;
+                            recarga += `<button class="editar">Editar</button>`;
+                            recarga += `</div>`;
+                        }
+                    } else {
+                        recarga += `<p>Aun no has añadido ninguna habilidad</p>`;
+                    }
+                } else {
+                    recarga += `<p>Aun no has añadido ninguna habilidad</p>`;
+                }
+                contenidoajax.innerHTML = recarga;
+                if (curriculum.hasOwnProperty('habilidades')) {
+                    for (let i = 0; i < curriculum.habilidades.length; i++) {
+                        document.getElementsByClassName("editar")[i].i = i;
+                        document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_habilidades);
+                    }
+                }
+            } else {
+                recarga += `<p>Aun no has añadido ninguna habilidad</p>`;
+                contenidoajax.innerHTML = recarga;
+            }
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+            document.getElementById("crear").addEventListener("click", form_crear_habilidades);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_crear_habilidades() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var recarga = ``;
+    recarga += `<button id="volver">Volver</button>`;
+    recarga += `<div>`;
+    recarga += `<form id=form_habilidades>`;
+    recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" placeholder="Introduce tu habilidad">`;
+    recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
+    recarga += `<option value="" selected>- selecciona -</option>`;
+    recarga += `<option value="medio">medio</option>`;
+    recarga += `<option value="alto">alto</option>`;
+    recarga += `<option value="experto">experto</option>`;
+    recarga += `</select>`;
+    recarga += `<button>Realizar cambios</button>`;
+    recarga += `</form>`;
+    recarga += `</div>`;
+    contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", leer_habilidades);
+    document.getElementById("form_habilidades").addEventListener("submit", crear_habilidades);
+
+}
+
+function crear_habilidades(evt) {
+
+    evt.preventDefault();
+    var nombre_habilidad = document.getElementById("nombre_habilidad").value;
+    var nivel_habilidad = document.getElementById("nivel_habilidad").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('nombre_habilidad', nombre_habilidad);
+    formData.append('nivel_habilidad', nivel_habilidad);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_habilidades(evt) {
+
+    var i = evt.currentTarget.i;
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var curriculum = JSON.parse(respuesta.resultado.curriculum);
+            var habilidades = curriculum.habilidades[i];
+            console.log(habilidades);
+            var recarga = ``;
+
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_habilidades>`;
+            recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" value="${habilidades.nombre_habilidad}">`;
+            recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
+            recarga += `<option value="${habilidades.nivel_habilidad}" selected>${habilidades.nivel_habilidad}</option>`;
+            recarga += `<option value="medio">medio</option>`;
+            recarga += `<option value="alto">alto</option>`;
+            recarga += `<option value="experto">experto</option>`;
+            recarga += `</select>`;
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `<button id="eliminar">Eliminar idioma</button>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_habilidades);
+            document.getElementById("form_habilidades").i = i;
+            document.getElementById("form_habilidades").addEventListener("submit", editar_habilidades);
+            document.getElementById("eliminar").i = i;
+            document.getElementById("eliminar").addEventListener("click", eliminar_habilidades);
+
+        }
+
+    }
+
+    ajax.send(formData)
+}
+
+function editar_habilidades(evt) {
+
+    evt.preventDefault();
+    var i = evt.currentTarget.i;
+
+    var nombre_habilidad = document.getElementById("nombre_habilidad").value;
+    var nivel_habilidad = document.getElementById("nivel_habilidad").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('nombre_habilidad', nombre_habilidad);
+    formData.append('nivel_habilidad', nivel_habilidad);
+    formData.append('numero_habilidad', i);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function eliminar_habilidades(evt) {
+
+    var i = evt.currentTarget.i;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('numero_habilidad', i);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            leer_habilidades();
+
+        }
+
+    }
+
+    ajax.send(formData)
+
 }
 
 function leer_disponibilidad() {
