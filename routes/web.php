@@ -29,6 +29,10 @@ Route::get('reportesprueba', function () {
 Route::get('graficas', function () {
     return view('graficas');
 });
+
+Route::get('crudreportes', function () {
+    return view('crudreportes');
+});
 /*FIN PRUEBA*/
 Route::get('login', function () {
     return view('login');

@@ -19,7 +19,7 @@ public function logout(Request $req){
 
 
 //
-////////Diego
+
     ///ZONA ADMINISTRADOR
     public function vistaAdmin() {
 
@@ -426,12 +426,12 @@ public function logout(Request $req){
 
     ///ZONA NOTIFICACIONES
 
-    ////////Diego
 
     //----------------------------------------------------CREAR REPORTE-------------------------------------------------------------//
     public function crearreporte(Request $request) {
         // return response()->json(array('resultado'=> $request));
         $datos = $request->except('_token');
+        return $datos;
         // $this->validate($request, [
         //     'id_reportador' => 'required',
         //     'id_reportado' => 'required',
@@ -454,3 +454,11 @@ public function logout(Request $req){
     //--------------------------------------------------FIN CREAR REPORTE-----------------------------------------------------------//
 }
 
+//-----------------------------------------------------GESTIONAR REPORTES----------------------------------------------------------//
+
+
+
+
+
+
+//--------------------------------------------------FIN GESTIONAR REPORTES----------------------------------------------------------//

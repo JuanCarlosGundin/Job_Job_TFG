@@ -421,10 +421,10 @@ function graficomostrados() {
         labels: labelsXmostrado,
         datasets: [{
             label: 'Usuarios mostrados',
-            backgroundColor: ['rgb(54, 162, 235)',
+            backgroundColor: ['rgb(24, 108, 167)',
                 'rgb(146, 175, 215)'
             ],
-            borderColor: ['rgb(54, 162, 235)',
+            borderColor: ['rgbrgb(24, 108, 167)',
                 'rgb(146, 175, 215)'
             ],
             data: dataYmostrado,
