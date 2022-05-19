@@ -21,7 +21,7 @@ class GraficaController extends Controller
     public function localizacionempresas()
     {
         //consulta donde me dice cuantas empresas hay en cada localidad.
-        $empresas=DB::select('SELECT tbl_empresa.loc_emp, count(tbl_empresa.id_usuario) AS empresas from tbl_empresa INNER JOIN tbl_usuarios ON tbl_empresa.id_usuario=tbl_usuarios.id GROUP BY tbl_empresa.loc_emp');
+        $empresas=DB::select("SELECT IFNULL(tbl_empresa.loc_emp,'Sin especificar') AS localizacion, count(tbl_empresa.id_usuario) AS empresas from tbl_empresa INNER JOIN tbl_usuarios ON tbl_empresa.id_usuario=tbl_usuarios.id GROUP BY tbl_empresa.loc_emp");
         return $empresas;
         return response()->json($empresas);
     }
@@ -29,7 +29,8 @@ class GraficaController extends Controller
     public function localizaciontrabajadores()
     {
         //consulta donde me dice cuantas empresas hay en cada localidad.
-        $trabajadores=DB::select('SELECT tbl_trabajador.loc_trabajador, count(tbl_trabajador.id_usuario) AS trabajadores from tbl_trabajador INNER JOIN tbl_usuarios ON tbl_trabajador.id_usuario=tbl_usuarios.id GROUP BY tbl_trabajador.loc_trabajador');
+        $trabajadores=DB::select("SELECT IFNULL(tbl_trabajador.loc_trabajador,'Sin especificar') AS localizacion, count(tbl_trabajador.id_usuario) AS trabajadores from tbl_trabajador INNER JOIN tbl_usuarios ON tbl_trabajador.id_usuario=tbl_usuarios.id 
+        GROUP BY tbl_trabajador.loc_trabajador");
         return $trabajadores;
         return response()->json($trabajadores);
     }
@@ -65,7 +66,7 @@ class GraficaController extends Controller
         WHERE tbl_empresa.mostrado=1
         GROUP BY tbl_usuarios.id_perfil');
         return $mostrado;
-        return response()->json($mostrado );
+        return response()->json($mostrado);
     }
 
 

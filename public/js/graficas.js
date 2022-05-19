@@ -104,7 +104,7 @@ function localizacionempresasJS() {
             var respuesta = JSON.parse(this.responseText);
 
             for (var i = 0; i < respuesta.length; i++) {
-                labelsXempresa.push(respuesta[i].loc_emp);
+                labelsXempresa.push(respuesta[i].localizacion);
                 dataYempresa.push(respuesta[i].empresas);
             }
             // creamos el chart/grafico
@@ -184,7 +184,7 @@ function localizaciontrabajadoresJS() {
             var respuesta = JSON.parse(this.responseText);
 
             for (var i = 0; i < respuesta.length; i++) {
-                labelsXtrabajador.push(respuesta[i].loc_trabajador);
+                labelsXtrabajador.push(respuesta[i].localizacion);
                 dataYtrabajador.push(respuesta[i].trabajadores);
             }
             // creamos el chart/grafico
