@@ -195,13 +195,13 @@ body {
         }
     }
     .col-sm-3 {
-        width: 25%;
+        max-width: 25%;
         @media(max-width: $tablet) {
             max-width: #{"min(100%,40vw)"};
         }
         @media(max-width: $movil) {
             width: 100%;
-            max-width: #{"min(100%,50vw)"};
+            max-width: #{"min(100%,70vw)"};
         }
         padding: 20px;
     }

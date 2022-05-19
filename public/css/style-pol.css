@@ -257,7 +257,7 @@ body {
 }
 
 .region-plantillas .col-sm-3 {
-  width: 25%;
+  max-width: 25%;
   padding: 20px;
 }
 
@@ -270,7 +270,7 @@ body {
 @media (max-width: 768px) {
   .region-plantillas .col-sm-3 {
     width: 100%;
-    max-width: min(100%,50vw);
+    max-width: min(100%,70vw);
   }
 }
 
