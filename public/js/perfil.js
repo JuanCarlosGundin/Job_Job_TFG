@@ -627,14 +627,13 @@ function editar_sobre_mi(evt) {
 }
 
 function leer_idiomas() {
-    //tengo que editar por cada idioma, no por todos a la vez
+
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
 
-    /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
     ajax.open("POST", "leerperfil", true);
@@ -729,7 +728,6 @@ function crear_idiomas(evt) {
     formData.append('nombre_idioma', nombre_idioma);
     formData.append('nivel_idioma', nivel_idioma);
 
-    /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
     ajax.open("POST", "editarperfil", true);
@@ -827,7 +825,6 @@ function editar_idiomas(evt) {
     formData.append('nivel_idioma', nivel_idioma);
     formData.append('numero_idioma', i);
 
-    /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
     ajax.open("POST", "editarperfil", true);
@@ -857,7 +854,6 @@ function eliminar_idiomas(evt) {
     formData.append('_method', 'POST');
     formData.append('numero_idioma', i);
 
-    /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
     ajax.open("POST", "editarperfil", true);
@@ -878,32 +874,87 @@ function eliminar_idiomas(evt) {
 
 }
 
-function leer_estudios(evt) {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    if (estudios) {
-        recarga += "<div>";
-        for (let i = 0; i < estudios.length; i++) {
-            recarga += "<div>";
-            recarga += '<p>' + estudios[i].nombre_formación + '</p>';
-            recarga += '<p>' + estudios[i].lugar_formación + '</p>';
-            recarga += '<p>' + estudios[i].año_entrada + '</p>';
-            recarga += '<p>' + estudios[i].año_salida + '</p>';
-            recarga += "</div>";
+function leer_estudios() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            console.log(trabajador);
+            var recarga = "";
+            recarga += '<button id="volver">Volver</button>';
+            recarga += '<button id="crear">crear</button>';
+            if (trabajador.curriculum != null) {
+                var curriculum = JSON.parse(trabajador.curriculum);
+                if (curriculum.hasOwnProperty('estudios')) {
+                    if (curriculum.estudios.length != 0) {
+                        for (let i = 0; i < curriculum.estudios.length; i++) {
+                            recarga += "<div>";
+                            recarga += '<p>' + curriculum.estudios[i].nombre_formación + '</p>';
+                            recarga += '<p>' + curriculum.estudios[i].lugar_formación + '</p>';
+                            recarga += '<p>' + curriculum.estudios[i].año_entrada + '</p>';
+                            recarga += '<p>' + curriculum.estudios[i].año_salida + '</p>';
+                            recarga += '<button class="editar">Editar</button>';
+                            recarga += "</div>";
+                        }
+                    } else {
+                        recarga += '<p>Aun no has añadido ningun estudio</p>';
+                    }
+                } else {
+                    recarga += '<p>Aun no has añadido ningun estudio</p>';
+                }
+                contenidoajax.innerHTML = recarga;
+                if (curriculum.hasOwnProperty('estudios')) {
+                    for (let i = 0; i < curriculum.estudios.length; i++) {
+                        document.getElementsByClassName("editar")[i].i = i;
+                        /* document.getElementsByClassName("editar")[i].addEventListener("click", form_editar_idiomas); */
+                    }
+                }
+            } else {
+                recarga += '<p>Aun no has añadido ningun estudio</p>';
+                contenidoajax.innerHTML = recarga;
+            }
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+            document.getElementById("crear").addEventListener("click", form_crear_estudios);
+
         }
-        recarga += "</div>";
+
     }
-    contenidoajax.innerHTML = recarga;
 
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_estudios = document.getElementById("editar_estudios");
-    editar_estudios.addEventListener("click", feditar_estudios); */
+    ajax.send(formData)
 }
 
-function feditar_estudios(evt) {
+function form_crear_estudios() {
 
+    var contenidoajax = document.getElementById("contenidoajax");
+    var recarga = "";
+    recarga += '<button id="volver">Volver</button>';
+    recarga += '<div>';
+    recarga += '<form id=form_estudios>';
+    recarga += '<input type="text" class="" id="nombre_formación" name="nombre_formación" placeholder="Introduce tu titulo">';
+    recarga += '<input type="text" class="" id="lugar_formación" name="lugar_formación" placeholder="Introduce el centro de estudios">';
+    recarga += '<input type="date" class="" id="año_entrada" name="año_entrada">';
+    recarga += '<input type="date" class="" id="año_salida" name="año_salida">';
+    recarga += '<button>Realizar cambios</button>';
+    recarga += '</form>';
+    recarga += '</div>';
+    contenidoajax.innerHTML = recarga;
+
+    document.getElementById("volver").addEventListener("click", leer_idiomas);
+    /* document.getElementById("form_idiomas").addEventListener("submit", crear_idiomas);
+     */
 }
 
 function leer_experiencia(evt) {
@@ -931,10 +982,6 @@ function leer_experiencia(evt) {
     var editar_experiencia = document.getElementById("editar_experiencia");
     editar_experiencia.experiencia = experiencia;
     editar_experiencia.addEventListener("click", feditar_experiencia); */
-}
-
-function feditar_experiencia(evt) {
-
 }
 
 function leer_curriculum(evt) {
@@ -966,10 +1013,6 @@ function leer_habilidades(evt) {
     editar_habilidades.addEventListener("click", feditar_habilidades); */
 }
 
-function feditar_habilidades(evt) {
-
-}
-
 function leer_disponibilidad(evt) {
     /* var contenidoajax = document.getElementById("contenidoajax");
     var disponibilidad = evt.currentTarget.disponibilidad;
@@ -993,10 +1036,6 @@ function leer_disponibilidad(evt) {
     editar_disponibilidad.addEventListener("click", feditar_disponibilidad); */
 }
 
-function feditar_disponibilidad(evt) {
-
-}
-
 function leer_configuracion(evt) {
     /* var contenidoajax = document.getElementById("contenidoajax");
     var mostrado = evt.currentTarget.mostrado;
@@ -1013,8 +1052,4 @@ function leer_configuracion(evt) {
     var editar_configuracion = document.getElementById("editar_configuracion");
     editar_configuracion.mostrado = mostrado;
     editar_configuracion.addEventListener("click", feditar_configuracion); */
-}
-
-function feditar_configuracion(evt) {
-
 }
