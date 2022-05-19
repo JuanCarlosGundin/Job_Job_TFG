@@ -1352,67 +1352,13 @@ function leer_curriculum() {
 }
 
 function leer_habilidades() {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var habilidades = evt.currentTarget.habilidades;
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    recarga += '<button id="editar_habilidades">Editar</button>';
-    if (habilidades) {
-        recarga += "<div>";
-        for (let i = 0; i < habilidades.length; i++) {
-            recarga += "<div>";
-            recarga += '<p>' + habilidades[i].nombre_habilidad + '</p>';
-            recarga += '<p>' + habilidades[i].nivel_habilidad + '</p>';
-            recarga += "</div>";
-        }
-        recarga += "</div>";
-    }
-    contenidoajax.innerHTML = recarga;
 
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_habilidades = document.getElementById("editar_habilidades");
-    editar_habilidades.habilidades = habilidades;
-    editar_habilidades.addEventListener("click", feditar_habilidades); */
 }
 
 function leer_disponibilidad() {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var disponibilidad = evt.currentTarget.disponibilidad;
-    var mobilidad = evt.currentTarget.mobilidad;
-    var carnet_conducir = evt.currentTarget.carnet_conducir;
-    var vehiculo_propio = evt.currentTarget.vehiculo_propio;
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    recarga += '<button id="editar_disponibilidad">Editar</button>';
-    recarga += "<div>";
-    recarga += '<p>' + disponibilidad + '</p>';
-    recarga += '<p>' + mobilidad + '</p>';
-    recarga += '<p>' + carnet_conducir + '</p>';
-    recarga += '<p>' + vehiculo_propio + '</p>';
-    recarga += "</div>";
-    contenidoajax.innerHTML = recarga;
 
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_disponibilidad = document.getElementById("editar_disponibilidad");
-    editar_disponibilidad.addEventListener("click", feditar_disponibilidad); */
 }
 
 function leer_configuracion() {
-    /* var contenidoajax = document.getElementById("contenidoajax");
-    var mostrado = evt.currentTarget.mostrado;
-    var recarga = "";
-    recarga += '<button id="volver">Volver</button>';
-    recarga += '<button id="editar_configuracion">Editar</button>';
-    recarga += "<div>";
-    recarga += '<p>' + mostrado + '</p>';
-    recarga += "</div>";
-    contenidoajax.innerHTML = recarga;
 
-    document.getElementById("volver").addEventListener("click", mostrarperfilJS);
-
-    var editar_configuracion = document.getElementById("editar_configuracion");
-    editar_configuracion.mostrado = mostrado;
-    editar_configuracion.addEventListener("click", feditar_configuracion); */
 }
