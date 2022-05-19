@@ -107,79 +107,37 @@
                 <div class="mensaje-inicio">
                     <p class="mensaje-text">Bienvenido al chat</p>
                 </div>
+            </div>                
+            <div class="mensaje-1">
+                <div class="chat-mensaje-1">
+                    <div class="mensaje-text-div">
+                        <p class="mensaje-text">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="mensaje-hora-div">
+                        <p class="mensaje-hora">20:45</p>
+                    </div>    
+                </div>
             </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
+            <div class="mensaje-2">
+                <div class="chat-mensaje-2">
+                    <div class="mensaje-text-div">
+                        <p class="mensaje-text">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="mensaje-hora-div">
+                        <p class="mensaje-hora">20:45</p>
+                    </div>    
+                </div>
             </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
-            <div class="chat-mensaje-1">
-                <p class="mensaje-text">nvfnvfnj</p>
-                <p class="mensaje-hora">20:45</p>          
-            </div>
-            <div class="chat-mensaje-2">
-                <p class="mensaje-text">nvfnvfn jnvfnvfn nvfnvfnjnv fnvfnjnv fnvfnj</p>
-                <p class="mensaje-hora">20:45</p>                    
-            </div>
+            <div class="mensaje-2">
+                <div class="chat-mensaje-2">
+                    <div class="mensaje-text-div">
+                        <p class="mensaje-text">Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raices en una pieza cl´sica de la literatura del Latin, que data del año 45 antes de Cristo, haciendo que este adquiera mas de 2000 años de antiguedad. Richard McClintock, un profesor de Latin de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín, descubrió la fuente indudable. Lorem Ipsum viene de las secciones 1.10.32 y 1.10.33 de "de Finnibus Bonorum et Malorum" (Los Extremos del Bien y El Mal) por Cicero, escrito en el año 45 antes de Cristo. Este libro es un tratado de teoría de éticas, muy popular durante el Renacimiento. La primera linea del Lorem Ipsum, "Lorem ipsum dolor sit amet..", viene de una linea en la sección 1.10.32</p>
+                    </div>
+                    <div class="mensaje-hora-div">
+                        <p class="mensaje-hora">20:45</p>
+                    </div>    
+                </div>
+            </div>   
         </div>
         <div class="chat-main-send">
             <div class="chat-input">

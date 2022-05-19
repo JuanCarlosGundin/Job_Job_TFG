@@ -119,13 +119,13 @@ function leerJS() {
 
                 var admin = respuesta.admin;
                 var recargaadmin = '';
-
+                recargaadmin += '<br>';
+                recargaadmin += '<br>';
                 recargaadmin += '<h2>Administradores</h2>';
                 recargaadmin += '<table class="table table-striped table-hover">';
                 recargaadmin += '<thead>';
-                recargaadmin += '<tr>';
                 recargaadmin += '<th scope="col">Correo</th>';
-                recargaadmin += '<th scope="col">Estado</th>';
+                recargaadmin += '<th class="th-estado-admin" scope="col">Estado</th>';
                 recargaadmin += '</tr>';
                 recargaadmin += '</thead>';
                 recargaadmin += '<tbody>';

@@ -39,13 +39,13 @@
         </div>
     </div>
     <div class="alerts">
-        <div class="filter">
+        <div class="filter">      
             <div class="buscador">
                 <input class="input-buscar" type="search" id="filter" name="filter" onkeyup="leernotificacionesJS()" placeholder="Buscar por nombre">
-            </div>
-            <div class="buscador-icon">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+                <div class="icon-buscar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>        
         </div>
         <div id="zonaalerts">
             {{-- Alertas ajax --}}
