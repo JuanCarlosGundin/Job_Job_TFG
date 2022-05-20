@@ -17,16 +17,39 @@ window.onload = function() {
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-
-        var modal = document.getElementById("myModal");
-
-        if (event.target == modal) {
-
-            modal.style.display = "none";
-
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
+        /*CODIGO MODAL USUARIO*/
 
+    // Get the modal
+    modal = document.getElementById("myModalcorreo");
+
+    // Get the button that opens the modal
+    btn = document.getElementById("myBtncorreo");
+
+    // Get the <span> element that closes the modal
+    span = document.getElementsByClassName("closecorreo")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
     }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        /*FIN CODIGO MODAL USUARIO*/
 
 }
 
@@ -96,13 +119,13 @@ function leerJS() {
 
                 var admin = respuesta.admin;
                 var recargaadmin = '';
-
+                recargaadmin += '<br>';
+                recargaadmin += '<br>';
                 recargaadmin += '<h2>Administradores</h2>';
                 recargaadmin += '<table class="table table-striped table-hover">';
                 recargaadmin += '<thead>';
-                recargaadmin += '<tr>';
                 recargaadmin += '<th scope="col">Correo</th>';
-                recargaadmin += '<th scope="col">Estado</th>';
+                recargaadmin += '<th class="th-estado-admin" scope="col">Estado</th>';
                 recargaadmin += '</tr>';
                 recargaadmin += '</thead>';
                 recargaadmin += '<tbody>';
@@ -822,5 +845,121 @@ function eliminarJS(id, id_perfil) {
     }
 
     ajax.send(formData)
-
 }
+// ------------------------------------------CORREOS ADMIN---------------------------------------------------------
+
+function enviarcorreoadminJS() {
+    let destinatario = document.getElementById('destinatario').value;
+    let asunto = document.getElementById('asunto').value;
+    let mensaje = document.getElementById('mensaje').value;
+
+    if (destinatario == '' || asunto == '' || mensaje == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(destinatario)) { //mirar lo de poner solo por gmail
+        document.getElementById("email").focus();
+        document.getElementById("email").style.borderColor = "red";
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (destinatario.length > 100) {
+        document.getElementById("mail").focus();
+        document.getElementById("mail").style.borderColor = "red";
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 carácteres",
+            icon: "error",
+        });
+        return false;
+    }
+    document.getElementById("myBtncorreo").disabled = true;
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', "POST");
+    formData.append('destinatario', destinatario);
+    formData.append('asunto', asunto);
+    formData.append('mensaje', mensaje);
+    var ajax = objetoAjax();
+    ajax.open("POST", "enviarcorreoadmin", true);
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText)
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta == "OK") {
+                swal.fire({
+                    title: "Mensaje Enviado",
+                    text: "El destinatario recibirá tu mensaje en breves.",
+                    showConfirmButton: false,
+                    icon: "success",
+                    allowOutsideClick: false,
+                });
+                setTimeout(() => { window.location.href = 'cPanelAdmin'; }, 5000);
+            } else {
+                swal.fire({
+                    title: "Oops",
+                    text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
+                    icon: "error",
+                });
+                document.getElementById("myBtncorreo").disabled = false;
+            }
+        }
+    }
+    ajax.send(formData)
+}
+
+function enviarcorreoadmintrabajadoresJS() {
+    let asuntotrabajador = document.getElementById('asuntotrabajador').value;
+    let mensajetrabajador = document.getElementById('mensajetrabajador').value;
+
+    if (asuntotrabajador == '' || mensajetrabajador == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
+    document.getElementById("myBtncorreo").disabled = true;
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', "POST");
+    formData.append('asuntotrabajador', asuntotrabajador);
+    formData.append('mensajetrabajador', mensajetrabajador);
+    var ajax = objetoAjax();
+    ajax.open("POST", "enviarcorreoadmintrabajadores", true);
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText)
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta == "OK") {
+                swal.fire({
+                    title: "Mensaje Enviado",
+                    text: "Los destinatarios recibirán tu mensaje en breves.",
+                    showConfirmButton: false,
+                    icon: "success",
+                    allowOutsideClick: false,
+                });
+                setTimeout(() => { window.location.href = 'cPanelAdmin'; }, 5000);
+            } else {
+                swal.fire({
+                    title: "Oops",
+                    text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
+                    icon: "error",
+                });
+                document.getElementById("myBtncorreo").disabled = false;
+            }
+        }
+    }
+    ajax.send(formData)
+}
+
+// ----------------------------------------FIN CORREOS ADMIN-------------------------------------------------------

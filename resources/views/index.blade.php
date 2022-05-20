@@ -18,7 +18,8 @@
             </div>
             <div class="column-2">
             <li><a href="">FAQ</a></li>
-            <li><a href="">¡Contactanos!</a></li>
+            <li><button class="btn-index" onClick="window.location.href='paginacontacto';">contactanos</button></li>
+
             {{-- <li><a href="" class="fa-solid fa-right-to-bracket"></a></li> --}}
             <li><button class="btn-register" onClick="window.location.href='inicio';">Iniciar sesión</button></li>
             </div>

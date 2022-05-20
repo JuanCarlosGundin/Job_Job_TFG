@@ -2,29 +2,43 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\curriculumController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
 
+Route::get('/chat', function () {
+    return view('chat');
+});
+
 Route::get('registrar', function () {
     return view('registrar');
 });
 
-Route::get('/chat', function () {
-    return view('chat');
+Route::get('paginacontacto', function () {
+    return view('paginacontacto');
 });
-Route::get('verificar', function () {
-    return view('verificacion');
+
+
+/*PRUEBA*/
+Route::get('reportesprueba', function () {
+    return view('reportesprueba');
 });
+/*FIN PRUEBA*/
 Route::get('login', function () {
     return view('login');
 });
 Route::get('paginaempresa', function () {
     return view('paginaempresa');
 });
-Route::get('paginatrabajador', function () {
-    return view('paginatrabajador');
+
+Route::get('registrar3', function () {
+    return view('registrar3');
+});
+
+Route::get('registrar4', function () {
+    return view('registrar4');
 });
 
 /* ------------InicioController------------ */
@@ -87,6 +101,16 @@ Route::post('editarperfil',[PerfilController::class,'editarperfil']);
 
 /* ------------PerfilController------------ */
 
+
+
+
+
+
+
+
+
+
+
 ///////////////////////MAIN/////////////////////
 
 //LEER EL CONTENIDO
@@ -141,20 +165,28 @@ Route::post('leerperfiluser/{id}/{id_perfil}',[UsuarioController::class, 'leerpe
 
 //EDITAR PERFIL//
 
-//Vista perfil
-Route::get('perfil',[UsuarioController::class, 'vistaPerfil']);
-
-// mostrarperfil.
-Route::post('leerperfil',[UsuarioController::class, 'leerperfiledit']);
-
-// editarperfil
-Route::put('editarperfil/{id}/{id_perfil}',[UsuarioController::class, 'editarperfil']);
-
-//FIN EDITAR PERFIL//
-
-//ZONA CHAT//
-
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
 
-//FINAL ZONA GIGACHAT//
+//ZONA CONTACTO
+//mandar correo a admin por la pagina de contacto
+Route::post('mandarcontacto', [MailController::class, 'sendingcontacto']);
+//ZONA CONTACTO
+//mandar correo a usuario individual desde la página de admin
+Route::post('enviarcorreoadmin', [MailController::class, 'enviarcorreoadmin']);
+//mandar correo a usuario individual desde la página de admin
+Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorreoadmintrabajadores']);
+
+
+//ZONA REPORTES
+//el usuario puede hacer reportes de otros usuarios.
+Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
+//////////////////////////////////////CURRICULUM/////////////////////////////////////////
+Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
+Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);
+
+
+Route::get('/curriculum/plantilla1', [curriculumController::class, 'plantilla1']);
+Route::get('/curriculum/plantilla2', [curriculumController::class, 'plantilla2']);
+Route::get('/curriculum/plantilla3', [curriculumController::class, 'plantilla3']);
+Route::get('/curriculum/plantilla4', [curriculumController::class, 'plantilla4']);
