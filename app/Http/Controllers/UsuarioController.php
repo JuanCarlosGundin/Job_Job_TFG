@@ -441,8 +441,7 @@ public function logout(Request $req){
         try {
             DB::beginTransaction();
             /*insertar datos en la base de datos*/
-            $tetas=DB::table("tbl_usuarios")->join('tbl_reportes', 'tbl_usuarios.id', '=', 'tbl_reportes.id_reportador')->where('id','=',$datos['id_reportador'])->where('id','=',$datos['id_reportado']); 
-            return $tetas;
+            //cambiar la linea de abajo
             DB::table('tbl_reportes')->insert(["incidencia"=>$datos['incidencia'],"desarrollar_incidencia"=>$datos['desarrollar_incidencia'],"estado_incidencia"=>'abierta',"id_reportado"=>$datos['id_reportado'],"id_reportador"=>$datos['id_reportador']]);
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));

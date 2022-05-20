@@ -1,3 +1,11 @@
+@if (!Session::get('id_user'))
+
+    <?php
+        //Si la sesion no esta definida te redirige al login.
+        return redirect()->to('/')->send();
+    ?>
+
+@endif
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -176,8 +184,9 @@
                     <br><br>
                     <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
                     <br><br>
+                    <input type="hidden" id="id_reportador" name="id_reportador" value={{Session::get('id_user')}}>
                     <input type="hidden" name="id_reportado" id="id_reportado" value="4">
-                    <input type="hidden" name="id_reportador" id="id_reportador" value="6">
+                    {{-- <input type="hidden" name="id_reportador" id="id_reportador" value="6"> --}}
                     <input type="submit" value="Enviar reporte"><br>
                 </form>
             
