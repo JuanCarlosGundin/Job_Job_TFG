@@ -252,6 +252,8 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
 
+                document.getElementById("foto_perfil").addEventListener("change", editar_foto_perfil)
+
                 var boton_editar_user = document.getElementById("boton_editar_user");
                 boton_editar_user.addEventListener("click", leer_editar_user);
 
@@ -295,6 +297,33 @@ function edad(fecha_string) {
         edad--;
     }
     return edad;
+}
+
+function editar_foto_perfil() {
+    var foto_perfil = document.getElementById("foto_perfil").files[0];
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('foto_perfil', foto_perfil);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            mostrarperfilJS();
+
+        }
+    }
+
+    ajax.send(formData)
 }
 
 function leer_editar_user() {

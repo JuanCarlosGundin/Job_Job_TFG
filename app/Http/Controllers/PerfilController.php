@@ -65,7 +65,6 @@ class PerfilController extends Controller{
 
             if ($req->has(['contra_old', 'contra', 'contra2'])){
 
-
                 $comprobarhash=hash('sha256',$req['contra_old']);
                 $comprobarcontra = DB::table("tbl_usuarios")->where('id','=',$id)->first();
                 if ($comprobarcontra->contra==$comprobarhash){
@@ -88,6 +87,18 @@ class PerfilController extends Controller{
             if ($req->has('apellido')) {
 
                 $data[]= "apellido='".$req['apellido']."'";
+            }
+            //editar_foto_perfil
+
+            if ($req->has('foto_perfil')) {
+
+                $foto = DB::table('tbl_trabajador')->select('foto_perfil')->where('id_usuario','=',$id)->first();
+
+                if ($foto->foto_perfil != null) {
+                    Storage::delete('public/'.$foto->foto_perfil);
+                }
+                $foto_perfil = $req->file('foto_perfil')->store('uploads','public');
+                $data[]= "foto_perfil='".$foto_perfil."'";
             }
             //editar_sobre_mi
             if ($req->has('campo_user')) {
