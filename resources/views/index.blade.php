@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/6d5e6cb8fd.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="storage/uploads/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>JobJob</title>
 
@@ -17,8 +18,8 @@
             <li><img class="logo" src="storage/uploads/jobjob_logo_black.png"></li>
             </div>
             <div class="column-2">
-            <li><a href="">FAQ</a></li>
-            <li><button class="btn-index" onClick="window.location.href='paginacontacto';">contactanos</button></li>
+            <li><button class="btn-navbar">FAQ</button></li>
+            <li><button class="btn-navbar" onClick="window.location.href='paginacontacto';">Contáctanos</button></li>
 
             {{-- <li><a href="" class="fa-solid fa-right-to-bracket"></a></li> --}}
             <li><button class="btn-register" onClick="window.location.href='inicio';">Iniciar sesión</button></li>
@@ -66,14 +67,15 @@
         </div>
         <div class="footer-2">
         <h2>Más información</h2>
-        <a href="">Home</a>
-        <a href="">FAQ</a>
-        <a href="">Contacto</a>
+        <a href="">Home</a><br><br>
+        <a href="">FAQ</a><br><br>
+        <a href="paginacontacto">Contacto</a>
         </div>
         <div class="footer-3">
         <h2>¿Tienes alguna duda?</h2>
-        <p><i class="fa-solid fa-envelope"></i> jobjobemp@gmail.com</p>
-        <p><i class="fa-solid fa-phone"></i> +34 608 71 28 31</p>
+        <p><i class="fas fa-map-marker-alt"></i> Av. Mare de Déu de Bellvitge, 100, 110, 08907 L'Hospitalet de Llobregat, Barcelona</p><br><br><br><br>
+        <p><i class="fa-solid fa-envelope"></i> jobjobemp@gmail.com</p><br><br>
+        <p><i class="fa-solid fa-phone"></i>933 35 15 43</p>
         </div>
     </div>
 </body>
