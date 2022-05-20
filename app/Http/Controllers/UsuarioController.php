@@ -450,24 +450,54 @@ public function logout(Request $req){
             return response()->json(array('resultado'=> $e->getMessage()));
         }
     }
-
-//     When you need join the same table two or more time you must use a proper alias for the tables
-
-//  $qry = $conn->query("select 
-//               table_order.*
-//             , a.name AS order_name
-//             , b.name AS taker_name 
-//             FROM table_order 
-//             INNER JOIN table_user as a ON a.id_user = table_order.id_user_order 
-//             INNER JOIN table_user as b ON b.id_user = table_order.id_user_taker ");
     //--------------------------------------------------FIN CREAR REPORTE-----------------------------------------------------------//
     //-----------------------------------------------------GESTIONAR REPORTES----------------------------------------------------------//
     
     public function leerreportes(Request $request){
-        $datos=DB::select('select * from tbl_reportes where incidencia like ?',['%'.$request->input('reporte').'%']);
+        $datos=DB::select('select * from tbl_reportes where incidencia like ?',['%'.$request->input('filtro').'%']);
         return response()->json($datos);
     }
 
+    // public function eliminarreporte($id){
+    //     try {
+    //         $id = DB::table('tbl_reportes')->where('id','=',$id)->delete();
+    //         return response()->json(array('resultado'=> 'OK')); 
+    //     } catch (\Throwable $th) {
+    //         return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+    //     } 
+    // }  
+
+    public function estadoreporte($id) {
+
+        $datos=DB::select("SELECT estado_incidencia FROM tbl_reportes
+        WHERE id = ?",[$id]);
+        DB::beginTransaction();
+
+        try{
+
+            if ($datos[0]->estado_incidencia == "abierta"){
+
+                DB::select("UPDATE tbl_reportes SET estado_incidencia = 'cerrada'
+                WHERE id = ?",[$id]);
+
+            }else{
+
+                DB::select("UPDATE tbl_reportes SET estado_incidencia = 'abierta'
+                WHERE id = ?",[$id]);
+
+            }
+
+            DB::commit();
+            return response()->json(array('resultado'=> 'OK'));
+
+        }   catch (\Exception $e) {
+
+            DB::rollback();
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+
+        }
+
+    }
     //--------------------------------------------------FIN GESTIONAR REPORTES----------------------------------------------------------//
     
 

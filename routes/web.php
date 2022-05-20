@@ -207,8 +207,15 @@ Route::get('usuariosmostrados',[GraficaController::class,'usuariosmostrados']);
 //el usuario puede hacer reportes de otros usuarios.
 Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
 
-// ruta para leer
-Route::post('leerreportes',[RepasoajaxController::class, 'leerreportes']);
+// ruta para leer reportes
+Route::post('leerreportes',[Usuariocontroller::class, 'leerreportes']);
+
+// ruta para eliminar reportes
+// Route::delete('eliminarreporte/{id}', [Usuariocontroller::class, 'eliminarreporte']);
+
+//cierra o abre la incidencia en zona admin
+Route::put('estadoreporte/{id}',[UsuarioController::class,'estadoreporte']);
+
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
 Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
 Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);
