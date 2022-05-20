@@ -252,7 +252,7 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
 
-                document.getElementById("foto_perfil").addEventListener("change", editar_foto_perfil)
+                document.getElementById("foto_perfil").addEventListener("change", editar_foto_perfil);
 
                 var boton_editar_user = document.getElementById("boton_editar_user");
                 boton_editar_user.addEventListener("click", leer_editar_user);
@@ -280,6 +280,109 @@ function mostrarperfilJS() {
 
                 var boton_configuracion = document.getElementById("boton_configuracion");
                 boton_configuracion.addEventListener("click", leer_configuracion);
+
+            } else if (id_perfil == 3) {
+                var empresa = respuesta.resultado;
+                /* Foto */
+                recarga += `<div class="user-fondo">`;
+                recarga += `<div class="container-user-poligon">`;
+                recarga += `<div class="logout">`;
+                recarga += `<button class="logout-btn" onClick="window.location.href='logout';"><i class="fa-solid fa-right-from-bracket"></i></button>`;
+                recarga += `</div>`;
+                recarga += `<div class="user-poligon">`;
+                recarga += `</div>`;
+                recarga += `<div class="div-foto">`;
+                recarga += `<div class="edit-foto">`;
+                recarga += `<label class="input-file">`;
+                recarga += `<i class="fa-solid fa-image"></i>`;
+                recarga += `<input type="file" class="input" id="logo_perfil" name="logo_perfil">`;
+                recarga += `</label>`;
+                recarga += `</div>`;
+                recarga += `<div class="user-ver-foto">`;
+                if (empresa.logo_perfil != null) {
+                    recarga += `<img class="user-profilefoto" src="./storage/${empresa.logo_perfil}">`;
+                } else {
+                    recarga += `<img class="user-profilefoto" src="./storage/img/usuario.png">`;
+                }
+
+                recarga += `</div>`;
+
+                recarga += `</div>`;
+                recarga += `</div>`;
+                recarga += `<div class="user-poligon2">`;
+                recarga += `<div class="user-vista">`;
+                //nombre
+                recarga += `<div class="user-div-name">`;
+                recarga += `<div class="divs-name">`;
+                recarga += `<span class="p-name">${empresa.nom_emp}</span>`;
+                recarga += `</div>`;
+                recarga += `<div class="user-edit-div">`;
+                recarga += '<button class="user-edit-btn" id="boton_editar_user"><p class="edit-btn-p">EDITAR</p></button>';
+                recarga += `</div>`;
+                recarga += `</button>`;
+                recarga += `</div>`;
+
+                recarga += `<hr class="linea-divisoria">`;
+
+                recarga += `<div class="user-categories">`;
+                //sobre empresa
+                recarga += `<div class="user-div-category">`;
+                recarga += `<button class="user-btn-category" id="boton_empresa">`;
+                recarga += `<div class="user-category-icon">`;
+                recarga += `<i class="fa-solid fa-address-card"></i>`;
+                recarga += `</div>`;
+                recarga += `<div class="user-category-text">`;
+                recarga += `<p class="p-category">Sobre empresa</p>`;
+                recarga += `</div>`;
+                recarga += `</button>`;
+                recarga += `</div>`;
+                //buscamos
+                recarga += `<div class="user-div-category">`;
+                recarga += `<button class="user-btn-category" id="boton_buscamos">`;
+                recarga += `<div class="user-category-icon">`;
+                recarga += `<i class="fa-solid fa-language"></i>`;
+                recarga += `</div>`;
+                recarga += `<div class="user-category-text">`;
+                recarga += `<p class="p-category">Buscamos</p>`;
+                recarga += `</div>`;
+                recarga += `</button>`;
+                recarga += `</div>`;
+                //configuracion
+                recarga += `<div class="user-div-category">`;
+                recarga += `<button class="user-btn-category" id="boton_configuracion">`;
+                recarga += `<div class="user-category-icon">`;
+                recarga += `<i class="fa-solid fa-gear"></i>`;
+                recarga += `</div>`;
+                recarga += `<div class="user-category-text">`;
+                recarga += `<p class="p-category">Configuración</p>`;
+                recarga += `</div>`;
+                recarga += `</button>`;
+                recarga += `</div>`;
+
+                recarga += `</div>`;
+
+                recarga += `</div>`;
+                recarga += `</div>`;
+                // recarga += '<div class="wave-div">';
+                // recarga += '<img class="wave" src="./storage/uploads/wave.svg">';
+                // recarga += '</div>';
+                recarga += `</div>`;
+                recarga += `</div>`;
+                contenidoajax.innerHTML = recarga;
+
+                document.getElementById("logo_perfil").addEventListener("change", editar_logo_perfil);
+
+                var boton_editar_user = document.getElementById("boton_editar_user");
+                boton_editar_user.addEventListener("click", leer_editar_user_empresa);
+
+                var boton_empresa = document.getElementById("boton_empresa");
+                boton_empresa.addEventListener("click", leer_sobre_empresa);
+
+                var boton_buscamos = document.getElementById("boton_buscamos");
+                boton_buscamos.addEventListener("click", leer_buscamos_empresa);
+
+                var boton_configuracion = document.getElementById("boton_configuracion");
+                boton_configuracion.addEventListener("click", leer_configuracion_empresa);
             }
 
         }
@@ -299,6 +402,8 @@ function edad(fecha_string) {
     return edad;
 }
 
+
+/* --------------TRABAJADOR------------ */
 function editar_foto_perfil() {
     var foto_perfil = document.getElementById("foto_perfil").files[0];
 
@@ -2198,6 +2303,28 @@ function editar_configuracion(evt) {
     }
 
     ajax.send(formData)
+
+}
+
+/* --------------EMPRESA------------ */
+
+function editar_logo_perfil() {
+
+}
+
+function leer_editar_user_empresa() {
+
+}
+
+function leer_sobre_empresa() {
+
+}
+
+function leer_buscamos_empresa() {
+
+}
+
+function leer_configuracion_empresa() {
 
 }
 
