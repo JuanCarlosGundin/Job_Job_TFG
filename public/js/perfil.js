@@ -1713,13 +1713,6 @@ function leer_disponibilidad() {
 
                 recarga += `<p class="">${trabajador.disponibilidad}</p>`;
             }
-            if (!trabajador.mobilidad) {
-
-                recarga += `<p class="">sin informar</p>`;
-            } else {
-
-                recarga += `<p class="">${trabajador.mobilidad}</p>`;
-            }
             if (!trabajador.carnet_conducir) {
 
                 recarga += `<p class="">sin informar</p>`;
@@ -1747,7 +1740,7 @@ function leer_disponibilidad() {
 
 }
 
-function form_editar_sobre_mi() {
+function form_disponibilidad() {
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
 
@@ -1768,46 +1761,72 @@ function form_editar_sobre_mi() {
             var recarga = ``;
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
-            recarga += `<form id=form_editar_sobre_mi>`;
+            recarga += `<form id=form_disponibilidad>`;
 
             if (!trabajador.disponibilidad) {
 
-                recarga += `<input type="text" class="" id="campo_user" name="campo_user" placeholder="sin informar">`;
+                recarga += `<select class="" name="disponibilidad" id="disponibilidad">`;
+                recarga += `<option value="" selected>- selecciona -</option>`;
+                recarga += `<option value="jornada completa">jornada completa (8 horas)</option>`;
+                recarga += `<option value="jornada parcial">jornada parcial (4 horas)</option>`;
+                recarga += `<option value="turno mañana">turno mañana</option>`;
+                recarga += `<option value="turno noche">turno noche</option>`;
+                recarga += `<option value="turno partida">turno partida</option>`;
+                recarga += `<option value="fines de semana">fines de semana</option>`;
+                recarga += `</select>`;
             } else {
 
-                recarga += `<input type="text" class="" id="campo_user" name="campo_user" value="${trabajador.campo_user}">`;
-            }
-
-            if (!trabajador.mobilidad) {
-
-                recarga += `<input type="text" class="" id="about_user" name="about_user" placeholder="sin informar">`;
-            } else {
-
-                recarga += `<input type="text" class="" id="about_user" name="about_user" value="${trabajador.about_user}">`;
+                recarga += `<select class="" name="disponibilidad" id="disponibilidad">`;
+                recarga += `<option value="${trabajador.disponibilidad}" selected>${trabajador.disponibilidad}</option>`;
+                recarga += `<option value="jornada completa">jornada completa (8 horas)</option>`;
+                recarga += `<option value="jornada parcial">jornada parcial (4 horas)</option>`;
+                recarga += `<option value="turno mañana">turno mañana</option>`;
+                recarga += `<option value="turno noche">turno noche</option>`;
+                recarga += `<option value="turno partida">turno partida</option>`;
+                recarga += `<option value="fines de semana">fines de semana</option>`;
+                recarga += `</select>`;
             }
 
             if (!trabajador.carnet_conducir) {
 
-                recarga += `<input type="text" class="" id="loc_trabajador" name="loc_trabajador" placeholder="sin informar">`;
+                recarga += `<select class="" name="carnet_conducir" id="carnet_conducir">`;
+                recarga += `<option value="" selected>- selecciona -</option>`;
+                recarga += `<option value="si">si</option>`;
+                recarga += `<option value="no">no</option>`;
+                recarga += `</select>`;
             } else {
 
-                recarga += `<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="${trabajador.loc_trabajador}">`;
+                recarga += `<select class="" name="carnet_conducir" id="carnet_conducir">`;
+                recarga += `<option value="${trabajador.carnet_conducir}" selected>${trabajador.carnet_conducir}</option>`;
+                recarga += `<option value="si">si</option>`;
+                recarga += `<option value="no">no</option>`;
+                recarga += `</select>`;
             }
 
             if (!trabajador.vehiculo_propio) {
 
-                recarga += `<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="sin informar">`;
+                recarga += `<select class="" name="vehiculo_propio" id="vehiculo_propio">`;
+                recarga += `<option value="" selected>- selecciona -</option>`;
+                recarga += `<option value="si">si</option>`;
+                recarga += `<option value="no">no</option>`;
+                recarga += `</select>`;
+
             } else {
 
-                recarga += `<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="${trabajador.lenguaje_preferido}">`;
+                recarga += `<select class="" name="vehiculo_propio" id="vehiculo_propio">`;
+                recarga += `<option value="${trabajador.vehiculo_propio}" selected>${trabajador.vehiculo_propio}</option>`;
+                recarga += `<option value="si">si</option>`;
+                recarga += `<option value="no">no</option>`;
+                recarga += `</select>`;
             }
+
             recarga += `<button>Realizar cambios</button>`;
             recarga += `</form>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
-            document.getElementById("volver").addEventListener("click", leer_sobre_mi);
-            document.getElementById("form_editar_sobre_mi").addEventListener("submit", editar_sobre_mi);
+            document.getElementById("volver").addEventListener("click", leer_disponibilidad);
+            document.getElementById("form_disponibilidad").addEventListener("submit", editar_disponibilidad);
 
         }
 
@@ -1815,6 +1834,48 @@ function form_editar_sobre_mi() {
 
     ajax.send(formData)
 
+}
+
+function editar_disponibilidad(evt) {
+    evt.preventDefault();
+
+    var disponibilidad = document.getElementById("disponibilidad").value;
+    var carnet_conducir = document.getElementById("carnet_conducir").value;
+    var vehiculo_propio = document.getElementById("vehiculo_propio").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (disponibilidad) {
+
+        formData.append('disponibilidad', disponibilidad);
+    }
+    if (carnet_conducir) {
+
+        formData.append('carnet_conducir', carnet_conducir);
+    }
+    if (vehiculo_propio) {
+
+        formData.append('vehiculo_propio', vehiculo_propio);
+    }
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
 }
 
 function leer_configuracion() {

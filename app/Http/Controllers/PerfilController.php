@@ -47,7 +47,7 @@ class PerfilController extends Controller{
 
         try {
             $data=array();
-            //form_editar_sobre_mi
+            //editar_sobre_mi
             if ($req->has('campo_user')) {
 
                 $data[]= "campo_user='".$req['campo_user']."'";
@@ -209,6 +209,20 @@ class PerfilController extends Controller{
 
                 //eliminar una sola habilidad
                 $data[]= "curriculum=JSON_REMOVE(curriculum, '$.habilidades[".$req['numero_habilidad']."]')";
+            }
+
+            //editar_disponibilidad
+            if ($req->has('disponibilidad')) {
+
+                $data[]= "disponibilidad='".$req['disponibilidad']."'";
+            }
+            if ($req->has('carnet_conducir')) {
+
+                $data[]= "carnet_conducir='".$req['carnet_conducir']."'";
+            }
+            if ($req->has('vehiculo_propio')) {
+                
+                $data[]= "vehiculo_propio='".$req['vehiculo_propio']."'";
             }
 
             DB::beginTransaction();
