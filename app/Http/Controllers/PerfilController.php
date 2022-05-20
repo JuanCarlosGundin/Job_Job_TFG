@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perfil;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -46,6 +47,17 @@ class PerfilController extends Controller{
         $id=session()->get('id_user');
 
         try {
+
+            //obtener dia y hora
+            $date = Carbon::now('+02:00');
+
+            //formato correcto
+            $updated_at = $date->toDateTimeString();
+
+            $datauser=array();
+
+            $datauser[]= "updated_at='".$updated_at."'";
+
             $data=array();
             //editar_sobre_mi
             if ($req->has('campo_user')) {
@@ -232,6 +244,7 @@ class PerfilController extends Controller{
             }
 
             DB::beginTransaction();
+            DB::select("UPDATE tbl_usuarios SET " . implode(', ', $datauser) . " WHERE id=?",[$id]);
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));

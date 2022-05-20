@@ -1899,6 +1899,7 @@ function leer_configuracion() {
             var recarga = ``;
             recarga += `<button class="" id="volver">Volver</button>`;
             recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<button id="desactivar">Desactivar</button>`;
             if (trabajador.mostrado == "1") {
                 recarga += `<p class="">SI</p>`;
             } else {
@@ -1910,6 +1911,9 @@ function leer_configuracion() {
 
             var editar = document.getElementById("editar");
             editar.addEventListener("click", form_configuracion);
+            var desactivar = document.getElementById("desactivar");
+            desactivar.id = trabajador.id;
+            desactivar.addEventListener("click", desactivar_cuenta)
         }
     }
 
@@ -1993,6 +1997,39 @@ function editar_configuracion(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function desactivar_cuenta(evt) {
+    var id = evt.currentTarget.id;
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'PUT');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "estadouser/" + id, true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+
+            if (respuesta.resultado == "OK") {
+
+                window.location.href = 'logout';
+
+            }
 
         }
 

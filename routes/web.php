@@ -136,7 +136,7 @@ Route::post('perfiles',[UsuarioController::class,'perfiles']);
 //crearJS
 Route::post('crearuser',[UsuarioController::class,'crearuser']);
 
-//estadouserJS
+//estadouserJS /tambien sirve para desactivar la cuenta en el editar
 Route::put('estadouser/{id}',[UsuarioController::class,'estadouser']);
 
 //mostrarmodaluserJS
