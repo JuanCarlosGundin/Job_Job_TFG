@@ -225,6 +225,12 @@ class PerfilController extends Controller{
                 $data[]= "vehiculo_propio='".$req['vehiculo_propio']."'";
             }
 
+            //editar_configuracion
+            if ($req->has('mostrado')) {
+
+                $data[]= "mostrado='".$req['mostrado']."'";
+            }
+
             DB::beginTransaction();
             DB::select("UPDATE tbl_trabajador SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
             DB::commit();

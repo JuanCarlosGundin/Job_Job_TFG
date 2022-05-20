@@ -1908,9 +1908,94 @@ function leer_configuracion() {
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
 
-            /* var editar = document.getElementById("editar");
-            editar.addEventListener("click", form_editar_sobre_mi); */
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", form_configuracion);
         }
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_configuracion() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_configuracion>`;
+            if (trabajador.mostrado == 1) {
+                recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '" checked>';
+
+            } else {
+                recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '">';
+
+            }
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_configuracion);
+            document.getElementById("form_configuracion").addEventListener("submit", editar_configuracion);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function editar_configuracion(evt) {
+
+    evt.preventDefault();
+
+    var mostrado = document.getElementById("mostrado").checked;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (mostrado == true) {
+
+        formData.append('mostrado', '1');
+
+    } else {
+
+        formData.append('mostrado', '0');
+
+    }
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
     }
 
     ajax.send(formData)
