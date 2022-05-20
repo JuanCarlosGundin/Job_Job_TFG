@@ -183,7 +183,10 @@ Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorr
 Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
 Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
-Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);
+Route::get('/curriculum/pdf1', [curriculumController::class, 'pdf1']);
+Route::get('/curriculum/pdf2', [curriculumController::class, 'pdf2']);
+Route::get('/curriculum/pdf3', [curriculumController::class, 'pdf3']);
+Route::get('/curriculum/pdf4', [curriculumController::class, 'pdf4']);
 
 
 Route::get('/curriculum/plantilla1', [curriculumController::class, 'plantilla1']);
