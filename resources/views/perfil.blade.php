@@ -36,8 +36,21 @@
         <div class="profile-navbar active-right">
             <button id="navbar-profile-icon" class="icon active-icon"><i class="fa-solid fa-user"></i></button>
         </div>
+    </div>    
+    <div id="contenidoajax">
     </div>
-    {{-- <div class="vista-profile">
+
+    
+    {{-- Eliminar cuenta modalbox --}}
+    <div id="modal-eliminar" class="modal-eliminar-user">
+        <div class="modal-content" id="modal_content">
+        </div>
+    </div>
+    <script src="js/perfil.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
+{{-- <div class="vista-profile">
         <div class="categoria-edit">
             <div class="return">
                 <button class="return-btn" onclick="mostrarperfilJS(); return false;">
@@ -86,15 +99,3 @@
             </div>
         </div>
     </div> --}}
-    
-    <div id="contenidoajax">
-    </div>
-    {{-- Eliminar cuenta modalbox --}}
-    <div id="modal-eliminar" class="modal-eliminar-user">
-        <div class="modal-content" id="modal_content">
-        </div>
-    </div>
-    <script src="js/perfil.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
-</html>

@@ -24,7 +24,7 @@ body {
 }
 
 .user-fondo {
-  height: 90vh;
+  height: 100vh;
 }
 
 .user-fondo .container-user-poligon {
@@ -54,7 +54,7 @@ body {
   -webkit-clip-path: polygon(0 30%, 0% 100%, 100% 100%);
           clip-path: polygon(0 30%, 0% 100%, 100% 100%);
   background-color: #ffffff;
-  height: 40vh;
+  height: 20vh;
 }
 
 .user-fondo .container-user-poligon .div-foto {
@@ -102,7 +102,7 @@ body {
 
 .user-fondo .user-poligon2 {
   background-color: #ffffff;
-  height: 50vh;
+  height: 80vh;
 }
 
 .user-fondo .user-poligon2 .user-vista {
@@ -115,7 +115,7 @@ body {
 }
 
 .user-fondo .user-poligon2 .user-vista .user-div-name {
-  margin-bottom: 2.5vh;
+  margin-bottom: 20px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -126,29 +126,32 @@ body {
 
 .user-fondo .user-poligon2 .user-vista .user-div-name .divs-name {
   float: left;
-  width: 90vw;
+  width: 70vw;
 }
 
 .user-fondo .user-poligon2 .user-vista .user-div-name .divs-name .p-name {
   width: 35vw;
-  font-size: 4vh;
+  height: 5vh;
+  font-size: 2.5vh;
   font-weight: bolder;
 }
 
 .user-fondo .user-poligon2 .user-vista .user-div-name .divs-name .p-surname {
   width: 35vw;
-  font-size: 4vh;
+  height: 5vh;
+  font-size: 2.5vh;
   font-weight: bolder;
 }
 
 .user-fondo .user-poligon2 .user-vista .user-div-name .divs-name .p-age {
   width: 20vw;
-  font-size: 4vh;
+  height: 5vh;
+  font-size: 2.5vh;
   font-weight: bolder;
 }
 
 .user-fondo .user-poligon2 .user-vista .user-div-name .user-edit-div {
-  width: 10vw;
+  width: 35vw;
   float: right;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -156,7 +159,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 5vh;
 }
 
 .user-fondo .user-poligon2 .user-vista .user-div-name .user-edit-div .user-edit-btn {
@@ -174,7 +176,7 @@ body {
 .user-fondo .user-poligon2 .user-vista .user-div-name .user-edit-div .user-edit-btn .edit-btn-p {
   font-weight: bolder;
   color: #000000;
-  font-size: 2vh;
+  font-size: 1.5vh;
   margin-top: 0;
   margin-bottom: 0;
   position: relative;
@@ -183,18 +185,18 @@ body {
 .user-fondo .user-poligon2 .user-vista .user-categories {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 23.75vw 23.75vw 23.75vw 23.75vw;
-      grid-template-columns: 23.75vw 23.75vw 23.75vw 23.75vw;
+  -ms-grid-columns: 44vw 44vw;
+      grid-template-columns: 44vw 44vw;
   gap: 1em;
-  margin-top: 2.5vh;
+  margin-top: 20px;
 }
 
 .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category {
   border-width: 1px;
   border-style: solid;
   border-color: #C6C6C6;
-  border-radius: 10px;
-  height: 15vh;
+  border-radius: 5px;
+  height: 10vh;
   float: left;
 }
 
@@ -231,7 +233,7 @@ body {
 }
 
 .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category .user-btn-category {
-  border-radius: 10px;
+  border-radius: 2vw;
   border-width: 0px;
   width: 100%;
   height: 100%;
@@ -240,7 +242,7 @@ body {
 
 .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category .user-btn-category .user-category-icon {
   width: 100%;
-  height: 70%;
+  height: 60%;
   font-size: large;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -267,220 +269,6 @@ body {
 
 .user-fondo .wave-div .wave {
   width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-  .user-fondo {
-    height: 90vh;
-  }
-  .user-fondo .container-user-poligon {
-    position: relative;
-  }
-  .user-fondo .container-user-poligon .logout {
-    float: right;
-    padding: 1.5vh;
-  }
-  .user-fondo .container-user-poligon .logout .logout-btn {
-    height: 5vh;
-    width: 5vh;
-    padding: 0;
-    border-width: 0px;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    border-radius: 60px;
-    color: white;
-    background-color: #042944;
-    font-size: 2vh;
-  }
-  .user-fondo .container-user-poligon .user-poligon {
-    -webkit-clip-path: polygon(0 30%, 0% 100%, 100% 100%);
-            clip-path: polygon(0 30%, 0% 100%, 100% 100%);
-    background-color: #ffffff;
-    height: 20vh;
-  }
-  .user-fondo .container-user-poligon .div-foto {
-    padding: 2vh;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    position: absolute;
-    top: 0;
-  }
-  .user-fondo .container-user-poligon .div-foto .edit-foto .input[type="file"] {
-    display: none;
-  }
-  .user-fondo .container-user-poligon .div-foto .edit-foto .input-file {
-    border-width: 0%;
-    display: inline-block;
-    padding: 1.4vh;
-    background-color: #0076CA;
-    position: absolute;
-    bottom: 13%;
-    right: 13%;
-    color: #ffffff;
-    border-radius: 20vh;
-    height: 40px;
-    width: 40px;
-  }
-  .user-fondo .container-user-poligon .div-foto .user-ver-foto {
-    width: 100%;
-  }
-  .user-fondo .container-user-poligon .div-foto .user-ver-foto .user-profilefoto {
-    border-radius: 50vh;
-    height: 17vh;
-    width: 17vh;
-  }
-  .user-fondo .user-poligon2 {
-    background-color: #ffffff;
-    height: 70vh;
-  }
-  .user-fondo .user-poligon2 .user-vista {
-    width: 100vw;
-    padding: 2vh;
-  }
-  .user-fondo .user-poligon2 .user-vista .linea-divisoria {
-    margin: 0;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-div-name {
-    margin-bottom: 2.5vh;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-div-name .divs-name {
-    float: left;
-    width: 70vw;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-div-name .divs-name .p-name {
-    width: 35vw;
-    height: 5vh;
-    font-size: 2.5vh;
-    font-weight: bolder;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-div-name .divs-name .p-surname {
-    width: 35vw;
-    height: 5vh;
-    font-size: 2.5vh;
-    font-weight: bolder;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-div-name .divs-name .p-age {
-    width: 20vw;
-    height: 5vh;
-    font-size: 2.5vh;
-    font-weight: bolder;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-div-name .user-edit-div {
-    width: 35vw;
-    float: right;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-div-name .user-edit-div .user-edit-btn {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #C6C6C6;
-    width: 100%;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    border-radius: 1vw;
-    background-color: #ffffff;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-div-name .user-edit-div .user-edit-btn .edit-btn-p {
-    font-weight: bolder;
-    color: #000000;
-    font-size: 1.5vh;
-    margin-top: 0;
-    margin-bottom: 0;
-    position: relative;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 44vw 44vw;
-        grid-template-columns: 44vw 44vw;
-    gap: 1em;
-    margin-top: 2.5vh;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #C6C6C6;
-    border-radius: 2vw;
-    height: 10vh;
-    float: left;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category:nth-child(1) {
-    background-color: #E5E5E5;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category:nth-child(2) {
-    background-color: #E5E5E5;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category:nth-child(3) {
-    background-color: #e6e6e6;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category:nth-child(4) {
-    background-color: #e6e6e6;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category:nth-child(5) {
-    background-color: #E2E2E2;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category:nth-child(6) {
-    background-color: #E2E2E2;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category:nth-child(7) {
-    background-color: #DBDBDB;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category:nth-child(8) {
-    background-color: #DBDBDB;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category .user-btn-category {
-    border-radius: 2vw;
-    border-width: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category .user-btn-category .user-category-icon {
-    width: 100%;
-    height: 60%;
-    font-size: large;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category .user-btn-category .user-category-text {
-    width: 100%;
-  }
-  .user-fondo .user-poligon2 .user-vista .user-categories .user-div-category .user-btn-category .user-category-text .p-category {
-    width: 100%;
-    font-size: large;
-    font-weight: bolder;
-    margin: 0;
-  }
-  .user-fondo .wave-div {
-    width: 100%;
-  }
-  .user-fondo .wave-div .wave {
-    width: 100%;
-  }
 }
 
 .vista-profile {
@@ -575,8 +363,8 @@ body {
 
 .vista-profile .categoria-profile .categoria .categoria-linea {
   width: 100%;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .vista-profile .categoria-profile .categoria .categoria-linea .linea-divisoria {
@@ -622,8 +410,8 @@ body {
 
 .vista-profile .categoria-profile .categoria-linea {
   width: 100%;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .vista-profile .categoria-profile .categoria-linea .linea-divisoria {
