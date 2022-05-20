@@ -144,7 +144,7 @@ function mostrarperfilJS() {
                 recarga += `<span class="p-age">${edad(trabajador.edad)}</span>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-edit-div">`;
-                /* recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><p class="edit-btn-p">EDITAR</p></button>'; */
+                recarga += '<button class="user-edit-btn" id="boton_editar_user"><p class="edit-btn-p">EDITAR</p></button>';
                 recarga += `</div>`;
                 recarga += `</button>`;
                 recarga += `</div>`;
@@ -250,32 +250,35 @@ function mostrarperfilJS() {
                 // recarga += '</div>';
                 recarga += `</div>`;
                 recarga += `</div>`;
+                contenidoajax.innerHTML = recarga;
+
+                var boton_editar_user = document.getElementById("boton_editar_user");
+                boton_editar_user.addEventListener("click", leer_editar_user);
+
+                var boton_sobre_mi = document.getElementById("boton_sobre_mi");
+                boton_sobre_mi.addEventListener("click", leer_sobre_mi);
+
+                var boton_idiomas = document.getElementById("boton_idiomas");
+                boton_idiomas.addEventListener("click", leer_idiomas);
+
+                var boton_estudios = document.getElementById("boton_estudios");
+                boton_estudios.addEventListener("click", leer_estudios);
+
+                var boton_experiencia = document.getElementById("boton_experiencia");
+                boton_experiencia.addEventListener("click", leer_experiencia);
+
+                var boton_curriculum = document.getElementById("boton_curriculum");
+                boton_curriculum.addEventListener("click", leer_curriculum);
+
+                var boton_habilidades = document.getElementById("boton_habilidades");
+                boton_habilidades.addEventListener("click", leer_habilidades);
+
+                var boton_disponibilidad = document.getElementById("boton_disponibilidad");
+                boton_disponibilidad.addEventListener("click", leer_disponibilidad);
+
+                var boton_configuracion = document.getElementById("boton_configuracion");
+                boton_configuracion.addEventListener("click", leer_configuracion);
             }
-            contenidoajax.innerHTML = recarga;
-
-            var boton_sobre_mi = document.getElementById("boton_sobre_mi");
-            boton_sobre_mi.addEventListener("click", leer_sobre_mi);
-
-            var boton_idiomas = document.getElementById("boton_idiomas");
-            boton_idiomas.addEventListener("click", leer_idiomas);
-
-            var boton_estudios = document.getElementById("boton_estudios");
-            boton_estudios.addEventListener("click", leer_estudios);
-
-            var boton_experiencia = document.getElementById("boton_experiencia");
-            boton_experiencia.addEventListener("click", leer_experiencia);
-
-            var boton_curriculum = document.getElementById("boton_curriculum");
-            boton_curriculum.addEventListener("click", leer_curriculum);
-
-            var boton_habilidades = document.getElementById("boton_habilidades");
-            boton_habilidades.addEventListener("click", leer_habilidades);
-
-            var boton_disponibilidad = document.getElementById("boton_disponibilidad");
-            boton_disponibilidad.addEventListener("click", leer_disponibilidad);
-
-            var boton_configuracion = document.getElementById("boton_configuracion");
-            boton_configuracion.addEventListener("click", leer_configuracion);
 
         }
     }
@@ -292,6 +295,169 @@ function edad(fecha_string) {
         edad--;
     }
     return edad;
+}
+
+function leer_editar_user() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button class="" id="volver">Volver</button>`;
+            recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<p class="">${trabajador.mail}</p>`;
+            recarga += `<p class="">contraseña</p>`;
+            recarga += `<p class="">${trabajador.nombre}</p>`;
+            if (!trabajador.apellido) {
+
+                recarga += `<p class="">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="">${trabajador.apellido}</p>`;
+            }
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", form_editar_user);
+        }
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_user() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_editar_user>`;
+
+            recarga += `<input type="email" class="" id="mail" name="mail" value="${trabajador.mail}">`;
+
+            //antigua contraseña
+            recarga += `<input type="password" class="" id="contra_old" name="contra_old">`;
+
+            //nueva contra1
+            recarga += `<input type="password" class="" id="contra1" name="contra1">`;
+
+            //nueva contra2
+            recarga += `<input type="password" class="" id="contra2" name="contra2">`;
+
+            recarga += `<input type="text" class="" id="nombre" name="nombre" value="${trabajador.nombre}">`;
+
+            if (!trabajador.apellido) {
+
+                recarga += `<input type="text" class="" id="apellido" name="apellido" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="text" class="" id="apellido" name="apellido" value="${trabajador.apellido}">`;
+            }
+
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_editar_user);
+            document.getElementById("form_editar_user").addEventListener("submit", modificar_editar_user);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function modificar_editar_user(evt) {
+
+    evt.preventDefault();
+
+    var mail = document.getElementById("mail").value;
+    var contra_old = document.getElementById("contra_old").value;
+    var contra1 = document.getElementById("contra1").value;
+    var contra2 = document.getElementById("contra2").value;
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+
+    if (contra1 !== contra2) {
+
+        swal.fire({
+            title: "Error",
+            text: "No coinciden las contraseñas",
+            icon: "error",
+        });
+        return false;
+
+    }
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('mail', mail);
+    if (contra_old && contra1 && contra2) {
+
+        formData.append('contra_old', contra_old);
+        formData.append('contra', contra1);
+        formData.append('contra2', contra2);
+    }
+    formData.append('nombre', nombre);
+    if (apellido) {
+
+        formData.append('apellido', apellido);
+    }
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
 }
 
 function leer_sobre_mi() {

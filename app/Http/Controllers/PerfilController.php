@@ -58,7 +58,37 @@ class PerfilController extends Controller{
 
             $datauser[]= "updated_at='".$updated_at."'";
 
+            //editar_user
+            if ($req->has('mail')){
+                $datauser[]= "mail='".$req['mail']."'";
+            }
+
+            if ($req->has(['contra_old', 'contra', 'contra2'])){
+
+
+                $comprobarhash=hash('sha256',$req['contra_old']);
+                $comprobarcontra = DB::table("tbl_usuarios")->where('id','=',$id)->first();
+                if ($comprobarcontra->contra==$comprobarhash){
+                    $contra=hash('sha256',$req['contra']);
+                    $datauser[]= "contra='".$contra."'";                    
+                }
+                else{
+                    return response()->json(array('resultado'=> 'contraseña_incorrecta'));
+                }
+
+            }
+
+
             $data=array();
+
+            //editar_user
+            if ($req->has('nombre')){
+                $data[]= "nombre='".$req['nombre']."'";
+            }
+            if ($req->has('apellido')) {
+
+                $data[]= "apellido='".$req['apellido']."'";
+            }
             //editar_sobre_mi
             if ($req->has('campo_user')) {
 
