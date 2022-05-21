@@ -61,6 +61,52 @@ function leerreportesJS() {
 
     ajax.send(formData);
 }
+// function leerreportesJS() {
+
+//     var tabla = document.getElementById("main");
+//     var formData = new FormData();
+//     formData.append('_token', document.getElementById('token').getAttribute("content"));
+//     formData.append('filtro', document.getElementById('filtro').value);
+//     formData.append('abierta', document.getElementById("abierta").checked);
+//     formData.append('cerrada', document.getElementById("cerrada").checked);
+
+//     /* Inicializar un objeto AJAX */
+//     var ajax = objetoAjax();
+
+//     ajax.open("POST", "leerreportes", true);
+//     ajax.onreadystatechange = function() {
+//         if (ajax.readyState == 4 && ajax.status == 200) {
+//             var respuesta = JSON.parse(this.responseText);
+//             if (respuesta.hasOwnProperty('abierta')) {
+//                 var abierta = respuesta.abierta;
+//                 var recargaabierta = '';
+//                 recargaabierta += '<tr><td>ID</td><td>INCIDENCIA</td><td>INCIDENCIA DESARROLLADA</td><td>ESTADO INCIDENCIA</td><td>ID_REPORTADOR</td><td>ID_REPORTADO</td><td>FECHA</td></tr>';
+
+//                 for (let i = 0; i < trabajador.length; i++) {
+//                     recargaabierta += `<tr>`;
+//                     recargaabierta += '<td>' + abierta[i].id + '</td>'
+//                     recargaabierta += '<td>' + abierta[i].incidencia + '</td>'
+//                     recargaabierta += '<td>' + abierta[i].desarrollar_incidencia + '</td>'
+//                     recargaabierta += '<td>' + abierta[i].estado_incidencia + '</td>'
+//                     recargaabierta += '<td>' + abierta[i].id_reportador + '</td>'
+//                     recargaabierta += '<td>' + abierta[i].id_reportado + '</td>'
+//                     recargaabierta += '<td>' + abierta[i].fecha_incidencia + '</td>'
+//                         // recargaabierta += '<td><button onclick="eliminarreportesJS(' + respuesta[i].id + ')">Eliminar</button></td>'
+//                     if (abierta[i].estado_incidencia == "abierta") {
+//                         recargaabierta += '<td><button type="button" class="btn btn-warning" onclick="estadoreporteJS(' + abierta[i].id + '); return false;">Cerrar</button></td>';
+//                     } else {
+//                         recargaabierta += '<td><button type="button" class="btn btn-warning" onclick="estadoreporteJS(' + abierta[i].id + '); return false;">Abrir</button></td>';
+//                     }
+//                     recargaabierta += '</tr>';
+
+//                 }
+//                 tabla.innerHTML = recargaabierta;
+//             }
+
+//             ajax.send(formData);
+//         }
+//     }
+// }
 
 function estadoreporteJS(id) {
 

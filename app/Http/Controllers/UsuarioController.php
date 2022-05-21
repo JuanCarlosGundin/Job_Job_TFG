@@ -453,37 +453,6 @@ public function logout(Request $req){
     //--------------------------------------------------FIN CREAR REPORTE-----------------------------------------------------------//
     //-----------------------------------------------------GESTIONAR REPORTES----------------------------------------------------------//
     
-    // public function leerreportes(Request $request){
-    //     $filtro = $request->input('filtro');
-    //     $abierta = $request->input('abierta');
-    //     $cerrada = $request->input('cerrada');
-
-    //     /* $query.=" WHERE nom_emp like '{$filtro}%'"; */
-    //     $datos=array('res' => 'OK');
-
-    //     /* si se ha seleccionado admin en el checkbox */
-    //     if ($abierta == 'true'){
-
-    //         $estadoabierta=DB::select('select * from tbl_reportes where estado_incidencia="abierta" ORDER BY fecha_incidencia DESC',['%'.$request->input('filtro').'%']);
-    //         $Abierta=DB::select($estadoabierta);
-    //         $datos+=array('abierta' => $Abierta);
-    //         /* $idadmin = session()->get('id_user');
-    //         $datos+=array('idadmin' => $idadmin); */
-
-    //     }
-
-    //     /* si se ha seleccionado trabajador en el checkbox */
-    //     if ($cerrada == 'true'){
-
-    //         $estadocerrada=DB::select('select * from tbl_reportes where estado_incidencia="cerrada" ORDER BY fecha_incidencia DESC',['%'.$request->input('filtro').'%']);
-    //         $Cerrada=DB::select($estadocerrada);
-    //         $datos+=array('cerrada' => $Cerrada);
-
-    //     }
-
-    //     return response()->json($datos);
-
-    // }
     public function leerreportes(Request $request){
     $datos=DB::select('select * from tbl_reportes where estado_incidencia like ? ORDER BY fecha_incidencia DESC',['%'.$request->input('filtro').'%']);
     return response()->json($datos);
