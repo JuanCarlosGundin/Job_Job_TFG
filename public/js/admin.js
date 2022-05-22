@@ -242,6 +242,7 @@ function leerJS() {
                 recargaemp += '<table class="table table-striped table-hover">';
                 recargaemp += '<thead>';
                 recargaemp += '<tr>';
+                recargaemp += '<th scope="col">ID</th>';
                 recargaemp += '<th scope="col">Correo</th>';
                 recargaemp += '<th scope="col">Nombre</th>';
                 recargaemp += '<th scope="col">Localizacion</th>';
@@ -258,6 +259,7 @@ function leerJS() {
                 for (let i = 0; i < empresa.length; i++) {
 
                     recargaemp += '<tr>';
+                    recargaemp += '<td>' + empresa[i].id_usuario + '</td>';
                     recargaemp += '<td>' + empresa[i].mail + '</td>';
                     recargaemp += '<td>' + empresa[i].nom_emp + '</td>';
                     recargaemp += '<td>' + empresa[i].loc_emp + '</td>';

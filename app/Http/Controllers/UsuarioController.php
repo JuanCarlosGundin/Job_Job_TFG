@@ -113,7 +113,9 @@ public function logout(Request $req){
             
             DB::beginTransaction();
             /* insertar usuarios */
-            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$req['mail'],"contra"=>md5($req['contra']),"id_perfil"=>$req['id_perfil'],"estado"=>'1',"verificado"=>'1']);
+            $fecha = getdate();
+            $fechaactual = $fecha['year']."-".$fecha['mon']."-".$fecha['mday']." ".$fecha['hours'].":".$fecha['minutes'].":".$fecha['seconds'];
+            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$req['mail'],"contra"=>md5($req['contra']),"id_perfil"=>$req['id_perfil'],"estado"=>'1',"created_at"=>$fechaactual,"verificado"=>'1']);
 
             /* ademas que sean trabajadores */
             if ($req['id_perfil'] == 2) {
@@ -123,6 +125,7 @@ public function logout(Request $req){
             /* o que sean empresas */
             if ($req['id_perfil'] == 3) {
                 $id=DB::table('tbl_empresa')->insert(["id_usuario"=>$id,"nom_emp"=>$req['nom_emp'],"loc_emp"=>$req['loc_emp'],"about_emp"=>$req['about_emp'],"campo_emp"=>$req['campo_emp'],"searching"=>$req['searching'],"vacante"=>$req['vacante'],"mostrado"=>'1',"logo_emp"=>$logo_emp]);
+                
             }
 
             DB::commit();
