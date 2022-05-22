@@ -398,6 +398,7 @@ function mostrarperfilJS() {
     ajax.send(formData);
 }
 
+
 function edad(fecha_string) {
     var hoy = new Date();
     var fecha_nacimiento = new Date(fecha_string);
