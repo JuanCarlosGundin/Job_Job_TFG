@@ -35,6 +35,8 @@
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Correo" onkeyup="leerJS()" id="filcorreo" aria-label="Search">
               <input class="form-control me-2" type="search" placeholder="Nombre" onkeyup="leerJS()" id="filtro" aria-label="Search">
+              <input class="form-control me-2" type="search" placeholder="ID" onkeyup="leerJS()" id="filid" aria-label="Search">
+
             </form>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

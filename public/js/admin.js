@@ -98,7 +98,7 @@ function leerJS() {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('filtro', document.getElementById('filtro').value);
     formData.append('filcorreo', document.getElementById('filcorreo').value);
-    // formData.append('filid', document.getElementById('filid').value);
+    formData.append('filid', document.getElementById('filid').value);
     formData.append('Empresa', document.getElementById("emp").checked);
     formData.append('Trabajador', document.getElementById("tbjd").checked);
     formData.append('Admin', document.getElementById("adm").checked);

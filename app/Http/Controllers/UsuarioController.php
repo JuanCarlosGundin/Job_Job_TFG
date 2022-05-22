@@ -33,6 +33,7 @@ public function logout(Request $req){
 
         $filcorreo = $req->input('filcorreo');
         $filtro = $req->input('filtro');
+        $filid = $req->input('filid');
         $Empresa = $req->input('Empresa');
         $Trabajador = $req->input('Trabajador');
         $Admin = $req->input('Admin');
@@ -55,7 +56,7 @@ public function logout(Request $req){
         if ($Trabajador == 'true'){
 
             $trabajadorquery="SELECT * FROM tbl_usuarios
-            INNER JOIN tbl_trabajador on tbl_trabajador.id_usuario=tbl_usuarios.id WHERE mail like '{$filcorreo}%' and nombre like '{$filtro}%'";
+            INNER JOIN tbl_trabajador on tbl_trabajador.id_usuario=tbl_usuarios.id WHERE mail like '{$filcorreo}%' and nombre like '{$filtro}%' and id like '{$filid}%'";
             $trabajador=DB::select($trabajadorquery);
             $datos+=array('trabajador' => $trabajador);
 
@@ -65,7 +66,7 @@ public function logout(Request $req){
         if ($Empresa == 'true'){
 
             $empresaquery="SELECT * FROM tbl_usuarios
-            INNER JOIN tbl_empresa on tbl_empresa.id_usuario=tbl_usuarios.id WHERE mail like '{$filcorreo}%' and nom_emp like '{$filtro}%'";   
+            INNER JOIN tbl_empresa on tbl_empresa.id_usuario=tbl_usuarios.id WHERE mail like '{$filcorreo}%' and nom_emp like '{$filtro}%' and id like '{$filid}%'";   
             $empresa=DB::select($empresaquery);
             $datos+=array('empresa' => $empresa);
 
