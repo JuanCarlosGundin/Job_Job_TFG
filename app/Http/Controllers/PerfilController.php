@@ -43,7 +43,7 @@ class PerfilController extends Controller{
 
     }
 
-    public function editarperfil(Request $req){
+    public function editarperfiltrabajador(Request $req) {
         $id=session()->get('id_user');
 
         try {
@@ -76,7 +76,6 @@ class PerfilController extends Controller{
                 }
 
             }
-
 
             $data=array();
 
@@ -290,93 +289,108 @@ class PerfilController extends Controller{
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
         } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
+    }
+
+    public function editarperfilempresa(Request $req) {
+
+        $id=session()->get('id_user');
+        try {
+
+            //obtener dia y hora
+            $date = Carbon::now('+02:00');
+
+            //formato correcto
+            $updated_at = $date->toDateTimeString();
+
+            $datauser=array();
+
+            $datauser[]= "updated_at='".$updated_at."'";
+
+            //editar_user_empresa
+            if ($req->has('mail')){
+
+                $datauser[]= "mail='".$req['mail']."'";
+            }
+
+            if ($req->has(['contra_old', 'contra', 'contra2'])){
+
+                $comprobarhash=hash('sha256',$req['contra_old']);
+                $comprobarcontra = DB::table("tbl_usuarios")->where('id','=',$id)->first();
+                if ($comprobarcontra->contra==$comprobarhash){
+                    $contra=hash('sha256',$req['contra']);
+                    $datauser[]= "contra='".$contra."'";                    
+                }
+                else{
+                    return response()->json(array('resultado'=> 'contraseña_incorrecta'));
+                }
+
+            }
+
+            $data=array();
+
+            //editar_user_empresa
+            if ($req->has('nom_emp')){
+                
+                $data[]= "nom_emp='".$req['nom_emp']."'";
+            }
+
+            //editar_logo_emp
+
+            if ($req->has('logo_emp')) {
+
+                $logo = DB::table('tbl_empresa')->select('logo_emp')->where('id_usuario','=',$id)->first();
+
+                if ($logo->logo_emp != null) {
+                    Storage::delete('public/'.$logo->logo_emp);
+                }
+                $logo_emp = $req->file('logo_emp')->store('uploads','public');
+                $data[]= "logo_emp='".$logo_emp."'";
+            }
+
+            //editar_sobre_empresa
+            if ($req->has('about_emp')){
+                
+                $data[]= "about_emp='".$req['about_emp']."'";
+            }
+            if ($req->has('campo_emp')){
+                
+                $data[]= "campo_emp='".$req['campo_emp']."'";
+            }
+            if ($req->has('loc_emp')){
+                
+                $data[]= "loc_emp='".$req['loc_emp']."'";
+            }
+
+            //editar_buscamos_empresa
+            if ($req->has('vacante')){
+                
+                $data[]= "vacante='".$req['vacante']."'";
+            }
+            if ($req->has('searching')){
+                
+                $data[]= "searching='".$req['searching']."'";
+            }
+
+            //editar_configuracion_empresa
+            if ($req->has('mostrado')) {
+
+                $data[]= "mostrado='".$req['mostrado']."'";
+            }
+
+            DB::beginTransaction();
+            DB::select("UPDATE tbl_usuarios SET " . implode(', ', $datauser) . " WHERE id=?",[$id]);
+            DB::select("UPDATE tbl_empresa SET " . implode(', ', $data) . " WHERE id_usuario=?",[$id]);
+            DB::commit();
+            return response()->json(array('resultado'=> 'OK'));
+        } catch (\Exception $e) {
+            DB::rollback();
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
         }
     }
 
 
-    /* public function editarperfil(Request $req, $id, $id_perfil){
 
-        DB::beginTransaction();
-
-        try{
-
-            // si es trabajador
-            if ($id_perfil == 2){
-
-                // si existe una foto
-                if ($req->hasFile('foto_perfil')) {
-
-                    $foto = DB::table('tbl_trabajador')->select('foto_perfil')->where('id_usuario','=',$id)->first();
-
-                    if ($foto->foto_perfil != null) {
-
-                        Storage::delete('public/'.$foto->foto_perfil);
-
-                    }
-
-                    $foto_perfil = $req->file('foto_perfil')->store('uploads','public');
-
-                }else{
-
-                    $foto = DB::table('tbl_trabajador')->select('foto_perfil')->where('id_usuario','=',$id)->first();
-                    $foto_perfil = $foto->foto_perfil;
-
-                }
-
-                DB::table('tbl_trabajador')->where('id_usuario','=',$id)->update(["nombre"=>$req['nombre'],"apellido"=>$req['apellido'],"foto_perfil"=>$foto_perfil,"campo_user"=>$req['campo_user'],"experiencia"=>$req['experiencia'],"estudios"=>$req['estudios'],"idiomas"=>$req['idiomas'],"disponibilidad"=>$req['disponibilidad'],"about_user"=>$req['about_user'],"loc_trabajador"=>$req['loc_trabajador'],"edad"=>$req['edad'],"mostrado"=>$req['mostrado']]);
-
-            }
-
-            // si es empresa
-            if ($id_perfil == 3){
-
-                // si existe un logo
-                if ($req->hasFile('logo_emp')) {
-
-                    $logo = DB::table('tbl_empresa')->select('logo_emp')->where('id_usuario','=',$id)->first();
-
-                    if ($logo->logo_emp != null) {
-
-                        Storage::delete('public/'.$logo->logo_emp);
-
-                    }
-
-                    $logo_emp = $req->file('logo_emp')->store('uploads','public');
-
-                }else{
-
-                    $logo = DB::table('tbl_empresa')->select('logo_emp')->where('id_usuario','=',$id)->first();
-                    $logo_emp = $logo->logo_emp;
-
-                }
-
-                DB::table('tbl_empresa')->where('id_usuario','=',$id)->update(["nom_emp"=>$req['nom_emp'],"loc_emp"=>$req['loc_emp'],"about_emp"=>$req['about_emp'],"campo_emp"=>$req['campo_emp'],"searching"=>$req['searching'],"vacante"=>$req['vacante'],"mostrado"=>$req['mostrado'],"logo_emp"=>$logo_emp]);
-
-            }
-
-            // si la contraseña la modificas, que tenga md5, si no que conserve valor
-            $uscontra = DB::table('tbl_usuarios')->where('id','=',$id)->select('contra')->first();
-
-            if ($req['contra'] == $uscontra->contra){
-
-                DB::table('tbl_usuarios')->where('id','=',$id)->update(["mail"=>$req['mail'],"contra"=>$req['contra']]);
-
-            } else{
-
-                DB::table('tbl_usuarios')->where('id','=',$id)->update(["mail"=>$req['mail'],"contra"=>md5($req['contra'])]);
-
-            }
-
-            DB::commit();
-            return response()->json(array('resultado'=> 'OK'));
-
-        }   catch (\Exception $e) {
-
-            DB::rollback();
-            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
-
-        }
-
-    } */
 }

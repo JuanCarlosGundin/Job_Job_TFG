@@ -96,8 +96,11 @@ Route::get('perfil',[PerfilController::class, 'vistaPerfil']);
 // mostrarperfil
 Route::post('leerperfil',[PerfilController::class, 'leerperfiledit']);
 
-// editar sobre_mi
-Route::post('editarperfil',[PerfilController::class,'editarperfil']);
+// editarperfiltrabajador
+Route::post('editarperfiltrabajador',[PerfilController::class,'editarperfiltrabajador']);
+
+// editarperfilempresa
+Route::post('editarperfilempresa',[PerfilController::class,'editarperfilempresa']);
 
 /* ------------PerfilController------------ */
 

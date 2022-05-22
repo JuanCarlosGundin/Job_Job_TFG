@@ -295,12 +295,12 @@ function mostrarperfilJS() {
                 recarga += `<div class="edit-foto">`;
                 recarga += `<label class="input-file">`;
                 recarga += `<i class="fa-solid fa-image"></i>`;
-                recarga += `<input type="file" class="input" id="logo_perfil" name="logo_perfil">`;
+                recarga += `<input type="file" class="input" id="logo_emp" name="logo_emp">`;
                 recarga += `</label>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-ver-foto">`;
-                if (empresa.logo_perfil != null) {
-                    recarga += `<img class="user-profilefoto" src="./storage/${empresa.logo_perfil}">`;
+                if (empresa.logo_emp != null) {
+                    recarga += `<img class="user-profilefoto" src="./storage/${empresa.logo_emp}">`;
                 } else {
                     recarga += `<img class="user-profilefoto" src="./storage/img/usuario.png">`;
                 }
@@ -370,7 +370,7 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
 
-                document.getElementById("logo_perfil").addEventListener("change", editar_logo_perfil);
+                document.getElementById("logo_emp").addEventListener("change", editar_logo_emp);
 
                 var boton_editar_user = document.getElementById("boton_editar_user");
                 boton_editar_user.addEventListener("click", leer_editar_user_empresa);
@@ -416,7 +416,7 @@ function editar_foto_perfil() {
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
@@ -577,7 +577,7 @@ function modificar_editar_user(evt) {
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -970,7 +970,7 @@ function editar_sobre_mi(evt) {
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1101,7 +1101,7 @@ function crear_idiomas(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1198,7 +1198,7 @@ function editar_idiomas(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1227,7 +1227,7 @@ function eliminar_idiomas(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1355,7 +1355,7 @@ function crear_estudios(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1442,7 +1442,7 @@ function editar_estudios(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1471,7 +1471,7 @@ function eliminar_estudios(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1604,7 +1604,7 @@ function crear_experiencia(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1694,7 +1694,7 @@ function editar_experiencias(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1723,7 +1723,7 @@ function eliminar_experiencias(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1853,7 +1853,7 @@ function crear_habilidades(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1939,7 +1939,7 @@ function editar_habilidades(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -1968,7 +1968,7 @@ function eliminar_habilidades(evt) {
 
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -2162,7 +2162,7 @@ function editar_disponibilidad(evt) {
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -2289,7 +2289,7 @@ function editar_configuracion(evt) {
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
-    ajax.open("POST", "editarperfil", true);
+    ajax.open("POST", "editarperfiltrabajador", true);
 
     ajax.onreadystatechange = function() {
 
@@ -2308,23 +2308,684 @@ function editar_configuracion(evt) {
 
 /* --------------EMPRESA------------ */
 
-function editar_logo_perfil() {
+function editar_logo_emp() {
+    var logo_emp = document.getElementById("logo_emp").files[0];
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('logo_emp', logo_emp);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfilempresa", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            mostrarperfilJS();
+
+        }
+    }
+
+    ajax.send(formData)
 
 }
 
 function leer_editar_user_empresa() {
 
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button class="" id="volver">Volver</button>`;
+            recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<p class="">${trabajador.mail}</p>`;
+            recarga += `<p class="">contraseña</p>`;
+            recarga += `<p class="">${trabajador.nom_emp}</p>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", form_editar_user_empresa);
+        }
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_user_empresa() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var trabajador = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_editar_user_empresa>`;
+
+            recarga += `<input type="email" class="" id="mail" name="mail" value="${trabajador.mail}">`;
+
+            //antigua contraseña
+            recarga += `<input type="password" class="" id="contra_old" name="contra_old">`;
+
+            //nueva contra1
+            recarga += `<input type="password" class="" id="contra1" name="contra1">`;
+
+            //nueva contra2
+            recarga += `<input type="password" class="" id="contra2" name="contra2">`;
+
+            recarga += `<input type="text" class="" id="nom_emp" name="nom_emp" value="${trabajador.nom_emp}">`;
+
+
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_editar_user_empresa);
+            document.getElementById("form_editar_user_empresa").addEventListener("submit", modificar_editar_user_empresa);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function modificar_editar_user_empresa(evt) {
+
+    evt.preventDefault();
+
+    var mail = document.getElementById("mail").value;
+    var contra_old = document.getElementById("contra_old").value;
+    var contra1 = document.getElementById("contra1").value;
+    var contra2 = document.getElementById("contra2").value;
+    var nom_emp = document.getElementById("nom_emp").value;
+
+    if (contra1 !== contra2) {
+
+        swal.fire({
+            title: "Error",
+            text: "No coinciden las contraseñas",
+            icon: "error",
+        });
+        return false;
+
+    }
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('mail', mail);
+    if (contra_old && contra1 && contra2) {
+
+        formData.append('contra_old', contra_old);
+        formData.append('contra', contra1);
+        formData.append('contra2', contra2);
+    }
+    formData.append('nom_emp', nom_emp);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfilempresa", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
 }
 
 function leer_sobre_empresa() {
 
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var empresa = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
+            //bloque grande
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon-name">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            //titulo
+            recarga += `<p class="categoria-p-name">Sobre empresa</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            //contenido
+            if (!empresa.about_emp) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${empresa.about_emp}</p>`;
+            }
+            recarga += `</div>`;
+            recarga += `</div>`;
+            //bloque grande
+            //bloque pequeño
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon-name">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            //titulo
+            recarga += `<p class="categoria-p-name">Sector</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            //contenido
+            if (!empresa.campo_emp) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${empresa.campo_emp}</p>`;
+            }
+            recarga += `</div>`;
+            recarga += `</div>`;
+            //bloque pequeño
+            //bloque pequeño
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon-name">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            //titulo
+            recarga += `<p class="categoria-p-name">Localizacion</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            //contenido
+            if (!empresa.loc_emp) {
+
+                recarga += `<p class="categoria-p-text">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="categoria-p-text">${empresa.loc_emp}</p>`;
+            }
+            recarga += `</div>`;
+            recarga += `</div>`;
+            //bloque pequeño
+            recarga += `</div>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", form_editar_sobre_empresa);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_editar_sobre_empresa() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var empresa = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_editar_sobre_empresa>`;
+
+            if (!empresa.about_emp) {
+
+                recarga += `<input type="textarea" class="" id="about_emp" name="about_emp" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="textarea" class="" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
+            }
+
+            if (!empresa.campo_emp) {
+
+                recarga += `<input type="text" class="" id="campo_emp" name="campo_emp" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="text" class="" id="campo_emp" name="campo_emp" value="${empresa.campo_emp}">`;
+            }
+
+            if (!empresa.loc_emp) {
+
+                recarga += `<input type="text" class="" id="loc_emp" name="loc_emp" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="text" class="" id="loc_emp" name="loc_emp" value="${empresa.loc_emp}">`;
+            }
+
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_sobre_empresa);
+            document.getElementById("form_editar_sobre_empresa").addEventListener("submit", editar_sobre_empresa);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function editar_sobre_empresa(evt) {
+
+    evt.preventDefault();
+
+    var about_emp = document.getElementById("about_emp").value;
+    var campo_emp = document.getElementById("campo_emp").value;
+    var loc_emp = document.getElementById("loc_emp").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (about_emp) {
+
+        formData.append('about_emp', about_emp);
+    }
+    if (campo_emp) {
+
+        formData.append('campo_emp', campo_emp);
+    }
+    if (loc_emp) {
+
+        formData.append('loc_emp', loc_emp);
+    }
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfilempresa", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
 }
 
 function leer_buscamos_empresa() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var empresa = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button class="" id="volver">Volver</button>`;
+            recarga += `<button class="" id="editar">Editar</button>`;
+            if (!empresa.vacante) {
+
+                recarga += `<p class="">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="">${empresa.vacante}</p>`;
+            }
+            if (!empresa.searching) {
+
+                recarga += `<p class="">sin informar</p>`;
+            } else {
+
+                recarga += `<p class="">${empresa.searching}</p>`;
+            }
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", form_buscamos_empresa);
+        }
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_buscamos_empresa() {
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var empresa = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_buscamos_empresa>`;
+
+            if (!empresa.vacante) {
+
+                recarga += `<input type="text" class="" id="vacante" name="vacante" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="text" class="" id="vacante" name="vacante" value="${empresa.vacante}">`;
+            }
+
+            if (!empresa.searching) {
+
+                recarga += `<input type="textarea" class="" id="searching" name="searching" placeholder="sin informar">`;
+            } else {
+
+                recarga += `<input type="textarea" class="" id="searching" name="searching" value="${empresa.searching}">`;
+            }
+
+
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_buscamos_empresa);
+            document.getElementById("form_buscamos_empresa").addEventListener("submit", editar_buscamos_empresa);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function editar_buscamos_empresa(evt) {
+
+    evt.preventDefault();
+
+    var vacante = document.getElementById("vacante").value;
+    var searching = document.getElementById("searching").value;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (vacante) {
+
+        formData.append('vacante', vacante);
+    }
+    if (searching) {
+
+        formData.append('searching', searching);
+    }
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfilempresa", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
 
 }
 
 function leer_configuracion_empresa() {
+    //desactivar cuenta
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var empresa = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button class="" id="volver">Volver</button>`;
+            recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<button id="desactivar">Desactivar</button>`;
+            if (empresa.mostrado == "1") {
+                recarga += `<p class="">SI</p>`;
+            } else {
+                recarga += `<p class="">NO</p>`;
+            }
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", mostrarperfilJS);
+
+            var editar = document.getElementById("editar");
+            editar.addEventListener("click", form_configuracion_empresa);
+            var desactivar = document.getElementById("desactivar");
+            desactivar.id = empresa.id;
+            desactivar.addEventListener("click", desactivar_cuenta)
+        }
+    }
+
+    ajax.send(formData)
+
+}
+
+function form_configuracion_empresa() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "leerperfil", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            var empresa = respuesta.resultado;
+            var recarga = ``;
+            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div>`;
+            recarga += `<form id=form_configuracion>`;
+            if (empresa.mostrado == 1) {
+                recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + empresa.mostrado + '" checked>';
+
+            } else {
+                recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + empresa.mostrado + '">';
+
+            }
+            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</form>`;
+            recarga += `</div>`;
+            contenidoajax.innerHTML = recarga;
+
+            document.getElementById("volver").addEventListener("click", leer_configuracion_empresa);
+            document.getElementById("form_configuracion").addEventListener("submit", editar_configuracion_empresa);
+
+        }
+
+    }
+
+    ajax.send(formData)
+
+}
+
+function editar_configuracion_empresa(evt) {
+
+    evt.preventDefault();
+
+    var mostrado = document.getElementById("mostrado").checked;
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    if (mostrado == true) {
+
+        formData.append('mostrado', '1');
+
+    } else {
+
+        formData.append('mostrado', '0');
+
+    }
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "editarperfilempresa", true);
+
+    ajax.onreadystatechange = function() {
+
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+
+    }
+
+    ajax.send(formData)
 
 }
 
