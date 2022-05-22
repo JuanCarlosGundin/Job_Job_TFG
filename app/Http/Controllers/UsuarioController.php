@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class UsuarioController extends Controller{
 
@@ -98,28 +99,20 @@ public function logout(Request $req){
 
         }
 
-        //añadir foto trabajador si existe
-        if($req->hasFile('foto_perfil')){
-
-            $foto_perfil = $req->file('foto_perfil')->store('uploads','public');
-
-        }else{
-
-            $foto_perfil = NULL;
-
-        }
-
         try {
             
             DB::beginTransaction();
             /* insertar usuarios */
-            $fecha = getdate();
-            $fechaactual = $fecha['year']."-".$fecha['mon']."-".$fecha['mday']." ".$fecha['hours'].":".$fecha['minutes'].":".$fecha['seconds'];
-            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$req['mail'],"contra"=>md5($req['contra']),"id_perfil"=>$req['id_perfil'],"estado"=>'1',"created_at"=>$fechaactual,"verificado"=>'1']);
+            //obtener dia y hora
+            $date = Carbon::now('+02:00');
+
+            //formato correcto
+            $fechaactual = $date->toDateTimeString();
+            $id=DB::table('tbl_usuarios')->insertGetId(["mail"=>$req['mail'],"contra"=>hash('sha256',$req['contra']),"id_perfil"=>$req['id_perfil'],"estado"=>'1',"created_at"=>$fechaactual,"verificado"=>'1']);
 
             /* ademas que sean trabajadores */
             if ($req['id_perfil'] == 2) {
-                $id=DB::table('tbl_trabajador')->insert(["id_usuario"=>$id,"nombre"=>$req['nombre'],"apellido"=>$req['apellido'],"foto_perfil"=>$foto_perfil,"campo_user"=>$req['campo_user'],"experiencia"=>$req['experiencia'],"estudios"=>$req['estudios'],"idiomas"=>$req['idiomas'],"disponibilidad"=>$req['disponibilidad'],"about_user"=>$req['about_user'],"loc_trabajador"=>$req['loc_trabajador'],"edad"=>$req['edad'],"mostrado"=>'1']);
+                $id=DB::table('tbl_trabajador')->insert(["id_usuario"=>$id,"nombre"=>$req['nombre'],"apellido"=>$req['apellido'],"edad"=>$req['edad'],"mostrado"=>'1']);
             }
 
             /* o que sean empresas */
@@ -241,7 +234,7 @@ public function logout(Request $req){
 
                 }
 
-                DB::table('tbl_trabajador')->where('id_usuario','=',$id)->update(["nombre"=>$req['nombre'],"apellido"=>$req['apellido'],"foto_perfil"=>$foto_perfil,"campo_user"=>$req['campo_user'],"experiencia"=>$req['experiencia'],"estudios"=>$req['estudios'],"idiomas"=>$req['idiomas'],"disponibilidad"=>$req['disponibilidad'],"about_user"=>$req['about_user'],"loc_trabajador"=>$req['loc_trabajador'],"edad"=>$req['edad'],"mostrado"=>$req['mostrado']]);
+                DB::table('tbl_trabajador')->where('id_usuario','=',$id)->update(["nombre"=>$req['nombre'],"foto_perfil"=>$foto_perfil,"edad"=>$req['edad'],"mostrado"=>$req['mostrado']]);
 
             }
 
@@ -268,22 +261,11 @@ public function logout(Request $req){
 
                 }
 
-                DB::table('tbl_empresa')->where('id_usuario','=',$id)->update(["nom_emp"=>$req['nom_emp'],"loc_emp"=>$req['loc_emp'],"about_emp"=>$req['about_emp'],"campo_emp"=>$req['campo_emp'],"searching"=>$req['searching'],"vacante"=>$req['vacante'],"mostrado"=>$req['mostrado'],"logo_emp"=>$logo_emp]);
+                DB::table('tbl_empresa')->where('id_usuario','=',$id)->update(["nom_emp"=>$req['nom_emp'],"mostrado"=>$req['mostrado'],"logo_emp"=>$logo_emp]);
 
             }
 
-            /* si la contraseña la modificas, que tenga md5, si no que conserve valor */
-            $uscontra = DB::table('tbl_usuarios')->where('id','=',$id)->select('contra')->first();
-
-            if ($req['contra'] == $uscontra->contra){
-
-                DB::table('tbl_usuarios')->where('id','=',$id)->update(["mail"=>$req['mail'],"contra"=>$req['contra'],"estado"=>$req['estado']]);
-
-            } else{
-
-                DB::table('tbl_usuarios')->where('id','=',$id)->update(["mail"=>$req['mail'],"contra"=>md5($req['contra']),"estado"=>$req['estado']]);
-
-            }
+                DB::table('tbl_usuarios')->where('id','=',$id)->update(["mail"=>$req['mail'],"estado"=>$req['estado']]);
 
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
@@ -298,55 +280,6 @@ public function logout(Request $req){
     }
 
 
-    public function eliminaruser($id, $id_perfil) {
-
-        try {
-
-            DB::beginTransaction();
-
-            /* si es trabajador, se comprueba si tiene foto y se elimina todo */
-            if($id_perfil == 2){
-
-                $foto = DB::table('tbl_trabajador')->select('foto_perfil')->where('id_usuario','=',$id)->first();
-
-                if ($foto->foto_perfil != null) {
-
-                    Storage::delete('public/'.$foto->foto_perfil);
-
-                }
-
-                DB::table('tbl_trabajador')->where('id_usuario','=',$id)->delete();
-
-            }
-
-            /* si es empresa, se comprueba si tiene logo y se elimina todo */
-            if($id_perfil == 3){
-
-                $logo = DB::table('tbl_empresa')->select('logo_emp')->where('id_usuario','=',$id)->first();
-
-                if ($logo->logo_emp != null) {
-
-                    Storage::delete('public/'.$logo->logo_emp);
-
-                }
-
-                DB::table('tbl_empresa')->where('id_usuario','=',$id)->delete();
-
-            }
-
-            /* se elimina al usuario */
-            DB::table('tbl_usuarios')->where('id','=',$id)->delete();
-            DB::commit();
-            return response()->json(array('resultado'=> 'OK'));
-
-        }catch(\Exception $e) {
-
-            DB::rollback();
-            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
-
-        }
-
-    }
 
     ///ZONA ADMINISTRADOR
 

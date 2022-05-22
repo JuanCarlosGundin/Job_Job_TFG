@@ -98,6 +98,7 @@ function leerJS() {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('filtro', document.getElementById('filtro').value);
     formData.append('filcorreo', document.getElementById('filcorreo').value);
+    // formData.append('filid', document.getElementById('filid').value);
     formData.append('Empresa', document.getElementById("emp").checked);
     formData.append('Trabajador', document.getElementById("tbjd").checked);
     formData.append('Admin', document.getElementById("adm").checked);
@@ -147,8 +148,7 @@ function leerJS() {
 
                     /* Actualizar */
                     recargaadmin += '<td><button type="button" class="btn btn-info" onclick="actualizarmodal(\'' + admin[i].id + '\',\'' + admin[i].id_perfil + '\'); return false;">Modificar</button></td>';
-                    /* Eliminar */
-                    recargaadmin += '<td><button type="button" class="btn btn-danger" onclick="eliminarJS(\'' + admin[i].id + '\',\'' + admin[i].id_perfil + '\'); return false;">Eliminar</button></td>';
+
                     recargaadmin += '</tr>';
 
                 }
@@ -167,17 +167,10 @@ function leerJS() {
                 recargatrab += '<table class="table table-striped table-hover">';
                 recargatrab += '<thead>';
                 recargatrab += '<tr>';
+                recargatrab += '<th scope="col">ID</th>';
                 recargatrab += '<th scope="col">Correo</th>';
                 recargatrab += '<th scope="col">Nombre</th>';
-                recargatrab += '<th scope="col">Apellido</th>';
-                recargatrab += '<th scope="col">Sector</th>';
-                recargatrab += '<th scope="col">Localizacion</th>';
-                recargatrab += '<th scope="col">Experiencia</th>';
-                recargatrab += '<th scope="col">Edad</th>';
-                recargatrab += '<th scope="col">Estudios</th>';
-                recargatrab += '<th scope="col">Idiomas</th>';
-                recargatrab += '<th scope="col">Disponibilidad</th>';
-                recargatrab += '<th scope="col">Sobre mi</th>';
+                recargatrab += '<th scope="col">Mostrado</th>';
                 recargatrab += '<th scope="col">Foto</th>';
                 recargatrab += '<th scope="col">Estado</th>';
                 recargatrab += '</tr>';
@@ -187,17 +180,10 @@ function leerJS() {
                 for (let i = 0; i < trabajador.length; i++) {
 
                     recargatrab += '<tr>';
+                    recargatrab += '<td>' + trabajador[i].id_usuario + '</td>';
                     recargatrab += '<td>' + trabajador[i].mail + '</td>';
                     recargatrab += '<td>' + trabajador[i].nombre + '</td>';
-                    recargatrab += '<td>' + trabajador[i].apellido + '</td>';
-                    recargatrab += '<td>' + trabajador[i].campo_user + '</td>';
-                    recargatrab += '<td>' + trabajador[i].loc_trabajador + '</td>';
-                    recargatrab += '<td>' + trabajador[i].experiencia + '</td>';
-                    recargatrab += '<td>' + trabajador[i].edad + '</td>';
-                    recargatrab += '<td>' + trabajador[i].estudios + '</td>';
-                    recargatrab += '<td>' + trabajador[i].idiomas + '</td>';
-                    recargatrab += '<td>' + trabajador[i].disponibilidad + '</td>';
-                    recargatrab += '<td>' + trabajador[i].about_user + '</td>';
+                    recargatrab += '<td>' + trabajador[i].mostrado + '</td>';
 
                     /* Si hay una foto, que se muestre */
                     if (trabajador[i].foto_perfil != null) {
@@ -223,8 +209,6 @@ function leerJS() {
 
                     /* Actualizar */
                     recargatrab += '<td><button type="button" class="btn btn-info" onclick="actualizarmodal(\'' + trabajador[i].id + '\',\'' + trabajador[i].id_perfil + '\'); return false;">Modificar</button></td>';
-                    /* Eliminar */
-                    recargatrab += '<td><button type="button" class="btn btn-danger" onclick="eliminarJS(\'' + trabajador[i].id + '\',\'' + trabajador[i].id_perfil + '\'); return false;">Eliminar</button></td>';
                     recargatrab += '</tr>';
                 }
 
@@ -245,11 +229,7 @@ function leerJS() {
                 recargaemp += '<th scope="col">ID</th>';
                 recargaemp += '<th scope="col">Correo</th>';
                 recargaemp += '<th scope="col">Nombre</th>';
-                recargaemp += '<th scope="col">Localizacion</th>';
-                recargaemp += '<th scope="col">Sobre nosotros</th>';
-                recargaemp += '<th scope="col">Sector</th>';
-                recargaemp += '<th scope="col">Busqueda</th>';
-                recargaemp += '<th scope="col">Vacante</th>';
+                recargaemp += '<th scope="col">Mostrado</th>';
                 recargaemp += '<th scope="col">Logo</th>';
                 recargaemp += '<th scope="col">Estado</th>';
                 recargaemp += '</tr>';
@@ -262,11 +242,7 @@ function leerJS() {
                     recargaemp += '<td>' + empresa[i].id_usuario + '</td>';
                     recargaemp += '<td>' + empresa[i].mail + '</td>';
                     recargaemp += '<td>' + empresa[i].nom_emp + '</td>';
-                    recargaemp += '<td>' + empresa[i].loc_emp + '</td>';
-                    recargaemp += '<td>' + empresa[i].about_emp + '</td>';
-                    recargaemp += '<td>' + empresa[i].campo_emp + '</td>';
-                    recargaemp += '<td>' + empresa[i].searching + '</td>';
-                    recargaemp += '<td>' + empresa[i].vacante + '</td>';
+                    recargaemp += '<td>' + empresa[i].mostrado + '</td>';
 
                     /* Si hay una foto, que se muestre */
                     if (empresa[i].logo_emp != null) {
@@ -292,8 +268,6 @@ function leerJS() {
 
                     /* Actualizar */
                     recargaemp += '<td><button type="button" class="btn btn-info" onclick="actualizarmodal(\'' + empresa[i].id + '\',\'' + empresa[i].id_perfil + '\'); return false;">Modificar</button></td>';
-                    /* Eliminar */
-                    recargaemp += '<td><button type="button" class="btn btn-danger" onclick="eliminarJS(\'' + empresa[i].id + '\',\'' + empresa[i].id_perfil + '\'); return false;">Eliminar</button></td>';
                     recargaemp += '</tr>';
                 }
 
@@ -428,40 +402,8 @@ function opcioncrearJS() {
         recargaform += '<input type="text" class="form-control" id="apellido" name="apellido" placeholder="Introduce un apellido">';
         recargaform += '</div>';
         recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Sector:</label>';
-        recargaform += '<input type="text" class="form-control" id="campo_user" name="campo_user" placeholder="Introduce un sector">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Localizacion:</label>';
-        recargaform += '<input type="text" class="form-control" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce un localizacion">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Experiencia:</label>';
-        recargaform += '<input type="text" class="form-control" id="experiencia" name="experiencia" placeholder="Introduce tu experiencia">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Edad:</label>';
-        recargaform += '<input type="text" class="form-control" id="edad" name="edad" placeholder="Introduce tu edad">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Estudios:</label>';
-        recargaform += '<input type="text" class="form-control" id="estudios" name="estudios" placeholder="Introduce tus estudios">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Idiomas:</label>';
-        recargaform += '<input type="text" class="form-control" id="idiomas" name="idiomas" placeholder="Introduce idiomas">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Disponibilidad:</label>';
-        recargaform += '<input type="text" class="form-control" id="disponibilidad" name="disponibilidad" placeholder="Introduce tu disponibilidad">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Sobre ti:</label>';
-        recargaform += '<input type="text" class="form-control" id="about_user" name="about_user" placeholder="Sobre ti">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Foto:</label>';
-        recargaform += '<input type="file" class="form-control" id="foto_perfil" name="foto_perfil">';
+        recargaform += '<input type="date" class="form-control" id="edad" name="edad" placeholder="Introduce tu edad">';
         recargaform += '</div>';
         recargaform += '<button type="submit" class="btn btn-primary">Enviar</button>';
         recargaform += '</form>';
@@ -528,16 +470,7 @@ function crearJS(mail, contra, id_perfil) {
 
         formData.append('nombre', document.getElementById('nombre').value);
         formData.append('apellido', document.getElementById('apellido').value);
-        formData.append('campo_user', document.getElementById('campo_user').value);
-        formData.append('loc_trabajador', document.getElementById('loc_trabajador').value);
-        formData.append('experiencia', document.getElementById('experiencia').value);
         formData.append('edad', document.getElementById('edad').value);
-        formData.append('estudios', document.getElementById('estudios').value);
-        formData.append('idiomas', document.getElementById('idiomas').value);
-        formData.append('disponibilidad', document.getElementById('disponibilidad').value);
-        formData.append('about_user', document.getElementById('about_user').value);
-        formData.append('foto_perfil', document.getElementById('foto_perfil').files[0]);
-
     }
 
     /* Si es empresa ademas se envia lo siguiente */
@@ -565,7 +498,7 @@ function crearJS(mail, contra, id_perfil) {
 
             if (respuesta.resultado == "OK") {
 
-                message.innerHTML = '<p class="green">Nota creada correctamente</p>';
+                message.innerHTML = '<p class="green">Usuario creado correctamente</p>';
 
             } else {
 
@@ -614,10 +547,6 @@ function actualizarmodal(id, id_perfil) {
             recargamodal += '<input type="email" class="form-control" id="mail" name="mail" value="' + usuarios.mail + '">';
             recargamodal += '</div>';
             recargamodal += '<div class="form-group">';
-            recargamodal += '<label class="col-sm-2 col-form-label">Contraseña:</label>';
-            recargamodal += '<input type="password" class="form-control" id="contra" name="contra" value="' + usuarios.contra + '">';
-            recargamodal += '</div>';
-            recargamodal += '<div class="form-group">';
             recargamodal += '<label class="col-sm-2 col-form-label">Estado:</label>';
             recargamodal += '<input type="number" class="form-control" id="estado" name="estado" value="' + usuarios.estado + '">';
             recargamodal += '</div>';
@@ -631,40 +560,8 @@ function actualizarmodal(id, id_perfil) {
                 recargamodal += '<input type="text" class="form-control" id="nombre" name="nombre" value="' + trabajador.nombre + '">';
                 recargamodal += '</div>';
                 recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Apellido:</label>';
-                recargamodal += '<input type="text" class="form-control" id="apellido" name="apellido" value="' + trabajador.apellido + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Sector:</label>';
-                recargamodal += '<input type="text" class="form-control" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Localizacion:</label>';
-                recargamodal += '<input type="text" class="form-control" id="loc_trabajador" name="loc_trabajador" value="' + trabajador.loc_trabajador + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Experiencia:</label>';
-                recargamodal += '<input type="text" class="form-control" id="experiencia" name="experiencia" value="' + trabajador.experiencia + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
                 recargamodal += '<label class="col-sm-2 col-form-label">Edad:</label>';
-                recargamodal += '<input type="text" class="form-control" id="edad" name="edad" value="' + trabajador.edad + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Estudios:</label>';
-                recargamodal += '<input type="text" class="form-control" id="estudios" name="estudios" value="' + trabajador.estudios + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Idiomas:</label>';
-                recargamodal += '<input type="text" class="form-control" id="idiomas" name="idiomas" value="' + trabajador.idiomas + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Disponibilidad:</label>';
-                recargamodal += '<input type="text" class="form-control" id="disponibilidad" name="disponibilidad" value="' + trabajador.disponibilidad + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Sobre ti:</label>';
-                recargamodal += '<input type="text" class="form-control" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
+                recargamodal += '<input type="date" class="form-control" id="edad" name="edad" value="' + trabajador.edad + '">';
                 recargamodal += '</div>';
                 recargamodal += '<div class="form-group">';
                 recargamodal += '<label class="col-sm-2 col-form-label">Mostrado:</label>';
@@ -684,26 +581,6 @@ function actualizarmodal(id, id_perfil) {
                 recargamodal += '<div class="form-group">';
                 recargamodal += '<label class="col-sm-2 col-form-label">Nombre:</label>';
                 recargamodal += '<input type="text" class="form-control" id="nom_emp" name="nom_emp" value="' + empresa.nom_emp + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Localizacion:</label>';
-                recargamodal += '<input type="text" class="form-control" id="loc_emp" name="loc_emp" value="' + empresa.loc_emp + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Sobre nosotros:</label>';
-                recargamodal += '<input type="text" class="form-control" id="about_emp" name="about_emp" value="' + empresa.about_emp + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Sector:</label>';
-                recargamodal += '<input type="text" class="form-control" id="campo_emp" name="campo_emp" value="' + empresa.campo_emp + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Que buscas:</label>';
-                recargamodal += '<input type="text" class="form-control" id="searching" name="searching" value="' + empresa.searching + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Vacante:</label>';
-                recargamodal += '<input type="text" class="form-control" id="vacante" name="vacante" value="' + empresa.vacante + '">';
                 recargamodal += '</div>';
                 recargamodal += '<div class="form-group">';
                 recargamodal += '<label class="col-sm-2 col-form-label">Mostrado:</label>';
@@ -736,22 +613,13 @@ function modificarJS(id, id_perfil) {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'PUT');
     formData.append('mail', document.getElementById('mail').value);
-    formData.append('contra', document.getElementById('contra').value);
     formData.append('estado', document.getElementById('estado').value);
 
     /* modificar trabajador */
     if (id_perfil == 2) {
 
         formData.append('nombre', document.getElementById('nombre').value);
-        formData.append('apellido', document.getElementById('apellido').value);
-        formData.append('campo_user', document.getElementById('campo_user').value);
-        formData.append('loc_trabajador', document.getElementById('loc_trabajador').value);
-        formData.append('experiencia', document.getElementById('experiencia').value);
         formData.append('edad', document.getElementById('edad').value);
-        formData.append('estudios', document.getElementById('estudios').value);
-        formData.append('idiomas', document.getElementById('idiomas').value);
-        formData.append('disponibilidad', document.getElementById('disponibilidad').value);
-        formData.append('about_user', document.getElementById('about_user').value);
         formData.append('foto_perfil', document.getElementById('foto_perfil').files[0]);
         formData.append('mostrado', document.getElementById('mostrado').value);
 
@@ -761,11 +629,6 @@ function modificarJS(id, id_perfil) {
     if (id_perfil == 3) {
 
         formData.append('nom_emp', document.getElementById('nom_emp').value);
-        formData.append('loc_emp', document.getElementById('loc_emp').value);
-        formData.append('about_emp', document.getElementById('about_emp').value);
-        formData.append('campo_emp', document.getElementById('campo_emp').value);
-        formData.append('searching', document.getElementById('searching').value);
-        formData.append('vacante', document.getElementById('vacante').value);
         formData.append('logo_emp', document.getElementById('logo_emp').files[0]);
         formData.append('mostrado', document.getElementById('mostrado').value);
 
@@ -823,31 +686,6 @@ function estadouserJS(id) {
 
 }
 
-
-function eliminarJS(id, id_perfil) {
-
-    var formData = new FormData();
-
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'delete');
-
-    /* Inicializar un objeto AJAX */
-    var ajax = objetoAjax();
-
-    ajax.open("POST", "eliminaruser/" + id + "/" + id_perfil, true);
-
-    ajax.onreadystatechange = function() {
-
-        if (ajax.readyState == 4 && ajax.status == 200) {
-
-            leerJS();
-
-        }
-
-    }
-
-    ajax.send(formData)
-}
 // ------------------------------------------CORREOS ADMIN---------------------------------------------------------
 
 function enviarcorreoadminJS() {
