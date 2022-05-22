@@ -7,6 +7,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PtecnicaController;
 
 Route::get('/chat', function () {
     return view('chat');
@@ -104,7 +105,11 @@ Route::post('editarperfilempresa',[PerfilController::class,'editarperfilempresa'
 
 /* ------------PerfilController------------ */
 
+/* ------------PtecnicaController------------ */
+/* ------------PtecnicaController------------ */
 
+// pagina prueba tecnica
+Route::get('pruebatecnica',[PtecnicaController::class,'vistaptecnica']);
 
 
 

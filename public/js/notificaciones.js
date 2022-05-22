@@ -1,19 +1,14 @@
 window.onload = function() {
-<<<<<<< HEAD
 
     leernotificacionesJS();
 
 }
 
 ////////////////////////////REDIRECCIONES/////////////////////////////////
-=======
-        leernotificacionesJS();
-    }
-    ////////////////////////////REDIRECCIONES/////////////////////////////////
->>>>>>> 17438308644ed8b9517fd8ded367b0e38689b2f9
 var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
+var navbarPT = document.getElementById("navbar-PT-icon");
 
 navbarProfile.onclick = function() {
 
@@ -31,6 +26,11 @@ navbarMain.onclick = function() {
 
     window.location.href = "./home";
 
+}
+
+navbarPT.onclick = function() {
+
+    window.location.href = "./pruebatecnica";
 }
 
 
@@ -139,11 +139,6 @@ function leernotificacionesJS() {
                     recarga += '</div>';
                     recarga += '</div>';
                     recarga += '<hr class="alert-linea"></hr>';
-<<<<<<< HEAD
-
-=======
-                    recarga += ''
->>>>>>> 17438308644ed8b9517fd8ded367b0e38689b2f9
                 }
 
             }
