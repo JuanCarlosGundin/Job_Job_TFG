@@ -413,6 +413,8 @@ function perfilcarta(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            var idreportado = respuesta.empresa[0].id
+            console.log(idreportado);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
 
@@ -695,7 +697,7 @@ function perfilcarta(evt) {
                                 <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
                                 <br><br>
                                 <input type="hidden" id="id_reportador" name="id_reportador" value=${sesion}>
-                                <input type="hidden" name="id_reportado" id="id_reportado" value="4">
+                                <input type="hidden" name="id_reportado" id="id_reportado" value=${idreportado}>
                                 <input type="submit" value="Enviar reporte"><br>
                             </form>
               </div>
@@ -774,7 +776,6 @@ function reportesJS() {
 }
 
 function get_session() {
-    alert('llega')
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
