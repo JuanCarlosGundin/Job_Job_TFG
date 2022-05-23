@@ -413,13 +413,14 @@ function perfilcarta(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            var idreportado = respuesta.empresa[0].id
-            console.log(idreportado);
+            // var idreportado = respuesta.empresa[0].id
+            // console.log(idreportado);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
 
             if (id_perfil == 2) {
-
+                var idtrabajador = respuesta.trabajador[0].id;
+                console.log(idtrabajador);
                 var trabajador = respuesta.trabajador[0];
                 console.log(trabajador);
 
@@ -577,6 +578,41 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
+                recarga += `
+            <button id="myBtn">Reportar perfil</button>
+            
+            <div id="myModal" class="modal">
+            
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                
+                            <form method="POST" onsubmit="reportesJS(); return false;">
+                                <br>
+                                <h2>Reportar a un usuario</h2>
+                                <br>
+                                <select name="incidencia" id="incidencia" >
+                                    <option value="">Seleccione el motivo del reporte</option>
+                                    <option value="Es spam">Es spam</option>
+                                    <option value="Esta cuenta se hace pasar por mi u otra persona">Esta cuenta se hace pasar por mí o alguien más</option>
+                                    <option value="Suicidio o autolesion">Suicidio o autolesión</option>
+                                    <option value="Venta de productos ilegales o regulados">Venta de productos ilegales o regulados</option>
+                                    <option value="Desnudos o actividad sexual">Desnudos o actividad sexual</option>
+                                    <option value="Lenguaje o simbolos que incitan al odio">Lenguaje o símbolos que incitan al odio</option>
+                                    <option value="Violencia u organizaciones peligrosas">Violencia u organizaciones peligrosas</option>
+                                    <option value="Bullying o acoso">Bullying o acoso</option>
+                                    <option value="Infracción de la propiedad intelectual">Infracción de la propiedad intelectual</option>
+                                    <option value="Fraude">Fraude</option>
+                                    <option value="Informacion falsa">Información falsa</option>
+                                </select>
+                                <br><br>
+                                <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
+                                <br><br>
+                                <input type="hidden" id="id_reportador" name="id_reportador" value=${sesion}>
+                                <input type="hidden" id="id_reportado" name="id_reportado" value=${idtrabajador}>
+                                <input type="submit" value="Enviar reporte"><br>
+                            </form>
+              </div>
+            </div>`;
                 carta.innerHTML = recarga;
                 var volver = document.getElementById("volver");
                 volver.addEventListener("click", estructura);
@@ -586,7 +622,8 @@ function perfilcarta(evt) {
             }
 
             if (id_perfil == 3) {
-
+                var idempresa = respuesta.empresa[0].id;
+                console.log(idempresa);
                 var empresa = respuesta.empresa[0];
 
                 recarga += '<div class="empresa-vista">';
@@ -697,7 +734,7 @@ function perfilcarta(evt) {
                                 <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
                                 <br><br>
                                 <input type="hidden" id="id_reportador" name="id_reportador" value=${sesion}>
-                                <input type="hidden" name="id_reportado" id="id_reportado" value=${idreportado}>
+                                <input type="hidden" id="id_reportado" name="id_reportado" value=${idempresa}>
                                 <input type="submit" value="Enviar reporte"><br>
                             </form>
               </div>
