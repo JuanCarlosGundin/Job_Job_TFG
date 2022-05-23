@@ -48,4 +48,13 @@ class PtecnicaController extends Controller{
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
         }
     }
+
+    public function insertar_trabajador_ptecnica($id_empresa) {
+        $id=session()->get('id_user');
+        try {
+            return response()->json(array('resultado'=> 'OK'));
+        } catch (\Exception $e) {
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
+    }
 }

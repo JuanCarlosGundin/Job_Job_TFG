@@ -118,6 +118,9 @@ Route::post('leercontenido',[PtecnicaController::class,'leercontenido']);
 // mostrar_ptecnica_trabajador
 Route::post('mostrar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'mostrar_ptecnica_trabajador']);
 
+// insertar_trabajador_ptecnica
+Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
+
 
 
 

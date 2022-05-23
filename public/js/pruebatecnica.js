@@ -163,14 +163,96 @@ function mostrar_prueba_tecnica(evt) {
                     <p>${trabajador.descripcion}</p>
                 </div>
                 <div>
-                    <button id="iniciar prueba">Iniciar prueba</button>
+                    <button id="iniciar_prueba">Iniciar prueba</button>
                 </div>
             </div>
             `;
             contenidoajax.innerHTML = recarga;
+            document.getElementById("iniciar_prueba").id_empresa = trabajador.id_empresa;
+            document.getElementById("iniciar_prueba").addEventListener("click", mostrar_prueba_tecnica_zip)
 
         }
     }
     ajax.send(formData);
 
+}
+
+function mostrar_prueba_tecnica_zip(evt) {
+    var id_empresa = evt.currentTarget.id_empresa;
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    var ajax = objetoAjax();
+    ajax.open("POST", "mostrar_ptecnica_trabajador/" + id_empresa, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            var trabajador = respuesta.trabajador;
+            var date_p = new Date(trabajador.fecha_publicacion);
+            var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
+            var date_l = new Date(trabajador.fecha_limite);
+            var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
+            var recarga = ``;
+            recarga = `
+            <div>
+                <p>Prueba tecnica para:</p>
+                <p>${trabajador.enunciado}</p>
+                <div>
+                    <p>Empresa</p>
+                    <p>${trabajador.nom_emp}</p>
+                </div>
+                <div>
+                    <p>Duración</p>
+                    <p>${trabajador.duracion}</p>
+                </div>
+                <div>
+                    <p>Fecha de publicación</p>
+                    <p>${fecha_publicacion}</p>
+                </div>
+                <div>
+                    <p>Fecha limite</p>
+                    <p>${fecha_limite}</p>
+                </div>
+                <div>
+                    <p>Formato de respuesta</p>
+                    <p>Texto donde dice zip</p>
+                </div>
+                <form id="formarchivo" enctype="multipart/form-data">
+                <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                </form>
+                <div>
+                    <button id="enviar_respuesta">Enviar respuesta</button>
+                </div>
+            </div>
+            `;
+            contenidoajax.innerHTML = recarga;
+            document.getElementById("enviar_respuesta").id_empresa = trabajador.id_empresa;
+            document.getElementById("enviar_respuesta").addEventListener("submit", enviar_zip_trabajador)
+
+        }
+    }
+    ajax.send(formData);
+
+}
+
+function enviar_zip_trabajador(evt) {
+
+    evt.preventDefault();
+    var id_empresa = evt.currentTarget.id_empresa;
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    var ajax = objetoAjax();
+    ajax.open("POST", "insertar_trabajador_ptecnica/" + id_empresa, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+    }
+    ajax.send(formData);
 }
