@@ -1,14 +1,9 @@
 ////////////////////////////GENERAL///////////////////////////////////////
 window.onload = function() {
-        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-        let vh = window.innerHeight * 0.01;
-        // Then we set the value in the --vh custom property to the root of the document
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
         estructura();
         reload();
-        mostrar()
+        mostrar();
         get_session();
-
     }
     ////////////////////////////REDIRECCIONES/////////////////////////////////
 var navbarProfile = document.getElementById("navbar-profile-icon");
@@ -579,12 +574,12 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += `
-            <button id="myBtn">Reportar perfil</button>
+            <button id="myBtntra" onclick=abrirtrabajador();>Reportar trabajador</button>
             
-            <div id="myModal" class="modal">
+            <div id="myModaltra" class="modal">
             
               <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="closetra" onclick=cerrartrabajador()>&times;</span>
                 
                             <form method="POST" onsubmit="reportesJS(); return false;">
                                 <br>
@@ -705,12 +700,12 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += `
-            <button id="myBtn">Reportar perfil</button>
+            <button id="myBtnemp" onclick=abrirempresa();>Reportar empresa</button>
             
-            <div id="myModal" class="modal">
+            <div id="myModalemp" class="modal">
             
               <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="closeemp" onclick=cerrarempresa();>&times;</span>
                 
                             <form method="POST" onsubmit="reportesJS(); return false;">
                                 <br>
@@ -753,6 +748,46 @@ function perfilcarta(evt) {
 
     ajax.send(formData);
 
+}
+//PARA ABRIR MODALES SOLUCION--------
+function abrirtrabajador() {
+    // alert("hola")
+    // Get the modal
+    modal = document.getElementById("myModaltra");
+    modal.style.display = "block";
+}
+// Get the <span> element that closes the modal
+function cerrartrabajador() {
+    modal = document.getElementById("myModaltra");
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    modal = document.getElementById("myModaltra");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+function abrirempresa() {
+    // alert("hola")
+    // Get the modal
+    modal = document.getElementById("myModalemp");
+    modal.style.display = "block";
+}
+// Get the <span> element that closes the modal
+function cerrarempresa() {
+    modal = document.getElementById("myModalemp");
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    modal = document.getElementById("myModalemp");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 
 function reportesJS() {
@@ -830,3 +865,34 @@ function get_session() {
     }
     ajax.send(formData);
 }
+
+// function openmodal() {
+//     /*CODIGO MODAL*/
+
+//     // Get the modal
+//     myModalemp = document.getElementById("myModalemp");
+
+//     // Get the button that opens the modal
+//     myBtnemp = document.getElementById("myBtnemp");
+
+//     // Get the <span> element that closes the modal
+//     closeemp = document.getElementsByClassName("closeemp")[0];
+
+//     // When the user clicks on the button, open the modal
+//     myBtnemp.onclick = function() {
+//         alert("hola")
+//         myModalemp.style.display = "block";
+//     }
+
+//     // When the user clicks on <span> (x), close the modal
+//     closeemp.onclick = function() {
+//         myModalemp.style.display = "none";
+//     }
+
+//     // When the user clicks anywhere outside of the modal, close it
+//     window.onclick = function(event) {
+//         if (event.target == modal) {
+//             myModalemp.style.display = "none";
+//         }
+//     }
+// }
