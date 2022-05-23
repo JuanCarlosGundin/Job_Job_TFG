@@ -72,38 +72,15 @@ class InicioController extends Controller{
         try {
             //sessiontrabajador0
             if ($req->has(['mail', 'contra', 'contra2'])) {
-<<<<<<< HEAD
-=======
-                // $req->validate([
-                //     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
-                //     'contra'=>'required|string|min:8|max:100',
-                //     'contra2'=>'required|same:contra'
-                // ]);
->>>>>>> 4a788f0eea415d404b7a7be2c9553557c7582907
                 $validator = Validator::make($req->all(), [
                     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
                     'contra'=>'required|string|min:8|max:100',
                     'contra2'=>'required|same:contra',
                 ]);
                 if ($validator->fails()) {
-<<<<<<< HEAD
 
                     return response()->json(['errors'=>$validator->errors()->all()]);
                 }
-=======
-                    
-                    return response()->json(['errors'=>$validator->errors()->all()]);
-                } 
-                // if ($req->fails())
-                // {
-                //     return response()->json(array('resultado'=> 'VALIDACION'));
-                //     // return view("chat");
-                //     // return response()->json(array('status'=>0,'errors'=>$req->errors()->toArray()));
-                // }
-                // if ($req->fails()) {
-                //     throw new \InvalidArgumentException($req->messages()->first());
-                // }
->>>>>>> 4a788f0eea415d404b7a7be2c9553557c7582907
                 $req->session()->put('mail', $req->mail);
                 $req->session()->put('contra', $req->contra);
 
