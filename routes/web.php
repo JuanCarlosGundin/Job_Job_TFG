@@ -208,6 +208,9 @@ Route::get('usuariosmostrados',[GraficaController::class,'usuariosmostrados']);
 //el usuario puede hacer reportes de otros usuarios.
 Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
 
+//pillar sesion reporte
+Route::post('pillarsesion',[UsuarioController::class,'pillarsesion']);
+
 // ruta para leer reportes
 Route::post('leerreportes',[Usuariocontroller::class, 'leerreportes']);
 

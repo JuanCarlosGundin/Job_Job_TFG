@@ -1,4 +1,4 @@
-@if (!Session::get('id_user'))
+@if  (!Session::get('id_user'))
     <?php
         //Si la sesion no esta definida te redirige al login.
         return redirect()->to('/')->send();
@@ -49,6 +49,7 @@
     <script src="js/swiper.js"></script>
     <script src="js/modo_nocturno.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

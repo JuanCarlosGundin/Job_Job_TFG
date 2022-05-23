@@ -7,6 +7,8 @@ window.onload = function() {
         estructura();
         reload();
         mostrar()
+        get_session();
+
     }
     ////////////////////////////REDIRECCIONES/////////////////////////////////
 var navbarProfile = document.getElementById("navbar-profile-icon");
@@ -393,6 +395,7 @@ function cumNO() {
 
 function perfilcarta(evt) {
 
+
     var carta = document.getElementById("carta");
     var id_usuario = evt.currentTarget.id_usuario;
     var id_perfil = evt.currentTarget.id_perfil;
@@ -662,6 +665,41 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
+                recarga += `
+            <button id="myBtn">Reportar perfil</button>
+            
+            <div id="myModal" class="modal">
+            
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                
+                            <form method="POST" onsubmit="reportesJS(); return false;">
+                                <br>
+                                <h2>Reportar a un usuario</h2>
+                                <br>
+                                <select name="incidencia" id="incidencia" >
+                                    <option value="">Seleccione el motivo del reporte</option>
+                                    <option value="Es spam">Es spam</option>
+                                    <option value="Esta cuenta se hace pasar por mi u otra persona">Esta cuenta se hace pasar por mí o alguien más</option>
+                                    <option value="Suicidio o autolesion">Suicidio o autolesión</option>
+                                    <option value="Venta de productos ilegales o regulados">Venta de productos ilegales o regulados</option>
+                                    <option value="Desnudos o actividad sexual">Desnudos o actividad sexual</option>
+                                    <option value="Lenguaje o simbolos que incitan al odio">Lenguaje o símbolos que incitan al odio</option>
+                                    <option value="Violencia u organizaciones peligrosas">Violencia u organizaciones peligrosas</option>
+                                    <option value="Bullying o acoso">Bullying o acoso</option>
+                                    <option value="Infracción de la propiedad intelectual">Infracción de la propiedad intelectual</option>
+                                    <option value="Fraude">Fraude</option>
+                                    <option value="Informacion falsa">Información falsa</option>
+                                </select>
+                                <br><br>
+                                <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
+                                <br><br>
+                                <input type="hidden" id="id_reportador" name="id_reportador" value=${sesion}>
+                                <input type="hidden" name="id_reportado" id="id_reportado" value="4">
+                                <input type="submit" value="Enviar reporte"><br>
+                            </form>
+              </div>
+            </div>`;
                 carta.innerHTML = recarga;
                 var volver = document.getElementById("volver");
                 volver.addEventListener("click", estructura);
@@ -676,4 +714,81 @@ function perfilcarta(evt) {
 
     ajax.send(formData);
 
+}
+
+function reportesJS() {
+    let incidencia = document.getElementById('incidencia').value;
+    let desarrollar_incidencia = document.getElementById('desarrollar_incidencia').value;
+
+    if (incidencia == '' || desarrollar_incidencia == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
+    /* Si hace falta obtenemos el elemento HTML donde introduciremos la recarga (datos o mensajes) */
+    /* Usar el objeto FormData para guardar los parámetros que se enviarán:
+       formData.append('clave', valor);
+       valor = elemento/s que se pasarán como parámetros: token, method, inputs... */
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('id_reportador', document.getElementById('id_reportador').value);
+    formData.append('id_reportado', document.getElementById('id_reportado').value);
+    formData.append('incidencia', document.getElementById('incidencia').value);
+    formData.append('desarrollar_incidencia', document.getElementById('desarrollar_incidencia').value);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "crearreporte", true);
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText);
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            // /* Leerá la respuesta que es devuelta por el controlador: */
+            console.log(respuesta);
+            if (respuesta.resultado == 'OK') {
+                swal.fire({
+                    title: "Reporte enviado",
+                    text: "Hemos recibido tu reporte, enseguida nos pondremos a revisarlo.",
+                    showConfirmButton: true,
+                    icon: "success",
+
+                });
+            } else {
+                swal.fire({
+                    title: "Oops",
+                    text: "Parece que ha habido un error, inténtalo de nuevo.",
+                    icon: "error",
+                });
+            }
+
+        }
+    }
+
+    ajax.send(formData);
+}
+
+function get_session() {
+    alert('llega')
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "pillarsesion", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            sesion = respuesta.resultado
+        }
+
+    }
+    ajax.send(formData);
 }

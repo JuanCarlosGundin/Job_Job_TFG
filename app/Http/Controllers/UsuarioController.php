@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use App\Http\Controllers\Session;
 
 class UsuarioController extends Controller{
 
@@ -388,15 +389,30 @@ public function logout(Request $req){
         // ]);
         try {
             DB::beginTransaction();
+            $date = Carbon::now('+02:00');
+
+            //formato correcto
+            $fechaactual = $date->toDateTimeString();
             /*insertar datos en la base de datos*/
             //cambiar la linea de abajo
-            DB::table('tbl_reportes')->insert(["incidencia"=>$datos['incidencia'],"desarrollar_incidencia"=>$datos['desarrollar_incidencia'],"estado_incidencia"=>'abierta',"id_reportado"=>$datos['id_reportado'],"id_reportador"=>$datos['id_reportador']]);
+            DB::table('tbl_reportes')->insert(["incidencia"=>$datos['incidencia'],"desarrollar_incidencia"=>$datos['desarrollar_incidencia'],"estado_incidencia"=>'abierta',"fecha_incidencia"=>$fechaactual,"id_reportado"=>$datos['id_reportado'],"id_reportador"=>$datos['id_reportador']]);
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
         }   catch (\Exception $e) {
             DB::rollback();
             return response()->json(array('resultado'=> $e->getMessage()));
         }
+    }
+
+    public function pillarsesion(){
+        $sesion=session()->get('id_user');
+        if(isset($sesion)){
+            return response()->json(array('resultado'=> $sesion));
+        }else{
+            return response()->json(array('resultado'=> 'false'));
+        }
+        
+        
     }
     //--------------------------------------------------FIN CREAR REPORTE-----------------------------------------------------------//
     //-----------------------------------------------------GESTIONAR REPORTES----------------------------------------------------------//
