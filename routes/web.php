@@ -7,6 +7,8 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PtecnicaController;
+use App\Models\Ptecnica;
 
 Route::get('/chat', function () {
     return view('chat');
@@ -96,12 +98,28 @@ Route::get('perfil',[PerfilController::class, 'vistaPerfil']);
 // mostrarperfil
 Route::post('leerperfil',[PerfilController::class, 'leerperfiledit']);
 
-// editar sobre_mi
-Route::post('editarperfil',[PerfilController::class,'editarperfil']);
+// editarperfiltrabajador
+Route::post('editarperfiltrabajador',[PerfilController::class,'editarperfiltrabajador']);
+
+// editarperfilempresa
+Route::post('editarperfilempresa',[PerfilController::class,'editarperfilempresa']);
 
 /* ------------PerfilController------------ */
 
+/* ------------PtecnicaController------------ */
+/* ------------PtecnicaController------------ */
 
+// pagina prueba tecnica
+Route::get('pruebatecnica',[PtecnicaController::class,'vistaptecnica']);
+
+// leercontenido
+Route::post('leercontenido',[PtecnicaController::class,'leercontenido']);
+
+// mostrar_ptecnica_trabajador
+Route::post('mostrar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'mostrar_ptecnica_trabajador']);
+
+// insertar_trabajador_ptecnica
+Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
 
 
 
@@ -136,7 +154,7 @@ Route::post('perfiles',[UsuarioController::class,'perfiles']);
 //crearJS
 Route::post('crearuser',[UsuarioController::class,'crearuser']);
 
-//estadouserJS
+//estadouserJS /tambien sirve para desactivar la cuenta en el editar
 Route::put('estadouser/{id}',[UsuarioController::class,'estadouser']);
 
 //mostrarmodaluserJS
