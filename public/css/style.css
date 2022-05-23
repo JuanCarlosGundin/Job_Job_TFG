@@ -13,6 +13,40 @@ body {
   background-color: #E5E5E5;
 }
 
+.alert-success {
+  color: green;
+  margin-bottom: 15px;
+}
+
+.validacion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.validacion span {
+  color: red;
+  margin-top: 15px;
+}
+
+.validacion input {
+  font-size: 15px;
+  border-radius: 15px;
+  border: #186CA7 solid 1.5px;
+  width: 70% !important;
+  height: 7vh;
+}
+
 .region-navbar {
   background-color: #ffffff;
   display: -webkit-box;

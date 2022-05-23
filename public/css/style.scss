@@ -27,6 +27,30 @@ body {
     background-color: $background;
 }
 
+///////////////////////////////
+.alert-success {
+    color: green;
+    margin-bottom: 15px;
+}
+
+.validacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span {
+        color: red;
+        margin-top: 15px;
+    }
+    input {
+        font-size: 15px;
+        border-radius: 15px;
+        border: #186CA7 solid 1.5px;
+        width: 70%!important;
+        height: 7vh;
+    }
+}
+
 ///////////////////////////////NAVBAR//////////////////////////////////////
 // .region-navbar {
 //     height: 10vh;

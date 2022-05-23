@@ -8,7 +8,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PtecnicaController;
-use App\Models\Ptecnica;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/chat', function () {
     return view('chat');
@@ -201,10 +201,20 @@ Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorr
 Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
 Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
-Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);
+Route::get('/curriculum/pdf1', [curriculumController::class, 'pdf1']);
+Route::get('/curriculum/pdf2', [curriculumController::class, 'pdf2']);
+Route::get('/curriculum/pdf3', [curriculumController::class, 'pdf3']);
+Route::get('/curriculum/pdf4', [curriculumController::class, 'pdf4']);
 
 
 Route::get('/curriculum/plantilla1', [curriculumController::class, 'plantilla1']);
 Route::get('/curriculum/plantilla2', [curriculumController::class, 'plantilla2']);
 Route::get('/curriculum/plantilla3', [curriculumController::class, 'plantilla3']);
 Route::get('/curriculum/plantilla4', [curriculumController::class, 'plantilla4']);
+
+
+//////RESET PASSWORD//////
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

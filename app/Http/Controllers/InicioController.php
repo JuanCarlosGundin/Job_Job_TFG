@@ -72,15 +72,38 @@ class InicioController extends Controller{
         try {
             //sessiontrabajador0
             if ($req->has(['mail', 'contra', 'contra2'])) {
+<<<<<<< HEAD
+=======
+                // $req->validate([
+                //     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
+                //     'contra'=>'required|string|min:8|max:100',
+                //     'contra2'=>'required|same:contra'
+                // ]);
+>>>>>>> 4a788f0eea415d404b7a7be2c9553557c7582907
                 $validator = Validator::make($req->all(), [
                     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
                     'contra'=>'required|string|min:8|max:100',
                     'contra2'=>'required|same:contra',
                 ]);
                 if ($validator->fails()) {
+<<<<<<< HEAD
 
                     return response()->json(['errors'=>$validator->errors()->all()]);
                 }
+=======
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
+                // if ($req->fails())
+                // {
+                //     return response()->json(array('resultado'=> 'VALIDACION'));
+                //     // return view("chat");
+                //     // return response()->json(array('status'=>0,'errors'=>$req->errors()->toArray()));
+                // }
+                // if ($req->fails()) {
+                //     throw new \InvalidArgumentException($req->messages()->first());
+                // }
+>>>>>>> 4a788f0eea415d404b7a7be2c9553557c7582907
                 $req->session()->put('mail', $req->mail);
                 $req->session()->put('contra', $req->contra);
 
@@ -88,38 +111,81 @@ class InicioController extends Controller{
             }
             //sessiontrabajador1
             if ($req->has(['nombre', 'apellido', 'edad'])){
-
+                $validator = Validator::make($req->all(), [
+                    'nombre'=>'required|string|max:100',
+                    'apellido'=>'required|string|max:100',
+                    'edad'=>'required|date|before:-18 years'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('nombre', $req->nombre);
                 $req->session()->put('apellido', $req->apellido);
                 $req->session()->put('edad', $req->edad);
             }
             //sessiontrabajador2
             if ($req->has('campo_user')){
-
+                $validator = Validator::make($req->all(), [
+                    'campo_user'=>'string|max:50'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('campo_user', $req->campo_user);
             }
             if ($req->has('about_user')){
-
+                $validator = Validator::make($req->all(), [
+                    'about_user'=>'string|max:300'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('about_user', $req->about_user);
             }
             if ($req->has('lenguaje_preferido')){
-
+                $validator = Validator::make($req->all(), [
+                    'lenguaje_preferido'=>'string|max:30'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('lenguaje_preferido', $req->lenguaje_preferido);
             }
             //sessiontrabajador3
             if ($req->has('loc_trabajador')){
-
+                $validator = Validator::make($req->all(), [
+                    'loc_trabajador'=>'string|max:100'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('loc_trabajador', $req->loc_trabajador);
             }
             if ($req->has('disponibilidad')){
-
+                $validator = Validator::make($req->all(), [
+                    'disponibilidad'=>'string|max:30'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('disponibilidad', $req->disponibilidad);
             }
             if ($req->has('foto_perfil')){
-
                 //añadir foto trabajador si existe
                 if($req->hasFile('foto_perfil')){
-
+                    $validator = Validator::make($req->all(), [
+                        'foto_perfil'=>'image|max:500000'
+                    ]);
+                    if ($validator->fails()) {
+                        
+                        return response()->json(['errors'=>$validator->errors()->all()]);
+                    } 
                     $foto_perfil = $req->file('foto_perfil')->store('temporal','public');
                 }else{
 
@@ -130,13 +196,40 @@ class InicioController extends Controller{
             }
             //sessiontrabajador4
             if ($req->has(['nombre_idioma', 'nivel_idioma'])) {
-
+                $validator = Validator::make($req->all(), [
+                    'nombre_idioma'=>'string|max:100',
+                    'nivel_idioma'=>'string|max:100'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('nombre_idioma', $req->nombre_idioma);
                 $req->session()->put('nivel_idioma', $req->nivel_idioma);
             }
             //sessiontrabajador5
             if ($req->has(['nombre_formación', 'lugar_formación', 'año_entradafor', 'año_salidafor'])) {
-
+                return response()->json(array('resultado'=> gettype($req['nombre_formación'])));
+                $nombre_formación=explode(',',$req['nombre_formación']);
+                for ($i=0; $i < count($nombre_formación); $i++) { 
+                    $validator = Validator::make($req->all(), [
+                        'nombre_formación'=>'string|max:100'
+                    ]);
+                    if ($validator->fails()) {
+                        
+                        return response()->json(['errors'=>$validator->errors()->all()]);
+                    } 
+                }
+                $validator = Validator::make($req->all(), [
+                    'nombre_formación'=>'string|max:100',
+                    'lugar_formación'=>'string|max:100',
+                    'año_entradafor'=>'date',
+                    'año_salidafor'=>'date|after:año_entradafor'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('nombre_formación', $req->nombre_formación);
                 $req->session()->put('lugar_formación', $req->lugar_formación);
                 $req->session()->put('año_entradafor', $req->año_entradafor);
@@ -144,7 +237,17 @@ class InicioController extends Controller{
             }
             //sessiontrabajador6
             if ($req->has(['nombre_experiencia', 'lugar_experiencia', 'funciones', 'año_entradaexp', 'año_salidaexp'])) {
-
+                $validator = Validator::make($req->all(), [
+                    'nombre_experiencia'=>'string|max:100',
+                    'lugar_experiencia'=>'string|max:200',
+                    'funciones'=>'string|max:500',
+                    'año_entradaexp'=>'date',
+                    'año_salidaexp'=>'date|after:año_entradaexp'
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('nombre_experiencia', $req->nombre_experiencia);
                 $req->session()->put('lugar_experiencia', $req->lugar_experiencia);
                 $req->session()->put('funciones', $req->funciones);
@@ -166,11 +269,12 @@ class InicioController extends Controller{
         try {
             //sessionempresa0
             if ($req->has(['mail', 'nom_emp', 'contra', 'contra2'])) {
-                /* $req->validate([
+                $req->validate([
                     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
+                    'nom_emp'=>'required|string|max:200',
                     'contra'=>'required|string|min:8|max:100',
                     'contra2'=>'required|same:contra'
-                ]); */
+                ]); 
                 $req->session()->put('mail', $req->mail);
                 $req->session()->put('nom_emp', $req->nom_emp);
                 $req->session()->put('contra', $req->contra);
@@ -178,15 +282,23 @@ class InicioController extends Controller{
             }
             //sessionempresa1
             if ($req->has('about_emp')){
+                $req->validate([
+                    'about_emp'=>'string|max:300'
+                ]); 
 
                 $req->session()->put('about_emp', $req->about_emp);
             }
             if ($req->has('campo_emp')){
+                $req->validate([
+                    'campo_emp'=>'string|max:100'
+                ]); 
 
                 $req->session()->put('campo_emp', $req->campo_emp);
             }
             if ($req->has('searching')){
-
+                $req->validate([
+                    'searching'=>'string|max:300'
+                ]); 
                 $req->session()->put('searching', $req->searching);
             }
             //sessionempresa2
@@ -194,7 +306,9 @@ class InicioController extends Controller{
 
                 //añadir foto trabajador si existe
                 if($req->hasFile('logo_emp')){
-
+                    $req->validate([
+                        'logo_emp'=>'image|max:500000'
+                    ]); 
                     $logo_emp = $req->file('logo_emp')->store('temporal','public');
                 }else{
 
@@ -204,11 +318,15 @@ class InicioController extends Controller{
                 $req->session()->put('logo_emp', $logo_emp);
             }
             if ($req->has('loc_emp')){
-
+                $req->validate([
+                    'loc_emp'=>'string|max:100'
+                ]); 
                 $req->session()->put('loc_emp', $req->loc_emp);
             }
             if ($req->has('vacante')){
-
+                $req->validate([
+                    'vacante'=>'string|max:100'
+                ]); 
                 $req->session()->put('vacante', $req->vacante);
             }
 

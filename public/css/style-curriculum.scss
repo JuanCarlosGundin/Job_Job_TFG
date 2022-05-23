@@ -1,47 +1,125 @@
 /////////////////////////////////MIXINS-IMPORTS////////////////////////////////
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-$first-color:#186CA7;
-$second-color: #005EA0;
-$third-color:#0076CA;
-$fourth-color:#042944;
-$fifth-color: #92AFD7;
-//Colores basicos//
-$black:#000000;
-$white:#ffffff;
-$grey: #F0F0F0;
-//Tamaños//
-$movil:768px;
-$tablet:1200px;
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
+// @font-face {
+//     font-family: Helvetica2;
+//     src: url(../../vendor/dompdf/dompdf/lib/fonts/DejaVuSans.ttf);
+// }
+// $first-color:#186CA7;
+// $second-color: #005EA0;
+// $third-color:#0076CA;
+// $fourth-color:#042944;
+// $fifth-color: #92AFD7;
+// //Colores basicos//
+// $black:#000000;
+// $white:#ffffff;
+// $grey: #F0F0F0;
+// //Tamaños//
+// $movil:768px;
+// $tablet:1200px;
+// *,
+// *:before,
+// *:after {
+//     box-sizing: border-box;
+// }
+// @font-face {
+//     font-family: "FontAwesomeRegular";
+//     font-weight: normal;
+//     font-style: normal;
+//     src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/webfonts/fa-regular-400.ttf") format("truetype");
+// }
+// @font-face {
+//     font-family: "FontAwesomeBrands";
+//     font-weight: normal;
+//     font-style: normal;
+//     src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/webfonts/fa-brands-400.ttf") format("truetype");
+// }
+// @font-face {
+//     font-family: "FontAwesomeSolid";
+//     font-weight: bold;
+//     font-style: normal;
+//     src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/webfonts/fa-solid-900.ttf") format("truetype");
+// }
+.fa {
+    display: inline;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1;
+    font-family: FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fas {
+    font-weight: bold !important;
+    font-family: FontAwesomeSolid !important;
+}
+
+.fas:before {
+    font-weight: bold !important;
+    font-family: FontAwesomeSolid !important;
+}
+
+.fab {
+    font-weight: normal !important;
+    font-family: FontAwesomeBrands !important;
+}
+
+.fab:before {
+    font-weight: normal !important;
+    font-family: FontAwesomeBrands !important;
+}
+
+.far {
+    font-weight: normal !important;
+    font-family: FontAwesomeRegular !important;
+}
+
+.far:before {
+    font-weight: normal !important;
+    font-family: FontAwesomeRegular !important;
 }
 
 body {
     margin: 0;
     position: relative;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Helvetica2', sans-serif;
+    // font-family: Sans-Serif;
     background-color: #E5E5E5;
 }
 
-body {
-    width: 230mm;
-    height: 100%;
-    margin: 0 auto;
+p {
+    font-family: 'Helvetica2', sans-serif;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0px 10px;
+    border-collapse: separate;
+}
+
+@page {
+    margin: 0;
     padding: 0;
-    font-size: 12pt;
-    background: rgb(204, 204, 204);
 }
 
-* {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
-
+// body {
+//     width: 230mm;
+//     height: 100%;
+//     margin: 0 auto;
+//     padding: 0;
+//     font-size: 12pt;
+//     background: rgb(204, 204, 204);
+// }
+// * {
+//     box-sizing: border-box;
+//     -moz-box-sizing: border-box;
+// }
 .main-page {
     width: 210mm;
-    min-height: 297mm;
+    height: 281mm;
     margin: 10mm auto;
     background: white;
     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
@@ -49,7 +127,8 @@ body {
 
 .sub-page {
     // padding: 1cm;
-    height: 297mm;
+    height: 281mm;
+    overflow: hidden;
 }
 
 @page {
@@ -75,106 +154,145 @@ body {
     }
 }
 
+.botones {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    gap: 20px;
+    button {
+        border: none;
+        background-color: #186CA7;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 10px;
+    }
+}
+
 ///////////////////////////////////////////CURRICULUMS//////////////////////////////////////////
 //PLANTILLA 1///////////////////
 .cv-1 {
-    .sub-page {
-        overflow: hidden;
-        >.row {
+    background-color: white;
+    .row-principal {
+        height: 281mm;
+        margin-left: 0;
+        margin-right: 0;
+        .with-region-sidebar {
+            .nombre_trabajador {
+                font-size: 37px;
+            }
+            .campo_trabajador {
+                font-size: 18px;
+            }
+            width: 32%;
+            float: left;
+            * {
+                color: #ffffff;
+            }
+            padding: 30px 0;
+            background-color: #003e6e;
             height: 100%;
-            margin-left: 0;
-            margin-right: 0;
-            .with-region-sidebar {
-                * {
-                    color: #ffffff;
-                }
-                padding: 30px 0;
-                background-color: #003e6e;
-                height: 100%;
-                .cv-region-sidebar {
-                    .sidebar-block {
-                        >div {
-                            margin-bottom: 1rem;
-                        }
-                        p,
-                        a {
-                            word-break: break-all;
-                        }
-                        padding: 15px 15px 0 15px !important;
-                        .nombre-item {
-                            font-weight: 600;
-                            margin-bottom: 0;
-                        }
-                        .valor-item {
-                            margin-bottom: 0!important;
-                        }
-                        .percent {
-                            position: relative;
-                            width: 100%;
-                            height: 6px;
-                            background-color: #00315c;
-                            display: block;
-                            margin-top: 5px;
-                            div {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                height: 100%;
-                                background-color: #ffffff;
-                                &.Medio {
-                                    width: 60%;
-                                }
-                                &.Avanzado {
-                                    width: 80%;
-                                }
-                                &.Alto {
-                                    width: 80%;
-                                }
-                                &.Experto {
-                                    width: 100%;
-                                }
-                                &.Nativo {
-                                    width: 100%;
-                                }
+            .cv-region-sidebar {
+                .sidebar-block {
+                    >div {
+                        margin-bottom: 1rem;
+                    }
+                    p,
+                    a {
+                        word-break: break-all;
+                    }
+                    padding: 15px 15px 0 15px !important;
+                    .nombre-item {
+                        font-weight: 700;
+                        margin-bottom: 0;
+                    }
+                    .valor-item {
+                        margin-bottom: 0!important;
+                    }
+                    .percent {
+                        position: relative;
+                        width: 100%;
+                        height: 6px;
+                        background-color: #00315c;
+                        display: block;
+                        margin-top: 5px;
+                        div {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            background-color: #ffffff;
+                            &.Medio {
+                                width: 60%;
+                            }
+                            &.Avanzado {
+                                width: 80%;
+                            }
+                            &.Alto {
+                                width: 80%;
+                            }
+                            &.Experto {
+                                width: 100%;
+                            }
+                            &.Nativo {
+                                width: 100%;
                             }
                         }
                     }
-                    >div>* {
-                        padding: 0 15px;
-                    }
-                    .header {
-                        background-color: #00315c;
-                        margin-top: 10px;
-                        height: 40px;
-                        display: flex;
-                        align-items: center;
-                        h5 {
-                            margin-bottom: 0;
-                        }
-                    }
-                    .titulo-trabajador {
-                        h1 {
-                            //font-size: xx-large;
-                            margin-bottom: 15px;
-                        }
-                        h6 {
-                            font-weight: 100;
-                        }
-                        margin-bottom: 40px;
+                }
+                >div>* {
+                    padding: 0 15px;
+                }
+                .header {
+                    background-color: #00315c;
+                    margin-top: 10px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    >p {
+                        margin-bottom: 0;
+                        font-size: 22px;
                     }
                 }
+                .titulo-trabajador {
+                    h1 {
+                        //font-size: xx-large;
+                        margin-bottom: 15px;
+                    }
+                    h6 {
+                        font-weight: 100;
+                    }
+                    margin-bottom: 40px;
+                }
             }
-            .with-region-content {
-                overflow: hidden;
-                height: calc(297mm - 40px);
-                padding: 30px 15px 0 15px;
-                .experiencia-wrapper,
-                .formacion-wrapper {
-                    .item {
-                        margin-top: 30px;
-                        .lugar {
-                            font-style: italic;
-                        }
+        }
+        .with-region-content {
+            .seccion-titulo {
+                font-size: 30px;
+            }
+            width: 64%;
+            float: right;
+            // height: calc(297mm - 40px);
+            padding: 30px 15px 0 15px;
+            .experiencia-wrapper,
+            .formacion-wrapper {
+                .item {
+                    .nombre {
+                        font-weight: 700;
+                    }
+                    padding-left: 20px;
+                    .left {
+                        float: left;
+                        width: 23%;
+                    }
+                    .right {
+                        float: right;
+                        width: 73%;
+                    }
+                    padding-top: 30px;
+                    .lugar {
+                        font-style: italic;
                     }
                 }
             }
@@ -184,111 +302,282 @@ body {
 
 //PLANTILLA 2///////////////////
 .cv-2 {
-    .sub-page {
-        overflow: hidden;
-        >.row {
+    &.view {
+        .personal-info {
+            max-width: 100%;
+        }
+    }
+    background-color: white;
+    .row-principal {
+        height: 289mm;
+        margin-left: 0;
+        margin-right: 0;
+        .with-region-sidebar {
+            width: 32%;
+            float: left;
+            * {
+                color: #ffffff;
+            }
+            padding: 0 0 30px 0;
+            background-color: #414142;
             height: 100%;
-            margin-left: 0;
-            margin-right: 0;
-            .with-region-sidebar {
-                * {
-                    color: #ffffff;
+            .cv-region-sidebar {
+                >div:not(.foto-trabajador) {
+                    margin-bottom: 30px;
                 }
-                padding: 0 0 30px 0;
-                background-color: #414142;
-                height: 100%;
-                .cv-region-sidebar {
-                    >div:not(.foto-trabajador) {
-                        margin-bottom: 30px;
+                .foto-trabajador {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding-bottom: 15px;
+                    img {
+                        width: 6cm;
                     }
-                    .foto-trabajador {
-                        width: 100%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding-bottom: 15px;
-                        img {
-                            max-width: 100%;
-                            max-height: 8cm;
-                        }
+                    padding-bottom:1cm;
+                }
+                .sidebar-block {
+                    >div {
+                        margin-bottom: 1rem;
                     }
-                    .sidebar-block {
-                        >div {
-                            margin-bottom: 1rem;
-                        }
-                        p,
-                        a {
-                            word-break: break-all;
-                        }
-                        padding: 15px 15px 0 15px !important;
-                        .nombre-item {
-                            font-weight: 600;
-                            margin-bottom: 0;
-                        }
-                        .valor-item {
-                            margin-bottom: 0!important;
-                        }
-                        .percent {
-                            position: relative;
-                            width: 100%;
-                            height: 6px;
-                            background-color: #aaaaaa;
-                            display: block;
-                            margin-top: 5px;
-                            div {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                height: 100%;
-                                background-color: #007bff;
-                                &.Medio {
-                                    width: 60%;
-                                }
-                                &.Avanzado {
-                                    width: 80%;
-                                }
-                                &.Alto {
-                                    width: 80%;
-                                }
-                                &.Experto {
-                                    width: 100%;
-                                }
-                                &.Nativo {
-                                    width: 100%;
-                                }
+                    p,
+                    a {
+                        word-break: break-all;
+                    }
+                    padding: 15px 15px 0 15px !important;
+                    .nombre-item {
+                        font-weight: 700;
+                        margin-bottom: 0;
+                    }
+                    .valor-item {
+                        margin-bottom: 0!important;
+                    }
+                    .percent {
+                        position: relative;
+                        width: 5cm;
+                        height: 6px;
+                        background-color: #aaaaaa;
+                        display: block;
+                        margin-top: 5px;
+                        div {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            background-color: #007bff;
+                            &.Medio {
+                                width: 60%;
+                            }
+                            &.Avanzado {
+                                width: 80%;
+                            }
+                            &.Alto {
+                                width: 80%;
+                            }
+                            &.Experto {
+                                width: 100%;
+                            }
+                            &.Nativo {
+                                width: 100%;
                             }
                         }
                     }
-                    >div>* {
-                        padding: 0 15px;
+                }
+                >div>* {
+                    padding: 0 15px;
+                }
+                .header {
+                    margin-top: 10px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    >p {
+                        font-size: 15px;
                     }
-                    .header {
-                        margin-top: 10px;
-                        height: 40px;
-                        display: flex;
-                        align-items: center;
-                        h5 {
-                            margin-bottom: 0;
-                            font-weight: bold;
-                        }
-                    }
-                    .titulo-trabajador {
-                        h1 {
-                            //font-size: xx-large;
-                            margin-bottom: 15px;
-                        }
-                        h6 {
-                            font-weight: 100;
-                        }
-                        margin-bottom: 40px;
+                    h5 {
+                        margin-bottom: 0;
+                        font-weight: bold;
                     }
                 }
             }
-            .with-region-content {
+        }
+        .with-region-content {
+            width: 64%;
+            float: right;
+            .titulo-trabajador {
+                .campo_trabajador {
+                    //font-weight: bold;
+                    font-size: 18px;
+                }
+                .nombre_trabajador {
+                    margin-bottom: 15px;
+                    font-size: 40px;
+                    font-weight: bold;
+                }
+                margin-bottom: 40px;
+            }
+            .personal-info {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: center;
+                >div {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    p,
+                    a {
+                        margin-bottom: 0!important;
+                        margin-left: 10px;
+                    }
+                }
+            }
+            // height: calc(297mm - 40px);
+            padding: 30px 15px 0 15px;
+            .experiencia-wrapper,
+            .formacion-wrapper {
+                >p {
+                    font-size: 20px;
+                }
+                .item {
+                    margin-top: 30px;
+                    .lugar {
+                        font-style: italic;
+                    }
+                    .nombre {
+                        font-weight: 700;
+                    }
+                    padding-left: 20px;
+                    .left {
+                        float: left;
+                        width: 23%;
+                    }
+                    .right {
+                        float: right;
+                        width: 73%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//PLANTILLA 3///////////////////
+.cv-3 {
+    &.view {}
+    .fila {
+        width: 100%;
+    }
+    .fila>td {
+        // width: 50%;
+        &:nth-child(1) {
+            width: 45%;
+        }
+        &:nth-child(2) {
+            width: 55%;
+        }
+    }
+    table {
+        border-spacing: 0;
+    }
+    .titulo-trabajador p,
+    .title {
+        color: #fef360;
+    }
+    .title {
+        font-size: 28px;
+    }
+    p,
+    a,
+    i {
+        color: white;
+    }
+    hr {
+        background-color: white;
+        height: 3px;
+    }
+    .row-principal {
+        background-color: #3a637f;
+        height: 281mm;
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+        .with-region-content {
+            width: 100%;
+            .region-personal {
+                width: 100%;
+            }
+            .region-personal .titulo-trabajador {
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
+                // flex-direction: column;
+                text-align: center;
+                width: 100%;
+                .nombre_trabajador {
+                    font-size: 40px;
+                }
+                .campo_trabajador {
+                    font-size: 18px;
+                }
+            }
+            .region-informacion {
+                .fila {
+                    >td {
+                        padding: 0 30px 0 15px;
+                    }
+                }
+                .title {
+                    margin-top: 20px;
+                }
+                .left,
+                .right {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-evenly;
+                    flex-direction: column;
+                }
+                .habilidad,
+                .idioma {
+                    margin-top: 10px;
+                }
+                .percent {
+                    position: relative;
+                    width: 100%;
+                    height: 6px;
+                    background-color: #aaaaaa;
+                    display: block;
+                    margin-top: 5px;
+                    div {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        background-color: #fef360;
+                        &.Medio {
+                            width: 60%;
+                        }
+                        &.Avanzado {
+                            width: 80%;
+                        }
+                        &.Alto {
+                            width: 80%;
+                        }
+                        &.Experto {
+                            width: 100%;
+                        }
+                        &.Nativo {
+                            width: 100%;
+                        }
+                    }
+                }
                 .personal-info {
+                    gap: 10px;
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-end;
                     justify-content: center;
                     >div {
                         display: flex;
@@ -301,280 +590,212 @@ body {
                         }
                     }
                 }
-                overflow: hidden;
-                height: calc(297mm - 40px);
-                padding: 30px 15px 0 15px;
+                .nombre {
+                    color: white;
+                    font-weight: bold;
+                }
                 .experiencia-wrapper,
                 .formacion-wrapper {
                     .item {
-                        margin-top: 30px;
+                        .col-sm-4 {
+                            width: 30%;
+                        }
+                        .col-sm-8 {
+                            width: 63%;
+                        }
+                        margin-top: 15px;
                         .lugar {
                             font-style: italic;
                         }
                     }
                 }
             }
-        }
-    }
-}
-
-//PLANTILLA 3///////////////////
-.cv-3 {
-    .sub-page {
-        h1,
-        h2,
-        h6 {
-            color: #fef360;
-        }
-        p,
-        a,
-        i {
-            color: white;
-        }
-        hr {
-            background-color: white;
-            height: 3px;
-        }
-        background-color: #3a637f;
-        overflow: hidden;
-        >.row {
-            .row {
-                margin-left: 0;
-                margin-right: 0;
-                width: 100%;
-            }
-            height: 100%;
-            .with-region-content {
-                .region-personal .titulo-trabajador {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
-                }
-                .region-informacion {
-                    .title {
-                        margin-top: 20px;
-                    }
-                    .left,
-                    .right {
-                        display: flex;
-                        align-items: flex-start;
-                        justify-content: space-evenly;
-                        flex-direction: column;
-                    }
-                    .habilidad {
-                        margin-top: 10px;
-                    }
-                    .percent {
-                        position: relative;
-                        width: 100%;
-                        height: 6px;
-                        background-color: #aaaaaa;
-                        display: block;
-                        margin-top: 5px;
-                        div {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            height: 100%;
-                            background-color: #fef360;
-                            &.Medio {
-                                width: 60%;
-                            }
-                            &.Avanzado {
-                                width: 80%;
-                            }
-                            &.Alto {
-                                width: 80%;
-                            }
-                            &.Experto {
-                                width: 100%;
-                            }
-                            &.Nativo {
-                                width: 100%;
-                            }
-                        }
-                    }
-                    .personal-info {
-                        gap: 10px;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        >div {
-                            display: flex;
-                            justify-content: flex-start;
-                            align-items: center;
-                            p,
-                            a {
-                                margin-bottom: 0!important;
-                                margin-left: 10px;
-                            }
-                        }
-                    }
-                    .nombre {
-                        color: white;
-                        font-weight: bold;
-                    }
-                    .experiencia-wrapper,
-                    .formacion-wrapper {
-                        .item {
-                            margin-top: 15px;
-                            .lugar {
-                                font-style: italic;
-                            }
-                        }
-                    }
-                }
-                overflow: hidden;
-                height: calc(297mm - 40px);
-                padding: 30px 15px 0 15px;
-            }
+            // height: calc(297mm - 40px);
+            padding: 30px 0;
         }
     }
 }
 
 //PLANTILLA 4///////////////////
 .cv-4 {
-    .sub-page {
-        h2 {
-            font-size: 1.5rem;
+    &.view {
+        .with-region-personal {
+            padding: 0 0 30px 0!important;
         }
-        h1,
-        h2,
-        h6 {
-            color: #003d74;
-        }
-        p,
-        a,
-        i {
-            color: black;
-        }
-        hr {
-            background-color: white;
-            height: 3px;
-        }
-        overflow: hidden;
-        >.row {
-            width: 100%;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    background-color: white;
+    h2 {
+        font-size: 1.5rem;
+    }
+    h1,
+    h2,
+    h6 {
+        color: #003d74;
+    }
+    p,
+    a,
+    i {
+        color: black;
+    }
+    hr {
+        background-color: white;
+        height: 3px;
+    }
+    .col-sm-6 {
+        width: 50%;
+    }
+    .row-principal {
+        height: 281mm;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        .row {
             margin-left: 0;
             margin-right: 0;
-            .row {
-                margin-left: 0;
-                margin-right: 0;
-                width: 100%;
+            width: 100%;
+        }
+        .with-region-personal {
+            padding: 1.8cm 0 0 0;
+            * {
+                color: white;
             }
-            .with-region-personal {
-                padding: 20px;
-                * {
-                    color: white;
+            background-color: #003d74;
+            .foto-trabajador {
+                width: 30%;
+                display: inline-block;
+            }
+            .info-trabajador {
+                width: 63%;
+                display: inline-block;
+                .nombre-trabajador {
+                    font-size: 40px;
                 }
-                background-color: #003d74;
-                .region-personal .titulo-trabajador {
+                .campo-trabajador {
+                    font-size: 18px;
+                    margin-bottom: 15px;
+                }
+            }
+            .region-personal .titulo-trabajador {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .info-trabajador>.row {
+                justify-content: space-between;
+                flex-direction: column;
+                gap: 25px;
+            }
+            .personal-info {
+                margin-left: 15px;
+                p {
+                    margin-bottom: 0;
+                }
+                // .col-sm-6>div {
+                //     padding: 10px 0;
+                //     display: flex;
+                //     align-items: center;
+                //     justify-content: flex-start;
+                //     flex-wrap: nowrap;
+                //     gap: 5px;
+                //     p {
+                //         margin-top: auto;
+                //         margin-bottom: auto;
+                //     }
+                // }
+            }
+        }
+        .with-region-content {
+            padding: 20px;
+            .objetivo-profesional {
+                width: 90%;
+            }
+            .region-informacion {
+                .title {
+                    margin-top: 20px;
+                    font-size: 25px;
+                }
+                .left,
+                .right {
                     display: flex;
-                    justify-content: center;
                     align-items: flex-start;
+                    justify-content: space-evenly;
                     flex-direction: column;
                 }
-                .info-trabajador>.row {
-                    justify-content: space-between;
-                    flex-direction: column;
-                    gap: 25px;
+                .habilidad,
+                .idioma {
+                    margin-top: 7px;
+                    .nombre-item {
+                        margin-bottom: 10px;
+                    }
+                }
+                .percent {
+                    position: relative;
+                    width: 8cm;
+                    height: 6px;
+                    background-color: #aaaaaa;
+                    display: block;
+                    margin-top: 5px;
+                    div {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        background-color: #fef360;
+                        &.Medio {
+                            width: 60%;
+                        }
+                        &.Avanzado {
+                            width: 80%;
+                        }
+                        &.Alto {
+                            width: 80%;
+                        }
+                        &.Experto {
+                            width: 100%;
+                        }
+                        &.Nativo {
+                            width: 100%;
+                        }
+                    }
                 }
                 .personal-info {
-                    .col-sm-6>div {
-                        padding: 10px 0;
+                    gap: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    >div {
                         display: flex;
-                        align-items: center;
                         justify-content: flex-start;
-                        flex-wrap: nowrap;
-                        gap: 5px;
-                        p {
-                            margin-top: auto;
-                            margin-bottom: auto;
+                        align-items: center;
+                        p,
+                        a {
+                            margin-bottom: 0!important;
+                            margin-left: 10px;
                         }
                     }
                 }
-            }
-            .with-region-content {
-                padding: 20px;
-                .region-informacion {
-                    .title {
-                        margin-top: 20px;
-                    }
-                    .left,
-                    .right {
-                        display: flex;
-                        align-items: flex-start;
-                        justify-content: space-evenly;
-                        flex-direction: column;
-                    }
-                    .habilidad,
-                    .idioma {
-                        margin-top: 7px;
-                        .nombre-item {
-                            margin-bottom: 10px;
+                .nombre {
+                    font-weight: bold;
+                }
+                .experiencia-wrapper,
+                .formacion-wrapper {
+                    .item {
+                        .col-sm-4 {
+                            width: 30%;
                         }
-                    }
-                    .percent {
-                        position: relative;
-                        width: 100%;
-                        height: 6px;
-                        background-color: #aaaaaa;
-                        display: block;
-                        margin-top: 5px;
-                        div {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            height: 100%;
-                            background-color: #fef360;
-                            &.Medio {
-                                width: 60%;
-                            }
-                            &.Avanzado {
-                                width: 80%;
-                            }
-                            &.Alto {
-                                width: 80%;
-                            }
-                            &.Experto {
-                                width: 100%;
-                            }
-                            &.Nativo {
-                                width: 100%;
-                            }
+                        .col-sm-8 {
+                            width: 63%;
                         }
-                    }
-                    .personal-info {
-                        gap: 10px;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        >div {
-                            display: flex;
-                            justify-content: flex-start;
-                            align-items: center;
-                            p,
-                            a {
-                                margin-bottom: 0!important;
-                                margin-left: 10px;
-                            }
-                        }
-                    }
-                    .nombre {
-                        font-weight: bold;
-                    }
-                    .experiencia-wrapper,
-                    .formacion-wrapper {
-                        .item {
-                            margin-top: 15px;
-                            .lugar {
-                                font-style: italic;
-                            }
+                        margin-top: 15px;
+                        .lugar {
+                            font-style: italic;
                         }
                     }
                 }
-                overflow: hidden;
             }
         }
     }

@@ -19,13 +19,32 @@ $tablet:900px;
 }
 
 ////BOTON MODO DIA-NOCTURNO////
+.area-botones {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    &.horizontal {
+        flex-direction: row;
+    }
+}
+
+.volver {
+    color: white;
+    font-size: 40px;
+}
+
 .darkmodeswitch {
+    position: relative;
     z-index: 2;
     margin-left: 2%;
     margin-top: 1.5%;
     background: #3494b1;
     display: flex;
-    position: relative;
     cursor: pointer;
     outline: none;
     border: none;
@@ -74,7 +93,8 @@ $tablet:900px;
         }
         h2,
         h3,
-        .contraseña {
+        .contraseña,
+        label {
             color: white !important;
         }
         .inputlogin,
@@ -82,10 +102,9 @@ $tablet:900px;
             background-color: white;
             border: white;
         }
-        .botonlogin,
-        .botonregister {
-            background-color: $second-color;
-            box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+        button {
+            background-color: $second-color!important;
+            box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400)!important;
         }
         .btn-signin {
             /*PROVISIONAL*/
