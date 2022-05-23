@@ -237,6 +237,19 @@ public function logout(Request $req){
                 }
 
                 DB::table('tbl_trabajador')->where('id_usuario','=',$id)->update(["nombre"=>$req['nombre'],"foto_perfil"=>$foto_perfil,"edad"=>$req['edad'],"mostrado"=>$req['mostrado']]);
+                //MIRAR ESTO PORQUE QUIZÁS LA HE CAGADO ABAJO TAMBIEN.
+                /* si la contraseña la modificas, que tenga sha256, si no que conserve valor */
+                $uscontra = DB::table('tbl_usuarios')->where('id','=',$id)->select('contra')->first();
+
+                if ($req['contra'] == $uscontra->contra){
+
+                    DB::table('tbl_usuarios')->where('id','=',$id)->update(["contra"=>$req['contra'],"nom_emp"=>$req['nom_emp'],"mostrado"=>$req['mostrado'],"foto_perfil"=>$foto_perfil]);
+
+                } else{
+
+                    DB::table('tbl_usuarios')->where('id','=',$id)->update(["contra"=>hash('sha256',$req['contra']),"nom_emp"=>$req['nom_emp'],"mostrado"=>$req['mostrado'],"foto_perfil"=>$foto_perfil]);
+
+                }
 
             }
 
@@ -262,8 +275,6 @@ public function logout(Request $req){
                     $logo_emp = $logo->logo_emp;
 
                 }
-
-                DB::table('tbl_empresa')->where('id_usuario','=',$id)->update(["nom_emp"=>$req['nom_emp'],"mostrado"=>$req['mostrado'],"logo_emp"=>$logo_emp]);
                 /* si la contraseña la modificas, que tenga sha256, si no que conserve valor */
                 $uscontra = DB::table('tbl_usuarios')->where('id','=',$id)->select('contra')->first();
 
