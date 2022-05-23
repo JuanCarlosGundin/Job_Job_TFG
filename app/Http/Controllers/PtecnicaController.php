@@ -72,7 +72,8 @@ class PtecnicaController extends Controller{
                 DB::select("UPDATE tbl_ptecnica SET json_prueba=? WHERE id_empresa=?",[$json_prueba,$id_empresa]);
             } else{
                 $json_prueba="JSON_ARRAY_APPEND(json_prueba, '$', JSON_OBJECT('id_participante', '".$id."', 'inicio_participante', '".$inicio_participante."', 'zip_participante', '".$zip_participante."'))";
-                DB::select("UPDATE tbl_ptecnica SET json_prueba=? WHERE id_empresa=?",[$json_prueba,$id_empresa]);
+                //no puedo usar ? en json_prueba por un bug en php
+                DB::select("UPDATE tbl_ptecnica SET json_prueba=".$json_prueba." WHERE id_empresa=?",[$id_empresa]);
             }
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
