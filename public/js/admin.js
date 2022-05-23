@@ -547,6 +547,10 @@ function actualizarmodal(id, id_perfil) {
             recargamodal += '<input type="email" class="form-control" id="mail" name="mail" value="' + usuarios.mail + '">';
             recargamodal += '</div>';
             recargamodal += '<div class="form-group">';
+            recargamodal += '<label class="col-sm-2 col-form-label">Contraseña:</label>';
+            recargamodal += '<input type="password" class="form-control" id="contra" name="contra" value="' + usuarios.contra + '">';
+            recargamodal += '</div>';
+            recargamodal += '<div class="form-group">';
             recargamodal += '<label class="col-sm-2 col-form-label">Estado:</label>';
             recargamodal += '<input type="number" class="form-control" id="estado" name="estado" value="' + usuarios.estado + '">';
             recargamodal += '</div>';
@@ -614,6 +618,7 @@ function modificarJS(id, id_perfil) {
     formData.append('_method', 'PUT');
     formData.append('mail', document.getElementById('mail').value);
     formData.append('estado', document.getElementById('estado').value);
+    formData.append('contra', document.getElementById('contra').value);
 
     /* modificar trabajador */
     if (id_perfil == 2) {
