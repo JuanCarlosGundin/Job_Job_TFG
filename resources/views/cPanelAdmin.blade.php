@@ -1,9 +1,12 @@
-@if (!Session::get('nombre_admin'))
+@if (!Session::get('id_user'))
+
     <?php
         //Si la session no esta definida te redirige al login.
         return redirect()->to('/')->send();
     ?>
+    
 @endif
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../public/css/admin.css">
+    <link rel="stylesheet" href="../public/css/correoadmin.css">
     <title>Administración</title>
 </head>
 <body class="mx-2">
@@ -40,6 +44,42 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Categorias
               </a>
+              {{-- MODAL USUARIO --}}
+                      <!-- Trigger/Open The Modal -->
+                  <button id="myBtn">ENVIAR CORREO</button>
+
+                  <!-- The Modal -->
+                  <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+
+                                  <form method="POST" onsubmit="enviarcorreoadminJS(); return false;">
+                                      <h2>CONTACTAR USUARIO</h2>
+                                      <input type="text" name="destinatario" id="destinatario" placeholder="Introduce el destinatario"><br><br>
+                                      <input type="text" name="asunto" id="asunto" placeholder="Introduce el asunto"><br><br>
+                                      <textarea name="mensaje" rows="3" id="mensaje" placeholder="Introduce el mensaje"></textarea><br><br>
+                                      <button type="submit" id="myBtn">
+                                            Enviar
+                                      </button>
+                                    
+                                  </form><br><br>
+                                  <form method="POST" onsubmit="enviarcorreoadmintrabajadoresJS(); return false;">
+                                    <h2>CONTACTAR TRABAJADORES</h2>
+                                    <input type="text" name="asuntotrabajador" id="asuntotrabajador" placeholder="Introduce el asunto"><br><br>
+                                    <textarea name="mensajetrabajador" rows="3" id="mensajetrabajador" placeholder="Introduce el mensaje"></textarea><br><br>
+                                    <button type="submit" id="myBtn">
+                                          Enviar
+                                    </button>
+                                  
+                                </form>
+                              
+                    </div>
+
+                  </div>
+              {{-- FIN MODAL USUARIO --}}
+              
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
                       <div class="form-check">
@@ -91,5 +131,6 @@
         </div>
     </div>
     <script src="js/admin.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

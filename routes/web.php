@@ -5,52 +5,112 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\curriculumController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
-Route::get('/', function () {
-    return view('login');
-});
-Route::get('/home', function () {
-    return view('home');
-});
-
-Route::get('verificar', function () {
-    return view('verificacion');
+Route::get('/chat', function () {
+    return view('chat');
 });
 
+Route::get('registrar', function () {
+    return view('registrar');
+});
+
+Route::get('paginacontacto', function () {
+    return view('paginacontacto');
+});
+
+
+/*PRUEBA*/
+Route::get('reportesprueba', function () {
+    return view('reportesprueba');
+});
+/*FIN PRUEBA*/
 Route::get('login', function () {
     return view('login');
 });
 Route::get('paginaempresa', function () {
     return view('paginaempresa');
 });
-Route::get('paginatrabajador', function () {
-    return view('paginatrabajador');
+
+Route::get('registrar3', function () {
+    return view('registrar3');
 });
-Route::get('registrar', function () {
-    return view('registrar');
+
+Route::get('registrar4', function () {
+    return view('registrar4');
 });
-Route::get('editarperfil', function () {
-    return view('editarperfil');
-});
-/*--------------RUTAS DAVID--------------*/
-/*LOGIN Y LOGOUT*/
+
+/* ------------InicioController------------ */
+
+//Landing page
+Route::get('/', [InicioController::class, 'index']);
+
+//pagina inicio
+Route::get('/inicio', [InicioController::class, 'inicio']);
+
+//Acceder a pagina swapper
+Route::get('home', [InicioController::class, 'home']);
+
+//Login
+Route::post('loginuser', [InicioController::class, 'loginuser']);
+
+/* Registrar */
+
+//Sesiones trabajador
+Route::post('sesionestrabajador', [InicioController::class, 'sesionestrabajador']);
+
+//Sesiones empresa
+Route::post('sesionesempresa', [InicioController::class, 'sesionesempresa']);
+
+//Trabajador
+Route::post('registrotrabajador', [InicioController::class, 'registrotrabajador']);
+
+//Empresa
+Route::post('registroempresa', [InicioController::class, 'registroempresa']);
+
+/* Registrar */
+
 Route::post('login', [UsuarioController::class, 'loginP']);
 
+/* Verificar cuenta */
 
+//Pagina verificar
+Route::get('verificar', [InicioController::class, 'verificar']);
+
+//Verificar y activar cuenta
+Route::post('activarcuenta', [InicioController::class, 'activarcuenta']);
+
+/* Verificar cuenta */
+
+//Logout
 Route::get('logout', [UsuarioController::class, 'logout']);
-//Ruta para el registro de trabajadores
-Route::post('registroPost',[UsuarioController::class, 'registroPost']);
-// Route::get('registro',[UsuarioController::class, 'registro']);
-Route::post('registrar',[UsuarioController::class, 'registrar']);
-Route::post('loginP',[UsuarioController::class, 'loginP']);
-//Ruta para el registro de empresas
-// Route::get('registroEmpresa',[UsuarioController::class, 'registroEmpresa']);
-Route::post('registroEmpresaPost',[UsuarioController::class, 'registroEmpresaPost']);
 
-//Verificar//
+/* ------------InicioController------------ */
+
+/* ------------PerfilController------------ */
+
+//Vista perfil
+Route::get('perfil',[PerfilController::class, 'vistaPerfil']);
+
+// mostrarperfil
+Route::post('leerperfil',[PerfilController::class, 'leerperfiledit']);
+
+// editar sobre_mi
+Route::post('editarperfil',[PerfilController::class,'editarperfil']);
+
+/* ------------PerfilController------------ */
 
 
-Route::post('verificarController', [UsuarioController::class, 'ActivateACC']);
+
+
+
+
+
+
+
+
 
 ///////////////////////MAIN/////////////////////
 
@@ -62,7 +122,9 @@ Route::post('si',[AppController::class, 'si']);
 Route::post('no',[AppController::class, 'no']);
 
 ////Diego_branch
+
 ///ZONA ADMINISTRADOR
+
 //Acceder a vista Admin
 Route::get('cPanelAdmin',[UsuarioController::class, 'vistaAdmin']);
 
@@ -86,30 +148,40 @@ Route::put('modificaruser/{id}/{id_perfil}',[UsuarioController::class,'modificar
 
 //eliminaruserJS
 Route::delete('eliminaruser/{id}/{id_perfil}',[UsuarioController::class,'eliminaruser']);
-///ZONA ADMINISTRADOR
+
+///FINAL ZONA ADMINISTRADOR
 
 ///ZONA NOTIFICACIONES
+
 //Acceder a vista Notificaciones
 Route::get('notificaciones',[UsuarioController::class, 'vistaNotificaciones']);
 
 //leernotificacionesJS
 Route::post('leernotificaciones',[UsuarioController::class, 'leernotificaciones']);
+
 //leerperfiloneuser
 Route::post('leerperfiluser/{id}/{id_perfil}',[UsuarioController::class, 'leerperfiloneuser']);
 
-///ZONA NOTIFICACIONES
+///FINAL ZONA NOTIFICACIONES
 
-/*EDITAR PERFIL*/
-//Vista perfil
-Route::get('perfil',[UsuarioController::class, 'vistaPerfil']);
-// mostrarperfil.
-Route::post('leerperfil',[UsuarioController::class, 'leerperfiledit']);
-// editarperfil
-Route::put('editarperfil/{id}/{id_perfil}',[UsuarioController::class, 'editarperfil']);
-/*FIN EDITAR PERFIL*/
+//EDITAR PERFIL//
+
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
 
+//ZONA CONTACTO
+//mandar correo a admin por la pagina de contacto
+Route::post('mandarcontacto', [MailController::class, 'sendingcontacto']);
+//ZONA CONTACTO
+//mandar correo a usuario individual desde la página de admin
+Route::post('enviarcorreoadmin', [MailController::class, 'enviarcorreoadmin']);
+//mandar correo a usuario individual desde la página de admin
+Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorreoadmintrabajadores']);
+
+
+//ZONA REPORTES
+//el usuario puede hacer reportes de otros usuarios.
+Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
 Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
 Route::get('/curriculum/pdf1', [curriculumController::class, 'pdf1']);
@@ -122,3 +194,10 @@ Route::get('/curriculum/plantilla1', [curriculumController::class, 'plantilla1']
 Route::get('/curriculum/plantilla2', [curriculumController::class, 'plantilla2']);
 Route::get('/curriculum/plantilla3', [curriculumController::class, 'plantilla3']);
 Route::get('/curriculum/plantilla4', [curriculumController::class, 'plantilla4']);
+
+
+//////RESET PASSWORD//////
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

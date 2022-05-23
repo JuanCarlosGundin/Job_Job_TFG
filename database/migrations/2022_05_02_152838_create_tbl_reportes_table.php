@@ -17,6 +17,7 @@ class CreateTblReportesTable extends Migration
             $table->id();
             $table->string('incidencia',200);
             $table->string('estado_incidencia',45);
+            $table->string('desarrollar_incidencia',255);
             $table->unsignedBigInteger('id_reportador');
             $table->unsignedBigInteger('id_reportado');
 
