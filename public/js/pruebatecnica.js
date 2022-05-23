@@ -220,16 +220,14 @@ function mostrar_prueba_tecnica_zip(evt) {
                     <p>Texto donde dice zip</p>
                 </div>
                 <form id="formarchivo" enctype="multipart/form-data">
-                <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                    <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                    <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
                 </form>
-                <div>
-                    <button id="enviar_respuesta">Enviar respuesta</button>
-                </div>
             </div>
             `;
             contenidoajax.innerHTML = recarga;
             document.getElementById("formarchivo").id_empresa = trabajador.id_empresa;
-            document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador)
+            document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
 
         }
     }
@@ -241,10 +239,13 @@ function enviar_zip_trabajador(evt) {
 
     evt.preventDefault();
     var id_empresa = evt.currentTarget.id_empresa;
+    var zip_participante = document.getElementById("zip_participante").files[0]
 
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('zip_participante', zip_participante);
     var ajax = objetoAjax();
     ajax.open("POST", "insertar_trabajador_ptecnica/" + id_empresa, true);
     ajax.onreadystatechange = function() {
