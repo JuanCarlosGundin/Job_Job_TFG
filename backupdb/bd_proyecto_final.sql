@@ -18,6 +18,8 @@
 --
 -- Table structure for table `tbl_chat`
 --
+CREATE DATABASE bd_proyecto_final;
+USE bd_proyecto_final;
 
 DROP TABLE IF EXISTS `tbl_chat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -32,7 +34,7 @@ CREATE TABLE `tbl_chat` (
   KEY `interactuado_user_idx` (`id_interactuado_chat`),
   CONSTRAINT `iniciador_user` FOREIGN KEY (`id_iniciador_chat`) REFERENCES `tbl_usuarios` (`id`),
   CONSTRAINT `interactuado_user` FOREIGN KEY (`id_interactuado_chat`) REFERENCES `tbl_usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +66,7 @@ CREATE TABLE `tbl_empresa` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `logo_emp_UNIQUE` (`logo_emp`),
   CONSTRAINT `empresa_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +98,7 @@ CREATE TABLE `tbl_interaccion` (
   KEY `interactuado_usuario_idx` (`id_interactuado`),
   CONSTRAINT `iniciador_usuario` FOREIGN KEY (`id_iniciador`) REFERENCES `tbl_usuarios` (`id`),
   CONSTRAINT `interactuado_usuario` FOREIGN KEY (`id_interactuado`) REFERENCES `tbl_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +121,7 @@ CREATE TABLE `tbl_perfiles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom_perfil` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +152,7 @@ CREATE TABLE `tbl_reportes` (
   KEY `reportado_usuarios_idx` (`id_reportado`),
   CONSTRAINT `reportado_usuarios` FOREIGN KEY (`id_reportado`) REFERENCES `tbl_usuarios` (`id`),
   CONSTRAINT `reportador_usuarios` FOREIGN KEY (`id_reportador`) REFERENCES `tbl_usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +187,7 @@ CREATE TABLE `tbl_trabajador` (
   `edad` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
   CONSTRAINT `trabajador_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +217,7 @@ CREATE TABLE `tbl_usuarios` (
   PRIMARY KEY (`id`),
   KEY `usuario_perfil_idx` (`id_perfil`),
   CONSTRAINT `usuario_perfil` FOREIGN KEY (`id_perfil`) REFERENCES `tbl_perfiles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

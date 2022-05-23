@@ -19,12 +19,15 @@ var navbarAlerts = document.getElementById("navbar-alerts-icon");
 navbarProfile.onclick = function() {
     window.location.href = "./perfil";
 }
+
 navbarAlerts.onclick = function() {
     window.location.href = "./notificaciones";
 }
+
 navbarMain.onclick = function() {
     window.location.href = "./home";
 }
+
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -56,189 +59,246 @@ function mostrarperfilJS() {
             if (id_perfil == 2) {
                 var trabajador = respuesta.trabajador[0];
                 /* Foto */
-                recarga += '<div class="user-vista">';
-                recarga += '<div class="user-ver-foto">';
-                recarga += '<div class="container-foto">';
-                if (trabajador.foto_perfil != null) {
-                    recarga += '<img class="user-profilefoto" src="storage/' + trabajador.foto_perfil + '">';
-                } else {
-                    recarga += '<img class="user-profilefoto" src="storage/img/usuario.png">';
-                }
-                /* boton que cambia la vista a editar */
-                recarga += '<div class="user-edit-div">';
-                recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><i class="fa-solid fa-pen"></i></button>';
-                recarga += '</div>';
-                //logout
+                recarga += '<div class="ver-profile">';
+                recarga += '<div class="container-user-poligon">';
                 recarga += '<div class="logout">';
                 recarga += '<button class="logout-btn" onClick="window.location.href=`logout`;"><i class="fa-solid fa-right-from-bracket"></i></button>';
                 recarga += '</div>';
+                recarga += '<div class="user-poligon">';
+                recarga += '</div>';
+                recarga += '<div class="div-foto">';
+                recarga += '<div class="edit-foto">';
+                recarga += '<label class="input-file">';
+                recarga += '<i class="fa-solid fa-image"></i>';
+                recarga += '<input type="file" class="input" id="foto_perfil" name="foto_perfil">';
+                recarga += '</label>';
+                recarga += '</div>';
+                recarga += '<div class="user-ver-foto">';
+                // recarga += '<img class="user-profilefoto" src="./storage/uploads/usuario.png">';
+                if (trabajador.foto_perfil != null) {
+                    recarga += '<img class="user-profilefoto" src="./storage/uploads/' + trabajador.foto_perfil + '">';
+                } else {
+                    recarga += '<img class="user-profilefoto" src="./storage/img/usuario.png">';
+                }
+
+                recarga += '</div>';
+
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Inputs para editar el usuario */
-                recarga += '<div class="user-ver">';
-                /* Nombre, apellido y edad */
+                recarga += '<div class="user-poligon2">';
+                recarga += '<div class="user-vista">';
+
                 recarga += '<div class="user-div-name">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-user"></i>';
-                recarga += '</div>';
                 recarga += '<div class="divs-name">';
                 recarga += '<span class="p-name">  ' + trabajador.nombre + '  </span>';
-                recarga += '<span class="p-surname">  ' + trabajador.apellido + '  </span>';
-                recarga += '<i class="fa-solid fa-cake-candles"></i>';
+                recarga += '<span class="p-surname">  ' + trabajador.apellido + ',' + '  </span>';
                 recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
                 recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<hr>';
-                /* Correo */
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-at"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.mail + '</span>';
+                recarga += '<div class="user-edit-div">';
+                recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><p class="edit-btn-p">EDITAR</p></button>';
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Vivienda */
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-house-chimney"></i>';
+
+                recarga += '<hr class="linea-divisoria">';
+
+                recarga += '<div class="user-categories">';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-address-card"></i>';
                 recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.loc_trabajador + '</span>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Sobre mi</p>';
                 recarga += '</div>';
+                recarga += '</button>';
                 recarga += '</div>';
-                /* Estudios y cursos */
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-book-open"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.estudios + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Experiencia */
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-briefcase"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.experiencia + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Idioma */
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
                 recarga += '<i class="fa-solid fa-language"></i>';
                 recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.idiomas + '</span>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Idiomas</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-graduation-cap"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Estudios</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-briefcase"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Experiencia</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-file-invoice"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Curriculum</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-brain"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Habilidades</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-clock"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Disponibilidad</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-gear"></i>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Configuracón</p>';
+                recarga += '</div>';
+
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '</div>';
+
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Sector */
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-building"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.campo_user + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Jornada */
-                recarga += '<div class="user-div-house">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-business-time"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.disponibilidad + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Descripcion */
-                recarga += '<hr>';
-                recarga += '<div class="user-div-desc">';
-                recarga += '<div class="user-icon-desc">';
-                recarga += '<span class="sobre-mi-desc">Sobre mi:</span>';
-                recarga += '</div>';
-                recarga += '<div class="divs-desc">';
-                recarga += '<span class="p-desc">' + trabajador.about_user + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
+                // recarga += '<div class="wave-div">';
+                // recarga += '<img class="wave" src="./storage/uploads/wave.svg">';
+                // recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
             }
             if (id_perfil == 3) {
                 var empresa = respuesta.empresa[0];
-                recarga += '<div class="empresa-vista">';
-                /* Logo */
-                recarga += '<div class="empresa-ver-foto">';
-                if (empresa.logo_emp != null) {
-                    recarga += '<img class="empresa-profilefoto" src="storage/' + empresa.logo_emp + '">';
-                } else {
-                    recarga += '<img class="empresa-profilefoto" src="storage/img/usuario.png">';
-                }
-                /* boton que cambia la vista a editar */
-                recarga += '<div class="empresa-edit-div">';
-                recarga += '<button class="empresa-edit-btn" onclick="leermodperfilJS(); return false;"><i class="fa-solid fa-pen"></i></button>';
-                recarga += '</div>';
-                //logout
+                recarga += '<div class="ver-profile">';
+                recarga += '<div class="container-user-poligon">';
                 recarga += '<div class="logout">';
                 recarga += '<button class="logout-btn" onClick="window.location.href=`logout`;"><i class="fa-solid fa-right-from-bracket"></i></button>';
                 recarga += '</div>';
+                recarga += '<div class="user-poligon">';
                 recarga += '</div>';
-                /* Ver empresa */
-                recarga += '<div class="empresa-ver">';
-                /* Nombre */
-                recarga += '<div class="empresa-div-name">';
+                recarga += '<div class="div-foto">';
+                recarga += '<div class="edit-foto">';
+                recarga += '<label class="input-file">';
+                recarga += '<i class="fa-solid fa-image"></i>';
+                recarga += '<input type="file" class="input" id="foto_perfil" name="foto_perfil">';
+                recarga += '</label>';
+                recarga += '</div>';
+                recarga += '<div class="user-ver-foto">';
+                // recarga += '<img class="user-profilefoto" src="./storage/uploads/usuario.png">';
+                if (empresa.logo_emp != null) {
+                    recarga += '<img class="user-profilefoto" src="./storage/uploads/' + empresa.logo_emp + '">';
+                } else {
+                    recarga += '<img class="user-profilefoto" src="./storage/img/usuario.png">';
+                }
+
+                recarga += '</div>';
+
+                recarga += '</div>';
+                recarga += '</div>';
+                recarga += '<div class="user-poligon2">';
+                recarga += '<div class="user-vista">';
+
+                recarga += '<div class="user-div-name">';
                 recarga += '<div class="divs-name">';
-                recarga += '<span class="p-name">' + empresa.nom_emp + '</span>';
+                recarga += '<span class="p-name">  ' + empresa.nom_emp + '  </span>';
+                recarga += '</div>';
+                recarga += '<div class="user-edit-div">';
+                recarga += '<button class="user-edit-btn" onclick="leermodperfilJS(); return false;"><p class="edit-btn-p">EDITAR</p></button>';
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Sede */
-                recarga += '<hr>';
-                recarga += '<div class="empresa-div-house">';
-                recarga += '<div class="empresa-icon-name">';
-                recarga += '<i class="fa-solid fa-building"></i>';
+
+                recarga += '<hr class="linea-divisoria">';
+
+                recarga += '<div class="user-categories">';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-address-card"></i>';
                 recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + empresa.loc_emp + '</span>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Localización</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-gear"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Que buscamos</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-gear"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Sobre nosotros</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '<div class="user-div-category">';
+                recarga += '<button class="user-btn-category">';
+                recarga += '<div class="user-category-icon">';
+                recarga += '<i class="fa-solid fa-gear"></i>';
+                recarga += '</div>';
+                recarga += '<div class="user-category-text">';
+                recarga += '<p class="p-category">Configuración</p>';
+                recarga += '</div>';
+                recarga += '</button>';
+                recarga += '</div>';
+
+                recarga += '</div>';
+
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Campo */
-                recarga += '<div class="empresa-div-house">';
-                recarga += '<div class="empresa-icon-name">';
-                recarga += '<i class="fa-solid fa-briefcase"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + empresa.campo_emp + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Que busca */
-                recarga += '<div class="empresa-div-house">';
-                recarga += '<div class="empresa-icon-name">';
-                recarga += '<i class="fa-solid fa-file-signature"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + empresa.searching + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Vacante */
-                recarga += '<div class="empresa-div-house">';
-                recarga += '<div class="empresa-icon-name">';
-                recarga += '<i class="fa-solid fa-handshake"></i>';
-                recarga += '</div>';
-                recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + empresa.vacante + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Descripcion */
-                recarga += '<hr>';
-                recarga += '<div class="empresa-div-desc">';
-                recarga += '<div class="empresa-icon-desc">';
-                recarga += '<span class="sobre-mi-desc">Acerca de:</span>';
-                recarga += '</div>';
-                recarga += '<div class="divs-desc">';
-                recarga += '<span class="p-desc">' + empresa.about_emp + '</span>';
-                recarga += '</div>';
-                recarga += '</div>';
+                // recarga += '<div class="wave-div">';
+                // recarga += '<img class="wave" src="./storage/uploads/wave.svg">';
+                // recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
             }
@@ -262,344 +322,133 @@ function leermodperfilJS() {
             var recarga = '';
             if (id_perfil == 2) {
                 var trabajador = respuesta.trabajador[0];
-                recarga += '<div class="user-edit">';
+                recarga += '<div class="edit-profile">';
                 recarga += '<div class="return">';
                 recarga += '<button class="return-btn" onclick="mostrarperfilJS(); return false;">';
+                recarga += '<div class="return-icon">';
                 recarga += '<i class="fa-solid fa-angle-left"></i>';
+                recarga += '</div>';
+                recarga += '<p class="return-text">VOLVER</p>';
                 recarga += '</button>';
                 recarga += '</div>';
-                recarga += '<form method="POST" id="formeditar" enctype="multipart/form-data">';
+
                 /* Inputs para editar el usuario */
-                recarga += '<div class="user-input">';
-                /* Nombre, apellido y edad */
-                recarga += '<div class="user-input-name">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-user"></i>';
+                recarga += '<div class="edit-inputs">';
+                recarga += '<form method="POST" id="formeditar" enctype="multipart/form-data">';
+
+                /* Nombre */
+                recarga += '<div class="edit-input">';
+                recarga += '<div class="input-text">';
+                recarga += '<p class="p-text">Nombre</p>';
                 recarga += '</div>';
-                recarga += '<div class="inputs-name">';
-                recarga += '<input type="text" class="input-name" id="nombre" name="nombre" value="' + trabajador.nombre + '">';
-                recarga += '<input type="text" class="input-surname" id="apellido" name="apellido" value="' + trabajador.apellido + '">';
-                recarga += '<i class="fa-solid fa-cake-candles"></i>';
-                recarga += '<input type="text" class="input-age" id="edad" name="edad" value="' + trabajador.edad + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Vivienda */
-                recarga += '<div class="user-input-house">';
-                recarga += '<div class="user-icon-house">';
-                recarga += '<i class="fa-solid fa-house-chimney"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-house">';
-                recarga += '<input type="text" class="input-house" id="loc_trabajador" name="loc_trabajador" value="' + trabajador.loc_trabajador + '">';
+                recarga += '<div class="input-edit">';
+                recarga += '<input type="text" class="input" id="nombre" name="nombre" value="' + trabajador.nombre + '">';
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Estudios y cursos */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-studies">';
-                recarga += '<div class="user-icon-studies">';
-                recarga += '<i class="fa-solid fa-book-open"></i>';
+
+                /* Apellido */
+                recarga += '<div class="edit-input">';
+                recarga += '<div class="input-text">';
+                recarga += '<p class="p-text">Apellido</p>';
                 recarga += '</div>';
-                recarga += '<div class="inputs-studies">';
-                recarga += '<input type="text" class="input-studies" id="estudios" name="estudios" value="' + trabajador.estudios + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-icon-more">';
-                recarga += '<button class="user-icon-more-button">';
-                recarga += '<i class="fa-solid fa-plus"></i>';
-                recarga += '</button>';
+                recarga += '<div class="input-edit">';
+                recarga += '<input type="text" class="input" id="nombre" name="nombre" value="' + trabajador.apellido + '">';
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Modal añadir mas Estudios y cursos */
-                /* Experiencia */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-experience">';
-                recarga += '<div class="user-icon-experience">';
-                recarga += '<i class="fa-solid fa-briefcase"></i>';
+
+                /* Edad */
+                recarga += '<div class="edit-input">';
+                recarga += '<div class="input-text">';
+                recarga += '<p class="p-text">Edad</p>';
                 recarga += '</div>';
-                recarga += '<div class="inputs-experience">';
-                recarga += '<input type="text" class="input-experience" id="experiencia" name="experiencia" value="' + trabajador.experiencia + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-icon-more">';
-                recarga += '<button class="user-icon-more-button">';
-                recarga += '<i class="fa-solid fa-plus"></i>';
-                recarga += '</button>';
+                recarga += '<div class="input-edit">';
+                recarga += '<input type="date" class="input" id="nombre" name="nombre" value="' + trabajador.edad + '">';
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Modal añadir mas experiencia */
-                /* Idioma */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-idioma">';
-                recarga += '<div class="user-icon-idioma">';
-                recarga += '<i class="fa-solid fa-language"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-idioma">';
-                recarga += '<input type="text" class="input-idioma" id="idiomas" name="idiomas" value="' + trabajador.idiomas + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-icon-more">';
-                recarga += '<button class="user-icon-more-button">';
-                recarga += '<i class="fa-solid fa-plus"></i>';
-                recarga += '</button>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Correo */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-idioma">';
-                recarga += '<div class="user-icon-idioma">';
-                recarga += '<i class="fa-solid fa-at"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-idioma">';
-                recarga += '<input type="email" class="input-idioma" id="mail" name="mail" value="' + trabajador.mail + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-icon-more">';
-                recarga += '<button class="user-icon-more-button">';
-                recarga += '<i class="fa-solid fa-plus"></i>';
-                recarga += '</button>';
-                recarga += '</div>';
-                recarga += '</div>';
+
                 /* Password */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-idioma">';
-                recarga += '<div class="user-icon-idioma">';
-                recarga += '<i class="fa-solid fa-key"></i>';
+                recarga += '<div class="edit-input">';
+                recarga += '<div class="input-text">';
+                recarga += '<p class="p-text">Contraseña</p>';
                 recarga += '</div>';
-                recarga += '<div class="inputs-idioma">';
-                recarga += '<input type="password" class="input-idioma" id="contra" name="contra" value="' + trabajador.contra + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-icon-more">';
-                recarga += '<button class="user-icon-more-button">';
-                recarga += '<i class="fa-solid fa-plus"></i>';
-                recarga += '</button>';
+                recarga += '<div class="input-edit">';
+                recarga += '<input type="password" class="input" id="nombre" name="nombre" value="' + trabajador.contra + '">';
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Foto */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-idioma">';
-                recarga += '<div class="user-icon-idioma">';
-                recarga += '<i class="fa-solid fa-image"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-idioma">';
-                recarga += '<input type="file" class="input-idioma" id="foto_perfil" name="foto_perfil">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-icon-more">';
-                recarga += '<button class="user-icon-more-button">';
-                recarga += '<i class="fa-solid fa-plus"></i>';
-                recarga += '</button>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Sector */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-idioma">';
-                recarga += '<div class="user-icon-idioma">';
-                recarga += '<i class="fa-solid fa-building"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-idioma">';
-                recarga += '<input type="text" class="input-idioma" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-icon-more">';
-                recarga += '<button class="user-icon-more-button">';
-                recarga += '<i class="fa-solid fa-plus"></i>';
-                recarga += '</button>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Jornada */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-idioma">';
-                recarga += '<div class="user-icon-idioma">';
-                recarga += '<i class="fa-solid fa-business-time"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-idioma">';
-                recarga += '<input type="text" class="input-idioma" id="disponibilidad" name="disponibilidad" value="' + trabajador.disponibilidad + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '<div class="user-icon-more">';
-                recarga += '<button class="user-icon-more-button">';
-                recarga += '<i class="fa-solid fa-plus"></i>';
-                recarga += '</button>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Descripcion */
-                recarga += '<div class="user-input-desc">';
-                recarga += '<div class="user-icon-desc">';
-                recarga += '<span class="sobre-mi">Sobre mi</span>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-desc">';
-                recarga += '<input type="text" class="input-desc" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
+
                 recarga += '</form>';
-                /* activar/desactivar */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="user-input-desactivar">';
-                recarga += '<div class="user-icon-desactivar">';
-                if (trabajador.mostrado == 1) {
-                    recarga += '<p>Mostrarse: <p>';
-                    recarga += '</div>';
-                    recarga += '<div class="inputs-desactivar">';
-                    recarga += '<input type="checkbox" class="input-desactivar" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '" checked>';
-                } else {
-                    recarga += '<p>Mostrarse: <p>';
-                    recarga += '</div>';
-                    recarga += '<div class="inputs-desactivar">';
-                    recarga += '<input type="checkbox" class="input-desactivar" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '">';
-                }
                 recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div> ';
+
                 /* Realizar cambios */
                 recarga += '<div class="aceptar-cuenta-edit">';
                 recarga += '<button class="aceptar-cuenta-btn" onclick="editarperfilJS(\'' + trabajador.id + '\',\'' + id_perfil + '\'); return false;">';
-                recarga += '<p class="button"><i class="fa-solid fa-check"></i> Realizar cambios</p>';
+                recarga += '<p class="button-text">EDITAR</p>';
                 recarga += '</button>';
                 recarga += '</div>';
-                /* Eliminar cuenta */
-                recarga += '<div class="eliminar-cuenta-edit">';
-                recarga += '<button class="eliminar-cuenta-btn" onclick="modaleliminar(\'' + trabajador.id + '\',\'' + id_perfil + '\'); return false;">';
-                recarga += '<p class="button"><i class="fa-solid fa-trash-can"></i> Eliminar cuenta</p>';
-                recarga += '</button>';
                 recarga += '</div>';
+                recarga += '</div>';
+
+                recarga += '<div class="boton-mas-div">';
+                recarga += '<button class="boton-mas">'
+                recarga += '<i class="fa-solid fa-plus"></i>'
+                recarga += '</button>'
+                recarga += '</div>';
+
+                recarga += '<div class="boton-menos-div">';
+                recarga += '<button class="boton-menos">'
+                recarga += '<i class="fa-solid fa-minus"></i>'
+                recarga += '</button>'
+                recarga += '</div>';
+
             }
             if (id_perfil == 3) {
                 var empresa = respuesta.empresa[0];
-                recarga += '<div class="empresa-edit">';
+                recarga += '<div class="edit-profile">';
                 recarga += '<div class="return">';
                 recarga += '<button class="return-btn" onclick="mostrarperfilJS(); return false;">';
+                recarga += '<div class="return-icon">';
                 recarga += '<i class="fa-solid fa-angle-left"></i>';
+                recarga += '</div>';
+                recarga += '<p class="return-text">VOLVER</p>';
                 recarga += '</button>';
                 recarga += '</div>';
-                recarga += '<form method="POST" onsubmit="editarperfilJS(\'' + empresa.id + '\',\'' + id_perfil + '\'); return false;" id="formeditar" enctype="multipart/form-data">';
-                /* Inputs para editar la empresa */
-                recarga += '<div class="empresa-input">';
+
+                /* Inputs para editar el usuario */
+                recarga += '<div class="edit-inputs">';
+                recarga += '<form method="POST" id="formeditar" enctype="multipart/form-data">';
+
                 /* Nombre */
-                recarga += '<div class="empresa-input-name">';
-                recarga += '<div class="empresa-icon-name">';
-                recarga += '<i class="fa-solid fa-user-tie"></i>';
+                recarga += '<div class="edit-input">';
+                recarga += '<div class="input-text">';
+                recarga += '<p class="p-text">Nombre</p>';
                 recarga += '</div>';
-                recarga += '<div class="inputs-name">';
-                recarga += '<input type="text" class="input-name" id="nom_emp" name="nom_emp" value="' + empresa.nom_emp + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Sede */
-                recarga += '<div class="empresa-input-sede">';
-                recarga += '<div class="empresa-icon-sede">';
-                recarga += '<i class="fa-solid fa-building"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-sede">';
-                recarga += '<input type="text" class="input-sede" id="loc_emp" name="loc_emp" value="' + empresa.loc_emp + '">';
+                recarga += '<div class="input-edit">';
+                recarga += '<input type="text" class="input" id="nombre" name="nombre" value="' + empresa.nom_emp + '">';
                 recarga += '</div>';
                 recarga += '</div>';
-                /* Campo */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="empresa-input-campo">';
-                recarga += '<div class="empresa-icon-campo">';
-                recarga += '<i class="fa-solid fa-briefcase"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-campo">';
-                recarga += '<input type="text" class="input-campo" id="campo_emp" name="campo_emp" value="' + empresa.campo_emp + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Buscamos */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="empresa-input-buscando">';
-                recarga += '<div class="empresa-icon-buscando">';
-                recarga += '<i class="fa-solid fa-file-signature"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-buscando">';
-                recarga += '<input type="text" class="input-buscando" id="searching" name="searching" value="' + empresa.searching + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Vacante */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="empresa-input-vacante">';
-                recarga += '<div class="empresa-icon-vacante">';
-                recarga += '<i class="fa-solid fa-handshake"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-vacante">';
-                recarga += '<input type="text" class="input-vacante" id="vacante" name="vacante" value="' + empresa.vacante + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Imagen */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="empresa-input-logo">';
-                recarga += '<div class="empresa-icon-logo">';
-                recarga += '<i class="fa-solid fa-image"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-logo">';
-                recarga += '<input type="file" class="input-logo" id="logo_emp" name="logo_emp">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* email */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="empresa-input-email">';
-                recarga += '<div class="empresa-icon-email">';
-                recarga += '<i class="fa-solid fa-at"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-email">';
-                recarga += '<input type="email" class="input-email" id="mail" name="mail" value="' + empresa.mail + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Contraseña */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="empresa-input-passwd">';
-                recarga += '<div class="empresa-icon-passwd">';
-                recarga += '<i class="fa-solid fa-key"></i>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-passwd">';
-                recarga += '<input type="password" class="input-passwd" id="contra" name="contra" value="' + empresa.contra + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* Descripcion */
-                recarga += '<div class="empresa-input-desc">';
-                recarga += '<div class="empresa-icon-desc">';
-                recarga += '<span class="sobre-mi">Información</span>';
-                recarga += '</div>';
-                recarga += '<div class="inputs-desc">';
-                recarga += '<input type="text" class="input-desc" id="about_emp" name="about_emp" value="' + empresa.about_emp + '">';
-                recarga += '</div>';
-                recarga += '</div>';
-                /* activar/desactivar */
-                recarga += '<div class="contenedor">';
-                recarga += '<div class="empresa-input-desactivar">';
-                recarga += '<div class="empresa-icon-desactivar">';
-                if (empresa.mostrado == 1) {
-                    recarga += '<p>Mostrarse: <p>';
-                    recarga += '</div>';
-                    recarga += '<div class="inputs-desactivar">';
-                    recarga += '<input type="checkbox" class="input-desactivar" id="mostrado" name="mostrado" value="' + empresa.mostrado + '" checked>';
-                } else {
-                    recarga += '<p>Mostrarse: <p>';
-                    recarga += '</div>';
-                    recarga += '<div class="inputs-desactivar">';
-                    recarga += '<input type="checkbox" class="input-desactivar" id="mostrado" name="mostrado" value="' + empresa.mostrado + '">';
-                }
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
-                recarga += '</div>';
+
                 recarga += '</form>';
+                recarga += '</div>';
+
                 /* Realizar cambios */
-                recarga += '<div class="aceptar-empresa-edit">';
-                recarga += '<button class="aceptar-empresa-btn" onclick="editarperfilJS(\'' + empresa.id + '\',\'' + id_perfil + '\'); return false;">';
-                recarga += '<p class="button"><i class="fa-solid fa-check"></i> Realizar cambios</p>';
+                recarga += '<div class="aceptar-cuenta-edit">';
+                recarga += '<button class="aceptar-cuenta-btn" onclick="editarperfilJS(\'' + empresa.id + '\',\'' + id_perfil + '\'); return false;">';
+                recarga += '<p class="button-text">EDITAR</p>';
                 recarga += '</button>';
                 recarga += '</div>';
-                /* Eliminar cuenta */
-                recarga += '<div class="eliminar-empresa-edit">';
-                recarga += '<button class="eliminar-empresa-btn" onclick="modaleliminar(\'' + empresa.id + '\',\'' + id_perfil + '\'); return false;">';
-                recarga += '<p class="button"><i class="fa-solid fa-trash-can"></i> Eliminar cuenta</p>';
-                recarga += '</button>';
                 recarga += '</div>';
+                recarga += '</div>';
+
+                recarga += '<div class="boton-mas-div">';
+                recarga += '<button class="boton-mas">'
+                recarga += '<i class="fa-solid fa-plus"></i>'
+                recarga += '</button>'
+                recarga += '</div>';
+
+                recarga += '<div class="boton-menos-div">';
+                recarga += '<button class="boton-menos">'
+                recarga += '<i class="fa-solid fa-minus"></i>'
+                recarga += '</button>'
                 recarga += '</div>';
             }
             contenidoajax.innerHTML = recarga;
@@ -609,8 +458,8 @@ function leermodperfilJS() {
     ajax.send(formData);
 }
 
+// EDITAR //
 
-//EDITAR
 function editarperfilJS(id, id_perfil) {
     /* if (id_perfil == 2) {
         let contra = document.getElementById('contra').value;

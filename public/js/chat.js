@@ -390,12 +390,13 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-function getchanel(){
+function getchanel(id_otro){
 
     var formData = new FormData();
     var ajax = objetoAjax();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('id_otro',id_otro)
     //formData.append('filter', document.getElementById('filter').value);
 
     ajax.open("POST", "getchat", false);
@@ -403,37 +404,10 @@ function getchanel(){
         //console.log(ajax.responseText)
         if (ajax.readyState == 4 && ajax.status == 200) {
             chatInfo = JSON.parse(this.responseText);
-            //console.log(chatInfo)
+            console.log(chatInfo)
         }
     }
     ajax.send(formData);
-}
-
-
-window.onload=function() {
-
-    getchanel()
-    //console.log(chatInfo)
-    if(chatInfo.perfil==3) { 
-        document.getElementById('nombre').innerHTML='<p> Estas chateando con '+chatInfo.other[0].nombre+'</p>'
-    } else {
-        document.getElementById('nombre').innerHTML='<p> Estas chateando con '+chatInfo.other[0].nom_emp+'</p>'
-    }
-
-    start()
-    var mensajes=JSON.parse(chatInfo.chanel[0].json_chat)
-    mensajes=mensajes.mensajes
-
-    console.log(mensajes)
-    var recarga = "";
-
-    for (var i = 0; i < mensajes.length; i+=1) {
-       
-        recarga += '<p>'+mensajes[i].nombre+ " : " +htmlEncode(mensajes[i].mensaje) +'<br>'+mensajes[i].hora+'<p>';
-      }
-
-      document.getElementById('chat').innerHTML += recarga
-    
 }
 
 //ZONA VARIABLES
@@ -446,28 +420,33 @@ function start(){
             
     }
 
-    getchanel()
+    getchanel(otro)
     //socket = new ReconnectingWebSocket('ws://192.168.40.228:8000/'+document.getElementById('canal').value); //new WebSocket('ws://172.24.16.41:8000');
-    socket = new ReconnectingWebSocket('ws://192.168.40.228:8000/'+chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
+    socket = new ReconnectingWebSocket('ws://192.168.167.228:8000/'+chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
 
 
     socket.onopen = function(event) {
 
-        document.getElementById('estado').innerText = "Conectado"
+        //document.getElementById('estado').innerText = "Conectado"
             //socket.send();
     };
     socket.onclose = function(event) {
 
-        document.getElementById('estado').innerText = "Desconectado"
+        //document.getElementById('estado').innerText = "Desconectado"
                 //socket.send();
     };
 
         // Escucha por mensajes
     socket.onmessage = function(event) {
-
-        document.getElementById('chat').innerHTML += '<p>' + event.data + '<p>'
+        const { payload } = JSON.parse(event.data);
+        console.log(payload)
+        console.log(chatInfo.id)
+        if(payload.currentid==chatInfo.id) {
+            document.getElementById('chat_principal').innerHTML += '<div class="mensaje-2"><div class="chat-mensaje-2"><div class="mensaje-text-div"><p class="mensaje-text">'+htmlEncode(payload.message) +'</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">'+payload.time+'</p></div></div></div>'
+        } else { document.getElementById('chat_principal').innerHTML += '<div class="mensaje-1"><div class="chat-mensaje-1"><div class="mensaje-text-div"><p class="mensaje-text">'+htmlEncode(payload.message) +'</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">'+payload.time+'</p></div></div></div>'}
+        //document.getElementById('chat_principal').innerHTML += event.data 
     }
-    }
+}
 
 
 //function abrir() {
@@ -481,12 +460,15 @@ function start(){
 //    socket.close()
 
 //}
-function insert() {
+function insert(id_otro,time,msg) {
 
     var formData = new FormData();
     var ajax = objetoAjax();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('id_otro', id_otro);
+    formData.append('time', time);
+    formData.append('msg', msg);
     //formData.append('filter', document.getElementById('filter').value);
 
     ajax.open("POST", "insert", false);
@@ -501,22 +483,217 @@ function insert() {
 }
 
 
-function sender() {
+function sender (id_otro) {
 
+    if(document.getElementById('mensaje_input').value=='') { console.log('vacio'); return false }
     var today = new Date();
     if(today.getMinutes()<10){ var time = today.getHours() + ":0"+ today.getMinutes(); } else { var time = today.getHours() + ":"+ today.getMinutes();}
+    var jsondata = JSON.stringify({
+        payload: {
+            message: document.getElementById('mensaje_input').value,
+            time: time,
+            currentid: chatInfo.id
+        }
+    });
+
     
 
-    getchanel()
-    console.log(chatInfo)
+    //getchanel()
+    //console.log(chatInfo)
+        
 
-    if(chatInfo.perfil==3) { 
+        socket.send(jsondata)
+        var msg = document.getElementById('mensaje_input').value
+        insert(id_otro,time,msg)
+        //socket.send([document.getElementById('mensaje_input').value,time,chatInfo.id])
+        //socket.send('<div class="chat-mensaje-2"><p class="mensaje-text">'+htmlEncode(document.getElementById('mensaje_input').value) +'</p><p class="mensaje-hora">'+time+'</p></div>');
 
-        socket.send(chatInfo.name[0].nom_emp+ " : " +htmlEncode(document.getElementById('test').value) +'<br>'+time);
-    } else {
-
-        socket.send(chatInfo.name[0].nombre+ " : " +htmlEncode(document.getElementById('test').value) +'<br>'+time);
-    }
-    document.getElementById('test').value=''
+    document.getElementById('mensaje_input').value=''
 
 }
+
+
+
+//LOGICA DE PRE CHAT
+var navbarProfile = document.getElementById("navbar-profile-icon");
+var navbarMain = document.getElementById("navbar-main-icon");
+var navbarAlerts = document.getElementById("navbar-alerts-icon");
+
+navbarProfile.onclick = function() {
+    window.location.href = "./perfil";
+}
+navbarAlerts.onclick = function() {
+    window.location.href = "./notificaciones";
+}
+navbarMain.onclick = function() {
+    window.location.href = "./home";
+}
+
+
+window.onload = function() {
+    cargarChats();
+}
+
+function cargarChats(){
+
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    var ChatContent = document.getElementById('chat')
+    var ajax = objetoAjax();
+    
+    ajax.open("POST", "leerChats", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta)
+            var recarga = "";
+            //si estas iniciado como trabajador te salen empresas
+            if (respuesta.hasOwnProperty('empresas')) {
+                console.log('llega')
+                var empresas = respuesta.empresas;
+                for (let i = 0; i < empresas.length; i++) {
+
+                    recarga += `<div class="chats" onclick="entrar(${empresas[i].id_usuario});" style='cursor:pointer;'>`
+                    recarga += '<button class="chat-foto-btn">'
+                    if (empresas[i].logo_emp != null) {
+
+                        recarga +='<div class="chat-foto">'
+                        recarga += `<img class="chat-profilefoto" src="storage/${empresas[i].logo_emp}">`;
+                        recarga +=  '</div>'
+                    } else {
+
+                        recarga +='<div class="chat-foto">'
+                        recarga += '<img class="chat-profilefoto" src="storage/img/usuario.png">';
+                        recarga +=  '</div>'
+                    }   
+                    recarga += '</button>'
+                    recarga += '<div class="chat-content">'
+                    recarga += '<div class="chat-name">'
+                    recarga += `<p class="chat-name-text">${empresas[i].nom_emp}</p>`
+                    recarga += '</div>'
+                    recarga += '<div class="chat-mensaje">'
+                    recarga += `<p class="chat-mensaje-text">Chat iniciado pulsa para conversar con ${empresas[i].nom_emp} </p>`
+                    recarga += '</div>'
+                    recarga += '</div>'
+                    recarga += '<div class="chat-alert">'
+                    recarga += '<p class="chat-hora">15:46</p>'
+                    recarga += '</div>'
+                    recarga += '</div>'
+                    recarga += '<div class="div-linea">'
+                    recarga += '<hr class="chat-linea">'
+                    recarga += '</div>'
+                }
+            }
+            //si estas iniciado como empresa te salen trabajadores
+            if (respuesta.hasOwnProperty('trabajadores')) {
+                
+                var trabajadores = respuesta.trabajadores;
+                for (let i = 0; i < trabajadores.length; i++) {
+                    recarga += `<div class="chats" onclick="entrar(${trabajadores[i].id_usuario});" style='cursor:pointer;'>`
+                    recarga += '<button class="chat-foto-btn">'
+                    if (trabajadores[i].foto_perfil != null) {
+
+                        recarga +='<div class="chat-foto">'
+                        recarga += `<img class="chat-profilefoto" src="storage/${trabajadores[i].foto_perfil}">`
+                        recarga +=  '</div>'
+                    } else {
+
+                        recarga +='<div class="chat-foto">'
+                        recarga += '<img class="chat-profilefoto" src="storage/img/usuario.png">';
+                        recarga +=  '</div>'
+                    }   
+                    recarga += '</button>'
+                    recarga += '<div class="chat-content">'
+                    recarga += '<div class="chat-name">'
+                    recarga += `<p class="chat-name-text">${trabajadores[i].nombre} ${trabajadores[i].apellido}</p>`
+                    recarga += '</div>'
+                    recarga += '<div class="chat-mensaje">'
+                    recarga += `<p class="chat-mensaje-text">Chat iniciado pulsa para conversar con ${trabajadores[i].nombre} </p>`
+                    recarga += '</div>'
+                    recarga += '</div>'
+                    recarga += '<div class="chat-alert">'
+                    recarga += '<p class="chat-hora">15:46</p>'
+                    recarga += '</div>'
+                    recarga += '</div>'
+                    recarga += '<div class="div-linea">'
+                    recarga += '<hr class="chat-linea">'
+                    recarga += '</div>'
+                }
+            }
+            ChatContent.innerHTML = recarga;
+        }
+    }
+    ajax.send(formData);
+}
+function entrar(id_otro){
+    otro=id_otro
+    var recarga = "";
+    recarga += `<div class="main-chat">
+        <div class="chat-main-sticky">
+            <div class="chat-main-user">
+                <div class="chat-main-return">
+                 <button class="return-btn" onclick="(); return false;">
+                        <div class="return-icon">
+                            <i class="fa-solid fa-angle-left"></i>
+                     </div>
+                    </button>
+                </div>                
+                <div id="foto_usu" class="chat-main-foto">
+                    <img class="chat-profilefoto" src="storage/uploads/usuario.png">
+                </div>
+                <div id='nombre_usu' class="chat-main-name">
+                </div>
+            </div>
+            <div class="chat-main-curve">
+            </div>
+        </div>
+        <div id='chat_principal' class="chat-main-content">  
+        </div>
+        <div class="chat-main-send">
+            <div class="chat-input">
+                <input type="text" class="chat-input-mensaje" id="mensaje_input" name="nombre" value="" placeholder="Mensaje..." maxlength="200">
+            </div>
+            <div class="chat-send">
+                <button class="boton-send" onclick=sender(${id_otro});>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>`;
+    document.getElementById('content').innerHTML= recarga
+
+    //Injectamos mensajes
+    getchanel(id_otro)
+    console.log(chatInfo)
+    if(chatInfo.perfil==3) { 
+        document.getElementById('nombre_usu').innerHTML='<p class="chat-name">'+chatInfo.other[0].nombre+'&nbsp;'+chatInfo.other[0].apellido+'<p>'
+    } else {
+        document.getElementById('nombre_usu').innerHTML='<p class="chat-name">'+chatInfo.other[0].nom_emp+'<p>'
+    }
+
+    start()
+    var mensajes=JSON.parse(chatInfo.chanel[0].json_chat)
+    var mensajes=mensajes.mensajes
+
+    var recarga = "";
+    if(chatInfo.perfil==2){
+      document.getElementById('foto_usu').innerHTML= `<img class="chat-profilefoto" src="storage/${chatInfo.other[0].logo_emp}"></img>`
+    }else{
+        document.getElementById('foto_usu').innerHTML= `<img class="chat-profilefoto" src="storage/${chatInfo.other[0].foto_perfil}"></img>`
+    }
+    for (var i = 0; i < mensajes.length; i+=1) {
+        console.log(chatInfo.id)
+        if(chatInfo.id==mensajes[i].id){
+            recarga +='<div class="mensaje-2"><div class="chat-mensaje-2"><div class="mensaje-text-div"><p class="mensaje-text">'+htmlEncode(mensajes[i].mensaje) +'</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">'+mensajes[i].hora+'</p></div></div></div>'
+        }
+        if(chatInfo.id2==mensajes[i].id){
+            recarga +='<div class="mensaje-1"><div class="chat-mensaje-1"><div class="mensaje-text-div"><p class="mensaje-text">'+htmlEncode(mensajes[i].mensaje) +'</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">'+mensajes[i].hora+'</p></div></div></div>';
+        }
+        if(mensajes[i].id=='Start'){
+            recarga += '<div class="chat-mensaje-inicio"><div class="mensaje-inicio"><p class="mensaje-text">Bienvenido al chat</p></div></div>';
+        }
+      }
+
+      document.getElementById('chat_principal').innerHTML += recarga
+}
+
