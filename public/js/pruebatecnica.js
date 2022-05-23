@@ -228,8 +228,8 @@ function mostrar_prueba_tecnica_zip(evt) {
             </div>
             `;
             contenidoajax.innerHTML = recarga;
-            document.getElementById("enviar_respuesta").id_empresa = trabajador.id_empresa;
-            document.getElementById("enviar_respuesta").addEventListener("submit", enviar_zip_trabajador)
+            document.getElementById("formarchivo").id_empresa = trabajador.id_empresa;
+            document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador)
 
         }
     }
