@@ -28,6 +28,9 @@ $tablet:900px;
     justify-content: center;
     align-items: center;
     gap: 30px;
+    &.horizontal {
+        flex-direction: row;
+    }
 }
 
 .volver {
@@ -36,6 +39,7 @@ $tablet:900px;
 }
 
 .darkmodeswitch {
+    position: relative;
     z-index: 2;
     margin-left: 2%;
     margin-top: 1.5%;

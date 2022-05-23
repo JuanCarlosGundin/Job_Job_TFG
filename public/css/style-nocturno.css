@@ -27,12 +27,20 @@
   gap: 30px;
 }
 
+.area-botones.horizontal {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .volver {
   color: white;
   font-size: 40px;
 }
 
 .darkmodeswitch {
+  position: relative;
   z-index: 2;
   margin-left: 2%;
   margin-top: 1.5%;

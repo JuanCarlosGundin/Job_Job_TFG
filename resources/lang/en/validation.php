@@ -20,7 +20,7 @@ return [
     'alpha_dash' => 'El campo :attribute solamente puede contener letras, números, guiones y guiones bajos.',
     'alpha_num' => 'El campo :attribute solamente puede contener letras y números.',
     'array' => 'El campo :attribute debe ser un arreglo.',
-    'before' => 'El campo :attribute debe ser una fecha anterior a :date.',
+    'before' => 'Debes tener más de 18 años para acceder a JobJob.',
     'before_or_equal' => 'El campo :attribute debe ser una fecha anterior o igual a :date.',
     'between' => [
         'numeric' => 'El campo :attribute debe estar entre :min y :max.',

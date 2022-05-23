@@ -241,6 +241,7 @@ function formtrabajador0() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador0" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     //Correo
     recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
     //Contraseña 1
@@ -249,7 +250,6 @@ function formtrabajador0() {
     recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="Repite la contraseña..."><br><br>';
     recarga += '<input type="submit" class="botonregister" value="Continuar">';
     recarga += '</form>';
-    recarga += '<div class="alert alert-danger" style="display:none"></div>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
 
@@ -343,13 +343,14 @@ function sessiontrabajador0(evt) {
                     }
                 });
 
-            } else if (respuesta.status == 0) {
-                alert("FALLA");
-                // for (let i = 0; i < respuesta.errors.length; i++) {
-                //     var container_error = document.getElementById('alert-danger');
-                //     container_error.style.display = "block";
-                //     container_error.append('<p>' + errors.i + '</p>');
-                // }
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -373,6 +374,8 @@ function formtrabajador1() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador1" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     //Nombre
     recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre..."><br><br>';
     //Apellido
@@ -451,6 +454,14 @@ function sessiontrabajador1(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -480,6 +491,8 @@ function formtrabajador2() {
     recarga += '</div><br>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     //campo_user
     recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br>';
     //about_user
@@ -558,6 +571,14 @@ function sessiontrabajador2(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -587,6 +608,8 @@ function formtrabajador3() {
     recarga += '</div><br>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     //loc_trabajador
     recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion..."><br><br>';
     //disponibilidad
@@ -673,6 +696,14 @@ function sessiontrabajador3(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -703,6 +734,8 @@ function formtrabajador4() {
     recarga += '<h3>¿Qué idiomas hablas?</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
     /* Estructura linea */
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     recarga += '<div id="lineaidioma-0">';
     //nombre_idioma
     recarga += '<div class="mas-menos">'
@@ -857,6 +890,14 @@ function sessiontrabajador4(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -886,8 +927,11 @@ function formtrabajador5() {
     recarga += '</div><br>';
     recarga += '<h3>¿Dónde has estudiado?</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     /* Estructura linea */
     recarga += '<div id="lineaestudio-0">';
+
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de formación</p>';
@@ -1053,6 +1097,14 @@ function sessiontrabajador5(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -1081,17 +1133,21 @@ function formtrabajador6() {
     recarga += '</div><br>';
     recarga += '<h3>¿Dónde has trabajado?</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
+
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     /* Estructura linea */
     recarga += '<div id="lineaexperiencia-0">';
+
     //nombre_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de empresa</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="Nombre de empresa..." placeholder="Nombre puesto"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto"><br><br>';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>Lugar</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="Lugar..." placeholder="Empresa"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa"><br><br>';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
@@ -1210,6 +1266,7 @@ function sessiontrabajador6(evt) {
         año_salida.push(años_salida[i].value);
     }
 
+
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -1261,6 +1318,14 @@ function sessiontrabajador6(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
