@@ -186,18 +186,7 @@ class InicioController extends Controller{
             }
             //sessiontrabajador5
             if ($req->has(['nombre_formación', 'lugar_formación', 'año_entradafor', 'año_salidafor'])) {
-                return response()->json(array('resultado'=> gettype($req['nombre_formación'])));
-                $nombre_formación=explode(',',$req['nombre_formación']);
-                for ($i=0; $i < count($nombre_formación); $i++) { 
-                    $validator = Validator::make($req->all(), [
-                        'nombre_formación'=>'string|max:100'
-                    ]);
-                    if ($validator->fails()) {
-                        
-                        return response()->json(['errors'=>$validator->errors()->all()]);
-                    } 
-                }
-                $validator = Validator::make($req->all(), [
+                /* $validator = Validator::make($req->all(), [
                     'nombre_formación'=>'string|max:100',
                     'lugar_formación'=>'string|max:100',
                     'año_entradafor'=>'date',
@@ -206,7 +195,7 @@ class InicioController extends Controller{
                 if ($validator->fails()) {
                     
                     return response()->json(['errors'=>$validator->errors()->all()]);
-                } 
+                }  */
                 $req->session()->put('nombre_formación', $req->nombre_formación);
                 $req->session()->put('lugar_formación', $req->lugar_formación);
                 $req->session()->put('año_entradafor', $req->año_entradafor);
@@ -314,6 +303,7 @@ class InicioController extends Controller{
     }
 
     public function registrotrabajador(){
+        /* return response()->json(array('resultado'=> session()->all())); */
 
         //Comprobar si el correo introducido ya existe en la BBDD
         $comprobarmail = DB::table("tbl_usuarios")->where('mail','=',session()->get('mail'))->count();
@@ -381,6 +371,7 @@ class InicioController extends Controller{
         }
         //sessiontrabajador5
         if (session()->has('nombre_formación') && session()->has('lugar_formación') && session()->has('año_entradafor') && session()->has('año_salidafor')){
+            return response()->json(array('resultado'=> gettype(session()->get('nombre_formación'))));
             $nombre_formación=explode(',',session()->get('nombre_formación'));
             $lugar_formación=explode(',',session()->get('lugar_formación'));
             $año_entradafor=explode(',',session()->get('año_entradafor'));

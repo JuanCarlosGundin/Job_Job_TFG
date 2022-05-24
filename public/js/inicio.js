@@ -1024,17 +1024,17 @@ function sessiontrabajador5(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombress_formación = document.getElementsByName('nombre_formación[]');
+    let nombre_formación = document.getElementsByName('nombre_formación[]');
     let lugareses_formación = document.getElementsByName('lugar_formación[]');
     let años_entrada = document.getElementsByName('año_entrada[]');
     let años_salida = document.getElementsByName('año_salida[]');
-    let nombre_formación = [];
+    /* let nombre_formación = []; */
     let lugar_formación = [];
     let año_entrada = [];
     let año_salida = [];
-    for (let i = 0; i < nombress_formación.length; i++) {
+    /* for (let i = 0; i < nombress_formación.length; i++) {
         nombre_formación.push(nombress_formación[i].value);
-    }
+    } */
     for (let i = 0; i < lugareses_formación.length; i++) {
         lugar_formación.push(lugareses_formación[i].value);
     }
@@ -1050,7 +1050,9 @@ function sessiontrabajador5(evt) {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     if (nombre_formación) {
-        formData.append('nombre_formación', nombre_formación);
+        for (let i = 0; i < nombre_formación.length; i++) {
+            formData.append('nombre_formación[]', nombre_formación[i].value);
+        }
     }
     if (lugar_formación) {
         formData.append('lugar_formación', lugar_formación);
@@ -1097,15 +1099,16 @@ function sessiontrabajador5(evt) {
                     }
                 });
 
-            } else {
-                var container_error = document.getElementById('alert-danger');
-                container_error.innerHTML = "";
-                for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
-                    container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
-                }
             }
+            /*  else {
+                            var container_error = document.getElementById('alert-danger');
+                            container_error.innerHTML = "";
+                            for (let i = 0; i < respuesta.errors.length; i++) {
+                                console.log(container_error.innerHTML);
+                                container_error.style.display = "block";
+                                container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                            }
+                        } */
 
         }
 
