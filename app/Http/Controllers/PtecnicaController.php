@@ -24,7 +24,7 @@ class PtecnicaController extends Controller{
                 $empresa=DB::table('tbl_ptecnica')
                 ->where('id_empresa', '=', $id)->get();
                 $inscritos=DB::select("SELECT JSON_LENGTH(json_prueba) as inscritos FROM bd_jobjob.tbl_ptecnica where id_empresa=?",[$id]);
-                return response()->json(array('empresa' => $empresa, 'inscritos'=> $inscritos[0]));
+                return response()->json(array('empresa' => $empresa, 'inscritos'=> $inscritos));
             }
 
             if ($id_perfil==2) {
@@ -32,7 +32,7 @@ class PtecnicaController extends Controller{
                 $empresa=DB::table('tbl_ptecnica')
                 ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
                 ->where('estado_prueba', '=', '1')->get();
-                return response()->json(array('trabajador' => $empresa));
+                return response()->json(array('trabajador' => $empresa, 'id_trabajador'=>$id));
 
             }
         } catch (\Exception $e) {
@@ -104,5 +104,16 @@ class PtecnicaController extends Controller{
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
         }
 
+    }
+
+    public function mostrar_zip_trabajadores($id_pt) {
+        try {
+            $empresa=DB::table('tbl_ptecnica')
+                ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
+                ->where('id', '=', $id_pt)->first();
+            return response()->json(array('empresa' => $empresa));
+        } catch (\Exception $e) {
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
     }
 }

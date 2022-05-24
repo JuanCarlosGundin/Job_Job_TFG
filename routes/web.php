@@ -123,6 +123,10 @@ Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::cla
 // crear_prueba_tecnica
 Route::post('crear_prueba_tecnica',[PtecnicaController::class, 'crear_prueba_tecnica']);
 
+// mostrar prueba tecnica desde empresa para ver los zips de los trabajadores
+Route::post('mostrar_zip_trabajadores/{id_pt}', [PtecnicaController::class, 'mostrar_zip_trabajadores']);
+
+
 /* ------------PtecnicaController------------ */
 
 

@@ -82,31 +82,36 @@ function leer_contenido() {
                     <div class="pruebas">
                         <p>${empresa[i].enunciado}</p>
                         <p>${empresa[i].descripcion}</p>
-                        <p>Numero de inscritos</p>
-                        <p>${respuesta.inscritos.inscritos} personas</p>
-                    </div>
-                    <button id="crear">Crear</button>
-                    `;
+                        <p>Numero de inscritos</p>`;
+                    if (!respuesta.inscritos[i].inscritos) {
+                        recarga += `<p>0 personas</p>`;
+                    } else {
+                        recarga += `<p>${respuesta.inscritos[i].inscritos} personas</p>`;
+                    }
+                    recarga += `</div><hr>`;
 
                 }
+                recarga += `<button id="crear">Crear</button>`
                 contenidoajax.innerHTML = recarga;
                 document.getElementById("crear").addEventListener("click", form_crear_prueba_tecnica)
-                    /* for (let i = 0; i < empresa.length; i++) {
-                        document.getElementsByClassName("pruebas")[i].id = empresa[i].id;
-                        document.getElementsByClassName("pruebas")[i].addEventListener("click", editar_prueba_tecnica)
+                for (let i = 0; i < empresa.length; i++) {
+                    document.getElementsByClassName("pruebas")[i].id = empresa[i].id;
+                    document.getElementsByClassName("pruebas")[i].addEventListener("click", mostrar_prueba_tecnica_empresa)
 
-                    } */
+                }
             }
             if (respuesta.hasOwnProperty('trabajador')) {
 
                 var trabajador = respuesta.trabajador;
+                var id_trabajador = respuesta.id_trabajador;
                 for (let i = 0; i < trabajador.length; i++) {
-                    recarga = `
+                    recarga += `
                     <div class="pruebas">
                     <p>${trabajador[i].nom_emp}</p>
                     <p>${trabajador[i].enunciado}</p>
                     <p>${trabajador[i].duracion}</p>
                     </div>
+                    <hr>
                     `;
 
                 }
@@ -144,6 +149,7 @@ function mostrar_prueba_tecnica(evt) {
             var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
             var recarga = ``;
             recarga += `
+            <button id="volver">Volver</button>
             <div>
                 <p>Prueba tecnica para:</p>
                 <p>${trabajador.enunciado}</p>
@@ -177,6 +183,7 @@ function mostrar_prueba_tecnica(evt) {
             </div>
             `;
             contenidoajax.innerHTML = recarga;
+            document.getElementById("volver").addEventListener("click", leer_contenido)
             document.getElementById("iniciar_prueba").id_empresa = trabajador.id_empresa;
             document.getElementById("iniciar_prueba").addEventListener("click", mostrar_prueba_tecnica_zip)
 
@@ -318,6 +325,40 @@ function crear_prueba_tecnica(evt) {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
 
+        }
+    }
+    ajax.send(formData);
+
+}
+
+function mostrar_prueba_tecnica_empresa(evt) {
+    var id_pt = evt.currentTarget.id;
+    var contenidoajax = document.getElementById("contenidoajax");
+
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+    ajax.open("POST", "mostrar_zip_trabajadores/" + id_pt, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            var empresa = respuesta.empresa;
+            var json_prueba = JSON.parse(empresa.json_prueba);
+            console.log(json_prueba);
+            var recarga = ``;
+            recarga += `
+            <p>${empresa.enunciado}</p>
+            <p>${empresa.descripcion}</p>
+            `;
+            if (json_prueba) {
+                recarga += `
+                
+                `
+            }
+            contenidoajax.innerHTML = recarga;
         }
     }
     ajax.send(formData);
