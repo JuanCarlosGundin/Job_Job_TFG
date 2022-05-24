@@ -187,6 +187,10 @@ Route::post('enviarcorreoadmin', [MailController::class, 'enviarcorreoadmin']);
 Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorreoadmintrabajadores']);
 //mandar correo masivo a empresas desde la página de admin
 Route::post('enviarcorreoadminempresas', [MailController::class, 'enviarcorreoadminempresas']);
+//Cuando se banea a un usuario se le manda un correo automático conforme su cuenta ha sido baneada.
+Route::get('enviarcorreobaneo/{mail}', [MailController::class, 'enviarcorreobaneo']);
+
+
 
 //ZONA GRAFICAS-ESTADISTICAS
 //Muestra la comparativa de trabajadores y empresas registradas.

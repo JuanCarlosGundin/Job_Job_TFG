@@ -114,6 +114,8 @@ function leerJS() {
             var respuesta = JSON.parse(this.responseText);
 
             console.log(respuesta);
+            console.log(respuesta.trabajador);
+            // console.log(respuesta);
 
             /* si respuesta tiene (respuesta.admin) */
             if (respuesta.hasOwnProperty('admin')) {
@@ -664,7 +666,6 @@ function modificarJS(id, id_perfil) {
 
 //si solo quieres banear o restaurar una cuenta
 function estadouserJS(id) {
-
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -680,6 +681,10 @@ function estadouserJS(id) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            mailusuario = respuesta.resultado[0].mail
+            if (respuesta.baneo) {
+                enviarcorreobaneo();
+            }
 
             leerJS();
 
@@ -854,4 +859,31 @@ function enviarcorreoadminempresasJS() {
     ajax.send(formData)
 }
 
+function enviarcorreobaneo() {
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', "get");
+    var ajax = objetoAjax();
+    ajax.open("POST", "enviarcorreobaneo/" + mailusuario, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta == "OK") {
+                swal.fire({
+                    title: "Este usuario ha sido baneado",
+                    text: "Se le mandará un correo al usuario para que este lo sepa.",
+                    showConfirmButton: true,
+                    icon: "success",
+                });
+            } else {
+                alert("algo ha fallado al enviar el correo")
+            }
+        }
+    }
+    ajax.send(formData)
+}
+
+
 // ----------------------------------------FIN CORREOS ADMIN-------------------------------------------------------
+
+//-----------------------------------------Pillar id para banear---------------------------

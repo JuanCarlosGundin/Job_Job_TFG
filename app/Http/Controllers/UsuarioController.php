@@ -146,7 +146,8 @@ public function logout(Request $req){
         try{
 
             if ($datos[0]->estado == 1){
-
+                $idusuario=DB::select("SELECT mail FROM tbl_usuarios
+                WHERE id = ?",[$id]);
                 DB::select("UPDATE tbl_usuarios SET estado = '0'
                 WHERE id = ?",[$id]);
 
@@ -158,7 +159,7 @@ public function logout(Request $req){
             }
 
             DB::commit();
-            return response()->json(array('resultado'=> 'OK'));
+            return response()->json(array('resultado'=> $idusuario, 'baneo'=>$datos[0]->estado));
 
         }   catch (\Exception $e) {
 

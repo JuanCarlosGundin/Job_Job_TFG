@@ -213,4 +213,45 @@ class MailController extends Controller{
         }
     return response()->json("OK");
     }
+
+    // public function enviarcorreobaneo(){
+    //     $usuario = $_GET["mail_usuario"];
+    //     //$cuerpo es el cuerpo que le vamos a dar al correo, por decir así la estructura.
+    //     $cuerpo = "Tu cuenta en JobJob ha sido inhabilitada."."\n"."Para reclamar puedes contactar con nosotros mediante correo o teléfono"."\n". "Correo JobJob: jobjobemp@gmail.com"."\n"."Teléfono JobJob: 9785647382";
+    //     //hacemos un try catch donde intentamos enviar el correo al usuario
+    //     try{
+    //         //pillamos el $cuerpo y utilizamos el $asunto para utilizarlo donde el subject(asunto)
+    //         Mail::raw($cuerpo, function ($message) use($usuario) {
+
+    //             $message->to($usuario-> {'mail'})
+    //               ->subject('Tu cuenta de JobJob ha sido inhabilitada ');
+
+    //           });
+    //           //si funciona nos returnea el json que nos va al sweetalert del javascript
+    //         return response()->json("OK");  
+    //         }catch(\Throwable $th){
+    //             return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+    //         }
+    // }
+    public function enviarcorreobaneo($mail){
+        $usuario=$mail;
+        
+        //$cuerpo es el cuerpo que le vamos a dar al correo, por decir así la estructura.
+        $cuerpo = "Tu cuenta en JobJob ha sido inhabilitada."."\n"."Para reclamar puedes contactar con nosotros mediante correo o teléfono."."\n"."\n". "Correo JobJob: jobjobemp@gmail.com"."\n"."Teléfono JobJob: 9785647382";
+        //hacemos un try catch donde intentamos enviar el correo al usuario
+        try{
+            //pillamos el $cuerpo y utilizamos el $asunto para utilizarlo donde el subject(asunto)
+            Mail::raw($cuerpo, function ($message) use($usuario) {
+
+                $message->to($usuario)
+                  ->subject('Tu cuenta de JobJob ha sido inhabilitada ');
+
+              });
+              //si funciona nos returnea el json que nos va al sweetalert del javascript
+            return response()->json("OK");  
+            }catch(\Throwable $th){
+                return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+            }
+    }
+    
 }
