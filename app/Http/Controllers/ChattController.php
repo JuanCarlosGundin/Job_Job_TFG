@@ -111,14 +111,15 @@ class ChattController extends Controller {
             
                 $id=session()->get('id_user');
                 $idOTRO= $request->input('id_otro');
+                //$id=68;
+                //$idOTRO=69;
                 DB::beginTransaction();
                 $comparative=DB::select("SELECT id from tbl_chat where (id_iniciador_chat= ? and id_interactuado_chat = ?) 
                 or (id_interactuado_chat= ? and id_iniciador_chat = ?)"
                 ,[$id,$idOTRO,$id,$idOTRO]);
                 //return response()->json($comparative);
                 if($comparative==null){
-                    DB::select("INSERT INTO `bd_proyecto_final`.`tbl_chat` (`id_iniciador_chat`, `id_interactuado_chat`, `estado_chat`, `json_chat`) VALUES ('?', '?', '1', '{\"mensajes\": [{\"id\": \"Start\", \"hora\": \"Null\", \"nombre\": \"Start\", \"mensaje\": \"Bienvenido al chat\"}]}')"
-                ,[$id,$idOTRO]);
+                    DB::select("INSERT INTO `bd_proyecto_final`.`tbl_chat` (`id_iniciador_chat`, `id_interactuado_chat`, `estado_chat`, `json_chat`) VALUES (".$id.", ".$idOTRO.", '1', '{\"mensajes\": [{\"id\": \"Start\", \"hora\": \"Null\", \"nombre\": \"Start\", \"mensaje\": \"Bienvenido al chat\"}]}')");
                 DB::commit();
                 return response()->json("SI");
                 }else{
