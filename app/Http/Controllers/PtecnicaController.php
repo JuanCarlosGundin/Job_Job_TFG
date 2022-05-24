@@ -83,4 +83,26 @@ class PtecnicaController extends Controller{
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
         }
     }
+
+    public function crear_prueba_tecnica(Request $req) {
+        $id=session()->get('id_user');
+        //obtener dia y hora
+        $date = Carbon::now('+02:00');
+
+        //formato correcto
+        $fecha_publicacion = $date->toDateTimeString();
+
+        $zip_prueba = $req->file('zip_prueba')->store('zip','public');
+
+        try {
+            DB::beginTransaction();
+            $id=DB::table('tbl_ptecnica')->insert(["id_empresa"=>$id,"lenguaje"=>$req['lenguaje'],"fecha_publicacion"=>$fecha_publicacion,"fecha_limite"=>$req['fecha_limite'],"duracion"=>$req['duracion'],"enunciado"=>$req['enunciado'],"descripcion"=>$req['descripcion'],"zip_prueba"=>$zip_prueba,"estado_prueba"=>"1"]);
+            DB::commit();
+            return response()->json(array('resultado'=> 'OK'));
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
+
+    }
 }

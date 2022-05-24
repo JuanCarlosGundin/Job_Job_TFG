@@ -107,7 +107,6 @@ Route::post('editarperfilempresa',[PerfilController::class,'editarperfilempresa'
 /* ------------PerfilController------------ */
 
 /* ------------PtecnicaController------------ */
-/* ------------PtecnicaController------------ */
 
 // pagina prueba tecnica
 Route::get('pruebatecnica',[PtecnicaController::class,'vistaptecnica']);
@@ -121,8 +120,10 @@ Route::post('mostrar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::clas
 // insertar_trabajador_ptecnica
 Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
 
+// crear_prueba_tecnica
+Route::post('crear_prueba_tecnica',[PtecnicaController::class, 'crear_prueba_tecnica']);
 
-
+/* ------------PtecnicaController------------ */
 
 
 

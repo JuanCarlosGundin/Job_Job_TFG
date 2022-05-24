@@ -78,16 +78,24 @@ function leer_contenido() {
             if (respuesta.hasOwnProperty('empresa')) {
                 var empresa = respuesta.empresa;
                 for (let i = 0; i < empresa.length; i++) {
-                    recarga = `
-                    <div>
-                    <p>${empresa[i].enunciado}</p>
-                    <p>${empresa[i].descripcion}</p>
-                    <p>Numero de inscritos</p>
+                    recarga += `
+                    <div class="pruebas">
+                        <p>${empresa[i].enunciado}</p>
+                        <p>${empresa[i].descripcion}</p>
+                        <p>Numero de inscritos</p>
+                        <p>${respuesta.inscritos.inscritos} personas</p>
                     </div>
+                    <button id="crear">Crear</button>
                     `;
 
                 }
                 contenidoajax.innerHTML = recarga;
+                document.getElementById("crear").addEventListener("click", form_crear_prueba_tecnica)
+                    /* for (let i = 0; i < empresa.length; i++) {
+                        document.getElementsByClassName("pruebas")[i].id = empresa[i].id;
+                        document.getElementsByClassName("pruebas")[i].addEventListener("click", editar_prueba_tecnica)
+
+                    } */
             }
             if (respuesta.hasOwnProperty('trabajador')) {
 
@@ -116,6 +124,7 @@ function leer_contenido() {
     ajax.send(formData);
 }
 
+
 function mostrar_prueba_tecnica(evt) {
     var id_empresa = evt.currentTarget.id_empresa;
 
@@ -134,7 +143,7 @@ function mostrar_prueba_tecnica(evt) {
             var date_l = new Date(trabajador.fecha_limite);
             var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
             var recarga = ``;
-            recarga = `
+            recarga += `
             <div>
                 <p>Prueba tecnica para:</p>
                 <p>${trabajador.enunciado}</p>
@@ -195,7 +204,7 @@ function mostrar_prueba_tecnica_zip(evt) {
             var date_l = new Date(trabajador.fecha_limite);
             var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
             var recarga = ``;
-            recarga = `
+            recarga += `
             <div>
                 <p>Prueba tecnica para:</p>
                 <p>${trabajador.enunciado}</p>
@@ -256,4 +265,61 @@ function enviar_zip_trabajador(evt) {
         }
     }
     ajax.send(formData);
+}
+
+function form_crear_prueba_tecnica() {
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var recarga = ``;
+    recarga += `
+    <form id="form_crear_prueba_tecnica" enctype="multipart/form-data">
+    <p>lenguaje</p>
+    <input type="text" class="" id="lenguaje" name="lenguaje">
+    <p>fecha_limite</p>
+    <input type="date" class="" id="fecha_limite" name="fecha_limite">
+    <p>duracion</p>
+    <input type="time" class="" id="duracion" name="duracion">
+    <p>enunciado</p>
+    <input type="text" class="" id="enunciado" name="enunciado">
+    <p>descripcion</p>
+    <input type="text" class="" id="descripcion" name="descripcion">
+    <p>zip</p>
+    <input type="file" class="" id="zip_prueba" name="zip_prueba">
+    <button type="submit">Enviar</button>
+    </form>
+    `
+    contenidoajax.innerHTML = recarga;
+    document.getElementById("form_crear_prueba_tecnica").addEventListener("submit", crear_prueba_tecnica);
+}
+
+function crear_prueba_tecnica(evt) {
+    evt.preventDefault();
+
+    var lenguaje = document.getElementById("lenguaje").value;
+    var fecha_limite = document.getElementById("fecha_limite").value;
+    var duracion = document.getElementById("duracion").value;
+    var enunciado = document.getElementById("enunciado").value;
+    var descripcion = document.getElementById("descripcion").value;
+    var zip_prueba = document.getElementById("zip_prueba").files[0];
+
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('lenguaje', lenguaje);
+    formData.append('fecha_limite', fecha_limite);
+    formData.append('duracion', duracion);
+    formData.append('enunciado', enunciado);
+    formData.append('descripcion', descripcion);
+    formData.append('zip_prueba', zip_prueba);
+    var ajax = objetoAjax();
+    ajax.open("POST", "crear_prueba_tecnica", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+
+        }
+    }
+    ajax.send(formData);
+
 }
