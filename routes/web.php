@@ -138,4 +138,7 @@ Route::post('leerChats', [ChattController::class, 'leerChats']);
 ///mandar correo chat
 Route::post('mandar', [MailController::class, 'sending']);
 
+///mandar correo chat
+Route::post('crearchat', [ChattController::class, 'crearchat']);
+
 //FINAL ZONA GIGACHAT//
