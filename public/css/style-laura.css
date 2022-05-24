@@ -308,15 +308,13 @@ body {
     text-align: center;
   }
   .body-index .navbar-index .column-2 .btn-register {
-    width: 40% !important;
+    width: 33% !important;
     font-size: 16px !important;
     padding-left: 0%;
     padding-right: 0%;
   }
-  .body-index .navbar-index .column-2 a {
-    font-size: 16px !important;
-    padding-left: 1%;
-    padding-right: 1%;
+  .body-index .navbar-index .column-2 .btn-navbar {
+    font-size: 20px !important;
   }
   .fila-1 {
     display: -webkit-box;
@@ -373,15 +371,14 @@ body {
     height: 20vh !important;
   }
   .footer {
-    height: 82vh !important;
     background-color: #042944 !important;
   }
   .footer h2 {
-    font-size: 18px !important;
+    font-size: 24px !important;
   }
   .footer p,
   .footer a {
-    font-size: 16px !important;
+    font-size: 22px !important;
   }
   .footer .footer-2,
   .footer .footer-3 {
@@ -472,6 +469,10 @@ body {
   }
   .body-index .footer .footer-1 {
     display: none;
+  }
+  .body-index .footer p,
+  .body-index .footer a {
+    font-size: 16px !important;
   }
 }
 

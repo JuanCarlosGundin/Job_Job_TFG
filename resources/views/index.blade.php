@@ -52,9 +52,9 @@
             <h3>La empresa y el trabajador podrán comunicarse con comodidad mediante mensajes</h3>
         </div>
         <div class="column-5" id="ultima-columna">
-            <i class="fa-solid fa-user"></i>
-            <h1>Perfil</h1>
-            <h3>Podrás ver el perfil de las empresas y trabajadores que te interesen</h3>
+            <i class="fa-solid fa-circle-check"></i>
+            <h1>Pruebas técnicas</h1>
+            <h3>Evalúa a los usuarios mediante una prueba para ver si es lo que buscas para tu empresa.</h3>
         </div>
     </div>
     <div class="video">
@@ -73,7 +73,6 @@
         </div>
         <div class="footer-3">
         <h2>¿Tienes alguna duda?</h2>
-        <p><i class="fas fa-map-marker-alt"></i> Av. Mare de Déu de Bellvitge, 100, 110, 08907 L'Hospitalet de Llobregat, Barcelona</p><br><br><br><br>
         <p><i class="fa-solid fa-envelope"></i> jobjobemp@gmail.com</p><br><br>
         <p><i class="fa-solid fa-phone"></i>933 35 15 43</p>
         </div>

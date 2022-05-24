@@ -26,204 +26,300 @@
         background-color: #E5E5E5;
     }
     
-    ////////////////////////////////GENERAL///////////////////////////////////
-    .region-content {
-        height: 90vh;
-        @media(min-width: $tablet) {
-            height: 100vh;
-        }
-    }
-    
     /////////////////////////////////VER-PERFIL////////////////////////////////////
-    .user-fondo {
-        height: 100vh;
-        .container-user-poligon {
-            position: relative;
-            .logout {
-                float: right;
-                padding: 1.5vh;
-                .logout-btn {
-                    height: 5vh;
-                    width: 5vh;
-                    padding: 0;
-                    border-width: 0px;
-                    cursor: pointer;
-                    padding: 0;
-                    margin: 0;
-                    border-radius: 60px;
-                    color: white;
-                    background-color: $fourth-color;
-                    font-size: 2vh;
-                }
-            }
-            .user-poligon {
-                clip-path: polygon(0 30%, 0% 100%, 100% 100%);
-                background-color: $white;
-                height: 20vh;
-            }
-            .div-foto {
-                padding: 2vh;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                position: absolute;
-                top: 0;
-                .edit-foto {
-                    .input[type="file"] {
-                        display: none;
+    // @keyframes an1 {
+    //     from {
+    //         top: 200px;
+    //     }
+    //     to {
+    //         top: 0px;
+    //     }
+    // }
+    // @keyframes an2 {
+    //     from {
+    //         top: 200px;
+    //     }
+    //     to {
+    //         top: 0px;
+    //     }
+    // }
+    .ver-perfil {
+        .user-fondo {
+            width: 100%;
+            float: left;
+            .container-user-poligon {
+                position: relative;
+                animation: an1 1s;
+                .logout {
+                    float: right;
+                    padding: 1.5vh;
+                    display: none;
+                    @media only screen and (max-width: $tablet) {
+                        display: block;
                     }
-                    .input-file {
-                        border-width: 0%;
-                        display: inline-block;
-                        padding: 1.4vh;
-                        background-color: $third-color;
-                        position: absolute;
-                        bottom: 13%;
-                        right: 13%;
-                        color: $white;
-                        border-radius: 20vh;
+                    .logout-btn {
                         height: 40px;
                         width: 40px;
+                        padding: 0;
+                        border-width: 0px;
+                        cursor: pointer;
+                        padding: 0;
+                        margin: 0;
+                        border-radius: 60px;
+                        color: white;
+                        background-color: $fourth-color;
+                        font-size: 15px;
                     }
                 }
-                .user-ver-foto {
-                    width: 100%;
-                    .user-profilefoto {
-                        border-radius: 50vh;
-                        height: 17vh;
-                        width: 17vh;
+                .user-poligon {
+                    clip-path: polygon(0 30%, 0% 100%, 100% 100%);
+                    background-color: $white;
+                    height: 40vh;
+                    @media only screen and (max-width: $tablet) {
+                        height: 20vh;
+                    }
+                }
+                .div-foto {
+                    padding: 2vh;
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    position: absolute;
+                    top: 0;
+                    .edit-foto {
+                        .input[type="file"] {
+                            display: none;
+                        }
+                        .input-file {
+                            border-width: 0%;
+                            display: inline-block;
+                            background-color: $third-color;
+                            position: absolute;
+                            bottom: 13%;
+                            right: 13%;
+                            color: $white;
+                            border-radius: 20vh;
+                            height: 40px;
+                            width: 40px;
+                            justify-content: center;
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+                    .user-ver-foto {
+                        width: 100%;
+                        .user-profilefoto {
+                            border-radius: 50vh;
+                            height: 34vh;
+                            width: 34vh;
+                            @media only screen and (max-width: $tablet) {
+                                height: 17vh;
+                                width: 17vh;
+                            }
+                        }
                     }
                 }
             }
-        }
-        .user-poligon2 {
-            background-color: $white;
-            height: 80vh;
-            .user-vista {
-                width: 100vw;
-                padding: 2vh;
-                .linea-divisoria {
-                    margin: 0;
+            .user-poligon2 {
+                position: relative;
+                background-color: $white;
+                height: 50vh;
+                animation: an2 1s;
+                @media only screen and (max-width: $tablet) {
+                    height: 80vh;
                 }
-                .user-div-name {
-                    margin-bottom: 20px;
-                    justify-content: center;
-                    display: flex;
-                    .divs-name {
-                        float: left;
-                        width: 70vw;
-                        .p-name {
-                            width: 35vw;
-                            height: 5vh;
-                            font-size: 2.5vh;
-                            font-weight: bolder;
+                .user-vista {
+                    width: 100%;
+                    padding: 2vh;
+                    .linea-divisoria {
+                        margin: 0;
+                    }
+                    .user-div-name {
+                        margin-bottom: 20px;
+                        justify-content: center;
+                        display: flex;
+                        .divs-name {
+                            float: left;
+                            width: 70%;
+                            .p-name {
+                                height: 5vh;
+                                font-size: 25px;
+                                font-weight: bolder;
+                                @media only screen and (max-width: $tablet) {
+                                    font-size: 2.5vh;
+                                }
+                            }
+                            .p-surname {
+                                height: 5vh;
+                                font-size: 25px;
+                                font-weight: bolder;
+                                @media only screen and (max-width: $tablet) {
+                                    font-size: 2.5vh;
+                                }
+                            }
+                            .p-age {
+                                height: 5vh;
+                                font-size: 25px;
+                                font-weight: bolder;
+                                @media only screen and (max-width: $tablet) {
+                                    font-size: 2.5vh;
+                                }
+                            }
                         }
-                        .p-surname {
-                            width: 35vw;
-                            height: 5vh;
-                            font-size: 2.5vh;
-                            font-weight: bolder;
-                        }
-                        .p-age {
-                            width: 20vw;
-                            height: 5vh;
-                            font-size: 2.5vh;
-                            font-weight: bolder;
+                        .user-edit-div {
+                            width: 30%;
+                            float: right;
+                            justify-content: flex-end;
+                            display: flex;
+                            .user-edit-btn {
+                                border-width: 1px;
+                                border-style: solid;
+                                border-color: #C6C6C6;
+                                width: 50%;
+                                cursor: pointer;
+                                padding: 0;
+                                margin: 0;
+                                border-radius: 5px;
+                                background-color: $white;
+                                margin-right: 10px;
+                                @media only screen and (max-width: $movil) {
+                                    margin: 0;
+                                    width: 100%;
+                                }
+                                .edit-btn-p {
+                                    font-weight: bolder;
+                                    color: $black;
+                                    font-size: 12.5px;
+                                    margin-top: 0;
+                                    margin-bottom: 0;
+                                    position: relative;
+                                    @media only screen and (max-width: $tablet) {
+                                        font-size: 11px;
+                                    }
+                                    .button span:after {
+                                        content: '\00bb';
+                                        position: absolute;
+                                        opacity: 0;
+                                        top: 0;
+                                        right: -20px;
+                                        transition: 0.5s;
+                                    }
+                                    .button:hover span {
+                                        padding-right: 25px;
+                                    }
+                                    .button:hover span:after {
+                                        opacity: 1;
+                                        right: 0;
+                                    }
+                                }
+                            }
+                            .user-logout-btn {
+                                border-width: 1px;
+                                border-style: solid;
+                                border-color: #C6C6C6;
+                                width: 50%;
+                                cursor: pointer;
+                                padding: 0;
+                                margin: 0;
+                                border-radius: 5px;
+                                background-color: $white;
+                                @media only screen and (max-width: $tablet) {
+                                    display: none;
+                                }
+                                .logout-btn-p {
+                                    font-weight: bolder;
+                                    color: $black;
+                                    font-size: 12.5px;
+                                    margin-top: 0;
+                                    margin-bottom: 0;
+                                    position: relative;
+                                }
+                            }
                         }
                     }
-                    .user-edit-div {
-                        width: 35vw;
-                        float: right;
-                        justify-content: flex-end;
-                        display: flex;
-                        .user-edit-btn {
+                    .user-categories {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr 1fr;
+                        gap: 1em;
+                        margin-top: 20px;
+                        @media only screen and (max-width: $tablet) {
+                            grid-template-columns: 1fr 1fr;
+                        }
+                        .user-div-category {
+                            &:nth-child(1) {
+                                background-color: $grey;
+                            }
+                            &:nth-child(2) {
+                                background-color: $grey;
+                            }
+                            &:nth-child(3) {
+                                background-color: #e6e6e6;
+                            }
+                            &:nth-child(4) {
+                                background-color: #e6e6e6;
+                            }
+                            &:nth-child(5) {
+                                background-color: #E2E2E2;
+                            }
+                            &:nth-child(6) {
+                                background-color: #E2E2E2;
+                            }
+                            &:nth-child(7) {
+                                background-color: #DBDBDB;
+                            }
+                            &:nth-child(8) {
+                                background-color: #DBDBDB;
+                            }
                             border-width: 1px;
                             border-style: solid;
                             border-color: #C6C6C6;
-                            width: 100%;
-                            cursor: pointer;
-                            padding: 0;
-                            margin: 0;
                             border-radius: 5px;
-                            background-color: $white;
-                            .edit-btn-p {
-                                font-weight: bolder;
-                                color: $black;
-                                font-size: 1.5vh;
-                                margin-top: 0;
-                                margin-bottom: 0;
-                                position: relative;
+                            height: 15vh;
+                            float: left;
+                            @media only screen and (max-width: $tablet) {
+                                height: 13vh;
                             }
-                        }
-                    }
-                }
-                .user-categories {
-                    display: grid;
-                    grid-template-columns: 44vw 44vw;
-                    gap: 1em;
-                    margin-top: 20px;
-                    .user-div-category {
-                        &:nth-child(1) {
-                            background-color: $grey;
-                        }
-                        &:nth-child(2) {
-                            background-color: $grey;
-                        }
-                        &:nth-child(3) {
-                            background-color: #e6e6e6;
-                        }
-                        &:nth-child(4) {
-                            background-color: #e6e6e6;
-                        }
-                        &:nth-child(5) {
-                            background-color: #E2E2E2;
-                        }
-                        &:nth-child(6) {
-                            background-color: #E2E2E2;
-                        }
-                        &:nth-child(7) {
-                            background-color: #DBDBDB;
-                        }
-                        &:nth-child(8) {
-                            background-color: #DBDBDB;
-                        }
-                        border-width: 1px;
-                        border-style: solid;
-                        border-color: #C6C6C6;
-                        border-radius: 5px;
-                        height: 10vh;
-                        float: left;
-                        .user-btn-category {
-                            border-radius: 2vw;
-                            border-width: 0px;
-                            width: 100%;
-                            height: 100%;
-                            background-color: transparent;
-                            .user-category-icon {
+                            .user-btn-category {
+                                border-radius: 5px;
+                                border-width: 0px;
                                 width: 100%;
-                                height: 60%;
-                                font-size: large;
-                                display: flex;
-                                align-items: flex-start;
-                            }
-                            .user-category-text {
-                                width: 100%;
-                                .p-category {
+                                height: 100%;
+                                background-color: transparent;
+                                &:hover {
+                                    top: -5px;
+                                    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+                                    cursor: pointer;
+                                    transition: 0.5s;
+                                }
+                                .user-category-icon {
                                     width: 100%;
+                                    height: 70%;
                                     font-size: large;
-                                    font-weight: bolder;
-                                    margin: 0;
+                                    display: flex;
+                                    align-items: flex-start;
+                                    @media only screen and (max-width: $tablet) {
+                                        height: 60%;
+                                    }
+                                }
+                                .user-category-text {
+                                    width: 100%;
+                                    .p-category {
+                                        width: 100%;
+                                        font-size: large;
+                                        font-weight: bolder;
+                                        margin: 0;
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-        }
-        .wave-div {
-            width: 100%;
-            .wave {
+            .wave-div {
                 width: 100%;
+                .wave {
+                    width: 100%;
+                }
             }
         }
     }
@@ -245,8 +341,14 @@
                     justify-content: center;
                     display: flex;
                     align-items: center;
-                    cursor: pointer;
                     padding: 0;
+                    width: 100px;
+                    height: 40px;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgb(206, 206, 206);
+                        border-radius: 15px;
+                    }
                     .return-icon {
                         float: left;
                         margin-right: 5px;
@@ -280,6 +382,12 @@
         .categoria-profile {
             .categoria {
                 padding: 2vh;
+                width: 50%;
+                display: inline-block;
+                @media only screen and (max-width: $movil) {
+                    width: 100%;
+                    display: block;
+                }
                 .categoria-icon {
                     float: left;
                     font-size: larger;
@@ -370,14 +478,21 @@
         .return {
             margin-bottom: 2vh;
             .return-btn {
+                width: 100px;
                 border-width: 0px;
                 font-size: 3vh;
                 background-color: transparent;
                 justify-content: center;
                 display: flex;
                 align-items: center;
-                cursor: pointer;
                 padding: 0;
+                height: 40px;
+                color: $black;
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(206, 206, 206);
+                    border-radius: 15px;
+                }
                 .return-icon {
                     float: left;
                     margin-right: 5px;
@@ -392,13 +507,20 @@
         }
         .edit-inputs {
             .edit-input {
+                float: left;
                 padding: 1vh;
-                width: 100%;
+                width: 50%;
+                @media only screen and (max-width: $tablet) {
+                    width: 100%;
+                }
                 .input-text {
                     .p-text {
                         margin: 0;
-                        font-size: small;
+                        font-size: medium;
                         font-weight: 500;
+                        @media only screen and (max-width: $tablet) {
+                            font-size: small;
+                        }
                     }
                 }
                 .input-edit {
@@ -418,7 +540,10 @@
                         border-color: $fifth-color;
                         width: 100%;
                         padding: 1vh;
-                        height: 36.1px;
+                        height: 45px;
+                        @media only screen and (max-width: $tablet) {
+                            height: 36.1px;
+                        }
                         &:focus {
                             outline: none;
                         }
@@ -476,7 +601,7 @@
                 }
                 .button-text {
                     font-weight: bolder;
-                    font-size: 2vh;
+                    font-size: 15px;
                 }
             }
         }
@@ -646,13 +771,17 @@
             padding: 2vh;
             display: flex;
             position: sticky;
+            width: 75%;
+            @media only screen and (max-width: $tablet) {
+                width: 100%;
+            }
             .buscador {
                 float: right;
                 width: 100%;
                 border-radius: 50px;
                 border-width: 0px;
                 outline: none;
-                background-color: $white;
+                background-color: $white !important;
                 padding: 0.40vh;
                 .input-buscar {
                     outline: none;
@@ -736,58 +865,79 @@
     
     ///////////////////////////////CHAT//////////////////////////////////////
     .chat {
-        margin-top: 1.5vh;
+        @media only screen and (max-width: $tablet) {
+            margin-top: 1.5vh;
+        }
         .chats {
+            padding: 15px;
             justify-content: center;
             display: flex;
             align-items: center;
-            padding: 1.5vh;
-            .chat-foto-btn {
-                padding: 0;
-                margin: 0;
-                border-width: 0;
-                background-color: transparent;
-                width: 20%;
-                .chat-foto {
-                    width: 70%;
-                    align-content: right;
-                    .chat-profilefoto {
-                        border-radius: 50px;
-                        height: 7vh;
-                        width: 7vh;
-                    }
-                }
-            }
-            .chat-content {
-                width: 70%;
-                .chat-name {
-                    width: 100%;
-                    margin-bottom: 0.5vh;
-                    .chat-name-text {
-                        padding: 0;
-                        margin: 0;
-                        font-size: medium;
-                        font-weight: bolder;
-                    }
-                }
-                .chat-mensaje {
-                    width: 100%;
-                    .chat-mensaje-text {
-                        padding: 0;
-                        margin: 0;
-                        font-size: small;
-                    }
-                }
-            }
-            .chat-alert {
-                width: 10%;
-                text-align: right;
-                .chat-hora {
-                    background-color: #E5E5E5;
-                    border-width: 0;
-                    font-size: 1.5vh;
+            .chat-div-flex {
+                justify-content: left;
+                display: flex;
+                align-items: center;
+                width: 90%;
+                .chat-foto-btn {
+                    padding: 0;
                     margin: 0;
-                    margin-bottom: 1.9vh;
+                    border-width: 0;
+                    background-color: transparent;
+                    margin-right: 15px;
+                    .chat-foto {
+                        align-content: right;
+                        .chat-profilefoto {
+                            border-radius: 50px;
+                            height: 7vh;
+                            width: 7vh;
+                        }
+                    }
+                }
+                .chat-content {
+                    .chat-name {
+                        width: 100%;
+                        margin-bottom: 0.5vh;
+                        .chat-name-text {
+                            padding: 0;
+                            margin: 0;
+                            font-size: large;
+                            font-weight: bolder;
+                            @media only screen and (max-width: $tablet) {
+                                font-size: medium;
+                            }
+                        }
+                    }
+                    .chat-mensaje {
+                        width: 100%;
+                        .chat-mensaje-text {
+                            padding: 0;
+                            margin: 0;
+                            font-size: medium;
+                            @media only screen and (max-width: $tablet) {
+                                font-size: small;
+                            }
+                        }
+                    }
+                }
+            }
+            .chat-div-right {
+                float: right;
+                width: 10%;
+                .chat-alert {
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    float: right;
+                    .chat-hora {
+                        background-color: #E5E5E5;
+                        border-width: 0;
+                        font-size: 12.5px;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        @media only screen and (max-width: $tablet) {
+                            font-size: 10px;
+                        }
+                    }
                 }
             }
         }
@@ -796,7 +946,7 @@
             display: flex;
             align-items: center;
             .chat-linea {
-                width: 95vw;
+                width: 98%;
                 margin: 0;
                 color: $grey;
             }
@@ -814,12 +964,12 @@
             z-index: 100;
             .chat-main-user {
                 background-color: transparent;
-                justify-content: center;
+                justify-content: left;
                 display: flex;
                 align-items: center;
                 padding: 1vh;
                 .chat-main-return {
-                    width: 3%;
+                    margin-right: 10px;
                     .return-btn {
                         background-color: transparent;
                         border-width: 0px;
@@ -831,10 +981,10 @@
                     margin: 0;
                     border-width: 0;
                     background-color: transparent;
-                    width: 22%;
                     justify-content: center;
                     display: flex;
                     align-items: center;
+                    margin-right: 10px;
                     .chat-profilefoto {
                         border-radius: 50px;
                         height: 7vh;
@@ -842,7 +992,6 @@
                     }
                 }
                 .chat-main-name {
-                    width: 75%;
                     font-weight: bolder;
                     font-size: large;
                 }
@@ -867,16 +1016,10 @@
         .chat-main-content {
             background-color: $white;
             padding: 2vh;
-            min-height: 75vh;
-            &:before {
-                content: "";
-                position: absolute;
-                left: 0;
-                bottom: 0vh;
-                width: 100%;
-                height: 30vh;
-                background: $white;
-            }
+            height: 69.29vh;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
             .chat-mensaje-inicio {
                 justify-content: center;
                 display: flex;
@@ -885,7 +1028,7 @@
                 margin-bottom: 8px;
                 .mensaje-inicio {
                     border-radius: 10px;
-                    width: 50%;
+                    width: 30%;
                     background-color: $grey;
                     padding: 0.5vh;
                     font-size: small;
@@ -893,6 +1036,9 @@
                     justify-content: center;
                     display: flex;
                     align-items: center;
+                    @media only screen and (max-width: $tablet) {
+                        width: 50%;
+                    }
                     .mensaje-text {
                         margin: 0;
                     }
@@ -984,7 +1130,7 @@
             align-items: center;
             width: 100%;
             padding: 5px;
-            background-color: transparent;
+            background-color: $white;
             .chat-input {
                 width: 100%;
                 padding: 1.5px;
