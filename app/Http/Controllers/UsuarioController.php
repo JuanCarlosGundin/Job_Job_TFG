@@ -264,21 +264,20 @@ public function logout(Request $req){
                 }
 
                 DB::table('tbl_empresa')->where('id_usuario','=',$id)->update(["nom_emp"=>$req['nom_emp'],"mostrado"=>$req['mostrado'],"logo_emp"=>$logo_emp]);
-                /* si la contraseña la modificas, que tenga sha256, si no que conserve valor */
-                $uscontra = DB::table('tbl_usuarios')->where('id','=',$id)->select('contra')->first();
-
-                if ($req['contra'] == $uscontra->contra){
-
-                    DB::table('tbl_usuarios')->where('id','=',$id)->update(["contra"=>$req['contra'],"nom_emp"=>$req['nom_emp'],"mostrado"=>$req['mostrado'],"logo_emp"=>$logo_emp]);
-
-                } else{
-
-                    DB::table('tbl_usuarios')->where('id','=',$id)->update(["contra"=>hash('sha256',$req['contra']),"nom_emp"=>$req['nom_emp'],"mostrado"=>$req['mostrado'],"logo_emp"=>$logo_emp]);
-
-                }
+                
             }
+            /* si la contraseña la modificas, que tenga sha256, si no que conserve valor */
+            $uscontra = DB::table('tbl_usuarios')->where('id','=',$id)->select('contra')->first();
 
-                DB::table('tbl_usuarios')->where('id','=',$id)->update(["mail"=>$req['mail'],"estado"=>$req['estado']]);
+            if ($req['contra'] == $uscontra->contra){
+
+                DB::table('tbl_usuarios')->where('id','=',$id)->update(["mail"=>$req['mail'],"contra"=>$req['contra'],"estado"=>$req['estado']]);
+
+            } else{
+
+                DB::table('tbl_usuarios')->where('id','=',$id)->update(["mail"=>$req['mail'],"contra"=>hash('sha256',$req['contra']),"estado"=>$req['estado']]);
+
+            }
 
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
