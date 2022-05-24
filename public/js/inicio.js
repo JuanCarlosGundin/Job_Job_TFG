@@ -833,26 +833,24 @@ function sessiontrabajador4(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombress_idioma = document.getElementsByName('nombre_idioma[]');
-    let niveles_idioma = document.getElementsByName('nivel_idioma[]');
-    let nombre_idioma = [];
-    let nivel_idioma = [];
-    for (let i = 0; i < nombress_idioma.length; i++) {
-        nombre_idioma.push(nombress_idioma[i].value);
-    }
-    for (let i = 0; i < niveles_idioma.length; i++) {
-        nivel_idioma.push(niveles_idioma[i].value);
-    }
+    let nombre_idioma = document.getElementsByName('nombre_idioma[]');
+    let nivel_idioma = document.getElementsByName('nivel_idioma[]');
+
+
 
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     if (nombre_idioma) {
-        formData.append('nombre_idioma', nombre_idioma);
+        for (let i = 0; i < nombre_idioma.length; i++) {
+            formData.append('nombre_idioma[]', nombre_idioma[i].value);
+        }
     }
     if (nivel_idioma) {
-        formData.append('nivel_idioma', nivel_idioma);
+        for (let i = 0; i < nivel_idioma.length; i++) {
+            formData.append('nivel_idioma[]', nivel_idioma[i].value);
+        }
     }
 
 
@@ -1025,25 +1023,10 @@ function sessiontrabajador5(evt) {
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
     let nombre_formación = document.getElementsByName('nombre_formación[]');
-    let lugareses_formación = document.getElementsByName('lugar_formación[]');
-    let años_entrada = document.getElementsByName('año_entrada[]');
-    let años_salida = document.getElementsByName('año_salida[]');
-    /* let nombre_formación = []; */
-    let lugar_formación = [];
-    let año_entrada = [];
-    let año_salida = [];
-    /* for (let i = 0; i < nombress_formación.length; i++) {
-        nombre_formación.push(nombress_formación[i].value);
-    } */
-    for (let i = 0; i < lugareses_formación.length; i++) {
-        lugar_formación.push(lugareses_formación[i].value);
-    }
-    for (let i = 0; i < años_entrada.length; i++) {
-        año_entrada.push(años_entrada[i].value);
-    }
-    for (let i = 0; i < años_salida.length; i++) {
-        año_salida.push(años_salida[i].value);
-    }
+    let lugar_formación = document.getElementsByName('lugar_formación[]');
+    let año_entrada = document.getElementsByName('año_entrada[]');
+    let año_salida = document.getElementsByName('año_salida[]');
+
 
     var formData = new FormData();
 
@@ -1055,13 +1038,19 @@ function sessiontrabajador5(evt) {
         }
     }
     if (lugar_formación) {
-        formData.append('lugar_formación', lugar_formación);
+        for (let i = 0; i < lugar_formación.length; i++) {
+            formData.append('lugar_formación[]', lugar_formación[i].value);
+        }
     }
     if (año_entrada) {
-        formData.append('año_entradafor', año_entrada);
+        for (let i = 0; i < año_entrada.length; i++) {
+            formData.append('año_entradafor[]', año_entrada[i].value);
+        }
     }
     if (año_salida) {
-        formData.append('año_salidafor', año_salida);
+        for (let i = 0; i < año_salida.length; i++) {
+            formData.append('año_salidafor[]', año_salida[i].value);
+        }
     }
 
 
@@ -1099,16 +1088,15 @@ function sessiontrabajador5(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
-            /*  else {
-                            var container_error = document.getElementById('alert-danger');
-                            container_error.innerHTML = "";
-                            for (let i = 0; i < respuesta.errors.length; i++) {
-                                console.log(container_error.innerHTML);
-                                container_error.style.display = "block";
-                                container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
-                            }
-                        } */
 
         }
 
@@ -1243,51 +1231,39 @@ function sessiontrabajador6(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombres_experiencia = document.getElementsByName('nombre_experiencia[]');
-    let lugares_experiencia = document.getElementsByName('lugar_experiencia[]');
-    let funcioness = document.getElementsByName('funciones[]');
-    let años_entrada = document.getElementsByName('año_entrada[]');
-    let años_salida = document.getElementsByName('año_salida[]');
-    let nombre_experiencia = [];
-    let lugar_experiencia = [];
-    let funciones = [];
-    let año_entrada = [];
-    let año_salida = [];
-    for (let i = 0; i < nombres_experiencia.length; i++) {
-        nombre_experiencia.push(nombres_experiencia[i].value);
-    }
-    for (let i = 0; i < lugares_experiencia.length; i++) {
-        lugar_experiencia.push(lugares_experiencia[i].value);
-    }
-    for (let i = 0; i < funcioness.length; i++) {
-        funciones.push(funcioness[i].value);
-    }
-    for (let i = 0; i < años_entrada.length; i++) {
-        año_entrada.push(años_entrada[i].value);
-    }
-    for (let i = 0; i < años_salida.length; i++) {
-        año_salida.push(años_salida[i].value);
-    }
-
-
+    let nombre_experiencia = document.getElementsByName('nombre_experiencia[]');
+    let lugar_experiencia = document.getElementsByName('lugar_experiencia[]');
+    let funciones = document.getElementsByName('funciones[]');
+    let año_entrada = document.getElementsByName('año_entrada[]');
+    let año_salida = document.getElementsByName('año_salida[]');
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     if (nombre_experiencia) {
-        formData.append('nombre_experiencia', nombre_experiencia);
+        for (let i = 0; i < nombre_experiencia.length; i++) {
+            formData.append('nombre_experiencia[]', nombre_experiencia[i].value);
+        }
     }
     if (lugar_experiencia) {
-        formData.append('lugar_experiencia', lugar_experiencia);
+        for (let i = 0; i < lugar_experiencia.length; i++) {
+            formData.append('lugar_experiencia[]', lugar_experiencia[i].value);
+        }
     }
     if (funciones) {
-        formData.append('funciones', funciones);
+        for (let i = 0; i < funciones.length; i++) {
+            formData.append('funciones[]', funciones[i].value);
+        }
     }
     if (año_entrada) {
-        formData.append('año_entradaexp', año_entrada);
+        for (let i = 0; i < año_entrada.length; i++) {
+            formData.append('año_entradaexp[]', año_entrada[i].value);
+        }
     }
     if (año_salida) {
-        formData.append('año_salidaexp', año_salida);
+        for (let i = 0; i < año_salida.length; i++) {
+            formData.append('año_salidaexp[]', año_salida[i].value);
+        }
     }
 
 

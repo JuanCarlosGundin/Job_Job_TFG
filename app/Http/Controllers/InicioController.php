@@ -174,8 +174,8 @@ class InicioController extends Controller{
             //sessiontrabajador4
             if ($req->has(['nombre_idioma', 'nivel_idioma'])) {
                 $validator = Validator::make($req->all(), [
-                    'nombre_idioma'=>'string|max:100',
-                    'nivel_idioma'=>'string|max:100'
+                    'nombre_idioma.*'=>'string|max:100',
+                    'nivel_idioma.*'=>'string|max:100'
                 ]);
                 if ($validator->fails()) {
                     
@@ -186,16 +186,16 @@ class InicioController extends Controller{
             }
             //sessiontrabajador5
             if ($req->has(['nombre_formación', 'lugar_formación', 'año_entradafor', 'año_salidafor'])) {
-                /* $validator = Validator::make($req->all(), [
-                    'nombre_formación'=>'string|max:100',
-                    'lugar_formación'=>'string|max:100',
-                    'año_entradafor'=>'date',
-                    'año_salidafor'=>'date|after:año_entradafor'
+                $validator = Validator::make($req->all(), [
+                    'nombre_formación.*'=>'string|max:100',
+                    'lugar_formación.*'=>'string|max:100',
+                    /* 'año_entradafor.*'=>'date',
+                    'año_salidafor.*'=>'date|after:año_entradafor' */
                 ]);
                 if ($validator->fails()) {
                     
                     return response()->json(['errors'=>$validator->errors()->all()]);
-                }  */
+                } 
                 $req->session()->put('nombre_formación', $req->nombre_formación);
                 $req->session()->put('lugar_formación', $req->lugar_formación);
                 $req->session()->put('año_entradafor', $req->año_entradafor);
@@ -204,11 +204,11 @@ class InicioController extends Controller{
             //sessiontrabajador6
             if ($req->has(['nombre_experiencia', 'lugar_experiencia', 'funciones', 'año_entradaexp', 'año_salidaexp'])) {
                 $validator = Validator::make($req->all(), [
-                    'nombre_experiencia'=>'string|max:100',
-                    'lugar_experiencia'=>'string|max:200',
-                    'funciones'=>'string|max:500',
-                    'año_entradaexp'=>'date',
-                    'año_salidaexp'=>'date|after:año_entradaexp'
+                    'nombre_experiencia.*'=>'string|max:100',
+                    'lugar_experiencia.*'=>'string|max:200',
+                    'funciones.*'=>'string|max:500',
+                    /* 'año_entradaexp.*'=>'date',
+                    'año_salidaexp.*'=>'date|after:año_entradaexp' */
                 ]);
                 if ($validator->fails()) {
                     
@@ -355,8 +355,8 @@ class InicioController extends Controller{
         }
         //sessiontrabajador4
         if (session()->has('nombre_idioma') && session()->has('nivel_idioma')){
-            $nombre_idioma=explode(',',session()->get('nombre_idioma'));
-            $nivel_idioma=explode(',',session()->get('nivel_idioma'));
+            $nombre_idioma=session()->get('nombre_idioma');
+            $nivel_idioma=session()->get('nivel_idioma');
             //modificar registros idiomas.json
             $dataidioma=[];
             for ($i=0; $i <count($nombre_idioma) ; $i++) {
@@ -371,11 +371,10 @@ class InicioController extends Controller{
         }
         //sessiontrabajador5
         if (session()->has('nombre_formación') && session()->has('lugar_formación') && session()->has('año_entradafor') && session()->has('año_salidafor')){
-            return response()->json(array('resultado'=> gettype(session()->get('nombre_formación'))));
-            $nombre_formación=explode(',',session()->get('nombre_formación'));
-            $lugar_formación=explode(',',session()->get('lugar_formación'));
-            $año_entradafor=explode(',',session()->get('año_entradafor'));
-            $año_salidafor=explode(',',session()->get('año_salidafor'));
+            $nombre_formación=session()->get('nombre_formación');
+            $lugar_formación=session()->get('lugar_formación');
+            $año_entradafor=session()->get('año_entradafor');
+            $año_salidafor=session()->get('año_salidafor');
             $dataformacion=[];
             for ($i=0; $i <count($nombre_formación) ; $i++) {
                 $lineaformación='{"año_salida": "'.$año_salidafor[$i].'","año_entrada": "'.$año_entradafor[$i].'","lugar_formación": "'.$lugar_formación[$i].'","nombre_formación": "'.$nombre_formación[$i].'"}';
@@ -390,11 +389,11 @@ class InicioController extends Controller{
         //sessiontrabajador6
         if (session()->has('nombre_experiencia') && session()->has('lugar_experiencia')&& session()->has('funciones') && session()->has('año_entradaexp') && session()->has('año_salidaexp')){
 
-            $nombre_experiencia=explode(',',session()->get('nombre_experiencia'));
-            $lugar_experiencia=explode(',',session()->get('lugar_experiencia'));
-            $funciones=explode(',',session()->get('funciones'));
-            $año_entradaexp=explode(',',session()->get('año_entradaexp'));
-            $año_salidaexp=explode(',',session()->get('año_salidaexp'));
+            $nombre_experiencia=session()->get('nombre_experiencia');
+            $lugar_experiencia=session()->get('lugar_experiencia');
+            $funciones=session()->get('funciones');
+            $año_entradaexp=session()->get('año_entradaexp');
+            $año_salidaexp=session()->get('año_salidaexp');
             $dataexperiencia=[];
 
             for ($i=0; $i <count($nombre_experiencia) ; $i++) {
