@@ -71,7 +71,10 @@
 
 .bodylogin.oscuro .modal-login h2,
 .bodylogin.oscuro .modal-login h3,
-.bodylogin.oscuro .modal-login .contraseña {
+.bodylogin.oscuro .modal-login .contraseña,
+.bodylogin.oscuro .modal-login .izquierda,
+.bodylogin.oscuro .modal-login .derecha,
+.bodylogin.oscuro .modal-login p {
   color: white !important;
 }
 
@@ -111,7 +114,121 @@
   border: #0060A4 solid 1.5px;
 }
 
+.bodylogin.oscuro .modal-login .izquierda,
+.bodylogin.oscuro .modal-login .derecha {
+  color: white;
+}
+
+.bodylogin.oscuro .modal-login .mas,
+.bodylogin.oscuro .modal-login .menos {
+  color: white;
+}
+
+.oscuro {
+  background-color: #012A4A;
+}
+
+.oscuro .barra-navbar {
+  background-color: #0B4B78;
+}
+
+.oscuro .region-navbar {
+  background-color: #0B4B78;
+}
+
+.oscuro .region-navbar .main-icon {
+  background-color: #0B4B78;
+}
+
+.oscuro .region-navbar .icon {
+  color: #ffffff;
+  background-color: #0B4B78;
+}
+
+.oscuro .region-navbar .main-icon {
+  color: white;
+  background-color: #0B4B78;
+}
+
+.oscuro .region-navbar .active-icon {
+  background-color: #012A4A;
+}
+
+.oscuro .region-navbar .active-left {
+  background-color: #012A4A;
+}
+
+.oscuro .region-navbar .active-right {
+  background-color: #012A4A;
+}
+
+.oscuro .region-navbar .active {
+  background-color: #012A4A;
+}
+
+.oscuro .region-navbar .active-center {
+  background-color: #012A4A;
+}
+
 .page-home.oscuro {
   background-color: #012A4A;
+}
+
+.page-home.oscuro .botones-home button {
+  background-color: #0B4B78;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.page-home.oscuro .botones-home .boton-info .icono-maletin i,
+.page-home.oscuro .botones-home .boton-maletin .icono-maletin i,
+.page-home.oscuro .botones-home .boton-cruz .icono-maletin i {
+  color: white;
+}
+
+.page-home.oscuro .botones-home .boton-info .icono-info i,
+.page-home.oscuro .botones-home .boton-maletin .icono-info i,
+.page-home.oscuro .botones-home .boton-cruz .icono-info i {
+  color: white;
+}
+
+.page-home.oscuro .botones-home .boton-info .icono-cruz i,
+.page-home.oscuro .botones-home .boton-maletin .icono-cruz i,
+.page-home.oscuro .botones-home .boton-cruz .icono-cruz i {
+  color: white;
+}
+
+.oscuro .ver-profile .user-div-category {
+  background-color: #03365E !important;
+  border-color: #03365E !important;
+}
+
+.oscuro .ver-profile .user-vista {
+  background-color: #0B4B78 !important;
+}
+
+.oscuro .ver-profile .user-poligon {
+  background-color: #012A4A !important;
+}
+
+.oscuro .ver-profile .p-name,
+.oscuro .ver-profile .p-surname,
+.oscuro .ver-profile .p-age,
+.oscuro .ver-profile .p-category,
+.oscuro .ver-profile .user-category-icon {
+  color: white !important;
+}
+
+.oscuro .ver-profile .logout-btn,
+.oscuro .ver-profile .input-file {
+  background-color: #437EA9 !important;
+}
+
+.oscuro .ver-profile .linea-divisoria {
+  background-color: grey !important;
+}
+
+.buscador {
+  background-color: #012A4A !important;
 }
 /*# sourceMappingURL=style-nocturno.css.map */

@@ -100,6 +100,7 @@ function loginuser(evt) {
             title: "Error",
             text: "Tienes que rellenar todos los datos",
             icon: "error",
+
         });
         return false;
 
@@ -275,6 +276,15 @@ function sessiontrabajador0(evt) {
         });
         return false;
 
+        //no poder poner espacios en blanco
+    } else if (/^ *$/.test(mail) || /^ *$/.test(contra) || /^ *$/.test(contra2)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
 
         swal.fire({
@@ -292,6 +302,16 @@ function sessiontrabajador0(evt) {
             icon: "error",
         });
         return false;
+
+    } else if (contra.length < 8 || contra2.lenght < 8) {
+
+        swal.fire({
+            title: "Error",
+            text: "La contraseña tiene que tener mínimo 8 carácteres",
+            icon: "error",
+        });
+        return false;
+
 
     } else if (contra !== contra2) {
 
@@ -395,6 +415,32 @@ function sessiontrabajador1(evt) {
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    } else if (/^ *$/.test(nombre) || /^ *$/.test(apellido) || /^ *$/.test(edad)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
+    } else if (nombre.length < 2 || nombre.length > 60) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un nombre correcto",
+            icon: "error",
+        });
+        return false;
+
+    } else if (apellido.length < 2 || apellido.length > 60) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un apellido correcto",
             icon: "error",
         });
         return false;
@@ -514,6 +560,16 @@ function sessiontrabajador2(evt) {
     if (lenguaje_preferido) {
         formData.append('lenguaje_preferido', lenguaje_preferido);
     }
+    if (/^\s+$/.test(campo_user) || /^\s+$/.test(about_user) || /^\s+$/.test(lenguaje_preferido)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
 
     var ajax = objetoAjax();
@@ -629,6 +685,16 @@ function sessiontrabajador3(evt) {
     if (foto_perfil) {
         formData.append('foto_perfil', foto_perfil);
     }
+    if (/^\s+$/.test(loc_trabajador)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
 
     var ajax = objetoAjax();
@@ -697,9 +763,6 @@ function formtrabajador4() {
     /* Estructura linea */
     recarga += '<div id="lineaidioma-0">';
     //nombre_idioma
-    recarga += '<div class="mas-menos">'
-    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
-    recarga += '</div>'
     recarga += '<div class="column-2">';
     recarga += '<p>Idioma</p>';
     recarga += '<select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
@@ -722,6 +785,7 @@ function formtrabajador4() {
     recarga += '</div>';
     recarga += '<div>';
     recarga += '</div>';
+    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     /* Estructura linea */
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
@@ -813,7 +877,15 @@ function sessiontrabajador4(evt) {
     if (nivel_idioma) {
         formData.append('nivel_idioma', nivel_idioma);
     }
+    if (!nombre_idioma || !nivel_idioma) {
 
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -1009,6 +1081,17 @@ function sessiontrabajador5(evt) {
     if (año_salida) {
         formData.append('año_salidafor', año_salida);
     }
+    if (/^\s+$/.test(nombre_formación) || /^\s+$/.test(lugar_formación)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
+
 
 
     var ajax = objetoAjax();
@@ -1221,7 +1304,16 @@ function sessiontrabajador6(evt) {
     if (año_salida) {
         formData.append('año_salidaexp', año_salida);
     }
+    if (/^\s+$/.test(nombre_experiencia) || /^\s+$/.test(lugar_experiencia) || /^\s+$/.test(funciones)) {
 
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -1378,11 +1470,28 @@ function sessionempresa0(evt) {
         });
         return false;
 
+    } else if (/^ *$/.test(mail) || /^ *$/.test(nom_emp) || /^ *$/.test(contra) || /^ *$/.test(contra2)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
 
         swal.fire({
             title: "Error",
             text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+
+    } else if (nom_emp.length < 2 || nom_emp.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un nombre correcto",
             icon: "error",
         });
         return false;
@@ -1395,6 +1504,16 @@ function sessionempresa0(evt) {
             icon: "error",
         });
         return false;
+
+    } else if (contra.length < 8) {
+
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener mínimo 8 carácteres",
+            icon: "error",
+        });
+        return false;
+
 
     } else if (contra !== contra2) {
 
@@ -1520,6 +1639,16 @@ function sessionempresa1(evt) {
     formData.append('campo_emp', campo_emp);
     formData.append('searching', searching);
 
+    if (/^\s+$/.test(about_emp) || /^\s+$/.test(campo_emp) || /^\s+$/.test(searching)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -1620,6 +1749,17 @@ function sessionempresa2(evt) {
     formData.append('logo_emp', logo_emp);
     formData.append('loc_emp', loc_emp);
     formData.append('vacante', vacante);
+
+    if (/^\s+$/.test(loc_emp) || /^\s+$/.test(vacante)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
 
     var ajax = objetoAjax();
