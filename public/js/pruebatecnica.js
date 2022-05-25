@@ -185,7 +185,7 @@ function mostrar_prueba_tecnica(evt) {
             contenidoajax.innerHTML = recarga;
             document.getElementById("volver").addEventListener("click", leer_contenido)
             document.getElementById("iniciar_prueba").id_empresa = trabajador.id_empresa;
-            document.getElementById("iniciar_prueba").addEventListener("click", mostrar_prueba_tecnica_zip)
+            document.getElementById("iniciar_prueba").addEventListener("click", iniciar_ptecnica_trabajador)
 
         }
     }
@@ -193,14 +193,14 @@ function mostrar_prueba_tecnica(evt) {
 
 }
 
-function mostrar_prueba_tecnica_zip(evt) {
+function iniciar_ptecnica_trabajador(evt) {
     var id_empresa = evt.currentTarget.id_empresa;
 
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     var ajax = objetoAjax();
-    ajax.open("POST", "mostrar_ptecnica_trabajador/" + id_empresa, true);
+    ajax.open("POST", "iniciar_ptecnica_trabajador/" + id_empresa, true);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
@@ -212,6 +212,7 @@ function mostrar_prueba_tecnica_zip(evt) {
             var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
             var recarga = ``;
             recarga += `
+            <button id="volver">Volver</button>
             <div>
                 <p>Prueba tecnica para:</p>
                 <p>${trabajador.enunciado}</p>
@@ -242,6 +243,8 @@ function mostrar_prueba_tecnica_zip(evt) {
             </div>
             `;
             contenidoajax.innerHTML = recarga;
+            document.getElementById("volver").id_empresa = trabajador.id_empresa;
+            document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
             document.getElementById("formarchivo").id_empresa = trabajador.id_empresa;
             document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
 
@@ -279,6 +282,7 @@ function form_crear_prueba_tecnica() {
     var contenidoajax = document.getElementById("contenidoajax");
     var recarga = ``;
     recarga += `
+    <button id="volver">Volver</button>
     <form id="form_crear_prueba_tecnica" enctype="multipart/form-data">
     <p>lenguaje</p>
     <input type="text" class="" id="lenguaje" name="lenguaje">
@@ -296,6 +300,7 @@ function form_crear_prueba_tecnica() {
     </form>
     `
     contenidoajax.innerHTML = recarga;
+    document.getElementById("volver").addEventListener("click", leer_contenido)
     document.getElementById("form_crear_prueba_tecnica").addEventListener("submit", crear_prueba_tecnica);
 }
 
@@ -350,6 +355,7 @@ function mostrar_prueba_tecnica_empresa(evt) {
             console.log(json_prueba);
             var recarga = ``;
             recarga += `
+            <button id="volver">Volver</button>
             <p>${empresa.enunciado}</p>
             <p>${empresa.descripcion}</p>
             `;
@@ -363,6 +369,7 @@ function mostrar_prueba_tecnica_empresa(evt) {
                 }
             }
             contenidoajax.innerHTML = recarga;
+            document.getElementById("volver").addEventListener("click", leer_contenido)
             if (json_prueba) {
                 for (let i = 0; i < json_prueba.length; i++) {
                     document.getElementsByClassName("participantes")[i].id_participante = json_prueba[i].id_participante;
