@@ -73,6 +73,10 @@ class PtecnicaController extends Controller{
                 DB::select("UPDATE tbl_ptecnica SET json_prueba=? WHERE id_empresa=?",[$json_prueba,$id_empresa]);
             } else{
                 $json_prueba=json_decode($existejson->json_prueba);
+                /* for ($i=0; $i < count($json_prueba); $i++) { 
+                    # code...
+                } */
+                return response($json_prueba)->json(array('trabajador' => $json_prueba, 'tipo' => gettype($json_prueba), 'uno' =>$json_prueba[0]));
                 if ($json_prueba->id_participante){
                     return response()->json(array('trabajador' => 'existe'));
                 } else {
