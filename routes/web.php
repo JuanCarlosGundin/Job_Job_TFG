@@ -120,8 +120,8 @@ Route::post('mostrar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::clas
 // iniciar_ptecnica_trabajador
 Route::post('iniciar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'iniciar_ptecnica_trabajador']);
 
-// insertar_trabajador_ptecnica
-Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
+// insertar_zip_trabajador_trabajador_ptecnica
+Route::post('insertar_trabajador_ptecnica/{id_pt}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
 
 // crear_prueba_tecnica
 Route::post('crear_prueba_tecnica',[PtecnicaController::class, 'crear_prueba_tecnica']);

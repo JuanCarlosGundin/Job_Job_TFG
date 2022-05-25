@@ -72,6 +72,12 @@ class PtecnicaController extends Controller{
                 }]';
                 DB::select("UPDATE tbl_ptecnica SET json_prueba=? WHERE id_empresa=?",[$json_prueba,$id_empresa]);
             } else{
+                $json_prueba=json_decode($existejson->json_prueba);
+                if ($json_prueba->id_participante){
+                    return response()->json(array('trabajador' => 'existe'));
+                } else {
+                    return response()->json(array('trabajador' => 'nofunciona'));
+                }
                 $json_prueba="JSON_ARRAY_APPEND(json_prueba, '$', JSON_OBJECT('id_participante', '".$id."', 'inicio_participante', '".$inicio_participante."', 'zip_participante', 'null'))";
                 //no puedo usar ? en json_prueba por un bug en php
                 DB::select("UPDATE tbl_ptecnica SET json_prueba=".$json_prueba." WHERE id_empresa=?",[$id_empresa]);
@@ -88,7 +94,7 @@ class PtecnicaController extends Controller{
         }
     }
 
-    public function insertar_trabajador_ptecnica(Request $req, $id_empresa) {
+    public function insertar_trabajador_ptecnica(Request $req, $id_pt) {
         $id=session()->get('id_user');
         
 

@@ -245,7 +245,7 @@ function iniciar_ptecnica_trabajador(evt) {
             contenidoajax.innerHTML = recarga;
             document.getElementById("volver").id_empresa = trabajador.id_empresa;
             document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
-            document.getElementById("formarchivo").id_empresa = trabajador.id_empresa;
+            document.getElementById("formarchivo").id = trabajador.id;
             document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
 
         }
@@ -257,7 +257,7 @@ function iniciar_ptecnica_trabajador(evt) {
 function enviar_zip_trabajador(evt) {
 
     evt.preventDefault();
-    var id_empresa = evt.currentTarget.id_empresa;
+    var id_pt = evt.currentTarget.id;
     var zip_participante = document.getElementById("zip_participante").files[0]
 
     var contenidoajax = document.getElementById("contenidoajax");
@@ -266,7 +266,7 @@ function enviar_zip_trabajador(evt) {
     formData.append('_method', 'POST');
     formData.append('zip_participante', zip_participante);
     var ajax = objetoAjax();
-    ajax.open("POST", "insertar_trabajador_ptecnica/" + id_empresa, true);
+    ajax.open("POST", "insertar_trabajador_ptecnica/" + id_pt, true);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
