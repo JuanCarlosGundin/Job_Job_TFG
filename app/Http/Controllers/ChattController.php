@@ -117,7 +117,7 @@ class ChattController extends Controller
                 ,[$id,$idOTRO,$id,$idOTRO]);
                 //return response()->json($comparative);
                 if($comparative==null){
-                    DB::select("INSERT INTO `bd_proyecto_final_migracion`.`tbl_chat` (`id_iniciador_chat`, `id_interactuado_chat`, `estado_chat`, `json_chat`) VALUES (".$id.", ".$idOTRO.", '1', '{\"mensajes\": [{\"id\": \"Start\", \"hora\": \"Null\", \"nombre\": \"Start\", \"mensaje\": \"Bienvenido al chat\"}]}')");
+                    DB::select("INSERT INTO `tbl_chat` (`id_iniciador_chat`, `id_interactuado_chat`, `estado_chat`, `json_chat`) VALUES (".$id.", ".$idOTRO.", '1', '{\"mensajes\": [{\"id\": \"Start\", \"hora\": \"Null\", \"nombre\": \"Start\", \"mensaje\": \"Bienvenido al chat\"}]}')");
                 DB::commit();
                 return response()->json("SI");
                 }else{
