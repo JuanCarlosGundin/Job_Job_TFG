@@ -511,6 +511,18 @@ body {
           justify-content: center;
 }
 
+.bodylogin .modal-login .botones .inicio-activo {
+  background-color: #F0F0F0;
+  -webkit-box-shadow: inset 0px 0px 5px #cecdcd;
+          box-shadow: inset 0px 0px 5px #cecdcd;
+}
+
+.bodylogin .modal-login .botones .registrar-activo {
+  background-color: #F0F0F0;
+  -webkit-box-shadow: inset 0px 0px 5px #cecdcd;
+          box-shadow: inset 0px 0px 5px #cecdcd;
+}
+
 .bodylogin .modal-login .modal-content {
   border: white;
   text-align: center;

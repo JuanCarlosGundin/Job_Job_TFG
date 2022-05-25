@@ -66,8 +66,8 @@ function login() {
     var recarga = '';
 
     recarga += '<div class="botones">'
-    recarga += '<button style="background-color: white;" class="btn-signin" id="loginclick">Sign In</button>'
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-register" id="registrarclick">Register</button>'
+    recarga += '<button class="btn-signin" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register inicio-activo" id="registrarclick">Register</button>'
     recarga += '</div>'
     recarga += '<div class="modal-content">'
     recarga += '<form method="POST" id="loginuser">'
@@ -208,8 +208,8 @@ function registrar() {
     var recarga = '';
 
     recarga += '<div class="botones">'
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>'
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>'
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>'
     recarga += '<div id="main" class="modal-content-register-cuadrados">'
     recarga += '<h3>¿Cómo vas a usar JobJob?</h3>'
@@ -237,8 +237,8 @@ function formtrabajador0() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador0" enctype="multipart/form-data">';
@@ -380,8 +380,8 @@ function formtrabajador1() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador1" enctype="multipart/form-data">';
@@ -507,8 +507,8 @@ function formtrabajador2() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register">';
     //Flechas registro
@@ -624,8 +624,8 @@ function formtrabajador3() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register">';
     //Flechas registro
@@ -749,8 +749,8 @@ function formtrabajador4() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar">';
     //Flechas registro
@@ -939,8 +939,8 @@ function formtrabajador5() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar">';
     //Flechas registro
@@ -1146,8 +1146,8 @@ function formtrabajador6() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
     recarga += '<div class="modal-content-register"><div class="scrollbar">';
@@ -1416,8 +1416,8 @@ function formempresa0() {
     var recarga = '';
 
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa0" enctype="multipart/form-data">';
@@ -1584,8 +1584,8 @@ function formempresa1() {
     var recarga = '';
 
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
     recarga += '<div class="modal-content-register"><div class="scrollbar">';
@@ -1698,8 +1698,8 @@ function formempresa2() {
     var recarga = '';
 
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
     recarga += '<div class="modal-content-register"><div class="scrollbar">';

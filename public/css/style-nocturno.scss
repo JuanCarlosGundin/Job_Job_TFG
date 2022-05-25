@@ -69,6 +69,14 @@
             .modal-login {
                 background-color: $third-color;
                 box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+                .botones {
+                    .inicio-activo {
+                        background-color: $fourth-color !important;
+                    }
+                    .registrar-activo {
+                        background-color: $fourth-color !important;
+                    }
+                }
                 .modal-content {
                     background-color: $third-color;
                 }
@@ -101,14 +109,6 @@
                     background-color: $third-color !important;
                     box-shadow: none !important;
                     color: white;
-                }
-                .btn-register:focus {
-                    /*PROVISIONAL*/
-                    background-color: red !important;
-                }
-                .btn-signin:focus {
-                    /*PROVISIONAL*/
-                    background-color: red !important;
                 }
                 .cuadrado {
                     box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
@@ -143,6 +143,9 @@
                 }
                 .menu-item {
                     background-color: $third-color;
+                    .icon {
+                        color: white;
+                    }
                 }
                 .main-icon {
                     color: white;
@@ -206,14 +209,13 @@
         /////////////////////////////////////////VER-PERFIL//////////////////////////////
         .oscuro {
             .ver-perfil {
-                .user-poligon2{
+                .user-poligon2 {
                     background-color: $fourth-color !important;
                 }
                 .user-div-category {
                     background-color: $first-color !important;
                     border-color: $first-color !important;
                 }
-
                 .user-poligon {
                     background-color: $first-color !important;
                 }
@@ -252,19 +254,22 @@
                 .categoria-edit {
                     .return {
                         .return-btn {
-                        color: white;
+                            color: white;
                         }
                     }
                 }
                 .categoria-profile {
                     .categoria {
-                        .categoria-icon, .categoria-name, .categoria-text {
+                        .categoria-icon,
+                        .categoria-name,
+                        .categoria-text {
                             color: white !important;
                         }
                     }
                 }
             }
         }
+        
         ////////////////////////////////////////NOTIFICACIONES///////////////////////////////////////
         .buscador {
             background-color: $first-color !important;

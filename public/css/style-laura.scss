@@ -450,6 +450,14 @@ body {
             text-align: center;
             display: flex;
             justify-content: center;
+            .inicio-activo {
+                background-color: #F0F0F0;
+                box-shadow: inset 0px 0px 5px rgb(206, 205, 205);
+            }
+            .registrar-activo {
+                background-color: #F0F0F0;
+                box-shadow: inset 0px 0px 5px rgb(206, 205, 205);
+            }
         }
         ///contenido del modal
         .modal-content {
