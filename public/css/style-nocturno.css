@@ -107,6 +107,16 @@
   color: white;
 }
 
+.bodylogin.oscuro .modal-login .btn-register:focus {
+  /*PROVISIONAL*/
+  background-color: red !important;
+}
+
+.bodylogin.oscuro .modal-login .btn-signin:focus {
+  /*PROVISIONAL*/
+  background-color: red !important;
+}
+
 .bodylogin.oscuro .modal-login .cuadrado {
   -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
           box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
@@ -145,6 +155,10 @@
   background-color: #0B4B78;
 }
 
+.oscuro .region-navbar .menu-item {
+  background-color: #0B4B78;
+}
+
 .oscuro .region-navbar .main-icon {
   color: white;
   background-color: #0B4B78;
@@ -164,6 +178,17 @@
 
 .oscuro .region-navbar .active {
   background-color: #012A4A;
+}
+
+.oscuro .region-navbar .active .icon {
+  color: white;
+  background-color: #012A4A;
+}
+
+@media only screen and (max-width: 900px) {
+  .oscuro .region-navbar .active .icon {
+    background-color: #012A4A;
+  }
 }
 
 .oscuro .region-navbar .active-center {
@@ -198,39 +223,51 @@
   color: white;
 }
 
-.oscuro .ver-profile .user-div-category {
+.oscuro .ver-perfil .user-poligon2 {
   background-color: #03365E !important;
-  border-color: #03365E !important;
 }
 
-.oscuro .ver-profile .user-vista {
-  background-color: #0B4B78 !important;
+.oscuro .ver-perfil .user-div-category {
+  background-color: #012A4A !important;
+  border-color: #012A4A !important;
 }
 
-.oscuro .ver-profile .user-poligon {
+.oscuro .ver-perfil .user-poligon {
   background-color: #012A4A !important;
 }
 
-.oscuro .ver-profile .p-name,
-.oscuro .ver-profile .p-surname,
-.oscuro .ver-profile .p-age,
-.oscuro .ver-profile .p-category,
-.oscuro .ver-profile .user-category-icon {
+.oscuro .ver-perfil .p-name,
+.oscuro .ver-perfil .p-surname,
+.oscuro .ver-perfil .p-age,
+.oscuro .ver-perfil .p-category,
+.oscuro .ver-perfil .user-category-icon {
   color: white !important;
 }
 
-.oscuro .ver-profile .logout-btn,
-.oscuro .ver-profile .input-file {
+.oscuro .ver-perfil .logout-btn,
+.oscuro .ver-perfil .input-file {
   background-color: #437EA9 !important;
 }
 
-.oscuro .ver-profile .linea-divisoria {
+.oscuro .ver-perfil .linea-divisoria {
   background-color: grey !important;
 }
 
 .edit-profile .p-text,
 .edit-profile .return-text,
 .edit-profile i {
+  color: white !important;
+}
+
+.oscuro p {
+  color: white;
+}
+
+.oscuro .vista-profile .categoria-edit .return .return-btn {
+  color: white;
+}
+
+.oscuro .vista-profile .categoria-profile .categoria .categoria-icon, .oscuro .vista-profile .categoria-profile .categoria .categoria-name, .oscuro .vista-profile .categoria-profile .categoria .categoria-text {
   color: white !important;
 }
 

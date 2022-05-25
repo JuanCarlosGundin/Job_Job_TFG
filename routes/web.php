@@ -7,6 +7,8 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PtecnicaController;
+use App\Models\Ptecnica;
 
 Route::get('/chat', function () {
     return view('chat');
@@ -104,7 +106,20 @@ Route::post('editarperfilempresa',[PerfilController::class,'editarperfilempresa'
 
 /* ------------PerfilController------------ */
 
+/* ------------PtecnicaController------------ */
+/* ------------PtecnicaController------------ */
 
+// pagina prueba tecnica
+Route::get('pruebatecnica',[PtecnicaController::class,'vistaptecnica']);
+
+// leercontenido
+Route::post('leercontenido',[PtecnicaController::class,'leercontenido']);
+
+// mostrar_ptecnica_trabajador
+Route::post('mostrar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'mostrar_ptecnica_trabajador']);
+
+// insertar_trabajador_ptecnica
+Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
 
 
 

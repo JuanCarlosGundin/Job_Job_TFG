@@ -280,15 +280,13 @@ body {
                 width: 100%;
                 text-align: center;
                 .btn-register {
-                    width: 40% !important;
+                    width: 33% !important;
                     font-size: 16px !important;
                     padding-left: 0%;
                     padding-right: 0%;
                 }
-                a {
-                    font-size: 16px !important;
-                    padding-left: 1%;
-                    padding-right: 1%;
+                .btn-navbar {
+                    font-size: 20px !important;
                 }
             }
         }
@@ -338,14 +336,13 @@ body {
         height: 20vh !important;
     }
     .footer {
-        height: 82vh !important;
         background-color: $fourth-color !important;
         h2 {
-            font-size: 18px !important;
+            font-size: 24px !important;
         }
         p,
         a {
-            font-size: 16px !important;
+            font-size: 22px !important;
         }
         .footer-2,
         .footer-3 {
@@ -422,6 +419,10 @@ body {
             }
             .footer-1 {
                 display: none;
+            }
+            p,
+            a {
+                font-size: 16px !important;
             }
         }
     }

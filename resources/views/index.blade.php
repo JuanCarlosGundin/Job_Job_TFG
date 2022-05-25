@@ -28,7 +28,7 @@
     <div class="fila-1">
         <div class="column-3">
         <h2>Encuentra trabajo con tan solo deslizar</h2><br>
-        <h3>Gracias a JobJob podrás encontrar el trabajo de tus sueños ya que contamos con las mejores empresas del sector tecnológico.</h3>
+        <h3>Gracias a JobJob podrás encontrar tu trabajo ideal ya que contamos con las mejores empresas del sector tecnológico.</h3>
         <button class="btn-index" onClick="window.location.href='inicio';">Empezar</button>
         </div>
         <div class="column-4">
@@ -52,14 +52,14 @@
             <h3>La empresa y el trabajador podrán comunicarse con comodidad mediante mensajes</h3>
         </div>
         <div class="column-5" id="ultima-columna">
-            <i class="fa-solid fa-user"></i>
-            <h1>Perfil</h1>
-            <h3>Podrás ver el perfil de las empresas y trabajadores que te interesen</h3>
+            <i class="fa-solid fa-circle-check"></i>
+            <h1>Pruebas técnicas</h1>
+            <h3>Evalúa a los usuarios mediante una prueba para ver si es lo que buscas para tu empresa.</h3>
         </div>
     </div>
-    <div class="video">
+    <!--<div class="video">
         <h1>aqui va el video</h1>
-    </div>
+    </div>-->
     <div class="footer">
         <div class="footer-1">
         <h1>JobJob</h1>
@@ -73,7 +73,6 @@
         </div>
         <div class="footer-3">
         <h2>¿Tienes alguna duda?</h2>
-        <p><i class="fas fa-map-marker-alt"></i> Av. Mare de Déu de Bellvitge, 100, 110, 08907 L'Hospitalet de Llobregat, Barcelona</p><br><br><br><br>
         <p><i class="fa-solid fa-envelope"></i> jobjobemp@gmail.com</p><br><br>
         <p><i class="fa-solid fa-phone"></i>933 35 15 43</p>
         </div>

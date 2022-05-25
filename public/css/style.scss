@@ -27,132 +27,179 @@ body {
     background-color: $background;
 }
 
-///////////////////////////////NAVBAR//////////////////////////////////////
-// .region-navbar {
-//     height: 10vh;
-//     position: fixed;
-//     top: 0;
-//     width: 100%;
-//     background-color: $first-color; //PROVISIONAL MIENTRAS POL NO HAGA LA NAVBAR
-// }
-///////////////////////////////NAVBAR//////////////////////////////////////
-.barra-navbar {
-    background-color: white;
-    height: 15vh;
-    z-index: 100;
-    img {
-        margin-top: 20px;
-        width: 5%;
-        margin-left: 10vh;
-    }
-    .darkmodeswitch {
-        margin-top: 30px;
-        float: right;
-        margin-right: 30px;
+////////////////////////////////GENERAL///////////////////////////////////
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.principal {
+    height: 100vh;
+    @media only screen and (max-width: $tablet) {
+        flex-direction: column;
     }
 }
 
-p {
-    padding-left: 20px;
-    float: right;
-    font-size: 20px;
-    margin: 0;
+.column {
+    @media only screen and (max-width: $tablet) {
+        width: 100% !important;
+    }
 }
 
+.region-content {
+    height: 90vh;
+    width: 85vw;
+    @media(min-width: $tablet) {
+        height: 100vh;
+    }
+}
+
+///////////////////////////////NAVBAR//////////////////////////////////////
 .region-navbar {
     background-color: $white;
-    height: 85vh !important;
-    width: 20%;
-    height: #{"calc(var(--vh, 1vh) * 10)"};
-    padding-top: 5% !important;
-    padding-left: 2%;
+    height: 100%;
+    width: 15vw;
+    // padding-top: 5%;
+    // padding-left: 2%;
     /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
     /* DIVS NAVBAR*/
     /* Curriculum */
-    .curriculum-navbar {
-        padding: 1%;
-        padding-bottom: 20px;
-        border: 1px;
+    position: sticky;
+    @media only screen and (max-width: $tablet) {
+        border-bottom-left-radius: 30px !important;
+        flex-direction: row;
+    }
+    .barra-navbar-img {
+        justify-content: center;
         display: flex;
-        width: 70%;
+        align-items: center;
+        float: left;
+        @media only screen and (max-width: $tablet) {
+            display: none;
+        }
+        img {
+            margin-top: 10px;
+            width: 80px;
+            float: left;
+        }
     }
-    /* Alertas */
-    .alerts-navbar {
-        padding: 1%;
-        padding-bottom: 20px;
-        width: 100% !important;
-        border: 1px;
+    .menu {
         display: flex;
-        width: 70%;
-    }
-    /* Main */
-    .main-navbar {
-        padding: 1%;
-        padding-bottom: 20px;
-        width: 70%;
-        border: 1px;
-        display: flex;
-        width: 70%;
-    }
-    /* Chat */
-    .chat-navbar {
-        padding: 1%;
-        padding-bottom: 20px;
-        width: 70%;
-        border: 1px;
-        display: flex;
-        width: 70%;
-    }
-    /* Perfil */
-    .profile-navbar {
-        padding: 1%;
-        padding-bottom: 20px;
-        width: 70%;
-        border: 1px;
-        display: flex;
-        width: 70%;
-    }
-    // DIVS ACTIVE //
-    .active-left {
-        background-color: $background;
-    }
-    .active-right {
-        background-color: $background;
-        width: 100%;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .active {
-        background-color: $background;
-    }
-    .active-center {
-        background-color: $background;
-    }
-    /* ICONS */
-    .icon {
-        color: black;
-        margin: 0;
-        background-color: $white;
-        border-width: 0px;
-        border-radius: 50px;
-        font-size: 20px;
-    }
-    .main-icon {
-        color: black;
-        background-color: $white;
-        border-width: 0px;
-        border-radius: 50px;
-        font-size: 20px;
-    }
-    .active-icon {
-        background-color: $background;
-    }
-    .active-icon-center {
-        background-color: $background;
+        flex-direction: column;
+        margin-top: 150px;
+        gap: 20px;
+        @media only screen and (max-width: $tablet) {
+            margin-top: 0;
+            flex-direction: row;
+            gap: 0px;
+        }
+        .menu-item {
+            display: flex;
+            background-color: $white;
+            @media only screen and (max-width: $tablet) {
+                height: 100%;
+                border-radius: 30px;
+            }
+            .text {
+                padding-left: 20px;
+                float: right;
+                font-size: calc(#{'10px + 0.5vw'});
+                margin: 0;
+            }
+            .icon {
+                color: white;
+                text-align: center;
+                font-size: calc(#{'15px + 1vw'});
+                border-width: 0px;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                background-color: transparent;
+                display: flex;
+                justify-content: flex-start;
+                padding-left: 30px;
+                align-items: center;
+                &:hover {
+                    color: rgb(132, 132, 132);
+                    cursor: pointer;
+                    transition: 0.25s;
+                }
+                @media only screen and (max-width: $tablet) {
+                    justify-content: center;
+                    padding-left: 0;
+                    font-size: calc(#{'30px + 1vw'});
+                }
+            }
+        }
+        .active {
+            color: $black;
+            height: 100%;
+            .icon {
+                font-size: calc(#{'15px + 1vw'});
+                color: #000000;
+                background-color: $white;
+                border-width: 0px;
+                height: 100%;
+                border-top-left-radius: 30px;
+                &:hover {
+                    color: $black;
+                }
+                @media only screen and (max-width: $tablet) {
+                    background-color: $background;
+                    font-size: calc(#{'35px + 1vw'});
+                }
+            }
+        }
+        .active-center {
+            color: $black;
+            height: 100%;
+            .icon {
+                font-size: calc(#{'15px + 1vw'});
+                color: #000000;
+                background-color: $white;
+                border-width: 0px;
+                height: 100%;
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+                @media only screen and (max-width: $tablet) {
+                    background-color: $background;
+                    font-size: calc(#{'35px + 1vw'});
+                }
+            }
+        }
     }
 }
 
-@media only screen and (max-width: $movil) {
+.barra-navbar {
+    background-color: white;
+    height: 10vh;
+    z-index: 100;
+    position: sticky;
+    .barra-navbar-btn {
+        width: 100%;
+        height: 10vh;
+        float: right;
+        .darkmode-btn {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            float: right;
+            height: 100%;
+            margin-right: 10px;
+            .darkmodeswitch {
+                margin: 0;
+            }
+        }
+    }
+    @media only screen and (max-width: $tablet) {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: $tablet) {
     .barra-navbar {
         display: none;
         img {
@@ -177,7 +224,6 @@ p {
             display: none;
         }
         .curriculum-navbar {
-            padding: 1% !important;
             width: 20% !important;
             padding-top: 0 !important;
             padding-bottom: 0 !important;
@@ -185,14 +231,12 @@ p {
         }
         /* Alertas */
         .alerts-navbar {
-            padding: 1% !important;
             width: 20% !important;
             padding-bottom: 0 !important;
             display: absolute !important;
         }
         /* Main */
         .main-navbar {
-            padding: 1% !important;
             width: 20% !important;
             padding-bottom: 0 !important;
             display: absolute !important;
@@ -207,7 +251,6 @@ p {
         }
         /* Perfil */
         .profile-navbar {
-            padding: 1% !important;
             width: 20% !important;
             padding-bottom: 0 !important;
             display: absolute !important;
@@ -223,12 +266,6 @@ p {
             box-shadow: none;
             border-top-left-radius: 30px;
         }
-        .active {
-            background-color: $background;
-            box-shadow: none;
-            border-top-right-radius: 30px;
-            border-top-left-radius: 30px;
-        }
         .active-center {
             background-color: #C5D1EB;
             box-shadow: none;
@@ -236,27 +273,6 @@ p {
             border-top-left-radius: 30px;
         }
         /* ICONS */
-        .icon {
-            color: #c0c0c0 !important;
-            text-align: center !important;
-            font-size: 4.5vh !important;
-            background-color: $white;
-            border-width: 0px !important;
-            width: 100% !important;
-            height: 100% !important;
-            border-radius: 50px !important;
-        }
-        .main-icon {
-            color: #c0c0c0 !important;
-            font-size: 4vh;
-            background-color: $white;
-            text-align: center !important;
-            border-width: 0px;
-            width: 100%;
-            height: 100%;
-            border-top-right-radius: 30px;
-            border-top-left-radius: 30px;
-        }
         .active-icon {
             color: #000000 !important;
             background-color: $background !important;

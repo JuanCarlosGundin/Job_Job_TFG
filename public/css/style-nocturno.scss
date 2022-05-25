@@ -102,6 +102,14 @@
                     box-shadow: none !important;
                     color: white;
                 }
+                .btn-register:focus {
+                    /*PROVISIONAL*/
+                    background-color: red !important;
+                }
+                .btn-signin:focus {
+                    /*PROVISIONAL*/
+                    background-color: red !important;
+                }
                 .cuadrado {
                     box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
                     background: $second-color;
@@ -133,6 +141,9 @@
                     color: $white;
                     background-color: $third-color;
                 }
+                .menu-item {
+                    background-color: $third-color;
+                }
                 .main-icon {
                     color: white;
                     background-color: $third-color;
@@ -148,6 +159,13 @@
                 }
                 .active {
                     background-color: $first-color;
+                    .icon {
+                        color: white;
+                        background-color: $first-color;
+                        @media only screen and (max-width: $tablet) {
+                            background-color: $first-color;
+                        }
+                    }
                 }
                 .active-center {
                     background-color: $first-color;
@@ -187,14 +205,15 @@
         
         /////////////////////////////////////////VER-PERFIL//////////////////////////////
         .oscuro {
-            .ver-profile {
-                .user-div-category {
+            .ver-perfil {
+                .user-poligon2{
                     background-color: $fourth-color !important;
-                    border-color: $fourth-color !important;
                 }
-                .user-vista {
-                    background-color: $third-color !important;
+                .user-div-category {
+                    background-color: $first-color !important;
+                    border-color: $first-color !important;
                 }
+
                 .user-poligon {
                     background-color: $first-color !important;
                 }
@@ -224,6 +243,28 @@
             }
         }
         
+        /////////////////////////////////VER-CATEGORIA-PERFIL////////////////////////////////////
+        .oscuro {
+            p {
+                color: white;
+            }
+            .vista-profile {
+                .categoria-edit {
+                    .return {
+                        .return-btn {
+                        color: white;
+                        }
+                    }
+                }
+                .categoria-profile {
+                    .categoria {
+                        .categoria-icon, .categoria-name, .categoria-text {
+                            color: white !important;
+                        }
+                    }
+                }
+            }
+        }
         ////////////////////////////////////////NOTIFICACIONES///////////////////////////////////////
         .buscador {
             background-color: $first-color !important;
