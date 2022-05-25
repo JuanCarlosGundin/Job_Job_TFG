@@ -96,8 +96,11 @@ Route::get('perfil',[PerfilController::class, 'vistaPerfil']);
 // mostrarperfil
 Route::post('leerperfil',[PerfilController::class, 'leerperfiledit']);
 
-// editar sobre_mi
-Route::post('editarperfil',[PerfilController::class,'editarperfil']);
+// editarperfiltrabajador
+Route::post('editarperfiltrabajador',[PerfilController::class,'editarperfiltrabajador']);
+
+// editarperfilempresa
+Route::post('editarperfilempresa',[PerfilController::class,'editarperfilempresa']);
 
 /* ------------PerfilController------------ */
 
@@ -136,7 +139,7 @@ Route::post('perfiles',[UsuarioController::class,'perfiles']);
 //crearJS
 Route::post('crearuser',[UsuarioController::class,'crearuser']);
 
-//estadouserJS
+//estadouserJS /tambien sirve para desactivar la cuenta en el editar
 Route::put('estadouser/{id}',[UsuarioController::class,'estadouser']);
 
 //mostrarmodaluserJS
