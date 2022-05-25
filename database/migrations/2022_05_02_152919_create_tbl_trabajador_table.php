@@ -29,7 +29,6 @@ class CreateTblTrabajadorTable extends Migration
             $table->string('mostrado',45);
             $table->string('loc_trabajador',100)->nullable();
             $table->date('edad');//MODIFICAR EN LA APP
-            $table->string('mobilidad',45)->nullable();
             $table->string('carnet_conducir',45)->nullable();
             $table->string('vehiculo_propio',45)->nullable();
             $table->string('linkedin',100)->nullable();

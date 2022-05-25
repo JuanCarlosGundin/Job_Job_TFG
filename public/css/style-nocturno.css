@@ -7,7 +7,40 @@
           box-sizing: border-box;
 }
 
+.area-botones {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+
+.area-botones.horizontal {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.volver {
+  color: white;
+  font-size: 40px;
+}
+
 .darkmodeswitch {
+  position: relative;
   z-index: 2;
   margin-left: 2%;
   margin-top: 1.5%;
@@ -15,7 +48,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
   cursor: pointer;
   outline: none;
   border: none;
@@ -71,7 +103,8 @@
 
 .bodylogin.oscuro .modal-login h2,
 .bodylogin.oscuro .modal-login h3,
-.bodylogin.oscuro .modal-login .contraseña {
+.bodylogin.oscuro .modal-login .contraseña,
+.bodylogin.oscuro .modal-login label {
   color: white !important;
 }
 
@@ -81,11 +114,10 @@
   border: white;
 }
 
-.bodylogin.oscuro .modal-login .botonlogin,
-.bodylogin.oscuro .modal-login .botonregister {
-  background-color: #0060A4;
-  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
-          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+.bodylogin.oscuro .modal-login button {
+  background-color: #0060A4 !important;
+  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4) !important;
+          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4) !important;
 }
 
 .bodylogin.oscuro .modal-login .btn-signin {

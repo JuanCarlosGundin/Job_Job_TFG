@@ -75,7 +75,7 @@ function login() {
     recarga += '<input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo"><br></br>'
     recarga += '<input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña"><br>'
     recarga += '<button class= "botonlogin" type="submit" value="register">Iniciar Sesión</button>'
-    recarga += '<p class="contraseña">¿contraseña olvidada?</p>'
+    recarga += '<a class="contraseña" href="./forget-password">¿Has olvidado tu contraseña?</>'
     recarga += '</form>'
     recarga += '</div>'
     tabla.innerHTML = recarga;
@@ -241,6 +241,7 @@ function formtrabajador0() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador0" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     //Correo
     recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
     //Contraseña 1
@@ -342,6 +343,14 @@ function sessiontrabajador0(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -365,6 +374,8 @@ function formtrabajador1() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador1" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     //Nombre
     recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre..."><br><br>';
     //Apellido
@@ -443,6 +454,14 @@ function sessiontrabajador1(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -472,6 +491,8 @@ function formtrabajador2() {
     recarga += '</div><br>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     //campo_user
     recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br>';
     //about_user
@@ -550,6 +571,14 @@ function sessiontrabajador2(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -579,6 +608,8 @@ function formtrabajador3() {
     recarga += '</div><br>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     //loc_trabajador
     recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion..."><br><br>';
     //disponibilidad
@@ -665,6 +696,14 @@ function sessiontrabajador3(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -695,6 +734,8 @@ function formtrabajador4() {
     recarga += '<h3>¿Qué idiomas hablas?</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
     /* Estructura linea */
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     recarga += '<div id="lineaidioma-0">';
     //nombre_idioma
     recarga += '<div class="mas-menos">'
@@ -792,26 +833,24 @@ function sessiontrabajador4(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombress_idioma = document.getElementsByName('nombre_idioma[]');
-    let niveles_idioma = document.getElementsByName('nivel_idioma[]');
-    let nombre_idioma = [];
-    let nivel_idioma = [];
-    for (let i = 0; i < nombress_idioma.length; i++) {
-        nombre_idioma.push(nombress_idioma[i].value);
-    }
-    for (let i = 0; i < niveles_idioma.length; i++) {
-        nivel_idioma.push(niveles_idioma[i].value);
-    }
+    let nombre_idioma = document.getElementsByName('nombre_idioma[]');
+    let nivel_idioma = document.getElementsByName('nivel_idioma[]');
+
+
 
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     if (nombre_idioma) {
-        formData.append('nombre_idioma', nombre_idioma);
+        for (let i = 0; i < nombre_idioma.length; i++) {
+            formData.append('nombre_idioma[]', nombre_idioma[i].value);
+        }
     }
     if (nivel_idioma) {
-        formData.append('nivel_idioma', nivel_idioma);
+        for (let i = 0; i < nivel_idioma.length; i++) {
+            formData.append('nivel_idioma[]', nivel_idioma[i].value);
+        }
     }
 
 
@@ -849,6 +888,14 @@ function sessiontrabajador4(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -878,8 +925,11 @@ function formtrabajador5() {
     recarga += '</div><br>';
     recarga += '<h3>¿Dónde has estudiado?</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     /* Estructura linea */
     recarga += '<div id="lineaestudio-0">';
+
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de formación</p>';
@@ -972,42 +1022,35 @@ function sessiontrabajador5(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombress_formación = document.getElementsByName('nombre_formación[]');
-    let lugareses_formación = document.getElementsByName('lugar_formación[]');
-    let años_entrada = document.getElementsByName('año_entrada[]');
-    let años_salida = document.getElementsByName('año_salida[]');
-    let nombre_formación = [];
-    let lugar_formación = [];
-    let año_entrada = [];
-    let año_salida = [];
-    for (let i = 0; i < nombress_formación.length; i++) {
-        nombre_formación.push(nombress_formación[i].value);
-    }
-    for (let i = 0; i < lugareses_formación.length; i++) {
-        lugar_formación.push(lugareses_formación[i].value);
-    }
-    for (let i = 0; i < años_entrada.length; i++) {
-        año_entrada.push(años_entrada[i].value);
-    }
-    for (let i = 0; i < años_salida.length; i++) {
-        año_salida.push(años_salida[i].value);
-    }
+    let nombre_formación = document.getElementsByName('nombre_formación[]');
+    let lugar_formación = document.getElementsByName('lugar_formación[]');
+    let año_entrada = document.getElementsByName('año_entrada[]');
+    let año_salida = document.getElementsByName('año_salida[]');
+
 
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     if (nombre_formación) {
-        formData.append('nombre_formación', nombre_formación);
+        for (let i = 0; i < nombre_formación.length; i++) {
+            formData.append('nombre_formación[]', nombre_formación[i].value);
+        }
     }
     if (lugar_formación) {
-        formData.append('lugar_formación', lugar_formación);
+        for (let i = 0; i < lugar_formación.length; i++) {
+            formData.append('lugar_formación[]', lugar_formación[i].value);
+        }
     }
     if (año_entrada) {
-        formData.append('año_entradafor', año_entrada);
+        for (let i = 0; i < año_entrada.length; i++) {
+            formData.append('año_entradafor[]', año_entrada[i].value);
+        }
     }
     if (año_salida) {
-        formData.append('año_salidafor', año_salida);
+        for (let i = 0; i < año_salida.length; i++) {
+            formData.append('año_salidafor[]', año_salida[i].value);
+        }
     }
 
 
@@ -1045,6 +1088,14 @@ function sessiontrabajador5(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -1073,17 +1124,21 @@ function formtrabajador6() {
     recarga += '</div><br>';
     recarga += '<h3>¿Dónde has trabajado?</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
+
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
+
     /* Estructura linea */
     recarga += '<div id="lineaexperiencia-0">';
+
     //nombre_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de empresa</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="Nombre de empresa..." placeholder="Nombre puesto"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto"><br><br>';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>Lugar</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="Lugar..." placeholder="Empresa"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa"><br><br>';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
@@ -1176,50 +1231,39 @@ function sessiontrabajador6(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombres_experiencia = document.getElementsByName('nombre_experiencia[]');
-    let lugares_experiencia = document.getElementsByName('lugar_experiencia[]');
-    let funcioness = document.getElementsByName('funciones[]');
-    let años_entrada = document.getElementsByName('año_entrada[]');
-    let años_salida = document.getElementsByName('año_salida[]');
-    let nombre_experiencia = [];
-    let lugar_experiencia = [];
-    let funciones = [];
-    let año_entrada = [];
-    let año_salida = [];
-    for (let i = 0; i < nombres_experiencia.length; i++) {
-        nombre_experiencia.push(nombres_experiencia[i].value);
-    }
-    for (let i = 0; i < lugares_experiencia.length; i++) {
-        lugar_experiencia.push(lugares_experiencia[i].value);
-    }
-    for (let i = 0; i < funcioness.length; i++) {
-        funciones.push(funcioness[i].value);
-    }
-    for (let i = 0; i < años_entrada.length; i++) {
-        año_entrada.push(años_entrada[i].value);
-    }
-    for (let i = 0; i < años_salida.length; i++) {
-        año_salida.push(años_salida[i].value);
-    }
-
+    let nombre_experiencia = document.getElementsByName('nombre_experiencia[]');
+    let lugar_experiencia = document.getElementsByName('lugar_experiencia[]');
+    let funciones = document.getElementsByName('funciones[]');
+    let año_entrada = document.getElementsByName('año_entrada[]');
+    let año_salida = document.getElementsByName('año_salida[]');
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     if (nombre_experiencia) {
-        formData.append('nombre_experiencia', nombre_experiencia);
+        for (let i = 0; i < nombre_experiencia.length; i++) {
+            formData.append('nombre_experiencia[]', nombre_experiencia[i].value);
+        }
     }
     if (lugar_experiencia) {
-        formData.append('lugar_experiencia', lugar_experiencia);
+        for (let i = 0; i < lugar_experiencia.length; i++) {
+            formData.append('lugar_experiencia[]', lugar_experiencia[i].value);
+        }
     }
     if (funciones) {
-        formData.append('funciones', funciones);
+        for (let i = 0; i < funciones.length; i++) {
+            formData.append('funciones[]', funciones[i].value);
+        }
     }
     if (año_entrada) {
-        formData.append('año_entradaexp', año_entrada);
+        for (let i = 0; i < año_entrada.length; i++) {
+            formData.append('año_entradaexp[]', año_entrada[i].value);
+        }
     }
     if (año_salida) {
-        formData.append('año_salidaexp', año_salida);
+        for (let i = 0; i < año_salida.length; i++) {
+            formData.append('año_salidaexp[]', año_salida[i].value);
+        }
     }
 
 
@@ -1253,6 +1297,14 @@ function sessiontrabajador6(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }

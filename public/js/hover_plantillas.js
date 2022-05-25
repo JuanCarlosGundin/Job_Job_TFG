@@ -22,10 +22,10 @@
              * Control the rotation
              * You can change the value and see the results
              */
-            const yRotation = 20 * ((xVal - width / 2) / width)
+            const yRotation = 15 * ((xVal - width / 2) / width)
 
             /* Calculate the rotation along the X-axis */
-            const xRotation = -20 * ((yVal - height / 2) / height)
+            const xRotation = -15 * ((yVal - height / 2) / height)
 
             /* Generate string for CSS transform property */
             const string = 'perspective(500px) scale(1.05) rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)'

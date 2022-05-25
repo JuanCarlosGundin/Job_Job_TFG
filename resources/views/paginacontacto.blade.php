@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulario de contacto</title>
     <link rel="stylesheet" href="{!! asset('css/contacto.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">
     <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6d5e6cb8fd.js" crossorigin="anonymous"></script>
     <!-- animacion de rebote formulario -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     {{-- token --}}
@@ -15,7 +16,13 @@
 </head>
 
 <body>
-
+    <div class="area-botones horizontal">
+        <button type="button" class="darkmodeswitch" id="switch" onclick="cambiarModo()">
+            <span><i class="fa fa-sun-o"></i></span>   
+            <span><i class="fa fa-moon-o"></i></span>
+        </button>
+        <a href="{!! asset('./') !!}" class="volver"><i class="fa-solid fa-angle-left"></i></a>    
+    </div>
     <div class="content">
         <br><br><br><br>
 
@@ -65,6 +72,7 @@
     </div>
     <script src="js/ajaxcontacto.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/modo_nocturno.js"></script>
 </body>
 
 </html>

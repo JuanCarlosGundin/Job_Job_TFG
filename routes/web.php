@@ -8,6 +8,8 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\GraficaController;
+use App\Http\Controllers\PtecnicaController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/chat', function () {
     return view('chat');
@@ -112,10 +114,31 @@ Route::post('editarperfilempresa',[PerfilController::class,'editarperfilempresa'
 
 /* ------------PerfilController------------ */
 
+/* ------------PtecnicaController------------ */
+
+// pagina prueba tecnica
+Route::get('pruebatecnica',[PtecnicaController::class,'vistaptecnica']);
+
+// leercontenido
+Route::post('leercontenido',[PtecnicaController::class,'leercontenido']);
+
+// mostrar_ptecnica_trabajador
+Route::post('mostrar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'mostrar_ptecnica_trabajador']);
+
+// insertar_trabajador_ptecnica
+Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
+
+// crear_prueba_tecnica
+Route::post('crear_prueba_tecnica',[PtecnicaController::class, 'crear_prueba_tecnica']);
+
+// mostrar prueba tecnica desde empresa para ver los zips de los trabajadores
+Route::post('mostrar_zip_trabajadores/{id_pt}', [PtecnicaController::class, 'mostrar_zip_trabajadores']);
+
+// mostrar datos trabajador en prueba tecnia
+Route::post('mostrar_un_trabajador/{id_participante}', [PtecnicaController::class, 'mostrar_un_trabajador']);
 
 
-
-
+/* ------------PtecnicaController------------ */
 
 
 
@@ -226,10 +249,20 @@ Route::put('estadoreporte/{id}',[UsuarioController::class,'estadoreporte']);
 
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
 Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
-Route::get('/curriculum/pdf', [curriculumController::class, 'createPDF']);
+Route::get('/curriculum/pdf1', [curriculumController::class, 'pdf1']);
+Route::get('/curriculum/pdf2', [curriculumController::class, 'pdf2']);
+Route::get('/curriculum/pdf3', [curriculumController::class, 'pdf3']);
+Route::get('/curriculum/pdf4', [curriculumController::class, 'pdf4']);
 
 
 Route::get('/curriculum/plantilla1', [curriculumController::class, 'plantilla1']);
 Route::get('/curriculum/plantilla2', [curriculumController::class, 'plantilla2']);
 Route::get('/curriculum/plantilla3', [curriculumController::class, 'plantilla3']);
 Route::get('/curriculum/plantilla4', [curriculumController::class, 'plantilla4']);
+
+
+//////RESET PASSWORD//////
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

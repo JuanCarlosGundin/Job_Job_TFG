@@ -9,12 +9,12 @@
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
     <link href="{{ asset('css/style-curriculum.css') }}" rel="stylesheet" type="text/css" />
 </head>
-<body class="cv-2">
+<body class="cv-2 view">
     <?php 
     $curriculum=json_decode($trabajador->curriculum);
     ?>
-    <div>
-        <div>
+    <div class="main-page">
+        <div class="sub-page">
             <div class="row row-principal">
                 <div class="with-region-sidebar col-sm-4">
                     <div class="cv-region-sidebar">
@@ -137,6 +137,10 @@
                 </div>
             </div>
         </div>    
+    </div>
+    <div class="botones">
+        <button id="pdf2">Descargar CV</button>
+        <button>Volver</button>
     </div>
     
 
