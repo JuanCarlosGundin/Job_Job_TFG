@@ -6,6 +6,7 @@ use App\Models\Ptecnica;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PtecnicaController extends Controller{
     public function vistaptecnica(){
@@ -112,6 +113,24 @@ class PtecnicaController extends Controller{
                 ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
                 ->where('id', '=', $id_pt)->first();
             return response()->json(array('empresa' => $empresa));
+        } catch (\Exception $e) {
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
+    }
+
+    public function mostrar_un_trabajador($id_participante) {
+        try {
+            $participante=DB::table('tbl_trabajador')->where('id_usuario', '=', $id_participante)->first();
+            return response()->json(array('participante' => $participante));
+        } catch (\Exception $e) {
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
+    }
+
+    public function descargar_archivo(Request $req) {
+        try {
+            $url = Storage::url($req['zip_participante']);
+            return response()->json(array('resultado'=> $url));
         } catch (\Exception $e) {
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
         }

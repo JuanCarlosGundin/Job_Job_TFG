@@ -354,13 +354,65 @@ function mostrar_prueba_tecnica_empresa(evt) {
             <p>${empresa.descripcion}</p>
             `;
             if (json_prueba) {
-                recarga += `
-                
-                `
+                for (let i = 0; i < json_prueba.length; i++) {
+                    recarga += `
+                    <button class="participantes">Participante ${i+1}</button>
+                    <button class="descargas">Descargar zip</button>
+                    `
+
+                }
             }
             contenidoajax.innerHTML = recarga;
+            if (json_prueba) {
+                for (let i = 0; i < json_prueba.length; i++) {
+                    document.getElementsByClassName("participantes")[i].id_participante = json_prueba[i].id_participante;
+                    document.getElementsByClassName("participantes")[i].addEventListener("click", mostrar_participantes);
+                    document.getElementsByClassName("descargas")[i].zip_participante = json_prueba[i].zip_participante;
+                    document.getElementsByClassName("descargas")[i].addEventListener("click", descargar_archivo);
+
+                }
+            }
         }
     }
     ajax.send(formData);
 
+}
+
+function mostrar_participantes(evt) {
+    var id_participante = evt.currentTarget.id_participante;
+    var contenidoajax = document.getElementById("contenidoajax");
+
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+    ajax.open("POST", "mostrar_un_trabajador/" + id_participante, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+
+        }
+    }
+    ajax.send(formData);
+}
+
+function descargar_archivo(evt) {
+    var zip_participante = evt.currentTarget.zip_participante;
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+    formData.append('zip_participante', zip_participante);
+
+    var ajax = objetoAjax();
+    ajax.open("POST", "descargar_archivo", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            window.location.href = "." + respuesta.resultado;
+
+        }
+    }
+    ajax.send(formData);
 }

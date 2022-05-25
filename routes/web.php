@@ -126,6 +126,12 @@ Route::post('crear_prueba_tecnica',[PtecnicaController::class, 'crear_prueba_tec
 // mostrar prueba tecnica desde empresa para ver los zips de los trabajadores
 Route::post('mostrar_zip_trabajadores/{id_pt}', [PtecnicaController::class, 'mostrar_zip_trabajadores']);
 
+// mostrar datos trabajador en prueba tecnia
+Route::post('mostrar_un_trabajador/{id_participante}', [PtecnicaController::class, 'mostrar_un_trabajador']);
+
+// descargar zip
+Route::post('descargar_archivo', [PtecnicaController::class, 'descargar_archivo']);
+
 
 /* ------------PtecnicaController------------ */
 
