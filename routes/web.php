@@ -9,6 +9,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\GraficaController;
 use App\Http\Controllers\PtecnicaController;
+use App\Http\Controllers\ChattController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/chat', function () {
@@ -21,6 +22,10 @@ Route::get('registrar', function () {
 
 Route::get('paginacontacto', function () {
     return view('paginacontacto');
+});
+
+Route::get('/chat', function () {
+    return view('chat');
 });
 
 
@@ -266,3 +271,15 @@ Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPassw
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+//Al cargar el chat 
+Route::post('getchat', [ChattController::class, 'getchat']);
+
+//insertar mensaje del chat
+Route::post('insert', [ChattController::class, 'insert']);
+
+//lee los chats activos para mostrarlos
+Route::post('leerChats', [ChattController::class, 'leerChats']);
+
+///crear chat
+Route::post('crearchat', [ChattController::class, 'crearchat']);
