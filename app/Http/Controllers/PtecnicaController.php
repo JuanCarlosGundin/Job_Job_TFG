@@ -76,7 +76,7 @@ class PtecnicaController extends Controller{
                 /* for ($i=0; $i < count($json_prueba); $i++) { 
                     # code...
                 } */
-                return response($json_prueba)->json(array('trabajador' => $json_prueba, 'tipo' => gettype($json_prueba), 'uno' =>$json_prueba[0]));
+                return response()->json(array('trabajador' => $json_prueba, 'tipo' => gettype($json_prueba), 'uno' =>$json_prueba[0]));
                 if ($json_prueba->id_participante){
                     return response()->json(array('trabajador' => 'existe'));
                 } else {
