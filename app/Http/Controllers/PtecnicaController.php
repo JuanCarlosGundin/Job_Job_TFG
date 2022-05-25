@@ -126,13 +126,4 @@ class PtecnicaController extends Controller{
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
         }
     }
-
-    public function descargar_archivo(Request $req) {
-        try {
-            $url = Storage::url($req['zip_participante']);
-            return response()->json(array('resultado'=> $url));
-        } catch (\Exception $e) {
-            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
-        }
-    }
 }

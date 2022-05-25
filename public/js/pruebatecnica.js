@@ -399,20 +399,5 @@ function mostrar_participantes(evt) {
 
 function descargar_archivo(evt) {
     var zip_participante = evt.currentTarget.zip_participante;
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'POST');
-    formData.append('zip_participante', zip_participante);
-
-    var ajax = objetoAjax();
-    ajax.open("POST", "descargar_archivo", true);
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
-            window.location.href = "." + respuesta.resultado;
-
-        }
-    }
-    ajax.send(formData);
+    window.location.href = "./storage/" + zip_participante;
 }

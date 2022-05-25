@@ -129,9 +129,6 @@ Route::post('mostrar_zip_trabajadores/{id_pt}', [PtecnicaController::class, 'mos
 // mostrar datos trabajador en prueba tecnia
 Route::post('mostrar_un_trabajador/{id_participante}', [PtecnicaController::class, 'mostrar_un_trabajador']);
 
-// descargar zip
-Route::post('descargar_archivo', [PtecnicaController::class, 'descargar_archivo']);
-
 
 /* ------------PtecnicaController------------ */
 
