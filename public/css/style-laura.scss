@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 $first-color:#186CA7;
 $second-color: #005EA0;
-$third-color:#0081DC;
-$fourth-color:#2C7DB6;
+$third-color:#0076CA;
+$fourth-color:#042944;
 $fifth-color: #92AFD7;
 //Colores basicos//
 $black:#000000;
@@ -429,71 +429,21 @@ body {
 
 ///////////////////////////////////////////////////////LOGIN///////////////////////////////////////
 .bodylogin {
-    input[type=text],
-    input[type=password],
-    input[type=date] {
-        padding: 0 20px;
-    }
     background-color: $first-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    position: relative;
     .logo {
         display: none;
     }
     .modal-login {
-        min-width: 70vw;
-        .card {
-            padding: 80px 15vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 15px;
-            * {
-                width: 100%;
-            }
-            button {
-                cursor: pointer;
-                border-radius: 15px;
-                background-color: $first-color;
-                border: $first-color solid 1.5px;
-                box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-                color: white;
-                font-weight: bold;
-                width: 70%;
-                height: 7vh;
-                margin-top: 1rem;
-            }
-            form {
-                >* {
-                    width: 100%;
-                }
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                gap: 15px;
-                .form-group {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
-                    gap: 15px;
-                }
-            }
-        }
         background-color: white;
         border-radius: 55px;
         align-items: center;
         align-content: center;
         text-align: center;
-        box-shadow: 5px 3px 3px rgba(156,
-        155,
-        155,
-        0.591);
+        margin-top: 5vh;
+        padding-bottom: 0.2vh;
+        margin-left: 30vh;
+        margin-right: 30vh;
+        box-shadow: 5px 3px 3px rgba(156, 155, 155, 0.591);
         ///// botones de login y registrar
         .botones {
             text-align: center;
@@ -516,12 +466,6 @@ body {
             margin-left: 10%;
             margin-right: 10%;
             height: 70vh;
-            form {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
             .opciones {
                 .opcion {
                     width: 25%;
@@ -734,22 +678,8 @@ body {
 }
 
 //////////////////////////////////////////////////////////REGISTRAR//////////////////////////////////////
-.alert-danger {
-    width: 80%;
-    p {
-        font-size: calc(13px + 0.1vw)!important;
-        text-align: center!important;
-    }
-}
-
 //////////////////////////////////////////////////PÁGINA TRABAJADOR-EMPRESA//////////////////////////////
 .bodylogin {
-    form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
     h3 {
         margin-top: 2vh;
         margin-bottom: 0vh;
@@ -856,17 +786,11 @@ body {
 
 ///////////////////////////////FORNULARIO REGISTRAR TRABAJADOR-EMPRESA////////////////////////////
 .bodylogin {
-    div[class^="lineaestudio-"] {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
     //barra de scroll del modal
     .scrollbar {
         width: 100%;
         height: 72vh;
-        // overflow-y: scroll;
+        overflow-y: scroll;
     }
     /* ===== Scrollbar CSS ===== */
     /* Firefox */
@@ -888,7 +812,6 @@ body {
     }
     //contenido del modal
     .modal-content-register {
-        overflow-y: scroll;
         border: white;
         text-align: center;
         width: 100%;
@@ -948,7 +871,7 @@ body {
         }
         //poner inputs en dos columnas distintas
         p {
-            font-size: 2.5vh;
+            font-size: 2.5vh !important;
             font-weight: 600;
             text-align: left;
             color: rgba(0, 0, 0, 0.594);

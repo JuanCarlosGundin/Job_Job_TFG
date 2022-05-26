@@ -215,7 +215,7 @@ body {
 }
 
 .body-index .video {
-  background-color: #0081DC;
+  background-color: #0076CA;
 }
 
 .body-index .video h1 {
@@ -224,7 +224,7 @@ body {
 
 .body-index .footer {
   height: 48vh;
-  background-color: #2C7DB6;
+  background-color: #042944;
   color: white;
   text-align: left;
   -webkit-box-pack: center;
@@ -370,7 +370,7 @@ body {
     height: 20vh !important;
   }
   .footer {
-    background-color: #2C7DB6 !important;
+    background-color: #042944 !important;
   }
   .footer h2 {
     font-size: 24px !important;
@@ -384,7 +384,7 @@ body {
     width: 100% !important;
     padding-top: 5vh !important;
     height: 70% !important;
-    background-color: #2C7DB6 !important;
+    background-color: #042944 !important;
     text-align: center !important;
     -webkit-box-pack: center !important;
         -ms-flex-pack: center !important;
@@ -450,7 +450,7 @@ body {
   .body-index .footer .footer-3 {
     width: 50% !important;
     height: 100%;
-    background-color: #2C7DB6 !important;
+    background-color: #042944 !important;
     text-align: center !important;
     -webkit-box-pack: center !important;
         -ms-flex-pack: center !important;
@@ -477,23 +477,6 @@ body {
 
 .bodylogin {
   background-color: #186CA7;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100vh;
-  position: relative;
-}
-
-.bodylogin input[type=text],
-.bodylogin input[type=password],
-.bodylogin input[type=date] {
-  padding: 0 20px;
 }
 
 .bodylogin .logo {
@@ -501,7 +484,6 @@ body {
 }
 
 .bodylogin .modal-login {
-  min-width: 70vw;
   background-color: white;
   border-radius: 55px;
   -webkit-box-align: center;
@@ -510,82 +492,12 @@ body {
   -ms-flex-line-pack: center;
       align-content: center;
   text-align: center;
+  margin-top: 5vh;
+  padding-bottom: 0.2vh;
+  margin-left: 30vh;
+  margin-right: 30vh;
   -webkit-box-shadow: 5px 3px 3px rgba(156, 155, 155, 0.591);
           box-shadow: 5px 3px 3px rgba(156, 155, 155, 0.591);
-}
-
-.bodylogin .modal-login .card {
-  padding: 80px 15vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 15px;
-}
-
-.bodylogin .modal-login .card * {
-  width: 100%;
-}
-
-.bodylogin .modal-login .card button {
-  cursor: pointer;
-  border-radius: 15px;
-  background-color: #186CA7;
-  border: #186CA7 solid 1.5px;
-  -webkit-box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-          box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-  color: white;
-  font-weight: bold;
-  width: 70%;
-  height: 7vh;
-  margin-top: 1rem;
-}
-
-.bodylogin .modal-login .card form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 15px;
-}
-
-.bodylogin .modal-login .card form > * {
-  width: 100%;
-}
-
-.bodylogin .modal-login .card form .form-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 15px;
 }
 
 .bodylogin .modal-login .botones {
@@ -617,22 +529,6 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   height: 70vh;
-}
-
-.bodylogin .modal-login .modal-content form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .bodylogin .modal-login .modal-content .opciones .opcion {
@@ -669,7 +565,7 @@ body {
 .bodylogin .modal-login .modal-content .contraseña {
   font-weight: bold;
   font-size: 2vh;
-  color: #0081DC !important;
+  color: #0076CA !important;
   text-align: center;
   padding-top: 10px;
 }
@@ -869,31 +765,6 @@ body {
   }
 }
 
-.alert-danger {
-  width: 80%;
-}
-
-.alert-danger p {
-  font-size: calc(13px + 0.1vw) !important;
-  text-align: center !important;
-}
-
-.bodylogin form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .bodylogin h3 {
   margin-top: 2vh;
   margin-bottom: 0vh;
@@ -1009,25 +880,10 @@ body {
   /* Chrome, Edge, and Safari */
 }
 
-.bodylogin div[class^="lineaestudio-"] {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
 .bodylogin .scrollbar {
   width: 100%;
   height: 72vh;
+  overflow-y: scroll;
 }
 
 .bodylogin * {
@@ -1050,7 +906,6 @@ body {
 }
 
 .bodylogin .modal-content-register {
-  overflow-y: scroll;
   border: white;
   text-align: center;
   width: 100%;
@@ -1114,7 +969,7 @@ body {
 }
 
 .bodylogin .modal-content-register p {
-  font-size: 2.5vh;
+  font-size: 2.5vh !important;
   font-weight: 600;
   text-align: left;
   color: rgba(0, 0, 0, 0.594);
