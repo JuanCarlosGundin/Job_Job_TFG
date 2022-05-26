@@ -1,10 +1,9 @@
 window.onload = function() {
+        leernotificacionesJS();
+    }
+    ////////////////////////////REDIRECCIONES/////////////////////////////////
 
-    leernotificacionesJS();
-
-}
-
-////////////////////////////REDIRECCIONES/////////////////////////////////
+leernotificacionesJS();
 var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
