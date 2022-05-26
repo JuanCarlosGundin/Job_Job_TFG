@@ -1563,6 +1563,16 @@ body {
   scrollbar-width: none;
 }
 
+.main-chat .chat-main-content::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  .main-chat .chat-main-content {
+    height: 100%;
+  }
+}
+
 .main-chat .chat-main-content .chat-mensaje-inicio {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1749,6 +1759,10 @@ body {
   font-size: large;
   border-radius: 25px;
   padding-right: 3px;
+}
+
+.main-chat .chat-main-send .chat-send .boton-send:active {
+  background-color: #042944;
 }
 
 .admin .navbar .container-fluid .collapse .navbar-nav .navbar-right {

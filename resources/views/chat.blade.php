@@ -26,7 +26,7 @@
             </div>
             <div class="row menu">
                 <div class="row menu-item">
-                    <button id="navbar-PT-icon" class="icon"><i class="fa-solid fa-file-invoice"></i><p class="text">Prueba técnica</p></button>
+                    <button id="navbar-PT-icon" class="icon"><i class="fa-solid fa-file-invoice"></i><p class="text">Prueba tÃ©cnica</p></button>
                 </div>
                 <div class="row menu-item">
                     <button id="navbar-alerts-icon" class="icon"><i class="fa-solid fa-bell"></i><p class="text">Notificaciones</p></button>
@@ -42,12 +42,28 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id='content'>
-        <div id='chat' class="chat">
-            {{-- Contenido de los chats --}}
+        <div class="column region-content">
+            <div class="row barra-navbar">
+                <div class="barra-navbar-btn">
+                    <div class="darkmode-btn">
+                        <button type="button" class="darkmodeswitch" id="switch">
+                            <span><i class="fa fa-sun-o"></i></span>   
+                            <span><i class="fa fa-moon-o"></i></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id='content'>
+                <div id='chat' class="chat">
+                    {{-- Contenido de los chats --}}
+                </div>
+            </div>
         </div>
     </div>
+
+
+    <script src="js/chat.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-<script src="js/chat.js"></script>
+
 </html>
