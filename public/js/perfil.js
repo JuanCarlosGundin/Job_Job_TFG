@@ -146,8 +146,8 @@ function mostrarperfilJS() {
                 //nombre-apellido-edad
                 recarga += `<div class="user-div-name">`;
                 recarga += `<div class="divs-name">`;
-                recarga += `<span class="p-name">${trabajador.nombre}</span>`;
-                recarga += `<span class="p-surname">${trabajador.apellido},</span>`;
+                recarga += `<span class="p-name">${trabajador.nombre} </span>`;
+                recarga += `<span class="p-surname">${trabajador.apellido}, </span>`;
                 recarga += `<span class="p-age">${edad(trabajador.edad)}</span>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-edit-div">`;
@@ -332,9 +332,9 @@ function mostrarperfilJS() {
 
                 recarga += `<hr class="linea-divisoria">`;
 
-                recarga += `<div class="user-categories">`;
+                recarga += `<div class="emp-categories">`;
                 //sobre empresa
-                recarga += `<div class="user-div-category">`;
+                recarga += `<div class="emp-div-category">`;
                 recarga += `<button class="user-btn-category" id="boton_empresa">`;
                 recarga += `<div class="user-category-icon">`;
                 recarga += `<i class="fa-solid fa-address-card"></i>`;
@@ -345,10 +345,10 @@ function mostrarperfilJS() {
                 recarga += `</button>`;
                 recarga += `</div>`;
                 //buscamos
-                recarga += `<div class="user-div-category">`;
+                recarga += `<div class="emp-div-category">`;
                 recarga += `<button class="user-btn-category" id="boton_buscamos">`;
                 recarga += `<div class="user-category-icon">`;
-                recarga += `<i class="fa-solid fa-language"></i>`;
+                recarga += `<i class="fa-solid fa-magnifying-glass"></i>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-category-text">`;
                 recarga += `<p class="p-category">Buscamos</p>`;
@@ -356,7 +356,7 @@ function mostrarperfilJS() {
                 recarga += `</button>`;
                 recarga += `</div>`;
                 //configuracion
-                recarga += `<div class="user-div-category">`;
+                recarga += `<div class="emp-div-category">`;
                 recarga += `<button class="user-btn-category" id="boton_configuracion">`;
                 recarga += `<div class="user-category-icon">`;
                 recarga += `<i class="fa-solid fa-gear"></i>`;
@@ -1911,8 +1911,23 @@ function leer_experiencia() {
             var trabajador = respuesta.resultado;
             console.log(trabajador);
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<button id="crear">crear</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
             if (trabajador.curriculum != null) {
 
                 var curriculum = JSON.parse(trabajador.curriculum);
@@ -1922,13 +1937,31 @@ function leer_experiencia() {
 
                         for (let i = 0; i < curriculum.experiencia.length; i++) {
 
-                            recarga += `<div>`;
-                            recarga += `<p>${curriculum.experiencia[i].lugar_experiencia}</p>`;
-                            recarga += `<p>${curriculum.experiencia[i].nombre_experiencia}</p>`;
-                            recarga += `<p><b>Año de entrada: </b>${curriculum.experiencia[i].año_entrada}</p>`;
-                            recarga += `<p><b>Año de salida: </b>${curriculum.experiencia[i].año_salida}</p>`;
-                            recarga += `<p>${curriculum.experiencia[i].funciones}</p>`;
-                            recarga += `<button class="editar">Editar</button>`;
+                            recarga += `<div class="categoria">`;
+                            recarga += `<div class="categoria-linea">`;
+                            recarga += `<hr class="linea-divisoria">`;
+                            recarga += `</div>`;
+                            recarga += `<div class="categoria-name">`;
+                            recarga += `<p class="categoria-p-name">${curriculum.experiencia[i].lugar_experiencia}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="categoria-text">`;
+                            recarga += `<p class="categoria-p-text">${curriculum.experiencia[i].nombre_experiencia}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="categoria-text">`;
+                            recarga += `<p class="categoria-p-text"><b>Año de entrada: </b>${curriculum.experiencia[i].año_entrada}</p>`;
+                            recarga += `<br>`;
+                            recarga += `<p class="categoria-p-text"><b>Año de salida: </b>${curriculum.experiencia[i].año_salida}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="categoria-text">`;
+                            recarga += `<p class="categoria-p-text" >${curriculum.experiencia[i].funciones}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="idioma-btn-div">`;
+                            recarga += `<button class="editar"><i class="fa-solid fa-pen"></i></button>`;
+                            recarga += `</div>`;
                             recarga += `</div>`;
                         }
                     } else {
@@ -1951,6 +1984,8 @@ function leer_experiencia() {
             } else {
 
                 recarga += `<p>Aun no has añadido ninguna experiencia</p>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
             }
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -2016,7 +2051,7 @@ function form_crear_experiencia() {
     recarga += `<p class="p-text">DESCRIBE LO QUE HICISTE EN LA EMPRESA</p>`;
     recarga += `</div>`;
     recarga += `<div class="input-edit">`;
-    recarga += `<input type="textarea" class="textarea" id="funciones" name="funciones" placeholder="Funciones dentro de la empresa">`;
+    recarga += `<input type="textarea" class="text-area" id="funciones" name="funciones" placeholder="Funciones dentro de la empresa">`;
     recarga += `</div>`;
     recarga += `</div>`;
     recarga += `<div class="aceptar-cuenta-edit">`;
@@ -2092,18 +2127,68 @@ function form_editar_experiencias(evt) {
             console.log(experiencia);
             var recarga = ``;
 
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
-            recarga += `<form id=form_experiencias>`;
-            recarga += `<input type="text" class="" id="nombre_experiencia" name="Nombre de empresa..." value="${experiencia.nombre_experiencia}">`;
-            recarga += `<input type="text" class="" id="lugar_experiencia" name="Lugar..." value="${experiencia.lugar_experiencia}">`;
-            recarga += `<input type="date" class="" id="año_entrada" name="año_entrada" value="${experiencia.año_entrada}">`;
-            recarga += `<input type="date" class="" id="año_salida" name="año_salida" value="${experiencia.año_salida}">`;
-            recarga += `<input type="textarea" class="inputregister" id="funciones" name="funciones" value="${experiencia.funciones}">`;
-            recarga += `<button>Realizar cambios</button>`;
-            recarga += `</form>`;
-            recarga += `<button id="eliminar">Eliminar experiencia</button>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
             recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
+            recarga += `<form id=form_experiencias>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">NOMBRE DE LA EMPRESA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="nombre_experiencia" name="Nombre de empresa..." value="${experiencia.nombre_experiencia}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">LUGAR DONDE TRABAJASTE</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="lugar_experiencia" name="Lugar..." value="${experiencia.lugar_experiencia}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">AÑO DE ENTRADA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="date" class="input" id="año_entrada" name="año_entrada" value="${experiencia.año_entrada}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">AÑO DE SALIDA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="date" class="input" id="año_salida" name="año_salida" value="${experiencia.año_salida}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">EXPLICA QUE HACIAS EN LA EMPRESA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="textarea" class="text-area" id="funciones" name="funciones" value="${experiencia.funciones}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">MODIFICAR</p></button>`;
+            recarga += `</div>`;
+            recarga += `</form>`;
+            recarga += `<div class="eliminar-cuenta-edit">`;
+            recarga += `<button class="eliminar-cuenta-btn" id="eliminar"><p class="button-text">ELIMINAR</p></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", leer_experiencia);
@@ -2645,14 +2730,32 @@ function leer_configuracion() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
-            recarga += `<button id="desactivar">Desactivar</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
+            recarga += `<div class="eliminar-cuenta-div">`;
+            recarga += `<button class="eliminar-cuenta-btn" id="desactivar"><p class="button-text">Desactivar cuenta</button>`;
             if (trabajador.mostrado == "1") {
-                recarga += `<p class="">SI</p>`;
+                // recarga += `<p class="">SI</p>`;
             } else {
-                recarga += `<p class="">NO</p>`;
+                // recarga += `<p class="">NO</p>`;
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -2689,18 +2792,45 @@ function form_configuracion() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
+            recarga += `<div class="edit-profile">`;
             if (trabajador.mostrado == 1) {
-                recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '" checked>';
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">¿MOSTRAR CUENTA?</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += '<input type="checkbox" class="input" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '" checked>';
+                recarga += `</div>`;
+                recarga += `</div>`;
 
             } else {
-                recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '">';
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">¿MOSTRAR CUENTA?</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += '<input type="checkbox" class="input" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '">';
+                recarga += `</div>`;
+                recarga += `</div>`;
 
             }
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -2995,7 +3125,7 @@ function leer_sobre_empresa() {
             recarga += `<div class="categoria">`;
             recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `<i class="fa-solid fa-briefcase"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-name">`;
             //titulo
@@ -3021,7 +3151,7 @@ function leer_sobre_empresa() {
             recarga += `<div class="categoria">`;
             recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `<i class="fa-solid fa-building"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-name">`;
             //titulo
@@ -3328,14 +3458,31 @@ function leer_configuracion_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
             recarga += `<button id="desactivar">Desactivar</button>`;
             if (empresa.mostrado == "1") {
                 recarga += `<p class="">SI</p>`;
             } else {
                 recarga += `<p class="">NO</p>`;
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
