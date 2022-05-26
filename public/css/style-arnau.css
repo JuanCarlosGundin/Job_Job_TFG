@@ -43,7 +43,7 @@ body {
 .page-home .region-swiper #carta {
   height: 100%;
   width: 100%;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .page-home .region-swiper .swiper {
@@ -89,7 +89,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding-top: 7vh;
+  padding-top: 3vh;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -183,6 +183,10 @@ body {
   pointer-events: none;
 }
 
+.page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card .titulo--card h2 {
+  text-align: left;
+}
+
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card .misc--card {
   width: 100%;
 }
@@ -234,6 +238,7 @@ body {
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card h2 {
   padding: 0 16px;
+  margin: 3px 0;
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card h3 {

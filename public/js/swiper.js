@@ -83,7 +83,7 @@ function reload() {
         newCards.forEach(function(card, index) {
 
             card.style.zIndex = allCards.length - index;
-            card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
+            card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 25 * index + 'px)';
             card.style.opacity = (10 - index) / 10;
         });
 
@@ -287,6 +287,8 @@ function mostrar() {
                     `
                 } else if (respuesta[0].id_perfil == 2) {
                     // alert('primero entra trabajador')
+                    //console.log(JSON.parse(respuesta[0].curriculum));
+                    curriculum = JSON.parse(respuesta[0].curriculum);
                     recarga += `
                     <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
                     <div class="content--card content--trabajador">
@@ -304,7 +306,7 @@ function mostrar() {
                             </div>
                             <div class="experiencia--card">
                                 <h2 class="titulo--experiencia">Experiencia</h2>
-                                <p class="content--experiencia">${respuesta[0].experiencia}</p>
+                                <p class="content--experiencia">${curriculum['experiencia'][0].nombre_experiencia}</p>
                             </div>
                         </div>
                         <div class="titulo--card">

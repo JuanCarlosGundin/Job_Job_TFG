@@ -44,7 +44,7 @@ body {
         #carta {
             height: 100%;
             width: 100%;
-            padding-top: 15px;
+            padding-top: 10px;
         }
         .swiper {
             //TINDER
@@ -76,7 +76,7 @@ body {
             }
             .swiper--cards {
                 flex-grow: 1;
-                padding-top: 7vh;
+                padding-top: 3vh;
                 text-align: center;
                 display: flex;
                 justify-content: center;
@@ -131,6 +131,9 @@ body {
                             justify-content: flex-start;
                             align-items: flex-start;
                             pointer-events: none;
+                            h2 {
+                                text-align: left;
+                            }
                         }
                         .misc--card {
                             width: 100%;
@@ -166,6 +169,7 @@ body {
                         }
                         h2 {
                             padding: 0 16px;
+                            margin: 3px 0;
                         }
                         h3 {
                             margin-top: 0;
