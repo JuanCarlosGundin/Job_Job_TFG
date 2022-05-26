@@ -251,26 +251,13 @@ function iniciar_ptecnica_trabajador(evt) {
                 document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
             } else {
                 swal.fire({
-                        title: "Inscrito",
-                        text: "Ya te inscribiste previamente",
-                        icon: "error",
-                        confirmButtonText: "OK",
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                    })
-                    /* .then((result) => {
-                                        if (result.isConfirmed) {
-                                            formtrabajador1();
-                                        }
-                                    }); */
-
-                /* recarga += `
-                <button id="volver">Volver</button>
-                <p>Ya estas inscrito</p>
-                `;
-                contenidoajax.innerHTML = recarga;
-                document.getElementById("volver").id_empresa = id_empresa;
-                document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica) */
+                    title: "Inscrito",
+                    text: "Ya te inscribiste previamente",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                })
             }
 
         }

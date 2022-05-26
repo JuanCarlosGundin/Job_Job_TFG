@@ -42,11 +42,32 @@ class PtecnicaController extends Controller{
     }
 
     public function mostrar_ptecnica_trabajador($id_empresa) {
+        $id=session()->get('id_user');
         try {
-            $empresa=DB::table('tbl_ptecnica')
+            $existejson= DB::table('tbl_ptecnica')->select('json_prueba')->where('id_empresa','=',$id_empresa)->first();
+            if ($existejson->json_prueba!=null) {
+                $json_prueba=json_decode($existejson->json_prueba);
+                $contador=count($json_prueba);
+                for ($i=0; $i < $contador; $i++) { 
+                    $id_participante=$json_prueba[$i]->id_participante;
+                    if ($id_participante==strval($id)){
+                        $empresa=DB::table('tbl_ptecnica')
+                        ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
+                        ->where('id_empresa', '=', $id_empresa)->first();
+                        return response()->json(array('trabajador' => $empresa, 'existe' => 'existe'));
+                    } else {
+                        $empresa=DB::table('tbl_ptecnica')
+                        ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
+                        ->where('id_empresa', '=', $id_empresa)->first();
+                        return response()->json(array('trabajador' => $empresa));
+                    }
+                }
+            } else {
+                $empresa=DB::table('tbl_ptecnica')
                 ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
                 ->where('id_empresa', '=', $id_empresa)->first();
-            return response()->json(array('trabajador' => $empresa));
+                return response()->json(array('trabajador' => $empresa));
+            }
         } catch (\Exception $e) {
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
         }
