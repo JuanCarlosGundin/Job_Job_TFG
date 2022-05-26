@@ -87,7 +87,7 @@ function reload() {
         newCards.forEach(function(card, index) {
 
             card.style.zIndex = allCards.length - index;
-            card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
+            card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 25 * index + 'px)';
             card.style.opacity = (10 - index) / 10;
         });
 
@@ -274,7 +274,15 @@ function mostrar() {
                     // alert('primero entra empresa')
                     recarga += `
                     <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
-                    <img src="./storage/${respuesta[0].logo_emp}">
+                    `;
+                    if (respuesta[0].logo_emp != null) {
+                        recarga += `
+                            <img src="./storage/${respuesta[0].logo_emp}">`;
+                    } else {
+                        recarga += `
+                            <img src="./storage/uploads/jobjob_logo_black.png">`;
+                    }
+                    recarga += `
                     <div class="content--card content--empresa">
                       <div class="misc--card">
                         <h2 class="vacante--empresa">${respuesta[0].vacante}</h2>
@@ -291,11 +299,32 @@ function mostrar() {
                     `
                 } else if (respuesta[0].id_perfil == 2) {
                     // alert('primero entra trabajador')
+                    //console.log(JSON.parse(respuesta[0].curriculum));
+                    function getAge(dateString) {
+                        var today = new Date();
+                        var birthDate = new Date(dateString);
+                        var age = today.getFullYear() - birthDate.getFullYear();
+                        var m = today.getMonth() - birthDate.getMonth();
+                        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                            age--;
+                        }
+                        return age;
+                    }
+                    var edad = getAge(respuesta[0].edad);
+                    curriculum = JSON.parse(respuesta[0].curriculum);
                     recarga += `
                     <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
                     <div class="content--card content--trabajador">
                         <div class="img--card">
-                            <img class="img--trabajador" src="./storage/${respuesta[0].foto_perfil}">
+                        `;
+                    if (respuesta[0].foto_perfil != 1) {
+                        recarga += `
+                            <img class="img--trabajador" src="./storage/${respuesta[0].foto_perfil}">`;
+                    } else {
+                        recarga += `
+                            <img class="img--trabajador" src="./storage/uploads/jobjob_logo_black.png">`;
+                    }
+                    recarga += `
                         </div>
                         <div class="cv--card">
                             <div class="objetivo--card">
@@ -304,15 +333,17 @@ function mostrar() {
                             </div>
                             <div class="formacion--card">
                                 <h2 class="titulo--formacion">Formación</h2>
-                                <p class="content--formacion">${respuesta[0].estudios}</p>
+                                <p class="content--formacion">${curriculum['estudios'][0].nombre_formación}</p>
+                                <h5 class="lugar--formacion">${curriculum['estudios'][0].lugar_formación}</h5>
                             </div>
                             <div class="experiencia--card">
                                 <h2 class="titulo--experiencia">Experiencia</h2>
-                                <p class="content--experiencia">${respuesta[0].experiencia}</p>
+                                <p class="content--experiencia">${curriculum['experiencia'][0].nombre_experiencia}</p>
+                                <h5 class="lugar--experiencia">${curriculum['experiencia'][0].lugar_experiencia}</h5>
                             </div>
                         </div>
                         <div class="titulo--card">
-                            <h2 class="nombreEdad--usuario">${respuesta[0].nombre} ${respuesta[0].apellido}, ${respuesta[0].edad}</h2>
+                            <h2 class="nombreEdad--usuario">${respuesta[0].nombre} ${respuesta[0].apellido}, ${edad}</h2>
                             <h5 class="ubicacion--usuario">${respuesta[0].loc_trabajador}</h5>
                         </div>
                     </div>

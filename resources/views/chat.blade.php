@@ -19,21 +19,28 @@
 </head>
 
 <body>
-    <div class="region-navbar">
-        <div class="curriculum-navbar">
-            <button class="icon"><i class="fa-solid fa-file-invoice"></i></button>
-        </div>
-        <div class="alerts-navbar">
-            <button id="navbar-alerts-icon" class="icon"><i class="fa-solid fa-bell"></i></button>
-        </div>
-        <div class="main-navbar">
-            <button id="navbar-main-icon" class="main-icon"><i class="fa-solid fa-briefcase"></i></button>
-        </div>
-        <div class="chat-navbar active">
-           <button class="icon active-icon" ><i class="fa-solid fa-comment-dots"></i></button>
-        </div>
-        <div class="profile-navbar">
-            <button id="navbar-profile-icon" class="icon"><i class="fa-solid fa-user"></i></button>
+    <div class="row principal">
+        <div class="column region-navbar">
+            <div class="row barra-navbar-img">
+                <img src="storage/uploads/jobjob_logo_black.png">
+            </div>
+            <div class="row menu">
+                <div class="row menu-item">
+                    <button id="navbar-PT-icon" class="icon"><i class="fa-solid fa-file-invoice"></i><p class="text">Prueba técnica</p></button>
+                </div>
+                <div class="row menu-item">
+                    <button id="navbar-alerts-icon" class="icon"><i class="fa-solid fa-bell"></i><p class="text">Notificaciones</p></button>
+                </div>
+                <div class="row menu-item">
+                    <button id="navbar-main-icon" class="icon"><i class="fa-solid fa-briefcase"></i><p class="text">Swiper</p></button>
+                </div>
+                <div class="row menu-item active-center">
+                    <button id="navbar-chat-icon" class="icon" ><i class="fa-solid fa-comment-dots"></i><p class="text">Chat</p></button>
+                </div>
+                <div class="row menu-item">
+                    <button id="navbar-profile-icon" class="icon"><i class="fa-solid fa-user"></i><p class="text">Perfil</p></button>
+                </div>
+            </div>
         </div>
     </div>
     <div id='content'>
