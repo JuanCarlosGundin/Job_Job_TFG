@@ -46,16 +46,19 @@ class PtecnicaController extends Controller{
         try {
             $existejson= DB::table('tbl_ptecnica')->select('json_prueba')->where('id_empresa','=',$id_empresa)->first();
             if ($existejson->json_prueba!=null) {
+                // si en json_prueba hay alguien inscrito
                 $json_prueba=json_decode($existejson->json_prueba);
                 $contador=count($json_prueba);
                 for ($i=0; $i < $contador; $i++) { 
                     $id_participante=$json_prueba[$i]->id_participante;
                     if ($id_participante==strval($id)){
+                        // si el trabajador actual se ha inscrito previamente
                         $empresa=DB::table('tbl_ptecnica')
                         ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
                         ->where('id_empresa', '=', $id_empresa)->first();
                         return response()->json(array('trabajador' => $empresa, 'existe' => 'existe'));
                     } else {
+                        // si no aparece inscrito
                         $empresa=DB::table('tbl_ptecnica')
                         ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
                         ->where('id_empresa', '=', $id_empresa)->first();
@@ -63,6 +66,7 @@ class PtecnicaController extends Controller{
                     }
                 }
             } else {
+                //si json_prueba es null, es decir que nadie se ha inscrito
                 $empresa=DB::table('tbl_ptecnica')
                 ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
                 ->where('id_empresa', '=', $id_empresa)->first();
