@@ -196,7 +196,7 @@ body {
 }
 
 .body-index .video {
-  background-color: #0076CA;
+  background-color: #0081DC;
   height: 150vh;
 }
 
@@ -208,7 +208,7 @@ body {
   width: 33.3%;
   height: 40vh;
   float: left;
-  background-color: #042944;
+  background-color: #2C7DB6;
   color: white;
   text-align: left;
   -webkit-box-pack: center;
@@ -518,7 +518,7 @@ body {
 .bodylogin .modal-login .modal-content .contraseña {
   font-weight: bold;
   font-size: 2vh;
-  color: #0076CA !important;
+  color: #0081DC !important;
   text-align: center;
   padding-top: 10px;
 }

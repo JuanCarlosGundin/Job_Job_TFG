@@ -92,15 +92,15 @@
  * - The maximum time in milliseconds to wait for a connection to succeed before closing and retrying. Accepts integer. Default: 2000.
  *
  */
- (function (global, factory) {
+(function(global, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports){
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         global.ReconnectingWebSocket = factory();
     }
-})(this, function () {
+})(this, function() {
 
     if (!('WebSocket' in window)) {
         return;
@@ -176,11 +176,11 @@
 
         // Wire up "on*" properties as event handlers
 
-        eventTarget.addEventListener('open',       function(event) { self.onopen(event); });
-        eventTarget.addEventListener('close',      function(event) { self.onclose(event); });
+        eventTarget.addEventListener('open', function(event) { self.onopen(event); });
+        eventTarget.addEventListener('close', function(event) { self.onclose(event); });
         eventTarget.addEventListener('connecting', function(event) { self.onconnecting(event); });
-        eventTarget.addEventListener('message',    function(event) { self.onmessage(event); });
-        eventTarget.addEventListener('error',      function(event) { self.onerror(event); });
+        eventTarget.addEventListener('message', function(event) { self.onmessage(event); });
+        eventTarget.addEventListener('error', function(event) { self.onerror(event); });
 
         // Expose the API required by EventTarget
 
@@ -200,12 +200,12 @@
          * @param args Object an optional object that the event will use
          */
         function generateEvent(s, args) {
-        	var evt = document.createEvent("CustomEvent");
-        	evt.initCustomEvent(s, false, false, args);
-        	return evt;
+            var evt = document.createEvent("CustomEvent");
+            evt.initCustomEvent(s, false, false, args);
+            return evt;
         };
 
-        this.open = function (reconnectAttempt) {
+        this.open = function(reconnectAttempt) {
             ws = new WebSocket(self.url, protocols || []);
             ws.binaryType = this.binaryType;
 
@@ -367,9 +367,9 @@
 //LOGICA CHAT
 
 //hace referencia a el id de la conversación
-function htmlEncode(str){
-    return String(str).replace(/[^\w. ]/gi, function(c){
-        return '&#'+c.charCodeAt(0)+';';
+function htmlEncode(str) {
+    return String(str).replace(/[^\w. ]/gi, function(c) {
+        return '&#' + c.charCodeAt(0) + ';';
     });
 }
 
@@ -390,14 +390,14 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-function getchanel(id_otro){
+function getchanel(id_otro) {
 
     var formData = new FormData();
     var ajax = objetoAjax();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('id_otro',id_otro)
-    //formData.append('filter', document.getElementById('filter').value);
+    formData.append('id_otro', id_otro)
+        //formData.append('filter', document.getElementById('filter').value);
 
     ajax.open("POST", "getchat", false);
     ajax.onreadystatechange = function() {
@@ -413,37 +413,37 @@ function getchanel(id_otro){
 //ZONA VARIABLES
 //var chanel= '3';
 
-function start(){
-    try{
+function start() {
+    try {
         socket.close()
-    }catch{
-            
+    } catch {
+
     }
 
     getchanel(otro)
-    //socket = new ReconnectingWebSocket('ws://192.168.40.228:8000/'+document.getElementById('canal').value); //new WebSocket('ws://172.24.16.41:8000');
-    socket = new ReconnectingWebSocket('ws://192.168.167.228:8000/'+chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
+        //socket = new ReconnectingWebSocket('ws://192.168.40.228:8000/'+document.getElementById('canal').value); //new WebSocket('ws://172.24.16.41:8000');
+    socket = new ReconnectingWebSocket('ws://172.24.2.163:8000/' + chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
 
 
     socket.onopen = function(event) {
 
         //document.getElementById('estado').innerText = "Conectado"
-            //socket.send();
+        //socket.send();
     };
     socket.onclose = function(event) {
 
         //document.getElementById('estado').innerText = "Desconectado"
-                //socket.send();
+        //socket.send();
     };
 
-        // Escucha por mensajes
+    // Escucha por mensajes
     socket.onmessage = function(event) {
         const { payload } = JSON.parse(event.data);
         console.log(payload)
         console.log(chatInfo.id)
-        if(payload.currentid==chatInfo.id) {
-            document.getElementById('chat_principal').innerHTML += '<div class="mensaje-2"><div class="chat-mensaje-2"><div class="mensaje-text-div"><p class="mensaje-text">'+htmlEncode(payload.message) +'</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">'+payload.time+'</p></div></div></div>'
-        } else { document.getElementById('chat_principal').innerHTML += '<div class="mensaje-1"><div class="chat-mensaje-1"><div class="mensaje-text-div"><p class="mensaje-text">'+htmlEncode(payload.message) +'</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">'+payload.time+'</p></div></div></div>'}
+        if (payload.currentid == chatInfo.id) {
+            document.getElementById('chat_principal').innerHTML += '<div class="mensaje-2"><div class="chat-mensaje-2"><div class="mensaje-text-div"><p class="mensaje-text">' + htmlEncode(payload.message) + '</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">' + payload.time + '</p></div></div></div>'
+        } else { document.getElementById('chat_principal').innerHTML += '<div class="mensaje-1"><div class="chat-mensaje-1"><div class="mensaje-text-div"><p class="mensaje-text">' + htmlEncode(payload.message) + '</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">' + payload.time + '</p></div></div></div>' }
         //document.getElementById('chat_principal').innerHTML += event.data 
     }
 }
@@ -452,7 +452,7 @@ function start(){
 //function abrir() {
 
 //    start()
-    //socket = new ReconnectingWebSocket('ws://192.168.1.42:8000/'+document.getElementById('canal').value);
+//socket = new ReconnectingWebSocket('ws://192.168.1.42:8000/'+document.getElementById('canal').value);
 //}
 
 //function cerrar() {
@@ -460,7 +460,7 @@ function start(){
 //    socket.close()
 
 //}
-function insert(id_otro,time,msg) {
+function insert(id_otro, time, msg) {
 
     var formData = new FormData();
     var ajax = objetoAjax();
@@ -483,11 +483,11 @@ function insert(id_otro,time,msg) {
 }
 
 
-function sender (id_otro) {
+function sender(id_otro) {
 
-    if(document.getElementById('mensaje_input').value=='') { console.log('vacio'); return false }
+    if (document.getElementById('mensaje_input').value == '') { console.log('vacio'); return false }
     var today = new Date();
-    if(today.getMinutes()<10){ var time = today.getHours() + ":0"+ today.getMinutes(); } else { var time = today.getHours() + ":"+ today.getMinutes();}
+    if (today.getMinutes() < 10) { var time = today.getHours() + ":0" + today.getMinutes(); } else { var time = today.getHours() + ":" + today.getMinutes(); }
     var jsondata = JSON.stringify({
         payload: {
             message: document.getElementById('mensaje_input').value,
@@ -496,19 +496,19 @@ function sender (id_otro) {
         }
     });
 
-    
+
 
     //getchanel()
     //console.log(chatInfo)
-        
 
-        socket.send(jsondata)
-        var msg = document.getElementById('mensaje_input').value
-        insert(id_otro,time,msg)
+
+    socket.send(jsondata)
+    var msg = document.getElementById('mensaje_input').value
+    insert(id_otro, time, msg)
         //socket.send([document.getElementById('mensaje_input').value,time,chatInfo.id])
         //socket.send('<div class="chat-mensaje-2"><p class="mensaje-text">'+htmlEncode(document.getElementById('mensaje_input').value) +'</p><p class="mensaje-hora">'+time+'</p></div>');
 
-    document.getElementById('mensaje_input').value=''
+    document.getElementById('mensaje_input').value = ''
 
 }
 
@@ -534,13 +534,13 @@ window.onload = function() {
     cargarChats();
 }
 
-function cargarChats(){
+function cargarChats() {
 
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     var ChatContent = document.getElementById('chat')
     var ajax = objetoAjax();
-    
+
     ajax.open("POST", "leerChats", true);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
@@ -557,15 +557,15 @@ function cargarChats(){
                     recarga += '<button class="chat-foto-btn">'
                     if (empresas[i].logo_emp != null) {
 
-                        recarga +='<div class="chat-foto">'
+                        recarga += '<div class="chat-foto">'
                         recarga += `<img class="chat-profilefoto" src="storage/${empresas[i].logo_emp}">`;
-                        recarga +=  '</div>'
+                        recarga += '</div>'
                     } else {
 
-                        recarga +='<div class="chat-foto">'
+                        recarga += '<div class="chat-foto">'
                         recarga += '<img class="chat-profilefoto" src="storage/img/usuario.png">';
-                        recarga +=  '</div>'
-                    }   
+                        recarga += '</div>'
+                    }
                     recarga += '</button>'
                     recarga += '<div class="chat-content">'
                     recarga += '<div class="chat-name">'
@@ -586,22 +586,22 @@ function cargarChats(){
             }
             //si estas iniciado como empresa te salen trabajadores
             if (respuesta.hasOwnProperty('trabajadores')) {
-                
+
                 var trabajadores = respuesta.trabajadores;
                 for (let i = 0; i < trabajadores.length; i++) {
                     recarga += `<div class="chats" onclick="entrar(${trabajadores[i].id_usuario});" style='cursor:pointer;'>`
                     recarga += '<button class="chat-foto-btn">'
                     if (trabajadores[i].foto_perfil != null) {
 
-                        recarga +='<div class="chat-foto">'
+                        recarga += '<div class="chat-foto">'
                         recarga += `<img class="chat-profilefoto" src="storage/${trabajadores[i].foto_perfil}">`
-                        recarga +=  '</div>'
+                        recarga += '</div>'
                     } else {
 
-                        recarga +='<div class="chat-foto">'
+                        recarga += '<div class="chat-foto">'
                         recarga += '<img class="chat-profilefoto" src="storage/img/usuario.png">';
-                        recarga +=  '</div>'
-                    }   
+                        recarga += '</div>'
+                    }
                     recarga += '</button>'
                     recarga += '<div class="chat-content">'
                     recarga += '<div class="chat-name">'
@@ -625,8 +625,9 @@ function cargarChats(){
     }
     ajax.send(formData);
 }
-function entrar(id_otro){
-    otro=id_otro
+
+function entrar(id_otro) {
+    otro = id_otro
     var recarga = "";
     recarga += `<div class="main-chat">
         <div class="chat-main-sticky">
@@ -660,40 +661,39 @@ function entrar(id_otro){
             </div>
         </div>
     </div>`;
-    document.getElementById('content').innerHTML= recarga
+    document.getElementById('content').innerHTML = recarga
 
     //Injectamos mensajes
     getchanel(id_otro)
     console.log(chatInfo)
-    if(chatInfo.perfil==3) { 
-        document.getElementById('nombre_usu').innerHTML='<p class="chat-name">'+chatInfo.other[0].nombre+'&nbsp;'+chatInfo.other[0].apellido+'<p>'
+    if (chatInfo.perfil == 3) {
+        document.getElementById('nombre_usu').innerHTML = '<p class="chat-name">' + chatInfo.other[0].nombre + '&nbsp;' + chatInfo.other[0].apellido + '<p>'
     } else {
-        document.getElementById('nombre_usu').innerHTML='<p class="chat-name">'+chatInfo.other[0].nom_emp+'<p>'
+        document.getElementById('nombre_usu').innerHTML = '<p class="chat-name">' + chatInfo.other[0].nom_emp + '<p>'
     }
 
     start()
-    var mensajes=JSON.parse(chatInfo.chanel[0].json_chat)
-    var mensajes=mensajes.mensajes
+    var mensajes = JSON.parse(chatInfo.chanel[0].json_chat)
+    var mensajes = mensajes.mensajes
 
     var recarga = "";
-    if(chatInfo.perfil==2){
-      document.getElementById('foto_usu').innerHTML= `<img class="chat-profilefoto" src="storage/${chatInfo.other[0].logo_emp}"></img>`
-    }else{
-        document.getElementById('foto_usu').innerHTML= `<img class="chat-profilefoto" src="storage/${chatInfo.other[0].foto_perfil}"></img>`
+    if (chatInfo.perfil == 2) {
+        document.getElementById('foto_usu').innerHTML = `<img class="chat-profilefoto" src="storage/${chatInfo.other[0].logo_emp}"></img>`
+    } else {
+        document.getElementById('foto_usu').innerHTML = `<img class="chat-profilefoto" src="storage/${chatInfo.other[0].foto_perfil}"></img>`
     }
-    for (var i = 0; i < mensajes.length; i+=1) {
+    for (var i = 0; i < mensajes.length; i += 1) {
         console.log(chatInfo.id)
-        if(chatInfo.id==mensajes[i].id){
-            recarga +='<div class="mensaje-2"><div class="chat-mensaje-2"><div class="mensaje-text-div"><p class="mensaje-text">'+htmlEncode(mensajes[i].mensaje) +'</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">'+mensajes[i].hora+'</p></div></div></div>'
+        if (chatInfo.id == mensajes[i].id) {
+            recarga += '<div class="mensaje-2"><div class="chat-mensaje-2"><div class="mensaje-text-div"><p class="mensaje-text">' + htmlEncode(mensajes[i].mensaje) + '</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">' + mensajes[i].hora + '</p></div></div></div>'
         }
-        if(chatInfo.id2==mensajes[i].id){
-            recarga +='<div class="mensaje-1"><div class="chat-mensaje-1"><div class="mensaje-text-div"><p class="mensaje-text">'+htmlEncode(mensajes[i].mensaje) +'</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">'+mensajes[i].hora+'</p></div></div></div>';
+        if (chatInfo.id2 == mensajes[i].id) {
+            recarga += '<div class="mensaje-1"><div class="chat-mensaje-1"><div class="mensaje-text-div"><p class="mensaje-text">' + htmlEncode(mensajes[i].mensaje) + '</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">' + mensajes[i].hora + '</p></div></div></div>';
         }
-        if(mensajes[i].id=='Start'){
+        if (mensajes[i].id == 'Start') {
             recarga += '<div class="chat-mensaje-inicio"><div class="mensaje-inicio"><p class="mensaje-text">Bienvenido al chat</p></div></div>';
         }
-      }
+    }
 
-      document.getElementById('chat_principal').innerHTML += recarga
+    document.getElementById('chat_principal').innerHTML += recarga
 }
-
