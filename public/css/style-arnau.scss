@@ -164,10 +164,11 @@ body {
                         }
                         .img--card {
                             max-height: 20%;
+                            margin-bottom: 30px;
                             img {
                                 max-height: none;
                                 height: 100%;
-                                border-radius: 50px;
+                                //border-radius: 50px;
                             }
                         }
                         h2 {
@@ -248,7 +249,7 @@ body {
             .card {
                 background-color: white;
                 width: 90vw;
-                height: 70vh;
+                height: 83%;
                 border-radius: 30px;
             }
         }

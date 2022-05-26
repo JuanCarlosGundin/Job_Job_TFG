@@ -10,130 +10,258 @@
 <body>
     {{-- ESTILOS MODAL --}}
     <style>
-                /* The Modal (background) */
-        .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-
-        /* Modal Content/Box */
-        .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
-        border-radius: 25px 25px 25px 25px;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 50%; /* Could be more or less, depending on screen size */
-        }
-
-        /* The Close Button */
-        .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-        }
-        /*ESTILOS FORMULARIO*/
-        input[type=submit] {
-            text-transform: uppercase;
-            width: 50%;
-            padding: 1em;
-            border-radius: 15px;
-            background-color: #005EA0;
-            border: #92AFD7 solid 1.5px;
-            box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-            color: white;
-            font-weight: bold;
-            height: 7vh;
-            margin-top: 1rem;
-        }
-        h3{
-            text-align: center;
-        }
-        form{
-            background-color: hsla(240,100%,50%, 0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 25px 25px 25px 25px;
-        }
-        textarea{
-            background:rgba(255,255,255, 0.4);
-            height: 80px;
-            padding: 5px;
-            width: 40%;
-        }
-        select {
-            background:rgba(255,255,255, 0.4);
-            font-size: 14px;
-            height: 30px;
-            padding: 5px;
-            width: 40%;
-        }
-        
-        /* FIN ESTILOS FORMULARIO */
-        /*RESPONSIVE*/
-        @media only screen and (max-width: 768px) {
-            input[type=submit] {
-                width: 80%; /* The width is 100%, when the viewport is 800px or smaller */
-            }
-            h3{
-            text-align: center;
-        }
-        form{
-            background-color: hsla(240,100%,50%, 0.2);
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 25px 25px 25px 25px;
-        }
-        .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
-        border-radius: 25px 25px 25px 25px;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
-        }
-        /* form{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        } */
-        select {
-            background:rgba(255,255,255, 0.4);
-            font-size: 14px;
-            height: 30px;
-            padding: 5px;
-            width: 250px;
-        }
-        textarea{
-            background:rgba(255,255,255, 0.4);
-            height: 10%;
-            padding: 10%;
-            width: 50%;
-        }
-            }
-        /*FIN RESPONSIVE*/
+      .modal {
+                        display: none;
+                        position: fixed;
+                        z-index: 1;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        overflow: auto;
+                        background-color: rgb(0, 0, 0);
+                        background-color: rgba(0, 0, 0, 0.5);
+                        .modal-content {
+                            background-color: #fefefe;
+                            margin: 10% auto;
+                            border-radius: 25px;
+                            padding: 20px;
+                            border: 1px solid #888;
+                            width: 50%;
+                            height: 175%;
+                            .linea {
+                                margin: 0;
+                                color: $grey;
+                            }
+                            .closecorreo {
+                                color: #aaa;
+                                float: right;
+                                font-size: 25px;
+                                font-weight: bold;
+                                &:hover {
+                                    color: black;
+                                    text-decoration: none;
+                                    cursor: pointer;
+                                }
+                            }
+                            .contactar-usuario {
+                                margin-bottom: 5vh;
+                                .modal-title {
+                                    font-size: x-large;
+                                }
+                                .input-modal {
+                                    margin-top: 2vh;
+                                    margin-bottom: 2vh;
+                                    border-bottom-width: 2px;
+                                    border-top-width: 0;
+                                    border-left-width: 0;
+                                    border-right-width: 0;
+                                    border-color: $black;
+                                    width: 100%;
+                                    padding: 1vh;
+                                    height: 40px;
+                                    background-color: transparent;
+                                    &:focus {
+                                        outline: none;
+                                    }
+                                }
+                                .text-modal {
+                                    margin-top: 2vh;
+                                    margin-bottom: 2vh;
+                                    border-bottom-width: 2px;
+                                    border-top-width: 0;
+                                    border-left-width: 0;
+                                    border-right-width: 0;
+                                    border-color: $black;
+                                    width: 100%;
+                                    padding: 1vh;
+                                    height: 80px;
+                                    background-color: transparent;
+                                    &:focus {
+                                        outline: none;
+                                    }
+                                }
+                                .btn-modal-flex {
+                                    justify-content: center;
+                                    display: flex;
+                                    align-items: center;
+                                    .btn-modal {
+                                        background-color: #FFFFFF;
+                                        border: 1px solid rgba(0, 0, 0, 0.5);
+                                        border-radius: 15px;
+                                        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+                                        color: rgba(0, 0, 0, 0.85);
+                                        cursor: pointer;
+                                        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+                                        transition: all 250ms;
+                                        touch-action: manipulation;
+                                        width: 50%;
+                                        &:hover {
+                                            transform: translateY(-2.5px);
+                                        }
+                                        &:focus {
+                                            border-color: rgba(0, 0, 0, 0.5);
+                                            box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+                                            color: rgba(0, 0, 0, 0.65);
+                                        }
+                                        &:active {
+                                            background-color: #F0F0F1;
+                                            border-color: rgba(0, 0, 0, 0.5);
+                                            box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+                                            color: rgba(0, 0, 0, 0.65);
+                                            transform: translateY(0);
+                                        }
+                                    }
+                                }
+                            }
+                            .contactar-trabajador {
+                                margin-top: 5vh;
+                                margin-bottom: 5vh;
+                                .modal-title {
+                                    font-size: x-large;
+                                }
+                                .input-modal {
+                                    margin-top: 2vh;
+                                    margin-bottom: 2vh;
+                                    border-bottom-width: 2px;
+                                    border-top-width: 0;
+                                    border-left-width: 0;
+                                    border-right-width: 0;
+                                    border-color: $black;
+                                    width: 100%;
+                                    padding: 1vh;
+                                    height: 50px;
+                                    background-color: transparent;
+                                    &:focus {
+                                        outline: none;
+                                    }
+                                }
+                                .text-modal {
+                                    margin-top: 2vh;
+                                    margin-bottom: 2vh;
+                                    border-bottom-width: 2px;
+                                    border-top-width: 0;
+                                    border-left-width: 0;
+                                    border-right-width: 0;
+                                    border-color: $black;
+                                    width: 100%;
+                                    padding: 1vh;
+                                    height: 80px;
+                                    background-color: transparent;
+                                    &:focus {
+                                        outline: none;
+                                    }
+                                }
+                                .btn-modal-flex {
+                                    justify-content: center;
+                                    display: flex;
+                                    align-items: center;
+                                    .btn-modal {
+                                        background-color: #FFFFFF;
+                                        border: 1px solid rgba(0, 0, 0, 0.5);
+                                        border-radius: 15px;
+                                        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+                                        color: rgba(0, 0, 0, 0.85);
+                                        cursor: pointer;
+                                        font-size: 16px;
+                                        margin: 0;
+                                        min-height: 3rem;
+                                        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+                                        transition: all 250ms;
+                                        touch-action: manipulation;
+                                        width: 50%;
+                                        &:hover {
+                                            transform: translateY(-2.5px);
+                                        }
+                                        &:focus {
+                                            border-color: rgba(0, 0, 0, 0.5);
+                                            box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+                                            color: rgba(0, 0, 0, 0.65);
+                                        }
+                                        &:active {
+                                            background-color: #F0F0F1;
+                                            border-color: rgba(0, 0, 0, 0.5);
+                                            box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+                                            color: rgba(0, 0, 0, 0.65);
+                                            transform: translateY(0);
+                                        }
+                                    }
+                                }
+                            }
+                            .contactar-empresa {
+                                margin-top: 5vh;
+                                .modal-title {
+                                    font-size: x-large;
+                                }
+                                .input-modal {
+                                    margin-top: 2vh;
+                                    margin-bottom: 2vh;
+                                    border-bottom-width: 2px;
+                                    border-top-width: 0;
+                                    border-left-width: 0;
+                                    border-right-width: 0;
+                                    border-color: $black;
+                                    width: 100%;
+                                    padding: 1vh;
+                                    height: 40px;
+                                    background-color: transparent;
+                                    &:focus {
+                                        outline: none;
+                                    }
+                                }
+                                .text-modal {
+                                    margin-top: 2vh;
+                                    margin-bottom: 2vh;
+                                    border-bottom-width: 2px;
+                                    border-top-width: 0;
+                                    border-left-width: 0;
+                                    border-right-width: 0;
+                                    border-color: $black;
+                                    width: 100%;
+                                    padding: 1vh;
+                                    height: 80px;
+                                    background-color: transparent;
+                                    &:focus {
+                                        outline: none;
+                                    }
+                                }
+                                .btn-modal-flex {
+                                    justify-content: center;
+                                    display: flex;
+                                    align-items: center;
+                                    .btn-modal {
+                                        background-color: #FFFFFF;
+                                        border: 1px solid rgba(0, 0, 0, 0.5);
+                                        border-radius: 15px;
+                                        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+                                        color: rgba(0, 0, 0, 0.85);
+                                        cursor: pointer;
+                                        font-size: 16px;
+                                        margin: 0;
+                                        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+                                        transition: all 250ms;
+                                        touch-action: manipulation;
+                                        width: 50%;
+                                        &:hover {
+                                            transform: translateY(-2.5px);
+                                        }
+                                        &:focus {
+                                            border-color: rgba(0, 0, 0, 0.5);
+                                            box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+                                            color: rgba(0, 0, 0, 0.65);
+                                        }
+                                        &:active {
+                                            background-color: #F0F0F1;
+                                            border-color: rgba(0, 0, 0, 0.5);
+                                            box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+                                            color: rgba(0, 0, 0, 0.65);
+                                            transform: translateY(0);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
         </style>
     {{-- FIN ESTILOS MODAL --}}
     <h1>DIABLO LOQUETE VAMO A ABRIRNO UN MODAL </h1><br>

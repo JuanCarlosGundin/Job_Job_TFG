@@ -313,7 +313,7 @@ function mostrar() {
                     <div class="content--card content--trabajador">
                         <div class="img--card">
                         `;
-                    if (respuesta[0].foto_perfil != 1) {
+                    if (respuesta[0].foto_perfil != null) {
                         recarga += `
                             <img class="img--trabajador" src="./storage/${respuesta[0].foto_perfil}">`;
                     } else {
