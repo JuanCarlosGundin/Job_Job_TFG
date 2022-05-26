@@ -459,6 +459,13 @@ body {
           justify-content: center;
 }
 
+.bodylogin .modal-login .user-empresa {
+  font-weight: bold;
+  color: white !important;
+  text-align: center;
+  padding-top: 10px;
+}
+
 .bodylogin .modal-login .modal-content {
   border: white;
   text-align: center;
@@ -482,6 +489,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 20px;
 }
 
 .bodylogin .modal-login .modal-content .opciones .opcion {
@@ -506,13 +514,6 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 3.5vh;
-}
-
-.bodylogin .modal-login .modal-content .user-empresa {
-  font-weight: bold;
-  color: white !important;
-  text-align: center;
-  padding-top: 10px;
 }
 
 .bodylogin .modal-login .modal-content .contraseña {
@@ -630,8 +631,8 @@ body {
     height: 18vh;
   }
   .bodylogin .logo img {
-    width: 25%;
-    margin-top: 18%;
+    max-height: 100%;
+    padding-bottom: 30px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -720,6 +721,7 @@ body {
 
 .alert-danger {
   width: 80%;
+  color: red;
 }
 
 .alert-danger p {
@@ -741,6 +743,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 20px;
 }
 
 .bodylogin h3 {
@@ -781,7 +784,7 @@ body {
 
 .bodylogin .modal-content-register-cuadrados {
   width: 100%;
-  height: 72vh;
+  height: 65vh;
 }
 
 .bodylogin .modal-content-register-cuadrados h3 {
@@ -829,14 +832,24 @@ body {
 
 @media only screen and (max-width: 450px) {
   .bodylogin {
-    height: 60vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .bodylogin .card {
+    height: 75vh;
+    padding: 80px 1vw !important;
   }
   .bodylogin .modal-content-register-cuadrados h3 {
     font-size: 3vh;
     margin-bottom: 4vh;
     padding-top: 6vh;
     padding-bottom: 0vh;
-    margin-top: 1vh;
+    margin-top: 0;
   }
   .bodylogin .modal-content-register-cuadrados .cuadrados {
     width: 100%;
@@ -849,6 +862,12 @@ body {
   .bodylogin .modal-content-register-cuadrados .cuadrados i {
     padding-top: 3vh;
     font-size: 6.5vh;
+  }
+}
+
+@media (max-width: 450px) {
+  ::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -906,25 +925,54 @@ body {
   height: 70vh;
 }
 
-.bodylogin .modal-content-register .mas-menos {
-  width: 100%;
-  text-align: right !important;
-  margin-right: -30px;
-}
-
-.bodylogin .modal-content-register .mas,
-.bodylogin .modal-content-register .menos {
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+.bodylogin .mas,
+.bodylogin .menos {
   color: #186CA7;
   border: none;
   background-color: transparent;
   font-size: 30px;
-  position: absolute;
 }
 
-.bodylogin .modal-content-register .izquierda-derecha .izquierda,
-.bodylogin .modal-content-register .izquierda-derecha .derecha {
+.bodylogin .linea-registro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.bodylogin .fila-linea-idioma {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bodylogin .fila-linea-expfor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.bodylogin .izquierda-derecha .izquierda,
+.bodylogin .izquierda-derecha .derecha {
   padding-top: 3vh;
   padding-bottom: 1vh;
   color: #186CA7;
@@ -933,44 +981,66 @@ body {
   font-size: 30px;
 }
 
-.bodylogin .modal-content-register .izquierda-derecha .izquierda {
+.bodylogin .izquierda-derecha .izquierda {
   padding-left: 9vh;
   float: left;
 }
 
-.bodylogin .modal-content-register .izquierda-derecha .derecha {
+.bodylogin .izquierda-derecha .derecha {
   padding-right: 9vh;
   float: right;
 }
 
-.bodylogin .modal-content-register h3 {
+.bodylogin h3 {
   font-weight: bold;
   padding-top: 6vh;
   padding-bottom: 6vh;
   font-size: 3.5vh;
 }
 
-.bodylogin .modal-content-register .column-1 {
+.bodylogin .column-1 {
   padding-left: 5%;
   padding-right: 5%;
 }
 
-.bodylogin .modal-content-register .column-2 {
+.bodylogin .column-1 p {
+  text-align: center;
+}
+
+.bodylogin .column-2 {
   width: 50%;
   float: left;
   padding-left: 5%;
   padding-right: 5%;
   position: relative;
+  min-height: 16vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.bodylogin .modal-content-register p {
+.bodylogin .column-2 p {
+  text-align: center;
+}
+
+.bodylogin p {
   font-size: 2.5vh;
   font-weight: 600;
   text-align: left;
   color: rgba(0, 0, 0, 0.594);
 }
 
-.bodylogin .modal-content-register .inputregister {
+.bodylogin .inputregister {
   font-size: 15px;
   border-radius: 15px;
   border: #186CA7 solid 1.5px;
@@ -978,42 +1048,42 @@ body {
   height: 7vh !important;
 }
 
-.bodylogin .modal-content-register .inputregister::-webkit-input-placeholder {
+.bodylogin .inputregister::-webkit-input-placeholder {
   color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .inputregister:-ms-input-placeholder {
+.bodylogin .inputregister:-ms-input-placeholder {
   color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .inputregister::-ms-input-placeholder {
+.bodylogin .inputregister::-ms-input-placeholder {
   color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .inputregister::placeholder {
+.bodylogin .inputregister::placeholder {
   color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .inputcolumn2 {
+.bodylogin .inputcolumn2 {
   width: 100% !important;
 }
 
-.bodylogin .modal-content-register .foto {
+.bodylogin .foto {
   width: 60%;
   display: inline-block;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.bodylogin .modal-content-register select {
+.bodylogin select {
   border-radius: 15px;
   border: #186CA7 solid 2px;
   width: 15% !important;
@@ -1021,7 +1091,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.bodylogin .modal-content-register .botonregister {
+.bodylogin .botonregister {
   border-radius: 15px;
   background-color: #186CA7 !important;
   border: #186CA7 solid 1.5px;
@@ -1036,10 +1106,8 @@ body {
 
 @media only screen and (max-width: 450px) {
   .bodylogin .modal-content-register {
-    height: 75vh;
+    height: 65vh;
     width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
   }
   .bodylogin .modal-content-register h3 {
     font-size: 3vh;

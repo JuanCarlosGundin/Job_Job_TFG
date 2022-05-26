@@ -139,8 +139,8 @@
         </div>    
     </div>
     <div class="botones">
-        <button id="pdf2">Descargar CV</button>
-        <button>Volver</button>
+        <button id="pdf2" onclick="window.location.href = '{{ url('./curriculum/pdf2') }}';">Descargar CV</button>
+        <button onclick="window.location.href = '{{ url('./curriculum') }}';">Volver</button>
     </div>
     
 

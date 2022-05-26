@@ -194,7 +194,15 @@ table {
   background-color: #ffffff;
 }
 
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.bajo {
+  width: 40%;
+}
+
 .cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Medio {
+  width: 60%;
+}
+
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.medio {
   width: 60%;
 }
 
@@ -202,7 +210,15 @@ table {
   width: 80%;
 }
 
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.avanzado {
+  width: 80%;
+}
+
 .cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Alto {
+  width: 80%;
+}
+
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.alto {
   width: 80%;
 }
 
@@ -210,7 +226,15 @@ table {
   width: 100%;
 }
 
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.experto {
+  width: 100%;
+}
+
 .cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Nativo {
+  width: 100%;
+}
+
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.nativo {
   width: 100%;
 }
 

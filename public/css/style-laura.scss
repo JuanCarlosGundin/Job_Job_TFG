@@ -403,6 +403,12 @@ body {
             display: flex;
             justify-content: center;
         }
+        .user-empresa {
+            font-weight: bold;
+            color: white !important;
+            text-align: center;
+            padding-top: 10px;
+        }
         ///contenido del modal
         .modal-content {
             border: white;
@@ -416,6 +422,7 @@ body {
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                gap: 20px;
             }
             .opciones {
                 .opcion {
@@ -438,12 +445,6 @@ body {
                 text-align: center;
                 font-weight: bold;
                 font-size: 3.5vh;
-            }
-            .user-empresa {
-                font-weight: bold;
-                color: white !important;
-                text-align: center;
-                padding-top: 10px;
             }
             .contraseña {
                 font-weight: bold;
@@ -544,8 +545,8 @@ body {
             height: 18vh;
         }
         .logo img {
-            width: 25%;
-            margin-top: 18%;
+            max-height: 100%;
+            padding-bottom: 30px;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -635,6 +636,7 @@ body {
         font-size: calc(13px + 0.1vw)!important;
         text-align: center!important;
     }
+    color: red;
 }
 
 //////////////////////////////////////////////////PÁGINA TRABAJADOR-EMPRESA//////////////////////////////
@@ -644,6 +646,7 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 20px;
     }
     h3 {
         margin-top: 2vh;
@@ -684,7 +687,7 @@ body {
     ///contenido del modal
     .modal-content-register-cuadrados {
         width: 100%;
-        height: 72vh;
+        height: 65vh;
         h3 {
             font-weight: bold;
             padding-top: 10vh;
@@ -724,14 +727,19 @@ body {
 /// RESPONSIVE MÓVIL
 @media only screen and (max-width: $movil) {
     .bodylogin {
-        height: 60vh;
+        flex-direction: column;
+        justify-content: flex-end;
+        .card {
+            height: 75vh;
+            padding: 80px 1vw!important;
+        }
         .modal-content-register-cuadrados {
             h3 {
                 font-size: 3vh;
                 margin-bottom: 4vh;
                 padding-top: 6vh;
                 padding-bottom: 0vh;
-                margin-top: 1vh;
+                margin-top: 0;
             }
             .cuadrados {
                 width: 100%;
@@ -750,6 +758,12 @@ body {
 }
 
 ///////////////////////////////FORNULARIO REGISTRAR TRABAJADOR-EMPRESA////////////////////////////
+@media(max-width:$movil) {
+     ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .bodylogin {
     div[class^="lineaestudio-"] {
         display: flex;
@@ -788,106 +802,124 @@ body {
         text-align: center;
         width: 100%;
         height: 70vh;
-        .mas-menos {
-            width: 100%;
-            text-align: right !important;
-            margin-right: -30px;
-        }
-        .mas,
-        .menos {
-            padding-top: 1vh;
+    }
+    .mas,
+    .menos {
+        color: $first-color;
+        border: none;
+        background-color: transparent;
+        font-size: 30px;
+    }
+    .linea-registro {
+        display: flex;
+        flex-direction: column;
+    }
+    .fila-linea-idioma {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .fila-linea-expfor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+    }
+    .izquierda-derecha {
+        .izquierda,
+        .derecha {
+            padding-top: 3vh;
             padding-bottom: 1vh;
             color: $first-color;
             border: none;
             background-color: transparent;
             font-size: 30px;
-            position: absolute;
         }
-        .izquierda-derecha {
-            .izquierda,
-            .derecha {
-                padding-top: 3vh;
-                padding-bottom: 1vh;
-                color: $first-color;
-                border: none;
-                background-color: transparent;
-                font-size: 30px;
-            }
-            .izquierda {
-                padding-left: 9vh;
-                float: left;
-            }
-            .derecha {
-                padding-right: 9vh;
-                float: right;
-            }
-        }
-        h3 {
-            font-weight: bold;
-            padding-top: 6vh;
-            padding-bottom: 6vh;
-            font-size: 3.5vh;
-        }
-        .column-1 {
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-        .column-2 {
-            width: 50%;
+        .izquierda {
+            padding-left: 9vh;
             float: left;
-            padding-left: 5%;
-            padding-right: 5%;
-            position: relative;
         }
-        //poner inputs en dos columnas distintas
+        .derecha {
+            padding-right: 9vh;
+            float: right;
+        }
+    }
+    h3 {
+        font-weight: bold;
+        padding-top: 6vh;
+        padding-bottom: 6vh;
+        font-size: 3.5vh;
+    }
+    .column-1 {
+        padding-left: 5%;
+        padding-right: 5%;
         p {
-            font-size: 2.5vh;
-            font-weight: 600;
-            text-align: left;
-            color: rgba(0, 0, 0, 0.594);
-        }
-        //estilos inputs
-        .inputregister {
-            font-size: 15px;
-            border-radius: 15px;
-            border: $first-color solid 1.5px;
-            width: 60% !important;
-            height: 7vh !important;
-        }
-        .inputregister::placeholder {
-            color: rgb(124, 123, 123);
-            padding-left: 2%;
-            font-weight: 440;
-        }
-        .inputcolumn2 {
-            width: 100% !important;
-        }
-        //estilos input foto
-        .foto {
-            width: 60%;
-            display: inline-block;
             text-align: center;
-            margin-bottom: 1rem;
         }
-        //estilos input select
-        select {
-            border-radius: 15px;
-            border: $first-color solid 2px;
-            width: 15% !important;
-            height: 42px !important;
-            margin-bottom: 1rem;
+    }
+    .column-2 {
+        width: 50%;
+        float: left;
+        padding-left: 5%;
+        padding-right: 5%;
+        position: relative;
+        min-height: 16vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        p {
+            text-align: center;
         }
-        .botonregister {
-            border-radius: 15px;
-            background-color: $first-color !important;
-            border: $first-color solid 1.5px;
-            box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
-            color: white;
-            font-weight: bold;
-            width: 60% !important;
-            height: 40px;
-            margin-bottom: 20px;
-        }
+    }
+    //poner inputs en dos columnas distintas
+    p {
+        font-size: 2.5vh;
+        font-weight: 600;
+        text-align: left;
+        color: rgba(0, 0, 0, 0.594);
+    }
+    //estilos inputs
+    .inputregister {
+        font-size: 15px;
+        border-radius: 15px;
+        border: $first-color solid 1.5px;
+        width: 60% !important;
+        height: 7vh !important;
+    }
+    .inputregister::placeholder {
+        color: rgb(124, 123, 123);
+        padding-left: 2%;
+        font-weight: 440;
+    }
+    .inputcolumn2 {
+        width: 100% !important;
+    }
+    //estilos input foto
+    .foto {
+        width: 60%;
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    //estilos input select
+    select {
+        border-radius: 15px;
+        border: $first-color solid 2px;
+        width: 15% !important;
+        height: 42px !important;
+        margin-bottom: 1rem;
+    }
+    .botonregister {
+        border-radius: 15px;
+        background-color: $first-color !important;
+        border: $first-color solid 1.5px;
+        box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+        color: white;
+        font-weight: bold;
+        width: 60% !important;
+        height: 40px;
+        margin-bottom: 20px;
     }
 }
 
@@ -895,7 +927,7 @@ body {
 @media only screen and (max-width: $movil) {
     .bodylogin {
         .modal-content-register {
-            height: 75vh;
+            height: 65vh;
             h3 {
                 font-size: 3vh;
                 padding-bottom: 4vh;
@@ -914,8 +946,6 @@ body {
                 }
             }
             width: 100%;
-            padding-left: 5%;
-            padding-right: 5%;
             .inputregister {
                 height: 6vh !important;
                 width: 90% !important;

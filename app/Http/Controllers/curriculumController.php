@@ -14,6 +14,9 @@ class curriculumController extends Controller
         $trabajador = DB::table('tbl_trabajador')->join('tbl_usuarios', 'tbl_trabajador.id_usuario', '=', 'tbl_usuarios.id')->where('id_usuario', '4')->first();
         return view('plantillaCV1', compact('trabajador'));
     }
+    public function curriculums(){
+        return view('mostrar-curriculums');
+    }
     // Generate PDF
     public function pdf1() {
         $id=session()->get('id_user');

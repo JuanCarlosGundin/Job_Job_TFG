@@ -223,19 +223,37 @@ table {
                             left: 0;
                             height: 100%;
                             background-color: #ffffff;
+                            &.bajo {
+                                width: 40%;
+                            }
                             &.Medio {
+                                width: 60%;
+                            }
+                            &.medio {
                                 width: 60%;
                             }
                             &.Avanzado {
                                 width: 80%;
                             }
+                            &.avanzado {
+                                width: 80%;
+                            }
                             &.Alto {
+                                width: 80%;
+                            }
+                            &.alto {
                                 width: 80%;
                             }
                             &.Experto {
                                 width: 100%;
                             }
+                            &.experto {
+                                width: 100%;
+                            }
                             &.Nativo {
+                                width: 100%;
+                            }
+                            &.nativo {
                                 width: 100%;
                             }
                         }

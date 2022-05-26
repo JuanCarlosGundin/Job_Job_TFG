@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../public/css/style-pol.css">
-    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="{!! asset('css/style-pol.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/style-curriculum.css') !!}">
     <title>PERFIL</title>
 </head>
 
@@ -34,16 +35,24 @@
         <div class="region-plantillas">
             <div class="row">
                 <div class="column col-sm-3">
-                    <img src="../../public/storage/img/plantilla1.png" alt="plantilla" class="tilt">
+                    <a href="{{ url('./curriculum/plantilla1') }}">
+                        <img src="{!! asset('storage/img/plantilla1.png') !!}" alt="plantilla" class="tilt">
+                    </a> 
                 </div>
                 <div class="column col-sm-3">
-                    <img src="../../public/storage/img/plantilla2.png" alt="plantilla" class="tilt">
+                    <a href="{{ url('./curriculum/plantilla2') }}">
+                        <img src="{!! asset('storage/img/plantilla2.png') !!}" alt="plantilla" class="tilt">
+                    </a>
                 </div>
                 <div class="column col-sm-3">
-                    <img src="../../public/storage/img/plantilla3.png" alt="plantilla" class="tilt">
+                    <a href="{{ url('./curriculum/plantilla3') }}">
+                        <img src="{!! asset('storage/img/plantilla3.png') !!}" alt="plantilla" class="tilt">
+                    </a>
                 </div>
                 <div class="column col-sm-3">
-                    <img src="../../public/storage/img/plantilla4.png" alt="plantilla" class="tilt">
+                    <a href="{{ url('./curriculum/plantilla4') }}">
+                        <img src="{!! asset('storage/img/plantilla4.png') !!}" alt="plantilla" class="tilt">
+                    </a>
                 </div>
             </div>
         </div>
@@ -53,7 +62,7 @@
         <div class="modal-content" id="modal_content">
         </div>
     </div>
-    <script src="../../public/js/hover_plantillas.js"></script>
+    <script src="{!! asset('js/hover_plantillas.js') !!}"></script>
     <!-- <script src="js/perfil.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 

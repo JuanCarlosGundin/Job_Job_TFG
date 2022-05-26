@@ -114,7 +114,8 @@
   border: white;
 }
 
-.bodylogin.oscuro .modal-login button {
+.bodylogin.oscuro .modal-login button,
+.bodylogin.oscuro .modal-login input[type=submit] {
   background-color: #0060A4 !important;
   -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4) !important;
           box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4) !important;

@@ -79,7 +79,7 @@ class ForgotPasswordController extends Controller
                               ->first();
   
           if(!$updatePassword){
-              return back()->withInput()->with('error', 'Invalid token!');
+              return back()->withInput()->with('error', 'Token inválido!');
           }
 
           DB::select("UPDATE tbl_usuarios SET contra = '".hash('sha256', $request->password)."' WHERE mail = ?",[$request->mail]);
