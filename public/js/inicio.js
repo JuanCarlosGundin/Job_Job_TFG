@@ -41,6 +41,12 @@ function objetoAjax() {
 
 }
 
+function htmlEncode(str) {
+    return String(str).replace(/[^\w. ]/gi, function(c) {
+        return '&#' + c.charCodeAt(0) + ';';
+    });
+}
+
 function leeridiomas() {
 
     var ajax = objetoAjax();
@@ -265,8 +271,8 @@ function sessiontrabajador0(evt) {
     evt.preventDefault();
 
     let mail = document.getElementById('mail').value;
-    let contra = document.getElementById('contra').value;
-    let contra2 = document.getElementById('contra2').value;
+    let contra = htmlEncode(document.getElementById('contra').value);
+    let contra2 = htmlEncode(document.getElementById('contra2').value);
 
     if (!mail || !contra || !contra2) {
 
@@ -417,8 +423,8 @@ function sessiontrabajador1(evt) {
 
     evt.preventDefault();
 
-    let nombre = document.getElementById('nombre').value;
-    let apellido = document.getElementById('apellido').value;
+    let nombre = htmlEncode(document.getElementById('nombre').value);
+    let apellido = htmlEncode(document.getElementById('apellido').value);
     let edad = document.getElementById('edad').value;
 
     if (!nombre || !apellido || !edad) {
@@ -564,9 +570,9 @@ function sessiontrabajador2(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let campo_user = document.getElementById('campo_user').value;
-    let about_user = document.getElementById('about_user').value;
-    let lenguaje_preferido = document.getElementById('lenguaje_preferido').value;
+    let campo_user = htmlEncode(document.getElementById('campo_user').value);
+    let about_user = htmlEncode(document.getElementById('about_user').value);
+    let lenguaje_preferido = htmlEncode(document.getElementById('lenguaje_preferido').value);
 
     var formData = new FormData();
 
@@ -699,7 +705,7 @@ function sessiontrabajador3(evt) {
     evt.preventDefault();
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
-    let loc_trabajador = document.getElementById('loc_trabajador').value;
+    let loc_trabajador = htmlEncode(document.getElementById('loc_trabajador').value);
     let disponibilidad = document.getElementById('disponibilidad').value;
     let foto_perfil = document.getElementById('foto_perfil').files[0];
 
@@ -1094,8 +1100,9 @@ function sessiontrabajador5(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombre_formación = document.getElementsByName('nombre_formación[]');
-    let lugar_formación = document.getElementsByName('lugar_formación[]');
+    let nombre_formación = htmlEncode(document.getElementsByName('nombre_formación[]'));
+    console.log(nombre_formación);
+    let lugar_formación = htmlEncode(document.getElementsByName('lugar_formación[]'));
     let año_entrada = document.getElementsByName('año_entrada[]');
     let año_salida = document.getElementsByName('año_salida[]');
 
@@ -1314,9 +1321,9 @@ function sessiontrabajador6(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombre_experiencia = document.getElementsByName('nombre_experiencia[]');
-    let lugar_experiencia = document.getElementsByName('lugar_experiencia[]');
-    let funciones = document.getElementsByName('funciones[]');
+    let nombre_experiencia = htmlEncode(document.getElementsByName('nombre_experiencia[]'));
+    let lugar_experiencia = htmlEncode(document.getElementsByName('lugar_experiencia[]'));
+    let funciones = htmlEncode(document.getElementsByName('funciones[]'));
     let año_entrada = document.getElementsByName('año_entrada[]');
     let año_salida = document.getElementsByName('año_salida[]');
     var formData = new FormData();
@@ -1508,10 +1515,10 @@ function formempresa0() {
 function sessionempresa0(evt) {
     evt.preventDefault();
 
-    let mail = document.getElementById('mail').value;
-    let nom_emp = document.getElementById('nom_emp').value;
-    let contra = document.getElementById('contra').value;
-    let contra2 = document.getElementById('contra2').value;
+    let mail = htmlEncode(document.getElementById('mail').value);
+    let nom_emp = htmlEncode(document.getElementById('nom_emp').value);
+    let contra = htmlEncode(document.getElementById('contra').value);
+    let contra2 = htmlEncode(document.getElementById('contra2').value);
 
     if (!mail || !nom_emp || !contra || !contra2) {
 
@@ -1679,9 +1686,9 @@ function formempresa1() {
 function sessionempresa1(evt) {
     evt.preventDefault();
 
-    let about_emp = document.getElementById('about_emp').value;
-    let campo_emp = document.getElementById('campo_emp').value;
-    let searching = document.getElementById('searching').value;
+    let about_emp = htmlEncode(document.getElementById('about_emp').value);
+    let campo_emp = htmlEncode(document.getElementById('campo_emp').value);
+    let searching = htmlEncode(document.getElementById('searching').value);
 
     var formData = new FormData();
 
@@ -1791,8 +1798,8 @@ function sessionempresa2(evt) {
     evt.preventDefault();
 
     let logo_emp = document.getElementById('logo_emp').files[0];
-    let loc_emp = document.getElementById('loc_emp').value;
-    let vacante = document.getElementById('vacante').value;
+    let loc_emp = htmlEncode(document.getElementById('loc_emp').value);
+    let vacante = htmlEncode(document.getElementById('vacante').value);
 
     var formData = new FormData();
 
