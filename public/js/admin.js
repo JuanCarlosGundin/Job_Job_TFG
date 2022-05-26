@@ -775,6 +775,7 @@ function modificarJS(id, id_perfil) {
     var estado = document.getElementById("estado").value;
     var nombre = document.getElementById("nombre").value;
     var apellido = document.getElementById("apellido").value;
+    var mostrado = document.getElementById("mostrado").value;
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
 
@@ -828,6 +829,12 @@ function modificarJS(id, id_perfil) {
         });
         return false;
     } else if (contra.lenght < 8) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener 8 carácteres mínimo",
+            icon: "error",
+        });
+    } else if (mostrado > 2) {
         swal.fire({
             title: "Error",
             text: "La contraseña debe tener 8 carácteres mínimo",
