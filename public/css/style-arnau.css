@@ -34,7 +34,7 @@ body {
   position: relative;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .page-home .region-swiper {
     height: 100%;
   }
@@ -118,6 +118,12 @@ body {
   transition: all 0.3s ease-in-out;
   cursor: -webkit-grab;
   cursor: grab;
+}
+
+@media (min-width: 1200px) {
+  .page-home .region-swiper .swiper .swiper--cards .swiper--card {
+    max-width: 500px;
+  }
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card img {
@@ -250,10 +256,11 @@ body {
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card h5 {
-  margin: 0;
+  margin: 0 0 10px 0;
   padding: 0 16px;
   font-weight: normal;
   color: grey;
+  text-align: left;
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card p {
@@ -269,7 +276,9 @@ body {
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card:nth-child(1) img {
-  max-height: 25%;
+  max-height: 20%;
+  margin-bottom: 20px;
+  margin-top: 15px;
 }
 
 .page-home .region-swiper .swiper .moving.swiper--card {
@@ -356,8 +365,16 @@ body {
 
 .page-home .region-swiper .botones-home .boton-cruz > button,
 .page-home .region-swiper .botones-home .boton-maletin > button {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
+}
+
+@media (max-width: 1200px) {
+  .page-home .region-swiper .botones-home .boton-cruz > button,
+  .page-home .region-swiper .botones-home .boton-maletin > button {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .page-home .region-swiper .botones-home .boton-cruz > button i,
@@ -366,8 +383,15 @@ body {
 }
 
 .page-home .region-swiper .botones-home .boton-info .icono-info {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
+}
+
+@media (max-width: 1200px) {
+  .page-home .region-swiper .botones-home .boton-info .icono-info {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .page-home .region-swiper .botones-home .boton-info .icono-info i {

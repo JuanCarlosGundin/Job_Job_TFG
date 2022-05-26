@@ -37,7 +37,7 @@ body {
     }
     .region-swiper {
         height: 90%;
-        @media(max-width: $movil) {
+        @media(max-width: $tablet) {
             height: 100%;
         }
         position: relative;
@@ -87,6 +87,9 @@ body {
                     display: inline-block;
                     width: 90vw;
                     max-width: 400px;
+                    @media(min-width: $tablet) {
+                        max-width: 500px;
+                    }
                     height: 70vh;
                     background: #FFFFFF;
                     padding-bottom: 40px;
@@ -179,10 +182,11 @@ body {
                             pointer-events: none;
                         }
                         h5 {
-                            margin: 0;
+                            margin: 0 0 10px 0;
                             padding: 0 16px;
                             font-weight: normal;
                             color: grey;
+                            text-align: left;
                         }
                         p {
                             margin-top: 24px;
@@ -195,7 +199,9 @@ body {
                     &:nth-child(1) {
                         padding-top: 15px;
                         img {
-                            max-height: 25%;
+                            max-height: 20%;
+                            margin-bottom: 20px;
+                            margin-top: 15px;
                         }
                     }
                 }
@@ -268,8 +274,12 @@ body {
             .boton-cruz,
             .boton-maletin {
                 >button {
-                    width: 60px;
-                    height: 60px;
+                    width: 80px;
+                    height: 80px;
+                    @media(max-width: $tablet) {
+                        width: 60px;
+                        height: 60px;
+                    }
                     i {
                         font-size: calc(#{"30px + 1vw"});
                     }
@@ -277,8 +287,12 @@ body {
             }
             .boton-info {
                 .icono-info {
-                    width: 50px;
-                    height: 50px;
+                    width: 60px;
+                    height: 60px;
+                    @media(max-width: $tablet) {
+                        width: 50px;
+                        height: 50px;
+                    }
                     i {
                         font-size: calc(#{"20px + 1vw"});
                     }

@@ -287,7 +287,7 @@ body {
   padding-left: 5%;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 768px) {
   .body-index .navbar-index {
     padding-top: 5px;
     height: 9vh;
@@ -399,7 +399,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 450px) and (max-width: 900px) {
+@media only screen and (min-width: 768px) and (max-width: 900px) {
   .body-index .navbar-index {
     height: 13vh;
   }
@@ -649,7 +649,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 768px) {
   .bodylogin .logo {
     display: block !important;
     height: 18vh;
@@ -827,7 +827,7 @@ body {
   font-size: 3.2vh;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 768px) {
   .bodylogin {
     height: 60vh;
   }
@@ -1017,7 +1017,7 @@ body {
   margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 768px) {
   .bodylogin .modal-content-register {
     height: 75vh;
     width: 100%;
