@@ -261,84 +261,11 @@ body {
                         &:nth-child(6) {
                             background-color: #E2E2E2;
                         }
-                        .user-edit-div {
-                            width: 30%;
-                            float: right;
-                            justify-content: flex-end;
-                            display: flex;
-                            .user-edit-btn {
-                                border-width: 1px;
-                                border-style: solid;
-                                border-color: #C6C6C6;
-                                width: 50%;
-                                cursor: pointer;
-                                padding: 0;
-                                margin: 0;
-                                border-radius: 5px;
-                                background-color: $white;
-                                margin-right: 10px;
-                                @media only screen and (max-width: $movil) {
-                                    margin: 0;
-                                    width: 100%;
-                                }
-                                .edit-btn-p {
-                                    font-weight: bolder;
-                                    color: $black;
-                                    font-size: 12.5px;
-                                    margin-top: 0;
-                                    margin-bottom: 0;
-                                    position: relative;
-                                    @media only screen and (max-width: $tablet) {
-                                        font-size: 11px;
-                                    }
-                                    .button span:after {
-                                        content: '\00bb';
-                                        position: absolute;
-                                        opacity: 0;
-                                        top: 0;
-                                        right: -20px;
-                                        transition: 0.5s;
-                                    }
-                                    .button:hover span {
-                                        padding-right: 25px;
-                                    }
-                                    .button:hover span:after {
-                                        opacity: 1;
-                                        right: 0;
-                                    }
-                                }
-                            }
-                            .user-logout-btn {
-                                border-width: 1px;
-                                border-style: solid;
-                                border-color: #C6C6C6;
-                                width: 50%;
-                                cursor: pointer;
-                                padding: 0;
-                                margin: 0;
-                                border-radius: 5px;
-                                background-color: $white;
-                                @media only screen and (max-width: $tablet) {
-                                    display: none;
-                                }
-                                .logout-btn-p {
-                                    font-weight: bolder;
-                                    color: $black;
-                                    font-size: 12.5px;
-                                    margin-top: 0;
-                                    margin-bottom: 0;
-                                    position: relative;
-                                }
-                            }
+                        &:nth-child(7) {
+                            background-color: #DBDBDB;
                         }
-                    }
-                    .user-categories {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr 1fr 1fr;
-                        gap: 1em;
-                        margin-top: 20px;
-                        @media only screen and (max-width: $tablet) {
-                            grid-template-columns: 1fr 1fr;
+                        &:nth-child(8) {
+                            background-color: #DBDBDB;
                         }
                         border-width: 1px;
                         border-style: solid;
@@ -438,68 +365,24 @@ body {
                                     height: 60%;
                                 }
                             }
-                            &:nth-child(5) {
-                                background-color: #E2E2E2;
-                            }
-                            &:nth-child(6) {
-                                background-color: #E2E2E2;
-                            }
-                            &:nth-child(7) {
-                                background-color: #DBDBDB;
-                            }
-                            &:nth-child(8) {
-                                background-color: #DBDBDB;
-                            }
-                            border-width: 1px;
-                            border-style: solid;
-                            border-color: #C6C6C6;
-                            border-radius: 5px;
-                            height: 15vh;
-                            float: left;
-                            @media only screen and (max-width: $tablet) {
-                                height: 13vh;
-                            }
-                            .user-btn-category {
-                                border-radius: 5px;
-                                border-width: 0px;
+                            .user-category-text {
                                 width: 100%;
-                                height: 100%;
-                                background-color: transparent;
-                                &:hover {
-                                    top: -5px;
-                                    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
-                                    cursor: pointer;
-                                    transition: 0.5s;
-                                }
-                                .user-category-icon {
+                                .p-category {
                                     width: 100%;
-                                    height: 70%;
                                     font-size: large;
-                                    display: flex;
-                                    align-items: flex-start;
-                                    @media only screen and (max-width: $tablet) {
-                                        height: 60%;
-                                    }
-                                }
-                                .user-category-text {
-                                    width: 100%;
-                                    .p-category {
-                                        width: 100%;
-                                        font-size: large;
-                                        font-weight: bolder;
-                                        margin: 0;
-                                    }
+                                    font-weight: bolder;
+                                    margin: 0;
                                 }
                             }
                         }
                     }
                 }
             }
-            .wave-div {
+        }
+        .wave-div {
+            width: 100%;
+            .wave {
                 width: 100%;
-                .wave {
-                    width: 100%;
-                }
             }
         }
     }
@@ -592,6 +475,7 @@ body {
                 .categoria-p-text {
                     margin: 0;
                     font-size: medium;
+                    color: black;
                 }
             }
             .categoria-linea {
@@ -726,21 +610,24 @@ body {
             align-items: center;
             padding: 0;
             height: 40px;
-            color: $black;
+            color: $black !important;
             &:hover {
                 cursor: pointer;
                 background-color: rgb(206, 206, 206);
                 border-radius: 15px;
             }
+            i,
             .return-icon {
                 float: left;
                 margin-right: 5px;
+                color: black;
             }
             .return-text {
                 margin: 0;
                 float: left;
                 font-size: medium;
                 font-weight: bold;
+                color: black;
             }
         }
     }
@@ -757,6 +644,7 @@ body {
                     margin: 0;
                     font-size: medium;
                     font-weight: 500;
+                    color: $black;
                     @media only screen and (max-width: $tablet) {
                         font-size: small;
                     }
@@ -1262,7 +1150,7 @@ body {
                 margin: 0;
                 border-width: 0;
                 background-color: transparent;
-                justify-content: left;
+                justify-content: center;
                 display: flex;
                 align-items: center;
                 margin-right: 10px;

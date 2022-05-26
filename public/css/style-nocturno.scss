@@ -144,7 +144,8 @@
                 .menu-item {
                     background-color: $third-color;
                     .icon {
-                        color: white;
+                        color: white !important;
+                        background-color: $third-color !important;
                     }
                 }
                 .main-icon {
@@ -172,6 +173,13 @@
                 }
                 .active-center {
                     background-color: $first-color;
+                    .icon {
+                        color: white !important;
+                        background-color: $first-color !important;
+                        @media only screen and (max-width: $tablet) {
+                            background-color: $first-color;
+                        }
+                    }
                 }
             }
         }
@@ -238,6 +246,9 @@
         
         ////////////////////////////////////////////////VER-PERFIL/////////////////////////////////
         .edit-profile {
+            .aceptar-cuenta-btn {
+                color: black !important;
+            }
             .p-text,
             .return-text,
             i {
@@ -247,10 +258,10 @@
         
         /////////////////////////////////VER-CATEGORIA-PERFIL////////////////////////////////////
         .oscuro {
-            p {
-                color: white;
-            }
             .vista-profile {
+                p {
+                    color: white;
+                }
                 .categoria-edit {
                     .return {
                         .return-btn {
@@ -263,7 +274,10 @@
                         .categoria-icon,
                         .categoria-name,
                         .categoria-text {
-                            color: white !important;
+                            color: white;
+                            .categoria-p-text {
+                                color: white;
+                            }
                         }
                     }
                 }
