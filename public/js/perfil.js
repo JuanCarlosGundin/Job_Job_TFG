@@ -1,4 +1,5 @@
 window.onload = function() {
+
     leeridiomas();
     JSONidiomas = {};
     mostrarperfilJS();
@@ -145,8 +146,8 @@ function mostrarperfilJS() {
                 //nombre-apellido-edad
                 recarga += `<div class="user-div-name">`;
                 recarga += `<div class="divs-name">`;
-                recarga += `<span class="p-name">${trabajador.nombre}</span>`;
-                recarga += `<span class="p-surname">${trabajador.apellido},</span>`;
+                recarga += `<span class="p-name">${trabajador.nombre} </span>`;
+                recarga += `<span class="p-surname">${trabajador.apellido}, </span>`;
                 recarga += `<span class="p-age">${edad(trabajador.edad)}</span>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-edit-div">`;
@@ -331,9 +332,9 @@ function mostrarperfilJS() {
 
                 recarga += `<hr class="linea-divisoria">`;
 
-                recarga += `<div class="user-categories">`;
+                recarga += `<div class="emp-categories">`;
                 //sobre empresa
-                recarga += `<div class="user-div-category">`;
+                recarga += `<div class="emp-div-category">`;
                 recarga += `<button class="user-btn-category" id="boton_empresa">`;
                 recarga += `<div class="user-category-icon">`;
                 recarga += `<i class="fa-solid fa-address-card"></i>`;
@@ -344,10 +345,10 @@ function mostrarperfilJS() {
                 recarga += `</button>`;
                 recarga += `</div>`;
                 //buscamos
-                recarga += `<div class="user-div-category">`;
+                recarga += `<div class="emp-div-category">`;
                 recarga += `<button class="user-btn-category" id="boton_buscamos">`;
                 recarga += `<div class="user-category-icon">`;
-                recarga += `<i class="fa-solid fa-language"></i>`;
+                recarga += `<i class="fa-solid fa-magnifying-glass"></i>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-category-text">`;
                 recarga += `<p class="p-category">Buscamos</p>`;
@@ -355,7 +356,7 @@ function mostrarperfilJS() {
                 recarga += `</button>`;
                 recarga += `</div>`;
                 //configuracion
-                recarga += `<div class="user-div-category">`;
+                recarga += `<div class="emp-div-category">`;
                 recarga += `<button class="user-btn-category" id="boton_configuracion">`;
                 recarga += `<div class="user-category-icon">`;
                 recarga += `<i class="fa-solid fa-gear"></i>`;
@@ -431,19 +432,7 @@ function editar_foto_perfil() {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            if (respuesta.resultado == "OK") {
-
-                swal.fire({
-                    title: "Foto de perfil",
-                    text: "Actualizada correctamente",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        mostrarperfilJS();
-                    }
-                });
-
-            }
+            mostrarperfilJS();
 
         }
     }
@@ -1304,6 +1293,7 @@ function leer_idiomas() {
             recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
             recarga += `</div>`;
             recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
             if (trabajador.curriculum != null) {
 
                 var curriculum = JSON.parse(trabajador.curriculum);
@@ -1313,26 +1303,21 @@ function leer_idiomas() {
 
                         for (let i = 0; i < curriculum.idiomas.length; i++) {
 
-                            recarga += `<div>`;
                             recarga += `<div class="categoria">`;
-                            recarga += `<div class="categoria-icon">`;
-                            recarga += `<i class="fa-solid fa-signature"></i>`;
-                            recarga += `</div>`;
-                            recarga += `<div class="categoria-name">`;
-                            recarga += `<p class="categoria-p-name">APELLIDO</p>`;
-                            recarga += `</div>`;
                             recarga += `<div class="categoria-linea">`;
                             recarga += `<hr class="linea-divisoria">`;
                             recarga += `</div>`;
-                            recarga += `<div class="categoria-text">`;
-                            recarga += `<p>${curriculum.idiomas[i].nombre_idioma}</p>`;
+                            recarga += `<div class="categoria-name-idioma">`;
+                            recarga += `<p class="categoria-p-idioma">${curriculum.idiomas[i].nombre_idioma}</p>`;
                             recarga += `</div>`;
-                            recarga += `<div class="categoria-text">`;
-                            recarga += `<p>${curriculum.idiomas[i].nivel_idioma}</p>`;
+                            recarga += `<div class="categoria-text-idioma">`;
+                            recarga += `<p class="categoria-p-text">${curriculum.idiomas[i].nivel_idioma}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<div class="idioma-btn-div">`;
+                            recarga += `<button class="editar"><p class="button-text"><i class="fa-solid fa-pen"></i></p></button>`;
                             recarga += `</div>`;
                             recarga += `</div>`;
-                            recarga += `<button class="editar">Editar</button>`;
-                            recarga += `</div>`;
+
                         }
                     } else {
 
@@ -1354,6 +1339,7 @@ function leer_idiomas() {
             } else {
 
                 recarga += '<p>Aun no has añadido ningun idioma</p>';
+                recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
             }
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -1370,25 +1356,52 @@ function form_crear_idiomas() {
 
     var contenidoajax = document.getElementById("contenidoajax");
     var recarga = ``;
-    recarga += `<button id="volver">Volver</button>`;
-    recarga += `<div>`;
+    //Crear idiomas
+    recarga += `<div class="edit-profile">`;
+    //Return
+    recarga += `<div class="return">`;
+    recarga += `<button class="return-btn" id="volver">`;
+    recarga += `<div class="return-icon">`;
+    recarga += `<i class="fa-solid fa-angle-left"></i>`;
+    recarga += `</div>`;
+    recarga += `<p class="return-text">VOLVER</p>`;
+    recarga += `</button>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_idiomas>`;
-    recarga += `<select class="" name="nombre_idioma" id="nombre_idioma" data-show-subtext="false" data-live-search="true">`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">IDIOMA</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<select class="input" name="nombre_idioma" id="nombre_idioma" data-show-subtext="false" data-live-search="true">`;
     recarga += `<option value="" selected>- selecciona -</option>`;
     for (let i = 0; i < JSONidiomas.length; i++) {
 
         recarga += `<option value="${JSONidiomas[i].nombre_idioma}">${JSONidiomas[i].nombre_idioma}</option>`;
     }
     recarga += `</select>`;
-    recarga += `<select class="" name="nivel_idioma" id="nivel_idioma">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">NIVEL DEL IDIOMA</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<select class="input" name="nivel_idioma" id="nivel_idioma">`;
     recarga += `<option value="" selected>- selecciona -</option>`;
-    recarga += `<option value="bajo">bajo</option>`;
-    recarga += `<option value="medio">medio</option>`;
-    recarga += `<option value="alto">alto</option>`;
-    recarga += `<option value="nativo">nativo</option>`;
+    recarga += `<option value="bajo">Bajo</option>`;
+    recarga += `<option value="medio">Medio</option>`;
+    recarga += `<option value="alto">Alto</option>`;
+    recarga += `<option value="nativo">Nativo</option>`;
     recarga += `</select>`;
-    recarga += `<button>Realizar cambios</button>`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="aceptar-cuenta-edit">`;
+    recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">GUARDAR IDIOMA</p></button>`;
+    recarga += `</div>`;
     recarga += `</form>`;
+    recarga += `</div>`;
     recarga += `</div>`;
     contenidoajax.innerHTML = recarga;
 
@@ -1429,7 +1442,6 @@ function crear_idiomas(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1474,10 +1486,23 @@ function form_editar_idiomas(evt) {
             var idioma = curriculum.idiomas[i];
             console.log(idioma);
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_idiomas>`;
-            recarga += `<select class="" name="nombre_idioma" id="nombre_idioma" data-show-subtext="false" data-live-search="true">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">IDIOMA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<select class="input" name="nombre_idioma" id="nombre_idioma" data-show-subtext="false" data-live-search="true">`;
             for (let i = 0; i < JSONidiomas.length; i++) {
 
                 if (idioma.nombre_idioma == JSONidiomas[i].nombre_idioma) {
@@ -1489,17 +1514,32 @@ function form_editar_idiomas(evt) {
                 }
             }
             recarga += `</select>`;
-            recarga += `<select class="" name="nivel_idioma" id="nivel_idioma">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">NIVEL DEL IDIOMA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<select class="input" name="nivel_idioma" id="nivel_idioma">`;
             recarga += `<option value="${idioma.nivel_idioma}" selected>${idioma.nivel_idioma}</option>`;
             recarga += `<option value="bajo">bajo</option>`;
             recarga += `<option value="medio">medio</option>`;
             recarga += `<option value="alto">alto</option>`;
             recarga += `<option value="nativo">nativo</option>`;
             recarga += `</select>`;
-            recarga += `<button>Realizar cambios</button>`;
-            recarga += `</form>`;
-            recarga += `<button id="eliminar">Eliminar idioma</button>`;
             recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">MODIFICAR</p></button>`;
+            recarga += `</div>`;
+            recarga += `</form>`;
+            recarga += `<div class="eliminar-cuenta-edit">`;
+            recarga += `<button id="eliminar" class="eliminar-cuenta-btn"><p class="button-text">ELIMINAR</p></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", leer_idiomas);
@@ -1563,7 +1603,6 @@ function editar_idiomas(evt) {
                 });
 
             }
-
         }
 
     }
@@ -1634,8 +1673,24 @@ function leer_estudios() {
             var trabajador = respuesta.resultado;
             console.log(trabajador);
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<button id="crear">crear</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
+
             if (trabajador.curriculum != null) {
 
                 var curriculum = JSON.parse(trabajador.curriculum);
@@ -1645,12 +1700,22 @@ function leer_estudios() {
 
                         for (let i = 0; i < curriculum.estudios.length; i++) {
 
-                            recarga += `<div>`;
-                            recarga += `<p>${curriculum.estudios[i].nombre_formación}</p>`;
-                            recarga += `<p>${curriculum.estudios[i].lugar_formación}</p>`;
-                            recarga += `<p>${curriculum.estudios[i].año_entrada}</p>`;
-                            recarga += `<p>${curriculum.estudios[i].año_salida}</p>`;
-                            recarga += `<button class="editar">Editar</button>`;
+                            recarga += `<div class="categoria">`;
+                            recarga += `<div class="categoria-linea">`;
+                            recarga += `<hr class="linea-divisoria">`;
+                            recarga += `</div>`;
+                            recarga += `<div class="categoria-name">`;
+                            recarga += `<p class="categoria-p-name">${curriculum.estudios[i].nombre_formación}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="categoria-text">`;
+                            recarga += `<p class="categoria-p-text">${curriculum.estudios[i].lugar_formación}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<p class="categoria-p-text"><b>Año de entrada: </b>${curriculum.estudios[i].año_entrada}</p>`;
+                            recarga += `<p class="categoria-p-text"><b>Año de salida: </b>${curriculum.estudios[i].año_salida}</p>`;
+                            recarga += `<div class="idioma-btn-div">`;
+                            recarga += `<button class="editar"><i class="fa-solid fa-pen"></i></button>`;
+                            recarga += `</div>`;
                             recarga += `</div>`;
                         }
                     } else {
@@ -1661,6 +1726,7 @@ function leer_estudios() {
 
                     recarga += `<p>Aun no has añadido ningun estudio</p>`;
                 }
+
                 contenidoajax.innerHTML = recarga;
                 if (curriculum.hasOwnProperty('estudios')) {
 
@@ -1673,6 +1739,8 @@ function leer_estudios() {
             } else {
 
                 recarga += `<p>Aun no has añadido ningun estudio</p>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
             }
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -1689,15 +1757,54 @@ function form_crear_estudios() {
 
     var contenidoajax = document.getElementById("contenidoajax");
     var recarga = ``;
-    recarga += `<button id="volver">Volver</button>`;
-    recarga += `<div>`;
+    recarga += `<div class="edit-profile">`;
+    recarga += `<div class="return">`;
+    recarga += `<button class="return-btn" id="volver">`;
+    recarga += `<div class="return-icon">`;
+    recarga += `<i class="fa-solid fa-angle-left"></i>`;
+    recarga += `</div>`;
+    recarga += `<p class="return-text">VOLVER</p>`;
+    recarga += `</button>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_estudios>`;
-    recarga += `<input type="text" class="" id="nombre_formación" name="nombre_formación" placeholder="Introduce tu titulo">`;
-    recarga += `<input type="text" class="" id="lugar_formación" name="lugar_formación" placeholder="Introduce el centro de estudios">`;
-    recarga += `<input type="date" class="" id="año_entrada" name="año_entrada">`;
-    recarga += `<input type="date" class="" id="año_salida" name="año_salida">`;
-    recarga += `<button>Realizar cambios</button>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">TITULO O DIPLOMA</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="text" class="input" id="nombre_formación" name="nombre_formación" placeholder="Introduce tu titulo">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">LUGAR DONDE LO CURSASTE</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="text" class="input" id="lugar_formación" name="lugar_formación" placeholder="Introduce el centro de estudios">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">AÑO DE ENTRADA</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="date" class="input" id="año_entrada" name="año_entrada">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">AÑO DE SALIDA</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="date" class="input" id="año_salida" name="año_salida">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="aceptar-cuenta-edit">`;
+    recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">CREAR</p></button>`;
+    recarga += `</div>`;
     recarga += `</form>`;
+    recarga += `</div>`;
     recarga += `</div>`;
     contenidoajax.innerHTML = recarga;
 
@@ -1722,9 +1829,28 @@ function crear_estudios(evt) {
             icon: "error",
         });
         return false;
-
+    } else if (/^ *$/.test(lugar_formación)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un lugar de formación",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_entrada)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de entrada",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_salida)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de salida",
+            icon: "error",
+        });
+        return false;
     }
-
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
@@ -1788,16 +1914,57 @@ function form_editar_estudios(evt) {
             console.log(estudios);
             var recarga = ``;
 
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_estudios>`;
-            recarga += `<input type="text" class="" id="nombre_formación" name="nombre_formación" value="${estudios.nombre_formación}">`;
-            recarga += `<input type="text" class="" id="lugar_formación" name="lugar_formación" value="${estudios.lugar_formación}">`;
-            recarga += `<input type="date" class="" id="año_entrada" name="año_entrada" value="${estudios.año_entrada}">`;
-            recarga += `<input type="date" class="" id="año_salida" name="año_salida" value="${estudios.año_salida}">`;
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">NOMBRE FORMACIÓN</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="nombre_formación" name="nombre_formación" value="${estudios.nombre_formación}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">DONDE CURSASTE LA FORMACIÓN</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="lugar_formación" name="lugar_formación" value="${estudios.lugar_formación}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">PRIMER AÑO DE LA FORMACIÓN</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="date" class="input" id="año_entrada" name="año_entrada" value="${estudios.año_entrada}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">ULTIMO AÑO DE LA FORMACIÓN</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="date" class="input" id="año_salida" name="año_salida" value="${estudios.año_salida}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">MODIFICAR</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
-            recarga += `<button id="eliminar">Eliminar idioma</button>`;
+            recarga += `<div class="eliminar-cuenta-edit">`;
+            recarga += `<button class="eliminar-cuenta-btn"><p class="button-text">ELIMINAR</p></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -1832,7 +1999,27 @@ function editar_estudios(evt) {
             icon: "error",
         });
         return false;
-
+    } else if (/^ *$/.test(lugar_formación)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un lugar de formación",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_entrada)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de entrada",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_salida)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de salida",
+            icon: "error",
+        });
+        return false;
     }
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -1866,7 +2053,6 @@ function editar_estudios(evt) {
                 });
 
             }
-
         }
 
     }
@@ -1937,8 +2123,23 @@ function leer_experiencia() {
             var trabajador = respuesta.resultado;
             console.log(trabajador);
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<button id="crear">crear</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
             if (trabajador.curriculum != null) {
 
                 var curriculum = JSON.parse(trabajador.curriculum);
@@ -1948,13 +2149,31 @@ function leer_experiencia() {
 
                         for (let i = 0; i < curriculum.experiencia.length; i++) {
 
-                            recarga += `<div>`;
-                            recarga += `<p>${curriculum.experiencia[i].lugar_experiencia}</p>`;
-                            recarga += `<p>${curriculum.experiencia[i].nombre_experiencia}</p>`;
-                            recarga += `<p>${curriculum.experiencia[i].año_entrada}</p>`;
-                            recarga += `<p>${curriculum.experiencia[i].año_salida}</p>`;
-                            recarga += `<p>${curriculum.experiencia[i].funciones}</p>`;
-                            recarga += `<button class="editar">Editar</button>`;
+                            recarga += `<div class="categoria">`;
+                            recarga += `<div class="categoria-linea">`;
+                            recarga += `<hr class="linea-divisoria">`;
+                            recarga += `</div>`;
+                            recarga += `<div class="categoria-name">`;
+                            recarga += `<p class="categoria-p-name">${curriculum.experiencia[i].lugar_experiencia}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="categoria-text">`;
+                            recarga += `<p class="categoria-p-text">${curriculum.experiencia[i].nombre_experiencia}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="categoria-text">`;
+                            recarga += `<p class="categoria-p-text"><b>Año de entrada: </b>${curriculum.experiencia[i].año_entrada}</p>`;
+                            recarga += `<br>`;
+                            recarga += `<p class="categoria-p-text"><b>Año de salida: </b>${curriculum.experiencia[i].año_salida}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="categoria-text">`;
+                            recarga += `<p class="categoria-p-text" >${curriculum.experiencia[i].funciones}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<br>`;
+                            recarga += `<div class="idioma-btn-div">`;
+                            recarga += `<button class="editar"><i class="fa-solid fa-pen"></i></button>`;
+                            recarga += `</div>`;
                             recarga += `</div>`;
                         }
                     } else {
@@ -1977,6 +2196,8 @@ function leer_experiencia() {
             } else {
 
                 recarga += `<p>Aun no has añadido ninguna experiencia</p>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
             }
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -1994,16 +2215,62 @@ function form_crear_experiencia() {
 
     var contenidoajax = document.getElementById("contenidoajax");
     var recarga = ``;
-    recarga += `<button id="volver">Volver</button>`;
-    recarga += `<div>`;
+    recarga += `<div class="edit-profile">`;
+    recarga += `<div class="return">`;
+    recarga += `<button class="return-btn" id="volver">`;
+    recarga += `<div class="return-icon">`;
+    recarga += `<i class="fa-solid fa-angle-left"></i>`;
+    recarga += `</div>`;
+    recarga += `<p class="return-text">VOLVER</p>`;
+    recarga += `</button>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_experiencia>`;
-    recarga += `<input type="text" class="" id="nombre_experiencia" name="Nombre de empresa..." placeholder="Nombre puesto">`;
-    recarga += `<input type="text" class="" id="lugar_experiencia" name="Lugar..." placeholder="Empresa">`;
-    recarga += `<input type="date" class="" id="año_entrada" name="año_entrada">`;
-    recarga += `<input type="date" class="" id="año_salida" name="año_salida">`;
-    recarga += `<input type="textarea" class="inputregister" id="funciones" name="funciones" placeholder="Funciones dentro de la empresa">`;
-    recarga += `<button>Realizar cambios</button>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">NOMBRE DEL TRABAJO</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="text" class="input" id="nombre_experiencia" name="Nombre de empresa..." placeholder="Nombre puesto">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">DONDE TRABAJASTE</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="text" class="input" id="lugar_experiencia" name="Lugar..." placeholder="Empresa">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">AÑO DE ENTRADA</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="date" class="input" id="año_entrada" name="año_entrada">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">AÑO DE SALIDA</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="date" class="input" id="año_salida" name="año_salida">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += `<p class="p-text">DESCRIBE LO QUE HICISTE EN LA EMPRESA</p>`;
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="textarea" class="text-area" id="funciones" name="funciones" placeholder="Funciones dentro de la empresa">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+    recarga += `<div class="aceptar-cuenta-edit">`;
+    recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">MODIFICAR</p></button>`;
+    recarga += `</div>`;
     recarga += `</form>`;
+    recarga += `</div>`;
     recarga += `</div>`;
     contenidoajax.innerHTML = recarga;
 
@@ -2030,8 +2297,28 @@ function crear_experiencia(evt) {
         });
         return false;
 
+    } else if (/^ *$/.test(lugar_experiencia)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un lugar de experiencia",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_entrada)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de entrada",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_salida)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de salida",
+            icon: "error",
+        });
+        return false;
     }
-
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_experiencia', nombre_experiencia);
@@ -2050,7 +2337,19 @@ function crear_experiencia(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Experiencia",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_experiencia();
+                    }
+                });
+
+            }
         }
 
     }
@@ -2082,18 +2381,68 @@ function form_editar_experiencias(evt) {
             console.log(experiencia);
             var recarga = ``;
 
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
-            recarga += `<form id=form_experiencias>`;
-            recarga += `<input type="text" class="" id="nombre_experiencia" name="Nombre de empresa..." value="${experiencia.nombre_experiencia}">`;
-            recarga += `<input type="text" class="" id="lugar_experiencia" name="Lugar..." value="${experiencia.lugar_experiencia}">`;
-            recarga += `<input type="date" class="" id="año_entrada" name="año_entrada" value="${experiencia.año_entrada}">`;
-            recarga += `<input type="date" class="" id="año_salida" name="año_salida" value="${experiencia.año_salida}">`;
-            recarga += `<input type="textarea" class="inputregister" id="funciones" name="funciones" value="${experiencia.funciones}">`;
-            recarga += `<button>Realizar cambios</button>`;
-            recarga += `</form>`;
-            recarga += `<button id="eliminar">Eliminar experiencia</button>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
             recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
+            recarga += `<form id=form_experiencias>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">NOMBRE DE LA EMPRESA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="nombre_experiencia" name="Nombre de empresa..." value="${experiencia.nombre_experiencia}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">LUGAR DONDE TRABAJASTE</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="lugar_experiencia" name="Lugar..." value="${experiencia.lugar_experiencia}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">AÑO DE ENTRADA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="date" class="input" id="año_entrada" name="año_entrada" value="${experiencia.año_entrada}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">AÑO DE SALIDA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="date" class="input" id="año_salida" name="año_salida" value="${experiencia.año_salida}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">EXPLICA QUE HACIAS EN LA EMPRESA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="textarea" class="text-area" id="funciones" name="funciones" value="${experiencia.funciones}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">MODIFICAR</p></button>`;
+            recarga += `</div>`;
+            recarga += `</form>`;
+            recarga += `<div class="eliminar-cuenta-edit">`;
+            recarga += `<button class="eliminar-cuenta-btn" id="eliminar"><p class="button-text">ELIMINAR</p></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", leer_experiencia);
@@ -2129,6 +2478,27 @@ function editar_experiencias(evt) {
         });
         return false;
 
+    } else if (/^ *$/.test(lugar_experiencia)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un lugar de experiencia",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_entrada)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de entrada",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_salida)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de salida",
+            icon: "error",
+        });
+        return false;
     }
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -2163,7 +2533,6 @@ function editar_experiencias(evt) {
                 });
 
             }
-
         }
 
     }
@@ -2357,7 +2726,6 @@ function crear_habilidades(evt) {
                 });
 
             }
-
         }
 
     }
@@ -2456,7 +2824,6 @@ function editar_habilidades(evt) {
                 });
 
             }
-
         }
 
     }
@@ -2740,14 +3107,32 @@ function leer_configuracion() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
-            recarga += `<button id="desactivar">Desactivar</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
+            recarga += `<div class="eliminar-cuenta-div">`;
+            recarga += `<button class="eliminar-cuenta-btn" id="desactivar"><p class="button-text">Desactivar cuenta</button>`;
             if (trabajador.mostrado == "1") {
-                recarga += `<p class="">SI</p>`;
+                // recarga += `<p class="">SI</p>`;
             } else {
-                recarga += `<p class="">NO</p>`;
+                // recarga += `<p class="">NO</p>`;
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -2784,18 +3169,45 @@ function form_configuracion() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
+            recarga += `<div class="edit-profile">`;
             if (trabajador.mostrado == 1) {
-                recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '" checked>';
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">¿MOSTRAR CUENTA?</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += '<input type="checkbox" class="input" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '" checked>';
+                recarga += `</div>`;
+                recarga += `</div>`;
 
             } else {
-                recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '">';
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">¿MOSTRAR CUENTA?</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += '<input type="checkbox" class="input" id="mostrado" name="mostrado" value="' + trabajador.mostrado + '">';
+                recarga += `</div>`;
+                recarga += `</div>`;
 
             }
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -2882,19 +3294,7 @@ function editar_logo_emp() {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            if (respuesta.resultado == "OK") {
-
-                swal.fire({
-                    title: "Editar logo",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        mostrarperfilJS();
-                    }
-                });
-
-            }
+            mostrarperfilJS();
 
         }
     }
@@ -3137,7 +3537,7 @@ function leer_sobre_empresa() {
             recarga += `<div class="categoria">`;
             recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `<i class="fa-solid fa-briefcase"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-name">`;
             //titulo
@@ -3163,7 +3563,7 @@ function leer_sobre_empresa() {
             recarga += `<div class="categoria">`;
             recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `<i class="fa-solid fa-building"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-name">`;
             //titulo
@@ -3490,6 +3890,7 @@ function editar_buscamos_empresa(evt) {
     ajax.send(formData)
 
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
 
 function leer_configuracion_empresa() {
     //desactivar cuenta
@@ -3510,14 +3911,31 @@ function leer_configuracion_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
             recarga += `<button id="desactivar">Desactivar</button>`;
             if (empresa.mostrado == "1") {
                 recarga += `<p class="">SI</p>`;
             } else {
                 recarga += `<p class="">NO</p>`;
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -3554,7 +3972,16 @@ function form_configuracion_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
             recarga += `<div>`;
             recarga += `<form id=form_configuracion>`;
             if (empresa.mostrado == 1) {
@@ -3566,6 +3993,7 @@ function form_configuracion_empresa() {
             }
             recarga += `<button>Realizar cambios</button>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 

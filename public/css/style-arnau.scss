@@ -35,13 +35,8 @@ body {
             width: 50%;
         }
     }
-    .region-content {
-        height: 90vh;
-        height: #{"calc(var(--vh, 1vh) * 90)"};
-        top: 10vh;
-        position: absolute;
+    .region-swiper {
         left: 0;
-        width: 100%;
         .swiper {
             //TINDER
             width: 100vw;

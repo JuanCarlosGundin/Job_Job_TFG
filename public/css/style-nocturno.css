@@ -3,78 +3,78 @@
 *,
 *:before,
 *:after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .darkmodeswitch {
-  z-index: 2;
-  margin-left: 2%;
-  margin-top: 1.5%;
-  background: #3494b1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  border-radius: 1rem;
+    z-index: 2;
+    margin-left: 2%;
+    margin-top: 1.5%;
+    background: #3494b1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 1rem;
 }
 
 .darkmodeswitch span {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  color: #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
 }
 
 .darkmodeswitch::after {
-  display: block;
-  background: #fffbf5;
-  width: 2rem;
-  height: 2rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: unset;
-  border-radius: 3rem;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
-  content: "";
+    display: block;
+    background: #fffbf5;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: unset;
+    border-radius: 3rem;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
+    content: "";
 }
 
 .darkmodeswitch.active {
-  background: #fdd384;
+    background: #fdd384;
 }
 
 .darkmodeswitch.active::after {
-  left: unset;
-  right: 0;
+    left: unset;
+    right: 0;
 }
 
 .bodylogin.oscuro {
-  background-color: #012A4A;
+    background-color: #012A4A;
 }
 
 .bodylogin.oscuro .modal-login {
-  background-color: #0B4B78;
-  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
-          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+    background-color: #0B4B78;
+    -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
 }
 
 .bodylogin.oscuro .modal-login .botones .inicio-activo {
-  background-color: #03365E !important;
+    background-color: #03365E !important;
 }
 
 .bodylogin.oscuro .modal-login .botones .registrar-activo {
-  background-color: #03365E !important;
+    background-color: #03365E !important;
 }
 
 .bodylogin.oscuro .modal-login .modal-content {
-  background-color: #0B4B78;
+    background-color: #0B4B78;
 }
 
 .bodylogin.oscuro .modal-login h2,
@@ -83,159 +83,159 @@
 .bodylogin.oscuro .modal-login .izquierda,
 .bodylogin.oscuro .modal-login .derecha,
 .bodylogin.oscuro .modal-login p {
-  color: white !important;
+    color: white !important;
 }
 
 .bodylogin.oscuro .modal-login .inputlogin,
 .bodylogin.oscuro .modal-login .inputregister {
-  background-color: white;
-  border: white;
+    background-color: white;
+    border: white;
 }
 
 .bodylogin.oscuro .modal-login .botonlogin,
 .bodylogin.oscuro .modal-login .botonregister {
-  background-color: #0060A4;
-  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
-          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+    background-color: #0060A4;
+    -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
 }
 
 .bodylogin.oscuro .modal-login .btn-signin {
-  /*PROVISIONAL*/
-  background-color: #0B4B78 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  color: white;
+    /*PROVISIONAL*/
+    background-color: #0B4B78 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    color: white;
 }
 
 .bodylogin.oscuro .modal-login .btn-register {
-  /*PROVISIONAL*/
-  background-color: #0B4B78 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  color: white;
+    /*PROVISIONAL*/
+    background-color: #0B4B78 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    color: white;
 }
 
 .bodylogin.oscuro .modal-login .cuadrado {
-  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
-          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
-  background: #0060A4;
-  border: #0060A4 solid 1.5px;
+    -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+    background: #0060A4;
+    border: #0060A4 solid 1.5px;
 }
 
 .bodylogin.oscuro .modal-login .izquierda,
 .bodylogin.oscuro .modal-login .derecha {
-  color: white;
+    color: white;
 }
 
 .bodylogin.oscuro .modal-login .mas,
 .bodylogin.oscuro .modal-login .menos {
-  color: white;
+    color: white;
 }
 
 .oscuro {
-  background-color: #012A4A;
+    background-color: #012A4A;
 }
 
 .oscuro .barra-navbar {
-  background-color: #0B4B78;
+    background-color: #0B4B78;
 }
 
 .oscuro .region-navbar {
-  background-color: #0B4B78;
+    background-color: #0B4B78;
 }
 
 .oscuro .region-navbar .main-icon {
-  background-color: #0B4B78;
+    background-color: #0B4B78;
 }
 
 .oscuro .region-navbar .icon {
-  color: #ffffff;
-  background-color: #0B4B78;
+    color: #ffffff;
+    background-color: #0B4B78;
 }
 
 .oscuro .region-navbar .menu-item {
-  background-color: #0B4B78;
+    background-color: #0B4B78;
 }
 
 .oscuro .region-navbar .menu-item .icon {
-  color: white;
+    color: white;
 }
 
 .oscuro .region-navbar .main-icon {
-  color: white;
-  background-color: #0B4B78;
+    color: white;
+    background-color: #0B4B78;
 }
 
 .oscuro .region-navbar .active-icon {
-  background-color: #012A4A;
+    background-color: #012A4A;
 }
 
 .oscuro .region-navbar .active-left {
-  background-color: #012A4A;
+    background-color: #012A4A;
 }
 
 .oscuro .region-navbar .active-right {
-  background-color: #012A4A;
+    background-color: #012A4A;
 }
 
 .oscuro .region-navbar .active {
-  background-color: #012A4A;
+    background-color: #012A4A;
 }
 
 .oscuro .region-navbar .active .icon {
-  color: white;
-  background-color: #012A4A;
+    color: white;
+    background-color: #012A4A;
 }
 
 @media only screen and (max-width: 900px) {
-  .oscuro .region-navbar .active .icon {
-    background-color: #012A4A;
-  }
+    .oscuro .region-navbar .active .icon {
+        background-color: #012A4A;
+    }
 }
 
 .oscuro .region-navbar .active-center {
-  background-color: #012A4A;
+    background-color: #012A4A;
 }
 
 .page-home.oscuro {
-  background-color: #012A4A;
+    background-color: #012A4A;
 }
 
 .page-home.oscuro .botones-home button {
-  background-color: #0B4B78;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+    background-color: #0B4B78;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 .page-home.oscuro .botones-home .boton-info .icono-maletin i,
 .page-home.oscuro .botones-home .boton-maletin .icono-maletin i,
 .page-home.oscuro .botones-home .boton-cruz .icono-maletin i {
-  color: white;
+    color: white;
 }
 
 .page-home.oscuro .botones-home .boton-info .icono-info i,
 .page-home.oscuro .botones-home .boton-maletin .icono-info i,
 .page-home.oscuro .botones-home .boton-cruz .icono-info i {
-  color: white;
+    color: white;
 }
 
 .page-home.oscuro .botones-home .boton-info .icono-cruz i,
 .page-home.oscuro .botones-home .boton-maletin .icono-cruz i,
 .page-home.oscuro .botones-home .boton-cruz .icono-cruz i {
-  color: white;
+    color: white;
 }
 
 .oscuro .ver-perfil .user-poligon2 {
-  background-color: #03365E !important;
+    background-color: #03365E !important;
 }
 
 .oscuro .ver-perfil .user-div-category {
-  background-color: #012A4A !important;
-  border-color: #012A4A !important;
+    background-color: #012A4A !important;
+    border-color: #012A4A !important;
 }
 
 .oscuro .ver-perfil .user-poligon {
-  background-color: #012A4A !important;
+    background-color: #012A4A !important;
 }
 
 .oscuro .ver-perfil .p-name,
@@ -243,39 +243,41 @@
 .oscuro .ver-perfil .p-age,
 .oscuro .ver-perfil .p-category,
 .oscuro .ver-perfil .user-category-icon {
-  color: white !important;
+    color: white !important;
 }
 
 .oscuro .ver-perfil .logout-btn,
 .oscuro .ver-perfil .input-file {
-  background-color: #437EA9 !important;
+    background-color: #437EA9 !important;
 }
 
 .oscuro .ver-perfil .linea-divisoria {
-  background-color: grey !important;
+    background-color: grey !important;
 }
 
 .edit-profile .p-text,
 .edit-profile .return-text,
 .edit-profile i {
-  color: white !important;
+    color: white !important;
 }
 
 .oscuro p {
-  color: white;
+    color: white;
 }
 
 .oscuro .vista-profile .categoria-edit .return .return-btn {
-  color: white;
+    color: white;
 }
 
 .oscuro .vista-profile .categoria-profile .categoria .categoria-icon,
 .oscuro .vista-profile .categoria-profile .categoria .categoria-name,
 .oscuro .vista-profile .categoria-profile .categoria .categoria-text {
-  color: white !important;
+    color: white !important;
 }
 
 .buscador {
-  background-color: #012A4A !important;
+    background-color: #012A4A !important;
 }
+
+
 /*# sourceMappingURL=style-nocturno.css.map */

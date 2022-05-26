@@ -1,5 +1,4 @@
 window.onload = function() {
-
     leeridiomas();
     JSONidiomas = {};
     mostrarperfilJS();
@@ -152,6 +151,7 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 recarga += `<div class="user-edit-div">`;
                 recarga += '<button class="user-edit-btn" id="boton_editar_user"><p class="edit-btn-p">EDITAR</p></button>';
+                recarga += `<button class="user-logout-btn" onClick="window.location.href='logout';"><p class="logout-btn-p">LOGOUT</p></button>`;
                 recarga += `</div>`;
                 recarga += `</button>`;
                 recarga += `</div>`;
@@ -470,18 +470,96 @@ function leer_editar_user() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
-            recarga += `<p class="">${trabajador.mail}</p>`;
-            recarga += `<p class="">contraseña</p>`;
-            recarga += `<p class="">${trabajador.nombre}</p>`;
+            recarga += `<div class="vista-profile">`;
+            //region edit
+            recarga += `<div class="categoria-edit">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //fin return
+            //Editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
+            recarga += `</div>`;
+            //fin editar
+            recarga += `</div>`;
+            //fin region edit
+            recarga += `<div class="categoria-profile">`;
+            //Email
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-at"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            recarga += `<p class="categoria-p-name">EMAIL</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            recarga += `<p class="categoria-p-text">${trabajador.mail}</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            //Contraseña
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-asterisk"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            recarga += `<p class="categoria-p-name">CONTRASEÑA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            recarga += `<p class="categoria-p-text">***************</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            //Nombre
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-signature"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            recarga += `<p class="categoria-p-name">NOMBRE</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            recarga += `<p class="categoria-p-text">${trabajador.nombre}</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
             if (!trabajador.apellido) {
 
                 recarga += `<p class="">sin informar</p>`;
             } else {
-
-                recarga += `<p class="">${trabajador.apellido}</p>`;
+                //Apellido
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-signature"></i>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">APELLIDO</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">${trabajador.apellido}</p>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -515,33 +593,85 @@ function form_editar_user() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //form
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_user>`;
-
-            recarga += `<input type="email" class="" id="mail" name="mail" value="${trabajador.mail}">`;
-
+            //Email
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">Email</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="email" class="input" id="mail" name="mail" value="${trabajador.mail}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
             //antigua contraseña
-            recarga += `<input type="password" class="" id="contra_old" name="contra_old">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">Contraseña actual</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra_old" name="contra_old">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             //nueva contra1
-            recarga += `<input type="password" class="" id="contra1" name="contra1">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">Contraseña nueva</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra1" name="contra1">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             //nueva contra2
-            recarga += `<input type="password" class="" id="contra2" name="contra2">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">Repite la contraseña nueva</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra2" name="contra2">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
-            recarga += `<input type="text" class="" id="nombre" name="nombre" value="${trabajador.nombre}">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += `<p class="p-text">Nombre</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="nombre" name="nombre" value="${trabajador.nombre}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             if (!trabajador.apellido) {
 
                 recarga += `<input type="text" class="" id="apellido" name="apellido" placeholder="sin informar">`;
             } else {
-
-                recarga += `<input type="text" class="" id="apellido" name="apellido" value="${trabajador.apellido}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Apellido</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="apellido" name="apellido" value="${trabajador.apellido}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
-
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">REALIZAR CAMBIOS</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -691,11 +821,11 @@ function leer_sobre_mi() {
             recarga += `<div class="categoria">`;
             recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `<i class="fa-solid fa-user-graduate"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-name">`;
             //titulo
-            recarga += `<p class="categoria-p-name">Sobre mi</p>`;
+            recarga += `<p class="categoria-p-name">Especialización</p>`;
             recarga += `</div>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-linea">`;
@@ -705,7 +835,7 @@ function leer_sobre_mi() {
             //contenido
             if (!trabajador.campo_user) {
 
-                recarga += `<p class="categoria-p-text">sin informar</p>`;
+                recarga += `<p class="categoria-p-text">Sin especificar</p>`;
             } else {
 
                 recarga += `<p class="categoria-p-text">${trabajador.campo_user}</p>`;
@@ -743,11 +873,11 @@ function leer_sobre_mi() {
             recarga += `<div class="categoria">`;
             recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `<i class="fa-solid fa-house"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-name">`;
             //titulo
-            recarga += `<p class="categoria-p-name">Sobre mi</p>`;
+            recarga += `<p class="categoria-p-name">Vivo en</p>`;
             recarga += `</div>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-linea">`;
@@ -757,7 +887,7 @@ function leer_sobre_mi() {
             //contenido
             if (!trabajador.loc_trabajador) {
 
-                recarga += `<p class="categoria-p-text">sin informar</p>`;
+                recarga += `<p class="categoria-p-text">Sin especificar</p>`;
             } else {
 
                 recarga += `<p class="categoria-p-text">${trabajador.loc_trabajador}</p>`;
@@ -769,11 +899,11 @@ function leer_sobre_mi() {
             recarga += `<div class="categoria">`;
             recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `<i class="fa-solid fa-code"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-name">`;
             //titulo
-            recarga += `<p class="categoria-p-name">Sobre mi</p>`;
+            recarga += `<p class="categoria-p-name">Lenguaje favorito</p>`;
             recarga += `</div>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-linea">`;
@@ -783,33 +913,25 @@ function leer_sobre_mi() {
             //contenido
             if (!trabajador.lenguaje_preferido) {
 
-                recarga += `<p class="categoria-p-text">sin informar</p>`;
+                recarga += `<p class="categoria-p-text">Sin especificar</p>`;
             } else {
 
                 recarga += `<p class="categoria-p-text">${trabajador.lenguaje_preferido}</p>`;
             }
             recarga += `</div>`;
             recarga += `</div>`;
+            recarga += '<hr>';
             //bloque pequeño
             //bloque pequeño
             recarga += `<div class="categoria">`;
-            recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
-            recarga += `</div>`;
-            recarga += `<div class="categoria-name">`;
-            //titulo
-            recarga += `<p class="categoria-p-name">Sobre mi</p>`;
-            recarga += `</div>`;
-            recarga += `</div>`;
-            recarga += `<div class="categoria-linea">`;
-            recarga += `<hr class="linea-divisoria">`;
+            recarga += `<i class="fa-brands fa-linkedin"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
             if (!trabajador.linkedin) {
 
-                recarga += `<p class="categoria-p-text">sin informar</p>`;
+                recarga += `<p class="categoria-p-text">Sin especificar</p>`;
             } else {
 
                 recarga += `<p class="categoria-p-text">${trabajador.linkedin}</p>`;
@@ -819,23 +941,15 @@ function leer_sobre_mi() {
             //bloque pequeño
             //bloque pequeño
             recarga += `<div class="categoria">`;
-            recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
+            recarga += `<i class="fa-solid fa-phone"></i>`;
             recarga += `</div>`;
-            recarga += `<div class="categoria-name">`;
             //titulo
-            recarga += `<p class="categoria-p-name">Sobre mi</p>`;
-            recarga += `</div>`;
-            recarga += `</div>`;
-            recarga += `<div class="categoria-linea">`;
-            recarga += `<hr class="linea-divisoria">`;
-            recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
             if (!trabajador.telefono) {
 
-                recarga += `<p class="categoria-p-text">sin informar</p>`;
+                recarga += `<p class="categoria-p-text">Sin especificar</p>`;
             } else {
 
                 recarga += `<p class="categoria-p-text">${trabajador.telefono}</p>`;
@@ -845,23 +959,14 @@ function leer_sobre_mi() {
             //bloque pequeño
             //bloque pequeño
             recarga += `<div class="categoria">`;
-            recarga += `<div class="categoria-icon-name">`;
             recarga += `<div class="categoria-icon">`;
-            recarga += `<i class="fa-solid fa-address-card"></i>`;
-            recarga += `</div>`;
-            recarga += `<div class="categoria-name">`;
-            //titulo
-            recarga += `<p class="categoria-p-name">Sobre mi</p>`;
-            recarga += `</div>`;
-            recarga += `</div>`;
-            recarga += `<div class="categoria-linea">`;
-            recarga += `<hr class="linea-divisoria">`;
+            recarga += `<i class="fa-brands fa-github"></i>`;
             recarga += `</div>`;
             recarga += `<div class="categoria-text">`;
             //contenido
             if (!trabajador.github) {
 
-                recarga += `<p class="categoria-p-text">sin informar</p>`;
+                recarga += `<p class="categoria-p-text">Sin especificar</p>`;
             } else {
 
                 recarga += `<p class="categoria-p-text">${trabajador.github}</p>`;
@@ -904,68 +1009,166 @@ function form_editar_sobre_mi() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_sobre_mi>`;
 
             if (!trabajador.campo_user) {
-
-                recarga += `<input type="text" class="" id="campo_user" name="campo_user" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Especialización</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="campo_user" name="campo_user" placeholder="sin informar">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="campo_user" name="campo_user" value="${trabajador.campo_user}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Especialización</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="campo_user" name="campo_user" value="${trabajador.campo_user}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!trabajador.about_user) {
-
-                recarga += `<input type="text" class="" id="about_user" name="about_user" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Sobre mi</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="about_user" name="about_user" placeholder="sin informar">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
 
-                recarga += `<input type="text" class="" id="about_user" name="about_user" value="${trabajador.about_user}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Sobre mi</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="about_user" name="about_user" value="${trabajador.about_user}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!trabajador.loc_trabajador) {
-
-                recarga += `<input type="text" class="" id="loc_trabajador" name="loc_trabajador" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Donde vivo</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="loc_trabajador" name="loc_trabajador" placeholder="sin informar">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
 
-                recarga += `<input type="text" class="" id="loc_trabajador" name="loc_trabajador" value="${trabajador.loc_trabajador}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Donde vivo</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="loc_trabajador" name="loc_trabajador" value="${trabajador.loc_trabajador}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!trabajador.lenguaje_preferido) {
-
-                recarga += `<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Lenguaje favorito</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="sin informar">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="lenguaje_preferido" name="lenguaje_preferido" value="${trabajador.lenguaje_preferido}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Lenguaje favorito</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="lenguaje_preferido" name="lenguaje_preferido" value="${trabajador.lenguaje_preferido}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!trabajador.linkedin) {
-
-                recarga += `<input type="text" class="" id="linkedin" name="linkedin" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Linkedin</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="linkedin" name="linkedin" placeholder="sin informar">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="linkedin" name="linkedin" value="${trabajador.linkedin}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Linkedin</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="linkedin" name="linkedin" value="${trabajador.linkedin}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!trabajador.telefono) {
-
-                recarga += `<input type="text" class="" id="telefono" name="telefono" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Numero de teléfono</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="telefono" name="telefono" placeholder="sin informar">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="telefono" name="telefono" value="${trabajador.telefono}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Numero de teléfono</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="telefono" name="telefono" value="${trabajador.telefono}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!trabajador.github) {
-
-                recarga += `<input type="text" class="" id="github" name="github" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Github</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="github" name="github" placeholder="sin informar">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="github" name="github" value="${trabajador.github}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += `<p class="p-text">Github</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="github" name="github" value="${trabajador.github}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">REALIZAR CAMBIOS</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -991,7 +1194,6 @@ function editar_sobre_mi(evt) {
     var linkedin = document.getElementById("linkedin").value;
     var telefono = document.getElementById("telefono").value;
     var github = document.getElementById("github").value;
-    var regex = new RegExp('^\\([0-9]{2}\\)((3[0-9]{3}-[0-9]{4})|(9[0-9]{3}-[0-9]{5}))$');
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -1032,6 +1234,7 @@ function editar_sobre_mi(evt) {
         });
         return false;
     }
+
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
@@ -1043,7 +1246,6 @@ function editar_sobre_mi(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1086,8 +1288,22 @@ function leer_idiomas() {
             var trabajador = respuesta.resultado;
             console.log(trabajador);
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<button id="crear">crear</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
             if (trabajador.curriculum != null) {
 
                 var curriculum = JSON.parse(trabajador.curriculum);
@@ -1098,8 +1314,23 @@ function leer_idiomas() {
                         for (let i = 0; i < curriculum.idiomas.length; i++) {
 
                             recarga += `<div>`;
+                            recarga += `<div class="categoria">`;
+                            recarga += `<div class="categoria-icon">`;
+                            recarga += `<i class="fa-solid fa-signature"></i>`;
+                            recarga += `</div>`;
+                            recarga += `<div class="categoria-name">`;
+                            recarga += `<p class="categoria-p-name">APELLIDO</p>`;
+                            recarga += `</div>`;
+                            recarga += `<div class="categoria-linea">`;
+                            recarga += `<hr class="linea-divisoria">`;
+                            recarga += `</div>`;
+                            recarga += `<div class="categoria-text">`;
                             recarga += `<p>${curriculum.idiomas[i].nombre_idioma}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<div class="categoria-text">`;
                             recarga += `<p>${curriculum.idiomas[i].nivel_idioma}</p>`;
+                            recarga += `</div>`;
+                            recarga += `</div>`;
                             recarga += `<button class="editar">Editar</button>`;
                             recarga += `</div>`;
                         }
@@ -1494,6 +1725,7 @@ function crear_estudios(evt) {
 
     }
 
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_formación', nombre_formación);
@@ -1818,19 +2050,6 @@ function crear_experiencia(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            if (respuesta.resultado == "OK") {
-
-                swal.fire({
-                    title: "Experiencia",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_experiencia();
-                    }
-                });
-
-            }
 
         }
 
@@ -2495,7 +2714,6 @@ function editar_disponibilidad(evt) {
                 });
 
             }
-
         }
 
     }
@@ -2635,7 +2853,6 @@ function editar_configuracion(evt) {
                 });
 
             }
-
         }
 
     }
@@ -3091,8 +3308,6 @@ function editar_sobre_empresa(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -3106,8 +3321,6 @@ function editar_sobre_empresa(evt) {
                 });
 
             }
-
-
         }
 
     }
@@ -3257,8 +3470,6 @@ function editar_buscamos_empresa(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -3272,7 +3483,6 @@ function editar_buscamos_empresa(evt) {
                 });
 
             }
-
         }
 
     }
