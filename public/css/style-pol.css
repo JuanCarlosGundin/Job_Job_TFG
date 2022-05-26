@@ -515,6 +515,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .vista-profile .categoria-edit {
+    margin-bottom: 10px;
+  }
 }
 
 .vista-profile .categoria-edit .return {
@@ -585,6 +592,11 @@ body {
   background-color: #042944;
 }
 
+.vista-profile .categoria-profile {
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
 .vista-profile .categoria-profile .categoria {
   padding: 2vh;
   width: 50%;
@@ -613,7 +625,6 @@ body {
 .vista-profile .categoria-profile .categoria .categoria-text .categoria-p-text {
   margin: 0;
   font-size: medium;
-  color: black;
 }
 
 .vista-profile .categoria-profile .categoria .categoria-linea {
@@ -710,7 +721,7 @@ body {
   font-size: large;
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div {
+.vista-profile .eliminar-cuenta-div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -719,7 +730,7 @@ body {
           justify-content: center;
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div .eliminar-cuenta-btn {
+.vista-profile .eliminar-cuenta-div .eliminar-cuenta-btn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -750,19 +761,19 @@ body {
   will-change: box-shadow, transform;
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div .eliminar-cuenta-btn:focus {
+.vista-profile .eliminar-cuenta-div .eliminar-cuenta-btn:focus {
   -webkit-box-shadow: #eeb8b8 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
           box-shadow: #eeb8b8 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div .eliminar-cuenta-btn:active {
+.vista-profile .eliminar-cuenta-div .eliminar-cuenta-btn:active {
   -webkit-box-shadow: #eeb8b8 0 3px 7px inset;
           box-shadow: #eeb8b8 0 3px 7px inset;
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div .eliminar-cuenta-btn .button-text {
+.vista-profile .eliminar-cuenta-div .eliminar-cuenta-btn .button-text {
   font-weight: bolder;
   font-size: 15px;
 }
@@ -792,7 +803,7 @@ body {
           align-items: center;
   padding: 0;
   height: 40px;
-  color: #000000 !important;
+  color: #000000;
 }
 
 .edit-profile .return .return-btn:hover {
@@ -801,11 +812,9 @@ body {
   border-radius: 15px;
 }
 
-.edit-profile .return .return-btn i,
 .edit-profile .return .return-btn .return-icon {
   float: left;
   margin-right: 5px;
-  color: black;
 }
 
 .edit-profile .return .return-btn .return-text {
@@ -813,7 +822,6 @@ body {
   float: left;
   font-size: medium;
   font-weight: bold;
-  color: black;
 }
 
 .edit-profile .edit-inputs .edit-input {
@@ -832,7 +840,6 @@ body {
   margin: 0;
   font-size: medium;
   font-weight: 500;
-  color: #000000;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -1466,7 +1473,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 100%;
 }
 
 .main-chat .chat-main-sticky {
@@ -1540,7 +1546,7 @@ body {
 .main-chat .chat-main-sticky .chat-main-curve:before {
   content: "";
   position: absolute;
-  top: 20px;
+  top: 2.5vh;
   left: 0;
   width: 100%;
   height: 3.5vh;

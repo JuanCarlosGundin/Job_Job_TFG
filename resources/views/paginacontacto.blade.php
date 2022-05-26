@@ -65,7 +65,6 @@
     </div>
     <script src="js/ajaxcontacto.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/modo_nocturno.js"></script>
 </body>
 
 </html>
