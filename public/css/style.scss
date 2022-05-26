@@ -53,7 +53,7 @@ body {
     height: 90vh;
     width: 85vw;
     @media(min-width: $tablet) {
-        height: 100vh;
+        height: 100%;
     }
 }
 
@@ -175,7 +175,7 @@ body {
 
 .barra-navbar {
     background-color: white;
-    height: 10vh;
+    height: 10%;
     z-index: 100;
     position: sticky;
     .barra-navbar-btn {
