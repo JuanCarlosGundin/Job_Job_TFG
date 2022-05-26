@@ -123,11 +123,19 @@ class PtecnicaController extends Controller{
         }
     }
 
+    public function entrar_ptecnica_trabajador($id_empresa) {
+        try {
+            $empresa=DB::table('tbl_ptecnica')
+                ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
+                ->where('id_empresa', '=', $id_empresa)->first();
+            return response()->json(array('trabajador' => $empresa));
+        } catch (\Exception $e) {
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
+    }
+
     public function insertar_trabajador_ptecnica(Request $req, $id_pt) {
         $id=session()->get('id_user');
-        
-
-        $zip_participante = $req->file('zip_participante')->store('zip','public');
 
         try {
             DB::beginTransaction();
@@ -137,6 +145,11 @@ class PtecnicaController extends Controller{
             for ($i=0; $i < $contador; $i++) { 
                 $id_participante=$json_prueba[$i]->id_participante;
                 if ($id_participante==strval($id)){
+                    $zip=$json_prueba[$i]->zip_participante;
+                    if ($zip != null) {
+                        Storage::delete('public/'.$zip);
+                    }
+                    $zip_participante = $req->file('zip_participante')->store('zip','public');
                     $cambio="json_prueba=JSON_REPLACE(json_prueba, '$[".$i."].zip_participante', '".$zip_participante."')";
                     DB::select("UPDATE tbl_ptecnica SET ".$cambio." WHERE id=?",[$id_pt]);
                 }

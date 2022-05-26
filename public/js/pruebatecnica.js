@@ -176,16 +176,27 @@ function mostrar_prueba_tecnica(evt) {
                 <div>
                     <p>Descripción:</p>
                     <p>${trabajador.descripcion}</p>
-                </div>
-                <div>
+                </div>`;
+            if (respuesta.hasOwnProperty('existe')) {
+                recarga += `<div>
+                <button id="entrar_prueba">Entrar prueba</button>
+                </div>`;
+            } else {
+                recarga += `<div>
                     <button id="iniciar_prueba">Iniciar prueba</button>
-                </div>
-            </div>
+                </div>`;
+            }
+            recarga += `</div>
             `;
             contenidoajax.innerHTML = recarga;
             document.getElementById("volver").addEventListener("click", leer_contenido)
-            document.getElementById("iniciar_prueba").id_empresa = trabajador.id_empresa;
-            document.getElementById("iniciar_prueba").addEventListener("click", iniciar_ptecnica_trabajador)
+            if (respuesta.hasOwnProperty('existe')) {
+                document.getElementById("entrar_prueba").id_empresa = trabajador.id_empresa;
+                document.getElementById("entrar_prueba").addEventListener("click", entrar_ptecnica_trabajador)
+            } else {
+                document.getElementById("iniciar_prueba").id_empresa = trabajador.id_empresa;
+                document.getElementById("iniciar_prueba").addEventListener("click", iniciar_ptecnica_trabajador)
+            }
 
         }
     }
@@ -264,6 +275,67 @@ function iniciar_ptecnica_trabajador(evt) {
     }
     ajax.send(formData);
 
+}
+
+function entrar_ptecnica_trabajador(evt) {
+    var id_empresa = evt.currentTarget.id_empresa;
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    var ajax = objetoAjax();
+    ajax.open("POST", "entrar_ptecnica_trabajador/" + id_empresa, true);
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText);
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            var recarga = ``;
+            console.log(respuesta);
+            var trabajador = respuesta.trabajador;
+            var date_p = new Date(trabajador.fecha_publicacion);
+            var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
+            var date_l = new Date(trabajador.fecha_limite);
+            var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
+            recarga += `
+            <button id="volver">Volver</button>
+            <div>
+            <p>Prueba tecnica para:</p>
+            <p>${trabajador.enunciado}</p>
+            <div>
+                <p>Empresa</p>
+                <p>${trabajador.nom_emp}</p>
+            </div>
+            <div>
+                <p>Duración</p>
+                <p>${trabajador.duracion}</p>
+            </div>
+            <div>
+                <p>Fecha de publicación</p>
+                <p>${fecha_publicacion}</p>
+            </div>
+            <div>
+                <p>Fecha limite</p>
+                <p>${fecha_limite}</p>
+            </div>
+            <div>
+                <p>Formato de respuesta</p>
+                <p>Texto donde dice zip</p>
+            </div>
+            <form id="formarchivo" enctype="multipart/form-data">
+                <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
+            </form>
+            </div>
+            `;
+            contenidoajax.innerHTML = recarga;
+            document.getElementById("volver").id_empresa = trabajador.id_empresa;
+            document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
+            document.getElementById("formarchivo").id_pt = trabajador.id;
+            document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
+
+        }
+    }
+    ajax.send(formData);
 }
 
 function enviar_zip_trabajador(evt) {
