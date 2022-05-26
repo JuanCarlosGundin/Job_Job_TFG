@@ -68,21 +68,21 @@ class PtecnicaController extends Controller{
                 $json_prueba='[{
                     "id_participante": "'.$id.'",
                     "inicio_participante": "'.$inicio_participante.'",
-                    "zip_participante": "null"
+                    "zip_participante": null
                 }]';
                 DB::select("UPDATE tbl_ptecnica SET json_prueba=? WHERE id_empresa=?",[$json_prueba,$id_empresa]);
             } else{
                 $json_prueba=json_decode($existejson->json_prueba);
-                /* for ($i=0; $i < count($json_prueba); $i++) { 
-                    # code...
-                } */
-                return response()->json(array('trabajador' => $json_prueba, 'tipo' => gettype($json_prueba), 'uno' =>$json_prueba[0]));
-                if ($json_prueba->id_participante){
-                    return response()->json(array('trabajador' => 'existe'));
-                } else {
-                    return response()->json(array('trabajador' => 'nofunciona'));
+                $contador=count($json_prueba);
+                for ($i=0; $i < $contador; $i++) {
+                    $id_participante=$json_prueba[$i]->id_participante;
+                    if ($id_participante==strval($id)){
+                        return response()->json(array('existe' => 'existe'));
+                    } else {
+                        $json_prueba="JSON_ARRAY_APPEND(json_prueba, '$', JSON_OBJECT('id_participante', '".$id."', 'inicio_participante', '".$inicio_participante."', 'zip_participante', NULL))";
+                    }
                 }
-                $json_prueba="JSON_ARRAY_APPEND(json_prueba, '$', JSON_OBJECT('id_participante', '".$id."', 'inicio_participante', '".$inicio_participante."', 'zip_participante', 'null'))";
+
                 //no puedo usar ? en json_prueba por un bug en php
                 DB::select("UPDATE tbl_ptecnica SET json_prueba=".$json_prueba." WHERE id_empresa=?",[$id_empresa]);
             }
@@ -106,7 +106,16 @@ class PtecnicaController extends Controller{
 
         try {
             DB::beginTransaction();
-            
+            $json= DB::table('tbl_ptecnica')->select('json_prueba')->where('id','=',$id_pt)->first();
+            $json_prueba=json_decode($json->json_prueba);
+            $contador=count($json_prueba);
+            for ($i=0; $i < $contador; $i++) { 
+                $id_participante=$json_prueba[$i]->id_participante;
+                if ($id_participante==strval($id)){
+                    $cambio="json_prueba=JSON_REPLACE(json_prueba, '$[".$i."].zip_participante', '".$zip_participante."')";
+                    DB::select("UPDATE tbl_ptecnica SET ".$cambio." WHERE id=?",[$id_pt]);
+                }
+            }
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
         } catch (\Exception $e) {

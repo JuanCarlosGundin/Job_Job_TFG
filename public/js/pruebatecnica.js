@@ -95,7 +95,7 @@ function leer_contenido() {
                 contenidoajax.innerHTML = recarga;
                 document.getElementById("crear").addEventListener("click", form_crear_prueba_tecnica)
                 for (let i = 0; i < empresa.length; i++) {
-                    document.getElementsByClassName("pruebas")[i].id = empresa[i].id;
+                    document.getElementsByClassName("pruebas")[i].id_pt = empresa[i].id;
                     document.getElementsByClassName("pruebas")[i].addEventListener("click", mostrar_prueba_tecnica_empresa)
 
                 }
@@ -205,16 +205,17 @@ function iniciar_ptecnica_trabajador(evt) {
         console.log(ajax.responseText);
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
-            var trabajador = respuesta.trabajador;
-            var date_p = new Date(trabajador.fecha_publicacion);
-            var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
-            var date_l = new Date(trabajador.fecha_limite);
-            var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
             var recarga = ``;
-            recarga += `
-            <button id="volver">Volver</button>
-            <div>
+            console.log(respuesta);
+            if (respuesta.hasOwnProperty('trabajador')) {
+                var trabajador = respuesta.trabajador;
+                var date_p = new Date(trabajador.fecha_publicacion);
+                var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
+                var date_l = new Date(trabajador.fecha_limite);
+                var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
+                recarga += `
+                <button id="volver">Volver</button>
+                <div>
                 <p>Prueba tecnica para:</p>
                 <p>${trabajador.enunciado}</p>
                 <div>
@@ -241,13 +242,36 @@ function iniciar_ptecnica_trabajador(evt) {
                     <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
                     <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
                 </form>
-            </div>
-            `;
-            contenidoajax.innerHTML = recarga;
-            document.getElementById("volver").id_empresa = trabajador.id_empresa;
-            document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
-            document.getElementById("formarchivo").id = trabajador.id;
-            document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
+                </div>
+                `;
+                contenidoajax.innerHTML = recarga;
+                document.getElementById("volver").id_empresa = trabajador.id_empresa;
+                document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
+                document.getElementById("formarchivo").id_pt = trabajador.id;
+                document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
+            } else {
+                swal.fire({
+                        title: "Inscrito",
+                        text: "Ya te inscribiste previamente",
+                        icon: "error",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    })
+                    /* .then((result) => {
+                                        if (result.isConfirmed) {
+                                            formtrabajador1();
+                                        }
+                                    }); */
+
+                /* recarga += `
+                <button id="volver">Volver</button>
+                <p>Ya estas inscrito</p>
+                `;
+                contenidoajax.innerHTML = recarga;
+                document.getElementById("volver").id_empresa = id_empresa;
+                document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica) */
+            }
 
         }
     }
@@ -258,7 +282,7 @@ function iniciar_ptecnica_trabajador(evt) {
 function enviar_zip_trabajador(evt) {
 
     evt.preventDefault();
-    var id_pt = evt.currentTarget.id;
+    var id_pt = evt.currentTarget.id_pt;
     var zip_participante = document.getElementById("zip_participante").files[0]
 
     var contenidoajax = document.getElementById("contenidoajax");
@@ -338,7 +362,8 @@ function crear_prueba_tecnica(evt) {
 }
 
 function mostrar_prueba_tecnica_empresa(evt) {
-    var id_pt = evt.currentTarget.id;
+    var id_pt = evt.currentTarget.id_pt;
+    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -362,10 +387,16 @@ function mostrar_prueba_tecnica_empresa(evt) {
             `;
             if (json_prueba) {
                 for (let i = 0; i < json_prueba.length; i++) {
+                    console.log(json_prueba[i].zip_participante)
                     recarga += `
-                    <button class="participantes">Participante ${i+1}</button>
-                    <button class="descargas">Descargar zip</button>
-                    `
+                    <button class="participantes">Participante ${i+1}</button>`;
+                    if (!json_prueba[i].zip_participante) {
+                        recarga += `<p>Aun no ha subido el zip</p>`;
+                    } else {
+                        recarga += `
+                        <button class="descargas">Descargar zip</button>
+                        `
+                    }
 
                 }
             }
@@ -374,9 +405,14 @@ function mostrar_prueba_tecnica_empresa(evt) {
             if (json_prueba) {
                 for (let i = 0; i < json_prueba.length; i++) {
                     document.getElementsByClassName("participantes")[i].id_participante = json_prueba[i].id_participante;
+                    document.getElementsByClassName("participantes")[i].id_pt = id_pt;
                     document.getElementsByClassName("participantes")[i].addEventListener("click", mostrar_participantes);
-                    document.getElementsByClassName("descargas")[i].zip_participante = json_prueba[i].zip_participante;
-                    document.getElementsByClassName("descargas")[i].addEventListener("click", descargar_archivo);
+                    if (!json_prueba[i].zip_participante) {
+
+                    } else {
+                        document.getElementsByClassName("descargas")[i].zip_participante = json_prueba[i].zip_participante;
+                        document.getElementsByClassName("descargas")[i].addEventListener("click", descargar_archivo);
+                    }
 
                 }
             }
@@ -388,6 +424,8 @@ function mostrar_prueba_tecnica_empresa(evt) {
 
 function mostrar_participantes(evt) {
     var id_participante = evt.currentTarget.id_participante;
+    var id_pt = evt.currentTarget.id_pt;
+    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -399,6 +437,126 @@ function mostrar_participantes(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            var recarga = ``;
+            var trabajador = respuesta.participante;
+
+            /* Foto */
+            recarga += '<div class="user-vista">';
+            //Volver
+            recarga += '<div class="return">';
+            recarga += '<button id="volver">';
+            recarga += '<i class="fa-solid fa-angle-left"></i>';
+            recarga += '</button>';
+            recarga += '</div>';
+            recarga += '<div class="user-ver-foto">';
+            recarga += '<div class="container-foto">';
+
+            if (trabajador.foto_perfil != null) {
+
+                recarga += '<img class="user-profilefoto" src="storage/' + trabajador.foto_perfil + '">';
+
+            } else {
+
+                recarga += '<img class="user-profilefoto" src="storage/img/usuario.png">';
+
+            }
+
+            recarga += '</div>';
+            recarga += '</div>';
+            /* Inputs para editar el usuario */
+            recarga += '<div class="user-ver">';
+            /* Nombre, apellido y edad */
+            recarga += '<div class="user-div-name">';
+            recarga += '<div class="user-icon-name">';
+            recarga += '<i class="fa-solid fa-user"></i>';
+            recarga += '</div>';
+            recarga += '<div class="divs-name">';
+            recarga += '<span class="p-name">  ' + trabajador.nombre + ' </span>';
+            recarga += '<span class="p-surname">  ' + trabajador.apellido + ' </span>';
+            recarga += '<i class="fa-solid fa-cake-candles"></i>';
+            recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '<hr>';
+            /* Correo */
+            recarga += '<div class="user-div-house">';
+            recarga += '<div class="user-icon-name">';
+            recarga += '<i class="fa-solid fa-at"></i>';
+            recarga += '</div>';
+            recarga += '<div class="divs-house">';
+            recarga += '<span class="p-house">' + trabajador.mail + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            /* Vivienda */
+            recarga += '<div class="user-div-house">';
+            recarga += '<div class="user-icon-name">';
+            recarga += '<i class="fa-solid fa-house-chimney"></i>';
+            recarga += '</div>';
+            recarga += '<div class="divs-house">';
+            recarga += '<span class="p-house">' + trabajador.loc_trabajador + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            /* Estudios y cursos */
+            recarga += '<div class="user-div-house">';
+            recarga += '<div class="user-icon-name">';
+            recarga += '<i class="fa-solid fa-book-open"></i>';
+            recarga += '</div>';
+            recarga += '<div class="divs-house">';
+            recarga += '<span class="p-house">' + trabajador.estudios + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            /* Experiencia */
+            recarga += '<div class="user-div-house">';
+            recarga += '<div class="user-icon-name">';
+            recarga += '<i class="fa-solid fa-briefcase"></i>';
+            recarga += '</div>';
+            recarga += '<div class="divs-house">';
+            recarga += '<span class="p-house">' + trabajador.experiencia + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            /* Idioma */
+            recarga += '<div class="user-div-house">';
+            recarga += '<div class="user-icon-name">';
+            recarga += '<i class="fa-solid fa-language"></i>';
+            recarga += '</div>';
+            recarga += '<div class="divs-house">';
+            recarga += '<span class="p-house">' + trabajador.idiomas + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            /* Sector */
+            recarga += '<div class="user-div-house">';
+            recarga += '<div class="user-icon-name">';
+            recarga += '<i class="fa-solid fa-building"></i>';
+            recarga += '</div>';
+            recarga += '<div class="divs-house">';
+            recarga += '<span class="p-house">' + trabajador.campo_user + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            /* Jornada */
+            recarga += '<div class="user-div-house">';
+            recarga += '<div class="user-icon-name">';
+            recarga += '<i class="fa-solid fa-business-time"></i>';
+            recarga += '</div>';
+            recarga += '<div class="divs-house">';
+            recarga += '<span class="p-house">' + trabajador.disponibilidad + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            /* Descripcion */
+            recarga += '<hr>';
+            recarga += '<div class="user-div-desc">';
+            recarga += '<div class="user-icon-desc">';
+            recarga += '<span class="sobre-mi-desc">Sobre mi:</span>';
+            recarga += '</div>';
+            recarga += '<div class="divs-desc">';
+            recarga += '<span class="p-desc">' + trabajador.about_user + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '</div>';
+            recarga += '</div>';
+            contenidoajax.innerHTML = recarga;
+            document.getElementById("volver").id_pt = id_pt;
+            document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica_empresa)
 
         }
     }
