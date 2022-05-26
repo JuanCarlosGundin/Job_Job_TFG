@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblPerfilesTable extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTblPerfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_perfiles', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_perfil', 45);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateTblPerfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_perfiles');
+        Schema::dropIfExists('usuarios');
     }
 }
