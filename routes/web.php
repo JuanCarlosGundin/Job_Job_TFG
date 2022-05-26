@@ -9,6 +9,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PtecnicaController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\ChattController;
 
 Route::get('/chat', function () {
     return view('chat');
@@ -117,11 +118,24 @@ Route::post('leercontenido',[PtecnicaController::class,'leercontenido']);
 // mostrar_ptecnica_trabajador
 Route::post('mostrar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'mostrar_ptecnica_trabajador']);
 
-// insertar_trabajador_ptecnica
-Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
+// iniciar_ptecnica_trabajador
+Route::post('iniciar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'iniciar_ptecnica_trabajador']);
+
+// entrar_ptecnica_trabajador
+Route::post('entrar_ptecnica_trabajador/{id_empresa}', [PtecnicaController::class, 'entrar_ptecnica_trabajador']);
+
+// insertar_zip_trabajador_trabajador_ptecnica
+Route::post('insertar_trabajador_ptecnica/{id_pt}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
 
 // crear_prueba_tecnica
 Route::post('crear_prueba_tecnica',[PtecnicaController::class, 'crear_prueba_tecnica']);
+
+// mostrar prueba tecnica desde empresa para ver los zips de los trabajadores
+Route::post('mostrar_zip_trabajadores/{id_pt}', [PtecnicaController::class, 'mostrar_zip_trabajadores']);
+
+// mostrar datos trabajador en prueba tecnia
+Route::post('mostrar_un_trabajador/{id_participante}', [PtecnicaController::class, 'mostrar_un_trabajador']);
+
 
 /* ------------PtecnicaController------------ */
 
@@ -219,3 +233,22 @@ Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPassw
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+//ZONA CHAT//
+
+//Al cargar el chat 
+Route::post('getchat', [ChattController::class, 'getchat']);
+
+//insertar mensaje del chat
+Route::post('insert', [ChattController::class, 'insert']);
+
+//lee los chats activos para mostrarlos
+Route::post('leerChats', [ChattController::class, 'leerChats']);
+
+///mandar correo chat
+Route::post('mandar', [MailController::class, 'sending']);
+
+///mandar correo chat
+Route::post('crearchat', [ChattController::class, 'crearchat']);
+
+//FINAL ZONA GIGACHAT//

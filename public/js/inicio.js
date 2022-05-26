@@ -66,8 +66,8 @@ function login() {
     var recarga = '';
 
     recarga += '<div class="botones">'
-    recarga += '<button style="background-color: white;" class="btn-signin" id="loginclick">Sign In</button>'
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-register" id="registrarclick">Register</button>'
+    recarga += '<button class="btn-signin" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register inicio-activo" id="registrarclick">Register</button>'
     recarga += '</div>'
     recarga += '<div class="modal-content">'
     recarga += '<form method="POST" id="loginuser">'
@@ -100,6 +100,7 @@ function loginuser(evt) {
             title: "Error",
             text: "Tienes que rellenar todos los datos",
             icon: "error",
+
         });
         return false;
 
@@ -207,8 +208,8 @@ function registrar() {
     var recarga = '';
 
     recarga += '<div class="botones">'
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>'
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>'
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>'
     recarga += '<div id="main" class="modal-content-register-cuadrados">'
     recarga += '<h3>¿Cómo vas a usar JobJob?</h3>'
@@ -236,8 +237,8 @@ function formtrabajador0() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador0" enctype="multipart/form-data">';
@@ -276,6 +277,15 @@ function sessiontrabajador0(evt) {
         });
         return false;
 
+        //no poder poner espacios en blanco
+    } else if (/^ *$/.test(mail) || /^ *$/.test(contra) || /^ *$/.test(contra2)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
 
         swal.fire({
@@ -293,6 +303,16 @@ function sessiontrabajador0(evt) {
             icon: "error",
         });
         return false;
+
+    } else if (contra.length < 8 || contra2.lenght < 8) {
+
+        swal.fire({
+            title: "Error",
+            text: "La contraseña tiene que tener mínimo 8 carácteres",
+            icon: "error",
+        });
+        return false;
+
 
     } else if (contra !== contra2) {
 
@@ -369,8 +389,8 @@ function formtrabajador1() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formtrabajador1" enctype="multipart/form-data">';
@@ -406,6 +426,32 @@ function sessiontrabajador1(evt) {
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    } else if (/^ *$/.test(nombre) || /^ *$/.test(apellido) || /^ *$/.test(edad)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
+    } else if (nombre.length < 2 || nombre.length > 60) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un nombre correcto",
+            icon: "error",
+        });
+        return false;
+
+    } else if (apellido.length < 2 || apellido.length > 60) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un apellido correcto",
             icon: "error",
         });
         return false;
@@ -480,8 +526,8 @@ function formtrabajador2() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register">';
     //Flechas registro
@@ -534,6 +580,16 @@ function sessiontrabajador2(evt) {
     }
     if (lenguaje_preferido) {
         formData.append('lenguaje_preferido', lenguaje_preferido);
+    }
+    if (/^\s+$/.test(campo_user) || /^\s+$/.test(about_user) || /^\s+$/.test(lenguaje_preferido)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
     }
 
 
@@ -597,8 +653,8 @@ function formtrabajador3() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register">';
     //Flechas registro
@@ -659,6 +715,16 @@ function sessiontrabajador3(evt) {
     }
     if (foto_perfil) {
         formData.append('foto_perfil', foto_perfil);
+    }
+    if (/^\s+$/.test(loc_trabajador)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
     }
 
 
@@ -722,8 +788,8 @@ function formtrabajador4() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="">';
     //Flechas registro
@@ -738,6 +804,7 @@ function formtrabajador4() {
 
     recarga += '<div id="lineaidioma-0" class="linea-registro">';
     //nombre_idioma
+<<<<<<< HEAD
     recarga += '<div class="mas-menos">'
     recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>'
@@ -749,6 +816,12 @@ function formtrabajador4() {
                             <option selected>- Selecciona -</option>
 
     `
+=======
+    recarga += '<div class="column-2">';
+    recarga += '<p>Idioma</p>';
+    recarga += '<select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
+    recarga += '<option selected>- selecciona -</option>';
+>>>>>>> 0d502e7bf1b379b64bc3e392e31e5911263575f4
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
@@ -769,6 +842,7 @@ function formtrabajador4() {
     recarga += '</div></div>';
     recarga += '<div>';
     recarga += '</div>';
+    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     /* Estructura linea */
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
@@ -858,7 +932,15 @@ function sessiontrabajador4(evt) {
             formData.append('nivel_idioma[]', nivel_idioma[i].value);
         }
     }
+    if (!nombre_idioma || !nivel_idioma) {
 
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -920,8 +1002,8 @@ function formtrabajador5() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="">';
     //Flechas registro
@@ -1061,6 +1143,17 @@ function sessiontrabajador5(evt) {
             formData.append('año_salidafor[]', año_salida[i].value);
         }
     }
+    if (/^\s+$/.test(nombre_formación) || /^\s+$/.test(lugar_formación)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
+
 
 
     var ajax = objetoAjax();
@@ -1123,8 +1216,8 @@ function formtrabajador6() {
 
     //Botones login/registro
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
     recarga += '<div class="modal-content-register"><div class="">';
@@ -1278,7 +1371,16 @@ function sessiontrabajador6(evt) {
             formData.append('año_salidaexp[]', año_salida[i].value);
         }
     }
+    if (/^\s+$/.test(nombre_experiencia) || /^\s+$/.test(lugar_experiencia) || /^\s+$/.test(funciones)) {
 
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -1389,8 +1491,8 @@ function formempresa0() {
     var recarga = '';
 
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class=""><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa0" enctype="multipart/form-data">';
@@ -1443,11 +1545,28 @@ function sessionempresa0(evt) {
         });
         return false;
 
+    } else if (/^ *$/.test(mail) || /^ *$/.test(nom_emp) || /^ *$/.test(contra) || /^ *$/.test(contra2)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
 
         swal.fire({
             title: "Error",
             text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+
+    } else if (nom_emp.length < 2 || nom_emp.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un nombre correcto",
             icon: "error",
         });
         return false;
@@ -1460,6 +1579,16 @@ function sessionempresa0(evt) {
             icon: "error",
         });
         return false;
+
+    } else if (contra.length < 8) {
+
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener mínimo 8 carácteres",
+            icon: "error",
+        });
+        return false;
+
 
     } else if (contra !== contra2) {
 
@@ -1530,8 +1659,8 @@ function formempresa1() {
     var recarga = '';
 
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
     recarga += '<div class="modal-content-register"><div class="">';
@@ -1585,6 +1714,16 @@ function sessionempresa1(evt) {
     formData.append('campo_emp', campo_emp);
     formData.append('searching', searching);
 
+    if (/^\s+$/.test(about_emp) || /^\s+$/.test(campo_emp) || /^\s+$/.test(searching)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
     var ajax = objetoAjax();
 
@@ -1634,8 +1773,8 @@ function formempresa2() {
     var recarga = '';
 
     recarga += '<div class="botones">';
-    recarga += '<button style="background-color: #F0F0F0; box-shadow: inset 0px 0px 5px rgb(206, 205, 205);" class="btn-signin" id="loginclick">Sign In</button>';
-    recarga += '<button style="background-color: white;" class="btn-register" id="registrarclick">Register</button>';
+    recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
+    recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
     recarga += '<div class="modal-content-register"><div class="">';
@@ -1685,6 +1824,17 @@ function sessionempresa2(evt) {
     formData.append('logo_emp', logo_emp);
     formData.append('loc_emp', loc_emp);
     formData.append('vacante', vacante);
+
+    if (/^\s+$/.test(loc_emp) || /^\s+$/.test(vacante)) {
+
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner espacios en blanco",
+            icon: "error",
+
+        });
+        return false;
+    }
 
 
     var ajax = objetoAjax();

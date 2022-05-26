@@ -1,10 +1,9 @@
 window.onload = function() {
+        leernotificacionesJS();
+    }
+    ////////////////////////////REDIRECCIONES/////////////////////////////////
 
-    leernotificacionesJS();
-
-}
-
-////////////////////////////REDIRECCIONES/////////////////////////////////
+leernotificacionesJS();
 var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
@@ -139,6 +138,7 @@ function leernotificacionesJS() {
                     recarga += '</div>';
                     recarga += '</div>';
                     recarga += '<hr class="alert-linea"></hr>';
+                    recarga += ''
                 }
 
             }
@@ -209,47 +209,27 @@ function leernotificacionesJS() {
 
 }
 
+function chat(id_otro) {
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('id_otro', id_otro);
+    var ajax = objetoAjax();
+    ajax.open("POST", "crearchat", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText)
+            console.log(respuesta)
+            window.location.href = "./chat";
 
-function chat(id_receptor) {
-
-    var zonaalerts = document.getElementById("zonaalerts");
-    var recarga = "";
-
-    recarga += '<div class="div-enviar-title">';
-    recarga += '<div class="return">';
-    recarga += '<button class="return-btn" onclick="leernotificacionesJS(); return false;">';
-    recarga += '<i class="fa-solid fa-angle-left"></i>';
-    recarga += '</button>';
-    recarga += '</div>';
-    recarga += '<div class="enviar-a">';
-    recarga += '<h1 class="enviar-a-title">Enviar mensaje</a>';
-    recarga += '</div>';
-    recarga += '</div>';
-    recarga += '<div class="div-enviar-mensaje">';
-    recarga += '<form>';
-    recarga += '<div class="input-enviar flex">';
-    recarga += '<div class="input-icon-mensaje flex">';
-    recarga += '<i class="fa-solid fa-envelope"></i>';
-    recarga += '</div>';
-    recarga += '<div class="input-enviar-mensaje"> ';
-    recarga += '<input class="input-mensaje" type="text" id="mensajecorreo">';
-    recarga += '</div>';
-    recarga += '</div>';
-    recarga += '<div class="input-enviar-boton flex">';
-    recarga += '<input class="input-enviar" type="submit" value="Enviar" onclick="enviar(' + id_receptor + '); return false;">';
-    recarga += '</div>';
-    recarga += '</form>';
-    recarga += '</div>';
-    zonaalerts.innerHTML = recarga;
-
+        }
+    }
+    ajax.send(formData);
 }
 
 
 function perfilemisor(id_iniciador, id_perfil) {
 
     var zonaalerts = document.getElementById("zonaalerts");
-    console.log(id_iniciador);
-    console.log(id_perfil);
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));

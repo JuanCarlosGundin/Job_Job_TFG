@@ -27,126 +27,260 @@ body {
     background-color: $background;
 }
 
-///////////////////////////////
-.alert-success {
-    color: green;
-    margin-bottom: 15px;
-}
-
-.validacion {
+////////////////////////////////GENERAL///////////////////////////////////
+.row {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    span {
-        color: red;
-        margin-top: 15px;
-    }
-    input {
-        font-size: 15px;
-        border-radius: 15px;
-        border: #186CA7 solid 1.5px;
-        width: 70%!important;
-        height: 7vh;
+}
+
+.principal {
+    height: 100vh;
+    @media only screen and (max-width: $tablet) {
+        flex-direction: column;
     }
 }
 
-///////////////////////////////NAVBAR//////////////////////////////////////
-// .region-navbar {
-//     height: 10vh;
-//     position: fixed;
-//     top: 0;
-//     width: 100%;
-//     background-color: $first-color; //PROVISIONAL MIENTRAS POL NO HAGA LA NAVBAR
-// }
+.column {
+    @media only screen and (max-width: $tablet) {
+        width: 100% !important;
+    }
+}
+
+.region-content {
+    height: 90vh;
+    width: 85vw;
+    @media(min-width: $tablet) {
+        height: 100vh;
+    }
+}
+
 ///////////////////////////////NAVBAR//////////////////////////////////////
 .region-navbar {
     background-color: $white;
-    display: flex;
-    height: 10vh;
-    height: #{"calc(var(--vh, 1vh) * 10)"};
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    height: 100%;
+    width: 15vw;
+    // padding-top: 5%;
+    // padding-left: 2%;
     /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
     /* DIVS NAVBAR*/
     /* Curriculum */
-    .curriculum-navbar {
-        padding: 1%;
-        width: 20%;
+    position: sticky;
+    @media only screen and (max-width: $tablet) {
+        border-bottom-left-radius: 30px !important;
+        flex-direction: row;
     }
-    /* Alertas */
-    .alerts-navbar {
-        padding: 1%;
-        width: 20%;
+    .barra-navbar-img {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        float: left;
+        @media only screen and (max-width: $tablet) {
+            display: none;
+        }
+        img {
+            margin-top: 10px;
+            width: 80px;
+            float: left;
+        }
     }
-    /* Main */
-    .main-navbar {
-        padding: 1%;
-        width: 20%;
+    .menu {
+        display: flex;
+        flex-direction: column;
+        margin-top: 150px;
+        gap: 20px;
+        @media only screen and (max-width: $tablet) {
+            margin-top: 0;
+            flex-direction: row;
+            gap: 0px;
+        }
+        .menu-item {
+            display: flex;
+            background-color: $white;
+            @media only screen and (max-width: $tablet) {
+                height: 100%;
+                border-radius: 30px;
+            }
+            .text {
+                padding-left: 20px;
+                float: right;
+                font-size: calc(#{'10px + 0.5vw'});
+                margin: 0;
+            }
+            .icon {
+                color: #c0c0c0;
+                text-align: center;
+                font-size: calc(#{'15px + 1vw'});
+                border-width: 0px;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                background-color: transparent;
+                display: flex;
+                justify-content: flex-start;
+                padding-left: 30px;
+                align-items: center;
+                &:hover {
+                    color: rgb(132, 132, 132);
+                    cursor: pointer;
+                    transition: 0.25s;
+                }
+                @media only screen and (max-width: $tablet) {
+                    justify-content: center;
+                    padding-left: 0;
+                    font-size: calc(#{'30px + 1vw'});
+                }
+            }
+        }
+        .active {
+            color: $black;
+            height: 100%;
+            .icon {
+                font-size: calc(#{'15px + 1vw'});
+                color: #000000;
+                background-color: $white;
+                border-width: 0px;
+                height: 100%;
+                border-top-left-radius: 30px;
+                &:hover {
+                    color: $black;
+                }
+                @media only screen and (max-width: $tablet) {
+                    background-color: $background;
+                    font-size: calc(#{'35px + 1vw'});
+                }
+            }
+        }
+        .active-center {
+            color: $black;
+            height: 100%;
+            .icon {
+                font-size: calc(#{'15px + 1vw'});
+                color: #000000;
+                background-color: $white;
+                border-width: 0px;
+                height: 100%;
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+                @media only screen and (max-width: $tablet) {
+                    background-color: $background;
+                    font-size: calc(#{'35px + 1vw'});
+                }
+            }
+        }
+    }
+}
+
+.barra-navbar {
+    background-color: white;
+    height: 10vh;
+    z-index: 100;
+    position: sticky;
+    .barra-navbar-btn {
+        width: 100%;
         height: 10vh;
+        float: right;
+        .darkmode-btn {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            float: right;
+            height: 100%;
+            margin-right: 10px;
+            .darkmodeswitch {
+                margin: 0;
+            }
+        }
     }
-    /* Chat */
-    .chat-navbar {
-        padding: 1%;
-        width: 20%;
+    @media only screen and (max-width: $tablet) {
+        display: none !important;
     }
-    /* Perfil */
-    .profile-navbar {
-        padding: 1%;
-        width: 20%;
+}
+
+@media only screen and (max-width: $tablet) {
+    .barra-navbar {
+        display: none;
+        img {
+            display: none;
+        }
+        .darkmodeswitch {
+            display: none;
+        }
     }
-    // DIVS ACTIVE //
-    .active-left {
-        background-color: $background;
-        box-shadow: none;
-        border-top-right-radius: 30px;
-    }
-    .active-right {
-        background-color: $background;
-        box-shadow: none;
-        border-top-left-radius: 30px;
-    }
-    .active {
-        background-color: $background;
-        box-shadow: none;
-        border-top-right-radius: 30px;
-        border-top-left-radius: 30px;
-    }
-    .active-center {
-        background-color: #C5D1EB;
-        box-shadow: none;
-        border-top-right-radius: 30px;
-        border-top-left-radius: 30px;
-    }
-    /* ICONS */
-    .icon {
-        color: #c0c0c0;
-        text-align: center;
-        font-size: 3.5vh;
-        background-color: $white;
-        border-width: 0px;
-        width: 100%;
-        height: 100%;
-        border-radius: 50px;
-    }
-    .main-icon {
-        color: #c0c0c0;
-        font-size: 4vh;
-        background-color: $white;
-        text-align: center;
-        border-width: 0px;
-        width: 100%;
-        height: 100%;
-        border-top-right-radius: 30px;
-        border-top-left-radius: 30px;
-    }
-    .active-icon {
-        color: #000000;
-        background-color: $background;
-        font-size: 4.5vh;
-    }
-    .active-icon-center {
-        background-color: #C5D1EB;
-        font-size: 4.5vh;
+    .region-navbar {
+        display: flex !important;
+        height: 15vh !important;
+        width: 100% !important;
+        height: #{"calc(var(--vh, 1vh) * 10)"} !important;
+        padding: 0 !important;
+        border-bottom-left-radius: 30px !important;
+        border-bottom-right-radius: 30px !important;
+        /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
+        /* DIVS NAVBAR*/
+        /* Curriculum */
+        p {
+            display: none;
+        }
+        .curriculum-navbar {
+            width: 20% !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+        }
+        /* Alertas */
+        .alerts-navbar {
+            width: 20% !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+        }
+        /* Main */
+        .main-navbar {
+            width: 20% !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+            height: 10vh !important;
+        }
+        /* Chat */
+        .chat-navbar {
+            padding: 1% !important;
+            width: 20% !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+        }
+        /* Perfil */
+        .profile-navbar {
+            width: 20% !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+        }
+        // DIVS ACTIVE //
+        .active-left {
+            background-color: $background;
+            box-shadow: none;
+            border-top-right-radius: 30px;
+        }
+        .active-right {
+            background-color: $background;
+            box-shadow: none;
+            border-top-left-radius: 30px;
+        }
+        .active-center {
+            background-color: #C5D1EB;
+            box-shadow: none;
+            border-top-right-radius: 30px;
+            border-top-left-radius: 30px;
+        }
+        /* ICONS */
+        .active-icon {
+            color: #000000 !important;
+            background-color: $background !important;
+            font-size: 4.5vh !important;
+        }
+        .active-icon-center {
+            background-color: #C5D1EB !important;
+            font-size: 4.5vh !important;
+        }
     }
 }

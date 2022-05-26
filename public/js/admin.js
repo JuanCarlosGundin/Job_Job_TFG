@@ -25,13 +25,13 @@ window.onload = function() {
         /*CODIGO MODAL USUARIO*/
 
     // Get the modal
-    modal = document.getElementById("myModal");
+    modal = document.getElementById("myModalcorreo");
 
     // Get the button that opens the modal
-    btn = document.getElementById("myBtn");
+    btn = document.getElementById("myBtncorreo");
 
     // Get the <span> element that closes the modal
-    span = document.getElementsByClassName("close")[0];
+    span = document.getElementsByClassName("closecorreo")[0];
 
     // When the user clicks on the button, open the modal
     btn.onclick = function() {
@@ -119,13 +119,13 @@ function leerJS() {
 
                 var admin = respuesta.admin;
                 var recargaadmin = '';
-
+                recargaadmin += '<br>';
+                recargaadmin += '<br>';
                 recargaadmin += '<h2>Administradores</h2>';
                 recargaadmin += '<table class="table table-striped table-hover">';
                 recargaadmin += '<thead>';
-                recargaadmin += '<tr>';
                 recargaadmin += '<th scope="col">Correo</th>';
-                recargaadmin += '<th scope="col">Estado</th>';
+                recargaadmin += '<th class="th-estado-admin" scope="col">Estado</th>';
                 recargaadmin += '</tr>';
                 recargaadmin += '</thead>';
                 recargaadmin += '<tbody>';
@@ -512,6 +512,46 @@ function opcioncrearJS() {
 function crearJS(mail, contra, id_perfil) {
 
     var message = document.getElementById('message');
+    var mail = document.getElementById("mail").value;
+    var contra = document.getElementById("contra").value;
+    var nom_perfil = document.getElementById("nom_perfil").value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(mail)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un email",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(contra)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir una contraseña",
+            icon: "error",
+        });
+        return false;
+    } else if (contra.lenght < 8) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener 8 carácteres mínimo",
+            icon: "error",
+        });
+    }
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -730,6 +770,79 @@ function actualizarmodal(id, id_perfil) {
 
 function modificarJS(id, id_perfil) {
 
+    var mail = document.getElementById("mail").value;
+    var contra = document.getElementById("contra").value;
+    var estado = document.getElementById("estado").value;
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var mostrado = document.getElementById("mostrado").value;
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(mail)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un email",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(contra)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir una contraseña",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(estado)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un estado",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(nombre)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un nombre",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(apellido)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un apellido",
+            icon: "error",
+        });
+        return false;
+    } else if (contra.lenght < 8) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener 8 carácteres mínimo",
+            icon: "error",
+        });
+    } else if (mostrado > 2) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener 8 carácteres mínimo",
+            icon: "error",
+        });
+    }
+
+
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'PUT');
@@ -880,7 +993,7 @@ function enviarcorreoadminJS() {
         });
         return false;
     }
-    document.getElementById("myBtn").disabled = true;
+    document.getElementById("myBtncorreo").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -908,7 +1021,7 @@ function enviarcorreoadminJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtn").disabled = false;
+                document.getElementById("myBtncorreo").disabled = false;
             }
         }
     }
@@ -928,7 +1041,7 @@ function enviarcorreoadmintrabajadoresJS() {
         return false;
 
     }
-    document.getElementById("myBtn").disabled = true;
+    document.getElementById("myBtncorreo").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -955,7 +1068,7 @@ function enviarcorreoadmintrabajadoresJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtn").disabled = false;
+                document.getElementById("myBtncorreo").disabled = false;
             }
         }
     }
