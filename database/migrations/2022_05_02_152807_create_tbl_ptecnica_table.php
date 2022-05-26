@@ -17,7 +17,7 @@ class CreateTblPtecnicaTable extends Migration
             $table->id();
             $table->string('lenguaje',100)->nullable();
             $table->timestamp('fecha_publicacion');
-            $table->timestamp('fecha_limite');
+            $table->timestamp('fecha_limite')->nullable();
             $table->time('duracion');
             $table->tinyInteger('estado_prueba');
             $table->string('enunciado',100);
