@@ -396,6 +396,10 @@ body {
         justify-content: center;
         display: flex;
         align-items: center;
+        margin-bottom: 20px;
+        @media only screen and (max-width: $movil) {
+            margin-bottom: 10px;
+        }
         .return {
             width: 50%;
             .return-btn {
@@ -451,6 +455,8 @@ body {
         }
     }
     .categoria-profile {
+        border-radius: 5px;
+        background-color: $white;
         .categoria {
             padding: 2vh;
             width: 50%;
@@ -554,40 +560,40 @@ body {
                 font-size: large;
             }
         }
-        .eliminar-cuenta-div {
-            display: flex;
+    }
+    .eliminar-cuenta-div {
+        display: flex;
+        justify-content: center;
+        .eliminar-cuenta-btn {
+            align-items: center;
+            appearance: none;
+            background-color: rgb(242, 120, 120);
+            border-radius: 1vh;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #eeb8b8 0 -3px 0 inset;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: inline-flex;
+            height: 48px;
             justify-content: center;
-            .eliminar-cuenta-btn {
-                align-items: center;
-                appearance: none;
-                background-color: rgb(242, 120, 120);
-                border-radius: 1vh;
-                border-width: 0;
-                box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #eeb8b8 0 -3px 0 inset;
-                box-sizing: border-box;
-                cursor: pointer;
-                display: inline-flex;
-                height: 48px;
-                justify-content: center;
-                line-height: 1;
-                list-style: none;
-                padding-left: 16px;
-                padding-right: 16px;
-                text-align: center;
-                // touch-action: manipulation;
-                white-space: nowrap;
-                will-change: box-shadow, transform;
-                &:focus {
-                    box-shadow: #eeb8b8 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-                }
-                &:active {
-                    box-shadow: #eeb8b8 0 3px 7px inset;
-                    transform: translateY(2px);
-                }
-                .button-text {
-                    font-weight: bolder;
-                    font-size: 15px;
-                }
+            line-height: 1;
+            list-style: none;
+            padding-left: 16px;
+            padding-right: 16px;
+            text-align: center;
+            // touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow, transform;
+            &:focus {
+                box-shadow: #eeb8b8 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            }
+            &:active {
+                box-shadow: #eeb8b8 0 3px 7px inset;
+                transform: translateY(2px);
+            }
+            .button-text {
+                font-weight: bolder;
+                font-size: 15px;
             }
         }
     }

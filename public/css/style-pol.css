@@ -515,6 +515,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .vista-profile .categoria-edit {
+    margin-bottom: 10px;
+  }
 }
 
 .vista-profile .categoria-edit .return {
@@ -583,6 +590,11 @@ body {
 
 .vista-profile .categoria-edit .logout .logout-btn:active {
   background-color: #042944;
+}
+
+.vista-profile .categoria-profile {
+  border-radius: 5px;
+  background-color: #ffffff;
 }
 
 .vista-profile .categoria-profile .categoria {
@@ -709,7 +721,7 @@ body {
   font-size: large;
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div {
+.vista-profile .eliminar-cuenta-div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -718,7 +730,7 @@ body {
           justify-content: center;
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div .eliminar-cuenta-btn {
+.vista-profile .eliminar-cuenta-div .eliminar-cuenta-btn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -749,19 +761,19 @@ body {
   will-change: box-shadow, transform;
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div .eliminar-cuenta-btn:focus {
+.vista-profile .eliminar-cuenta-div .eliminar-cuenta-btn:focus {
   -webkit-box-shadow: #eeb8b8 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
           box-shadow: #eeb8b8 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div .eliminar-cuenta-btn:active {
+.vista-profile .eliminar-cuenta-div .eliminar-cuenta-btn:active {
   -webkit-box-shadow: #eeb8b8 0 3px 7px inset;
           box-shadow: #eeb8b8 0 3px 7px inset;
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
 }
 
-.vista-profile .categoria-profile .eliminar-cuenta-div .eliminar-cuenta-btn .button-text {
+.vista-profile .eliminar-cuenta-div .eliminar-cuenta-btn .button-text {
   font-weight: bolder;
   font-size: 15px;
 }
