@@ -139,19 +139,28 @@ class PtecnicaController extends Controller{
 
         try {
             DB::beginTransaction();
-            $json= DB::table('tbl_ptecnica')->select('json_prueba')->where('id','=',$id_pt)->first();
+            $json= DB::table('tbl_ptecnica')->where('id','=',$id_pt)->first();
             $json_prueba=json_decode($json->json_prueba);
             $contador=count($json_prueba);
             for ($i=0; $i < $contador; $i++) { 
                 $id_participante=$json_prueba[$i]->id_participante;
                 if ($id_participante==strval($id)){
-                    $zip=$json_prueba[$i]->zip_participante;
-                    if ($zip != null) {
-                        Storage::delete('public/'.$zip);
+                    $ini_participante=$json_prueba[$i]->inicio_participante;
+                    $inicio_participante=Carbon::parse($ini_participante);
+                    // mirar como poner horas empresa, yo me entiendo
+                    $inicio_participante_extra=$inicio_participante->addHours(1);
+                    $fecha_actual = Carbon::now('+02:00');
+                    if ($inicio_participante_extra < $fecha_actual) {
+                        $zip=$json_prueba[$i]->zip_participante;
+                        if ($zip != null) {
+                            Storage::delete('public/'.$zip);
+                        }
+                        $zip_participante = $req->file('zip_participante')->store('zip','public');
+                        $cambio="json_prueba=JSON_REPLACE(json_prueba, '$[".$i."].zip_participante', '".$zip_participante."')";
+                        DB::select("UPDATE tbl_ptecnica SET ".$cambio." WHERE id=?",[$id_pt]);
+                    } else {
+                        return response()->json(array('resultado'=> 'fuera'));
                     }
-                    $zip_participante = $req->file('zip_participante')->store('zip','public');
-                    $cambio="json_prueba=JSON_REPLACE(json_prueba, '$[".$i."].zip_participante', '".$zip_participante."')";
-                    DB::select("UPDATE tbl_ptecnica SET ".$cambio." WHERE id=?",[$id_pt]);
                 }
             }
             DB::commit();
