@@ -344,6 +344,7 @@ table {
                     margin-bottom: 30px;
                 }
                 .foto-trabajador {
+                    margin-top: 30px;
                     width: 100%;
                     display: flex;
                     align-items: center;
@@ -383,19 +384,37 @@ table {
                             left: 0;
                             height: 100%;
                             background-color: #007bff;
+                            &.bajo {
+                                width: 40%;
+                            }
                             &.Medio {
+                                width: 60%;
+                            }
+                            &.medio {
                                 width: 60%;
                             }
                             &.Avanzado {
                                 width: 80%;
                             }
+                            &.avanzado {
+                                width: 80%;
+                            }
                             &.Alto {
+                                width: 80%;
+                            }
+                            &.alto {
                                 width: 80%;
                             }
                             &.Experto {
                                 width: 100%;
                             }
+                            &.experto {
+                                width: 100%;
+                            }
                             &.Nativo {
+                                width: 100%;
+                            }
+                            &.nativo {
                                 width: 100%;
                             }
                         }
@@ -575,19 +594,37 @@ table {
                         left: 0;
                         height: 100%;
                         background-color: #fef360;
+                        &.bajo {
+                            width: 40%;
+                        }
                         &.Medio {
+                            width: 60%;
+                        }
+                        &.medio {
                             width: 60%;
                         }
                         &.Avanzado {
                             width: 80%;
                         }
+                        &.avanzado {
+                            width: 80%;
+                        }
                         &.Alto {
+                            width: 80%;
+                        }
+                        &.alto {
                             width: 80%;
                         }
                         &.Experto {
                             width: 100%;
                         }
+                        &.experto {
+                            width: 100%;
+                        }
                         &.Nativo {
+                            width: 100%;
+                        }
+                        &.nativo {
                             width: 100%;
                         }
                     }
@@ -684,6 +721,10 @@ table {
             .foto-trabajador {
                 width: 30%;
                 display: inline-block;
+                margin-top: 30px;
+                img {
+                    width: 70%;
+                }
             }
             .info-trabajador {
                 width: 63%;
@@ -763,19 +804,37 @@ table {
                         left: 0;
                         height: 100%;
                         background-color: #fef360;
+                        &.bajo {
+                            width: 40%;
+                        }
                         &.Medio {
+                            width: 60%;
+                        }
+                        &.medio {
                             width: 60%;
                         }
                         &.Avanzado {
                             width: 80%;
                         }
+                        &.avanzado {
+                            width: 80%;
+                        }
                         &.Alto {
+                            width: 80%;
+                        }
+                        &.alto {
                             width: 80%;
                         }
                         &.Experto {
                             width: 100%;
                         }
+                        &.experto {
+                            width: 100%;
+                        }
                         &.Nativo {
+                            width: 100%;
+                        }
+                        &.nativo {
                             width: 100%;
                         }
                     }

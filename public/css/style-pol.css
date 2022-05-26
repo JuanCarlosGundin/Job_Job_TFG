@@ -1526,5 +1526,7 @@ body {
 
 .region-plantillas > .row img {
   width: 100%;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
 }
 /*# sourceMappingURL=style-pol.css.map */
