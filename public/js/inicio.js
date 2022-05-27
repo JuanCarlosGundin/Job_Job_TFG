@@ -78,9 +78,9 @@ function login() {
     recarga += '<div class="modal-content">'
     recarga += '<form method="POST" id="loginuser">'
     recarga += '<h2>Bienvenido a JobJob</h2>'
-    recarga += '<input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo"><br></br>'
-    recarga += '<input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña"><br>'
-    recarga += '<button class= "botonlogin" type="submit" value="register">Iniciar Sesión</button><br>'
+    recarga += '<input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo">'
+    recarga += '<input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña">'
+    recarga += '<button class= "botonlogin" type="submit" value="register">Iniciar Sesión</button>'
     recarga += '<a class="contraseña" href="./forget-password">¿Has olvidado tu contraseña?</>'
     recarga += '</form>'
     recarga += '</div>'
@@ -220,10 +220,10 @@ function registrar() {
     recarga += '<div id="main" class="modal-content-register-cuadrados">'
     recarga += '<h3>¿Cómo vas a usar JobJob?</h3>'
     recarga += '<div class="cuadrados">'
-    recarga += '<button class="cuadrado" id="formtrabajador"><i class="fa-solid fa-user"></i><br><br><p class="user-empresa">Trabajador</p></button>'
+    recarga += '<button class="cuadrado" id="formtrabajador"><i class="fa-solid fa-user"></i><p class="user-empresa">Trabajador</p></button>'
     recarga += '</div>'
     recarga += '<div class="cuadrados">'
-    recarga += '<button class="cuadrado" id="formempresa"><i class="fa-solid fa-building"></i><br><br><p class="user-empresa">Empresa</p></button>'
+    recarga += '<button class="cuadrado" id="formempresa"><i class="fa-solid fa-building"></i><p class="user-empresa">Empresa</p></button>'
     recarga += '</div>'
     recarga += '</div>'
     tabla.innerHTML = recarga;
@@ -250,11 +250,11 @@ function formtrabajador0() {
     recarga += '<form method="POST" id="formtrabajador0" enctype="multipart/form-data">';
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     //Correo
-    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email...">';
     //Contraseña 1
-    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña...">';
     //Contraseña 2
-    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="Repite la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="Repite la contraseña...">';
     recarga += '<input type="submit" class="botonregister" value="Continuar">';
     recarga += '</form>';
     recarga += '</div>';
@@ -375,7 +375,7 @@ function sessiontrabajador0(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -403,11 +403,11 @@ function formtrabajador1() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //Nombre
-    recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre...">';
     //Apellido
-    recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido...">';
     //Edad
-    recarga += '<input type="date" class="inputregister" id="edad" name="edad"><br><br>';
+    recarga += '<input type="date" class="inputregister" id="edad" name="edad">';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
@@ -512,7 +512,7 @@ function sessiontrabajador1(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -540,17 +540,17 @@ function formtrabajador2() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //campo_user
-    recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector...">';
     //about_user
-    recarga += '<input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi...">';
     //lenguaje_preferido
-    recarga += '<input type="text" class="inputregister" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="Lenguaje preferido..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="Lenguaje preferido...">';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
@@ -639,7 +639,7 @@ function sessiontrabajador2(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -667,25 +667,28 @@ function formtrabajador3() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //loc_trabajador
-    recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion..."><br><br>';
+    recarga += '<label for="loc_trabajador">Localización</label>';
+    recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion...">';
     //disponibilidad
+    recarga += '<label for="disponibilidad">Disponibilidad</label>';
     recarga += '<select class="inputregister" name="disponibilidad" id="disponibilidad">';
-    recarga += '<option value="" selected>- selecciona -</option>';
-    recarga += '<option value="jornada completa">jornada completa (8 horas)</option>';
-    recarga += '<option value="jornada parcial">jornada parcial (4 horas)</option>';
-    recarga += '<option value="turno mañana">turno mañana</option>';
-    recarga += '<option value="turno noche">turno noche</option>';
-    recarga += '<option value="turno partida">turno partida</option>';
-    recarga += '<option value="fines de semana">fines de semana</option>';
-    recarga += '</select><br><br>';
+    recarga += '<option value="" selected>- Selecciona -</option>';
+    recarga += '<option value="jornada completa">Jornada completa (8 horas)</option>';
+    recarga += '<option value="jornada parcial">Jornada parcial (4 horas)</option>';
+    recarga += '<option value="turno mañana">Turno mañana</option>';
+    recarga += '<option value="turno noche">Turno noche</option>';
+    recarga += '<option value="turno partida">Turno partido</option>';
+    recarga += '<option value="fines de semana">Fines de semana</option>';
+    recarga += '</select>';
     //Foto
-    recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil"><br><br>';
+    recarga += '<label for="foto_perfil">Imagen de Perfil</label>';
+    recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil">';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
@@ -774,7 +777,7 @@ function sessiontrabajador3(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -797,39 +800,48 @@ function formtrabajador4() {
     recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="modal-content-register"><div class="">';
     //Flechas registro
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>¿Qué idiomas hablas?</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
     /* Estructura linea */
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
-    recarga += '<div id="lineaidioma-0">';
+    recarga += '<div id="lineaidioma-0" class="linea-registro">';
     //nombre_idioma
-    recarga += '<div class="column-2">';
-    recarga += '<p>Idioma</p>';
-    recarga += '<select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
-    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<div class="mas-menos">'
+    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
+    recarga += '</div>'
+    recarga += `
+                <div class="fila-linea-idioma">
+                    <div class="column-2">
+                        <p>Idioma</p>
+                        <select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">
+                            <option selected>- Selecciona -</option>
+
+    `
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
-    recarga += '</select><br><br>';
+    recarga += `
+                        </select>
+    `
     recarga += '</div>';
     //nivel_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>Nivel</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nivel_idioma[]" id="nivel_idioma">';
-    recarga += '<option value="" selected>- selecciona -</option>';
-    recarga += '<option value="bajo">bajo</option>';
-    recarga += '<option value="medio">medio</option>';
-    recarga += '<option value="alto">alto</option>';
-    recarga += '<option value="nativo">nativo</option>';
-    recarga += '</select><br><br>';
-    recarga += '</div>';
+    recarga += '<option value="" selected>- Selecciona -</option>';
+    recarga += '<option value="bajo">Bajo</option>';
+    recarga += '<option value="medio">Medio</option>';
+    recarga += '<option value="alto">Alto</option>';
+    recarga += '<option value="nativo">Nativo</option>';
+    recarga += '</select>';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '</div>';
     recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
@@ -858,28 +870,28 @@ function insertaridioma() {
     var lidioma = "lineaidioma-" + (k - 1);
     var lineaidioma = document.getElementById(lidioma);
     var recarga = "";
-    recarga += '<div id="lineaidioma-' + k + '">';
+    recarga += '<div id="lineaidioma-' + k + '" class="linea-registro">';
     //nombre_idioma
-    recarga += '<div class="column-2">';
+    recarga += '<div class="fila-linea-idioma"><div class="column-2">';
     recarga += '<p>Idioma</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
-    recarga += '<option value="" selected>- selecciona -</option>';
+    recarga += '<option value="" selected>- Selecciona -</option>';
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
-    recarga += '</select><br><br>';
+    recarga += '</select>';
     recarga += '</div>';
     //nivel_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>Nivel</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nivel_idioma[]" id="nivel_idioma">';
-    recarga += '<option value="" selected>- selecciona -</option>';
-    recarga += '<option value="bajo">bajo</option>';
-    recarga += '<option value="medio">medio</option>';
-    recarga += '<option value="alto">alto</option>';
-    recarga += '<option value="nativo">nativo</option>';
-    recarga += '</select><br><br>';
-    recarga += '</div>';
+    recarga += '<option value="" selected>- Selecciona -</option>';
+    recarga += '<option value="bajo">Bajo</option>';
+    recarga += '<option value="medio">Medio</option>';
+    recarga += '<option value="alto">Alto</option>';
+    recarga += '<option value="nativo">Nativo</option>';
+    recarga += '</select>';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
     recarga += '</div>';
@@ -972,7 +984,7 @@ function sessiontrabajador4(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -995,39 +1007,41 @@ function formtrabajador5() {
     recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="modal-content-register"><div class="">';
     //Flechas registro
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>¿Dónde has estudiado?</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     /* Estructura linea */
-    recarga += '<div id="lineaestudio-0">';
+    recarga += '<div id="lineaestudio-0" class="linea-registro">';
+    recarga += '<div class="fila-linea-expfor">';
+
 
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de formación</p>';
-    recarga += '<input type="text" class="inputregister inputcolumn2" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo"><br><br>';
+    recarga += '<input type="text" class="inputregister inputcolumn2" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo">';
     recarga += '</div>';
     //lugar_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Lugar de formación</p>';
-    recarga += '<input type="text" class="inputregister inputcolumn2" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios"><br><br>';
+    recarga += '<input type="text" class="inputregister inputcolumn2" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
     recarga += '<p>Año de entrada</p>';
-    recarga += '<input type="date" class="inputregister inputcolumn2" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<input type="date" class="inputregister inputcolumn2" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
-    recarga += '<input type="date" class="inputregister inputcolumn2" id="año_salida" name="año_salida[]"><br><br>';
-    recarga += '</div>';
+    recarga += '<input type="date" class="inputregister inputcolumn2" id="año_salida" name="año_salida[]">';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
@@ -1056,27 +1070,28 @@ function insertarestudio() {
     var lestudio = "lineaestudio-" + (k - 1);
     var lineaestudio = document.getElementById(lestudio);
     var recarga = "";
-    recarga += '<div id="lineaestudio-' + k + '">';
+    recarga += '<div id="lineaestudio-' + k + '" class="linea-registro">';
+    recarga += '<div class="fila-linea-expfor">';
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de formación</p>';
-    recarga += '<input type="text" class="inputregister" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo"><br><br>';
+    recarga += '<input type="text" class="inputregister" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo">';
     recarga += '</div>';
     //lugar_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Lugar de formación</p>';
-    recarga += '<input type="text" class="inputregister" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios"><br><br>';
+    recarga += '<input type="text" class="inputregister" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
     recarga += '<p>Año de entrada</p>';
-    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
-    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]"><br><br>';
-    recarga += '</div>';
+    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]">';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
     recarga += '</div>';
@@ -1184,7 +1199,7 @@ function sessiontrabajador5(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -1208,43 +1223,45 @@ function formtrabajador6() {
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="modal-content-register"><div class="">';
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '<button class="derecha" id="derecha" style="opacity:0;pointer-events:none;"><i class="fa-solid fa-right-long"></i></button>';
+    recarga += '</div>';
     recarga += '<h3>¿Dónde has trabajado?</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
 
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     /* Estructura linea */
-    recarga += '<div id="lineaexperiencia-0">';
+    recarga += '<div id="lineaexperiencia-0" class="linea-registro">';
+    recarga += '<div class="fila-linea-expfor">';
 
     //nombre_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>Nombre de empresa</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto"><br><br>';
+    recarga += '<p>Experiencia</p>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto">';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>Lugar</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
     recarga += '<p>Año de entrada</p>';
-    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
-    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_salida" name="año_salida[]"><br><br>';
+    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_salida" name="año_salida[]">';
     recarga += '</div>';
     //funciones
     recarga += '<div class="column-1">';
     recarga += '<p>funciones</p>';
-    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
-    recarga += '</div>';
+    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
@@ -1272,31 +1289,33 @@ function insertarexperiencia() {
     var lexperiencia = "lineaexperiencia-" + (k - 1);
     var lineaexperiencia = document.getElementById(lexperiencia);
     var recarga = "";
-    recarga += '<div id="lineaexperiencia-' + k + '">';
+    recarga += '<div id="lineaexperiencia-' + k + '" class="linea-registro">';
+    recarga += '<div class="fila-linea-expfor">';
     //nombre_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>nombre_experiencia</p>';
-    recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto"><br><br>';
+    recarga += '<p>Experiencia</p>';
+    recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto">';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>lugar_experiencia</p>';
-    recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa"><br><br>';
-    recarga += '</div>';
-    //funciones
-    recarga += '<div class="column-1">';
-    recarga += '<p>funciones</p>';
-    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
+    recarga += '<p>Lugar experiencia</p>';
+    recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
-    recarga += '<p>año_entrada</p>';
-    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<p>Año entrada</p>';
+    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
-    recarga += '<p>año_salida</p>';
-    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]"><br><br>';
+    recarga += '<p>Año salida</p>';
+    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]">';
+    recarga += '</div>';
+    //funciones
+    recarga += '<div class="column-1">';
+    recarga += '<p>Funciones</p>';
+    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
+    recarga += '</div>';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
@@ -1402,7 +1421,7 @@ function sessiontrabajador6(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -1478,27 +1497,27 @@ function formempresa0() {
     recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<div class="modal-content-register"><div class=""><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa0" enctype="multipart/form-data">';
     //Correo
     recarga += '<div class="column-2">';
     recarga += '<p>Email</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="mail" name="mail" placeholder="Introduce el email...">';
     recarga += '</div>';
     //Nombre
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre...">';
     recarga += '</div>';
     //Contra 1
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña</p>';
-    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra" name="contra" placeholder="Introduce la contraseña...">';
     recarga += '</div>';
     //Contra 2
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña 2</p>';
-    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña...">';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
@@ -1647,7 +1666,7 @@ function formempresa1() {
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="modal-content-register"><div class="">';
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
@@ -1657,17 +1676,17 @@ function formempresa1() {
     //about_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Sobre la empresa</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa...">';
     recarga += '</div>';
     //campo_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Sector</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector...">';
     recarga += '</div>';
     //searching
     recarga += '<div class="column-2">';
     recarga += '<p>¿Qué buscas para tu empresa?</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?">';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
@@ -1761,26 +1780,26 @@ function formempresa2() {
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="modal-content-register"><div class="">';
     recarga += '<div class="izquierda-derecha">';
-    recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button><br>';
+    recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '</div>';
     recarga += '<h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa2" enctype="multipart/form-data">';
     //loc_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Dirección empresa</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización...">';
     recarga += '</div>';
     //vacante
     recarga += '<div class="column-2">';
     recarga += '<p>Vacante</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="vacante" name="vacante" placeholder="Qué buscamos...">';
     recarga += '</div>';
     //logo_emp
     recarga += '<div class="column-1">';
     recarga += '<p>Logo empresa</p>';
-    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp"><br><br>';
+    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp">';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';

@@ -2220,7 +2220,42 @@ body {
   background-color: #ffffff;
 }
 
-.admin .content {
-  padding: 2vh;
+.region-plantillas > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.region-plantillas > .row .col-sm-3 {
+  width: 25%;
+  padding: 30px;
+}
+
+@media (max-width: 1200px) {
+  .region-plantillas > .row .col-sm-3 {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .region-plantillas > .row .col-sm-3 {
+    width: 100%;
+  }
+}
+
+.region-plantillas > .row img {
+  width: 100%;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
 }
 /*# sourceMappingURL=style-pol.css.map */

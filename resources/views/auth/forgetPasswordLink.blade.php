@@ -32,6 +32,9 @@
                                 <form action="{{ route('reset.password.post') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="token" value="{{ $token }}">
+                                    @if (Session::get('error'))
+                                        <span class="alert-danger">{{Session::get('error')}}</span>
+                                    @endif
             
                                     <div class="form-group row">
                                         <label for="email_address" class="col-md-4 col-form-label text-md-right">Dirección de correo electrónico</label>

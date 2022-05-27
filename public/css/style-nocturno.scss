@@ -1,102 +1,175 @@
-        /////////////////////////////////MIXINS-IMPORTS////////////////////////////////
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        $first-color:#012A4A;
-        $second-color: #0060A4;
-        $third-color: #0B4B78;
-        $fourth-color:#03365E;
-        $fifth-color: #437EA9;
-        //Colores basicos//
-        $black:#000000;
-        $white:#ffffff;
-        $grey: #F0F0F0;
-        //Tamaños//
-        $movil:450px;
-        $tablet:900px;
-        *,
-        *:before,
-        *:after {
-            box-sizing: border-box;
+    /////////////////////////////////MIXINS-IMPORTS////////////////////////////////
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    $first-color:#012A4A;
+    $second-color: #0060A4;
+    $third-color: #0B4B78;
+    $fourth-color:#03365E;
+    $fifth-color: #012A4A;
+    //Colores basicos//
+    $black:#000000;
+    $white:#ffffff;
+    $grey: #F0F0F0;
+    //Tamaños//
+    $movil:450px;
+    $tablet:900px;
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+    
+    ////BOTON MODO DIA-NOCTURNO////
+    .area-botones {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        &.horizontal {
+            flex-direction: row;
         }
-        
-        ////BOTON MODO DIA-NOCTURNO////
-        .darkmodeswitch {
-            z-index: 2;
-            margin-left: 2%;
-            margin-top: 1.5%;
-            background: #3494b1;
-            display: flex;
-            position: relative;
-            cursor: pointer;
-            outline: none;
-            border: none;
-            border-radius: 1rem;
-        }
-        
-        .darkmodeswitch span {
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            color: #fff;
-        }
-        
-        .darkmodeswitch::after {
-            display: block;
-            background: #fffbf5;
-            width: 2rem;
-            height: 2rem;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: unset;
-            border-radius: 3rem;
-            transition: all .5s ease;
-            box-shadow: 0 0 2px 2px rgba(0, 0, 0, .5);
-            content: "";
-        }
-        
-        .darkmodeswitch.active {
-            background: #fdd384;
-        }
-        
-        .darkmodeswitch.active::after {
-            left: unset;
-            right: 0;
-        }
-        
-        ////////////////////////////////////LOGIN-REGISTRAR//////////////////////////////////
-        .bodylogin.oscuro {
-            background-color: $first-color;
-            .modal-login {
+    }
+    
+    .volver {
+        color: white;
+        font-size: 40px;
+    }
+    
+    .darkmodeswitch {
+        position: relative;
+        z-index: 2;
+        margin-left: 2%;
+        margin-top: 1.5%;
+        background: #3494b1;
+        display: flex;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        border-radius: 1rem;
+    }
+    
+    .darkmodeswitch span {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+    }
+    
+    .darkmodeswitch::after {
+        display: block;
+        background: #fffbf5;
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: unset;
+        border-radius: 3rem;
+        transition: all .5s ease;
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, .5);
+        content: "";
+    }
+    
+    .darkmodeswitch.active {
+        background: #fdd384;
+    }
+    
+    .darkmodeswitch.active::after {
+        left: unset;
+        right: 0;
+    }
+    
+    ////////////////////////////////////LOGIN-REGISTRAR//////////////////////////////////
+    .bodylogin.oscuro {
+        background-color: $first-color;
+        .modal-login {
+            background-color: $third-color;
+            box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+            .modal-content {
                 background-color: $third-color;
-                box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
-                .botones {
-                    .inicio-activo {
-                        background-color: $fourth-color !important;
+            }
+            h2,
+            h3,
+            .contraseña,
+            label {
+                color: white !important;
+            }
+            h2,
+            h3,
+            .contraseña,
+            .izquierda,
+            .derecha,
+            p {
+                color: white !important;
+            }
+            .izquierda,
+            .derecha {
+                background-color: transparent!important;
+                box-shadow: none!important;
+            }
+            .inputlogin,
+            .inputregister {
+                background-color: white;
+                border: white;
+            }
+            .botones {
+                .inicio-activo {
+                    background-color: $fourth-color !important;
+                }
+                .region-navbar {
+                    background-color: $third-color;
+                    .main-icon {
+                        // background-color: $third-color;
+                    }
+                    .icon {
+                        color: $white;
+                        // background-color: $third-color;
+                    }
+                    .menu-item {
+                        // background-color: $third-color;
+                        .icon {
+                            color: white !important;
+                            background-color: $third-color !important;
+                        }
+                    }
+                    .main-icon {
+                        color: white;
+                        background-color: $third-color;
+                    }
+                    .active {
+                        background-color: $third-color;
+                        .icon {
+                            color: black;
+                            background-color: $first-color !important;
+                            border-top-left-radius: 0px !important;
+                            // background-color: $first-color;
+                            @media only screen and (max-width: $tablet) {
+                                background-color: $first-color;
+                                border-top-left-radius: 30px !important;
+                            }
+                        }
+                    }
+                    .active-center {
+                        background-color: $first-color !important;
+                        .icon {
+                            color: white !important;
+                            background-color: $first-color !important;
+                            @media only screen and (max-width: $tablet) {
+                                background-color: $first-color;
+                            }
+                        }
                     }
                     .registrar-activo {
                         background-color: $fourth-color !important;
                     }
                 }
-                .modal-content {
-                    background-color: $third-color;
-                }
-                h2,
-                h3,
-                .contraseña,
-                .izquierda,
-                .derecha,
-                p {
-                    color: white !important;
-                }
-                .inputlogin,
-                .inputregister {
-                    background-color: white;
-                    border: white;
-                }
-                .botonlogin,
-                .botonregister {
-                    background-color: $second-color;
-                    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+                button,
+                input[type=submit] {
+                    background-color: $second-color!important;
+                    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400)!important;
                 }
                 .btn-signin {
                     /*PROVISIONAL*/
@@ -115,202 +188,45 @@
                     background: $second-color;
                     border: $second-color solid 1.5px;
                 }
-                .izquierda,
-                .derecha {
-                    color: white;
-                }
-                .mas,
-                .menos {
-                    color: white;
-                }
-            }
-        }
-        
-        ///////////////////////////////////////NAVBAR////////////////////////////////////
-        .oscuro {
-            background-color: $first-color;
-            .barra-navbar {
-                background-color: $third-color;
-            }
-            .region-navbar {
-                background-color: $third-color;
-                .main-icon {
-                    // background-color: $third-color;
-                }
-                .icon {
-                    color: $white;
-                    // background-color: $third-color;
-                }
-                .menu-item {
-                    // background-color: $third-color;
-                    .icon {
-                        color: white !important;
-                        background-color: $third-color !important;
-                    }
-                }
-                .main-icon {
-                    color: white;
-                    background-color: $third-color;
-                }
-                .active {
-                    background-color: $third-color;
-                    .icon {
-                        color: black;
-                        background-color: $first-color !important;
-                        border-top-left-radius: 0px !important;
-                        // background-color: $first-color;
-                        @media only screen and (max-width: $tablet) {
-                            background-color: $first-color;
-                            border-top-left-radius: 30px !important;
-                        }
-                    }
-                }
-                .active-center {
+                ////////////////////////////////////////NOTIFICACIONES///////////////////////////////////////
+                .buscador {
                     background-color: $first-color !important;
-                    .icon {
-                        color: white !important;
-                        background-color: $first-color !important;
-                        @media only screen and (max-width: $tablet) {
+                }
+                ///////////////////////////////////////////CHAT/////////////////////////////////////////
+                .oscuro {
+                    .main-chat {
+                        .chat-main-sticky {
                             background-color: $first-color;
+                            .chat-main-curve {
+                                background-color: $fourth-color;
+                            }
+                            .chat-main-curve:before {
+                                display: none;
+                            }
+                            .chat-main-user {
+                                background-color: $first-color;
+                                .chat-main-name {
+                                    color: white;
+                                }
+                                .chat-main-return {
+                                    .return-btn {
+                                        color: white;
+                                    }
+                                }
+                            }
                         }
+                    }
+                    .chat-main-content {
+                        background-color: $fourth-color;
+                    }
+                    .chat-main-send {
+                        background-color: $fourth-color;
                     }
                 }
             }
         }
-        
         /////////////////////////////////////////HOME////////////////////////////////////
         .page-home.oscuro {
             background-color: $first-color;
-            .botones-home {
-                button {
-                    background-color: $third-color;
-                    box-shadow: none;
-                }
-                .boton-info,
-                .boton-maletin,
-                .boton-cruz {
-                    .icono-maletin {
-                        i {
-                            color: white;
-                        }
-                    }
-                    .icono-info {
-                        i {
-                            color: white;
-                        }
-                    }
-                    .icono-cruz {
-                        i {
-                            color: white;
-                        }
-                    }
-                }
-            }
         }
-        
-        /////////////////////////////////////////VER-PERFIL//////////////////////////////
-        .oscuro {
-            .ver-perfil {
-                .user-poligon2 {
-                    background-color: $fourth-color !important;
-                }
-                .user-div-category {
-                    background-color: $first-color !important;
-                    border-color: $first-color !important;
-                }
-                .user-poligon {
-                    background-color: $first-color !important;
-                }
-                .p-name,
-                .p-surname,
-                .p-age,
-                .p-category,
-                .user-category-icon {
-                    color: white !important;
-                }
-                .logout-btn,
-                .input-file {
-                    background-color: $fifth-color !important;
-                }
-                .linea-divisoria {
-                    background-color: grey !important;
-                }
-            }
-        }
-        
-        ////////////////////////////////////////////////VER-PERFIL/////////////////////////////////
-        .edit-profile {
-            .aceptar-cuenta-btn {
-                color: black !important;
-            }
-            .p-text,
-            .return-text,
-            i {
-                color: white !important;
-            }
-        }
-        
-        /////////////////////////////////VER-CATEGORIA-PERFIL////////////////////////////////////
-        .oscuro {
-            .vista-profile {
-                p {
-                    color: white;
-                }
-                .categoria-edit {
-                    .return {
-                        .return-btn {
-                            color: white;
-                        }
-                    }
-                }
-                .categoria-profile {
-                    .categoria {
-                        .categoria-icon,
-                        .categoria-name,
-                        .categoria-text {
-                            color: white;
-                            .categoria-p-text {
-                                color: white;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        ////////////////////////////////////////NOTIFICACIONES///////////////////////////////////////
-        .buscador {
-            background-color: $first-color !important;
-        }
-        
-        ///////////////////////////////////////////CHAT/////////////////////////////////////////
-        .oscuro {
-            .main-chat {
-                .chat-main-sticky {
-                    background-color: $first-color;
-                    .chat-main-curve {
-                        background-color: $fourth-color;
-                    }
-                    .chat-main-curve:before {
-                        display: none;
-                    }
-                    .chat-main-user {
-                        background-color: $first-color;
-                        .chat-main-name {
-                            color: white;
-                        }
-                        .chat-main-return {
-                            .return-btn {
-                                color: white;
-                            }
-                        }
-                    }
-                }
-            }
-            .chat-main-content {
-                background-color: $fourth-color;
-            }
-            .chat-main-send {
-                background-color: $fourth-color;
-            }
-        }
+    }

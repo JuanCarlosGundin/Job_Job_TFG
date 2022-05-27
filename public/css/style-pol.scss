@@ -1693,7 +1693,28 @@ body {
             }
         }
     }
-    .content {
-        padding: 2vh;
+}
+
+///////////////////PLANTILLAS/////////////////////////
+.region-plantillas {
+    >.row {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        .col-sm-3 {
+            width: 25%;
+            padding: 30px;
+            @media(max-width: $tablet) {
+                width: 50%;
+            }
+            @media(max-width:$movil) {
+                width: 100%;
+            }
+        }
+        img {
+            width: 100%;
+            transition: all 0.1s ease;
+        }
     }
 }

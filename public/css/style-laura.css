@@ -66,19 +66,9 @@ body {
   font-size: 2.7vh;
 }
 
-.body-index .navbar-index li .btn-navbar {
-  color: #000000;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 2.7vh;
-  background-color: white;
-  border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  padding: 0;
-}
-
-.body-index .navbar-index li .btn-navbar:hover {
+.body-index .navbar-index li a:hover {
+  padding-top: 2%;
+  padding-bottom: 2%;
   color: #717070;
 }
 
@@ -89,7 +79,7 @@ body {
   color: #000000;
   font-weight: bold;
   font-size: 2.7vh;
-  width: 28%;
+  width: 23%;
   height: 6vh;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
@@ -102,22 +92,17 @@ body {
   border: black solid 3px;
 }
 
-.body-index .fila-1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.body-index .fila-1 .column-3 {
+.body-index .column-3 {
   padding-top: 17vh;
   padding-left: 3%;
   width: 50%;
   float: left;
   padding-left: 5%;
   background-color: #186CA7;
+  height: 83vh;
 }
 
-.body-index .fila-1 .column-3 h2 {
+.body-index .column-3 h2 {
   text-align: left;
   color: white;
   font-weight: bold;
@@ -125,14 +110,14 @@ body {
   font-size: 5vh;
 }
 
-.body-index .fila-1 .column-3 h3 {
+.body-index .column-3 h3 {
   text-align: left;
   font-size: 3.5vh;
   color: white;
   padding-bottom: 5%;
 }
 
-.body-index .fila-1 .column-3 .btn-index {
+.body-index .column-3 .btn-index {
   background-color: white;
   border-radius: 15px;
   font-weight: bold;
@@ -152,7 +137,7 @@ body {
   transition: all 0.3s linear;
 }
 
-.body-index .fila-1 .column-3 .btn-index:hover {
+.body-index .column-3 .btn-index:hover {
   background-color: transparent;
   color: white;
   border: white solid 3px;
@@ -160,249 +145,103 @@ body {
           box-shadow: none;
 }
 
-.body-index .fila-1 .column-4 {
+.body-index .column-4 {
   padding-top: 17vh;
   width: 50%;
   float: left;
   padding-right: 5%;
   background-color: #186CA7;
+  height: 83vh;
 }
 
-.body-index .fila-1 .column-4 img {
+.body-index .column-4 img {
   margin-top: 3vh;
   width: 80%;
 }
 
-.body-index .fila-1 #primera-columna {
+.body-index #primera-columna {
   padding-left: 5%;
 }
 
-.body-index .fila-1 #ultima-columna {
+.body-index #ultima-columna {
   padding-right: 5%;
 }
 
-.body-index .fila-2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.body-index .fila-2 i {
-  padding-bottom: 12%;
-  color: white;
-  font-size: 6vh;
-}
-
-.body-index .fila-2 h1 {
-  color: white;
-  font-size: 4vh;
-  font-weight: 550;
-}
-
-.body-index .fila-2 h3 {
-  color: white;
-  font-size: 2.8vh;
-}
-
-.body-index .fila-2 .column-5 {
+.body-index .column-5 {
   background-color: #92AFD7;
   padding-left: 3%;
   padding-right: 3%;
   width: 25%;
   float: left;
+  height: 50vh;
   padding-top: 5%;
   padding-bottom: 5%;
 }
 
-.body-index .video {
-  background-color: #0076CA;
+.body-index .column-5 i {
+  padding-bottom: 12%;
+  color: white;
+  font-size: 6vh;
 }
 
-.body-index .video h1 {
-  margin: 0;
+.body-index .column-5 h1 {
+  color: white;
+  font-size: 4vh;
+  font-weight: 550;
+}
+
+.body-index .column-5 h3 {
+  color: white;
+  font-size: 2.8vh;
+}
+
+.body-index .video {
+  background-color: #0076CA;
+  height: 150vh;
 }
 
 .body-index .footer {
-  height: 48vh;
+  padding-top: 4%;
+  padding-bottom: 12%;
+  padding-left: 9%;
+  padding-right: 9%;
+  width: 33.3%;
+  height: 40vh;
+  float: left;
   background-color: #042944;
   color: white;
   text-align: left;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 4%;
-  padding-bottom: 12%;
 }
 
-.body-index .footer p {
-  font-size: 19px !important;
-}
-
-.body-index .footer .footer-2,
-.body-index .footer .footer-3 {
-  padding-left: 9%;
-  padding-right: 9%;
-  width: 33.3%;
-  float: left;
-}
-
-.body-index .footer .footer-2 h1,
-.body-index .footer .footer-3 h1 {
+.body-index .footer h1 {
   padding-bottom: 8%;
   font-weight: bold;
 }
 
-.body-index .footer .footer-2 h2,
-.body-index .footer .footer-3 h2 {
+.body-index .footer h2 {
   padding-bottom: 10%;
   font-weight: bold;
   font-size: 2.5vh;
 }
 
-.body-index .footer .footer-2 a,
-.body-index .footer .footer-2 p,
-.body-index .footer .footer-2 i,
-.body-index .footer .footer-3 a,
-.body-index .footer .footer-3 p,
-.body-index .footer .footer-3 i {
+.body-index .footer a,
+.body-index .footer p,
+.body-index .footer i {
   text-decoration: none;
   color: white;
-  float: left;
-  text-align: left;
-  margin: 0;
-  padding: 0;
+  font-size: 13px;
 }
 
-.body-index .footer .footer-2 i,
-.body-index .footer .footer-3 i {
-  padding-right: 9px;
-}
-
-.body-index .footer .footer-2 a:hover,
-.body-index .footer .footer-3 a:hover {
+.body-index .footer a:hover {
   font-weight: bold;
 }
 
-.body-index .footer .footer-1 {
-  padding-left: 9%;
-  padding-right: 9%;
-  width: 33.3%;
-  height: 100%;
-  float: left;
+.body-index #footer-izquierda {
   text-align: center;
   padding-left: 5%;
-}
-
-@media only screen and (max-width: 768px) {
-  .body-index .navbar-index {
-    padding-top: 5px;
-    height: 9vh;
-    width: 100%;
-  }
-  .body-index .navbar-index .column-1 {
-    display: none;
-  }
-  .body-index .navbar-index .column-2 {
-    width: 100%;
-    text-align: center;
-  }
-  .body-index .navbar-index .column-2 .btn-register {
-    width: 33% !important;
-    font-size: 16px !important;
-    padding-left: 0%;
-    padding-right: 0%;
-  }
-  .body-index .navbar-index .column-2 .btn-navbar {
-    font-size: 20px !important;
-  }
-  .fila-1 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-  }
-  .fila-1 .column-3 {
-    width: 100% !important;
-    text-align: center !important;
-    padding-top: 40px !important;
-    padding-bottom: 0px !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-    height: 70vh !important;
-  }
-  .fila-1 .column-3 .btn-index {
-    float: none !important;
-    position: center;
-    width: 35% !important;
-  }
-  .fila-1 .column-3 h2 {
-    text-align: center !important;
-    font-size: 4.5vh !important;
-  }
-  .fila-1 .column-3 h3 {
-    text-align: center !important;
-    font-size: 3vh !important;
-  }
-  .fila-1 .column-4 {
-    width: 100% !important;
-    padding-top: 0px !important;
-    height: 40vh !important;
-  }
-  .fila-2 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-  }
-  .fila-2 .column-5 {
-    width: 100% !important;
-    padding-top: 8vh !important;
-    padding-bottom: 8vh !important;
-    height: 40vh !important;
-  }
-  .video {
-    height: 20vh !important;
-  }
-  .footer {
-    background-color: #042944 !important;
-  }
-  .footer h2 {
-    font-size: 24px !important;
-  }
-  .footer p,
-  .footer a {
-    font-size: 22px !important;
-  }
-  .footer .footer-2,
-  .footer .footer-3 {
-    width: 100% !important;
-    padding-top: 5vh !important;
-    height: 70% !important;
-    background-color: #042944 !important;
-    text-align: center !important;
-    -webkit-box-pack: center !important;
-        -ms-flex-pack: center !important;
-            justify-content: center !important;
-    -webkit-box-align: center !important;
-        -ms-flex-align: center !important;
-            align-items: center !important;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .footer .footer-1 {
-    display: none;
-  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 900px) {
@@ -420,74 +259,136 @@ body {
     padding: 0% !important;
   }
   .body-index .navbar-index .column-2 .btn-register {
-    width: 30% !important;
+    width: 37% !important;
     padding-left: 2% !important;
     padding-right: 2% !important;
   }
-  .body-index .fila-1 {
-    display: block;
-  }
-  .body-index .fila-1 .column-3 {
-    width: 100% !important;
-    text-align: center !important;
-  }
-  .body-index .fila-1 .column-4 {
-    padding-top: 0;
-    padding-bottom: 7vh;
+}
+
+@media only screen and (max-width: 768px) {
+  .body-index .navbar-index {
+    padding-top: 5px;
+    height: 9vh;
     width: 100%;
   }
-  .body-index .fila-1 .column-4 img {
-    width: 50%;
-  }
-  .body-index .fila-2 {
-    display: block;
-  }
-  .body-index .fila-2 .column-5 {
-    width: 50%;
-    height: 45vh;
-  }
-  .body-index .footer .footer-2,
-  .body-index .footer .footer-3 {
-    width: 50% !important;
-    height: 100%;
-    background-color: #042944 !important;
-    text-align: center !important;
-    -webkit-box-pack: center !important;
-        -ms-flex-pack: center !important;
-            justify-content: center !important;
-    -webkit-box-align: center !important;
-        -ms-flex-align: center !important;
-            align-items: center !important;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .body-index .footer .footer-1 {
+  .body-index .navbar-index .column-1 {
     display: none;
   }
-  .body-index .footer p,
-  .body-index .footer a {
+  .body-index .navbar-index .column-2 {
+    width: 100%;
+    text-align: center;
+  }
+  .body-index .navbar-index .column-2 .btn-register {
+    width: 40% !important;
     font-size: 16px !important;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+  .body-index .navbar-index .column-2 a {
+    font-size: 16px !important;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  .column-3 {
+    width: 100% !important;
+    text-align: center !important;
+    padding-top: 40px !important;
+    padding-bottom: 0px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    height: 70vh !important;
+  }
+  .column-3 .btn-index {
+    float: none !important;
+    position: center;
+    width: 35% !important;
+  }
+  .column-3 h2 {
+    text-align: center !important;
+    font-size: 4.5vh !important;
+  }
+  .column-3 h3 {
+    text-align: center !important;
+    font-size: 3vh !important;
+  }
+  .column-4 {
+    width: 100% !important;
+    padding-top: 0px !important;
+    height: 40vh !important;
+  }
+  .column-5 {
+    width: 100% !important;
+    padding-top: 8vh !important;
+    padding-bottom: 8vh !important;
+    height: 40vh !important;
+  }
+  .video {
+    height: 280vh !important;
+  }
+  .footer {
+    width: 100% !important;
+    padding-top: 5vh !important;
+    height: 30vh !important;
+    text-align: center !important;
+  }
+  #footer-izquierda {
+    display: none;
   }
 }
 
 .bodylogin {
   background-color: #186CA7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+.bodylogin input[type=text],
+.bodylogin input[type=password],
+.bodylogin input[type=date] {
+  padding: 0 20px;
 }
 
 .bodylogin .logo {
   display: none;
 }
 
-.bodylogin a {
-  text-decoration: none;
+.bodylogin .cotainer > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.bodylogin .cotainer > .row > div {
+  width: 100%;
+}
+
+.bodylogin .cotainer > .row input[type=text],
+.bodylogin .cotainer > .row input[type=password] {
+  font-size: 15px;
+  border-radius: 15px;
+  border: #186CA7 solid 1.5px;
+  width: 70%;
+  height: 7vh;
 }
 
 .bodylogin .modal-login {
+  min-width: 70vw;
   background-color: white;
   border-radius: 55px;
   -webkit-box-align: center;
@@ -496,12 +397,82 @@ body {
   -ms-flex-line-pack: center;
       align-content: center;
   text-align: center;
-  margin-top: 5vh;
-  padding-bottom: 0.2vh;
-  margin-left: 30vh;
-  margin-right: 30vh;
   -webkit-box-shadow: 5px 3px 3px rgba(156, 155, 155, 0.591);
           box-shadow: 5px 3px 3px rgba(156, 155, 155, 0.591);
+}
+
+.bodylogin .modal-login .card {
+  padding: 80px 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
+
+.bodylogin .modal-login .card * {
+  width: 100%;
+}
+
+.bodylogin .modal-login .card button {
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #186CA7;
+  border: #186CA7 solid 1.5px;
+  -webkit-box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+          box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
+  color: white;
+  font-weight: bold;
+  width: 70%;
+  height: 7vh;
+  margin-top: 1rem;
+}
+
+.bodylogin .modal-login .card form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
+
+.bodylogin .modal-login .card form > * {
+  width: 100%;
+}
+
+.bodylogin .modal-login .card form .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
 }
 
 .bodylogin .modal-login .botones {
@@ -526,6 +497,13 @@ body {
           box-shadow: inset 0px 0px 5px #cecdcd;
 }
 
+.bodylogin .modal-login .user-empresa {
+  font-weight: bold;
+  color: white !important;
+  text-align: center;
+  padding-top: 10px;
+}
+
 .bodylogin .modal-login .modal-content {
   border: white;
   text-align: center;
@@ -533,6 +511,23 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   height: 70vh;
+}
+
+.bodylogin .modal-login .modal-content form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
 }
 
 .bodylogin .modal-login .modal-content .opciones .opcion {
@@ -557,13 +552,6 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 3.5vh;
-}
-
-.bodylogin .modal-login .modal-content .user-empresa {
-  font-weight: bold;
-  color: white !important;
-  text-align: center;
-  padding-top: 10px;
 }
 
 .bodylogin .modal-login .modal-content .contraseña {
@@ -681,8 +669,8 @@ body {
     height: 18vh;
   }
   .bodylogin .logo img {
-    width: 25%;
-    margin-top: 18%;
+    max-height: 100%;
+    padding-bottom: 30px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -769,6 +757,33 @@ body {
   }
 }
 
+.alert-danger {
+  width: 80%;
+  color: red;
+}
+
+.alert-danger p {
+  font-size: calc(13px + 0.1vw) !important;
+  text-align: center !important;
+}
+
+.bodylogin form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
 .bodylogin h3 {
   margin-top: 2vh;
   margin-bottom: 0vh;
@@ -807,7 +822,7 @@ body {
 
 .bodylogin .modal-content-register-cuadrados {
   width: 100%;
-  height: 72vh;
+  height: 65vh;
 }
 
 .bodylogin .modal-content-register-cuadrados h3 {
@@ -855,14 +870,24 @@ body {
 
 @media only screen and (max-width: 768px) {
   .bodylogin {
-    height: 60vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .bodylogin .card {
+    height: 75vh;
+    padding: 80px 1vw !important;
   }
   .bodylogin .modal-content-register-cuadrados h3 {
     font-size: 3vh;
     margin-bottom: 4vh;
     padding-top: 6vh;
     padding-bottom: 0vh;
-    margin-top: 1vh;
+    margin-top: 0;
   }
   .bodylogin .modal-content-register-cuadrados .cuadrados {
     width: 100%;
@@ -878,16 +903,37 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .bodylogin {
   /* ===== Scrollbar CSS ===== */
   /* Firefox */
   /* Chrome, Edge, and Safari */
 }
 
+.bodylogin div[class^="lineaestudio-"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .bodylogin .scrollbar {
   width: 100%;
   height: 72vh;
-  overflow-y: scroll;
 }
 
 .bodylogin * {
@@ -910,30 +956,61 @@ body {
 }
 
 .bodylogin .modal-content-register {
+  overflow-y: scroll;
   border: white;
   text-align: center;
   width: 100%;
   height: 70vh;
 }
 
-.bodylogin .modal-content-register .mas-menos {
-  width: 100%;
-  text-align: right !important;
-  margin-right: -90px;
-}
-
-.bodylogin .modal-content-register .mas,
-.bodylogin .modal-content-register .menos {
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+.bodylogin .mas,
+.bodylogin .menos {
   color: #186CA7;
   border: none;
   background-color: transparent;
   font-size: 30px;
 }
 
-.bodylogin .modal-content-register .izquierda-derecha .izquierda,
-.bodylogin .modal-content-register .izquierda-derecha .derecha {
+.bodylogin .linea-registro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.bodylogin .fila-linea-idioma {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bodylogin .fila-linea-expfor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.bodylogin .izquierda-derecha .izquierda,
+.bodylogin .izquierda-derecha .derecha {
   padding-top: 3vh;
   padding-bottom: 1vh;
   color: #186CA7;
@@ -942,44 +1019,66 @@ body {
   font-size: 30px;
 }
 
-.bodylogin .modal-content-register .izquierda-derecha .izquierda {
+.bodylogin .izquierda-derecha .izquierda {
   padding-left: 9vh;
   float: left;
 }
 
-.bodylogin .modal-content-register .izquierda-derecha .derecha {
+.bodylogin .izquierda-derecha .derecha {
   padding-right: 9vh;
   float: right;
 }
 
-.bodylogin .modal-content-register h3 {
+.bodylogin h3 {
   font-weight: bold;
   padding-top: 6vh;
   padding-bottom: 6vh;
   font-size: 3.5vh;
 }
 
-.bodylogin .modal-content-register .column-1 {
+.bodylogin .column-1 {
   padding-left: 5%;
   padding-right: 5%;
 }
 
-.bodylogin .modal-content-register .column-2 {
+.bodylogin .column-1 p {
+  text-align: center;
+}
+
+.bodylogin .column-2 {
   width: 50%;
   float: left;
   padding-left: 5%;
   padding-right: 5%;
   position: relative;
+  min-height: 16vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.bodylogin .modal-content-register p {
-  font-size: 2.5vh !important;
+.bodylogin .column-2 p {
+  text-align: center;
+}
+
+.bodylogin p {
+  font-size: 2.5vh;
   font-weight: 600;
   text-align: left;
   color: rgba(0, 0, 0, 0.594);
 }
 
-.bodylogin .modal-content-register .inputregister {
+.bodylogin .inputregister {
   font-size: 15px;
   border-radius: 15px;
   border: #186CA7 solid 1.5px;
@@ -987,42 +1086,42 @@ body {
   height: 7vh !important;
 }
 
-.bodylogin .modal-content-register .inputregister::-webkit-input-placeholder {
+.bodylogin .inputregister::-webkit-input-placeholder {
   color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .inputregister:-ms-input-placeholder {
+.bodylogin .inputregister:-ms-input-placeholder {
   color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .inputregister::-ms-input-placeholder {
+.bodylogin .inputregister::-ms-input-placeholder {
   color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .inputregister::placeholder {
+.bodylogin .inputregister::placeholder {
   color: #7c7b7b;
   padding-left: 2%;
   font-weight: 440;
 }
 
-.bodylogin .modal-content-register .inputcolumn2 {
+.bodylogin .inputcolumn2 {
   width: 100% !important;
 }
 
-.bodylogin .modal-content-register .foto {
+.bodylogin .foto {
   width: 60%;
   display: inline-block;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.bodylogin .modal-content-register select {
+.bodylogin select {
   border-radius: 15px;
   border: #186CA7 solid 2px;
   width: 15% !important;
@@ -1030,7 +1129,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.bodylogin .modal-content-register .botonregister {
+.bodylogin .botonregister {
   border-radius: 15px;
   background-color: #186CA7 !important;
   border: #186CA7 solid 1.5px;
@@ -1044,11 +1143,12 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
+  .bodylogin #formempresa0 .column-2 {
+    width: 100% !important;
+  }
   .bodylogin .modal-content-register {
-    height: 75vh;
+    height: 65vh;
     width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
   }
   .bodylogin .modal-content-register h3 {
     font-size: 3vh;

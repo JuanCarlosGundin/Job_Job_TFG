@@ -218,7 +218,7 @@ Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorr
 //el usuario puede hacer reportes de otros usuarios.
 Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
-Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
+Route::get('/curriculum', [curriculumController::class, 'curriculums']);
 Route::get('/curriculum/pdf1', [curriculumController::class, 'pdf1']);
 Route::get('/curriculum/pdf2', [curriculumController::class, 'pdf2']);
 Route::get('/curriculum/pdf3', [curriculumController::class, 'pdf3']);

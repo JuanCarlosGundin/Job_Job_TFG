@@ -67,7 +67,7 @@
 
                         </div>
                         <div class="foto-trabajador">
-                            <img src="{{ asset('storage/img/usuario.png') }}" alt="foto-trabajador" style="max-width:100%;">
+                            <img src="../storage/{{$trabajador->foto_perfil}}" alt="foto-trabajador">
                         </div>
 
                     </div>
@@ -153,8 +153,8 @@
         </div>    
     </div>
     <div class="botones">
-        <button id="pdf4">Descargar CV</button>
-        <button>Volver</button>
+        <button id="pdf4" onclick="window.location.href = '{{ url('./curriculum/pdf4') }}';">Descargar CV</button>
+        <button onclick="window.location.href = '{{ url('./curriculum') }}';">Volver</button>
     </div>
     
 
