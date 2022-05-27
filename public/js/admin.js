@@ -53,6 +53,22 @@ window.onload = function() {
 
 }
 
+////////////////////////////REDIRECCIONES/////////////////////////////////
+var myBtnreportes = document.getElementById("myBtnreportes");
+var myBtnstats = document.getElementById("myBtnstats");
+
+myBtnreportes.onclick = function() {
+
+    window.location.href = "./crudreportes";
+
+}
+
+myBtnstats.onclick = function() {
+
+    window.location.href = "./graficas";
+
+}
+
 
 function objetoAjax() {
 
