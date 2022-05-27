@@ -65,6 +65,14 @@
           box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
 }
 
+.bodylogin.oscuro .modal-login .botones .inicio-activo {
+  background-color: #03365E !important;
+}
+
+.bodylogin.oscuro .modal-login .botones .registrar-activo {
+  background-color: #03365E !important;
+}
+
 .bodylogin.oscuro .modal-login .modal-content {
   background-color: #0B4B78;
 }
@@ -145,6 +153,15 @@
   background-color: #0B4B78;
 }
 
+.oscuro .region-navbar .menu-item {
+  background-color: #0B4B78;
+}
+
+.oscuro .region-navbar .menu-item .icon {
+  color: white !important;
+  background-color: #0B4B78 !important;
+}
+
 .oscuro .region-navbar .main-icon {
   color: white;
   background-color: #0B4B78;
@@ -166,8 +183,30 @@
   background-color: #012A4A;
 }
 
+.oscuro .region-navbar .active .icon {
+  color: white;
+  background-color: #012A4A;
+}
+
+@media only screen and (max-width: 900px) {
+  .oscuro .region-navbar .active .icon {
+    background-color: #012A4A;
+  }
+}
+
 .oscuro .region-navbar .active-center {
   background-color: #012A4A;
+}
+
+.oscuro .region-navbar .active-center .icon {
+  color: white !important;
+  background-color: #012A4A !important;
+}
+
+@media only screen and (max-width: 900px) {
+  .oscuro .region-navbar .active-center .icon {
+    background-color: #012A4A;
+  }
 }
 
 .page-home.oscuro {
@@ -198,34 +237,64 @@
   color: white;
 }
 
-.oscuro .ver-profile .user-div-category {
+.oscuro .ver-perfil .user-poligon2 {
   background-color: #03365E !important;
-  border-color: #03365E !important;
 }
 
-.oscuro .ver-profile .user-vista {
-  background-color: #0B4B78 !important;
+.oscuro .ver-perfil .user-div-category {
+  background-color: #012A4A !important;
+  border-color: #012A4A !important;
 }
 
-.oscuro .ver-profile .user-poligon {
+.oscuro .ver-perfil .user-poligon {
   background-color: #012A4A !important;
 }
 
-.oscuro .ver-profile .p-name,
-.oscuro .ver-profile .p-surname,
-.oscuro .ver-profile .p-age,
-.oscuro .ver-profile .p-category,
-.oscuro .ver-profile .user-category-icon {
+.oscuro .ver-perfil .p-name,
+.oscuro .ver-perfil .p-surname,
+.oscuro .ver-perfil .p-age,
+.oscuro .ver-perfil .p-category,
+.oscuro .ver-perfil .user-category-icon {
   color: white !important;
 }
 
-.oscuro .ver-profile .logout-btn,
-.oscuro .ver-profile .input-file {
+.oscuro .ver-perfil .logout-btn,
+.oscuro .ver-perfil .input-file {
   background-color: #437EA9 !important;
 }
 
-.oscuro .ver-profile .linea-divisoria {
+.oscuro .ver-perfil .linea-divisoria {
   background-color: grey !important;
+}
+
+.oscuro .edit-profile .aceptar-cuenta-btn {
+  color: black !important;
+}
+
+.oscuro .edit-profile .p-text,
+.oscuro .edit-profile .return-text,
+.oscuro .edit-profile i {
+  color: white !important;
+}
+
+.oscuro .vista-profile p {
+  color: white;
+}
+
+.oscuro .vista-profile .categoria-edit .return .return-btn {
+  color: white;
+}
+
+.oscuro .vista-profile .categoria-profile .categoria .categoria-icon,
+.oscuro .vista-profile .categoria-profile .categoria .categoria-name,
+.oscuro .vista-profile .categoria-profile .categoria .categoria-text {
+  color: white;
+}
+
+.oscuro .vista-profile .categoria-profile .categoria .categoria-icon .categoria-p-text,
+.oscuro .vista-profile .categoria-profile .categoria .categoria-name .categoria-p-text,
+.oscuro .vista-profile .categoria-profile .categoria .categoria-text .categoria-p-text {
+  color: white;
 }
 
 .buscador {

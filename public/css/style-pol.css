@@ -592,11 +592,6 @@ body {
   background-color: #042944;
 }
 
-.vista-profile .categoria-profile {
-  border-radius: 5px;
-  background-color: #ffffff;
-}
-
 .vista-profile .categoria-profile .categoria {
   padding: 2vh;
   width: 50%;
@@ -848,6 +843,26 @@ body {
   }
 }
 
+.edit-profile .edit-inputs .edit-input .boton-mas-div .boton-mas {
+  border-width: 0px;
+  background-color: #92AFD7;
+  color: white;
+  width: 36.1px;
+  height: 36.1px;
+  padding: 0;
+  font-size: medium;
+}
+
+.edit-profile .edit-inputs .edit-input .boton-menos-div .boton-menos {
+  border-width: 0px;
+  background-color: #850b0b;
+  color: white;
+  width: 36.1px;
+  height: 36.1px;
+  padding: 0;
+  font-size: medium;
+}
+
 .edit-profile .edit-inputs .edit-input .input-edit {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1039,26 +1054,6 @@ body {
   display: -ms-flexbox;
   display: flex;
   text-align: center;
-}
-
-.boton-mas-div .boton-mas {
-  border-width: 0px;
-  background-color: #92AFD7;
-  color: white;
-  width: 36.1px;
-  height: 36.1px;
-  padding: 0;
-  font-size: medium;
-}
-
-.boton-menos-div .boton-menos {
-  border-width: 0px;
-  background-color: #850b0b;
-  color: white;
-  width: 36.1px;
-  height: 36.1px;
-  padding: 0;
-  font-size: medium;
 }
 
 .modal-eliminar-user {
@@ -1563,6 +1558,16 @@ body {
   scrollbar-width: none;
 }
 
+.main-chat .chat-main-content::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  .main-chat .chat-main-content {
+    height: 100%;
+  }
+}
+
 .main-chat .chat-main-content .chat-mensaje-inicio {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1749,6 +1754,10 @@ body {
   font-size: large;
   border-radius: 25px;
   padding-right: 3px;
+}
+
+.main-chat .chat-main-send .chat-send .boton-send:active {
+  background-color: #042944;
 }
 
 .admin .navbar .container-fluid .collapse .navbar-nav .navbar-right {
@@ -2208,5 +2217,123 @@ body {
 
 .admin .content {
   padding: 2vh;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ptecnica {
+    margin-top: 1.5vh;
+  }
+}
+
+.ptecnica .content {
+  padding: 20px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.ptecnica .content::-webkit-scrollbar {
+  display: none;
+}
+
+.ptecnica .content .pruebas {
+  padding: 15px;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #ffffff;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #E5E5E5;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #C6C6C6;
+  border-radius: 5px;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .estado-ptecnica {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ptecnica .content .crear-ptecnica {
+  padding: 15px;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.ptecnica .content .crear-ptecnica .crear-ptecnica-btn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #E5E5E5;
+  border-radius: 1vh;
+  border-width: 0;
+  -webkit-box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+          box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 25%;
+  height: 48px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 1;
+  list-style: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+}
+
+.ptecnica .content .crear-ptecnica .crear-ptecnica-btn:focus {
+  -webkit-box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+          box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.ptecnica .content .crear-ptecnica .crear-ptecnica-btn:active {
+  -webkit-box-shadow: #D6D6E7 0 3px 7px inset;
+          box-shadow: #D6D6E7 0 3px 7px inset;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.ptecnica .content .crear-ptecnica .crear-ptecnica-btn .button-text {
+  font-weight: bolder;
+  font-size: 15px;
 }
 /*# sourceMappingURL=style-pol.css.map */

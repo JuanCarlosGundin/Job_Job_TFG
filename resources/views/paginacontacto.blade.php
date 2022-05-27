@@ -6,20 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulario de contacto</title>
     <link rel="stylesheet" href="{!! asset('css/contacto.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/style-laura.css') !!}">
     <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6d5e6cb8fd.js" crossorigin="anonymous"></script>
     <!-- animacion de rebote formulario -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    {{-- token --}}
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
 
-<body>
-
+<body class="body-index">
     <div class="content">
-
-        {{--
-        <h1 class="logo"><span>Contáctanos </span></h1> --}}
+        <h1 class="logo"><span>Contáctanos </span></h1>
         <br><br><br><br>
 
         <div class="contact-wrapper animated bounceInUp">

@@ -455,8 +455,6 @@ body {
         }
     }
     .categoria-profile {
-        border-radius: 5px;
-        background-color: $white;
         .categoria {
             padding: 2vh;
             width: 50%;
@@ -651,6 +649,28 @@ body {
                     }
                 }
             }
+            .boton-mas-div {
+                .boton-mas {
+                    border-width: 0px;
+                    background-color: $fifth-color;
+                    color: white;
+                    width: 36.1px;
+                    height: 36.1px;
+                    padding: 0;
+                    font-size: medium;
+                }
+            }
+            .boton-menos-div {
+                .boton-menos {
+                    border-width: 0px;
+                    background-color: rgb(133, 11, 11);
+                    color: white;
+                    width: 36.1px;
+                    height: 36.1px;
+                    padding: 0;
+                    font-size: medium;
+                }
+            }
             .input-edit {
                 justify-content: center;
                 display: flex;
@@ -778,31 +798,6 @@ body {
     .contenedor {
         display: flex;
         text-align: center;
-    }
-}
-
-////////////////////////////////////////////////// BOTONES AÑADIR Y QUITAR INPUTS ////////////////////////////////////////////////////////7
-.boton-mas-div {
-    .boton-mas {
-        border-width: 0px;
-        background-color: $fifth-color;
-        color: white;
-        width: 36.1px;
-        height: 36.1px;
-        padding: 0;
-        font-size: medium;
-    }
-}
-
-.boton-menos-div {
-    .boton-menos {
-        border-width: 0px;
-        background-color: rgb(133, 11, 11);
-        color: white;
-        width: 36.1px;
-        height: 36.1px;
-        padding: 0;
-        font-size: medium;
     }
 }
 
@@ -1190,6 +1185,12 @@ body {
         overflow-y: scroll;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        @media only screen and (max-width: $tablet) {
+            height: 100%;
+        }
         .chat-mensaje-inicio {
             justify-content: center;
             display: flex;
@@ -1332,6 +1333,9 @@ body {
                 font-size: large;
                 border-radius: 25px;
                 padding-right: 3px;
+                &:active {
+                    background-color: #042944;
+                }
             }
         }
     }
@@ -1686,5 +1690,94 @@ body {
     }
     .content {
         padding: 2vh;
+    }
+}
+
+///////////////////////////////Prueba-tecnica//////////////////////////////////////
+.ptecnica {
+    @media only screen and (max-width: $tablet) {
+        margin-top: 1.5vh;
+    }
+    .content {
+        padding: 20px;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .pruebas {
+            padding: 15px;
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: #ffffff;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            .ver-ptecnica {
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $grey;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #C6C6C6;
+                border-radius: 5px;
+                .estado-ptecnica {
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    .title {
+                        .p-title {}
+                    }
+                    .text {
+                        .p-text {}
+                    }
+                }
+            }
+        }
+        .crear-ptecnica {
+            padding: 15px;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            .crear-ptecnica-btn {
+                align-items: center;
+                appearance: none;
+                background-color: $grey;
+                border-radius: 1vh;
+                border-width: 0;
+                box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: inline-flex;
+                width: 25%;
+                height: 48px;
+                justify-content: center;
+                line-height: 1;
+                list-style: none;
+                padding-left: 16px;
+                padding-right: 16px;
+                text-align: center;
+                // touch-action: manipulation;
+                white-space: nowrap;
+                will-change: box-shadow, transform;
+                &:focus {
+                    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                }
+                &:active {
+                    box-shadow: #D6D6E7 0 3px 7px inset;
+                    transform: translateY(2px);
+                }
+                .button-text {
+                    font-weight: bolder;
+                    font-size: 15px;
+                }
+            }
+        }
     }
 }

@@ -68,9 +68,17 @@ body {
                 font-weight: bold;
                 font-size: 2.7vh;
             }
-            a:hover {
-                padding-top: 2%;
-                padding-bottom: 2%;
+            .btn-navbar {
+                color: $black;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 2.7vh;
+                background-color: white;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+            .btn-navbar:hover {
                 color: rgb(113, 112, 112);
             }
             ///botón inicio de sesión navbar///
@@ -203,22 +211,21 @@ body {
     }
     ///FOOTER///
     .footer {
-        height: 40vh;
+        height: 48vh;
         background-color: $fourth-color;
         color: white;
         text-align: left;
         justify-content: center;
+        padding-top: 4%;
+        padding-bottom: 12%;
         p {
-            font-size: 16px;
+            font-size: 19px !important;
         }
         .footer-2,
         .footer-3 {
-            padding-top: 4%;
-            padding-bottom: 12%;
             padding-left: 9%;
             padding-right: 9%;
             width: 33.3%;
-            height: 100%;
             float: left;
             h1 {
                 padding-bottom: 8%;
@@ -234,7 +241,6 @@ body {
             i {
                 text-decoration: none;
                 color: white;
-                font-size: 14px;
                 float: left;
                 text-align: left;
                 margin: 0;
@@ -248,8 +254,6 @@ body {
             }
         }
         .footer-1 {
-            padding-top: 4%;
-            padding-bottom: 12%;
             padding-left: 9%;
             padding-right: 9%;
             width: 33.3%;
@@ -275,15 +279,13 @@ body {
                 width: 100%;
                 text-align: center;
                 .btn-register {
-                    width: 40% !important;
+                    width: 33% !important;
                     font-size: 16px !important;
                     padding-left: 0%;
                     padding-right: 0%;
                 }
-                a {
-                    font-size: 16px !important;
-                    padding-left: 1%;
-                    padding-right: 1%;
+                .btn-navbar {
+                    font-size: 20px !important;
                 }
             }
         }
@@ -333,11 +335,13 @@ body {
         height: 20vh !important;
     }
     .footer {
-        height: 80vh;
         background-color: $fourth-color !important;
+        h2 {
+            font-size: 24px !important;
+        }
         p,
         a {
-            font-size: 20px !important;
+            font-size: 22px !important;
         }
         .footer-2,
         .footer-3 {
@@ -415,6 +419,10 @@ body {
             .footer-1 {
                 display: none;
             }
+            p,
+            a {
+                font-size: 16px !important;
+            }
         }
     }
 }
@@ -441,6 +449,14 @@ body {
             text-align: center;
             display: flex;
             justify-content: center;
+            .inicio-activo {
+                background-color: #F0F0F0;
+                box-shadow: inset 0px 0px 5px rgb(206, 205, 205);
+            }
+            .registrar-activo {
+                background-color: #F0F0F0;
+                box-shadow: inset 0px 0px 5px rgb(206, 205, 205);
+            }
         }
         ///contenido del modal
         .modal-content {

@@ -695,6 +695,43 @@ function modificar_editar_user(evt) {
         });
         return false;
 
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(nombre)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un nombre",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(apellido)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un apellido",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(mail)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir el email",
+            icon: "error",
+        });
+        return false;
     }
     var formData = new FormData();
 
@@ -1178,6 +1215,14 @@ function editar_sobre_mi(evt) {
 
         formData.append('github', github);
     }
+    if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un número de teléfono correcto",
+            icon: "error",
+        });
+        return false;
+    }
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -1190,6 +1235,19 @@ function editar_sobre_mi(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Sobre mí",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_sobre_mi();
+                    }
+                });
+
+            }
 
         }
 
@@ -1359,6 +1417,16 @@ function crear_idiomas(evt) {
     var nivel_idioma = document.getElementById("nivel_idioma").value;
     var formData = new FormData();
 
+    if (nombre_idioma == 0 || nivel_idioma == 0) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_idioma', nombre_idioma);
@@ -1374,6 +1442,19 @@ function crear_idiomas(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Idiomas",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_idiomas();
+                    }
+                });
+
+            }
 
         }
 
@@ -1483,6 +1564,16 @@ function editar_idiomas(evt) {
     var nivel_idioma = document.getElementById("nivel_idioma").value;
     var formData = new FormData();
 
+    if (nombre_idioma == 0 || nivel_idioma == 0) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_idioma', nombre_idioma);
@@ -1499,7 +1590,19 @@ function editar_idiomas(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Idiomas",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_idiomas();
+                    }
+                });
+
+            }
         }
 
     }
@@ -1528,7 +1631,19 @@ function eliminar_idiomas(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            leer_idiomas();
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Idiomas",
+                    text: "Datos eliminados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_idiomas();
+                    }
+                });
+
+            }
 
         }
 
@@ -1707,6 +1822,36 @@ function crear_estudios(evt) {
     var año_salida = document.getElementById("año_salida").value;
     var formData = new FormData();
 
+    if (/^ *$/.test(nombre_formación)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir una formación",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(lugar_formación)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un lugar de formación",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_entrada)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de entrada",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_salida)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de salida",
+            icon: "error",
+        });
+        return false;
+    }
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_formación', nombre_formación);
@@ -1724,6 +1869,19 @@ function crear_estudios(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Estudios",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_estudios();
+                    }
+                });
+
+            }
 
         }
 
@@ -1834,6 +1992,36 @@ function editar_estudios(evt) {
     var año_salida = document.getElementById("año_salida").value;
     var formData = new FormData();
 
+    if (/^ *$/.test(nombre_formación)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir una formación",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(lugar_formación)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un lugar de formación",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_entrada)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de entrada",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_salida)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de salida",
+            icon: "error",
+        });
+        return false;
+    }
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_formación', nombre_formación);
@@ -1852,7 +2040,19 @@ function editar_estudios(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Estudios",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_estudios();
+                    }
+                });
+
+            }
         }
 
     }
@@ -1881,7 +2081,19 @@ function eliminar_estudios(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            leer_estudios();
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Estudios",
+                    text: "Datos eliminados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_estudios();
+                    }
+                });
+
+            }
 
         }
 
@@ -2077,6 +2289,36 @@ function crear_experiencia(evt) {
     var funciones = document.getElementById("funciones").value;
     var formData = new FormData();
 
+    if (/^ *$/.test(nombre_experiencia)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir una experiencia",
+            icon: "error",
+        });
+        return false;
+
+    } else if (/^ *$/.test(lugar_experiencia)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un lugar de experiencia",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_entrada)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de entrada",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_salida)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de salida",
+            icon: "error",
+        });
+        return false;
+    }
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_experiencia', nombre_experiencia);
@@ -2095,7 +2337,19 @@ function crear_experiencia(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Experiencia",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_experiencia();
+                    }
+                });
+
+            }
         }
 
     }
@@ -2216,6 +2470,37 @@ function editar_experiencias(evt) {
     var funciones = document.getElementById("funciones").value;
     var formData = new FormData();
 
+    if (/^ *$/.test(nombre_experiencia)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir una experiencia",
+            icon: "error",
+        });
+        return false;
+
+    } else if (/^ *$/.test(lugar_experiencia)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un lugar de experiencia",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_entrada)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de entrada",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(año_salida)) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que añadir un año de salida",
+            icon: "error",
+        });
+        return false;
+    }
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_experiencia', nombre_experiencia);
@@ -2235,7 +2520,19 @@ function editar_experiencias(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Experiencia",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_experiencia();
+                    }
+                });
+
+            }
         }
 
     }
@@ -2264,7 +2561,19 @@ function eliminar_experiencias(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            leer_experiencia();
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Registro",
+                    text: "Datos eliminados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_experiencia();
+                    }
+                });
+
+            }
 
         }
 
@@ -2379,6 +2688,16 @@ function crear_habilidades(evt) {
     var nivel_habilidad = document.getElementById("nivel_habilidad").value;
     var formData = new FormData();
 
+    if (/^ *$/.test(nombre_habilidad) || nivel_habilidad == 0) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('nombre_habilidad', nombre_habilidad);
@@ -2394,7 +2713,19 @@ function crear_habilidades(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Habilidades",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_habilidades();
+                    }
+                });
+
+            }
         }
 
     }
@@ -2480,7 +2811,19 @@ function editar_habilidades(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Habilidades",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_habilidades();
+                    }
+                });
+
+            }
         }
 
     }
@@ -2509,7 +2852,19 @@ function eliminar_habilidades(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            leer_habilidades();
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Habilidades",
+                    text: "Datos eliminados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_habilidades();
+                    }
+                });
+
+            }
 
         }
 
@@ -2677,6 +3032,16 @@ function editar_disponibilidad(evt) {
     var vehiculo_propio = document.getElementById("vehiculo_propio").value;
     var formData = new FormData();
 
+    if (disponibilidad == 0 || carnet_conducir == 0 || vehiculo_propio == 0) {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     if (disponibilidad) {
@@ -2703,7 +3068,19 @@ function editar_disponibilidad(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Disponibilidad",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_disponibilidad();
+                    }
+                });
+
+            }
         }
 
     }
@@ -2874,7 +3251,19 @@ function editar_configuracion(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Configuración",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_configuracion();
+                    }
+                });
+
+            }
         }
 
     }
@@ -3023,6 +3412,29 @@ function modificar_editar_user_empresa(evt) {
         });
         return false;
 
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(nom_emp)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un nombre",
+            icon: "error",
+        });
+        return false;
     }
     var formData = new FormData();
 
@@ -3208,36 +3620,85 @@ function form_editar_sobre_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_editar_sobre_empresa>`;
 
             if (!empresa.about_emp) {
-
-                recarga += `<input type="textarea" class="" id="about_emp" name="about_emp" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" placeholder="Introduzca una breve descripción">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="textarea" class="" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!empresa.campo_emp) {
-
-                recarga += `<input type="text" class="" id="campo_emp" name="campo_emp" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">TIPO EMPRESA</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="campo_emp" name="campo_emp" placeholder="Introduzca el tipo de empresa">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="campo_emp" name="campo_emp" value="${empresa.campo_emp}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">TIPO EMPRESA</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="campo_emp" name="campo_emp" value="${empresa.campo_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!empresa.loc_emp) {
-
-                recarga += `<input type="text" class="" id="loc_emp" name="loc_emp" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">DONDE ESTAMOS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="loc_emp" name="loc_emp" placeholder="Donde encontrarnos">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="loc_emp" name="loc_emp" value="${empresa.loc_emp}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">DONDE ESTAMOS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="loc_emp" name="loc_emp" value="${empresa.loc_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -3275,6 +3736,14 @@ function editar_sobre_empresa(evt) {
 
         formData.append('loc_emp', loc_emp);
     }
+    if (/^ *$/.test(about_emp) || /^ *$/.test(campo_emp) || /^ *$/.test(loc_emp)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes poner solo campos en blanco",
+            icon: "error",
+        });
+        return false;
+    }
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -3287,7 +3756,19 @@ function editar_sobre_empresa(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Empresa",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_sobre_empresa();
+                    }
+                });
+
+            }
         }
 
     }
@@ -3453,6 +3934,14 @@ function editar_buscamos_empresa(evt) {
 
         formData.append('searching', searching);
     }
+    if (/^ *$/.test(vacante) || /^ *$/.test(searching)) {
+        swal.fire({
+            title: "Error",
+            text: "No puedes dejar campos en blanco",
+            icon: "error",
+        });
+        return false;
+    }
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -3465,7 +3954,19 @@ function editar_buscamos_empresa(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
 
+                swal.fire({
+                    title: "Buscar empresa",
+                    text: "Datos guardados",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_buscamos_empresa();
+                    }
+                });
+
+            }
         }
 
     }
@@ -3473,6 +3974,7 @@ function editar_buscamos_empresa(evt) {
     ajax.send(formData)
 
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
 
 function leer_configuracion_empresa() {
     //desactivar cuenta
