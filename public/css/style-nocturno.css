@@ -280,13 +280,13 @@
   background-color: grey !important;
 }
 
-.edit-profile .aceptar-cuenta-btn {
+.oscuro .edit-profile .aceptar-cuenta-btn {
   color: black !important;
 }
 
-.edit-profile .p-text,
-.edit-profile .return-text,
-.edit-profile i {
+.oscuro .edit-profile .p-text,
+.oscuro .edit-profile .return-text,
+.oscuro .edit-profile i {
   color: white !important;
 }
 
