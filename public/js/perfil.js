@@ -2618,7 +2618,7 @@ function eliminar_experiencias(evt) {
 }
 
 function leer_curriculum() {
-
+    window.location.href = "./curriculum";
 }
 
 function leer_habilidades() {
