@@ -41,12 +41,6 @@ function objetoAjax() {
 
 }
 
-function htmlEncode(str) {
-    return String(str).replace(/[^\w. ]/gi, function(c) {
-        return '&#' + c.charCodeAt(0) + ';';
-    });
-}
-
 function leeridiomas() {
 
     var ajax = objetoAjax();
@@ -78,8 +72,8 @@ function login() {
     recarga += '<div class="modal-content">'
     recarga += '<form method="POST" id="loginuser">'
     recarga += '<h2>Bienvenido a JobJob</h2>'
-    recarga += '<input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo"><br></br>'
-    recarga += '<input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña"><br>'
+    recarga += '<input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo">'
+    recarga += '<input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña">'
     recarga += '<button class= "botonlogin" type="submit" value="register">Iniciar Sesión</button>'
     recarga += '<a class="contraseña" href="./forget-password">¿Has olvidado tu contraseña?</>'
     recarga += '</form>'
@@ -220,10 +214,10 @@ function registrar() {
     recarga += '<div id="main" class="modal-content-register-cuadrados">'
     recarga += '<h3>¿Cómo vas a usar JobJob?</h3>'
     recarga += '<div class="cuadrados">'
-    recarga += '<button class="cuadrado" id="formtrabajador"><i class="fa-solid fa-user"></i><br><br><p class="user-empresa">Trabajador</p></button>'
+    recarga += '<button class="cuadrado" id="formtrabajador"><i class="fa-solid fa-user"></i><p class="user-empresa">Trabajador</p></button>'
     recarga += '</div>'
     recarga += '<div class="cuadrados">'
-    recarga += '<button class="cuadrado" id="formempresa"><i class="fa-solid fa-building"></i><br><br><p class="user-empresa">Empresa</p></button>'
+    recarga += '<button class="cuadrado" id="formempresa"><i class="fa-solid fa-building"></i><p class="user-empresa">Empresa</p></button>'
     recarga += '</div>'
     recarga += '</div>'
     tabla.innerHTML = recarga;
@@ -250,11 +244,11 @@ function formtrabajador0() {
     recarga += '<form method="POST" id="formtrabajador0" enctype="multipart/form-data">';
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     //Correo
-    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="mail" name="mail" placeholder="Introduce el email...">';
     //Contraseña 1
-    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputregister" id="contra" name="contra" placeholder="Introduce la contraseña...">';
     //Contraseña 2
-    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="Repite la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputregister" id="contra2" name="contra2" placeholder="Repite la contraseña...">';
     recarga += '<input type="submit" class="botonregister" value="Continuar">';
     recarga += '</form>';
     recarga += '</div>';
@@ -271,8 +265,8 @@ function sessiontrabajador0(evt) {
     evt.preventDefault();
 
     let mail = document.getElementById('mail').value;
-    let contra = htmlEncode(document.getElementById('contra').value);
-    let contra2 = htmlEncode(document.getElementById('contra2').value);
+    let contra = document.getElementById('contra').value;
+    let contra2 = document.getElementById('contra2').value;
 
     if (!mail || !contra || !contra2) {
 
@@ -375,7 +369,7 @@ function sessiontrabajador0(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -403,11 +397,11 @@ function formtrabajador1() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //Nombre
-    recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="nombre" name="nombre" placeholder="Introduce el nombre...">';
     //Apellido
-    recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido...">';
     //Edad
-    recarga += '<input type="date" class="inputregister" id="edad" name="edad"><br><br>';
+    recarga += '<input type="date" class="inputregister" id="edad" name="edad">';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
@@ -423,8 +417,8 @@ function sessiontrabajador1(evt) {
 
     evt.preventDefault();
 
-    let nombre = htmlEncode(document.getElementById('nombre').value);
-    let apellido = htmlEncode(document.getElementById('apellido').value);
+    let nombre = document.getElementById('nombre').value;
+    let apellido = document.getElementById('apellido').value;
     let edad = document.getElementById('edad').value;
 
     if (!nombre || !apellido || !edad) {
@@ -512,7 +506,7 @@ function sessiontrabajador1(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -540,17 +534,17 @@ function formtrabajador2() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador2" enctype="multipart/form-data">';
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //campo_user
-    recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="campo_user" name="campo_user" placeholder="Introduce tu sector...">';
     //about_user
-    recarga += '<input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi...">';
     //lenguaje_preferido
-    recarga += '<input type="text" class="inputregister" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="Lenguaje preferido..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="Lenguaje preferido...">';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
@@ -570,9 +564,9 @@ function sessiontrabajador2(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let campo_user = htmlEncode(document.getElementById('campo_user').value);
-    let about_user = htmlEncode(document.getElementById('about_user').value);
-    let lenguaje_preferido = htmlEncode(document.getElementById('lenguaje_preferido').value);
+    let campo_user = document.getElementById('campo_user').value;
+    let about_user = document.getElementById('about_user').value;
+    let lenguaje_preferido = document.getElementById('lenguaje_preferido').value;
 
     var formData = new FormData();
 
@@ -639,7 +633,7 @@ function sessiontrabajador2(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -667,13 +661,13 @@ function formtrabajador3() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>Introduce más datos sobre ti</h3>';
     recarga += '<form method="POST" id="formtrabajador3" enctype="multipart/form-data">';
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //loc_trabajador
-    recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion..."><br><br>';
+    recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion...">';
     //disponibilidad
     recarga += '<select class="inputregister" name="disponibilidad" id="disponibilidad">';
     recarga += '<option value="" selected>- selecciona -</option>';
@@ -683,9 +677,9 @@ function formtrabajador3() {
     recarga += '<option value="turno noche">turno noche</option>';
     recarga += '<option value="turno partida">turno partida</option>';
     recarga += '<option value="fines de semana">fines de semana</option>';
-    recarga += '</select><br><br>';
+    recarga += '</select>';
     //Foto
-    recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil"><br><br>';
+    recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil">';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
@@ -705,7 +699,7 @@ function sessiontrabajador3(evt) {
     evt.preventDefault();
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
-    let loc_trabajador = htmlEncode(document.getElementById('loc_trabajador').value);
+    let loc_trabajador = document.getElementById('loc_trabajador').value;
     let disponibilidad = document.getElementById('disponibilidad').value;
     let foto_perfil = document.getElementById('foto_perfil').files[0];
 
@@ -774,7 +768,7 @@ function sessiontrabajador3(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -802,7 +796,7 @@ function formtrabajador4() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>¿Qué idiomas hablas?</h3>';
     recarga += '<form method="POST" id="formtrabajador4" enctype="multipart/form-data">';
     /* Estructura linea */
@@ -817,7 +811,7 @@ function formtrabajador4() {
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
-    recarga += '</select><br><br>';
+    recarga += '</select>';
     recarga += '</div>';
     //nivel_idioma
     recarga += '<div class="column-2">';
@@ -828,7 +822,7 @@ function formtrabajador4() {
     recarga += '<option value="medio">medio</option>';
     recarga += '<option value="alto">alto</option>';
     recarga += '<option value="nativo">nativo</option>';
-    recarga += '</select><br><br>';
+    recarga += '</select>';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '</div>';
@@ -867,7 +861,7 @@ function insertaridioma() {
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
-    recarga += '</select><br><br>';
+    recarga += '</select>';
     recarga += '</div>';
     //nivel_idioma
     recarga += '<div class="column-2">';
@@ -878,7 +872,7 @@ function insertaridioma() {
     recarga += '<option value="medio">medio</option>';
     recarga += '<option value="alto">alto</option>';
     recarga += '<option value="nativo">nativo</option>';
-    recarga += '</select><br><br>';
+    recarga += '</select>';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
@@ -972,7 +966,7 @@ function sessiontrabajador4(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -1000,7 +994,7 @@ function formtrabajador5() {
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>¿Dónde has estudiado?</h3>';
     recarga += '<form method="POST" id="formtrabajador5" enctype="multipart/form-data">';
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
@@ -1011,22 +1005,22 @@ function formtrabajador5() {
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de formación</p>';
-    recarga += '<input type="text" class="inputregister inputcolumn2" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo"><br><br>';
+    recarga += '<input type="text" class="inputregister inputcolumn2" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo">';
     recarga += '</div>';
     //lugar_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Lugar de formación</p>';
-    recarga += '<input type="text" class="inputregister inputcolumn2" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios"><br><br>';
+    recarga += '<input type="text" class="inputregister inputcolumn2" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
     recarga += '<p>Año de entrada</p>';
-    recarga += '<input type="date" class="inputregister inputcolumn2" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<input type="date" class="inputregister inputcolumn2" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
-    recarga += '<input type="date" class="inputregister inputcolumn2" id="año_salida" name="año_salida[]"><br><br>';
+    recarga += '<input type="date" class="inputregister inputcolumn2" id="año_salida" name="año_salida[]">';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
@@ -1060,22 +1054,22 @@ function insertarestudio() {
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de formación</p>';
-    recarga += '<input type="text" class="inputregister" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo"><br><br>';
+    recarga += '<input type="text" class="inputregister" id="nombre_formación" name="nombre_formación[]" placeholder="Introduce tu titulo">';
     recarga += '</div>';
     //lugar_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Lugar de formación</p>';
-    recarga += '<input type="text" class="inputregister" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios"><br><br>';
+    recarga += '<input type="text" class="inputregister" id="lugar_formación" name="lugar_formación[]" placeholder="Introduce el centro de estudios">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
     recarga += '<p>Año de entrada</p>';
-    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
-    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]"><br><br>';
+    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]">';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
@@ -1100,9 +1094,8 @@ function sessiontrabajador5(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombre_formación = htmlEncode(document.getElementsByName('nombre_formación[]'));
-    console.log(nombre_formación);
-    let lugar_formación = htmlEncode(document.getElementsByName('lugar_formación[]'));
+    let nombre_formación = document.getElementsByName('nombre_formación[]');
+    let lugar_formación = document.getElementsByName('lugar_formación[]');
     let año_entrada = document.getElementsByName('año_entrada[]');
     let año_salida = document.getElementsByName('año_salida[]');
 
@@ -1184,7 +1177,7 @@ function sessiontrabajador5(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -1211,7 +1204,7 @@ function formtrabajador6() {
     recarga += '<div class="modal-content-register"><div class="scrollbar">';
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
-    recarga += '</div><br>';
+    recarga += '</div>';
     recarga += '<h3>¿Dónde has trabajado?</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
 
@@ -1223,27 +1216,27 @@ function formtrabajador6() {
     //nombre_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de empresa</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto">';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>Lugar</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
     recarga += '<p>Año de entrada</p>';
-    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
-    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_salida" name="año_salida[]"><br><br>';
+    recarga += '<input type="date" class="inputcolumn2 inputregister" id="año_salida" name="año_salida[]">';
     recarga += '</div>';
     //funciones
     recarga += '<div class="column-1">';
     recarga += '<p>funciones</p>';
-    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
+    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
@@ -1276,27 +1269,27 @@ function insertarexperiencia() {
     //nombre_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>nombre_experiencia</p>';
-    recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto"><br><br>';
+    recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto">';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
     recarga += '<p>lugar_experiencia</p>';
-    recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa"><br><br>';
+    recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa">';
     recarga += '</div>';
     //funciones
     recarga += '<div class="column-1">';
     recarga += '<p>funciones</p>';
-    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa"><br><br>';
+    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
     recarga += '<p>año_entrada</p>';
-    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]"><br><br>';
+    recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
     recarga += '<p>año_salida</p>';
-    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]"><br><br>';
+    recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]">';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
@@ -1321,9 +1314,9 @@ function sessiontrabajador6(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombre_experiencia = htmlEncode(document.getElementsByName('nombre_experiencia[]'));
-    let lugar_experiencia = htmlEncode(document.getElementsByName('lugar_experiencia[]'));
-    let funciones = htmlEncode(document.getElementsByName('funciones[]'));
+    let nombre_experiencia = document.getElementsByName('nombre_experiencia[]');
+    let lugar_experiencia = document.getElementsByName('lugar_experiencia[]');
+    let funciones = document.getElementsByName('funciones[]');
     let año_entrada = document.getElementsByName('año_entrada[]');
     let año_salida = document.getElementsByName('año_salida[]');
     var formData = new FormData();
@@ -1402,7 +1395,7 @@ function sessiontrabajador6(evt) {
                 for (let i = 0; i < respuesta.errors.length; i++) {
                     console.log(container_error.innerHTML);
                     container_error.style.display = "block";
-                    container_error.innerHTML += ('<br><p>' + respuesta.errors[i] + '</p>');
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
             }
 
@@ -1483,22 +1476,22 @@ function formempresa0() {
     //Correo
     recarga += '<div class="column-2">';
     recarga += '<p>Email</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="mail" name="mail" placeholder="Introduce el email..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="mail" name="mail" placeholder="Introduce el email...">';
     recarga += '</div>';
     //Nombre
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre...">';
     recarga += '</div>';
     //Contra 1
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña</p>';
-    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra" name="contra" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra" name="contra" placeholder="Introduce la contraseña...">';
     recarga += '</div>';
     //Contra 2
     recarga += '<div class="column-2">';
     recarga += '<p>Contraseña 2</p>';
-    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña..."><br><br>';
+    recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña...">';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
@@ -1515,10 +1508,10 @@ function formempresa0() {
 function sessionempresa0(evt) {
     evt.preventDefault();
 
-    let mail = htmlEncode(document.getElementById('mail').value);
-    let nom_emp = htmlEncode(document.getElementById('nom_emp').value);
-    let contra = htmlEncode(document.getElementById('contra').value);
-    let contra2 = htmlEncode(document.getElementById('contra2').value);
+    let mail = document.getElementById('mail').value;
+    let nom_emp = document.getElementById('nom_emp').value;
+    let contra = document.getElementById('contra').value;
+    let contra2 = document.getElementById('contra2').value;
 
     if (!mail || !nom_emp || !contra || !contra2) {
 
@@ -1657,17 +1650,17 @@ function formempresa1() {
     //about_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Sobre la empresa</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="about_emp" name="about_emp" placeholder="Sobre mi empresa...">';
     recarga += '</div>';
     //campo_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Sector</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="campo_emp" name="campo_emp" placeholder="Introduce tu sector...">';
     recarga += '</div>';
     //searching
     recarga += '<div class="column-2">';
     recarga += '<p>¿Qué buscas para tu empresa?</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?"><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="searching" name="searching" placeholder="Qué buscas para tu empresa?">';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
@@ -1686,9 +1679,9 @@ function formempresa1() {
 function sessionempresa1(evt) {
     evt.preventDefault();
 
-    let about_emp = htmlEncode(document.getElementById('about_emp').value);
-    let campo_emp = htmlEncode(document.getElementById('campo_emp').value);
-    let searching = htmlEncode(document.getElementById('searching').value);
+    let about_emp = document.getElementById('about_emp').value;
+    let campo_emp = document.getElementById('campo_emp').value;
+    let searching = document.getElementById('searching').value;
 
     var formData = new FormData();
 
@@ -1763,24 +1756,24 @@ function formempresa2() {
     //Flechas registro
     recarga += '<div class="modal-content-register"><div class="scrollbar">';
     recarga += '<div class="izquierda-derecha">';
-    recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button><br>';
+    recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '</div>';
     recarga += '<h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa2" enctype="multipart/form-data">';
     //loc_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Dirección empresa</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="loc_emp" name="loc_emp" placeholder="Introduce la localización...">';
     recarga += '</div>';
     //vacante
     recarga += '<div class="column-2">';
     recarga += '<p>Vacante</p>';
-    recarga += '<input type="text" class="inputcolumn2 inputregister" id="vacante" name="vacante" placeholder="Qué buscamos..."><br><br>';
+    recarga += '<input type="text" class="inputcolumn2 inputregister" id="vacante" name="vacante" placeholder="Qué buscamos...">';
     recarga += '</div>';
     //logo_emp
     recarga += '<div class="column-1">';
     recarga += '<p>Logo empresa</p>';
-    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp"><br><br>';
+    recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp">';
     recarga += '</div>';
     recarga += '<input type="submit" class="botonregister" value="Registrarme">';
     recarga += '</form>';
@@ -1798,8 +1791,8 @@ function sessionempresa2(evt) {
     evt.preventDefault();
 
     let logo_emp = document.getElementById('logo_emp').files[0];
-    let loc_emp = htmlEncode(document.getElementById('loc_emp').value);
-    let vacante = htmlEncode(document.getElementById('vacante').value);
+    let loc_emp = document.getElementById('loc_emp').value;
+    let vacante = document.getElementById('vacante').value;
 
     var formData = new FormData();
 

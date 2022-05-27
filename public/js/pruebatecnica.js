@@ -75,6 +75,9 @@ function leer_contenido() {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
             var recarga = `<div class="content">
+            <div class="crear-ptecnica">
+                <button class="crear-ptecnica-btn" id="crear"><p class="button-text">Nueva Prueba Técnica</p></button>
+            </div>
             <div class="pruebas">`;
             if (respuesta.hasOwnProperty('empresa')) {
                 var empresa = respuesta.empresa;
@@ -83,32 +86,39 @@ function leer_contenido() {
                             <div class="ver-ptecnica">
                                 <div class="estado-ptecnica">
                                     <div class="title">
-                                        <p class="p-title">Estado</p>
+                                        <p class="p-title">ESTADO: </p>
                                     </div>
                                     <div class="text">`;
                     if (empresa[i].estado_prueba) {
-                        recarga += `<p class="p-text">Activo</p>`;
+                        recarga += `<p class="p-text-active"><i class="fa-solid fa-circle-check"></i> Activo</p>`;
                     } else {
-                        recarga += `<p class="p-text">Cerrado</p>`;
+                        recarga += `<p class="p-text-unactive"><i class="fa-solid fa-circle-xmark"></i> Cerrado</p>`;
                     }
                     recarga += `</div>
                                 </div>`;
-                    recarga += `<p>${empresa[i].enunciado}</p>
-                                            <p>${empresa[i].descripcion}</p>
-                                                                                        <p>Numero de inscritos</p>`;
+                    recarga += `<div class="enunciado-ptecnica">
+                                    <p>Enunciado: </p>
+                                    <p>${empresa[i].enunciado}</p>
+                                </div>
+                                <div class="desc-ptecnica">
+                                    <p>Descripción: </p>
+                                    <p>${empresa[i].descripcion}</p>
+                                </div>
+                                
+                                    <p>Inscripciones:</p>`;
                     if (!respuesta.inscritos[i].inscritos) {
                         recarga += `<p>0 personas</p>`;
                     } else {
                         recarga += `<p>${respuesta.inscritos[i].inscritos} personas</p>`;
                     }
                     recarga += `
-                                    <button class="deshabilitar">Cerrar prueba</button>
+                                <div class="des-ptecnica">
+                                    <button class="deshabilitar"><p class="button-text"><i class="fa-solid fa-trash-can"></i></p></button>
+                                </div>
                             </div>`;
                 }
                 recarga += `</div>
-                        <div class="crear-ptecnica">
-                            <button class="crear-ptecnica-btn" id="crear"><p class="button-text">Crear</p></button>
-                        </div>
+                        
                     </div> `;
 
                 contenidoajax.innerHTML = recarga;

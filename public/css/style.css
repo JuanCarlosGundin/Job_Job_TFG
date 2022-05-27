@@ -195,7 +195,7 @@ body {
 
 .region-navbar .menu .active .icon {
   font-size: calc(15px + 1vw);
-  color: #000000;
+  color: black;
   background-color: #ffffff;
   border-width: 0px;
   height: 100%;

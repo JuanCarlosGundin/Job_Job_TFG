@@ -67,7 +67,7 @@
 
                         </div>
                         <div class="foto-trabajador">
-                            <img src="{{ asset('storage/img/usuario.png') }}" alt="foto-trabajador" style="max-width:100%;">
+                            <img src="../storage/app/public/{{$trabajador->foto_perfil}}" alt="foto-trabajador">
                         </div>
 
                     </div>

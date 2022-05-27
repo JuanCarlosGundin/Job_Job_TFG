@@ -20,8 +20,8 @@
                 <div class="with-region-sidebar col-sm-4">
                     <div class="cv-region-sidebar">
                         <div class="foto-trabajador">
-                            {{-- <img src="./storage/{{$trabajador->foto_perfil}}" alt="foto-trabajador"> --}}
-                            <img src="{{ asset('storage/img/usuario.png') }}" alt="foto-trabajador">
+                            <img src="../storage/{{$trabajador->foto_perfil}}" alt="foto-trabajador">
+                            {{-- <img src="{{ asset('storage/img/usuario.png') }}" alt="foto-trabajador"> --}}
                         </div>
                         <div class="objetivo-profesional col-sm-12">
                             <div class="header">
@@ -140,8 +140,8 @@
         </div>    
     </div>
     <div class="botones">
-        <button id="pdf2">Descargar CV</button>
-        <button>Volver</button>
+        <button id="pdf2" onclick="window.location.href = '{{ url('./curriculum/pdf2') }}';">Descargar CV</button>
+        <button onclick="window.location.href = '{{ url('./curriculum') }}';">Volver</button>
     </div>
     
 

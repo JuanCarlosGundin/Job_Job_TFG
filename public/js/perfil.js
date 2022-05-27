@@ -3630,28 +3630,8 @@ function form_editar_sobre_empresa() {
             recarga += `<p class="return-text">VOLVER</p>`;
             recarga += `</button>`;
             recarga += `</div>`;
-            recarga += `<div class="edit-profile">`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_sobre_empresa>`;
-
-            if (!empresa.about_emp) {
-                recarga += `<div class="edit-input">`;
-                recarga += `<div class="input-text">`;
-                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
-                recarga += `</div>`;
-                recarga += `<div class="input-edit">`;
-                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" placeholder="Introduzca una breve descripción">`;
-                recarga += `</div>`;
-                recarga += `</div>`;
-            } else {
-                recarga += `<div class="edit-input">`;
-                recarga += `<div class="input-text">`;
-                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
-                recarga += `</div>`;
-                recarga += `<div class="input-edit">`;
-                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
-                recarga += `</div>`;
-                recarga += `</div>`;
-            }
 
             if (!empresa.campo_emp) {
                 recarga += `<div class="edit-input">`;
@@ -3689,6 +3669,25 @@ function form_editar_sobre_empresa() {
                 recarga += `</div>`;
                 recarga += `<div class="input-edit">`;
                 recarga += `<input type="text" class="input" id="loc_emp" name="loc_emp" value="${empresa.loc_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+            }
+            if (!empresa.about_emp) {
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" placeholder="Introduzca una breve descripción">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+            } else {
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
                 recarga += `</div>`;
                 recarga += `</div>`;
             }

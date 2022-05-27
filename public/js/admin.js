@@ -98,6 +98,7 @@ function leerJS() {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('filtro', document.getElementById('filtro').value);
     formData.append('filcorreo', document.getElementById('filcorreo').value);
+    formData.append('filid', document.getElementById('filid').value);
     formData.append('Empresa', document.getElementById("emp").checked);
     formData.append('Trabajador', document.getElementById("tbjd").checked);
     formData.append('Admin', document.getElementById("adm").checked);
@@ -113,6 +114,8 @@ function leerJS() {
             var respuesta = JSON.parse(this.responseText);
 
             console.log(respuesta);
+            console.log(respuesta.trabajador);
+            // console.log(respuesta);
 
             /* si respuesta tiene (respuesta.admin) */
             if (respuesta.hasOwnProperty('admin')) {
@@ -147,8 +150,7 @@ function leerJS() {
 
                     /* Actualizar */
                     recargaadmin += '<td><button type="button" class="btn btn-info" onclick="actualizarmodal(\'' + admin[i].id + '\',\'' + admin[i].id_perfil + '\'); return false;">Modificar</button></td>';
-                    /* Eliminar */
-                    recargaadmin += '<td><button type="button" class="btn btn-danger" onclick="eliminarJS(\'' + admin[i].id + '\',\'' + admin[i].id_perfil + '\'); return false;">Eliminar</button></td>';
+
                     recargaadmin += '</tr>';
 
                 }
@@ -167,17 +169,10 @@ function leerJS() {
                 recargatrab += '<table class="table table-striped table-hover">';
                 recargatrab += '<thead>';
                 recargatrab += '<tr>';
+                recargatrab += '<th scope="col">ID</th>';
                 recargatrab += '<th scope="col">Correo</th>';
                 recargatrab += '<th scope="col">Nombre</th>';
-                recargatrab += '<th scope="col">Apellido</th>';
-                recargatrab += '<th scope="col">Sector</th>';
-                recargatrab += '<th scope="col">Localizacion</th>';
-                recargatrab += '<th scope="col">Experiencia</th>';
-                recargatrab += '<th scope="col">Edad</th>';
-                recargatrab += '<th scope="col">Estudios</th>';
-                recargatrab += '<th scope="col">Idiomas</th>';
-                recargatrab += '<th scope="col">Disponibilidad</th>';
-                recargatrab += '<th scope="col">Sobre mi</th>';
+                recargatrab += '<th scope="col">Mostrado</th>';
                 recargatrab += '<th scope="col">Foto</th>';
                 recargatrab += '<th scope="col">Estado</th>';
                 recargatrab += '</tr>';
@@ -187,17 +182,10 @@ function leerJS() {
                 for (let i = 0; i < trabajador.length; i++) {
 
                     recargatrab += '<tr>';
+                    recargatrab += '<td>' + trabajador[i].id_usuario + '</td>';
                     recargatrab += '<td>' + trabajador[i].mail + '</td>';
                     recargatrab += '<td>' + trabajador[i].nombre + '</td>';
-                    recargatrab += '<td>' + trabajador[i].apellido + '</td>';
-                    recargatrab += '<td>' + trabajador[i].campo_user + '</td>';
-                    recargatrab += '<td>' + trabajador[i].loc_trabajador + '</td>';
-                    recargatrab += '<td>' + trabajador[i].experiencia + '</td>';
-                    recargatrab += '<td>' + trabajador[i].edad + '</td>';
-                    recargatrab += '<td>' + trabajador[i].estudios + '</td>';
-                    recargatrab += '<td>' + trabajador[i].idiomas + '</td>';
-                    recargatrab += '<td>' + trabajador[i].disponibilidad + '</td>';
-                    recargatrab += '<td>' + trabajador[i].about_user + '</td>';
+                    recargatrab += '<td>' + trabajador[i].mostrado + '</td>';
 
                     /* Si hay una foto, que se muestre */
                     if (trabajador[i].foto_perfil != null) {
@@ -223,8 +211,6 @@ function leerJS() {
 
                     /* Actualizar */
                     recargatrab += '<td><button type="button" class="btn btn-info" onclick="actualizarmodal(\'' + trabajador[i].id + '\',\'' + trabajador[i].id_perfil + '\'); return false;">Modificar</button></td>';
-                    /* Eliminar */
-                    recargatrab += '<td><button type="button" class="btn btn-danger" onclick="eliminarJS(\'' + trabajador[i].id + '\',\'' + trabajador[i].id_perfil + '\'); return false;">Eliminar</button></td>';
                     recargatrab += '</tr>';
                 }
 
@@ -242,13 +228,10 @@ function leerJS() {
                 recargaemp += '<table class="table table-striped table-hover">';
                 recargaemp += '<thead>';
                 recargaemp += '<tr>';
+                recargaemp += '<th scope="col">ID</th>';
                 recargaemp += '<th scope="col">Correo</th>';
                 recargaemp += '<th scope="col">Nombre</th>';
-                recargaemp += '<th scope="col">Localizacion</th>';
-                recargaemp += '<th scope="col">Sobre nosotros</th>';
-                recargaemp += '<th scope="col">Sector</th>';
-                recargaemp += '<th scope="col">Busqueda</th>';
-                recargaemp += '<th scope="col">Vacante</th>';
+                recargaemp += '<th scope="col">Mostrado</th>';
                 recargaemp += '<th scope="col">Logo</th>';
                 recargaemp += '<th scope="col">Estado</th>';
                 recargaemp += '</tr>';
@@ -258,13 +241,10 @@ function leerJS() {
                 for (let i = 0; i < empresa.length; i++) {
 
                     recargaemp += '<tr>';
+                    recargaemp += '<td>' + empresa[i].id_usuario + '</td>';
                     recargaemp += '<td>' + empresa[i].mail + '</td>';
                     recargaemp += '<td>' + empresa[i].nom_emp + '</td>';
-                    recargaemp += '<td>' + empresa[i].loc_emp + '</td>';
-                    recargaemp += '<td>' + empresa[i].about_emp + '</td>';
-                    recargaemp += '<td>' + empresa[i].campo_emp + '</td>';
-                    recargaemp += '<td>' + empresa[i].searching + '</td>';
-                    recargaemp += '<td>' + empresa[i].vacante + '</td>';
+                    recargaemp += '<td>' + empresa[i].mostrado + '</td>';
 
                     /* Si hay una foto, que se muestre */
                     if (empresa[i].logo_emp != null) {
@@ -290,8 +270,6 @@ function leerJS() {
 
                     /* Actualizar */
                     recargaemp += '<td><button type="button" class="btn btn-info" onclick="actualizarmodal(\'' + empresa[i].id + '\',\'' + empresa[i].id_perfil + '\'); return false;">Modificar</button></td>';
-                    /* Eliminar */
-                    recargaemp += '<td><button type="button" class="btn btn-danger" onclick="eliminarJS(\'' + empresa[i].id + '\',\'' + empresa[i].id_perfil + '\'); return false;">Eliminar</button></td>';
                     recargaemp += '</tr>';
                 }
 
@@ -364,11 +342,11 @@ function crearadmin() {
             recargaform += '<form method="POST" onsubmit="opcioncrearJS(); return false;" id="formcrear">';
             recargaform += '<div class="form-group">';
             recargaform += '<label class="col-sm-2 col-form-label">Correo:</label>';
-            recargaform += '<input type="email" class="form-control" id="mail" name="mail" placeholder="Introduce el correo" required>';
+            recargaform += '<input type="email" class="form-control" id="mail" name="mail" placeholder="Introduce el correo">';
             recargaform += '</div>';
             recargaform += '<div class="form-group">';
             recargaform += '<label class="col-sm-2 col-form-label">Contraseña:</label>';
-            recargaform += '<input type="password" class="form-control" id="contra" name="contra" placeholder="Introduce una contraseña" required>';
+            recargaform += '<input type="password" class="form-control" id="contra" name="contra" placeholder="Introduce una contraseña">';
             recargaform += '</div>';
             recargaform += '<div class="form-group">';
             recargaform += '<label class="col-sm-2 col-form-label">Perfil:</label>';
@@ -396,7 +374,54 @@ function crearadmin() {
 
 
 function opcioncrearJS() {
+    var mail = document.getElementById("mail").value;
+    var contra = document.getElementById("contra").value;
+    if (mail == '' || contra == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
 
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(mail)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un email",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(contra)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir una contraseña",
+            icon: "error",
+        });
+        return false;
+    } else if (contra.length < 8) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener 8 carácteres mínimo",
+            icon: "error",
+        });
+        return false;
+    }
     /* Ubicacion del formulario de crear */
     var sitioform = document.getElementById('sitioform');
     /* Variables de usuarios */
@@ -419,47 +444,15 @@ function opcioncrearJS() {
         recargaform += '<form method="POST" onsubmit="crearJS(\'' + mail + '\',\'' + contra + '\',\'' + id_perfil + '\'); return false;" id="formcrear" enctype="multipart/form-data">';
         recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Nombre:</label>';
-        recargaform += '<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introduce el nombre" required>';
+        recargaform += '<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introduce el nombre">';
         recargaform += '</div>';
         recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Apellido:</label>';
         recargaform += '<input type="text" class="form-control" id="apellido" name="apellido" placeholder="Introduce un apellido">';
         recargaform += '</div>';
         recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Sector:</label>';
-        recargaform += '<input type="text" class="form-control" id="campo_user" name="campo_user" placeholder="Introduce un sector">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Localizacion:</label>';
-        recargaform += '<input type="text" class="form-control" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce un localizacion">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Experiencia:</label>';
-        recargaform += '<input type="text" class="form-control" id="experiencia" name="experiencia" placeholder="Introduce tu experiencia">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Edad:</label>';
-        recargaform += '<input type="text" class="form-control" id="edad" name="edad" placeholder="Introduce tu edad">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Estudios:</label>';
-        recargaform += '<input type="text" class="form-control" id="estudios" name="estudios" placeholder="Introduce tus estudios">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Idiomas:</label>';
-        recargaform += '<input type="text" class="form-control" id="idiomas" name="idiomas" placeholder="Introduce idiomas">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Disponibilidad:</label>';
-        recargaform += '<input type="text" class="form-control" id="disponibilidad" name="disponibilidad" placeholder="Introduce tu disponibilidad">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Sobre ti:</label>';
-        recargaform += '<input type="text" class="form-control" id="about_user" name="about_user" placeholder="Sobre ti">';
-        recargaform += '</div>';
-        recargaform += '<div class="form-group">';
-        recargaform += '<label class="col-sm-2 col-form-label">Foto:</label>';
-        recargaform += '<input type="file" class="form-control" id="foto_perfil" name="foto_perfil">';
+        recargaform += '<input type="date" class="form-control" id="edad" name="edad" placeholder="Introduce tu edad">';
         recargaform += '</div>';
         recargaform += '<button type="submit" class="btn btn-primary">Enviar</button>';
         recargaform += '</form>';
@@ -474,7 +467,7 @@ function opcioncrearJS() {
         recargaform += '<form method="POST" onsubmit="crearJS(\'' + mail + '\',\'' + contra + '\',\'' + id_perfil + '\'); return false;" id="formcrear" enctype="multipart/form-data">';
         recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Nombre:</label>';
-        recargaform += '<input type="text" class="form-control" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre" required>';
+        recargaform += '<input type="text" class="form-control" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre">';
         recargaform += '</div>';
         recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Localizacion:</label>';
@@ -510,7 +503,32 @@ function opcioncrearJS() {
 
 
 function crearJS(mail, contra, id_perfil) {
+    if (id_perfil == 2) {
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+        var edad = document.getElementById("edad").value;
+        if (nombre == '' || apellido == '' || edad == '') {
+            swal.fire({
+                title: "Error",
+                text: "Tienes que rellenar todos los datos",
+                icon: "error",
+            });
+            return false;
 
+        }
+    }
+    if (id_perfil == 3) {
+        var nom_emp = document.getElementById("nom_emp").value;
+        if (nom_emp == '') {
+            swal.fire({
+                title: "Error",
+                text: "Tienes que rellenar el nombre de la empresa",
+                icon: "error",
+            });
+            return false;
+
+        }
+    }
     var message = document.getElementById('message');
     var mail = document.getElementById("mail").value;
     var contra = document.getElementById("contra").value;
@@ -564,18 +582,10 @@ function crearJS(mail, contra, id_perfil) {
 
     if (id_perfil == 2) {
 
+
         formData.append('nombre', document.getElementById('nombre').value);
         formData.append('apellido', document.getElementById('apellido').value);
-        formData.append('campo_user', document.getElementById('campo_user').value);
-        formData.append('loc_trabajador', document.getElementById('loc_trabajador').value);
-        formData.append('experiencia', document.getElementById('experiencia').value);
         formData.append('edad', document.getElementById('edad').value);
-        formData.append('estudios', document.getElementById('estudios').value);
-        formData.append('idiomas', document.getElementById('idiomas').value);
-        formData.append('disponibilidad', document.getElementById('disponibilidad').value);
-        formData.append('about_user', document.getElementById('about_user').value);
-        formData.append('foto_perfil', document.getElementById('foto_perfil').files[0]);
-
     }
 
     /* Si es empresa ademas se envia lo siguiente */
@@ -603,7 +613,7 @@ function crearJS(mail, contra, id_perfil) {
 
             if (respuesta.resultado == "OK") {
 
-                message.innerHTML = '<p class="green">Nota creada correctamente</p>';
+                message.innerHTML = '<p class="green">Usuario creado correctamente</p>';
 
             } else {
 
@@ -669,40 +679,8 @@ function actualizarmodal(id, id_perfil) {
                 recargamodal += '<input type="text" class="form-control" id="nombre" name="nombre" value="' + trabajador.nombre + '">';
                 recargamodal += '</div>';
                 recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Apellido:</label>';
-                recargamodal += '<input type="text" class="form-control" id="apellido" name="apellido" value="' + trabajador.apellido + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Sector:</label>';
-                recargamodal += '<input type="text" class="form-control" id="campo_user" name="campo_user" value="' + trabajador.campo_user + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Localizacion:</label>';
-                recargamodal += '<input type="text" class="form-control" id="loc_trabajador" name="loc_trabajador" value="' + trabajador.loc_trabajador + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Experiencia:</label>';
-                recargamodal += '<input type="text" class="form-control" id="experiencia" name="experiencia" value="' + trabajador.experiencia + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
                 recargamodal += '<label class="col-sm-2 col-form-label">Edad:</label>';
-                recargamodal += '<input type="text" class="form-control" id="edad" name="edad" value="' + trabajador.edad + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Estudios:</label>';
-                recargamodal += '<input type="text" class="form-control" id="estudios" name="estudios" value="' + trabajador.estudios + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Idiomas:</label>';
-                recargamodal += '<input type="text" class="form-control" id="idiomas" name="idiomas" value="' + trabajador.idiomas + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Disponibilidad:</label>';
-                recargamodal += '<input type="text" class="form-control" id="disponibilidad" name="disponibilidad" value="' + trabajador.disponibilidad + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Sobre ti:</label>';
-                recargamodal += '<input type="text" class="form-control" id="about_user" name="about_user" value="' + trabajador.about_user + '">';
+                recargamodal += '<input type="date" class="form-control" id="edad" name="edad" value="' + trabajador.edad + '">';
                 recargamodal += '</div>';
                 recargamodal += '<div class="form-group">';
                 recargamodal += '<label class="col-sm-2 col-form-label">Mostrado:</label>';
@@ -722,26 +700,6 @@ function actualizarmodal(id, id_perfil) {
                 recargamodal += '<div class="form-group">';
                 recargamodal += '<label class="col-sm-2 col-form-label">Nombre:</label>';
                 recargamodal += '<input type="text" class="form-control" id="nom_emp" name="nom_emp" value="' + empresa.nom_emp + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Localizacion:</label>';
-                recargamodal += '<input type="text" class="form-control" id="loc_emp" name="loc_emp" value="' + empresa.loc_emp + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Sobre nosotros:</label>';
-                recargamodal += '<input type="text" class="form-control" id="about_emp" name="about_emp" value="' + empresa.about_emp + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Sector:</label>';
-                recargamodal += '<input type="text" class="form-control" id="campo_emp" name="campo_emp" value="' + empresa.campo_emp + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Que buscas:</label>';
-                recargamodal += '<input type="text" class="form-control" id="searching" name="searching" value="' + empresa.searching + '">';
-                recargamodal += '</div>';
-                recargamodal += '<div class="form-group">';
-                recargamodal += '<label class="col-sm-2 col-form-label">Vacante:</label>';
-                recargamodal += '<input type="text" class="form-control" id="vacante" name="vacante" value="' + empresa.vacante + '">';
                 recargamodal += '</div>';
                 recargamodal += '<div class="form-group">';
                 recargamodal += '<label class="col-sm-2 col-form-label">Mostrado:</label>';
@@ -769,6 +727,84 @@ function actualizarmodal(id, id_perfil) {
 
 
 function modificarJS(id, id_perfil) {
+    var mail = document.getElementById("mail").value;
+    var contra = document.getElementById("contra").value;
+    if (mail == '' || contra == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(mail)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un email",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(contra)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir una contraseña",
+            icon: "error",
+        });
+        return false;
+    } else if (contra.length < 8) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener 8 carácteres mínimo",
+            icon: "error",
+        });
+        return false;
+    }
+    if (id_perfil == 2) {
+        var nombre = document.getElementById("nombre").value;
+        var edad = document.getElementById("edad").value;
+        var mostrado = document.getElementById("mostrado").value;
+        var estado = document.getElementById("estado").value;
+
+        if (edad == '' || mostrado == '' || estado == '' || nombre == '') {
+            swal.fire({
+                title: "Error",
+                text: "Tienes que rellenar todos los datos",
+                icon: "error",
+            });
+            return false;
+
+        }
+    }
+    if (id_perfil == 3) {
+        var nom_emp = document.getElementById("nom_emp").value;
+        var mostrado = document.getElementById("mostrado").value;
+        var estado = document.getElementById("estado").value;
+
+        if (mostrado == '' || estado == '' || nom_emp == '') {
+            swal.fire({
+                title: "Error",
+                text: "Tienes que rellenar todos los datos",
+                icon: "error",
+            });
+            return false;
+        }
+    }
 
     var mail = document.getElementById("mail").value;
     var contra = document.getElementById("contra").value;
@@ -847,22 +883,14 @@ function modificarJS(id, id_perfil) {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'PUT');
     formData.append('mail', document.getElementById('mail').value);
-    formData.append('contra', document.getElementById('contra').value);
     formData.append('estado', document.getElementById('estado').value);
+    formData.append('contra', document.getElementById('contra').value);
 
     /* modificar trabajador */
     if (id_perfil == 2) {
 
         formData.append('nombre', document.getElementById('nombre').value);
-        formData.append('apellido', document.getElementById('apellido').value);
-        formData.append('campo_user', document.getElementById('campo_user').value);
-        formData.append('loc_trabajador', document.getElementById('loc_trabajador').value);
-        formData.append('experiencia', document.getElementById('experiencia').value);
         formData.append('edad', document.getElementById('edad').value);
-        formData.append('estudios', document.getElementById('estudios').value);
-        formData.append('idiomas', document.getElementById('idiomas').value);
-        formData.append('disponibilidad', document.getElementById('disponibilidad').value);
-        formData.append('about_user', document.getElementById('about_user').value);
         formData.append('foto_perfil', document.getElementById('foto_perfil').files[0]);
         formData.append('mostrado', document.getElementById('mostrado').value);
 
@@ -872,11 +900,6 @@ function modificarJS(id, id_perfil) {
     if (id_perfil == 3) {
 
         formData.append('nom_emp', document.getElementById('nom_emp').value);
-        formData.append('loc_emp', document.getElementById('loc_emp').value);
-        formData.append('about_emp', document.getElementById('about_emp').value);
-        formData.append('campo_emp', document.getElementById('campo_emp').value);
-        formData.append('searching', document.getElementById('searching').value);
-        formData.append('vacante', document.getElementById('vacante').value);
         formData.append('logo_emp', document.getElementById('logo_emp').files[0]);
         formData.append('mostrado', document.getElementById('mostrado').value);
 
@@ -907,7 +930,6 @@ function modificarJS(id, id_perfil) {
 
 //si solo quieres banear o restaurar una cuenta
 function estadouserJS(id) {
-
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -923,6 +945,10 @@ function estadouserJS(id) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            mailusuario = respuesta.resultado[0].mail
+            if (respuesta.baneo) {
+                enviarcorreobaneo();
+            }
 
             leerJS();
 
@@ -934,31 +960,6 @@ function estadouserJS(id) {
 
 }
 
-
-function eliminarJS(id, id_perfil) {
-
-    var formData = new FormData();
-
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'delete');
-
-    /* Inicializar un objeto AJAX */
-    var ajax = objetoAjax();
-
-    ajax.open("POST", "eliminaruser/" + id + "/" + id_perfil, true);
-
-    ajax.onreadystatechange = function() {
-
-        if (ajax.readyState == 4 && ajax.status == 200) {
-
-            leerJS();
-
-        }
-
-    }
-
-    ajax.send(formData)
-}
 // ------------------------------------------CORREOS ADMIN---------------------------------------------------------
 
 function enviarcorreoadminJS() {
@@ -993,7 +994,7 @@ function enviarcorreoadminJS() {
         });
         return false;
     }
-    document.getElementById("myBtncorreo").disabled = true;
+    document.getElementById("myBtnadmin").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -1021,7 +1022,7 @@ function enviarcorreoadminJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtncorreo").disabled = false;
+                document.getElementById("myBtnadmin").disabled = false;
             }
         }
     }
@@ -1041,7 +1042,7 @@ function enviarcorreoadmintrabajadoresJS() {
         return false;
 
     }
-    document.getElementById("myBtncorreo").disabled = true;
+    document.getElementById("myBtntrabajador").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
@@ -1068,11 +1069,85 @@ function enviarcorreoadmintrabajadoresJS() {
                     text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
                     icon: "error",
                 });
-                document.getElementById("myBtncorreo").disabled = false;
+                document.getElementById("myBtntrabajador").disabled = false;
             }
         }
     }
     ajax.send(formData)
 }
 
+function enviarcorreoadminempresasJS() {
+    let asuntoempresa = document.getElementById('asuntoempresa').value;
+    let mensajeempresa = document.getElementById('mensajeempresa').value;
+
+    if (asuntoempresa == '' || mensajeempresa == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    }
+    document.getElementById("myBtnempresa").disabled = true;
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', "POST");
+    formData.append('asuntoempresa', asuntoempresa);
+    formData.append('mensajeempresa', mensajeempresa);
+    var ajax = objetoAjax();
+    ajax.open("POST", "enviarcorreoadminempresas", true);
+    ajax.onreadystatechange = function() {
+        console.log(ajax.responseText)
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta == "OK") {
+                swal.fire({
+                    title: "Mensaje Enviado",
+                    text: "Los destinatarios recibirán tu mensaje en breves.",
+                    showConfirmButton: false,
+                    icon: "success",
+                    allowOutsideClick: false,
+                });
+                setTimeout(() => { window.location.href = 'cPanelAdmin'; }, 5000);
+            } else {
+                swal.fire({
+                    title: "Oops",
+                    text: "Parece que ha habido un error, ponte en contacto con el administrador...Mierda si soy yo.",
+                    icon: "error",
+                });
+                document.getElementById("myBtnempresa").disabled = false;
+            }
+        }
+    }
+    ajax.send(formData)
+}
+
+function enviarcorreobaneo() {
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', "get");
+    var ajax = objetoAjax();
+    ajax.open("POST", "enviarcorreobaneo/" + mailusuario, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta == "OK") {
+                swal.fire({
+                    title: "Este usuario ha sido baneado",
+                    text: "Se le mandará un correo al usuario para que este lo sepa.",
+                    showConfirmButton: true,
+                    icon: "success",
+                });
+            } else {
+                alert("algo ha fallado al enviar el correo")
+            }
+        }
+    }
+    ajax.send(formData)
+}
+
+
 // ----------------------------------------FIN CORREOS ADMIN-------------------------------------------------------
+
+//-----------------------------------------Pillar id para banear---------------------------

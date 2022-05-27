@@ -15,13 +15,12 @@
 <body class="body-index">
     <div class="navbar-index">
             <div class="column-1">
-            <li><img class="logo" src="storage/uploads/jobjob_logo_black.png"></li>
+            <li><a href= "."><img class="logo" src="storage/uploads/jobjob_logo_black.png"></a></li>
             </div>
             <div class="column-2">
             <li><button class="btn-navbar">FAQ</button></li>
             <li><button class="btn-navbar" onClick="window.location.href='paginacontacto';">Contáctanos</button></li>
 
-            {{-- <li><a href="" class="fa-solid fa-right-to-bracket"></a></li> --}}
             <li><button class="btn-register" onClick="window.location.href='inicio';">Iniciar sesión</button></li>
             </div>
     </div>

@@ -1688,8 +1688,29 @@ body {
             }
         }
     }
-    .content {
-        padding: 2vh;
+}
+
+///////////////////PLANTILLAS/////////////////////////
+.region-plantillas {
+    .row {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        .col-sm-3 {
+            width: 25%;
+            padding: 30px;
+            @media(max-width: $tablet) {
+                width: 50%;
+            }
+            @media(max-width:$movil) {
+                width: 100%;
+            }
+        }
+        img {
+            width: 100%;
+            transition: all 0.1s ease;
+        }
     }
 }
 
@@ -1700,42 +1721,6 @@ body {
     }
     .content {
         padding: 20px;
-        overflow-y: scroll;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        &::-webkit-scrollbar {
-            display: none;
-        }
-        .pruebas {
-            padding: 15px;
-            width: 100%;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            background-color: #ffffff;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            .ver-ptecnica {
-                padding: 10px;
-                border-radius: 10px;
-                background-color: $grey;
-                border-width: 1px;
-                border-style: solid;
-                border-color: #C6C6C6;
-                border-radius: 5px;
-                .estado-ptecnica {
-                    justify-content: center;
-                    display: flex;
-                    align-items: center;
-                    .title {
-                        .p-title {}
-                    }
-                    .text {
-                        .p-text {}
-                    }
-                }
-            }
-        }
         .crear-ptecnica {
             padding: 15px;
             width: 100%;
@@ -1743,8 +1728,8 @@ body {
             display: flex;
             align-items: center;
             background-color: #ffffff;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
             .crear-ptecnica-btn {
                 align-items: center;
                 appearance: none;
@@ -1776,6 +1761,91 @@ body {
                 .button-text {
                     font-weight: bolder;
                     font-size: 15px;
+                }
+            }
+        }
+        .pruebas {
+            padding: 15px;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: #ffffff;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .ver-ptecnica {
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $grey;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #C6C6C6;
+                border-radius: 5px;
+                .estado-ptecnica {
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    &:active {
+                        background-color: #C6C6C6;
+                    }
+                    .title {
+                        width: 50%;
+                        font-weight: bold;
+                        .p-title {}
+                    }
+                    .text {
+                        width: 50%;
+                        .p-text-active {
+                            float: right;
+                            color: green;
+                        }
+                        .p-text-unactive {
+                            float: right;
+                            color: rgb(162, 63, 63);
+                        }
+                    }
+                }
+                .enunciado-ptecnica {
+                    background-color: #0076CA;
+                }
+                .desc-ptecnica {
+                    background-color: #0076CA;
+                }
+                .ins-ptecnica {
+                    background-color: #0076CA;
+                }
+                .des-ptecnica {
+                    .deshabilitar {
+                        padding: 10px;
+                        align-items: center;
+                        appearance: none;
+                        background-color: rgb(162, 63, 63);
+                        border-radius: 1vh;
+                        border-width: 0;
+                        cursor: pointer;
+                        justify-content: center;
+                        // touch-action: manipulation;
+                        white-space: nowrap;
+                        will-change: box-shadow, transform;
+                        &:focus {
+                            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                        }
+                        &:active {
+                            box-shadow: #D6D6E7 0 3px 7px inset;
+                            transform: translateY(2px);
+                        }
+                        .button-text {
+                            font-weight: bolder;
+                            color: $white;
+                        }
+                        float: right;
+                    }
                 }
             }
         }
