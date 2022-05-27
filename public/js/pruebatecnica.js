@@ -297,7 +297,6 @@ function entrar_ptecnica_trabajador(evt) {
     var ajax = objetoAjax();
     ajax.open("POST", "entrar_ptecnica_trabajador/" + id_empresa, true);
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
