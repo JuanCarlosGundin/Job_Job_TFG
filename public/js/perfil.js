@@ -1203,15 +1203,6 @@ function form_editar_sobre_mi() {
 
 function editar_sobre_mi(evt) {
 
-    if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
-        swal.fire({
-            title: "Error",
-            text: "Debes añadir un número de teléfono correcto",
-            icon: "error",
-        });
-        return false;
-    }
-
     evt.preventDefault();
 
     var campo_user = document.getElementById("campo_user").value;
@@ -1221,6 +1212,17 @@ function editar_sobre_mi(evt) {
     var linkedin = document.getElementById("linkedin").value;
     var telefono = document.getElementById("telefono").value;
     var github = document.getElementById("github").value;
+
+    if (telefono) {
+        if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
+            swal.fire({
+                title: "Error",
+                text: "Debes añadir un número de teléfono correcto",
+                icon: "error",
+            });
+            return false;
+        }
+    }
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
