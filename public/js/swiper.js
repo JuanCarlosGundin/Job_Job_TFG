@@ -587,7 +587,7 @@ function perfilcarta(evt) {
                 
                             <form method="POST" onsubmit="reportesJS(); return false;">
                                 <br>
-                                <h2>Reportar a un usuario</h2>
+                                <h2>Reportar a trabajador</h2>
                                 <br>
                                 <select name="incidencia" id="incidencia" >
                                     <option value="">Seleccione el motivo del reporte</option>
@@ -713,7 +713,7 @@ function perfilcarta(evt) {
                 
                             <form method="POST" onsubmit="reportesJS(); return false;">
                                 <br>
-                                <h2>Reportar a un usuario</h2>
+                                <h2>Reportar a empresa</h2>
                                 <br>
                                 <select name="incidencia" id="incidencia" >
                                     <option value="">Seleccione el motivo del reporte</option>

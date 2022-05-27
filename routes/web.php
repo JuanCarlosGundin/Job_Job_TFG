@@ -30,9 +30,6 @@ Route::get('/chat', function () {
 
 
 /*PRUEBA*/
-Route::get('reportesprueba', function () {
-    return view('reportesprueba');
-});
 Route::get('graficas', function () {
     return view('graficas');
 });
