@@ -483,6 +483,10 @@ body {
   display: none;
 }
 
+.bodylogin a {
+  text-decoration: none;
+}
+
 .bodylogin .modal-login {
   background-color: white;
   border-radius: 55px;

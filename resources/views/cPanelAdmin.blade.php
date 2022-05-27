@@ -155,6 +155,9 @@
               <span class="close">&times;</span>
           </div>
           <div id="modal-content" class="modal-content">
+          <div>
+              <span class="close">&times;</span>
+          </div>
           </div>
       </div>
     </div>

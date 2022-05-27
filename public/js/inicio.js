@@ -80,7 +80,7 @@ function login() {
     recarga += '<h2>Bienvenido a JobJob</h2>'
     recarga += '<input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo"><br></br>'
     recarga += '<input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña"><br>'
-    recarga += '<button class= "botonlogin" type="submit" value="register">Iniciar Sesión</button>'
+    recarga += '<button class= "botonlogin" type="submit" value="register">Iniciar Sesión</button><br>'
     recarga += '<a class="contraseña" href="./forget-password">¿Has olvidado tu contraseña?</>'
     recarga += '</form>'
     recarga += '</div>'

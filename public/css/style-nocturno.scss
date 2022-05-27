@@ -135,14 +135,14 @@
             .region-navbar {
                 background-color: $third-color;
                 .main-icon {
-                    background-color: $third-color;
+                    // background-color: $third-color;
                 }
                 .icon {
                     color: $white;
-                    background-color: $third-color;
+                    // background-color: $third-color;
                 }
                 .menu-item {
-                    background-color: $third-color;
+                    // background-color: $third-color;
                     .icon {
                         color: white !important;
                         background-color: $third-color !important;
@@ -152,27 +152,21 @@
                     color: white;
                     background-color: $third-color;
                 }
-                .active-icon {
-                    background-color: $first-color;
-                }
-                .active-left {
-                    background-color: $first-color;
-                }
-                .active-right {
-                    background-color: $first-color;
-                }
                 .active {
-                    background-color: $first-color;
+                    background-color: $third-color;
                     .icon {
-                        color: white;
-                        background-color: $first-color;
+                        color: black;
+                        background-color: $first-color !important;
+                        border-top-left-radius: 0px !important;
+                        // background-color: $first-color;
                         @media only screen and (max-width: $tablet) {
                             background-color: $first-color;
+                            border-top-left-radius: 30px !important;
                         }
                     }
                 }
                 .active-center {
-                    background-color: $first-color;
+                    background-color: $first-color !important;
                     .icon {
                         color: white !important;
                         background-color: $first-color !important;
@@ -287,4 +281,36 @@
         ////////////////////////////////////////NOTIFICACIONES///////////////////////////////////////
         .buscador {
             background-color: $first-color !important;
+        }
+        
+        ///////////////////////////////////////////CHAT/////////////////////////////////////////
+        .oscuro {
+            .main-chat {
+                .chat-main-sticky {
+                    background-color: $first-color;
+                    .chat-main-curve {
+                        background-color: $fourth-color;
+                    }
+                    .chat-main-curve:before {
+                        display: none;
+                    }
+                    .chat-main-user {
+                        background-color: $first-color;
+                        .chat-main-name {
+                            color: white;
+                        }
+                        .chat-main-return {
+                            .return-btn {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            .chat-main-content {
+                background-color: $fourth-color;
+            }
+            .chat-main-send {
+                background-color: $fourth-color;
+            }
         }
