@@ -604,7 +604,7 @@ function perfilcarta(evt) {
                                     <option value="Informacion falsa">Información falsa</option>
                                 </select>
                                 <br><br>
-                                <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
+                                <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Desarrolla el reporte"></textarea>
                                 <br><br>
                                 <input type="hidden" id="id_reportador" name="id_reportador" value=${sesion}>
                                 <input type="hidden" id="id_reportado" name="id_reportado" value=${idtrabajador}>
@@ -730,7 +730,7 @@ function perfilcarta(evt) {
                                     <option value="Informacion falsa">Información falsa</option>
                                 </select>
                                 <br><br>
-                                <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
+                                <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Desarrolla el reporte"></textarea>
                                 <br><br>
                                 <input type="hidden" id="id_reportador" name="id_reportador" value=${sesion}>
                                 <input type="hidden" id="id_reportado" name="id_reportado" value=${idempresa}>
