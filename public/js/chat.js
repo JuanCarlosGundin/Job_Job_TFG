@@ -635,7 +635,6 @@ function cargarChats() {
     ajax.send(formData);
 }
 
-
 function entrar(id_otro) {
     otro = id_otro
     var recarga = "";

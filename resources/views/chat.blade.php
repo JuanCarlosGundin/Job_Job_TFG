@@ -67,5 +67,5 @@
     <script src="js/modo_nocturno.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
+<script src="js/chat.js"></script>
 </html>

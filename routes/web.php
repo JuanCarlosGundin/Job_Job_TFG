@@ -7,9 +7,10 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\GraficaController;
 use App\Http\Controllers\PtecnicaController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\ChattController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/chat', function () {
     return view('chat');
@@ -23,10 +24,18 @@ Route::get('paginacontacto', function () {
     return view('paginacontacto');
 });
 
+Route::get('/chat', function () {
+    return view('chat');
+});
+
 
 /*PRUEBA*/
-Route::get('reportesprueba', function () {
-    return view('reportesprueba');
+Route::get('graficas', function () {
+    return view('graficas');
+});
+
+Route::get('crudreportes', function () {
+    return view('crudreportes');
 });
 /*FIN PRUEBA*/
 Route::get('login', function () {
@@ -181,8 +190,6 @@ Route::post('mostrarmodaluser/{id}/{id_perfil}',[UsuarioController::class,'mostr
 //modificaruserJS
 Route::put('modificaruser/{id}/{id_perfil}',[UsuarioController::class,'modificaruser']);
 
-//eliminaruserJS
-Route::delete('eliminaruser/{id}/{id_perfil}',[UsuarioController::class,'eliminaruser']);
 
 ///FINAL ZONA ADMINISTRADOR
 
@@ -210,13 +217,47 @@ Route::post('mandarcontacto', [MailController::class, 'sendingcontacto']);
 //ZONA CONTACTO
 //mandar correo a usuario individual desde la página de admin
 Route::post('enviarcorreoadmin', [MailController::class, 'enviarcorreoadmin']);
-//mandar correo a usuario individual desde la página de admin
+//mandar correo masivo a trabajadores desde la página de admin
 Route::post('enviarcorreoadmintrabajadores', [MailController::class, 'enviarcorreoadmintrabajadores']);
+//mandar correo masivo a empresas desde la página de admin
+Route::post('enviarcorreoadminempresas', [MailController::class, 'enviarcorreoadminempresas']);
+//Cuando se banea a un usuario se le manda un correo automático conforme su cuenta ha sido baneada.
+Route::get('enviarcorreobaneo/{mail}', [MailController::class, 'enviarcorreobaneo']);
+
+
+
+//ZONA GRAFICAS-ESTADISTICAS
+//Muestra la comparativa de trabajadores y empresas registradas.
+Route::get('numerousers',[GraficaController::class,'numerousers']);
+//Cuenta cuantas empresas hay en cada localización.
+Route::get('localizacionempresas',[GraficaController::class,'localizacionempresas']);
+//Cuenta cuantos trabajadores hay en cada localización.
+Route::get('localizaciontrabajadores',[GraficaController::class,'localizaciontrabajadores']);
+//Mira cuantos usuarios se han creado mensualmente.
+Route::get('usuarioscreados',[GraficaController::class,'usuarioscreados']);
+//Muestra la edad media de los usuarios.
+Route::get('mediaedad',[GraficaController::class,'mediaedad']);
+//Muestra la comparativa de trabajadores y empresas registradas Y QUE SE MUESTREN (mostrado=1).
+Route::get('usuariosmostrados',[GraficaController::class,'usuariosmostrados']);
+
 
 
 //ZONA REPORTES
 //el usuario puede hacer reportes de otros usuarios.
 Route::post('crearreporte',[UsuarioController::class,'crearreporte']);
+
+//pillar sesion reporte
+Route::post('pillarsesion',[UsuarioController::class,'pillarsesion']);
+
+// ruta para leer reportes
+Route::post('leerreportes',[Usuariocontroller::class, 'leerreportes']);
+
+// ruta para eliminar reportes
+// Route::delete('eliminarreporte/{id}', [Usuariocontroller::class, 'eliminarreporte']);
+
+//cierra o abre la incidencia en zona admin
+Route::put('estadoreporte/{id}',[UsuarioController::class,'estadoreporte']);
+
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
 Route::get('/curriculum', [curriculumController::class, 'curriculums']);
 Route::get('/curriculum/pdf1', [curriculumController::class, 'pdf1']);

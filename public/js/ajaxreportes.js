@@ -83,7 +83,7 @@ function reportesJS() {
             if (respuesta.resultado == 'OK') {
                 swal.fire({
                     title: "Reporte enviado",
-                    text: "Gracias por tu reporte, enseguida nos pondremos a revisarlo.",
+                    text: "Hemos recibido tu reporte, enseguida nos pondremos a revisarlo.",
                     showConfirmButton: true,
                     icon: "success",
 
