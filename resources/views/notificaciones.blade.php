@@ -58,16 +58,18 @@
                 </div>
             </div>
             <div class="row alerts">
-                <div class="filter">      
-                    <div class="buscador">
-                        <input class="input-buscar" type="search" id="filter" name="filter" onkeyup="leernotificacionesJS()" placeholder="Buscar por nombre">
-                        <div class="icon-buscar">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </div>
-                    </div>        
-                </div>
-                <div id="zonaalerts">
-                    {{-- Alertas ajax --}}
+                <div class="contenido-alerts">
+                    <div class="filter">      
+                        <div class="buscador">
+                            <input class="input-buscar" type="search" id="filter" name="filter" onkeyup="leernotificacionesJS()" placeholder="Buscar por nombre">
+                            <div class="icon-buscar">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </div>        
+                    </div>
+                    <div id="zonaalerts">
+                        {{-- Alertas ajax --}}
+                    </div>
                 </div>
             </div>
         </div>
