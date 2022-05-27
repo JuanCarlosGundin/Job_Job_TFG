@@ -372,7 +372,20 @@ function enviar_zip_trabajador(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            if (respuesta.resultado == "fuera") {
+            if (respuesta.resultado == "OK") {
+                swal.fire({
+                    title: "Exito",
+                    text: "Zip subido",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+            } else if (respuesta.resultado == "fuera") {
                 swal.fire({
                     title: "Fuera",
                     text: "Fuera de tiempo",
@@ -444,6 +457,20 @@ function crear_prueba_tecnica(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+                swal.fire({
+                    title: "Exito",
+                    text: "Prueba creada",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+            }
 
         }
     }
