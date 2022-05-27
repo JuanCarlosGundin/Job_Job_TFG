@@ -1,4 +1,4 @@
-@if (!Session::get('id_user'))
+@if  (!Session::get('id_user'))
     <?php
         //Si la sesion no esta definida te redirige al login.
         return redirect()->to('/')->send();
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('css/style-arnau.css')}}">
     <link rel="stylesheet" href="{{asset('css/style-nocturno.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/stylemodalreportes.css')}}">
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -71,6 +72,7 @@
     <script src="js/swiper.js"></script>
     <script src="js/modo_nocturno.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -16,6 +16,7 @@ function objetoAjax() {
 }
 
 function contactoJS() {
+    // empezamos validaciones por javascript
     let nombre = document.getElementById('nombre').value;
     let email = document.getElementById('email').value;
     let telefono = document.getElementById('telefono').value;
@@ -58,21 +59,25 @@ function contactoJS() {
         });
         return false;
     }
+    //terminamos validaciones javascript
     document.getElementById("myBtn").disabled = true;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', "POST");
+    //pillamos los inputs 
     formData.append('nombre', nombre);
     formData.append('email', email);
     formData.append('telefono', telefono);
     formData.append('asunto', asunto);
     formData.append('mensaje', mensaje);
     var ajax = objetoAjax();
+    //pillamos la ruta  del web
     ajax.open("POST", "mandarcontacto", true);
     ajax.onreadystatechange = function() {
         console.log(ajax.responseText)
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            //respuesta de la funciona del controlador
             if (respuesta == "OK") {
                 swal.fire({
                     title: "Mensaje Enviado",

@@ -36,6 +36,8 @@
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Correo" onkeyup="leerJS()" id="filcorreo" aria-label="Search">
               <input class="form-control me-2" type="search" placeholder="Nombre" onkeyup="leerJS()" id="filtro" aria-label="Search">
+              <input class="form-control me-2" type="search" placeholder="ID" onkeyup="leerJS()" id="filid" aria-label="Search">
+
             </form>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,10 +67,10 @@
             <div class="navbar-right">
               {{-- MODAL USUARIO --}}
               <li class="div-btn-reportes">
-                <button class="btn-reportes" id=""><i class="fa-solid fa-triangle-exclamation"></i></button>
+                <button class="btn-reportes" id="myBtnreportes"><i class="fa-solid fa-triangle-exclamation"></i></button>
               </li>
               <li class="div-btn-stats">
-                <button class="btn-stats" id=""><i class="fa-solid fa-chart-column"></i></button>
+                <button class="btn-stats" id="myBtnstats"><i class="fa-solid fa-chart-column"></i></button>
               </li>
               <li class="div-btn-enviar-correo">
                 <button class="btn-enviar-correo" id="myBtncorreo"><i class="fa-solid fa-envelope"></i> ENVIAR CORREO</button>
@@ -85,7 +87,7 @@
                         <input class="input-modal" type="text" name="asunto" id="asunto" placeholder="Introduce el asunto">
                         <textarea class="text-modal" name="mensaje" rows="3" id="mensaje" placeholder="Introduce el mensaje"></textarea>
                         <div class="btn-modal-flex">
-                          <button class="btn-modal" type="submit" id="myBtncorreo">
+                          <button class="btn-modal" type="submit" id="myBtnadmin">
                             ENVIAR
                           </button>
                         </div>   
@@ -98,7 +100,7 @@
                         <input class="input-modal" type="text" name="asuntotrabajador" id="asuntotrabajador" placeholder="Introduce el asunto">
                         <textarea class="text-modal" name="mensajetrabajador" rows="3" id="mensajetrabajador" placeholder="Introduce el mensaje"></textarea>
                         <div class="btn-modal-flex">
-                          <button class="btn-modal" type="submit" id="myBtncorreo">
+                          <button class="btn-modal" type="submit" id="myBtntrabajador">
                             ENVIAR
                           </button>
                         </div>   
@@ -111,7 +113,7 @@
                         <input class="input-modal" type="text" name="asuntoempresa" id="asuntoempresa" placeholder="Introduce el asunto">
                         <textarea class="text-modal" name="mensajeempresa" rows="3" id="mensajeempresa" placeholder="Introduce el mensaje"></textarea>
                         <div class="btn-modal-flex">
-                          <button class="btn-modal" type="submit" id="myBtncorreo">
+                          <button class="btn-modal" type="submit" id="myBtnempresa">
                             ENVIAR
                           </button>
                         </div>   
