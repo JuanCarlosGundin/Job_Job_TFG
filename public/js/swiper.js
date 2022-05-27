@@ -12,7 +12,6 @@ window.onload = function() {
 var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
-var navbarPT = document.getElementById("navbar-PT-icon");
 
 navbarProfile.onclick = function() {
     window.location.href = "./perfil";
@@ -22,9 +21,6 @@ navbarAlerts.onclick = function() {
 }
 navbarMain.onclick = function() {
     window.location.href = "./home";
-}
-navbarPT.onclick = function() {
-    window.location.href = "./pruebatecnica";
 }
 
 function estructura() {
@@ -166,21 +162,21 @@ function reload() {
                     //console.log(carta)
                     // alert('primero entra estructura')
                     swiperCards.innerHTML = `
-                    <div class="swiper--card mainCard" id="mainCard">
-                    </div>
-                    <div class="swiper--card no-swipe">
-                        <img src="img/jobjob_tarjeta.png">
-                    </div>
-                    <div class="swiper--card no-swipe">
-                        <img src="img/jobjob_tarjeta.png">
-                    </div>
-                    <div class="swiper--card no-swipe">
-                        <img src="img/jobjob_tarjeta.png">
-                    </div>
-                    <div class="swiper--card no-swipe">
-                        <img src="img/jobjob_tarjeta.png">
-                    </div>
-                    `;
+            <div class="swiper--card mainCard" id="mainCard">
+            </div>
+            <div class="swiper--card no-swipe">
+                <img src="img/jobjob_tarjeta.png">
+            </div>
+            <div class="swiper--card no-swipe">
+                <img src="img/jobjob_tarjeta.png">
+            </div>
+            <div class="swiper--card no-swipe">
+                <img src="img/jobjob_tarjeta.png">
+            </div>
+            <div class="swiper--card no-swipe">
+                <img src="img/jobjob_tarjeta.png">
+            </div>
+            `;
                     mostrar()
                     reload()
                 }, 500);
@@ -211,17 +207,17 @@ function reload() {
             initCards();
             setTimeout(function() {
                 swiperCards.innerHTML = `
-                <div class="swiper--card mainCard" id="mainCard">
-                </div>
-                <div class="swiper--card no-swipe">
-                </div>
-                <div class="swiper--card no-swipe">
-                </div>
-                <div class="swiper--card no-swipe">
-                </div>
-                <div class="swiper--card no-swipe">
-                </div>
-                    `;
+        <div class="swiper--card mainCard" id="mainCard">
+        </div>
+        <div class="swiper--card no-swipe">
+        </div>
+        <div class="swiper--card no-swipe">
+        </div>
+        <div class="swiper--card no-swipe">
+        </div>
+        <div class="swiper--card no-swipe">
+        </div>
+            `;
                 mostrar()
                 reload()
             }, 500);
@@ -273,30 +269,30 @@ function mostrar() {
                 if (respuesta[0].id_perfil == 3) {
                     // alert('primero entra empresa')
                     recarga += `
-                    <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
-                    `;
+            <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
+            `;
                     if (respuesta[0].logo_emp != null) {
                         recarga += `
-                            <img src="./storage/${respuesta[0].logo_emp}">`;
+                    <img src="./storage/${respuesta[0].logo_emp}">`;
                     } else {
                         recarga += `
-                            <img src="./storage/uploads/jobjob_logo_black.png">`;
+                    <img src="./storage/uploads/jobjob_logo_black.png">`;
                     }
                     recarga += `
-                    <div class="content--card content--empresa">
-                      <div class="misc--card">
-                        <h2 class="vacante--empresa">${respuesta[0].vacante}</h2>
-                        <h5 class="campo--empresa">${respuesta[0].campo_emp}</h5>
-                      </div>
-                      <div class="cuerpo--card">
-                        <p class="searching--empresa">${respuesta[0].searching}</p>
-                      </div>
-                      <div class="titulo--card">
-                        <h3 class="nombre--usuario">${respuesta[0].nom_emp}</h3>
-                        <h5 class="ubicacion--usuario">${respuesta[0].loc_emp}</h5>
-                      </div>
-                    </div>
-                    `
+            <div class="content--card content--empresa">
+              <div class="misc--card">
+                <h2 class="vacante--empresa">${respuesta[0].vacante}</h2>
+                <h5 class="campo--empresa">${respuesta[0].campo_emp}</h5>
+              </div>
+              <div class="cuerpo--card">
+                <p class="searching--empresa">${respuesta[0].searching}</p>
+              </div>
+              <div class="titulo--card">
+                <h3 class="nombre--usuario">${respuesta[0].nom_emp}</h3>
+                <h5 class="ubicacion--usuario">${respuesta[0].loc_emp}</h5>
+              </div>
+            </div>
+            `
                 } else if (respuesta[0].id_perfil == 2) {
                     // alert('primero entra trabajador')
                     //console.log(JSON.parse(respuesta[0].curriculum));
@@ -313,57 +309,59 @@ function mostrar() {
                     var edad = getAge(respuesta[0].edad);
                     curriculum = JSON.parse(respuesta[0].curriculum);
                     recarga += `
-                    <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
-                    <div class="content--card content--trabajador">
-                        <div class="img--card">
-                        `;
-                    if (respuesta[0].foto_perfil != 1) {
+            <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
+            <div class="content--card content--trabajador">
+                <div class="img--card">
+                `;
+                    if (respuesta[0].foto_perfil != null) {
                         recarga += `
-                            <img class="img--trabajador" src="./storage/${respuesta[0].foto_perfil}">`;
+                    <img class="img--trabajador" src="./storage/${respuesta[0].foto_perfil}">`;
                     } else {
                         recarga += `
-                            <img class="img--trabajador" src="./storage/uploads/jobjob_logo_black.png">`;
+                    <img class="img--trabajador" src="./storage/uploads/jobjob_logo_black.png">`;
                     }
                     recarga += `
-                        </div>
-                        <div class="cv--card">
-                            <div class="objetivo--card">
-                                <h2 class="titulo--objetivo">Objetivo Profesional</h2>
-                                <p class="content--objetivo">${respuesta[0].about_user}</p>
-                            </div>
-                            <div class="formacion--card">
-                                <h2 class="titulo--formacion">Formación</h2>
-                                <p class="content--formacion">${curriculum['estudios'][0].nombre_formación}</p>
-                                <h5 class="lugar--formacion">${curriculum['estudios'][0].lugar_formación}</h5>
-                            </div>
-                            <div class="experiencia--card">
-                                <h2 class="titulo--experiencia">Experiencia</h2>
-                                <p class="content--experiencia">${curriculum['experiencia'][0].nombre_experiencia}</p>
-                                <h5 class="lugar--experiencia">${curriculum['experiencia'][0].lugar_experiencia}</h5>
-                            </div>
-                        </div>
-                        <div class="titulo--card">
-                            <h2 class="nombreEdad--usuario">${respuesta[0].nombre} ${respuesta[0].apellido}, ${edad}</h2>
-                            <h5 class="ubicacion--usuario">${respuesta[0].loc_trabajador}</h5>
-                        </div>
+                </div>
+                <div class="cv--card">
+                    <div class="objetivo--card">
+                        <h2 class="titulo--objetivo">Objetivo Profesional</h2>
+                        <p class="content--objetivo">${respuesta[0].about_user}</p>
                     </div>
-                    `
+                    <div class="formacion--card">
+                        <h2 class="titulo--formacion">Formación</h2>
+                        <p class="content--formacion">${curriculum['estudios'][0].nombre_formación}</p>
+                        <h5 class="lugar--formacion">${curriculum['estudios'][0].lugar_formación}</h5>
+                    </div>
+                    <div class="experiencia--card">
+                        <h2 class="titulo--experiencia">Experiencia</h2>
+                        <p class="content--experiencia">${curriculum['experiencia'][0].nombre_experiencia}</p>
+                        <h5 class="lugar--experiencia">${curriculum['experiencia'][0].lugar_experiencia}</h5>
+                    </div>
+                </div>
+                <div class="titulo--card">
+                    <h2 class="nombreEdad--usuario">${respuesta[0].nombre} ${respuesta[0].apellido}, ${edad}</h2>
+                    <h5 class="ubicacion--usuario">${respuesta[0].loc_trabajador}</h5>
+                </div>
+            </div>
+            `
                 }
             } else {
                 recarga += `
-                <input type="hidden" id="userID" value="false">
-                <div class="content--card content--final">
-                    <img src='https://acegif.com/wp-content/uploads/2022/4hv9xm/crying-emoji-9.gif'></img>
-                    <h2>¡OH! Has agotado los usuarios, ¡Vuelve más tarde!</h2>
-                </div>
-                `
+        <input type="hidden" id="userID" value="false">
+        <div class="content--card content--final">
+            <img src='https://acegif.com/wp-content/uploads/2022/4hv9xm/crying-emoji-9.gif'></img>
+            <h2>¡OH! Has agotado los usuarios, ¡Vuelve más tarde!</h2>
+        </div>
+        `
                 contenedor.classList.add('no-swipe');
                 contenedor.style.pointerEvents = "none";
             }
             var info = document.getElementById("info");
-            info.id_usuario = respuesta[0].id_usuario;
-            info.id_perfil = respuesta[0].id_perfil;
-            info.addEventListener("click", perfilcarta);
+            if (!respuesta.length == 0) {
+                info.id_usuario = respuesta[0].id_usuario;
+                info.id_perfil = respuesta[0].id_perfil;
+                info.addEventListener("click", perfilcarta);
+            }
         }
         contenedor.innerHTML = recarga;
     }

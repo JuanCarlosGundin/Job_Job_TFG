@@ -635,6 +635,7 @@ function cargarChats() {
     ajax.send(formData);
 }
 
+
 function entrar(id_otro) {
     otro = id_otro
     var recarga = "";
@@ -664,14 +665,14 @@ function entrar(id_otro) {
                 <input type="text" class="chat-input-mensaje" id="mensaje_input" name="nombre" value="" placeholder="Mensaje..." maxlength="200">
             </div>
             <div class="chat-send">
-                <button class="boton-send" onclick=sender(${id_otro});>
+                <button id="btn_send"class="boton-send" onclick=sender(${id_otro});>
                     <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </div>
         </div>
     </div>`;
     document.getElementById('content').innerHTML = recarga
-
+    input = document.getElementById("mensaje_input");
     //Injectamos mensajes
     getchanel(id_otro)
     console.log(chatInfo)
