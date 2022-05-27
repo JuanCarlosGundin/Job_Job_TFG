@@ -158,34 +158,25 @@
   background-color: #0B4B78;
 }
 
-.oscuro .region-navbar .active-icon {
-  color: black;
-}
-
-.oscuro .region-navbar .active-left {
-  color: black;
-}
-
-.oscuro .region-navbar .active-right {
-  color: black;
-}
-
 .oscuro .region-navbar .active {
   background-color: #0B4B78;
 }
 
 .oscuro .region-navbar .active .icon {
   color: black;
+  background-color: #012A4A !important;
+  border-top-left-radius: 0px !important;
 }
 
 @media only screen and (max-width: 900px) {
   .oscuro .region-navbar .active .icon {
     background-color: #012A4A;
+    border-top-left-radius: 30px !important;
   }
 }
 
 .oscuro .region-navbar .active-center {
-  background-color: #012A4A;
+  background-color: #012A4A !important;
 }
 
 .oscuro .region-navbar .active-center .icon {

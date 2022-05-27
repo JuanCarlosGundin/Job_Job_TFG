@@ -16,9 +16,18 @@
 
 <body class="body-index">
     <div class="content">
-        <h1 class="logo"><span>Contáctanos </span></h1>
-        <br><br><br><br>
+    <div class="navbar-index">
+            <div class="column-1">
+            <li><a href= "."><img class="logo" src="storage/uploads/jobjob_logo_black.png"></a></li>
+            </div>
+            <div class="column-2">
+            <li><button class="btn-navbar">FAQ</button></li>
+            <li><button class="btn-navbar" onClick="window.location.href='paginacontacto';">Contáctanos</button></li>
 
+            <li><button class="btn-register" onClick="window.location.href='inicio';">Iniciar sesión</button></li>
+            </div>
+    </div>
+    <br><br><br><br><br><br><br><br>
         <div class="contact-wrapper animated bounceInUp">
             <div class="contact-form">
                 <h3>CONTÁCTANOS </h3>

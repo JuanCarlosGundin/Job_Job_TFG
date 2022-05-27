@@ -152,27 +152,21 @@
                     color: white;
                     background-color: $third-color;
                 }
-                .active-icon {
-                    color: black;
-                }
-                .active-left {
-                    color: black;
-                }
-                .active-right {
-                    color: black;
-                }
                 .active {
                     background-color: $third-color;
                     .icon {
                         color: black;
+                        background-color: $first-color !important;
+                        border-top-left-radius: 0px !important;
                         // background-color: $first-color;
                         @media only screen and (max-width: $tablet) {
                             background-color: $first-color;
+                            border-top-left-radius: 30px !important;
                         }
                     }
                 }
                 .active-center {
-                    background-color: $first-color;
+                    background-color: $first-color !important;
                     .icon {
                         color: white !important;
                         background-color: $first-color !important;
