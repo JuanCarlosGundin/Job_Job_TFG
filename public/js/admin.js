@@ -342,11 +342,11 @@ function crearadmin() {
             recargaform += '<form method="POST" onsubmit="opcioncrearJS(); return false;" id="formcrear">';
             recargaform += '<div class="form-group">';
             recargaform += '<label class="col-sm-2 col-form-label">Correo:</label>';
-            recargaform += '<input type="email" class="form-control" id="mail" name="mail" placeholder="Introduce el correo" required>';
+            recargaform += '<input type="email" class="form-control" id="mail" name="mail" placeholder="Introduce el correo">';
             recargaform += '</div>';
             recargaform += '<div class="form-group">';
             recargaform += '<label class="col-sm-2 col-form-label">Contraseña:</label>';
-            recargaform += '<input type="password" class="form-control" id="contra" name="contra" placeholder="Introduce una contraseña" required>';
+            recargaform += '<input type="password" class="form-control" id="contra" name="contra" placeholder="Introduce una contraseña">';
             recargaform += '</div>';
             recargaform += '<div class="form-group">';
             recargaform += '<label class="col-sm-2 col-form-label">Perfil:</label>';
@@ -374,7 +374,54 @@ function crearadmin() {
 
 
 function opcioncrearJS() {
+    var mail = document.getElementById("mail").value;
+    var contra = document.getElementById("contra").value;
+    if (mail == '' || contra == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
 
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(mail)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un email",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(contra)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir una contraseña",
+            icon: "error",
+        });
+        return false;
+    } else if (contra.length < 8) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener 8 carácteres mínimo",
+            icon: "error",
+        });
+        return false;
+    }
     /* Ubicacion del formulario de crear */
     var sitioform = document.getElementById('sitioform');
     /* Variables de usuarios */
@@ -397,7 +444,7 @@ function opcioncrearJS() {
         recargaform += '<form method="POST" onsubmit="crearJS(\'' + mail + '\',\'' + contra + '\',\'' + id_perfil + '\'); return false;" id="formcrear" enctype="multipart/form-data">';
         recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Nombre:</label>';
-        recargaform += '<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introduce el nombre" required>';
+        recargaform += '<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introduce el nombre">';
         recargaform += '</div>';
         recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Apellido:</label>';
@@ -420,7 +467,7 @@ function opcioncrearJS() {
         recargaform += '<form method="POST" onsubmit="crearJS(\'' + mail + '\',\'' + contra + '\',\'' + id_perfil + '\'); return false;" id="formcrear" enctype="multipart/form-data">';
         recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Nombre:</label>';
-        recargaform += '<input type="text" class="form-control" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre" required>';
+        recargaform += '<input type="text" class="form-control" id="nom_emp" name="nom_emp" placeholder="Introduce el nombre">';
         recargaform += '</div>';
         recargaform += '<div class="form-group">';
         recargaform += '<label class="col-sm-2 col-form-label">Localizacion:</label>';
@@ -456,7 +503,32 @@ function opcioncrearJS() {
 
 
 function crearJS(mail, contra, id_perfil) {
+    if (id_perfil == 2) {
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+        var edad = document.getElementById("edad").value;
+        if (nombre == '' || apellido == '' || edad == '') {
+            swal.fire({
+                title: "Error",
+                text: "Tienes que rellenar todos los datos",
+                icon: "error",
+            });
+            return false;
 
+        }
+    }
+    if (id_perfil == 3) {
+        var nom_emp = document.getElementById("nom_emp").value;
+        if (nom_emp == '') {
+            swal.fire({
+                title: "Error",
+                text: "Tienes que rellenar el nombre de la empresa",
+                icon: "error",
+            });
+            return false;
+
+        }
+    }
     var message = document.getElementById('message');
     var formData = new FormData();
 
@@ -469,6 +541,7 @@ function crearJS(mail, contra, id_perfil) {
     /* Si es trabajador ademas se envia lo siguiente */
 
     if (id_perfil == 2) {
+
 
         formData.append('nombre', document.getElementById('nombre').value);
         formData.append('apellido', document.getElementById('apellido').value);
@@ -614,6 +687,84 @@ function actualizarmodal(id, id_perfil) {
 
 
 function modificarJS(id, id_perfil) {
+    var mail = document.getElementById("mail").value;
+    var contra = document.getElementById("contra").value;
+    if (mail == '' || contra == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    } else if (mail.length > 100) {
+
+        swal.fire({
+            title: "Error",
+            text: "El email no puede ser más largo de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(mail)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un email",
+            icon: "error",
+        });
+        return false;
+    } else if (/^ *$/.test(contra)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir una contraseña",
+            icon: "error",
+        });
+        return false;
+    } else if (contra.length < 8) {
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener 8 carácteres mínimo",
+            icon: "error",
+        });
+        return false;
+    }
+    if (id_perfil == 2) {
+        var nombre = document.getElementById("nombre").value;
+        var edad = document.getElementById("edad").value;
+        var mostrado = document.getElementById("mostrado").value;
+        var estado = document.getElementById("estado").value;
+
+        if (edad == '' || mostrado == '' || estado == '' || nombre == '') {
+            swal.fire({
+                title: "Error",
+                text: "Tienes que rellenar todos los datos",
+                icon: "error",
+            });
+            return false;
+
+        }
+    }
+    if (id_perfil == 3) {
+        var nom_emp = document.getElementById("nom_emp").value;
+        var mostrado = document.getElementById("mostrado").value;
+        var estado = document.getElementById("estado").value;
+
+        if (mostrado == '' || estado == '' || nom_emp == '') {
+            swal.fire({
+                title: "Error",
+                text: "Tienes que rellenar todos los datos",
+                icon: "error",
+            });
+            return false;
+        }
+    }
 
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
