@@ -150,7 +150,6 @@ function loginuser(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
 
             if (respuesta.resultado == "noexiste") {
 
@@ -344,8 +343,6 @@ function sessiontrabajador0(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -367,7 +364,6 @@ function sessiontrabajador0(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -477,8 +473,6 @@ function sessiontrabajador1(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -504,7 +498,6 @@ function sessiontrabajador1(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -598,13 +591,10 @@ function sessiontrabajador2(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -631,7 +621,6 @@ function sessiontrabajador2(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -733,13 +722,10 @@ function sessiontrabajador3(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -766,7 +752,6 @@ function sessiontrabajador3(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -931,13 +916,10 @@ function sessiontrabajador4(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -964,7 +946,6 @@ function sessiontrabajador4(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -1142,13 +1123,10 @@ function sessiontrabajador5(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
-
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -1175,7 +1153,6 @@ function sessiontrabajador5(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -1364,13 +1341,11 @@ function sessiontrabajador6(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -1393,7 +1368,6 @@ function sessiontrabajador6(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -1421,13 +1395,11 @@ function creartrabajadorJS() {
     ajax.open("POST", "registrotrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
 
             if (respuesta.resultado == "correoexiste") {
 
@@ -1598,8 +1570,6 @@ function sessionempresa0(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1712,8 +1682,6 @@ function sessionempresa1(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1824,8 +1792,6 @@ function sessionempresa2(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1868,8 +1834,6 @@ function crearempresaJS() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "correoexiste") {
 
