@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="storage/uploads/logo.png">
     <title>Curriculum vitae</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="{{ asset('css/style-curriculum.css') }}" rel="stylesheet" type="text/css" />
@@ -129,8 +130,8 @@
         </div>    
     </div>
     <div class="botones">
-        <button id="pdf1">Descargar CV</button>
-        <button>Volver</button>
+        <button id="pdf1" onclick="window.location.href = '{{ url('./curriculum/pdf1') }}';">Descargar CV</button>
+        <button onclick="window.location.href = '{{ url('./curriculum') }}';">Volver</button>
     </div>
     
 

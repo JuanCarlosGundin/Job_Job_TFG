@@ -6,26 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulario de contacto</title>
     <link rel="stylesheet" href="{!! asset('css/contacto.css') !!}">
-    <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/style-laura.css') !!}">
     <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/6d5e6cb8fd.js" crossorigin="anonymous"></script>
     <!-- animacion de rebote formulario -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    {{-- token --}}
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
 
-<body>
-    <div class="area-botones horizontal">
-        <button type="button" class="darkmodeswitch" id="switch" onclick="cambiarModo()">
-            <span><i class="fa fa-sun-o"></i></span>   
-            <span><i class="fa fa-moon-o"></i></span>
-        </button>
-        <a href="{!! asset('./') !!}" class="volver"><i class="fa-solid fa-angle-left"></i></a>    
-    </div>
+<body class="body-index">
     <div class="content">
-        <br><br><br><br>
+    <div class="navbar-index">
+            <div class="column-1">
+            <li><a href= "."><img class="logo" src="storage/uploads/jobjob_logo_black.png"></a></li>
+            </div>
+            <div class="column-2">
+            <li><button class="btn-navbar">FAQ</button></li>
+            <li><button class="btn-navbar" onClick="window.location.href='paginacontacto';">Contáctanos</button></li>
 
+            <li><button class="btn-register" onClick="window.location.href='inicio';">Iniciar sesión</button></li>
+            </div>
+    </div>
+    <br><br><br><br><br><br><br><br>
         <div class="contact-wrapper animated bounceInUp">
             <div class="contact-form">
                 <h3>CONTÁCTANOS </h3>
@@ -72,7 +74,6 @@
     </div>
     <script src="js/ajaxcontacto.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/modo_nocturno.js"></script>
 </body>
 
 </html>

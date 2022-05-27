@@ -422,7 +422,7 @@ function start() {
 
     getchanel(otro)
         //socket = new ReconnectingWebSocket('ws://192.168.40.228:8000/'+document.getElementById('canal').value); //new WebSocket('ws://172.24.16.41:8000');
-    socket = new ReconnectingWebSocket('ws://172.24.17.141:8000/' + chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
+    socket = new ReconnectingWebSocket('ws://172.24.2.163:8000/' + chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
 
 
     socket.onopen = function(event) {
@@ -554,6 +554,7 @@ function cargarChats() {
                 for (let i = 0; i < empresas.length; i++) {
 
                     recarga += `<div class="chats" onclick="entrar(${empresas[i].id_usuario});" style='cursor:pointer;'>`
+                    recarga += '<div class="chat-div-flex">'
                     recarga += '<button class="chat-foto-btn">'
                     if (empresas[i].logo_emp != null) {
 
@@ -575,13 +576,17 @@ function cargarChats() {
                     recarga += `<p class="chat-mensaje-text">Chat iniciado pulsa para conversar con ${empresas[i].nom_emp} </p>`
                     recarga += '</div>'
                     recarga += '</div>'
+                    recarga += '</div>'
+                    recarga += '<div class="chat-div-right">'
                     recarga += '<div class="chat-alert">'
                     recarga += '<p class="chat-hora">15:46</p>'
+                    recarga += '</div>'
                     recarga += '</div>'
                     recarga += '</div>'
                     recarga += '<div class="div-linea">'
                     recarga += '<hr class="chat-linea">'
                     recarga += '</div>'
+
                 }
             }
             //si estas iniciado como empresa te salen trabajadores
@@ -590,6 +595,7 @@ function cargarChats() {
                 var trabajadores = respuesta.trabajadores;
                 for (let i = 0; i < trabajadores.length; i++) {
                     recarga += `<div class="chats" onclick="entrar(${trabajadores[i].id_usuario});" style='cursor:pointer;'>`
+                    recarga += '<div class="chat-div-flex">'
                     recarga += '<button class="chat-foto-btn">'
                     if (trabajadores[i].foto_perfil != null) {
 
@@ -611,8 +617,11 @@ function cargarChats() {
                     recarga += `<p class="chat-mensaje-text">Chat iniciado pulsa para conversar con ${trabajadores[i].nombre} </p>`
                     recarga += '</div>'
                     recarga += '</div>'
+                    recarga += '</div>'
+                    recarga += '<div class="chat-div-right">'
                     recarga += '<div class="chat-alert">'
                     recarga += '<p class="chat-hora">15:46</p>'
+                    recarga += '</div>'
                     recarga += '</div>'
                     recarga += '</div>'
                     recarga += '<div class="div-linea">'
@@ -655,14 +664,14 @@ function entrar(id_otro) {
                 <input type="text" class="chat-input-mensaje" id="mensaje_input" name="nombre" value="" placeholder="Mensaje..." maxlength="200">
             </div>
             <div class="chat-send">
-                <button class="boton-send" onclick=sender(${id_otro});>
+                <button id="btn_send"class="boton-send" onclick=sender(${id_otro});>
                     <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </div>
         </div>
     </div>`;
     document.getElementById('content').innerHTML = recarga
-
+    input = document.getElementById("mensaje_input");
     //Injectamos mensajes
     getchanel(id_otro)
     console.log(chatInfo)

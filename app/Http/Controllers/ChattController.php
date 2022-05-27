@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ChattController extends Controller
-{
+
+
+class ChattController extends Controller {
+
     function getchat(Request $request) {
         try {
             $id=session()->get('id_user');
@@ -117,7 +119,7 @@ class ChattController extends Controller
                 ,[$id,$idOTRO,$id,$idOTRO]);
                 //return response()->json($comparative);
                 if($comparative==null){
-                    DB::select("INSERT INTO `tbl_chat` (`id_iniciador_chat`, `id_interactuado_chat`, `estado_chat`, `json_chat`) VALUES (".$id.", ".$idOTRO.", '1', '{\"mensajes\": [{\"id\": \"Start\", \"hora\": \"Null\", \"nombre\": \"Start\", \"mensaje\": \"Bienvenido al chat\"}]}')");
+                    DB::select("INSERT INTO tbl_chat (`id_iniciador_chat`, `id_interactuado_chat`, `estado_chat`, `json_chat`) VALUES (".$id.", ".$idOTRO.", '1', '{\"mensajes\": [{\"id\": \"Start\", \"hora\": \"Null\", \"nombre\": \"Start\", \"mensaje\": \"Bienvenido al chat\"}]}')");
                 DB::commit();
                 return response()->json("SI");
                 }else{
@@ -128,5 +130,7 @@ class ChattController extends Controller
                 DB::rollback();
                 return response()->json($e->getMessage());
             }
+        
+
         }
 }

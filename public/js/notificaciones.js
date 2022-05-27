@@ -1,10 +1,9 @@
 window.onload = function() {
+        leernotificacionesJS();
+    }
+    ////////////////////////////REDIRECCIONES/////////////////////////////////
 
-    leernotificacionesJS();
-
-}
-
-////////////////////////////REDIRECCIONES/////////////////////////////////
+leernotificacionesJS();
 var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
@@ -139,6 +138,7 @@ function leernotificacionesJS() {
                     recarga += '</div>';
                     recarga += '</div>';
                     recarga += '<hr class="alert-linea"></hr>';
+                    recarga += ''
                 }
 
             }
@@ -209,7 +209,6 @@ function leernotificacionesJS() {
 
 }
 
-
 function chat(id_otro) {
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -231,8 +230,6 @@ function chat(id_otro) {
 function perfilemisor(id_iniciador, id_perfil) {
 
     var zonaalerts = document.getElementById("zonaalerts");
-    console.log(id_iniciador);
-    console.log(id_perfil);
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));

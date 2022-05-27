@@ -194,7 +194,15 @@ table {
   background-color: #ffffff;
 }
 
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.bajo {
+  width: 40%;
+}
+
 .cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Medio {
+  width: 60%;
+}
+
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.medio {
   width: 60%;
 }
 
@@ -202,7 +210,15 @@ table {
   width: 80%;
 }
 
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.avanzado {
+  width: 80%;
+}
+
 .cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Alto {
+  width: 80%;
+}
+
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.alto {
   width: 80%;
 }
 
@@ -210,7 +226,15 @@ table {
   width: 100%;
 }
 
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.experto {
+  width: 100%;
+}
+
 .cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Nativo {
+  width: 100%;
+}
+
+.cv-1 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.nativo {
   width: 100%;
 }
 
@@ -316,6 +340,7 @@ table {
 }
 
 .cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .foto-trabajador {
+  margin-top: 30px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -373,7 +398,15 @@ table {
   background-color: #007bff;
 }
 
+.cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.bajo {
+  width: 40%;
+}
+
 .cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Medio {
+  width: 60%;
+}
+
+.cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.medio {
   width: 60%;
 }
 
@@ -381,7 +414,15 @@ table {
   width: 80%;
 }
 
+.cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.avanzado {
+  width: 80%;
+}
+
 .cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Alto {
+  width: 80%;
+}
+
+.cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.alto {
   width: 80%;
 }
 
@@ -389,7 +430,15 @@ table {
   width: 100%;
 }
 
+.cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.experto {
+  width: 100%;
+}
+
 .cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.Nativo {
+  width: 100%;
+}
+
+.cv-2 .row-principal .with-region-sidebar .cv-region-sidebar .sidebar-block .percent div.nativo {
   width: 100%;
 }
 
@@ -621,7 +670,15 @@ table {
   background-color: #fef360;
 }
 
+.cv-3 .row-principal .with-region-content .region-informacion .percent div.bajo {
+  width: 40%;
+}
+
 .cv-3 .row-principal .with-region-content .region-informacion .percent div.Medio {
+  width: 60%;
+}
+
+.cv-3 .row-principal .with-region-content .region-informacion .percent div.medio {
   width: 60%;
 }
 
@@ -629,7 +686,15 @@ table {
   width: 80%;
 }
 
+.cv-3 .row-principal .with-region-content .region-informacion .percent div.avanzado {
+  width: 80%;
+}
+
 .cv-3 .row-principal .with-region-content .region-informacion .percent div.Alto {
+  width: 80%;
+}
+
+.cv-3 .row-principal .with-region-content .region-informacion .percent div.alto {
   width: 80%;
 }
 
@@ -637,7 +702,15 @@ table {
   width: 100%;
 }
 
+.cv-3 .row-principal .with-region-content .region-informacion .percent div.experto {
+  width: 100%;
+}
+
 .cv-3 .row-principal .with-region-content .region-informacion .percent div.Nativo {
+  width: 100%;
+}
+
+.cv-3 .row-principal .with-region-content .region-informacion .percent div.nativo {
   width: 100%;
 }
 
@@ -760,6 +833,11 @@ table {
 .cv-4 .row-principal .with-region-personal .foto-trabajador {
   width: 30%;
   display: inline-block;
+  margin-top: 30px;
+}
+
+.cv-4 .row-principal .with-region-personal .foto-trabajador img {
+  width: 70%;
 }
 
 .cv-4 .row-principal .with-region-personal .info-trabajador {
@@ -868,7 +946,15 @@ table {
   background-color: #fef360;
 }
 
+.cv-4 .row-principal .with-region-content .region-informacion .percent div.bajo {
+  width: 40%;
+}
+
 .cv-4 .row-principal .with-region-content .region-informacion .percent div.Medio {
+  width: 60%;
+}
+
+.cv-4 .row-principal .with-region-content .region-informacion .percent div.medio {
   width: 60%;
 }
 
@@ -876,7 +962,15 @@ table {
   width: 80%;
 }
 
+.cv-4 .row-principal .with-region-content .region-informacion .percent div.avanzado {
+  width: 80%;
+}
+
 .cv-4 .row-principal .with-region-content .region-informacion .percent div.Alto {
+  width: 80%;
+}
+
+.cv-4 .row-principal .with-region-content .region-informacion .percent div.alto {
   width: 80%;
 }
 
@@ -884,7 +978,15 @@ table {
   width: 100%;
 }
 
+.cv-4 .row-principal .with-region-content .region-informacion .percent div.experto {
+  width: 100%;
+}
+
 .cv-4 .row-principal .with-region-content .region-informacion .percent div.Nativo {
+  width: 100%;
+}
+
+.cv-4 .row-principal .with-region-content .region-informacion .percent div.nativo {
   width: 100%;
 }
 

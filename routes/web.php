@@ -127,8 +127,14 @@ Route::post('leercontenido',[PtecnicaController::class,'leercontenido']);
 // mostrar_ptecnica_trabajador
 Route::post('mostrar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'mostrar_ptecnica_trabajador']);
 
-// insertar_trabajador_ptecnica
-Route::post('insertar_trabajador_ptecnica/{id_empresa}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
+// iniciar_ptecnica_trabajador
+Route::post('iniciar_ptecnica_trabajador/{id_empresa}',[PtecnicaController::class,'iniciar_ptecnica_trabajador']);
+
+// entrar_ptecnica_trabajador
+Route::post('entrar_ptecnica_trabajador/{id_empresa}', [PtecnicaController::class, 'entrar_ptecnica_trabajador']);
+
+// insertar_zip_trabajador_trabajador_ptecnica
+Route::post('insertar_trabajador_ptecnica/{id_pt}',[PtecnicaController::class, 'insertar_trabajador_ptecnica']);
 
 // crear_prueba_tecnica
 Route::post('crear_prueba_tecnica',[PtecnicaController::class, 'crear_prueba_tecnica']);
@@ -138,6 +144,9 @@ Route::post('mostrar_zip_trabajadores/{id_pt}', [PtecnicaController::class, 'mos
 
 // mostrar datos trabajador en prueba tecnia
 Route::post('mostrar_un_trabajador/{id_participante}', [PtecnicaController::class, 'mostrar_un_trabajador']);
+
+// deshabilitar_prueba_tecnica
+Route::post('deshabilitar_prueba_tecnica/{id_pt}', [PtecnicaController::class, 'deshabilitar_prueba_tecnica']);
 
 
 /* ------------PtecnicaController------------ */
@@ -250,7 +259,7 @@ Route::post('leerreportes',[Usuariocontroller::class, 'leerreportes']);
 Route::put('estadoreporte/{id}',[UsuarioController::class,'estadoreporte']);
 
 //////////////////////////////////////CURRICULUM/////////////////////////////////////////
-Route::get('/curriculum', [curriculumController::class, 'showEmployees']);
+Route::get('/curriculum', [curriculumController::class, 'curriculums']);
 Route::get('/curriculum/pdf1', [curriculumController::class, 'pdf1']);
 Route::get('/curriculum/pdf2', [curriculumController::class, 'pdf2']);
 Route::get('/curriculum/pdf3', [curriculumController::class, 'pdf3']);
@@ -269,6 +278,8 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
+//ZONA CHAT//
+
 //Al cargar el chat 
 Route::post('getchat', [ChattController::class, 'getchat']);
 
@@ -278,5 +289,10 @@ Route::post('insert', [ChattController::class, 'insert']);
 //lee los chats activos para mostrarlos
 Route::post('leerChats', [ChattController::class, 'leerChats']);
 
-///crear chat
+///mandar correo chat
+Route::post('mandar', [MailController::class, 'sending']);
+
+///mandar correo chat
 Route::post('crearchat', [ChattController::class, 'crearchat']);
+
+//FINAL ZONA GIGACHAT//

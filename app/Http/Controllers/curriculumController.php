@@ -7,12 +7,14 @@ use Barryvdh\DomPDF\PDF;
 //use Barryvdh\DomPDF\Facade as PDF;
 
 
-
 class curriculumController extends Controller
 {
     public function showEmployees(){
         $trabajador = DB::table('tbl_trabajador')->join('tbl_usuarios', 'tbl_trabajador.id_usuario', '=', 'tbl_usuarios.id')->where('id_usuario', '4')->first();
         return view('plantillaCV1', compact('trabajador'));
+    }
+    public function curriculums(){
+        return view('mostrar-curriculums');
     }
     // Generate PDF
     public function pdf1() {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="storage/uploads/logo.png">
     <title>Curriculum vitae</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
@@ -19,8 +20,8 @@
                 <div class="with-region-sidebar col-sm-4">
                     <div class="cv-region-sidebar">
                         <div class="foto-trabajador">
-                            {{-- <img src="./storage/{{$trabajador->foto_perfil}}" alt="foto-trabajador"> --}}
-                            <img src="{{ asset('storage/img/usuario.png') }}" alt="foto-trabajador">
+                            <img src="../storage/app/public/{{$trabajador->foto_perfil}}" alt="foto-trabajador">
+                            {{-- <img src="{{ asset('storage/img/usuario.png') }}" alt="foto-trabajador"> --}}
                         </div>
                         <div class="objetivo-profesional col-sm-12">
                             <div class="header">

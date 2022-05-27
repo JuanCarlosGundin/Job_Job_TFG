@@ -25,21 +25,25 @@
 /* Modal Content */
 
 .modal-content {
+    padding: 2% !important;
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 60vh !important;
+    overflow-y: scroll;
 }
 
 
 /* The Close Button */
 
 .close {
-    color: #aaaaaa;
-    float: right;
     font-size: 28px;
+    padding: 1%;
     font-weight: bold;
+    position: absolute;
+    top: 90px; right: 220px;
+    z-index: 1;
 }
 
 .close:hover,
@@ -52,4 +56,11 @@
 .imagen {
     width: 100px;
     height: 100px;
+}
+
+input {
+    margin-bottom: 1%;
+}
+.btn-primary {
+    margin-top: 1%;
 }

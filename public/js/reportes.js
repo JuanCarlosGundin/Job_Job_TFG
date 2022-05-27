@@ -125,6 +125,7 @@ function estadoreporteJS(id) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
 
             leerreportesJS();
 

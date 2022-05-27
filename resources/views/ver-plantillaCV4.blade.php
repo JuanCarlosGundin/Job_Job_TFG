@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="storage/uploads/logo.png">
     <title>Curriculum vitae</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
@@ -66,7 +67,7 @@
 
                         </div>
                         <div class="foto-trabajador">
-                            <img src="{{ asset('storage/img/usuario.png') }}" alt="foto-trabajador" style="max-width:100%;">
+                            <img src="../storage/{{$trabajador->foto_perfil}}" alt="foto-trabajador">
                         </div>
 
                     </div>
@@ -152,8 +153,8 @@
         </div>    
     </div>
     <div class="botones">
-        <button id="pdf4">Descargar CV</button>
-        <button>Volver</button>
+        <button id="pdf4" onclick="window.location.href = '{{ url('./curriculum/pdf4') }}';">Descargar CV</button>
+        <button onclick="window.location.href = '{{ url('./curriculum') }}';">Volver</button>
     </div>
     
 
