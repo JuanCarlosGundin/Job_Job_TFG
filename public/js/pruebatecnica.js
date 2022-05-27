@@ -80,7 +80,13 @@ function leer_contenido() {
                 for (let i = 0; i < empresa.length; i++) {
                     recarga += `
                     <div class="pruebas">
-                        <p>${empresa[i].enunciado}</p>
+                        <p>Estado</p>`;
+                    if (empresa[i].estado_prueba) {
+                        recarga += `<p>Activo</p>`;
+                    } else {
+                        recarga += `<p>Cerrado</p>`;
+                    }
+                    recarga += `<p>${empresa[i].enunciado}</p>
                         <p>${empresa[i].descripcion}</p>
                         <p>Numero de inscritos</p>`;
                     if (!respuesta.inscritos[i].inscritos) {
@@ -88,7 +94,10 @@ function leer_contenido() {
                     } else {
                         recarga += `<p>${respuesta.inscritos[i].inscritos} personas</p>`;
                     }
-                    recarga += `</div><hr>`;
+                    recarga += `
+                    </div>
+                    <button class="deshabilitar">Cerrar prueba</button>
+                    <hr>`;
 
                 }
                 recarga += `<button id="crear">Crear</button>`
@@ -96,7 +105,9 @@ function leer_contenido() {
                 document.getElementById("crear").addEventListener("click", form_crear_prueba_tecnica)
                 for (let i = 0; i < empresa.length; i++) {
                     document.getElementsByClassName("pruebas")[i].id_pt = empresa[i].id;
-                    document.getElementsByClassName("pruebas")[i].addEventListener("click", mostrar_prueba_tecnica_empresa)
+                    document.getElementsByClassName("pruebas")[i].addEventListener("click", mostrar_prueba_tecnica_empresa);
+                    document.getElementsByClassName("deshabilitar")[i].id_pt = empresa[i].id;
+                    document.getElementsByClassName("deshabilitar")[i].addEventListener("click", deshabilitar_prueba_tecnica);
 
                 }
             }
@@ -387,7 +398,7 @@ function form_crear_prueba_tecnica() {
     <p>fecha_limite</p>
     <input type="date" class="" id="fecha_limite" name="fecha_limite">
     <p>duracion</p>
-    <input type="time" class="" id="duracion" name="duracion">
+    <input type="number" min="1" max="99" class="" id="duracion" name="duracion">
     <p>enunciado</p>
     <input type="text" class="" id="enunciado" name="enunciado">
     <p>descripcion</p>
@@ -639,4 +650,24 @@ function mostrar_participantes(evt) {
 function descargar_archivo(evt) {
     var zip_participante = evt.currentTarget.zip_participante;
     window.location.href = "./storage/" + zip_participante;
+}
+
+function deshabilitar_prueba_tecnica(evt) {
+    var id_pt = evt.currentTarget.id_pt;
+
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', 'POST');
+
+    var ajax = objetoAjax();
+    ajax.open("POST", "deshabilitar_prueba_tecnica/" + id_pt, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
+            leer_contenido();
+
+        }
+    }
+    ajax.send(formData);
 }

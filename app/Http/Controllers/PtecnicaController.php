@@ -140,6 +140,8 @@ class PtecnicaController extends Controller{
         try {
             DB::beginTransaction();
             $json= DB::table('tbl_ptecnica')->where('id','=',$id_pt)->first();
+            $duracion=Carbon::parse($json->duracion);
+            $horas=$duracion->hour;
             $json_prueba=json_decode($json->json_prueba);
             $contador=count($json_prueba);
             for ($i=0; $i < $contador; $i++) { 
@@ -148,9 +150,9 @@ class PtecnicaController extends Controller{
                     $ini_participante=$json_prueba[$i]->inicio_participante;
                     $inicio_participante=Carbon::parse($ini_participante);
                     // mirar como poner horas empresa, yo me entiendo
-                    $inicio_participante_extra=$inicio_participante->addHours(1);
+                    $inicio_participante_extra=$inicio_participante->addHours($horas);
                     $fecha_actual = Carbon::now('+02:00');
-                    if ($inicio_participante_extra < $fecha_actual) {
+                    if ($fecha_actual < $inicio_participante_extra) {
                         $zip=$json_prueba[$i]->zip_participante;
                         if ($zip != null) {
                             Storage::delete('public/'.$zip);
@@ -181,9 +183,11 @@ class PtecnicaController extends Controller{
 
         $zip_prueba = $req->file('zip_prueba')->store('zip','public');
 
+        $duracion=$req['duracion'].':00:00';
+
         try {
             DB::beginTransaction();
-            $id=DB::table('tbl_ptecnica')->insert(["id_empresa"=>$id,"lenguaje"=>$req['lenguaje'],"fecha_publicacion"=>$fecha_publicacion,"fecha_limite"=>$req['fecha_limite'],"duracion"=>$req['duracion'],"enunciado"=>$req['enunciado'],"descripcion"=>$req['descripcion'],"zip_prueba"=>$zip_prueba,"estado_prueba"=>"1"]);
+            $id=DB::table('tbl_ptecnica')->insert(["id_empresa"=>$id,"lenguaje"=>$req['lenguaje'],"fecha_publicacion"=>$fecha_publicacion,"fecha_limite"=>$req['fecha_limite'],"duracion"=>$duracion,"enunciado"=>$req['enunciado'],"descripcion"=>$req['descripcion'],"zip_prueba"=>$zip_prueba,"estado_prueba"=>"1"]);
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
         } catch (\Exception $e) {
@@ -210,6 +214,20 @@ class PtecnicaController extends Controller{
             return response()->json(array('participante' => $participante));
         } catch (\Exception $e) {
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }
+    }
+
+    public function deshabilitar_prueba_tecnica($id_pt) {
+        try{
+
+            DB::beginTransaction();
+            DB::select("UPDATE tbl_ptecnica SET estado_prueba = '0' WHERE id = ?",[$id_pt]);
+            DB::commit();
+            return response()->json(array('resultado'=> 'OK'));
+        }   catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+
         }
     }
 }
