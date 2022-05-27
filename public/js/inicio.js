@@ -41,12 +41,6 @@ function objetoAjax() {
 
 }
 
-function htmlEncode(str) {
-    return String(str).replace(/[^\w. ]/gi, function(c) {
-        return '&#' + c.charCodeAt(0) + ';';
-    });
-}
-
 function leeridiomas() {
 
     var ajax = objetoAjax();
@@ -271,8 +265,8 @@ function sessiontrabajador0(evt) {
     evt.preventDefault();
 
     let mail = document.getElementById('mail').value;
-    let contra = htmlEncode(document.getElementById('contra').value);
-    let contra2 = htmlEncode(document.getElementById('contra2').value);
+    let contra = document.getElementById('contra').value;
+    let contra2 = document.getElementById('contra2').value;
 
     if (!mail || !contra || !contra2) {
 
@@ -423,8 +417,8 @@ function sessiontrabajador1(evt) {
 
     evt.preventDefault();
 
-    let nombre = htmlEncode(document.getElementById('nombre').value);
-    let apellido = htmlEncode(document.getElementById('apellido').value);
+    let nombre = document.getElementById('nombre').value;
+    let apellido = document.getElementById('apellido').value;
     let edad = document.getElementById('edad').value;
 
     if (!nombre || !apellido || !edad) {
@@ -570,9 +564,9 @@ function sessiontrabajador2(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let campo_user = htmlEncode(document.getElementById('campo_user').value);
-    let about_user = htmlEncode(document.getElementById('about_user').value);
-    let lenguaje_preferido = htmlEncode(document.getElementById('lenguaje_preferido').value);
+    let campo_user = document.getElementById('campo_user').value;
+    let about_user = document.getElementById('about_user').value;
+    let lenguaje_preferido = document.getElementById('lenguaje_preferido').value;
 
     var formData = new FormData();
 
@@ -673,21 +667,18 @@ function formtrabajador3() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //loc_trabajador
-    recarga += '<label for="loc_trabajador">Localización</label>';
     recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion...">';
     //disponibilidad
-    recarga += '<label for="disponibilidad">Disponibilidad</label>';
     recarga += '<select class="inputregister" name="disponibilidad" id="disponibilidad">';
-    recarga += '<option value="" selected>- Selecciona -</option>';
-    recarga += '<option value="jornada completa">Jornada completa (8 horas)</option>';
-    recarga += '<option value="jornada parcial">Jornada parcial (4 horas)</option>';
-    recarga += '<option value="turno mañana">Turno mañana</option>';
-    recarga += '<option value="turno noche">Turno noche</option>';
-    recarga += '<option value="turno partida">Turno partido</option>';
-    recarga += '<option value="fines de semana">Fines de semana</option>';
+    recarga += '<option value="" selected>- selecciona -</option>';
+    recarga += '<option value="jornada completa">jornada completa (8 horas)</option>';
+    recarga += '<option value="jornada parcial">jornada parcial (4 horas)</option>';
+    recarga += '<option value="turno mañana">turno mañana</option>';
+    recarga += '<option value="turno noche">turno noche</option>';
+    recarga += '<option value="turno partida">turno partida</option>';
+    recarga += '<option value="fines de semana">fines de semana</option>';
     recarga += '</select>';
     //Foto
-    recarga += '<label for="foto_perfil">Imagen de Perfil</label>';
     recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil">';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
@@ -708,7 +699,7 @@ function sessiontrabajador3(evt) {
     evt.preventDefault();
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
-    let loc_trabajador = htmlEncode(document.getElementById('loc_trabajador').value);
+    let loc_trabajador = document.getElementById('loc_trabajador').value;
     let disponibilidad = document.getElementById('disponibilidad').value;
     let foto_perfil = document.getElementById('foto_perfil').files[0];
 
@@ -800,7 +791,7 @@ function formtrabajador4() {
     recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="">';
+    recarga += '<div class="modal-content-register"><div class="scrollbar">';
     //Flechas registro
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
@@ -811,37 +802,28 @@ function formtrabajador4() {
     /* Estructura linea */
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
-    recarga += '<div id="lineaidioma-0" class="linea-registro">';
+    recarga += '<div id="lineaidioma-0">';
     //nombre_idioma
-    recarga += '<div class="mas-menos">'
-    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
-    recarga += '</div>'
-    recarga += `
-                <div class="fila-linea-idioma">
-                    <div class="column-2">
-                        <p>Idioma</p>
-                        <select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">
-                            <option selected>- Selecciona -</option>
-
-    `
+    recarga += '<div class="column-2">';
+    recarga += '<p>Idioma</p>';
+    recarga += '<select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
+    recarga += '<option selected>- selecciona -</option>';
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
-    recarga += `
-                        </select>
-    `
+    recarga += '</select>';
     recarga += '</div>';
     //nivel_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>Nivel</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nivel_idioma[]" id="nivel_idioma">';
-    recarga += '<option value="" selected>- Selecciona -</option>';
-    recarga += '<option value="bajo">Bajo</option>';
-    recarga += '<option value="medio">Medio</option>';
-    recarga += '<option value="alto">Alto</option>';
-    recarga += '<option value="nativo">Nativo</option>';
+    recarga += '<option value="" selected>- selecciona -</option>';
+    recarga += '<option value="bajo">bajo</option>';
+    recarga += '<option value="medio">medio</option>';
+    recarga += '<option value="alto">alto</option>';
+    recarga += '<option value="nativo">nativo</option>';
     recarga += '</select>';
-    recarga += '</div></div>';
+    recarga += '</div>';
     recarga += '<div>';
     recarga += '</div>';
     recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
@@ -870,12 +852,12 @@ function insertaridioma() {
     var lidioma = "lineaidioma-" + (k - 1);
     var lineaidioma = document.getElementById(lidioma);
     var recarga = "";
-    recarga += '<div id="lineaidioma-' + k + '" class="linea-registro">';
+    recarga += '<div id="lineaidioma-' + k + '">';
     //nombre_idioma
-    recarga += '<div class="fila-linea-idioma"><div class="column-2">';
+    recarga += '<div class="column-2">';
     recarga += '<p>Idioma</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
-    recarga += '<option value="" selected>- Selecciona -</option>';
+    recarga += '<option value="" selected>- selecciona -</option>';
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
@@ -885,13 +867,13 @@ function insertaridioma() {
     recarga += '<div class="column-2">';
     recarga += '<p>Nivel</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nivel_idioma[]" id="nivel_idioma">';
-    recarga += '<option value="" selected>- Selecciona -</option>';
-    recarga += '<option value="bajo">Bajo</option>';
-    recarga += '<option value="medio">Medio</option>';
-    recarga += '<option value="alto">Alto</option>';
-    recarga += '<option value="nativo">Nativo</option>';
+    recarga += '<option value="" selected>- selecciona -</option>';
+    recarga += '<option value="bajo">bajo</option>';
+    recarga += '<option value="medio">medio</option>';
+    recarga += '<option value="alto">alto</option>';
+    recarga += '<option value="nativo">nativo</option>';
     recarga += '</select>';
-    recarga += '</div></div>';
+    recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
     recarga += '</div>';
@@ -1007,7 +989,7 @@ function formtrabajador5() {
     recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="">';
+    recarga += '<div class="modal-content-register"><div class="scrollbar">';
     //Flechas registro
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
@@ -1018,9 +1000,7 @@ function formtrabajador5() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     /* Estructura linea */
-    recarga += '<div id="lineaestudio-0" class="linea-registro">';
-    recarga += '<div class="fila-linea-expfor">';
-
+    recarga += '<div id="lineaestudio-0">';
 
     //nombre_formación
     recarga += '<div class="column-2">';
@@ -1041,7 +1021,7 @@ function formtrabajador5() {
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
     recarga += '<input type="date" class="inputregister inputcolumn2" id="año_salida" name="año_salida[]">';
-    recarga += '</div></div>';
+    recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
@@ -1070,8 +1050,7 @@ function insertarestudio() {
     var lestudio = "lineaestudio-" + (k - 1);
     var lineaestudio = document.getElementById(lestudio);
     var recarga = "";
-    recarga += '<div id="lineaestudio-' + k + '" class="linea-registro">';
-    recarga += '<div class="fila-linea-expfor">';
+    recarga += '<div id="lineaestudio-' + k + '">';
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de formación</p>';
@@ -1091,7 +1070,7 @@ function insertarestudio() {
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
     recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]">';
-    recarga += '</div></div>';
+    recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
     recarga += '</div>';
@@ -1115,9 +1094,8 @@ function sessiontrabajador5(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombre_formación = htmlEncode(document.getElementsByName('nombre_formación[]'));
-    console.log(nombre_formación);
-    let lugar_formación = htmlEncode(document.getElementsByName('lugar_formación[]'));
+    let nombre_formación = document.getElementsByName('nombre_formación[]');
+    let lugar_formación = document.getElementsByName('lugar_formación[]');
     let año_entrada = document.getElementsByName('año_entrada[]');
     let año_salida = document.getElementsByName('año_salida[]');
 
@@ -1223,10 +1201,9 @@ function formtrabajador6() {
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div class="modal-content-register"><div class="">';
+    recarga += '<div class="modal-content-register"><div class="scrollbar">';
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
-    recarga += '<button class="derecha" id="derecha" style="opacity:0;pointer-events:none;"><i class="fa-solid fa-right-long"></i></button>';
     recarga += '</div>';
     recarga += '<h3>¿Dónde has trabajado?</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
@@ -1234,12 +1211,11 @@ function formtrabajador6() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     /* Estructura linea */
-    recarga += '<div id="lineaexperiencia-0" class="linea-registro">';
-    recarga += '<div class="fila-linea-expfor">';
+    recarga += '<div id="lineaexperiencia-0">';
 
     //nombre_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>Experiencia</p>';
+    recarga += '<p>Nombre de empresa</p>';
     recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto">';
     recarga += '</div>';
     //lugar_experiencia
@@ -1261,7 +1237,7 @@ function formtrabajador6() {
     recarga += '<div class="column-1">';
     recarga += '<p>funciones</p>';
     recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
-    recarga += '</div></div>';
+    recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
@@ -1289,33 +1265,31 @@ function insertarexperiencia() {
     var lexperiencia = "lineaexperiencia-" + (k - 1);
     var lineaexperiencia = document.getElementById(lexperiencia);
     var recarga = "";
-    recarga += '<div id="lineaexperiencia-' + k + '" class="linea-registro">';
-    recarga += '<div class="fila-linea-expfor">';
+    recarga += '<div id="lineaexperiencia-' + k + '">';
     //nombre_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>Experiencia</p>';
+    recarga += '<p>nombre_experiencia</p>';
     recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto">';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>Lugar experiencia</p>';
+    recarga += '<p>lugar_experiencia</p>';
     recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa">';
+    recarga += '</div>';
+    //funciones
+    recarga += '<div class="column-1">';
+    recarga += '<p>funciones</p>';
+    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
-    recarga += '<p>Año entrada</p>';
+    recarga += '<p>año_entrada</p>';
     recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
-    recarga += '<p>Año salida</p>';
+    recarga += '<p>año_salida</p>';
     recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]">';
-    recarga += '</div>';
-    //funciones
-    recarga += '<div class="column-1">';
-    recarga += '<p>Funciones</p>';
-    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
-    recarga += '</div>';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
@@ -1340,9 +1314,9 @@ function sessiontrabajador6(evt) {
 
     //al momento de validar hay que tener en cuenta los espacios en blanco
 
-    let nombre_experiencia = htmlEncode(document.getElementsByName('nombre_experiencia[]'));
-    let lugar_experiencia = htmlEncode(document.getElementsByName('lugar_experiencia[]'));
-    let funciones = htmlEncode(document.getElementsByName('funciones[]'));
+    let nombre_experiencia = document.getElementsByName('nombre_experiencia[]');
+    let lugar_experiencia = document.getElementsByName('lugar_experiencia[]');
+    let funciones = document.getElementsByName('funciones[]');
     let año_entrada = document.getElementsByName('año_entrada[]');
     let año_salida = document.getElementsByName('año_salida[]');
     var formData = new FormData();
@@ -1497,7 +1471,7 @@ function formempresa0() {
     recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class=""><h3>¡Regístrate en JobJob!</h3>';
+    recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa0" enctype="multipart/form-data">';
     //Correo
     recarga += '<div class="column-2">';
@@ -1534,10 +1508,10 @@ function formempresa0() {
 function sessionempresa0(evt) {
     evt.preventDefault();
 
-    let mail = htmlEncode(document.getElementById('mail').value);
-    let nom_emp = htmlEncode(document.getElementById('nom_emp').value);
-    let contra = htmlEncode(document.getElementById('contra').value);
-    let contra2 = htmlEncode(document.getElementById('contra2').value);
+    let mail = document.getElementById('mail').value;
+    let nom_emp = document.getElementById('nom_emp').value;
+    let contra = document.getElementById('contra').value;
+    let contra2 = document.getElementById('contra2').value;
 
     if (!mail || !nom_emp || !contra || !contra2) {
 
@@ -1666,7 +1640,7 @@ function formempresa1() {
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div class="modal-content-register"><div class="">';
+    recarga += '<div class="modal-content-register"><div class="scrollbar">';
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '<button class="derecha" id="derecha"><i class="fa-solid fa-right-long"></i></button>';
@@ -1705,9 +1679,9 @@ function formempresa1() {
 function sessionempresa1(evt) {
     evt.preventDefault();
 
-    let about_emp = htmlEncode(document.getElementById('about_emp').value);
-    let campo_emp = htmlEncode(document.getElementById('campo_emp').value);
-    let searching = htmlEncode(document.getElementById('searching').value);
+    let about_emp = document.getElementById('about_emp').value;
+    let campo_emp = document.getElementById('campo_emp').value;
+    let searching = document.getElementById('searching').value;
 
     var formData = new FormData();
 
@@ -1780,7 +1754,7 @@ function formempresa2() {
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div class="modal-content-register"><div class="">';
+    recarga += '<div class="modal-content-register"><div class="scrollbar">';
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
     recarga += '</div>';
@@ -1817,8 +1791,8 @@ function sessionempresa2(evt) {
     evt.preventDefault();
 
     let logo_emp = document.getElementById('logo_emp').files[0];
-    let loc_emp = htmlEncode(document.getElementById('loc_emp').value);
-    let vacante = htmlEncode(document.getElementById('vacante').value);
+    let loc_emp = document.getElementById('loc_emp').value;
+    let vacante = document.getElementById('vacante').value;
 
     var formData = new FormData();
 

@@ -24,7 +24,7 @@ class PtecnicaController extends Controller{
                 //VISTA EMPRESA
                 $empresa=DB::table('tbl_ptecnica')
                 ->where('id_empresa', '=', $id)->get();
-                $inscritos=DB::select("SELECT JSON_LENGTH(json_prueba) as inscritos FROM bd_jobjob.tbl_ptecnica where id_empresa=?",[$id]);
+                $inscritos=DB::select("SELECT JSON_LENGTH(json_prueba) as inscritos FROM tbl_ptecnica where id_empresa=?",[$id]);
                 return response()->json(array('empresa' => $empresa, 'inscritos'=> $inscritos));
             }
 
