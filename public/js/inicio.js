@@ -402,7 +402,7 @@ function formtrabajador1() {
     recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido...">';
     //Edad
     recarga += '<input type="date" class="inputregister" id="edad" name="edad">';
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
@@ -545,7 +545,7 @@ function formtrabajador2() {
     recarga += '<input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi...">';
     //lenguaje_preferido
     recarga += '<input type="text" class="inputregister" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="Lenguaje preferido...">';
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
@@ -680,7 +680,7 @@ function formtrabajador3() {
     recarga += '</select>';
     //Foto
     recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil">';
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -829,7 +829,7 @@ function formtrabajador4() {
     recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1027,7 +1027,7 @@ function formtrabajador5() {
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1243,7 +1243,7 @@ function formtrabajador6() {
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1493,7 +1493,7 @@ function formempresa0() {
     recarga += '<p>Contraseña 2</p>';
     recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña...">';
     recarga += '</div>';
-    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
+    recarga += '<input type="submit" class="botonregister" value="Continuar">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1775,7 +1775,7 @@ function formempresa2() {
     recarga += '<p>Logo empresa</p>';
     recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp">';
     recarga += '</div>';
-    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
