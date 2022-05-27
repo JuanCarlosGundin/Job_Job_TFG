@@ -31,10 +31,19 @@ body {
         }
     }
     .region-swiper {
-        left: 0;
+        height: 90%;
+        @media(max-width: $tablet) {
+            height: 100%;
+        }
+        position: relative;
+        #carta {
+            height: 100%;
+            width: 100%;
+            padding-top: 10px;
+        }
         .swiper {
             //TINDER
-            width: 100vw;
+            width: 100%;
             height: 100%;
             overflow: hidden;
             display: flex;
@@ -46,7 +55,7 @@ body {
                 position: absolute;
                 top: 50%;
                 margin-top: -30px;
-                // z-index: 2;
+                z-index: 2;
                 width: 100%;
                 text-align: center;
                 pointer-events: none;
@@ -62,7 +71,7 @@ body {
             }
             .swiper--cards {
                 flex-grow: 1;
-                padding-top: 7vh;
+                padding-top: 3vh;
                 text-align: center;
                 display: flex;
                 justify-content: center;
@@ -73,6 +82,9 @@ body {
                     display: inline-block;
                     width: 90vw;
                     max-width: 400px;
+                    @media(min-width: $tablet) {
+                        max-width: 500px;
+                    }
                     height: 70vh;
                     background: #FFFFFF;
                     padding-bottom: 40px;
@@ -117,6 +129,9 @@ body {
                             justify-content: flex-start;
                             align-items: flex-start;
                             pointer-events: none;
+                            h2 {
+                                text-align: left;
+                            }
                         }
                         .misc--card {
                             width: 100%;
@@ -152,6 +167,7 @@ body {
                         }
                         h2 {
                             padding: 0 16px;
+                            margin: 3px 0;
                         }
                         h3 {
                             margin-top: 0;
@@ -161,10 +177,11 @@ body {
                             pointer-events: none;
                         }
                         h5 {
-                            margin: 0;
+                            margin: 0 0 10px 0;
                             padding: 0 16px;
                             font-weight: normal;
                             color: grey;
+                            text-align: left;
                         }
                         p {
                             margin-top: 24px;
@@ -177,7 +194,9 @@ body {
                     &:nth-child(1) {
                         padding-top: 15px;
                         img {
-                            max-height: 25%;
+                            max-height: 20%;
+                            margin-bottom: 20px;
+                            margin-top: 15px;
                         }
                     }
                 }
@@ -250,8 +269,12 @@ body {
             .boton-cruz,
             .boton-maletin {
                 >button {
-                    width: 60px;
-                    height: 60px;
+                    width: 80px;
+                    height: 80px;
+                    @media(max-width: $tablet) {
+                        width: 60px;
+                        height: 60px;
+                    }
                     i {
                         font-size: calc(#{"30px + 1vw"});
                     }
@@ -259,8 +282,12 @@ body {
             }
             .boton-info {
                 .icono-info {
-                    width: 50px;
-                    height: 50px;
+                    width: 60px;
+                    height: 60px;
+                    @media(max-width: $tablet) {
+                        width: 50px;
+                        height: 50px;
+                    }
                     i {
                         font-size: calc(#{"20px + 1vw"});
                     }

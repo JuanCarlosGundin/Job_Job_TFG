@@ -3123,15 +3123,14 @@ function leer_configuracion() {
             recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
             recarga += `</div>`;
             recarga += `</div>`;
-            recarga += `<div class="categoria-profile">`;
             recarga += `<div class="eliminar-cuenta-div">`;
             recarga += `<button class="eliminar-cuenta-btn" id="desactivar"><p class="button-text">Desactivar cuenta</button>`;
+            recarga += `</div>`;
             if (trabajador.mostrado == "1") {
                 // recarga += `<p class="">SI</p>`;
             } else {
                 // recarga += `<p class="">NO</p>`;
             }
-            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -3795,29 +3794,65 @@ function form_buscamos_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_buscamos_empresa>`;
 
             if (!empresa.vacante) {
-
-                recarga += `<input type="text" class="" id="vacante" name="vacante" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">VACANTE</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="vacante" name="vacante" placeholder="Introduzca vacante">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="vacante" name="vacante" value="${empresa.vacante}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">VACANTE</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="vacante" name="vacante" value="${empresa.vacante}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!empresa.searching) {
-
-                recarga += `<input type="textarea" class="" id="searching" name="searching" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">DESCRIPCIÓN</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="searching" name="searching" placeholder="Descripcion">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="textarea" class="" id="searching" name="searching" value="${empresa.searching}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">VACANTE</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="searching" name="searching" value="${empresa.searching}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
-
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -3924,17 +3959,17 @@ function leer_configuracion_empresa() {
             recarga += `</div>`;
             //ir a vista editar
             recarga += `<div class="logout">`;
-            recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
             recarga += `</div>`;
             recarga += `</div>`;
-            recarga += `<div class="categoria-profile">`;
-            recarga += `<button id="desactivar">Desactivar</button>`;
+            recarga += `<div class="eliminar-cuenta-div">`;
+            recarga += `<button class="eliminar-cuenta-btn" id="desactivar"><p class="button-text">Desactivar cuenta</button>`;
+            recarga += `</div>`;
             if (empresa.mostrado == "1") {
-                recarga += `<p class="">SI</p>`;
+                // recarga += `<p class="">SI</p>`;
             } else {
-                recarga += `<p class="">NO</p>`;
+                // recarga += `<p class="">NO</p>`;
             }
-            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -3982,16 +4017,33 @@ function form_configuracion_empresa() {
             recarga += `<p class="return-text">VOLVER</p>`;
             recarga += `</button>`;
             recarga += `</div>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
             if (empresa.mostrado == 1) {
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">¿MOSTRAR CUENTA?</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
                 recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + empresa.mostrado + '" checked>';
+                recarga += `</div>`;
+                recarga += `</div>`;
 
             } else {
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">¿MOSTRAR CUENTA?</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
                 recarga += '<input type="checkbox" class="" id="mostrado" name="mostrado" value="' + empresa.mostrado + '">';
+                recarga += `</div>`;
+                recarga += `</div>`;
 
             }
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
             recarga += `</div>`;
             recarga += `</div>`;
