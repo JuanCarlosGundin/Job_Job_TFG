@@ -602,6 +602,7 @@ function form_editar_user() {
             //form
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_user>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             //Email
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
@@ -768,6 +769,26 @@ function modificar_editar_user(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    console.log(container_error.innerHTML);
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
 
@@ -1017,6 +1038,7 @@ function form_editar_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_sobre_mi>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!trabajador.campo_user) {
                 recarga += `<div class="edit-input">`;
@@ -1181,6 +1203,15 @@ function form_editar_sobre_mi() {
 
 function editar_sobre_mi(evt) {
 
+    if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
+        swal.fire({
+            title: "Error",
+            text: "Debes añadir un número de teléfono correcto",
+            icon: "error",
+        });
+        return false;
+    }
+
     evt.preventDefault();
 
     var campo_user = document.getElementById("campo_user").value;
@@ -1222,14 +1253,6 @@ function editar_sobre_mi(evt) {
 
         formData.append('github', github);
     }
-    if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
-        swal.fire({
-            title: "Error",
-            text: "Debes añadir un número de teléfono correcto",
-            icon: "error",
-        });
-        return false;
-    }
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -1248,10 +1271,6 @@ function editar_sobre_mi(evt) {
                     title: "Sobre mí",
                     text: "Datos guardados",
                     icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_sobre_mi();
-                    }
                 });
 
             }
@@ -1376,6 +1395,7 @@ function form_crear_idiomas() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_idiomas>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">IDIOMA</p>`;
@@ -1504,6 +1524,7 @@ function form_editar_idiomas(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_idiomas>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">IDIOMA</p>`;
@@ -1775,6 +1796,7 @@ function form_crear_estudios() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_estudios>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">TITULO O DIPLOMA</p>`;
@@ -1932,6 +1954,7 @@ function form_editar_estudios(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_estudios>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">NOMBRE FORMACIÓN</p>`;
@@ -2233,6 +2256,7 @@ function form_crear_experiencia() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_experiencia>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">NOMBRE DEL TRABAJO</p>`;
@@ -2400,6 +2424,7 @@ function form_editar_experiencias(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_experiencias>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">NOMBRE DE LA EMPRESA</p>`;
@@ -2671,6 +2696,7 @@ function form_crear_habilidades() {
     recarga += `<button id="volver">Volver</button>`;
     recarga += `<div>`;
     recarga += `<form id=form_habilidades>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" placeholder="Introduce tu habilidad">`;
     recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
     recarga += `<option value="" selected>- selecciona -</option>`;
@@ -2767,6 +2793,7 @@ function form_editar_habilidades(evt) {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_habilidades>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" value="${habilidades.nombre_habilidad}">`;
             recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
             recarga += `<option value="${habilidades.nivel_habilidad}" selected>${habilidades.nivel_habilidad}</option>`;
@@ -2957,6 +2984,7 @@ function form_disponibilidad() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_disponibilidad>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!trabajador.disponibilidad) {
 
@@ -3186,6 +3214,7 @@ function form_configuracion() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-profile">`;
             if (trabajador.mostrado == 1) {
                 recarga += `<div class="edit-input">`;
@@ -3369,6 +3398,7 @@ function form_editar_user_empresa() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_editar_user_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             recarga += `<input type="email" class="" id="mail" name="mail" value="${trabajador.mail}">`;
 
@@ -3630,6 +3660,7 @@ function form_editar_sobre_empresa() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_editar_sobre_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!empresa.about_emp) {
 
@@ -3813,6 +3844,7 @@ function form_buscamos_empresa() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_buscamos_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!empresa.vacante) {
                 recarga += `<div class="edit-input">`;
@@ -4026,6 +4058,7 @@ function form_configuracion_empresa() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             if (empresa.mostrado == 1) {
                 recarga += `<div class="edit-input">`;
                 recarga += `<div class="input-text">`;

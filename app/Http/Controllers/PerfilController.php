@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PerfilController extends Controller{
     public function vistaPerfil(){
@@ -64,6 +65,14 @@ class PerfilController extends Controller{
             }
 
             if ($req->has(['contra_old', 'contra', 'contra2'])){
+                $validator = Validator::make($req->all(), [
+                    'contra'=>'required|string|min:8|max:100',
+                    'contra2'=>'required|same:contra',
+                ]);
+                if ($validator->fails()) {
+
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
 
                 $comprobarhash=hash('sha256',$req['contra_old']);
                 $comprobarcontra = DB::table("tbl_usuarios")->where('id','=',$id)->first();
