@@ -418,7 +418,7 @@ public function logout(Request $req){
     //-----------------------------------------------------GESTIONAR REPORTES----------------------------------------------------------//
     
     public function leerreportes(Request $request){
-    $datos=DB::select('select * from tbl_reportes where estado_incidencia like ? ORDER BY fecha_incidencia DESC',['%'.$request->input('filtro').'%']);
+    $datos=DB::select('select * from tbl_reportes where incidencia like ? ORDER BY fecha_incidencia DESC',['%'.$request->input('filtro').'%']);
     return response()->json($datos);
 }
 

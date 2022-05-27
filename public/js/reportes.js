@@ -36,7 +36,20 @@ function leerreportesJS() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = '';
-            recarga += '<tr><td>ID</td><td>INCIDENCIA</td><td>INCIDENCIA DESARROLLADA</td><td>ESTADO INCIDENCIA</td><td>ID_REPORTADOR</td><td>ID_REPORTADO</td><td>FECHA</td></tr>';
+            recarga += '<table class="table table-striped table-hover">';
+            recarga += '<thead>';
+            recarga += '<tr>';
+            recarga += '<th scope="col">ID</th>';
+            recarga += '<th scope="col">INCIDENCIA</th>';
+            recarga += '<th scope="col">INCIDENCIA DESARROLLADA</th>';
+            recarga += '<th scope="col">ESTADO INCIDENCIA</th>';
+            recarga += '<th scope="col">ID_REPORTADOR</th>';
+            recarga += '<th scope="col">ID_REPORTADO</th>';
+            recarga += '<th scope="col">FECHA</th>';
+            recarga += '</tr>';
+            recarga += '</thead>';
+            recarga += '<tbody>';
+            // recarga += '<tr><td>ID</td><td>INCIDENCIA</td><td>INCIDENCIA DESARROLLADA</td><td>ESTADO INCIDENCIA</td><td>ID_REPORTADOR</td><td>ID_REPORTADO</td><td>FECHA</td></tr>';
             for (let i = 0; i < respuesta.length; i++) {
                 recarga += `<tr>`;
                 recarga += '<td>' + respuesta[i].id + '</td>'
@@ -50,13 +63,16 @@ function leerreportesJS() {
                 if (respuesta[i].estado_incidencia == "abierta") {
                     recarga += '<td><button type="button" class="btn btn-warning" onclick="estadoreporteJS(' + respuesta[i].id + '); return false;">Cerrar</button></td>';
                 } else {
-                    recarga += '<td><button type="button" class="btn btn-warning" onclick="estadoreporteJS(' + respuesta[i].id + '); return false;">Abrir</button></td>';
+                    recarga += '<td><button type="button" class="btn btn-danger" onclick="estadoreporteJS(' + respuesta[i].id + '); return false;">Abrir</button></td>';
                 }
                 recarga += '</tr>';
+
 
             }
             tabla.innerHTML = recarga;
         }
+        recargaemp += '</tbody>';
+        recargaemp += '</table>';
     }
 
     ajax.send(formData);
