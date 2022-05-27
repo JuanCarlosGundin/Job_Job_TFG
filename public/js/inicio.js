@@ -667,8 +667,10 @@ function formtrabajador3() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //loc_trabajador
+    recarga += '<label for="loc_trabajador">Localización</label>';
     recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion...">';
     //disponibilidad
+    recarga += '<label for="disponibilidad">Disponibilidad</label>';
     recarga += '<select class="inputregister" name="disponibilidad" id="disponibilidad">';
     recarga += '<option value="" selected>- Selecciona -</option>';
     recarga += '<option value="jornada completa">Jornada completa (8 horas)</option>';
@@ -679,6 +681,7 @@ function formtrabajador3() {
     recarga += '<option value="fines de semana">Fines de semana</option>';
     recarga += '</select>';
     //Foto
+    recarga += '<label for="foto_perfil">Imagen de Perfil</label>';
     recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil">';
     recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
@@ -804,7 +807,6 @@ function formtrabajador4() {
 
     recarga += '<div id="lineaidioma-0" class="linea-registro">';
     //nombre_idioma
-<<<<<<< HEAD
     recarga += '<div class="mas-menos">'
     recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>'
@@ -816,12 +818,6 @@ function formtrabajador4() {
                             <option selected>- Selecciona -</option>
 
     `
-=======
-    recarga += '<div class="column-2">';
-    recarga += '<p>Idioma</p>';
-    recarga += '<select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
-    recarga += '<option selected>- selecciona -</option>';
->>>>>>> 0d502e7bf1b379b64bc3e392e31e5911263575f4
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
