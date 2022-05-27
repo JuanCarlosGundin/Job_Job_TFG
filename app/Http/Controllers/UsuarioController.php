@@ -434,20 +434,24 @@ public function logout(Request $req){
 
     public function estadoreporte($id) {
 
+        $date = Carbon::now('+02:00');
+        //formato correcto
+        $fechaactual = $date->toDateTimeString();
+
         $datos=DB::select("SELECT estado_incidencia FROM tbl_reportes
         WHERE id = ?",[$id]);
-        DB::beginTransaction();
 
         try{
 
+            DB::beginTransaction();
             if ($datos[0]->estado_incidencia == "abierta"){
 
-                DB::select("UPDATE tbl_reportes SET estado_incidencia = 'cerrada'
+                DB::select("UPDATE tbl_reportes SET estado_incidencia = 'cerrada', fecha_incidencia = '".$fechaactual."'
                 WHERE id = ?",[$id]);
 
             }else{
 
-                DB::select("UPDATE tbl_reportes SET estado_incidencia = 'abierta'
+                DB::select("UPDATE tbl_reportes SET estado_incidencia = 'abierta', fecha_incidencia = '".$fechaactual."'
                 WHERE id = ?",[$id]);
 
             }
