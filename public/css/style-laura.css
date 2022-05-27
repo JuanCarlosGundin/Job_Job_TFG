@@ -505,12 +505,14 @@ body {
 }
 
 .bodylogin .modal-login .modal-content {
+  background-color: transparent;
   border: white;
   text-align: center;
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-  height: 70vh;
+  padding-bottom: 60px;
+  padding-top: 20px;
 }
 
 .bodylogin .modal-login .modal-content form {
@@ -527,7 +529,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .bodylogin .modal-login .modal-content .opciones .opcion {
@@ -690,7 +692,7 @@ body {
   }
   .bodylogin .modal-login .modal-content {
     width: 80%;
-    height: 65vh;
+    height: 70vh;
   }
   .bodylogin .modal-login .modal-content h2 {
     margin-top: 4vh;

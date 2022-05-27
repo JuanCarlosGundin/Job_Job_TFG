@@ -14,9 +14,13 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
     <body class="bodylogin">
-        <button type="button" class="darkmodeswitch" id="switch" onclick="cambiarModo()"><span><i class="fa fa-sun-o"></i></span>   
-            <span><i class="fa fa-moon-o"></i></span>
-      </button>
+        <div class="area-botones">
+            <button type="button" class="darkmodeswitch" id="switch" onclick="cambiarModo()">
+                <span><i class="fa fa-sun-o"></i></span>   
+                <span><i class="fa fa-moon-o"></i></span>
+            </button>
+            <a href="{!! asset('./inicio') !!}" class="volver"><i class="fa-solid fa-angle-left"></i></a>    
+        </div>
         <div class="logo">
             <img src="storage/uploads/jobjob_logo.png">
         </div>

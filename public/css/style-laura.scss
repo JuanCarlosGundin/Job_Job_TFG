@@ -438,18 +438,21 @@ body {
         }
         ///contenido del modal
         .modal-content {
+            background-color: transparent;
             border: white;
             text-align: center;
             width: 80%;
             margin-left: 10%;
             margin-right: 10%;
-            height: 70vh;
+            // height: 70vh;
+            padding-bottom: 60px;
+            padding-top: 20px;
             form {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 20px;
+                gap: 10px;
             }
             .opciones {
                 .opcion {
@@ -594,7 +597,7 @@ body {
             ///contenido del modal
             .modal-content {
                 width: 80%;
-                height: 65vh;
+                height: 70vh;
                 h2 {
                     margin-top: 4vh;
                     margin-bottom: 0vh;

@@ -431,14 +431,22 @@ class InicioController extends Controller{
 
             DB::select("insert into tbl_trabajador (id_usuario,". implode(',' , $key) .") values (?,'". implode("','" , $value) ."')",[$id]);
 
-            Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
+            // Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
 
+            //     $usuario=DB::select('select * from tbl_usuarios 
+            //     inner join tbl_trabajador on tbl_usuarios.id=tbl_trabajador.id_usuario
+            //     where tbl_usuarios.id=? ',[$id]);
+            //     $message->to($usuario[0]->{'mail'})
+            //       ->subject('Link Para validar tu cuenta de Job Job');
+            //   });
+
+            Mail::send('email.verificar', [],function($message) use($id){
                 $usuario=DB::select('select * from tbl_usuarios 
                 inner join tbl_trabajador on tbl_usuarios.id=tbl_trabajador.id_usuario
                 where tbl_usuarios.id=? ',[$id]);
-                $message->to($usuario[0]->{'mail'})
-                  ->subject('Link Para validar tu cuenta de Job Job');
-              });
+                $message->to($usuario[0]->{'mail'});
+                $message->subject('Link Para validar tu cuenta de Job Job');
+            });
 
             DB::commit();
             session()->flush();
@@ -512,13 +520,20 @@ class InicioController extends Controller{
 
             DB::select("insert into tbl_empresa (id_usuario,". implode(',' , $key) .") values (?,'". implode("','" , $value) ."')",[$id]);
 
-            Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
+            // Mail::raw('Entra a este link para validar tu cuenta de Job Job y acceder a nuestro servicio : (verificar)', function ($message) use($id) {
+            //     $usuario=DB::select('select * from tbl_usuarios 
+            //     inner join tbl_empresa on tbl_usuarios.id=tbl_empresa.id_usuario
+            //     where tbl_usuarios.id=? ',[$id]);
+            //     $message->to($usuario[0]->{'mail'})
+            //       ->subject('Link Para validar tu cuenta de Job Job ');
+            // });
+            Mail::send('email.verificar', [],function($message) use($id){
                 $usuario=DB::select('select * from tbl_usuarios 
                 inner join tbl_empresa on tbl_usuarios.id=tbl_empresa.id_usuario
                 where tbl_usuarios.id=? ',[$id]);
-                $message->to($usuario[0]->{'mail'})
-                  ->subject('Link Para validar tu cuenta de Job Job');
-              });
+                $message->to($usuario[0]->{'mail'});
+                $message->subject('Link Para validar tu cuenta de Job Job');
+            });
 
             DB::commit();
             session()->flush();

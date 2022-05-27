@@ -97,10 +97,6 @@
           box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
 }
 
-.bodylogin.oscuro .modal-login .modal-content {
-  background-color: #0B4B78;
-}
-
 .bodylogin.oscuro .modal-login h2,
 .bodylogin.oscuro .modal-login h3,
 .bodylogin.oscuro .modal-login .contraseña,
