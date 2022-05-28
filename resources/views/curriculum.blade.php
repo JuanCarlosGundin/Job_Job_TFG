@@ -8,6 +8,7 @@
     <link rel="icon" href="storage/uploads/logo.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">
 </head>
 <body>
     <div class="container mt-5">
@@ -39,5 +40,6 @@
         </table>
     </div>
     <script src="{{ asset('js/app.js') }}" type="text/js"></script>
+    <script src="js/modo_nocturno.js"></script>
 </body>
 </html>

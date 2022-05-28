@@ -67,7 +67,11 @@
             <div class="navbar-right">
               {{-- MODAL USUARIO --}}
               <li class="div-btn-reportes">
+<<<<<<< HEAD
                 <button class="btn-reportes" id="myBtn"><i class="fa-solid fa-triangle-exclamation"></i></button>
+=======
+                <button class="btn-reportes" id="myBtnreportes"><i class="fa-solid fa-triangle-exclamation"></i></button>
+>>>>>>> 702f215cc4accf8e49955c89f92ade915cf74bba
               </li>
               <div id="myModal" class="modal">
                 <!-- Modal content -->
@@ -101,7 +105,7 @@
                 </div>
               </div>
               <li class="div-btn-stats">
-                <button class="btn-stats" id=""><i class="fa-solid fa-chart-column"></i></button>
+                <button class="btn-stats" id="myBtnstats"><i class="fa-solid fa-chart-column"></i></button>
               </li>
               <li class="div-btn-enviar-correo">
                 <button class="btn-enviar-correo" id="myBtncorreo"><i class="fa-solid fa-envelope"></i> ENVIAR CORREO</button>

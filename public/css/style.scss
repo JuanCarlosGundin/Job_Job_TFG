@@ -127,6 +127,9 @@ body {
                     cursor: pointer;
                     transition: 0.25s;
                 }
+                &:active {
+                    color: rgb(132, 132, 132);
+                }
                 @media only screen and (max-width: $tablet) {
                     justify-content: center;
                     padding-left: 0;
@@ -164,6 +167,28 @@ body {
                 height: 100%;
                 border-top-left-radius: 30px;
                 border-top-right-radius: 30px;
+                &:hover {
+                    color: $black;
+                }
+                @media only screen and (max-width: $tablet) {
+                    background-color: $background;
+                    font-size: calc(#{'35px + 1vw'});
+                }
+            }
+        }
+        .active-left {
+            color: $black;
+            height: 100%;
+            .icon {
+                font-size: calc(#{'15px + 1vw'});
+                color: black;
+                background-color: $white;
+                border-width: 0px;
+                height: 100%;
+                border-top-right-radius: 30px;
+                &:hover {
+                    color: $black;
+                }
                 @media only screen and (max-width: $tablet) {
                     background-color: $background;
                     font-size: calc(#{'35px + 1vw'});

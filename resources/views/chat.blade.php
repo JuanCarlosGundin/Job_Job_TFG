@@ -27,7 +27,7 @@
             </div>
             <div class="row menu">
                 <div class="row menu-item">
-                    <button id="navbar-PT-icon" class="icon"><i class="fa-solid fa-file-invoice"></i><p class="text">Prueba tÃ©cnica</p></button>
+                    <button id="navbar-PT-icon" class="icon"><i class="fa-solid fa-file-invoice"></i><p class="text">Prueba técnica</p></button>
                 </div>
                 <div class="row menu-item">
                     <button id="navbar-alerts-icon" class="icon"><i class="fa-solid fa-bell"></i><p class="text">Notificaciones</p></button>
