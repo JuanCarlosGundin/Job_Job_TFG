@@ -2051,7 +2051,7 @@ function form_editar_estudios(evt) {
             recarga += `</div>`;
             recarga += `</form>`;
             recarga += `<div class="eliminar-cuenta-edit">`;
-            recarga += `<button class="eliminar-cuenta-btn"><p class="button-text">ELIMINAR</p></button>`;
+            recarga += `<button id="eliminar" class="eliminar-cuenta-btn"><p class="button-text">ELIMINAR</p></button>`;
             recarga += `</div>`;
             recarga += `</div>`;
             recarga += `</div>`;
