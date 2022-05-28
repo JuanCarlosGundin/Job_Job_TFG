@@ -15,7 +15,7 @@
 <body class="body-index">
     <div class="navbar-index">
             <div class="column-1">
-            <li><img class="logo" src="storage/uploads/jobjob_logo_black.png"></li>
+            <li id='img_logo'><img class="logo" src="storage/uploads/jobjob_logo_black.png"></li>
             </div>
             <div class="column-2">
             <li><button class="btn-navbar">FAQ</button></li>

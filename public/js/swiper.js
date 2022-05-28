@@ -42,16 +42,16 @@ function estructura() {
     recarga += '<div class="swiper--card" id="mainCard">';
     recarga += '</div>';
     recarga += '<div class="swiper--card no-swipe">';
-    recarga += '<img src="img/jobjob_tarjeta.png">';
+    recarga += '<img src="storage/img/jobjob_tarjeta.png">';
     recarga += '</div>';
     recarga += '<div class="swiper--card no-swipe">';
-    recarga += '<img src="img/jobjob_tarjeta.png">';
+    recarga += '<img src="storage/img/jobjob_tarjeta.png">';
     recarga += '</div>';
     recarga += '<div class="swiper--card no-swipe">';
-    recarga += '<img src="img/jobjob_tarjeta.png">';
+    recarga += '<img src="storage/img/jobjob_tarjeta.png">';
     recarga += '</div>';
     recarga += '<div class="swiper--card no-swipe">';
-    recarga += '<img src="img/jobjob_tarjeta.png">';
+    recarga += '<img src="storage/img/jobjob_tarjeta.png">';
     recarga += '</div>';
     recarga += '</div>';
     recarga += '</div>';
@@ -170,16 +170,16 @@ function reload() {
             <div class="swiper--card mainCard" id="mainCard">
             </div>
             <div class="swiper--card no-swipe">
-                <img src="img/jobjob_tarjeta.png">
+                <img src="storage/img/jobjob_tarjeta.png">
             </div>
             <div class="swiper--card no-swipe">
-                <img src="img/jobjob_tarjeta.png">
+                <img src="storage/uploads/jobjob_tarjeta.png">
             </div>
             <div class="swiper--card no-swipe">
-                <img src="img/jobjob_tarjeta.png">
+                <img src="storage/uploads/jobjob_tarjeta.png">
             </div>
             <div class="swiper--card no-swipe">
-                <img src="img/jobjob_tarjeta.png">
+                <img src="storage/uploads/jobjob_tarjeta.png">
             </div>
             `;
                     mostrar()
@@ -386,25 +386,25 @@ function yes() {
             console.log(respuesta)
             if (respuesta == 1) {
                 swal("¡MATCH! ¿Qué quieres hacer ahora?", {
-                        icon: "success",
-                        buttons: {
-                            cancel: "Seguir swipeando",
-                            catch: {
-                                text: "Revisar matches",
-                                value: "chat",
-                            }
-                        },
-                    })
-                    .then((value) => {
-                        switch (value) {
-
-                            case "chat":
-                                window.location.href = "./notificaciones";
-                                break;
-
-                            default:
+                    icon: "success",
+                    buttons: {
+                        cancel: "Seguir swipeando",
+                        catch: {
+                            text: "Revisar matches",
+                            value: "chat",
                         }
-                    });
+                    },
+                })
+                .then((value) => {
+                    switch (value) {
+
+                        case "chat":
+                            window.location.href = "./notificaciones";
+                            break;
+
+                        default:
+                    }
+                });
             }
 
         }

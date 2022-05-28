@@ -23,7 +23,7 @@
 <body>
     <div class="row principal">
         <div class="column region-navbar">
-            <div class="row barra-navbar-img">
+            <div id='img_logo' class="row barra-navbar-img">
                 <img src="storage/uploads/jobjob_logo_black.png">
             </div>
             <div class="row menu">
@@ -56,16 +56,18 @@
                 </div>
             </div>
             <div class="row alerts">
-                <div class="filter">      
-                    <div class="buscador">
-                        <input class="input-buscar" type="search" id="filter" name="filter" onkeyup="leernotificacionesJS()" placeholder="Buscar por nombre">
-                        <div class="icon-buscar">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="contenido-alerts">
+                    <div class="filter">
+                        <div class="buscador">
+                            <input class="input-buscar" type="search" id="filter" name="filter" onkeyup="leernotificacionesJS()" placeholder="Buscar por nombre">
+                            <div class="icon-buscar">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
                         </div>
-                    </div>        
-                </div>
-                <div id="zonaalerts">
-                    {{-- Alertas ajax --}}
+                    </div>
+                    <div id="zonaalerts">
+                        {{-- Alertas ajax --}}
+                    </div>
                 </div>
             </div>
         </div>

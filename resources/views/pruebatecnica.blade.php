@@ -22,7 +22,7 @@
 <body>
     <div class="row principal">
         <div class="column region-navbar">
-            <div class="row barra-navbar-img">
+            <div id='img_logo' class="row barra-navbar-img">
                 <img src="storage/uploads/jobjob_logo_black.png">
             </div>
             <div class="row menu">

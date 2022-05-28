@@ -28,8 +28,10 @@ switchButton.addEventListener('click', () => {
 
     if (document.body.classList.contains('oscuro')) { //si el body tiene la clase 'oscuro'
         localStorage.setItem('darkMode', 'enabled'); //activa el modo oscuro
+        document.getElementById('img_logo').innerHTML = '<img src="storage/uploads/jobjob_logo.png"></img>'
     } else {
         localStorage.setItem('darkMode', 'disabled'); //si no, desactiva el modo oscuro
+        document.getElementById('img_logo').innerHTML = '<img src="storage/uploads/jobjob_logo_black.png"></img>'
     }
 });
 

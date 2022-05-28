@@ -932,99 +932,102 @@ body {
 
 ///////////////////////////////NOTIFICACIONES//////////////////////////////////////
 .alerts {
-    .filter {
-        padding: 2vh;
-        display: flex;
-        position: sticky;
-        width: 75%;
+    .contenido-alerts {
         @media only screen and (max-width: $tablet) {
-            width: 100%;
+            width: 100vw;
         }
-        .buscador {
-            float: right;
+        width: 85vw;
+        .filter {
+            padding: 2vh;
+            display: flex;
+            position: sticky;
             width: 100%;
-            border-radius: 50px;
-            border-width: 0px;
-            outline: none;
-            background-color: $white !important;
-            padding: 0.40vh;
-            .input-buscar {
-                outline: none;
+            .buscador {
+                float: right;
+                width: 100%;
                 border-radius: 50px;
                 border-width: 0px;
-                width: 80%;
-                padding: 0;
-                height: 35px;
-                margin-left: 5px;
-            }
-            .icon-buscar {
-                float: right;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-                width: 20%;
-                background-color: $third-color;
-                border-radius: 50px;
-                color: white;
-                height: 35px;
-                width: 35px;
-            }
-        }
-    }
-    .alert {
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        .alert-foto {
-            width: 15%;
-            align-content: right;
-            .alert-profilefoto {
-                border-radius: 50px;
-                height: 7vh;
-                width: 7vh;
+                outline: none;
+                background-color: $white !important;
+                padding: 0.40vh;
+                .input-buscar {
+                    outline: none;
+                    border-radius: 50px;
+                    border-width: 0px;
+                    width: 80%;
+                    padding: 0;
+                    height: 35px;
+                    margin-left: 5px;
+                }
+                .icon-buscar {
+                    float: right;
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    width: 20%;
+                    background-color: $third-color;
+                    border-radius: 50px;
+                    color: white;
+                    height: 35px;
+                    width: 35px;
+                }
             }
         }
-        .alert-mensaje {
-            width: 55%;
-            margin-left: 10px;
-            .alert-mensaje-text {
-                padding: 0;
-                margin: 0;
-                font-size: 1.75vh;
+        .alert {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            .alert-foto {
+                width: 15%;
+                align-content: right;
+                .alert-profilefoto {
+                    border-radius: 50px;
+                    height: 7vh;
+                    width: 7vh;
+                }
             }
-        }
-        .alert-user {
-            width: 10%;
-            text-align: right;
-            .alert-user-btn {
-                background-color: #E5E5E5;
-                border-width: 0;
-                font-size: 3vh;
+            .alert-mensaje {
+                width: 55%;
+                margin-left: 10px;
+                .alert-mensaje-text {
+                    padding: 0;
+                    margin: 0;
+                    font-size: 1.75vh;
+                }
             }
-        }
-        .alert-chat {
-            text-align: right;
-            width: 10%;
-            .alert-chat-btn {
-                background-color: #E5E5E5;
-                border-width: 0;
-                font-size: 3vh;
+            .alert-user {
+                width: 10%;
+                text-align: right;
+                .alert-user-btn {
+                    background-color: transparent;
+                    border-width: 0;
+                    font-size: 3vh;
+                }
             }
-        }
-        .alert-nada {
-            width: 10%;
-            text-align: right;
-            color: transparent;
-            .alert-nada-btn {
-                background-color: #E5E5E5;
-                border-width: 0;
-                font-size: 3vh;
+            .alert-chat {
+                text-align: right;
+                width: 10%;
+                .alert-chat-btn {
+                    background-color: transparent;
+                    border-width: 0;
+                    font-size: 3vh;
+                }
+            }
+            .alert-nada {
+                width: 10%;
+                text-align: right;
                 color: transparent;
+                .alert-nada-btn {
+                    background-color: #E5E5E5;
+                    border-width: 0;
+                    font-size: 3vh;
+                    color: transparent;
+                }
             }
         }
-    }
-    .alert-linea {
-        width: 95vw;
+        .alert-linea {
+            width: 84vw;
+        }
     }
 }
 
