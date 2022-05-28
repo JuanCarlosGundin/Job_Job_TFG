@@ -62,6 +62,12 @@ function objetoAjax() {
 
 }
 
+function htmlEncode(str) {
+    return String(str).replace(/[^\w. ]/gi, function(c) {
+        return '&#' + c.charCodeAt(0) + ';';
+    });
+}
+
 function leer_contenido() {
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
@@ -452,11 +458,11 @@ function form_crear_prueba_tecnica() {
 function crear_prueba_tecnica(evt) {
     evt.preventDefault();
 
-    var lenguaje = document.getElementById("lenguaje").value;
+    var lenguaje = htmlEncode(document.getElementById("lenguaje").value);
     var fecha_limite = document.getElementById("fecha_limite").value;
     var duracion = document.getElementById("duracion").value;
-    var enunciado = document.getElementById("enunciado").value;
-    var descripcion = document.getElementById("descripcion").value;
+    var enunciado = htmlEncode(document.getElementById("enunciado").value);
+    var descripcion = htmlEncode(document.getElementById("descripcion").value);
     var zip_prueba = document.getElementById("zip_prueba").files[0];
 
     var formData = new FormData();

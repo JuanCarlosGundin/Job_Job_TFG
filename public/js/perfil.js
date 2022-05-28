@@ -89,6 +89,12 @@ function objetoAjax() {
 
 }
 
+function htmlEncode(str) {
+    return String(str).replace(/[^\w. ]/gi, function(c) {
+        return '&#' + c.charCodeAt(0) + ';';
+    });
+}
+
 function leeridiomas() {
 
     var ajax = objetoAjax();
@@ -698,11 +704,11 @@ function modificar_editar_user(evt) {
     evt.preventDefault();
 
     var mail = document.getElementById("mail").value;
-    var contra_old = document.getElementById("contra_old").value;
-    var contra1 = document.getElementById("contra1").value;
-    var contra2 = document.getElementById("contra2").value;
-    var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
+    var contra_old = htmlEncode(document.getElementById("contra_old").value);
+    var contra1 = htmlEncode(document.getElementById("contra1").value);
+    var contra2 = htmlEncode(document.getElementById("contra2").value);
+    var nombre = htmlEncode(document.getElementById("nombre").value);
+    var apellido = htmlEncode(document.getElementById("apellido").value);
 
     if (contra1 !== contra2) {
 
@@ -1217,10 +1223,10 @@ function editar_sobre_mi(evt) {
 
     evt.preventDefault();
 
-    var campo_user = document.getElementById("campo_user").value;
-    var about_user = document.getElementById("about_user").value;
-    var loc_trabajador = document.getElementById("loc_trabajador").value;
-    var lenguaje_preferido = document.getElementById("lenguaje_preferido").value;
+    var campo_user = htmlEncode(document.getElementById("campo_user").value);
+    var about_user = htmlEncode(document.getElementById("about_user").value);
+    var loc_trabajador = htmlEncode(document.getElementById("loc_trabajador").value);
+    var lenguaje_preferido = htmlEncode(document.getElementById("lenguaje_preferido").value);
     var linkedin = document.getElementById("linkedin").value;
     var telefono = document.getElementById("telefono").value;
     var github = document.getElementById("github").value;
@@ -1894,8 +1900,8 @@ function form_crear_estudios() {
 function crear_estudios(evt) {
 
     evt.preventDefault();
-    var nombre_formación = document.getElementById("nombre_formación").value;
-    var lugar_formación = document.getElementById("lugar_formación").value;
+    var nombre_formación = htmlEncode(document.getElementById("nombre_formación").value);
+    var lugar_formación = htmlEncode(document.getElementById("lugar_formación").value);
     var año_entrada = document.getElementById("año_entrada").value;
     var año_salida = document.getElementById("año_salida").value;
     var formData = new FormData();
@@ -2077,8 +2083,8 @@ function editar_estudios(evt) {
     evt.preventDefault();
     var i = evt.currentTarget.i;
 
-    var nombre_formación = document.getElementById("nombre_formación").value;
-    var lugar_formación = document.getElementById("lugar_formación").value;
+    var nombre_formación = htmlEncode(document.getElementById("nombre_formación").value);
+    var lugar_formación = htmlEncode(document.getElementById("lugar_formación").value);
     var año_entrada = document.getElementById("año_entrada").value;
     var año_salida = document.getElementById("año_salida").value;
     var formData = new FormData();
@@ -2385,11 +2391,11 @@ function form_crear_experiencia() {
 function crear_experiencia(evt) {
 
     evt.preventDefault();
-    var nombre_experiencia = document.getElementById("nombre_experiencia").value;
-    var lugar_experiencia = document.getElementById("lugar_experiencia").value;
+    var nombre_experiencia = htmlEncode(document.getElementById("nombre_experiencia").value);
+    var lugar_experiencia = htmlEncode(document.getElementById("lugar_experiencia").value);
     var año_entrada = document.getElementById("año_entrada").value;
     var año_salida = document.getElementById("año_salida").value;
-    var funciones = document.getElementById("funciones").value;
+    var funciones = htmlEncode(document.getElementById("funciones").value);
     var formData = new FormData();
 
     if (/^ *$/.test(nombre_experiencia)) {
@@ -2575,11 +2581,11 @@ function editar_experiencias(evt) {
     evt.preventDefault();
     var i = evt.currentTarget.i;
 
-    var nombre_experiencia = document.getElementById("nombre_experiencia").value;
-    var lugar_experiencia = document.getElementById("lugar_experiencia").value;
+    var nombre_experiencia = htmlEncode(document.getElementById("nombre_experiencia").value);
+    var lugar_experiencia = htmlEncode(document.getElementById("lugar_experiencia").value);
     var año_entrada = document.getElementById("año_entrada").value;
     var año_salida = document.getElementById("año_salida").value;
-    var funciones = document.getElementById("funciones").value;
+    var funciones = htmlEncode(document.getElementById("funciones").value);
     var formData = new FormData();
 
     if (/^ *$/.test(nombre_experiencia)) {
@@ -2804,7 +2810,7 @@ function form_crear_habilidades() {
 function crear_habilidades(evt) {
 
     evt.preventDefault();
-    var nombre_habilidad = document.getElementById("nombre_habilidad").value;
+    var nombre_habilidad = htmlEncode(document.getElementById("nombre_habilidad").value);
     var nivel_habilidad = document.getElementById("nivel_habilidad").value;
     var formData = new FormData();
 
@@ -2924,7 +2930,7 @@ function editar_habilidades(evt) {
     evt.preventDefault();
     var i = evt.currentTarget.i;
 
-    var nombre_habilidad = document.getElementById("nombre_habilidad").value;
+    var nombre_habilidad = htmlEncode(document.getElementById("nombre_habilidad").value);
     var nivel_habilidad = document.getElementById("nivel_habilidad").value;
     var formData = new FormData();
 
@@ -3571,10 +3577,10 @@ function modificar_editar_user_empresa(evt) {
     evt.preventDefault();
 
     var mail = document.getElementById("mail").value;
-    var contra_old = document.getElementById("contra_old").value;
-    var contra1 = document.getElementById("contra1").value;
-    var contra2 = document.getElementById("contra2").value;
-    var nom_emp = document.getElementById("nom_emp").value;
+    var contra_old = htmlEncode(document.getElementById("contra_old").value);
+    var contra1 = htmlEncode(document.getElementById("contra1").value);
+    var contra2 = htmlEncode(document.getElementById("contra2").value);
+    var nom_emp = htmlEncode(document.getElementById("nom_emp").value);
 
     if (contra1 !== contra2) {
 
@@ -3860,9 +3866,9 @@ function editar_sobre_empresa(evt) {
 
     evt.preventDefault();
 
-    var about_emp = document.getElementById("about_emp").value;
-    var campo_emp = document.getElementById("campo_emp").value;
-    var loc_emp = document.getElementById("loc_emp").value;
+    var about_emp = htmlEncode(document.getElementById("about_emp").value);
+    var campo_emp = htmlEncode(document.getElementById("campo_emp").value);
+    var loc_emp = htmlEncode(document.getElementById("loc_emp").value);
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -4077,8 +4083,8 @@ function editar_buscamos_empresa(evt) {
 
     evt.preventDefault();
 
-    var vacante = document.getElementById("vacante").value;
-    var searching = document.getElementById("searching").value;
+    var vacante = htmlEncode(document.getElementById("vacante").value);
+    var searching = htmlEncode(document.getElementById("searching").value);
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
