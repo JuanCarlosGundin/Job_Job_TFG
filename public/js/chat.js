@@ -422,7 +422,7 @@ function start() {
 
     getchanel(otro)
         //socket = new ReconnectingWebSocket('ws://192.168.40.228:8000/'+document.getElementById('canal').value); //new WebSocket('ws://172.24.16.41:8000');
-    socket = new ReconnectingWebSocket('ws://172.24.2.163:8000/' + chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
+    socket = new ReconnectingWebSocket('ws://192.168.1.48:8000/' + chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
 
 
     socket.onopen = function(event) {
@@ -438,9 +438,9 @@ function start() {
 
     // Escucha por mensajes
     socket.onmessage = function(event) {
+
         const { payload } = JSON.parse(event.data);
-        console.log(payload)
-        console.log(chatInfo.id)
+        
         if (payload.currentid == chatInfo.id) {
             document.getElementById('chat_principal').innerHTML += '<div class="mensaje-2"><div class="chat-mensaje-2"><div class="mensaje-text-div"><p class="mensaje-text">' + htmlEncode(payload.message) + '</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">' + payload.time + '</p></div></div></div>'
         } else { document.getElementById('chat_principal').innerHTML += '<div class="mensaje-1"><div class="chat-mensaje-1"><div class="mensaje-text-div"><p class="mensaje-text">' + htmlEncode(payload.message) + '</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">' + payload.time + '</p></div></div></div>' }
@@ -518,6 +518,8 @@ function sender(id_otro) {
 var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
+var navbarCHAT = document.getElementById("navbar-chat-icon");
+var navbarPT = document.getElementById("navbar-PT-icon");
 
 navbarProfile.onclick = function() {
     window.location.href = "./perfil";
@@ -527,6 +529,12 @@ navbarAlerts.onclick = function() {
 }
 navbarMain.onclick = function() {
     window.location.href = "./home";
+}
+navbarCHAT.onclick = function() {
+    window.location.href = "./chat";
+}
+navbarPT.onclick = function() {
+    window.location.href = "./pruebatecnica";
 }
 
 
@@ -590,7 +598,7 @@ function cargarChats() {
                 }
             }
             //si estas iniciado como empresa te salen trabajadores
-            if (respuesta.hasOwnProperty('trabajadores')) {
+            else if (respuesta.hasOwnProperty('trabajadores')) {
 
                 var trabajadores = respuesta.trabajadores;
                 for (let i = 0; i < trabajadores.length; i++) {
@@ -628,7 +636,10 @@ function cargarChats() {
                     recarga += '<hr class="chat-linea">'
                     recarga += '</div>'
                 }
-            }
+            } if ((respuesta.hasOwnProperty('trabajadores') && respuesta.trabajadores.length == 0) || (respuesta.hasOwnProperty('empresas') && respuesta.empresas.length == 0) ){
+
+                recarga += '<p>No hay chats activos<p>'
+            } 
             ChatContent.innerHTML = recarga;
         }
     }

@@ -25,6 +25,7 @@ var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
 var navbarPT = document.getElementById("navbar-PT-icon");
+var navbarCHAT = document.getElementById("navbar-chat-icon");
 
 navbarProfile.onclick = function() {
 
@@ -47,6 +48,12 @@ navbarMain.onclick = function() {
 navbarPT.onclick = function() {
 
     window.location.href = "./pruebatecnica";
+
+}
+
+navbarCHAT.onclick = function() {
+
+    window.location.href = "./chat";
 
 }
 
@@ -110,7 +117,6 @@ function mostrarperfilJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
             if (id_perfil == 2) {
@@ -432,7 +438,6 @@ function editar_foto_perfil() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             mostrarperfilJS();
 
         }
@@ -596,6 +601,7 @@ function form_editar_user() {
             //form
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_user>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             //Email
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
@@ -761,7 +767,25 @@ function modificar_editar_user(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
 
@@ -1011,6 +1035,7 @@ function form_editar_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_sobre_mi>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!trabajador.campo_user) {
                 recarga += `<div class="edit-input">`;
@@ -1184,6 +1209,17 @@ function editar_sobre_mi(evt) {
     var linkedin = document.getElementById("linkedin").value;
     var telefono = document.getElementById("telefono").value;
     var github = document.getElementById("github").value;
+
+    if (telefono) {
+        if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
+            swal.fire({
+                title: "Error",
+                text: "Debes añadir un número de teléfono correcto",
+                icon: "error",
+            });
+            return false;
+        }
+    }
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -1216,14 +1252,6 @@ function editar_sobre_mi(evt) {
 
         formData.append('github', github);
     }
-    if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
-        swal.fire({
-            title: "Error",
-            text: "Debes añadir un número de teléfono correcto",
-            icon: "error",
-        });
-        return false;
-    }
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -1235,17 +1263,12 @@ function editar_sobre_mi(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
                     title: "Sobre mí",
                     text: "Datos guardados",
                     icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_sobre_mi();
-                    }
                 });
 
             }
@@ -1276,7 +1299,6 @@ function leer_idiomas() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            console.log(trabajador);
             var recarga = ``;
             recarga += `<div class="vista-profile">`;
             recarga += `<div class="categoria-edit">`;
@@ -1370,6 +1392,7 @@ function form_crear_idiomas() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_idiomas>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">IDIOMA</p>`;
@@ -1442,7 +1465,6 @@ function crear_idiomas(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1485,7 +1507,6 @@ function form_editar_idiomas(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var idioma = curriculum.idiomas[i];
-            console.log(idioma);
             var recarga = ``;
             recarga += `<div class="edit-profile">`;
             recarga += `<div class="return">`;
@@ -1498,6 +1519,7 @@ function form_editar_idiomas(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_idiomas>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">IDIOMA</p>`;
@@ -1590,7 +1612,6 @@ function editar_idiomas(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1631,7 +1652,6 @@ function eliminar_idiomas(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1672,7 +1692,6 @@ function leer_estudios() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            console.log(trabajador);
             var recarga = ``;
             recarga += `<div class="vista-profile">`;
             recarga += `<div class="categoria-edit">`;
@@ -1769,6 +1788,7 @@ function form_crear_estudios() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_estudios>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">TITULO O DIPLOMA</p>`;
@@ -1869,7 +1889,6 @@ function crear_estudios(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1912,7 +1931,6 @@ function form_editar_estudios(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var estudios = curriculum.estudios[i];
-            console.log(estudios);
             var recarga = ``;
 
             recarga += `<div class="edit-profile">`;
@@ -1926,6 +1944,7 @@ function form_editar_estudios(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_estudios>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">NOMBRE FORMACIÓN</p>`;
@@ -2040,7 +2059,6 @@ function editar_estudios(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2081,7 +2099,6 @@ function eliminar_estudios(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2122,7 +2139,6 @@ function leer_experiencia() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            console.log(trabajador);
             var recarga = ``;
             recarga += `<div class="vista-profile">`;
             recarga += `<div class="categoria-edit">`;
@@ -2227,6 +2243,7 @@ function form_crear_experiencia() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_experiencia>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">NOMBRE DEL TRABAJO</p>`;
@@ -2337,7 +2354,6 @@ function crear_experiencia(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2379,7 +2395,6 @@ function form_editar_experiencias(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var experiencia = curriculum.experiencia[i];
-            console.log(experiencia);
             var recarga = ``;
 
             recarga += `<div class="edit-profile">`;
@@ -2394,6 +2409,7 @@ function form_editar_experiencias(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_experiencias>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">NOMBRE DE LA EMPRESA</p>`;
@@ -2520,7 +2536,6 @@ function editar_experiencias(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2561,7 +2576,6 @@ function eliminar_experiencias(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2585,7 +2599,7 @@ function eliminar_experiencias(evt) {
 }
 
 function leer_curriculum() {
-
+    window.location.href = "./curriculum";
 }
 
 function leer_habilidades() {
@@ -2606,7 +2620,6 @@ function leer_habilidades() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            console.log(trabajador);
             var recarga = ``;
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<button id="crear">crear</button>`;
@@ -2665,6 +2678,7 @@ function form_crear_habilidades() {
     recarga += `<button id="volver">Volver</button>`;
     recarga += `<div>`;
     recarga += `<form id=form_habilidades>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" placeholder="Introduce tu habilidad">`;
     recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
     recarga += `<option value="" selected>- selecciona -</option>`;
@@ -2713,7 +2727,6 @@ function crear_habilidades(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2755,12 +2768,12 @@ function form_editar_habilidades(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var habilidades = curriculum.habilidades[i];
-            console.log(habilidades);
             var recarga = ``;
 
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_habilidades>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" value="${habilidades.nombre_habilidad}">`;
             recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
             recarga += `<option value="${habilidades.nivel_habilidad}" selected>${habilidades.nivel_habilidad}</option>`;
@@ -2811,7 +2824,6 @@ function editar_habilidades(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2852,7 +2864,6 @@ function eliminar_habilidades(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2951,6 +2962,7 @@ function form_disponibilidad() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_disponibilidad>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!trabajador.disponibilidad) {
 
@@ -3068,7 +3080,6 @@ function editar_disponibilidad(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -3180,6 +3191,7 @@ function form_configuracion() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-profile">`;
             if (trabajador.mostrado == 1) {
                 recarga += `<div class="edit-input">`;
@@ -3251,7 +3263,6 @@ function editar_configuracion(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -3293,7 +3304,6 @@ function editar_logo_emp() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             mostrarperfilJS();
 
         }
@@ -3363,6 +3373,7 @@ function form_editar_user_empresa() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_editar_user_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             recarga += `<input type="email" class="" id="mail" name="mail" value="${trabajador.mail}">`;
 
@@ -3460,7 +3471,6 @@ function modificar_editar_user_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
 
         }
 
@@ -3624,6 +3634,7 @@ function form_editar_sobre_empresa() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_editar_sobre_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!empresa.about_emp) {
 
@@ -3707,7 +3718,6 @@ function editar_sobre_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -3807,6 +3817,7 @@ function form_buscamos_empresa() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_buscamos_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!empresa.vacante) {
                 recarga += `<div class="edit-input">`;
@@ -3905,7 +3916,6 @@ function editar_buscamos_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -4020,6 +4030,7 @@ function form_configuracion_empresa() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             if (empresa.mostrado == 1) {
                 recarga += `<div class="edit-input">`;
                 recarga += `<div class="input-text">`;
@@ -4090,7 +4101,6 @@ function editar_configuracion_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
 
         }
 

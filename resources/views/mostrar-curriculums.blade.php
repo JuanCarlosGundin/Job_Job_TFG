@@ -17,7 +17,7 @@
 <body>
     <div class="row principal">
         <div class="column region-navbar">
-            <div class="row barra-navbar-img">
+            <div id='img_logo' class="row barra-navbar-img">
                 <img src="storage/uploads/jobjob_logo_black.png">
             </div>
             <div class="row menu">
@@ -86,6 +86,7 @@
         </div>
     </div>
     <script src="{!! asset('js/hover_plantillas.js') !!}"></script>
+    <script src="js/mostrarcurriculum.js"></script>
     <script src="js/modo_nocturno.js"></script>
     <!-- <script src="js/perfil.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->

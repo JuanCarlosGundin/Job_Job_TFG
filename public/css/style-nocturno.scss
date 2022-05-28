@@ -228,6 +228,25 @@
                     }
                 }
             }
+            input[type=submit] {
+                background-color: $second-color;
+                box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+            }
+            .modal-content {
+                background-color: $fourth-color;
+                h2 {
+                    color: white;
+                }
+                select {
+                    color: white;
+                }
+                textarea {
+                    background-color: white;
+                }
+                .closeemp {
+                    color: white;
+                }
+            }
         }
         
         /////////////////////////////////////////VER-PERFIL//////////////////////////////
@@ -334,6 +353,11 @@
         
         ///////////////////////////////////////////CHAT/////////////////////////////////////////
         .oscuro {
+            .chat {
+                p {
+                    color: white;
+                }
+            }
             .main-chat {
                 .chat-main-sticky {
                     background-color: $first-color;
@@ -387,5 +411,16 @@
             }
             .chat-main-send {
                 background-color: $fourth-color;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////PRUEBA TÉCNICA///////////////////////////////////////////////////////////
+        .oscuro {
+            .ptecnica {
+                .content {
+                    .crear-ptecnica, .pruebas {
+                        background-color: $third-color;
+                    }
+                }
             }
         }

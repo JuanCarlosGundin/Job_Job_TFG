@@ -1196,23 +1196,27 @@ body {
   cursor: pointer;
 }
 
-.alerts .filter {
+.alerts .contenido-alerts {
+  width: 85vw;
+}
+
+@media only screen and (max-width: 1200px) {
+  .alerts .contenido-alerts {
+    width: 100vw;
+  }
+}
+
+.alerts .contenido-alerts .filter {
   padding: 2vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: -webkit-sticky;
   position: sticky;
-  width: 75%;
+  width: 100%;
 }
 
-@media only screen and (max-width: 1200px) {
-  .alerts .filter {
-    width: 100%;
-  }
-}
-
-.alerts .filter .buscador {
+.alerts .contenido-alerts .filter .buscador {
   float: right;
   width: 100%;
   border-radius: 50px;
@@ -1222,7 +1226,7 @@ body {
   padding: 0.40vh;
 }
 
-.alerts .filter .buscador .input-buscar {
+.alerts .contenido-alerts .filter .buscador .input-buscar {
   outline: none;
   border-radius: 50px;
   border-width: 0px;
@@ -1232,7 +1236,7 @@ body {
   margin-left: 5px;
 }
 
-.alerts .filter .buscador .icon-buscar {
+.alerts .contenido-alerts .filter .buscador .icon-buscar {
   float: right;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1251,7 +1255,7 @@ body {
   width: 35px;
 }
 
-.alerts .alert {
+.alerts .contenido-alerts .alert {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1263,66 +1267,71 @@ body {
           align-items: center;
 }
 
-.alerts .alert .alert-foto {
+.alerts .contenido-alerts .alert .alert-foto {
   width: 15%;
   -ms-flex-line-pack: right;
       align-content: right;
 }
 
-.alerts .alert .alert-foto .alert-profilefoto {
+.alerts .contenido-alerts .alert .alert-foto .alert-profilefoto {
   border-radius: 50px;
   height: 7vh;
   width: 7vh;
 }
 
-.alerts .alert .alert-mensaje {
+.alerts .contenido-alerts .alert .alert-mensaje {
   width: 55%;
   margin-left: 10px;
 }
 
-.alerts .alert .alert-mensaje .alert-mensaje-text {
+.alerts .contenido-alerts .alert .alert-mensaje .alert-mensaje-text {
   padding: 0;
   margin: 0;
   font-size: 1.75vh;
 }
 
-.alerts .alert .alert-user {
+.alerts .contenido-alerts .alert .alert-user {
   width: 10%;
   text-align: right;
 }
 
-.alerts .alert .alert-user .alert-user-btn {
-  background-color: #E5E5E5;
+.alerts .contenido-alerts .alert .alert-user .alert-user-btn {
+  background-color: transparent;
   border-width: 0;
   font-size: 3vh;
 }
 
-.alerts .alert .alert-chat {
+.alerts .contenido-alerts .alert .alert-chat {
   text-align: right;
   width: 10%;
 }
 
-.alerts .alert .alert-chat .alert-chat-btn {
-  background-color: #E5E5E5;
+.alerts .contenido-alerts .alert .alert-chat .alert-chat-btn {
+  background-color: transparent;
   border-width: 0;
   font-size: 3vh;
 }
 
-.alerts .alert .alert-nada {
+.alerts .contenido-alerts .alert .alert-nada {
   width: 10%;
   text-align: right;
   color: transparent;
 }
 
-.alerts .alert .alert-nada .alert-nada-btn {
+.alerts .contenido-alerts .alert .alert-nada .alert-nada-btn {
   background-color: #E5E5E5;
   border-width: 0;
   font-size: 3vh;
   color: transparent;
 }
 
-.alerts .alert-linea {
-  width: 95vw;
+.alerts .contenido-alerts .alert-linea {
+  width: 84vw;
+}
+
+.chat p {
+  text-align: center;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 1200px) {

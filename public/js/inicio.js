@@ -150,7 +150,6 @@ function loginuser(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
 
             if (respuesta.resultado == "noexiste") {
 
@@ -344,8 +343,6 @@ function sessiontrabajador0(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -367,7 +364,6 @@ function sessiontrabajador0(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -402,7 +398,7 @@ function formtrabajador1() {
     recarga += '<input type="text" class="inputregister" id="apellido" name="apellido" placeholder="Introduce el apellido...">';
     //Edad
     recarga += '<input type="date" class="inputregister" id="edad" name="edad">';
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
@@ -477,8 +473,6 @@ function sessiontrabajador1(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -504,7 +498,6 @@ function sessiontrabajador1(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -545,7 +538,7 @@ function formtrabajador2() {
     recarga += '<input type="text" class="inputregister" id="about_user" name="about_user" placeholder="Sobre mi...">';
     //lenguaje_preferido
     recarga += '<input type="text" class="inputregister" id="lenguaje_preferido" name="lenguaje_preferido" placeholder="Lenguaje preferido...">';
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
@@ -598,13 +591,10 @@ function sessiontrabajador2(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -631,7 +621,6 @@ function sessiontrabajador2(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -680,7 +669,7 @@ function formtrabajador3() {
     recarga += '</select>';
     //Foto
     recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil">';
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -733,13 +722,10 @@ function sessiontrabajador3(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -766,7 +752,6 @@ function sessiontrabajador3(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -829,7 +814,7 @@ function formtrabajador4() {
     recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -931,13 +916,10 @@ function sessiontrabajador4(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -964,7 +946,6 @@ function sessiontrabajador4(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -1027,7 +1008,7 @@ function formtrabajador5() {
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1142,13 +1123,10 @@ function sessiontrabajador5(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
-
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -1175,7 +1153,6 @@ function sessiontrabajador5(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -1243,7 +1220,7 @@ function formtrabajador6() {
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1364,13 +1341,11 @@ function sessiontrabajador6(evt) {
     ajax.open("POST", "sesionestrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -1393,7 +1368,6 @@ function sessiontrabajador6(evt) {
                 var container_error = document.getElementById('alert-danger');
                 container_error.innerHTML = "";
                 for (let i = 0; i < respuesta.errors.length; i++) {
-                    console.log(container_error.innerHTML);
                     container_error.style.display = "block";
                     container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
@@ -1421,13 +1395,11 @@ function creartrabajadorJS() {
     ajax.open("POST", "registrotrabajador", true);
 
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
 
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
 
             if (respuesta.resultado == "correoexiste") {
 
@@ -1493,7 +1465,7 @@ function formempresa0() {
     recarga += '<p>Contraseña 2</p>';
     recarga += '<input type="password" class="inputcolumn2 inputregister" id="contra2" name="contra2" placeholder="Introduce la contraseña...">';
     recarga += '</div>';
-    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
+    recarga += '<input type="submit" class="botonregister" value="Continuar">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1597,8 +1569,6 @@ function sessionempresa0(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "OK") {
 
@@ -1712,8 +1682,6 @@ function sessionempresa1(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1775,7 +1743,7 @@ function formempresa2() {
     recarga += '<p>Logo empresa</p>';
     recarga += '<input type="file" class="foto" name="logo_emp" id="logo_emp">';
     recarga += '</div>';
-    recarga += '<input type="submit" class="botonregister" value="Registrarme">';
+    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
     recarga += '</div>';
     tabla.innerHTML = recarga;
@@ -1824,8 +1792,6 @@ function sessionempresa2(evt) {
 
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
-
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1868,8 +1834,6 @@ function crearempresaJS() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-
-            console.log(respuesta);
 
             if (respuesta.resultado == "correoexiste") {
 

@@ -7,29 +7,27 @@ var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
 var navbarPT = document.getElementById("navbar-PT-icon");
+var navbarCHAT = document.getElementById("navbar-chat-icon");
 
 navbarProfile.onclick = function() {
 
     window.location.href = "./perfil";
-
 }
-
 navbarAlerts.onclick = function() {
 
     window.location.href = "./notificaciones";
-
 }
-
 navbarMain.onclick = function() {
 
     window.location.href = "./home";
-
 }
+navbarCHAT.onclick = function() {
 
+    window.location.href = "./chat";
+}
 navbarPT.onclick = function() {
-
+    
     window.location.href = "./pruebatecnica";
-
 }
 
 function objetoAjax() {
@@ -74,33 +72,53 @@ function leer_contenido() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            var recarga = ``;
+            var recarga = `<div class="content">
+            <div class="crear-ptecnica">
+                <button class="crear-ptecnica-btn" id="crear"><p class="button-text">Nueva Prueba Técnica</p></button>
+            </div>
+            <div class="pruebas">`;
             if (respuesta.hasOwnProperty('empresa')) {
                 var empresa = respuesta.empresa;
                 for (let i = 0; i < empresa.length; i++) {
                     recarga += `
-                    <div class="pruebas">
-                        <p>Estado</p>`;
+                            <div class="ver-ptecnica">
+                                <div class="estado-ptecnica">
+                                    <div class="title">
+                                        <p class="p-title">ESTADO: </p>
+                                    </div>
+                                    <div class="text">`;
                     if (empresa[i].estado_prueba) {
-                        recarga += `<p>Activo</p>`;
+                        recarga += `<p class="p-text-active"><i class="fa-solid fa-circle-check"></i> Activo</p>`;
                     } else {
-                        recarga += `<p>Cerrado</p>`;
+                        recarga += `<p class="p-text-unactive"><i class="fa-solid fa-circle-xmark"></i> Cerrado</p>`;
                     }
-                    recarga += `<p>${empresa[i].enunciado}</p>
-                        <p>${empresa[i].descripcion}</p>
-                        <p>Numero de inscritos</p>`;
+                    recarga += `</div>
+                                </div>`;
+                    recarga += `<div class="enunciado-ptecnica">
+                                    <p>Enunciado: </p>
+                                    <p>${empresa[i].enunciado}</p>
+                                </div>
+                                <div class="desc-ptecnica">
+                                    <p>Descripción: </p>
+                                    <p>${empresa[i].descripcion}</p>
+                                </div>
+                                
+                                    <p>Inscripciones:</p>`;
                     if (!respuesta.inscritos[i].inscritos) {
                         recarga += `<p>0 personas</p>`;
                     } else {
                         recarga += `<p>${respuesta.inscritos[i].inscritos} personas</p>`;
                     }
                     recarga += `
-                    </div>
-                    <button class="deshabilitar">Cerrar prueba</button>
-                    <hr>`;
-
+                                <div class="des-ptecnica">
+                                    <button class="deshabilitar"><p class="button-text"><i class="fa-solid fa-trash-can"></i></p></button>
+                                </div>
+                            </div>`;
                 }
-                recarga += `<button id="crear">Crear</button>`
+                recarga += `</div>
+                        
+                    </div> `;
+
                 contenidoajax.innerHTML = recarga;
                 document.getElementById("crear").addEventListener("click", form_crear_prueba_tecnica)
                 for (let i = 0; i < empresa.length; i++) {
