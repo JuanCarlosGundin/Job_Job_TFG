@@ -2179,7 +2179,7 @@ body {
                     border-color: #C6C6C6;
                     .enunciado-ptecnica {
                         margin-top: 10px;
-                        margin-bottom: 30px;
+                        margin-bottom: 20px;
                         .text {
                             color: grey;
                             margin-bottom: 10px;
@@ -2188,9 +2188,17 @@ body {
                         }
                     }
                     .time-ptecnica {
-                        margin-top: 30px;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
                         .time {
                             margin: 0;
+                        }
+                    }
+                    .linea-ptecnica {
+                        .linea {
+                            opacity: 0.5;
+                            margin: 0;
+                            color: #C6C6C6;
                         }
                     }
                 }
@@ -2198,3 +2206,6 @@ body {
         }
     }
 }
+
+///////////////////////////////Prueba-tecnica//////////////////////////////////////
+.ver-user {}

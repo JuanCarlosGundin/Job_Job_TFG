@@ -2935,7 +2935,7 @@ body {
 
 .ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .enunciado-ptecnica {
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .enunciado-ptecnica .text {
@@ -2946,10 +2946,17 @@ body {
 }
 
 .ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .time-ptecnica {
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .time-ptecnica .time {
   margin: 0;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .linea-ptecnica .linea {
+  opacity: 0.5;
+  margin: 0;
+  color: #C6C6C6;
 }
 /*# sourceMappingURL=style-pol.css.map */

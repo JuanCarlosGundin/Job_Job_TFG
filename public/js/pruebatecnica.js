@@ -164,6 +164,9 @@ function leer_contenido() {
                                     <div class="enunciado-ptecnica">
                                         <p class="text">${trabajador[i].enunciado}</p>
                                     </div>
+                                    <div class="linea-ptecnica">
+                                        <hr class="linea">
+                                    </div>
                                     <div class="time-ptecnica">
                                         <h3 class="time"><i class="fa-solid fa-clock"></i> ${trabajador[i].duracion} </h3>
                                     </div>
@@ -208,44 +211,55 @@ function mostrar_prueba_tecnica(evt) {
             var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
             var recarga = ``;
             recarga += `
-            <button id="volver">Volver</button>
-            <div>
-                <p>Prueba tecnica para:</p>
-                <p>${trabajador.enunciado}</p>
-                <div>
-                    <p>Empresa</p>
-                    <p>${trabajador.nom_emp}</p>
+            <div class="ver-content">
+                <div class="div-return">
+                    <div class="return">
+                        <button class="return-btn" id="volver">
+                        <div class="return-icon">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </div>
+                        <p class="return-text">VOLVER</p>
+                        </button>
+                    </div>
                 </div>
                 <div>
-                    <p>Duración</p>
-                    <p>${trabajador.duracion}</p>
-                </div>
-                <div>
-                    <p>Fecha de publicación</p>
-                    <p>${fecha_publicacion}</p>
-                </div>
-                <div>
-                    <p>Fecha limite</p>
-                    <p>${fecha_limite}</p>
-                </div>
-                <div>
-                    <p>Habilidades requeridas:</p>
-                    <p>Lo que sea</p>
-                </div>
-                <div>
-                    <p>Descripción:</p>
-                    <p>${trabajador.descripcion}</p>
-                </div>`;
+                    <p>Prueba tecnica para:</p>
+                    <p>${trabajador.enunciado}</p>
+                    <div>
+                        <p>Empresa</p>
+                        <p>${trabajador.nom_emp}</p>
+                    </div>
+                    <div>
+                        <p>Duración</p>
+                        <p>${trabajador.duracion}</p>
+                    </div>
+                    <div>
+                        <p>Fecha de publicación</p>
+                        <p>${fecha_publicacion}</p>
+                    </div>
+                    <div>
+                        <p>Fecha limite</p>
+                        <p>${fecha_limite}</p>
+                    </div>
+                    <div>
+                        <p>Habilidades requeridas:</p>
+                        <p>Lo que sea</p>
+                    </div>
+                    <div>
+                        <p>Descripción:</p>
+                        <p>${trabajador.descripcion}</p>
+                    </div>`;
             if (respuesta.hasOwnProperty('existe')) {
                 recarga += `<div>
-                <button id="entrar_prueba">Entrar prueba</button>
-                </div>`;
+                    <button id="entrar_prueba">Entrar prueba</button>
+                    </div>`;
             } else {
                 recarga += `<div>
-                    <button id="iniciar_prueba">Iniciar prueba</button>
-                </div>`;
+                        <button id="iniciar_prueba">Iniciar prueba</button>
+                    </div>`;
             }
             recarga += `</div>
+            </div>
             `;
             contenidoajax.innerHTML = recarga;
             document.getElementById("volver").addEventListener("click", leer_contenido)
@@ -284,34 +298,45 @@ function iniciar_ptecnica_trabajador(evt) {
                 var date_l = new Date(trabajador.fecha_limite);
                 var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
                 recarga += `
-                <button id="volver">Volver</button>
-                <div>
-                <p>Prueba tecnica para:</p>
-                <p>${trabajador.enunciado}</p>
-                <div>
-                    <p>Empresa</p>
-                    <p>${trabajador.nom_emp}</p>
-                </div>
-                <div>
-                    <p>Duración</p>
-                    <p>${trabajador.duracion}</p>
-                </div>
-                <div>
-                    <p>Fecha de publicación</p>
-                    <p>${fecha_publicacion}</p>
-                </div>
-                <div>
-                    <p>Fecha limite</p>
-                    <p>${fecha_limite}</p>
-                </div>
-                <div>
-                    <p>Formato de respuesta</p>
-                    <p>Texto donde dice zip</p>
-                </div>
-                <form id="formarchivo" enctype="multipart/form-data">
-                    <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
-                    <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
-                </form>
+                <div class="ver-content">
+                    <div class="div-return">
+                        <div class="return">
+                            <button class="return-btn" id="volver">
+                            <div class="return-icon">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </div>
+                            <p class="return-text">VOLVER</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Prueba tecnica para:</p>
+                        <p>${trabajador.enunciado}</p>
+                        <div>
+                            <p>Empresa</p>
+                            <p>${trabajador.nom_emp}</p>
+                        </div>
+                        <div>
+                            <p>Duración</p>
+                            <p>${trabajador.duracion}</p>
+                        </div>
+                        <div>
+                            <p>Fecha de publicación</p>
+                            <p>${fecha_publicacion}</p>
+                        </div>
+                        <div>
+                            <p>Fecha limite</p>
+                            <p>${fecha_limite}</p>
+                        </div>
+                        <div>
+                            <p>Formato de respuesta</p>
+                            <p>Texto donde dice zip</p>
+                        </div>
+                        <form id="formarchivo" enctype="multipart/form-data">
+                            <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                            <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
+                        </form>
+                    </div>
                 </div>
                 `;
                 contenidoajax.innerHTML = recarga;
@@ -355,34 +380,45 @@ function entrar_ptecnica_trabajador(evt) {
             var date_l = new Date(trabajador.fecha_limite);
             var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
             recarga += `
-            <button id="volver">Volver</button>
-            <div>
-            <p>Prueba tecnica para:</p>
-            <p>${trabajador.enunciado}</p>
-            <div>
-                <p>Empresa</p>
-                <p>${trabajador.nom_emp}</p>
-            </div>
-            <div>
-                <p>Duración</p>
-                <p>${trabajador.duracion}</p>
-            </div>
-            <div>
-                <p>Fecha de publicación</p>
-                <p>${fecha_publicacion}</p>
-            </div>
-            <div>
-                <p>Fecha limite</p>
-                <p>${fecha_limite}</p>
-            </div>
-            <div>
-                <p>Formato de respuesta</p>
-                <p>Texto donde dice zip</p>
-            </div>
-            <form id="formarchivo" enctype="multipart/form-data">
-                <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
-                <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
-            </form>
+            <div class="ver-content">
+                <div class="div-return">
+                    <div class="return">
+                        <button class="return-btn" id="volver">
+                        <div class="return-icon">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </div>
+                        <p class="return-text">VOLVER</p>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                <p>Prueba tecnica para:</p>
+                <p>${trabajador.enunciado}</p>
+                <div>
+                    <p>Empresa</p>
+                    <p>${trabajador.nom_emp}</p>
+                </div>
+                <div>
+                    <p>Duración</p>
+                    <p>${trabajador.duracion}</p>
+                </div>
+                <div>
+                    <p>Fecha de publicación</p>
+                    <p>${fecha_publicacion}</p>
+                </div>
+                <div>
+                    <p>Fecha limite</p>
+                    <p>${fecha_limite}</p>
+                </div>
+                <div>
+                    <p>Formato de respuesta</p>
+                    <p>Texto donde dice zip</p>
+                </div>
+                <form id="formarchivo" enctype="multipart/form-data">
+                    <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                    <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
+                </form>
+                </div>
             </div>
             `;
             contenidoajax.innerHTML = recarga;
