@@ -87,6 +87,7 @@
     </div>
     <script src="{!! asset('js/hover_plantillas.js') !!}"></script>
     <script src="js/mostrarcurriculum.js"></script>
+    <script src="js/modo_nocturno.js"></script>
     <!-- <script src="js/perfil.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 

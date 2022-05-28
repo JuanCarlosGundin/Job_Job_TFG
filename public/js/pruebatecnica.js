@@ -7,7 +7,6 @@ var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
 var navbarPT = document.getElementById("navbar-PT-icon");
-var navbarCHAT = document.getElementById("navbar-chat-icon");
 
 navbarProfile.onclick = function() {
 
@@ -30,12 +29,6 @@ navbarMain.onclick = function() {
 navbarPT.onclick = function() {
 
     window.location.href = "./pruebatecnica";
-
-}
-
-navbarCHAT.onclick = function() {
-
-    window.location.href = "./chat";
 
 }
 
@@ -80,33 +73,54 @@ function leer_contenido() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            var recarga = ``;
+            console.log(respuesta);
+            var recarga = `<div class="content">
+            <div class="crear-ptecnica">
+                <button class="crear-ptecnica-btn" id="crear"><p class="button-text">Nueva Prueba Técnica</p></button>
+            </div>
+            <div class="pruebas">`;
             if (respuesta.hasOwnProperty('empresa')) {
                 var empresa = respuesta.empresa;
                 for (let i = 0; i < empresa.length; i++) {
                     recarga += `
-                    <div class="pruebas">
-                        <p>Estado</p>`;
+                            <div class="ver-ptecnica">
+                                <div class="estado-ptecnica">
+                                    <div class="title">
+                                        <p class="p-title">ESTADO: </p>
+                                    </div>
+                                    <div class="text">`;
                     if (empresa[i].estado_prueba) {
-                        recarga += `<p>Activo</p>`;
+                        recarga += `<p class="p-text-active"><i class="fa-solid fa-circle-check"></i> Activo</p>`;
                     } else {
-                        recarga += `<p>Cerrado</p>`;
+                        recarga += `<p class="p-text-unactive"><i class="fa-solid fa-circle-xmark"></i> Cerrado</p>`;
                     }
-                    recarga += `<p>${empresa[i].enunciado}</p>
-                        <p>${empresa[i].descripcion}</p>
-                        <p>Numero de inscritos</p>`;
+                    recarga += `</div>
+                                </div>`;
+                    recarga += `<div class="enunciado-ptecnica">
+                                    <p>Enunciado: </p>
+                                    <p>${empresa[i].enunciado}</p>
+                                </div>
+                                <div class="desc-ptecnica">
+                                    <p>Descripción: </p>
+                                    <p>${empresa[i].descripcion}</p>
+                                </div>
+                                
+                                    <p>Inscripciones:</p>`;
                     if (!respuesta.inscritos[i].inscritos) {
                         recarga += `<p>0 personas</p>`;
                     } else {
                         recarga += `<p>${respuesta.inscritos[i].inscritos} personas</p>`;
                     }
                     recarga += `
-                    </div>
-                    <button class="deshabilitar">Cerrar prueba</button>
-                    <hr>`;
-
+                                <div class="des-ptecnica">
+                                    <button class="deshabilitar"><p class="button-text"><i class="fa-solid fa-trash-can"></i></p></button>
+                                </div>
+                            </div>`;
                 }
-                recarga += `<button id="crear">Crear</button>`
+                recarga += `</div>
+                        
+                    </div> `;
+
                 contenidoajax.innerHTML = recarga;
                 document.getElementById("crear").addEventListener("click", form_crear_prueba_tecnica)
                 for (let i = 0; i < empresa.length; i++) {
@@ -158,6 +172,7 @@ function mostrar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
             var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
@@ -229,9 +244,11 @@ function iniciar_ptecnica_trabajador(evt) {
     var ajax = objetoAjax();
     ajax.open("POST", "iniciar_ptecnica_trabajador/" + id_empresa, true);
     ajax.onreadystatechange = function() {
+        console.log(ajax.responseText);
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
+            console.log(respuesta);
             if (respuesta.hasOwnProperty('trabajador')) {
                 var trabajador = respuesta.trabajador;
                 var date_p = new Date(trabajador.fecha_publicacion);
@@ -303,6 +320,7 @@ function entrar_ptecnica_trabajador(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
+            console.log(respuesta);
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
             var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
@@ -366,20 +384,8 @@ function enviar_zip_trabajador(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            if (respuesta.resultado == "OK") {
-                swal.fire({
-                    title: "Exito",
-                    text: "Zip subido",
-                    icon: "success",
-                    confirmButtonText: "OK",
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_contenido();
-                    }
-                });
-            } else if (respuesta.resultado == "fuera") {
+            console.log(respuesta);
+            if (respuesta.resultado == "fuera") {
                 swal.fire({
                     title: "Fuera",
                     text: "Fuera de tiempo",
@@ -450,20 +456,7 @@ function crear_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            if (respuesta.resultado == "OK") {
-                swal.fire({
-                    title: "Exito",
-                    text: "Prueba creada",
-                    icon: "success",
-                    confirmButtonText: "OK",
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_contenido();
-                    }
-                });
-            }
+            console.log(respuesta);
 
         }
     }
@@ -473,6 +466,7 @@ function crear_prueba_tecnica(evt) {
 
 function mostrar_prueba_tecnica_empresa(evt) {
     var id_pt = evt.currentTarget.id_pt;
+    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -484,8 +478,10 @@ function mostrar_prueba_tecnica_empresa(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
             var empresa = respuesta.empresa;
             var json_prueba = JSON.parse(empresa.json_prueba);
+            console.log(json_prueba);
             var recarga = ``;
             recarga += `
             <button id="volver">Volver</button>
@@ -494,6 +490,7 @@ function mostrar_prueba_tecnica_empresa(evt) {
             `;
             if (json_prueba) {
                 for (let i = 0; i < json_prueba.length; i++) {
+                    console.log(json_prueba[i].zip_participante)
                     recarga += `
                     <button class="participantes">Participante ${i+1}</button>`;
                     if (!json_prueba[i].zip_participante) {
@@ -531,6 +528,7 @@ function mostrar_prueba_tecnica_empresa(evt) {
 function mostrar_participantes(evt) {
     var id_participante = evt.currentTarget.id_participante;
     var id_pt = evt.currentTarget.id_pt;
+    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -542,6 +540,7 @@ function mostrar_participantes(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
             var recarga = ``;
             var trabajador = respuesta.participante;
 
@@ -684,6 +683,7 @@ function deshabilitar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
             leer_contenido();
 
         }
