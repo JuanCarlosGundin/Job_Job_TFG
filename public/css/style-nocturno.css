@@ -289,7 +289,8 @@
 }
 
 .page-home.oscuro .modal-content select {
-  color: white;
+  color: black;
+  background-color: white;
 }
 
 .page-home.oscuro .modal-content textarea {
