@@ -2279,17 +2279,17 @@ body {
   transition: all 0.1s ease;
 }
 
-@media only screen and (max-width: 1200px) {
-  .ptecnica {
-    margin-top: 1.5vh;
-  }
-}
-
 .ptecnica .content {
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 90vh;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ptecnica .content {
+    padding-top: 20px;
+  }
 }
 
 .ptecnica .content .div-crear-pt {
@@ -2302,8 +2302,7 @@ body {
 
 @media only screen and (max-width: 1200px) {
   .ptecnica .content .div-crear-pt {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-radius: 30px;
   }
 }
 
@@ -2504,6 +2503,12 @@ body {
 }
 
 .ptecnica .content .ver-ptecnica .pruebas .enunciado-ptecnica .text {
+  font-size: medium;
+  margin: 0;
+}
+
+.ptecnica .content .ver-ptecnica .pruebas .enunciado-ptecnica .text-2 {
+  color: grey;
   font-size: medium;
   margin: 0;
 }
@@ -2791,5 +2796,160 @@ body {
   color: #ffffff;
   font-weight: bolder;
   font-size: 15px;
+}
+
+.ptecnica .content-user {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 90vh;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ptecnica .content-user {
+    padding-top: 20px;
+  }
+}
+
+.ptecnica .content-user .div-crear-pt {
+  width: 100%;
+  background-color: #C6C6C6;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ptecnica .content-user .div-crear-pt {
+    border-radius: 30px;
+  }
+}
+
+.ptecnica .content-user .div-crear-pt .titulo-ptecnica {
+  padding: 25px;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ptecnica .content-user .div-crear-pt .titulo-ptecnica .h1-title {
+  margin: 0;
+}
+
+.ptecnica .content-user .div-crear-pt .subtitulo-ptecnica {
+  margin: 0 auto;
+  position: relative;
+  padding: 25px;
+  width: 50%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ptecnica .content-user .div-crear-pt .subtitulo-ptecnica {
+    width: 100%;
+  }
+}
+
+.ptecnica .content-user .div-crear-pt .subtitulo-ptecnica .p-subtitle {
+  margin: 0;
+}
+
+.ptecnica .content-user .ver-ptecnica {
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ptecnica .content-user .ver-ptecnica {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+.ptecnica .content-user .ver-ptecnica::-webkit-scrollbar {
+  display: none;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-header {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #92AFD7;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 5px #C6C6C6;
+          box-shadow: 0px 5px 5px #C6C6C6;
+  z-index: 100;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-header .empresa-ptecnica {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-header .empresa-ptecnica .title {
+  color: #ffffff;
+  font-weight: bold;
+  margin: 0;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-body {
+  z-index: 1;
+  margin: 0 auto;
+  position: relative;
+  width: 95%;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #C6C6C6;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .enunciado-ptecnica {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .enunciado-ptecnica .text {
+  color: grey;
+  margin-bottom: 10px;
+  font-size: medium;
+  margin-top: 0;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .time-ptecnica {
+  margin-top: 30px;
+}
+
+.ptecnica .content-user .ver-ptecnica .pruebas .prueba-body .time-ptecnica .time {
+  margin: 0;
 }
 /*# sourceMappingURL=style-pol.css.map */

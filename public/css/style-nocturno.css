@@ -204,8 +204,8 @@
 }
 
 .oscuro .region-navbar .active .icon {
+  background-color: #0B4B78 !important;
   color: black;
-  background-color: #012A4A !important;
   border-top-left-radius: 0px !important;
 }
 
@@ -217,12 +217,12 @@
 }
 
 .oscuro .region-navbar .active-center {
-  background-color: #012A4A !important;
+  background-color: #0B4B78 !important;
 }
 
 .oscuro .region-navbar .active-center .icon {
   color: white !important;
-  background-color: #012A4A !important;
+  background-color: #0B4B78 !important;
 }
 
 @media only screen and (max-width: 900px) {
