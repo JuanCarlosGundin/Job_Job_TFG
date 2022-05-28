@@ -378,15 +378,24 @@ public function logout(Request $req){
 
     //----------------------------------------------------CREAR REPORTE-------------------------------------------------------------//
     public function crearreporte(Request $request) {
-        // return response()->json(array('resultado'=> $request));
         $datos = $request->except('_token');
-        // $this->validate($request, [
-        //     'id_reportador' => 'required',
-        //     'id_reportado' => 'required',
-        //     'incidencia' => 'required',
-        //     'desarrollar_incidencia' => 'required',
-        //     'estado_incidencia' => 'required',
-        // ]);
+        $incidencia = $request->input('incidencia');
+        $request->input('id_reportado');
+        $request->input('id_reportador');
+        $desarrollar_incidencia = $request->input('desarrollar_incidencia');
+        $this->validate($request, [
+            'incidencia' => 'required',
+            'desarrollar_incidencia' => 'required',
+            'id_reportado' => 'required',
+            'id_reportador' => 'required',
+        ],
+        // segundo array donde ponemos el mensaje personalizado para cada regla
+        [
+            'incidencia.required' => 'incidencia no debe quedar en blanco',
+            'desarrollar_incidencia.required' => 'desarrollar incidencia no debe quedar en blanco',
+            'id_reportado.required' => 'id reportado no debe quedar en blanco',
+            'id_reportador.required' => 'id reportador no debe quedar en blanco',
+        ]);
         try {
             DB::beginTransaction();
             $date = Carbon::now('+02:00');
@@ -395,7 +404,7 @@ public function logout(Request $req){
             $fechaactual = $date->toDateTimeString();
             /*insertar datos en la base de datos*/
             //cambiar la linea de abajo
-            DB::table('tbl_reportes')->insert(["incidencia"=>$datos['incidencia'],"desarrollar_incidencia"=>$datos['desarrollar_incidencia'],"estado_incidencia"=>'abierta',"fecha_incidencia"=>$fechaactual,"id_reportado"=>$datos['id_reportado'],"id_reportador"=>$datos['id_reportador']]);
+            DB::table('tbl_reportes')->insert(["incidencia"=>$incidencia,"desarrollar_incidencia"=>$desarrollar_incidencia,"estado_incidencia"=>'abierta',"fecha_incidencia"=>$fechaactual,"id_reportado"=>$datos['id_reportado'],"id_reportador"=>$datos['id_reportador']]);
             DB::commit();
             return response()->json(array('resultado'=> 'OK'));
         }   catch (\Exception $e) {
