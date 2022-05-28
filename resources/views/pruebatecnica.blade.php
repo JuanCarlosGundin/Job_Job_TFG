@@ -23,11 +23,11 @@
 <body>
     <div class="row principal">
         <div class="column region-navbar">
-            <div id='img_logo' class="row barra-navbar-img">
+            <div id="img_logo" class="row barra-navbar-img">
                 <img src="storage/uploads/jobjob_logo_black.png">
             </div>
             <div class="row menu">
-                <div class="row menu-item active">
+                <div class="row menu-item active-left">
                     <button id="navbar-PT-icon" class="icon"><i class="fa-solid fa-file-invoice"></i><p class="text">Prueba técnica</p></button>
                 </div>
                 <div class="row menu-item">

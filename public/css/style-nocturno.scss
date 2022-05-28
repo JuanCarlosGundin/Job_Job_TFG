@@ -197,6 +197,16 @@
                         }
                     }
                 }
+                .active-left {
+                    background-color: $first-color !important;
+                    .icon {
+                        color: white !important;
+                        background-color: $first-color !important;
+                        @media only screen and (max-width: $tablet) {
+                            background-color: $first-color;
+                        }
+                    }
+                }
             }
         }
         
@@ -356,6 +366,8 @@
             .chat {
                 p {
                     color: white;
+                    font-weight: bold;
+                    text-align: center;
                 }
             }
             .main-chat {
@@ -418,8 +430,35 @@
         .oscuro {
             .ptecnica {
                 .content {
+                    .ver-ptecnica {
+                        .pruebas {
+                            background-color: $fifth-color;
+                        }
+                    }
+                    h1 {
+                        color: white;
+                    }
+                    p {
+                        color: white;
+                    }
+                    .button-text {
+                        color: black;
+                    }
+                    .div-crear-pt {
+                        background-color: $first-color;
+                    }
                     .crear-ptecnica, .pruebas {
-                        background-color: $third-color;
+                        background-color: $first-color;
+                    }
+                }
+                .ver-content {
+                    .div-content {
+                        background-color: $fifth-color;
+                    }
+                    .div-return {
+                        .return-btn {
+                            color: white;
+                        }
                     }
                 }
             }

@@ -714,6 +714,21 @@ body {
                         outline: none;
                     }
                 }
+                .input[type="file"] {
+                    display: none;
+                }
+                .input-file {
+                    width: 100%;
+                    padding: 1vh;
+                    height: 45px;
+                    background-color: $white;
+                    @media only screen and (max-width: $tablet) {
+                        height: 36.1px;
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                }
             }
         }
     }
@@ -1033,9 +1048,9 @@ body {
 
 ///////////////////////////////CHAT//////////////////////////////////////
 .chat {
-    p {
-        text-align: center;
+    p{
         font-weight: bold;
+        text-align: center;
     }
     @media only screen and (max-width: $tablet) {
         margin-top: 1.5vh;
@@ -1727,74 +1742,113 @@ body {
         margin-top: 1.5vh;
     }
     .content {
-        padding: 20px;
-        .crear-ptecnica {
-            padding: 15px;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        height: 90vh;
+        .div-crear-pt {
             width: 100%;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            background-color: #ffffff;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            .crear-ptecnica-btn {
-                align-items: center;
-                appearance: none;
-                background-color: $grey;
-                border-radius: 1vh;
-                border-width: 0;
-                box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-                box-sizing: border-box;
-                cursor: pointer;
-                display: inline-flex;
-                width: 25%;
-                height: 48px;
+            background-color: #C6C6C6;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+            @media only screen and (max-width: $tablet) {
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+            }
+            .titulo-ptecnica {
+                padding: 25px;
+                width: 100%;
                 justify-content: center;
-                line-height: 1;
-                list-style: none;
-                padding-left: 16px;
-                padding-right: 16px;
-                text-align: center;
-                // touch-action: manipulation;
-                white-space: nowrap;
-                will-change: box-shadow, transform;
-                &:focus {
-                    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                display: flex;
+                align-items: center;
+                .h1-title {
+                    margin: 0;
                 }
-                &:active {
-                    box-shadow: #D6D6E7 0 3px 7px inset;
-                    transform: translateY(2px);
+            }
+            .subtitulo-ptecnica {
+                margin: 0 auto;
+                position: relative;
+                padding: 25px;
+                width: 50%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                @media only screen and (max-width: $tablet) {
+                    width: 100%;
                 }
-                .button-text {
-                    font-weight: bolder;
-                    font-size: 15px;
+                .p-subtitle {
+                    margin: 0;
+                }
+            }
+            .crear-ptecnica {
+                padding: 25px;
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                .crear-ptecnica-btn {
+                    align-items: center;
+                    appearance: none;
+                    background-color: $grey;
+                    border-radius: 1vh;
+                    border-width: 0;
+                    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    display: inline-flex;
+                    width: 25%;
+                    @media only screen and (max-width: $tablet) {
+                        width: 65%;
+                    }
+                    height: 48px;
+                    justify-content: center;
+                    line-height: 1;
+                    list-style: none;
+                    padding-left: 16px;
+                    padding-right: 16px;
+                    text-align: center;
+                    // touch-action: manipulation;
+                    white-space: nowrap;
+                    will-change: box-shadow,
+                    transform;
+                    &:focus {
+                        box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                    }
+                    &:active {
+                        box-shadow: #D6D6E7 0 3px 7px inset;
+                        transform: translateY(2px);
+                    }
+                    .button-text {
+                        font-weight: bolder;
+                        font-size: 15px;
+                    }
                 }
             }
         }
-        .pruebas {
-            padding: 15px;
+        .ver-ptecnica {
+            padding: 20px;
             width: 100%;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            background-color: #ffffff;
+            border-radius: 10px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            overflow-y: scroll;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            @media only screen and (max-width: $tablet) {
+                grid-template-columns: 1fr;
+            }
             &::-webkit-scrollbar {
                 display: none;
             }
-            .ver-ptecnica {
+            .pruebas {
                 padding: 10px;
                 border-radius: 10px;
-                background-color: $grey;
+                background-color: $white;
                 border-width: 1px;
                 border-style: solid;
                 border-color: #C6C6C6;
                 border-radius: 5px;
                 .estado-ptecnica {
+                    margin-bottom: 30px;
                     justify-content: center;
                     display: flex;
                     align-items: center;
@@ -1804,7 +1858,9 @@ body {
                     .title {
                         width: 50%;
                         font-weight: bold;
-                        .p-title {}
+                        .p-title {
+                            margin: 0;
+                        }
                     }
                     .text {
                         width: 50%;
@@ -1819,16 +1875,47 @@ body {
                     }
                 }
                 .enunciado-ptecnica {
-                    background-color: #0076CA;
+                    margin-bottom: 30px;
+                    .title {
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                        font-size: medium;
+                        margin-top: 0;
+                    }
+                    .text {
+                        font-size: medium;
+                        margin: 0;
+                    }
                 }
                 .desc-ptecnica {
-                    background-color: #0076CA;
+                    margin-bottom: 30px;
+                    .title {
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                        font-size: medium;
+                        margin-top: 0;
+                    }
+                    .text {
+                        font-size: medium;
+                        margin: 0;
+                    }
                 }
                 .ins-ptecnica {
-                    background-color: #0076CA;
+                    margin-bottom: 20px;
+                    .title {
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                        font-size: medium;
+                        margin-top: 0;
+                    }
+                    .text {
+                        font-size: medium;
+                        margin: 0;
+                    }
                 }
                 .des-ptecnica {
                     .deshabilitar {
+                        width: 60px;
                         padding: 10px;
                         align-items: center;
                         appearance: none;
@@ -1840,18 +1927,180 @@ body {
                         // touch-action: manipulation;
                         white-space: nowrap;
                         will-change: box-shadow, transform;
-                        &:focus {
-                            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                        &:active {
+                            transform: translateY(2px);
                         }
+                        .button-text {
+                            margin: 0;
+                            font-weight: bolder;
+                            color: $white;
+                        }
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+    .ver-content {
+        height: 90vh;
+        padding: 10px;
+        .div-return {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            @media only screen and (max-width: $movil) {
+                margin-bottom: 10px;
+            }
+            .return {
+                width: 100%;
+                .return-btn {
+                    border-width: 0px;
+                    font-size: 3vh;
+                    background-color: transparent;
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    padding: 0;
+                    width: 100px;
+                    height: 40px;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgb(206, 206, 206);
+                        border-radius: 15px;
+                    }
+                    &:active {
+                        background-color: rgb(206, 206, 206);
+                        border-radius: 15px;
+                    }
+                    .return-icon {
+                        float: left;
+                        margin-right: 5px;
+                    }
+                    .return-text {
+                        margin: 0;
+                        float: left;
+                        font-size: medium;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .div-content {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: $white;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #C6C6C6;
+            border-radius: 5px;
+            height: 90%;
+            .div-text {
+                .pt-enunciado {
+                    margin-bottom: 30px;
+                    .title {
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                        font-size: medium;
+                        margin-top: 0;
+                    }
+                    .text {
+                        font-size: medium;
+                        margin: 0;
+                    }
+                }
+                .pt-desc {
+                    .title {
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                        font-size: medium;
+                        margin-top: 0;
+                    }
+                    .text {
+                        font-size: medium;
+                        margin: 0;
+                    }
+                }
+            }
+            .div-butons {
+                .pt-participante {
+                    width: 50%;
+                    float: left;
+                    padding: 10px;
+                    .participantes {
+                        float: right;
+                        align-items: center;
+                        appearance: none;
+                        background-color: $fifth-color;
+                        border-radius: 1vh;
+                        border-width: 0;
+                        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #bed2ef 0 -3px 0 inset;
+                        cursor: pointer;
+                        display: inline-flex;
+                        width: 40%;
+                        @media only screen and (max-width: $tablet) {
+                            width: 65%;
+                        }
+                        height: 48px;
+                        justify-content: center;
+                        line-height: 1;
+                        list-style: none;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        text-align: center;
+                        // touch-action: manipulation;
+                        white-space: nowrap;
+                        will-change: box-shadow,
+                        transform;
                         &:active {
                             box-shadow: #D6D6E7 0 3px 7px inset;
                             transform: translateY(2px);
                         }
                         .button-text {
-                            font-weight: bolder;
                             color: $white;
+                            font-weight: bolder;
+                            font-size: 15px;
                         }
-                        float: right;
+                    }
+                }
+                .pt-descargar {
+                    width: 50%;
+                    float: right;
+                    padding: 10px;
+                    .descargas {
+                        align-items: center;
+                        appearance: none;
+                        background-color: $second-color;
+                        border-radius: 1vh;
+                        border-width: 0;
+                        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, $third-color 0 -3px 0 inset;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        display: inline-flex;
+                        width: 40%;
+                        @media only screen and (max-width: $tablet) {
+                            width: 65%;
+                        }
+                        height: 48px;
+                        justify-content: center;
+                        line-height: 1;
+                        list-style: none;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        text-align: center;
+                        // touch-action: manipulation;
+                        white-space: nowrap;
+                        will-change: box-shadow,
+                        transform;
+                        &:active {
+                            box-shadow: #D6D6E7 0 3px 7px inset;
+                            transform: translateY(2px);
+                        }
+                        .button-text {
+                            color: $white;
+                            font-weight: bolder;
+                            font-size: 15px;
+                        }
                     }
                 }
             }

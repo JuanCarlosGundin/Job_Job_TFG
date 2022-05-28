@@ -231,6 +231,21 @@
   }
 }
 
+.oscuro .region-navbar .active-left {
+  background-color: #012A4A !important;
+}
+
+.oscuro .region-navbar .active-left .icon {
+  color: white !important;
+  background-color: #012A4A !important;
+}
+
+@media only screen and (max-width: 900px) {
+  .oscuro .region-navbar .active-left .icon {
+    background-color: #012A4A;
+  }
+}
+
 .page-home.oscuro {
   background-color: #012A4A;
 }
@@ -368,6 +383,8 @@
 
 .oscuro .chat p {
   color: white;
+  font-weight: bold;
+  text-align: center;
 }
 
 .oscuro .main-chat .chat-main-sticky {
@@ -415,7 +432,35 @@
   background-color: #03365E;
 }
 
+.oscuro .ptecnica .content .ver-ptecnica .pruebas {
+  background-color: #437EA9;
+}
+
+.oscuro .ptecnica .content h1 {
+  color: white;
+}
+
+.oscuro .ptecnica .content p {
+  color: white;
+}
+
+.oscuro .ptecnica .content .button-text {
+  color: black;
+}
+
+.oscuro .ptecnica .content .div-crear-pt {
+  background-color: #012A4A;
+}
+
 .oscuro .ptecnica .content .crear-ptecnica, .oscuro .ptecnica .content .pruebas {
-  background-color: #0B4B78;
+  background-color: #012A4A;
+}
+
+.oscuro .ptecnica .ver-content .div-content {
+  background-color: #437EA9;
+}
+
+.oscuro .ptecnica .ver-content .div-return .return-btn {
+  color: white;
 }
 /*# sourceMappingURL=style-nocturno.css.map */
