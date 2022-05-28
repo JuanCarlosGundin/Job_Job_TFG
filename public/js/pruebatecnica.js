@@ -26,7 +26,7 @@ navbarCHAT.onclick = function() {
     window.location.href = "./chat";
 }
 navbarPT.onclick = function() {
-    
+
     window.location.href = "./pruebatecnica";
 }
 
@@ -279,6 +279,7 @@ function iniciar_ptecnica_trabajador(evt) {
                     <p>Texto donde dice zip</p>
                 </div>
                 <form id="formarchivo" enctype="multipart/form-data">
+                <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
                     <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
                     <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
                 </form>
@@ -350,6 +351,7 @@ function entrar_ptecnica_trabajador(evt) {
                 <p>Texto donde dice zip</p>
             </div>
             <form id="formarchivo" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
                 <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
                 <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
             </form>
@@ -383,7 +385,22 @@ function enviar_zip_trabajador(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            if (respuesta.resultado == "fuera") {
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "zip guardado",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+
+            } else if (respuesta.resultado == "fuera") {
                 swal.fire({
                     title: "Fuera",
                     text: "Fuera de tiempo",
@@ -396,6 +413,13 @@ function enviar_zip_trabajador(evt) {
                         leer_contenido();
                     }
                 });
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -410,6 +434,7 @@ function form_crear_prueba_tecnica() {
     recarga += `
     <button id="volver">Volver</button>
     <form id="form_crear_prueba_tecnica" enctype="multipart/form-data">
+    <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
     <p>lenguaje</p>
     <input type="text" class="" id="lenguaje" name="lenguaje">
     <p>fecha_limite</p>
@@ -421,7 +446,7 @@ function form_crear_prueba_tecnica() {
     <p>descripcion</p>
     <input type="text" class="" id="descripcion" name="descripcion">
     <p>zip</p>
-    <input type="file" class="" id="zip_prueba" name="zip_prueba">
+    <input type="file" accept=".zip,.rar,.7zip" class="" id="zip_prueba" name="zip_prueba">
     <button type="submit">Enviar</button>
     </form>
     `
@@ -454,7 +479,29 @@ function crear_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Prueba creada",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
     }
