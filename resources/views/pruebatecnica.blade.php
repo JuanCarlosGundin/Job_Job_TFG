@@ -17,6 +17,7 @@
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/style-pol.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">
     <title>Prueba Tecnica</title>
 </head>
 <body>
@@ -63,6 +64,7 @@
     </div>
     
     <script src="js/pruebatecnica.js"></script>
+    <script src="js/modo_nocturno.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

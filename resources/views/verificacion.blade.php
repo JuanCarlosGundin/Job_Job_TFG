@@ -24,8 +24,8 @@
             <div class="modal-content">
                 <form method="POST" id="formverificar">
                     <h2>Introduce tus datos para verificar tu cuenta</h2>
-                    <input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo"><br><br>
-                    <input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña"><br>
+                    <input class="inputlogin" type="text" name="mail" id="mail_login" placeholder="Introduce tu correo">
+                    <input class="inputlogin" type="password" name="contra" id="contra_login" placeholder="Introduce tu contraseña">
                     <button class= "botonlogin" type="submit" value="register">Verificar</button>
         </div>
         <script src="js/verificar.js"> </script>

@@ -7,29 +7,27 @@ var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
 var navbarPT = document.getElementById("navbar-PT-icon");
+var navbarCHAT = document.getElementById("navbar-chat-icon");
 
 navbarProfile.onclick = function() {
 
     window.location.href = "./perfil";
-
 }
-
 navbarAlerts.onclick = function() {
 
     window.location.href = "./notificaciones";
-
 }
-
 navbarMain.onclick = function() {
 
     window.location.href = "./home";
-
 }
+navbarCHAT.onclick = function() {
 
+    window.location.href = "./chat";
+}
 navbarPT.onclick = function() {
 
     window.location.href = "./pruebatecnica";
-
 }
 
 function objetoAjax() {
@@ -190,7 +188,6 @@ function leer_contenido() {
     }
     ajax.send(formData);
 }
-
 
 function mostrar_prueba_tecnica(evt) {
     var id_empresa = evt.currentTarget.id_empresa;
@@ -449,7 +446,21 @@ function enviar_zip_trabajador(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            if (respuesta.resultado == "fuera") {
+            if (respuesta.resultado == "OK") {
+                swal.fire({
+                    title: "Exito",
+                    text: "zip guardado",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+
+            } else if (respuesta.resultado == "fuera") {
                 swal.fire({
                     title: "Fuera",
                     text: "Fuera de tiempo",
@@ -462,6 +473,13 @@ function enviar_zip_trabajador(evt) {
                         leer_contenido();
                     }
                 });
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -570,7 +588,29 @@ function crear_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Prueba creada",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
     }
@@ -580,7 +620,6 @@ function crear_prueba_tecnica(evt) {
 
 function mostrar_prueba_tecnica_empresa(evt) {
     var id_pt = evt.currentTarget.id_pt;
-    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -592,10 +631,8 @@ function mostrar_prueba_tecnica_empresa(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var empresa = respuesta.empresa;
             var json_prueba = JSON.parse(empresa.json_prueba);
-            console.log(json_prueba);
             var recarga = ``;
             recarga += `
             <div class="ver-content">
@@ -623,7 +660,6 @@ function mostrar_prueba_tecnica_empresa(evt) {
             `;
             if (json_prueba) {
                 for (let i = 0; i < json_prueba.length; i++) {
-                    console.log(json_prueba[i].zip_participante)
                     recarga += `
                     <div class="div-butons">
                         <div class="pt-participante">
@@ -668,7 +704,6 @@ function mostrar_prueba_tecnica_empresa(evt) {
 function mostrar_participantes(evt) {
     var id_participante = evt.currentTarget.id_participante;
     var id_pt = evt.currentTarget.id_pt;
-    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -680,7 +715,6 @@ function mostrar_participantes(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var recarga = ``;
             var trabajador = respuesta.participante;
 
@@ -823,7 +857,6 @@ function deshabilitar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             leer_contenido();
 
         }

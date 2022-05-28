@@ -259,6 +259,32 @@
   color: white;
 }
 
+.page-home.oscuro input[type=submit] {
+  background-color: #0060A4;
+  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+}
+
+.page-home.oscuro .modal-content {
+  background-color: #03365E;
+}
+
+.page-home.oscuro .modal-content h2 {
+  color: white;
+}
+
+.page-home.oscuro .modal-content select {
+  color: white;
+}
+
+.page-home.oscuro .modal-content textarea {
+  background-color: white;
+}
+
+.page-home.oscuro .modal-content .closeemp {
+  color: white;
+}
+
 .oscuro .ver-perfil .user-poligon2 {
   background-color: #03365E !important;
 }
@@ -340,6 +366,10 @@
   color: white;
 }
 
+.oscuro .chat p {
+  color: white;
+}
+
 .oscuro .main-chat .chat-main-sticky {
   background-color: #012A4A;
 }
@@ -383,5 +413,9 @@
 
 .oscuro .chat-main-send {
   background-color: #03365E;
+}
+
+.oscuro .ptecnica .content .crear-ptecnica, .oscuro .ptecnica .content .pruebas {
+  background-color: #0B4B78;
 }
 /*# sourceMappingURL=style-nocturno.css.map */

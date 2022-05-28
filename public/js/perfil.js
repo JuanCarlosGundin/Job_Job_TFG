@@ -25,6 +25,7 @@ var navbarProfile = document.getElementById("navbar-profile-icon");
 var navbarMain = document.getElementById("navbar-main-icon");
 var navbarAlerts = document.getElementById("navbar-alerts-icon");
 var navbarPT = document.getElementById("navbar-PT-icon");
+var navbarCHAT = document.getElementById("navbar-chat-icon");
 
 navbarProfile.onclick = function() {
 
@@ -47,6 +48,12 @@ navbarMain.onclick = function() {
 navbarPT.onclick = function() {
 
     window.location.href = "./pruebatecnica";
+
+}
+
+navbarCHAT.onclick = function() {
+
+    window.location.href = "./chat";
 
 }
 
@@ -110,7 +117,6 @@ function mostrarperfilJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
             if (id_perfil == 2) {
@@ -127,7 +133,7 @@ function mostrarperfilJS() {
                 recarga += `<div class="edit-foto">`;
                 recarga += `<label class="input-file">`;
                 recarga += `<i class="fa-solid fa-image"></i>`;
-                recarga += `<input type="file" class="input" id="foto_perfil" name="foto_perfil">`;
+                recarga += `<input type="file" accept="image/*" class="input" id="foto_perfil" name="foto_perfil">`;
                 recarga += `</label>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-ver-foto">`;
@@ -303,7 +309,7 @@ function mostrarperfilJS() {
                 recarga += `<div class="edit-foto">`;
                 recarga += `<label class="input-file">`;
                 recarga += `<i class="fa-solid fa-image"></i>`;
-                recarga += `<input type="file" class="input" id="logo_emp" name="logo_emp">`;
+                recarga += `<input type="file" accept="image/*" class="input" id="logo_emp" name="logo_emp">`;
                 recarga += `</label>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-ver-foto">`;
@@ -430,8 +436,18 @@ function editar_foto_perfil() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
-            mostrarperfilJS();
+            if (respuesta.hasOwnProperty('errors')) {
+                swal.fire({
+                    title: "Error",
+                    text: `${respuesta.errors[0]}`,
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+            } else {
+                mostrarperfilJS();
+            }
 
         }
     }
@@ -594,6 +610,7 @@ function form_editar_user() {
             //form
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_user>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             //Email
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
@@ -759,7 +776,29 @@ function modificar_editar_user(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_editar_user();
+                    }
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
 
@@ -1009,6 +1048,7 @@ function form_editar_sobre_mi() {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_sobre_mi>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!trabajador.campo_user) {
                 recarga += `<div class="edit-input">`;
@@ -1182,6 +1222,17 @@ function editar_sobre_mi(evt) {
     var linkedin = document.getElementById("linkedin").value;
     var telefono = document.getElementById("telefono").value;
     var github = document.getElementById("github").value;
+
+    if (telefono) {
+        if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
+            swal.fire({
+                title: "Error",
+                text: "Debes añadir un número de teléfono correcto",
+                icon: "error",
+            });
+            return false;
+        }
+    }
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -1214,14 +1265,6 @@ function editar_sobre_mi(evt) {
 
         formData.append('github', github);
     }
-    if (!/^[679]{1}[0-9]{8}$/.test(telefono)) {
-        swal.fire({
-            title: "Error",
-            text: "Debes añadir un número de teléfono correcto",
-            icon: "error",
-        });
-        return false;
-    }
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -1233,19 +1276,28 @@ function editar_sobre_mi(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Sobre mí",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         leer_sobre_mi();
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -1274,7 +1326,6 @@ function leer_idiomas() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            console.log(trabajador);
             var recarga = ``;
             recarga += `<div class="vista-profile">`;
             recarga += `<div class="categoria-edit">`;
@@ -1368,6 +1419,7 @@ function form_crear_idiomas() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_idiomas>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">IDIOMA</p>`;
@@ -1440,18 +1492,31 @@ function crear_idiomas(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Idiomas",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_idiomas();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_idiomas();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
 
@@ -1483,7 +1548,6 @@ function form_editar_idiomas(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var idioma = curriculum.idiomas[i];
-            console.log(idioma);
             var recarga = ``;
             recarga += `<div class="edit-profile">`;
             recarga += `<div class="return">`;
@@ -1496,6 +1560,7 @@ function form_editar_idiomas(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_idiomas>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">IDIOMA</p>`;
@@ -1588,18 +1653,31 @@ function editar_idiomas(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Idiomas",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_idiomas();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_idiomas();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -1629,7 +1707,6 @@ function eliminar_idiomas(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -1670,7 +1747,6 @@ function leer_estudios() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            console.log(trabajador);
             var recarga = ``;
             recarga += `<div class="vista-profile">`;
             recarga += `<div class="categoria-edit">`;
@@ -1767,6 +1843,7 @@ function form_crear_estudios() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_estudios>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">TITULO O DIPLOMA</p>`;
@@ -1867,18 +1944,31 @@ function crear_estudios(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Estudios",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_estudios();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_estudios();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
 
@@ -1910,7 +2000,6 @@ function form_editar_estudios(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var estudios = curriculum.estudios[i];
-            console.log(estudios);
             var recarga = ``;
 
             recarga += `<div class="edit-profile">`;
@@ -1924,6 +2013,7 @@ function form_editar_estudios(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_estudios>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">NOMBRE FORMACIÓN</p>`;
@@ -2038,18 +2128,31 @@ function editar_estudios(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Estudios",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_estudios();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_estudios();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -2079,7 +2182,6 @@ function eliminar_estudios(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2120,7 +2222,6 @@ function leer_experiencia() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            console.log(trabajador);
             var recarga = ``;
             recarga += `<div class="vista-profile">`;
             recarga += `<div class="categoria-edit">`;
@@ -2225,6 +2326,7 @@ function form_crear_experiencia() {
     recarga += `</div>`;
     recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_experiencia>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<div class="edit-input">`;
     recarga += `<div class="input-text">`;
     recarga += `<p class="p-text">NOMBRE DEL TRABAJO</p>`;
@@ -2335,19 +2437,28 @@ function crear_experiencia(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Experiencia",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos creados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         leer_experiencia();
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
         }
 
@@ -2377,7 +2488,6 @@ function form_editar_experiencias(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var experiencia = curriculum.experiencia[i];
-            console.log(experiencia);
             var recarga = ``;
 
             recarga += `<div class="edit-profile">`;
@@ -2392,6 +2502,7 @@ function form_editar_experiencias(evt) {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_experiencias>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-input">`;
             recarga += `<div class="input-text">`;
             recarga += `<p class="p-text">NOMBRE DE LA EMPRESA</p>`;
@@ -2518,19 +2629,28 @@ function editar_experiencias(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Experiencia",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         leer_experiencia();
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
         }
 
@@ -2559,7 +2679,6 @@ function eliminar_experiencias(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2583,7 +2702,7 @@ function eliminar_experiencias(evt) {
 }
 
 function leer_curriculum() {
-
+    window.location.href = "./curriculum";
 }
 
 function leer_habilidades() {
@@ -2604,7 +2723,6 @@ function leer_habilidades() {
 
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
-            console.log(trabajador);
             var recarga = ``;
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<button id="crear">crear</button>`;
@@ -2663,6 +2781,7 @@ function form_crear_habilidades() {
     recarga += `<button id="volver">Volver</button>`;
     recarga += `<div>`;
     recarga += `<form id=form_habilidades>`;
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" placeholder="Introduce tu habilidad">`;
     recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
     recarga += `<option value="" selected>- selecciona -</option>`;
@@ -2711,18 +2830,31 @@ function crear_habilidades(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Habilidades",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_habilidades();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_habilidades();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -2753,12 +2885,12 @@ function form_editar_habilidades(evt) {
             var respuesta = JSON.parse(this.responseText);
             var curriculum = JSON.parse(respuesta.resultado.curriculum);
             var habilidades = curriculum.habilidades[i];
-            console.log(habilidades);
             var recarga = ``;
 
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_habilidades>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" value="${habilidades.nombre_habilidad}">`;
             recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
             recarga += `<option value="${habilidades.nivel_habilidad}" selected>${habilidades.nivel_habilidad}</option>`;
@@ -2809,18 +2941,31 @@ function editar_habilidades(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Habilidades",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_habilidades();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_habilidades();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -2850,7 +2995,6 @@ function eliminar_habilidades(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -2949,6 +3093,7 @@ function form_disponibilidad() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_disponibilidad>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!trabajador.disponibilidad) {
 
@@ -3066,18 +3211,31 @@ function editar_disponibilidad(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Disponibilidad",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_disponibilidad();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_disponibilidad();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -3178,6 +3336,7 @@ function form_configuracion() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             recarga += `<div class="edit-profile">`;
             if (trabajador.mostrado == 1) {
                 recarga += `<div class="edit-input">`;
@@ -3249,16 +3408,18 @@ function editar_configuracion(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Configuración",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        leer_configuracion();
+                        leer_sobre_mi();
                     }
                 });
 
@@ -3291,8 +3452,18 @@ function editar_logo_emp() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
-            mostrarperfilJS();
+            if (respuesta.hasOwnProperty('errors')) {
+                swal.fire({
+                    title: "Error",
+                    text: `${respuesta.errors[0]}`,
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+            } else {
+                mostrarperfilJS();
+            }
 
         }
     }
@@ -3361,6 +3532,7 @@ function form_editar_user_empresa() {
             recarga += `<button id="volver">Volver</button>`;
             recarga += `<div>`;
             recarga += `<form id=form_editar_user_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             recarga += `<input type="email" class="" id="mail" name="mail" value="${trabajador.mail}">`;
 
@@ -3458,7 +3630,25 @@ function modificar_editar_user_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
 
@@ -3631,6 +3821,7 @@ function form_editar_sobre_empresa() {
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_sobre_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!empresa.campo_emp) {
                 recarga += `<div class="edit-input">`;
@@ -3753,18 +3944,31 @@ function editar_sobre_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Empresa",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_sobre_empresa();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_sobre_empresa();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -3793,22 +3997,60 @@ function leer_buscamos_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
             if (!empresa.vacante) {
-
-                recarga += `<p class="">sin informar</p>`;
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">Sin informar</p>`;
+                recarga += `</div>`;
+                recarga += `<br>`;
+                recarga += `</div>`;
             } else {
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">${empresa.vacante}</p>`;
+                recarga += `</div>`;
+                recarga += `<br>`;
+                recarga += `</div>`;
 
-                recarga += `<p class="">${empresa.vacante}</p>`;
             }
             if (!empresa.searching) {
 
-                recarga += `<p class="">sin informar</p>`;
-            } else {
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">Sin informar</p>`;
+                recarga += `</div>`;
+                recarga += `<br>`;
+                recarga += `</div>`;
 
-                recarga += `<p class="">${empresa.searching}</p>`;
+            } else {
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">${empresa.searching}</p>`;
+                recarga += `</div>`;
+                recarga += `<br>`;
+                recarga += `</div>`;
+
+
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -3853,6 +4095,7 @@ function form_buscamos_empresa() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_buscamos_empresa>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!empresa.vacante) {
                 recarga += `<div class="edit-input">`;
@@ -3951,18 +4194,31 @@ function editar_buscamos_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Buscar empresa",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_buscamos_empresa();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_buscamos_empresa();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -4066,6 +4322,7 @@ function form_configuracion_empresa() {
             recarga += `</div>`;
             recarga += `<div class="edit-profile">`;
             recarga += `<form id=form_configuracion>`;
+            recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
             if (empresa.mostrado == 1) {
                 recarga += `<div class="edit-input">`;
                 recarga += `<div class="input-text">`;
@@ -4136,7 +4393,22 @@ function editar_configuracion_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_sobre_mi();
+                    }
+                });
+
+            }
 
         }
 

@@ -235,12 +235,16 @@ class InicioController extends Controller{
         try {
             //sessionempresa0
             if ($req->has(['mail', 'nom_emp', 'contra', 'contra2'])) {
-                $req->validate([
+                $validator = Validator::make($req->all(), [
                     'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
                     'nom_emp'=>'required|string|max:200',
                     'contra'=>'required|string|min:8|max:100',
-                    'contra2'=>'required|same:contra'
-                ]); 
+                    'contra2'=>'required|same:contra',
+                ]);
+                if ($validator->fails()) {
+
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
                 $req->session()->put('mail', $req->mail);
                 $req->session()->put('nom_emp', $req->nom_emp);
                 $req->session()->put('contra', $req->contra);
@@ -248,23 +252,38 @@ class InicioController extends Controller{
             }
             //sessionempresa1
             if ($req->has('about_emp')){
-                $req->validate([
+
+                $validator = Validator::make($req->all(), [
                     'about_emp'=>'string|max:300'
-                ]); 
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
 
                 $req->session()->put('about_emp', $req->about_emp);
             }
             if ($req->has('campo_emp')){
-                $req->validate([
+
+                $validator = Validator::make($req->all(), [
                     'campo_emp'=>'string|max:100'
-                ]); 
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
 
                 $req->session()->put('campo_emp', $req->campo_emp);
             }
             if ($req->has('searching')){
-                $req->validate([
+
+                $validator = Validator::make($req->all(), [
                     'searching'=>'string|max:300'
-                ]); 
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
                 $req->session()->put('searching', $req->searching);
             }
             //sessionempresa2
@@ -272,9 +291,14 @@ class InicioController extends Controller{
 
                 //añadir foto trabajador si existe
                 if($req->hasFile('logo_emp')){
-                    $req->validate([
-                        'logo_emp'=>'image|max:500000'
-                    ]); 
+                    
+                    $validator = Validator::make($req->all(), [
+                        'logo_emp'=>'required|image|max:500000',
+                    ]);
+                    if ($validator->fails()) {
+    
+                        return response()->json(['errors'=>$validator->errors()->all()]);
+                    }
                     $logo_emp = $req->file('logo_emp')->store('temporal','public');
                 }else{
 
@@ -284,15 +308,25 @@ class InicioController extends Controller{
                 $req->session()->put('logo_emp', $logo_emp);
             }
             if ($req->has('loc_emp')){
-                $req->validate([
+
+                $validator = Validator::make($req->all(), [
                     'loc_emp'=>'string|max:100'
-                ]); 
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
                 $req->session()->put('loc_emp', $req->loc_emp);
             }
             if ($req->has('vacante')){
-                $req->validate([
+
+                $validator = Validator::make($req->all(), [
                     'vacante'=>'string|max:100'
-                ]); 
+                ]);
+                if ($validator->fails()) {
+                    
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                } 
                 $req->session()->put('vacante', $req->vacante);
             }
 
