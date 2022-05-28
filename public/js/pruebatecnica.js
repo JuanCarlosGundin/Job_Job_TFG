@@ -71,7 +71,6 @@ function leer_contenido() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var recarga = `<div class="content">
             <div class="crear-ptecnica">
                 <button class="crear-ptecnica-btn" id="crear"><p class="button-text">Nueva Prueba Técnica</p></button>
@@ -170,7 +169,6 @@ function mostrar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
             var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
@@ -242,11 +240,9 @@ function iniciar_ptecnica_trabajador(evt) {
     var ajax = objetoAjax();
     ajax.open("POST", "iniciar_ptecnica_trabajador/" + id_empresa, true);
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
-            console.log(respuesta);
             if (respuesta.hasOwnProperty('trabajador')) {
                 var trabajador = respuesta.trabajador;
                 var date_p = new Date(trabajador.fecha_publicacion);
@@ -319,7 +315,6 @@ function entrar_ptecnica_trabajador(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
-            console.log(respuesta);
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
             var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
@@ -384,7 +379,6 @@ function enviar_zip_trabajador(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
@@ -511,7 +505,6 @@ function crear_prueba_tecnica(evt) {
 
 function mostrar_prueba_tecnica_empresa(evt) {
     var id_pt = evt.currentTarget.id_pt;
-    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -523,10 +516,8 @@ function mostrar_prueba_tecnica_empresa(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var empresa = respuesta.empresa;
             var json_prueba = JSON.parse(empresa.json_prueba);
-            console.log(json_prueba);
             var recarga = ``;
             recarga += `
             <button id="volver">Volver</button>
@@ -535,7 +526,6 @@ function mostrar_prueba_tecnica_empresa(evt) {
             `;
             if (json_prueba) {
                 for (let i = 0; i < json_prueba.length; i++) {
-                    console.log(json_prueba[i].zip_participante)
                     recarga += `
                     <button class="participantes">Participante ${i+1}</button>`;
                     if (!json_prueba[i].zip_participante) {
@@ -573,7 +563,6 @@ function mostrar_prueba_tecnica_empresa(evt) {
 function mostrar_participantes(evt) {
     var id_participante = evt.currentTarget.id_participante;
     var id_pt = evt.currentTarget.id_pt;
-    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -585,7 +574,6 @@ function mostrar_participantes(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var recarga = ``;
             var trabajador = respuesta.participante;
 
@@ -728,7 +716,6 @@ function deshabilitar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             leer_contenido();
 
         }
