@@ -97,6 +97,15 @@
           box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
 }
 
+.bodylogin.oscuro .modal-login .card {
+  color: white;
+}
+
+.bodylogin.oscuro .modal-login .card button {
+  -webkit-box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+          box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
+}
+
 .bodylogin.oscuro .modal-login .botones .inicio-activo {
   background-color: #03365E !important;
 }
@@ -263,6 +272,11 @@
   background-color: #012A4A !important;
 }
 
+.oscuro .ver-perfil .user-btn-category {
+  background-color: #0B4B78 !important;
+  border-color: #0B4B78 !important;
+}
+
 .oscuro .ver-perfil .p-name,
 .oscuro .ver-perfil .p-surname,
 .oscuro .ver-perfil .p-age,
@@ -280,13 +294,13 @@
   background-color: grey !important;
 }
 
-.edit-profile .aceptar-cuenta-btn {
+.oscuro .edit-profile .aceptar-cuenta-btn {
   color: black !important;
 }
 
-.edit-profile .p-text,
-.edit-profile .return-text,
-.edit-profile i {
+.oscuro .edit-profile .p-text,
+.oscuro .edit-profile .return-text,
+.oscuro .edit-profile i {
   color: white !important;
 }
 
@@ -310,8 +324,20 @@
   color: white;
 }
 
-.buscador {
+.oscuro .buscador {
   background-color: #012A4A !important;
+}
+
+.oscuro .alerts .alert .alert-user .alert-user-btn {
+  color: white;
+}
+
+.oscuro .alerts .alert .alert-chat .alert-chat-btn {
+  color: white;
+}
+
+.oscuro .alerts .alert .alert-mensaje .alert-mensaje-text {
+  color: white;
 }
 
 .oscuro .main-chat .chat-main-sticky {
@@ -335,6 +361,19 @@
 }
 
 .oscuro .main-chat .chat-main-sticky .chat-main-user .chat-main-return .return-btn {
+  color: white;
+}
+
+.oscuro .chat .chats .chat-div-flex .chat-content .chat-name .chat-name-text {
+  color: white;
+}
+
+.oscuro .chat .chats .chat-div-flex .chat-content .chat-mensaje .chat-mensaje-text {
+  color: white;
+}
+
+.oscuro .chat .chats .chat-div-right .chat-alert .chat-hora {
+  background-color: transparent;
   color: white;
 }
 

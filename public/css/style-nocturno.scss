@@ -88,6 +88,12 @@
             .modal-login {
                 background-color: $third-color;
                 box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+                .card {
+                    color: white;
+                }
+                .card button {
+                    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+                }
                 .botones {
                     .inicio-activo {
                         background-color: $fourth-color !important;
@@ -240,6 +246,10 @@
                 .user-poligon {
                     background-color: $first-color !important;
                 }
+                .user-btn-category {
+                    background-color: $third-color !important;
+                    border-color: $third-color !important;
+                }
                 .p-name,
                 .p-surname,
                 .p-age,
@@ -258,14 +268,16 @@
         }
         
         ////////////////////////////////////////////////VER-PERFIL/////////////////////////////////
-        .edit-profile {
-            .aceptar-cuenta-btn {
-                color: black !important;
-            }
-            .p-text,
-            .return-text,
-            i {
-                color: white !important;
+        .oscuro {
+            .edit-profile {
+                .aceptar-cuenta-btn {
+                    color: black !important;
+                }
+                .p-text,
+                .return-text,
+                i {
+                    color: white !important;
+                }
             }
         }
         
@@ -298,8 +310,29 @@
         }
         
         ////////////////////////////////////////NOTIFICACIONES///////////////////////////////////////
-        .buscador {
-            background-color: $first-color !important;
+        .oscuro {
+            .buscador {
+                background-color: $first-color !important;
+            }
+            .alerts {
+                .alert {
+                    .alert-user {
+                        .alert-user-btn {
+                            color: white;
+                        }
+                    }
+                    .alert-chat {
+                        .alert-chat-btn {
+                            color: white;
+                        }
+                    }
+                    .alert-mensaje {
+                        .alert-mensaje-text {
+                            color: white;
+                        }
+                    }
+                }
+            }
         }
         
         ///////////////////////////////////////////CHAT/////////////////////////////////////////
@@ -320,6 +353,32 @@
                         }
                         .chat-main-return {
                             .return-btn {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            .chat {
+                .chats {
+                    .chat-div-flex {
+                        .chat-content {
+                            .chat-name {
+                                .chat-name-text {
+                                    color: white;
+                                }
+                            }
+                            .chat-mensaje {
+                                .chat-mensaje-text {
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                    .chat-div-right {
+                        .chat-alert {
+                            .chat-hora {
+                                background-color: transparent;
                                 color: white;
                             }
                         }

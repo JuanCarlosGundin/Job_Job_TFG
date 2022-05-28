@@ -422,7 +422,7 @@ function start() {
 
     getchanel(otro)
         //socket = new ReconnectingWebSocket('ws://192.168.40.228:8000/'+document.getElementById('canal').value); //new WebSocket('ws://172.24.16.41:8000');
-    socket = new ReconnectingWebSocket('ws://172.24.2.163:8000/' + chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
+    socket = new ReconnectingWebSocket('ws://192.168.1.48:8000/' + chatInfo.chanel[0].id); //new WebSocket('ws://172.24.16.41:8000');
 
 
     socket.onopen = function(event) {
@@ -438,9 +438,9 @@ function start() {
 
     // Escucha por mensajes
     socket.onmessage = function(event) {
+
         const { payload } = JSON.parse(event.data);
-        console.log(payload)
-        console.log(chatInfo.id)
+        
         if (payload.currentid == chatInfo.id) {
             document.getElementById('chat_principal').innerHTML += '<div class="mensaje-2"><div class="chat-mensaje-2"><div class="mensaje-text-div"><p class="mensaje-text">' + htmlEncode(payload.message) + '</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">' + payload.time + '</p></div></div></div>'
         } else { document.getElementById('chat_principal').innerHTML += '<div class="mensaje-1"><div class="chat-mensaje-1"><div class="mensaje-text-div"><p class="mensaje-text">' + htmlEncode(payload.message) + '</p></div><div class="mensaje-hora-div"><p class="mensaje-hora">' + payload.time + '</p></div></div></div>' }
