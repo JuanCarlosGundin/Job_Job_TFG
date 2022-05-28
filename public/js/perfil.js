@@ -133,7 +133,7 @@ function mostrarperfilJS() {
                 recarga += `<div class="edit-foto">`;
                 recarga += `<label class="input-file">`;
                 recarga += `<i class="fa-solid fa-image"></i>`;
-                recarga += `<input type="file" class="input" id="foto_perfil" name="foto_perfil">`;
+                recarga += `<input type="file" accept="image/*" class="input" id="foto_perfil" name="foto_perfil">`;
                 recarga += `</label>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-ver-foto">`;
@@ -309,7 +309,7 @@ function mostrarperfilJS() {
                 recarga += `<div class="edit-foto">`;
                 recarga += `<label class="input-file">`;
                 recarga += `<i class="fa-solid fa-image"></i>`;
-                recarga += `<input type="file" class="input" id="logo_emp" name="logo_emp">`;
+                recarga += `<input type="file" accept="image/*" class="input" id="logo_emp" name="logo_emp">`;
                 recarga += `</label>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-ver-foto">`;
@@ -438,7 +438,18 @@ function editar_foto_perfil() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            mostrarperfilJS();
+            if (respuesta.hasOwnProperty('errors')) {
+                swal.fire({
+                    title: "Error",
+                    text: `${respuesta.errors[0]}`,
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+            } else {
+                mostrarperfilJS();
+            }
 
         }
     }
@@ -3304,7 +3315,18 @@ function editar_logo_emp() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            mostrarperfilJS();
+            if (respuesta.hasOwnProperty('errors')) {
+                swal.fire({
+                    title: "Error",
+                    text: `${respuesta.errors[0]}`,
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+            } else {
+                mostrarperfilJS();
+            }
 
         }
     }
@@ -3471,6 +3493,25 @@ function modificar_editar_user_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
 

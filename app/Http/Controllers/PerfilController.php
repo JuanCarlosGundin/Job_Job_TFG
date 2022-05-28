@@ -61,6 +61,26 @@ class PerfilController extends Controller{
 
             //editar_user
             if ($req->has('mail')){
+                //Comprobar si el correo introducido ya existe en la BBDD
+                $comprobarmail = DB::table("tbl_usuarios")->where('id','=',$id)->where('mail','=',$req['mail'])->count();
+                if ($comprobarmail>=1){
+                    $validator = Validator::make($req->all(), [
+                        'mail'=>'required|email|string|max:100',
+                    ]);
+                    if ($validator->fails()) {
+    
+                        return response()->json(['errors'=>$validator->errors()->all()]);
+                    }
+                } else {
+                    $validator = Validator::make($req->all(), [
+                        'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
+                    ]);
+                    if ($validator->fails()) {
+    
+                        return response()->json(['errors'=>$validator->errors()->all(),'hola'=>'lol']);
+                    }
+                }
+
                 $datauser[]= "mail='".$req['mail']."'";
             }
 
@@ -99,6 +119,13 @@ class PerfilController extends Controller{
             //editar_foto_perfil
 
             if ($req->has('foto_perfil')) {
+                $validator = Validator::make($req->all(), [
+                    'foto_perfil'=>'required|image',
+                ]);
+                if ($validator->fails()) {
+
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
 
                 $foto = DB::table('tbl_trabajador')->select('foto_perfil')->where('id_usuario','=',$id)->first();
 
@@ -321,6 +348,26 @@ class PerfilController extends Controller{
             //editar_user_empresa
             if ($req->has('mail')){
 
+                //Comprobar si el correo introducido ya existe en la BBDD
+                $comprobarmail = DB::table("tbl_usuarios")->where('id','=',$id)->where('mail','=',$req['mail'])->count();
+                if ($comprobarmail>=1){
+                    $validator = Validator::make($req->all(), [
+                        'mail'=>'required|email|string|max:100',
+                    ]);
+                    if ($validator->fails()) {
+    
+                        return response()->json(['errors'=>$validator->errors()->all()]);
+                    }
+                } else {
+                    $validator = Validator::make($req->all(), [
+                        'mail'=>'required|unique:tbl_usuarios,mail|string|max:100',
+                    ]);
+                    if ($validator->fails()) {
+    
+                        return response()->json(['errors'=>$validator->errors()->all(),'hola'=>'lol']);
+                    }
+                }
+
                 $datauser[]= "mail='".$req['mail']."'";
             }
 
@@ -349,6 +396,14 @@ class PerfilController extends Controller{
             //editar_logo_emp
 
             if ($req->has('logo_emp')) {
+
+                $validator = Validator::make($req->all(), [
+                    'logo_emp'=>'required|image',
+                ]);
+                if ($validator->fails()) {
+
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
 
                 $logo = DB::table('tbl_empresa')->select('logo_emp')->where('id_usuario','=',$id)->first();
 
