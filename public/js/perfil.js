@@ -787,6 +787,10 @@ function modificar_editar_user(evt) {
                     confirmButtonText: "OK",
                     allowOutsideClick: false,
                     allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_editar_user();
+                    }
                 });
 
             } else {
@@ -1277,11 +1281,25 @@ function editar_sobre_mi(evt) {
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Sobre mí",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_sobre_mi();
+                    }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -1478,15 +1496,29 @@ function crear_idiomas(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Idiomas",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_idiomas();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_idiomas();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
 
@@ -1625,15 +1657,29 @@ function editar_idiomas(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Idiomas",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_idiomas();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_idiomas();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -1902,15 +1948,29 @@ function crear_estudios(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Estudios",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_estudios();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_estudios();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
 
@@ -2072,15 +2132,29 @@ function editar_estudios(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Estudios",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_estudios();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_estudios();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -2368,15 +2442,25 @@ function crear_experiencia(evt) {
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Experiencia",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos creados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         leer_experiencia();
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
         }
 
@@ -2550,15 +2634,25 @@ function editar_experiencias(evt) {
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Experiencia",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         leer_experiencia();
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
         }
 
@@ -2740,15 +2834,29 @@ function crear_habilidades(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Habilidades",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_habilidades();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_habilidades();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -2837,15 +2945,29 @@ function editar_habilidades(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Habilidades",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_habilidades();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_habilidades();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -3093,15 +3215,29 @@ function editar_disponibilidad(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Disponibilidad",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_disponibilidad();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_disponibilidad();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -3277,12 +3413,15 @@ function editar_configuracion(evt) {
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Configuración",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        leer_configuracion();
+                        leer_sobre_mi();
                     }
                 });
 
@@ -3761,15 +3900,29 @@ function editar_sobre_empresa(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Empresa",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_sobre_empresa();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_sobre_empresa();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -3959,15 +4112,29 @@ function editar_buscamos_empresa(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Buscar empresa",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_buscamos_empresa();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_buscamos_empresa();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -4142,6 +4309,22 @@ function editar_configuracion_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_sobre_mi();
+                    }
+                });
+
+            }
 
         }
 
