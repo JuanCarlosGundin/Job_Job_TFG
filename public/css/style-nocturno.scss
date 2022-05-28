@@ -434,6 +434,9 @@
                     .ver-ptecnica {
                         .pruebas {
                             background-color: $fifth-color;
+                            .pruebas-header {
+                                background-color: $fifth-color;
+                            }
                         }
                     }
                     h1 {
@@ -446,10 +449,21 @@
                         color: black;
                     }
                     .div-crear-pt {
-                        background-color: $first-color;
+                        background-color: $first-color !important;
                     }
                     .crear-ptecnica, .pruebas {
                         background-color: $first-color;
+                    }
+                }
+                .content-user {
+                    .div-crear-pt {
+                        background-color: $first-color;
+                        h1 {
+                            color:white;
+                        }
+                        p {
+                            color: white;
+                        }
                     }
                 }
                 .ver-content {
