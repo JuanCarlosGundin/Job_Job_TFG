@@ -1445,6 +1445,7 @@ function formempresa0() {
     recarga += '</div>';
     recarga += '<div class="modal-content-register"><div class="scrollbar"><h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa0" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     //Correo
     recarga += '<div class="column-2">';
     recarga += '<p>Email</p>';
@@ -1591,6 +1592,13 @@ function sessionempresa0(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -1617,6 +1625,7 @@ function formempresa1() {
     recarga += '</div>';
     recarga += '<h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa1" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     //about_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Sobre la empresa</p>';
@@ -1703,6 +1712,13 @@ function sessionempresa1(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -1728,6 +1744,7 @@ function formempresa2() {
     recarga += '</div>';
     recarga += '<h3>¡Regístrate en JobJob!</h3>';
     recarga += '<form method="POST" id="formempresa2" enctype="multipart/form-data">';
+    recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
     //loc_emp
     recarga += '<div class="column-2">';
     recarga += '<p>Dirección empresa</p>';
@@ -1809,6 +1826,13 @@ function sessionempresa2(evt) {
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
