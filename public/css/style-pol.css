@@ -843,6 +843,26 @@ body {
   }
 }
 
+.edit-profile .edit-inputs .edit-input .boton-mas-div .boton-mas {
+  border-width: 0px;
+  background-color: #92AFD7;
+  color: white;
+  width: 36.1px;
+  height: 36.1px;
+  padding: 0;
+  font-size: medium;
+}
+
+.edit-profile .edit-inputs .edit-input .boton-menos-div .boton-menos {
+  border-width: 0px;
+  background-color: #850b0b;
+  color: white;
+  width: 36.1px;
+  height: 36.1px;
+  padding: 0;
+  font-size: medium;
+}
+
 .edit-profile .edit-inputs .edit-input .input-edit {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1036,26 +1056,6 @@ body {
   text-align: center;
 }
 
-.boton-mas-div .boton-mas {
-  border-width: 0px;
-  background-color: #92AFD7;
-  color: white;
-  width: 36.1px;
-  height: 36.1px;
-  padding: 0;
-  font-size: medium;
-}
-
-.boton-menos-div .boton-menos {
-  border-width: 0px;
-  background-color: #850b0b;
-  color: white;
-  width: 36.1px;
-  height: 36.1px;
-  padding: 0;
-  font-size: medium;
-}
-
 .modal-eliminar-user {
   display: none;
   position: fixed;
@@ -1196,27 +1196,23 @@ body {
   cursor: pointer;
 }
 
-.alerts .contenido-alerts {
-  width: 85vw;
-}
-
-@media only screen and (max-width: 1200px) {
-  .alerts .contenido-alerts {
-    width: 100vw;
-  }
-}
-
-.alerts .contenido-alerts .filter {
+.alerts .filter {
   padding: 2vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: -webkit-sticky;
   position: sticky;
-  width: 100%;
+  width: 75%;
 }
 
-.alerts .contenido-alerts .filter .buscador {
+@media only screen and (max-width: 1200px) {
+  .alerts .filter {
+    width: 100%;
+  }
+}
+
+.alerts .filter .buscador {
   float: right;
   width: 100%;
   border-radius: 50px;
@@ -1226,7 +1222,7 @@ body {
   padding: 0.40vh;
 }
 
-.alerts .contenido-alerts .filter .buscador .input-buscar {
+.alerts .filter .buscador .input-buscar {
   outline: none;
   border-radius: 50px;
   border-width: 0px;
@@ -1236,7 +1232,7 @@ body {
   margin-left: 5px;
 }
 
-.alerts .contenido-alerts .filter .buscador .icon-buscar {
+.alerts .filter .buscador .icon-buscar {
   float: right;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1255,7 +1251,7 @@ body {
   width: 35px;
 }
 
-.alerts .contenido-alerts .alert {
+.alerts .alert {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1267,66 +1263,66 @@ body {
           align-items: center;
 }
 
-.alerts .contenido-alerts .alert .alert-foto {
+.alerts .alert .alert-foto {
   width: 15%;
   -ms-flex-line-pack: right;
       align-content: right;
 }
 
-.alerts .contenido-alerts .alert .alert-foto .alert-profilefoto {
+.alerts .alert .alert-foto .alert-profilefoto {
   border-radius: 50px;
   height: 7vh;
   width: 7vh;
 }
 
-.alerts .contenido-alerts .alert .alert-mensaje {
+.alerts .alert .alert-mensaje {
   width: 55%;
   margin-left: 10px;
 }
 
-.alerts .contenido-alerts .alert .alert-mensaje .alert-mensaje-text {
+.alerts .alert .alert-mensaje .alert-mensaje-text {
   padding: 0;
   margin: 0;
   font-size: 1.75vh;
 }
 
-.alerts .contenido-alerts .alert .alert-user {
+.alerts .alert .alert-user {
   width: 10%;
   text-align: right;
 }
 
-.alerts .contenido-alerts .alert .alert-user .alert-user-btn {
-  background-color: transparent;
+.alerts .alert .alert-user .alert-user-btn {
+  background-color: #E5E5E5;
   border-width: 0;
   font-size: 3vh;
 }
 
-.alerts .contenido-alerts .alert .alert-chat {
+.alerts .alert .alert-chat {
   text-align: right;
   width: 10%;
 }
 
-.alerts .contenido-alerts .alert .alert-chat .alert-chat-btn {
-  background-color: transparent;
+.alerts .alert .alert-chat .alert-chat-btn {
+  background-color: #E5E5E5;
   border-width: 0;
   font-size: 3vh;
 }
 
-.alerts .contenido-alerts .alert .alert-nada {
+.alerts .alert .alert-nada {
   width: 10%;
   text-align: right;
   color: transparent;
 }
 
-.alerts .contenido-alerts .alert .alert-nada .alert-nada-btn {
+.alerts .alert .alert-nada .alert-nada-btn {
   background-color: #E5E5E5;
   border-width: 0;
   font-size: 3vh;
   color: transparent;
 }
 
-.alerts .contenido-alerts .alert-linea {
-  width: 84vw;
+.alerts .alert-linea {
+  width: 95vw;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -2219,7 +2215,7 @@ body {
   background-color: #ffffff;
 }
 
-.region-plantillas > .row {
+.region-plantillas .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2235,26 +2231,216 @@ body {
           align-items: center;
 }
 
-.region-plantillas > .row .col-sm-3 {
+.region-plantillas .row .col-sm-3 {
   width: 25%;
   padding: 30px;
 }
 
 @media (max-width: 1200px) {
-  .region-plantillas > .row .col-sm-3 {
+  .region-plantillas .row .col-sm-3 {
     width: 50%;
   }
 }
 
 @media (max-width: 768px) {
-  .region-plantillas > .row .col-sm-3 {
+  .region-plantillas .row .col-sm-3 {
     width: 100%;
   }
 }
 
-.region-plantillas > .row img {
+.region-plantillas .row img {
   width: 100%;
   -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ptecnica {
+    margin-top: 1.5vh;
+  }
+}
+
+.ptecnica .content {
+  padding: 20px;
+}
+
+.ptecnica .content .crear-ptecnica {
+  padding: 15px;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.ptecnica .content .crear-ptecnica .crear-ptecnica-btn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #E5E5E5;
+  border-radius: 1vh;
+  border-width: 0;
+  -webkit-box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+          box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 25%;
+  height: 48px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 1;
+  list-style: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+}
+
+.ptecnica .content .crear-ptecnica .crear-ptecnica-btn:focus {
+  -webkit-box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+          box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.ptecnica .content .crear-ptecnica .crear-ptecnica-btn:active {
+  -webkit-box-shadow: #D6D6E7 0 3px 7px inset;
+          box-shadow: #D6D6E7 0 3px 7px inset;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.ptecnica .content .crear-ptecnica .crear-ptecnica-btn .button-text {
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.ptecnica .content .pruebas {
+  padding: 15px;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #ffffff;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.ptecnica .content .pruebas::-webkit-scrollbar {
+  display: none;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #E5E5E5;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #C6C6C6;
+  border-radius: 5px;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .estado-ptecnica {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .estado-ptecnica:active {
+  background-color: #C6C6C6;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .estado-ptecnica .title {
+  width: 50%;
+  font-weight: bold;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .estado-ptecnica .text {
+  width: 50%;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .estado-ptecnica .text .p-text-active {
+  float: right;
+  color: green;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .estado-ptecnica .text .p-text-unactive {
+  float: right;
+  color: #a23f3f;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .enunciado-ptecnica {
+  background-color: #0076CA;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .desc-ptecnica {
+  background-color: #0076CA;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .ins-ptecnica {
+  background-color: #0076CA;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .des-ptecnica .deshabilitar {
+  padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #a23f3f;
+  border-radius: 1vh;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  float: right;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .des-ptecnica .deshabilitar:focus {
+  -webkit-box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+          box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .des-ptecnica .deshabilitar:active {
+  -webkit-box-shadow: #D6D6E7 0 3px 7px inset;
+          box-shadow: #D6D6E7 0 3px 7px inset;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.ptecnica .content .pruebas .ver-ptecnica .des-ptecnica .deshabilitar .button-text {
+  font-weight: bolder;
+  color: #ffffff;
 }
 /*# sourceMappingURL=style-pol.css.map */

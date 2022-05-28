@@ -326,6 +326,7 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 recarga += `<div class="user-edit-div">`;
                 recarga += '<button class="user-edit-btn" id="boton_editar_user"><p class="edit-btn-p">EDITAR</p></button>';
+                recarga += `<button class="user-logout-btn" onClick="window.location.href='logout';"><p class="logout-btn-p">LOGOUT</p></button>`;
                 recarga += `</div>`;
                 recarga += `</button>`;
                 recarga += `</div>`;

@@ -21,7 +21,7 @@
             <li><a href= "."><img class="logo" src="storage/uploads/jobjob_logo_black.png"></a></li>
             </div>
             <div class="column-2">
-            <li><button class="btn-navbar">FAQ</button></li>
+            <li><button class="btn-navbar" onClick="window.location.href='.';">Inicio</button></li>
             <li><button class="btn-navbar" onClick="window.location.href='paginacontacto';">Contáctanos</button></li>
 
             <li><button class="btn-register" onClick="window.location.href='inicio';">Iniciar sesión</button></li>

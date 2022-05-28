@@ -649,6 +649,28 @@ body {
                     }
                 }
             }
+            .boton-mas-div {
+                .boton-mas {
+                    border-width: 0px;
+                    background-color: $fifth-color;
+                    color: white;
+                    width: 36.1px;
+                    height: 36.1px;
+                    padding: 0;
+                    font-size: medium;
+                }
+            }
+            .boton-menos-div {
+                .boton-menos {
+                    border-width: 0px;
+                    background-color: rgb(133, 11, 11);
+                    color: white;
+                    width: 36.1px;
+                    height: 36.1px;
+                    padding: 0;
+                    font-size: medium;
+                }
+            }
             .input-edit {
                 justify-content: center;
                 display: flex;
@@ -776,31 +798,6 @@ body {
     .contenedor {
         display: flex;
         text-align: center;
-    }
-}
-
-////////////////////////////////////////////////// BOTONES AÑADIR Y QUITAR INPUTS ////////////////////////////////////////////////////////7
-.boton-mas-div {
-    .boton-mas {
-        border-width: 0px;
-        background-color: $fifth-color;
-        color: white;
-        width: 36.1px;
-        height: 36.1px;
-        padding: 0;
-        font-size: medium;
-    }
-}
-
-.boton-menos-div {
-    .boton-menos {
-        border-width: 0px;
-        background-color: rgb(133, 11, 11);
-        color: white;
-        width: 36.1px;
-        height: 36.1px;
-        padding: 0;
-        font-size: medium;
     }
 }
 
@@ -935,102 +932,99 @@ body {
 
 ///////////////////////////////NOTIFICACIONES//////////////////////////////////////
 .alerts {
-    .contenido-alerts {
+    .filter {
+        padding: 2vh;
+        display: flex;
+        position: sticky;
+        width: 75%;
         @media only screen and (max-width: $tablet) {
-            width: 100vw;
-        }
-        width: 85vw;
-        .filter {
-            padding: 2vh;
-            display: flex;
-            position: sticky;
             width: 100%;
-            .buscador {
-                float: right;
-                width: 100%;
+        }
+        .buscador {
+            float: right;
+            width: 100%;
+            border-radius: 50px;
+            border-width: 0px;
+            outline: none;
+            background-color: $white !important;
+            padding: 0.40vh;
+            .input-buscar {
+                outline: none;
                 border-radius: 50px;
                 border-width: 0px;
-                outline: none;
-                background-color: $white !important;
-                padding: 0.40vh;
-                .input-buscar {
-                    outline: none;
-                    border-radius: 50px;
-                    border-width: 0px;
-                    width: 80%;
-                    padding: 0;
-                    height: 35px;
-                    margin-left: 5px;
-                }
-                .icon-buscar {
-                    float: right;
-                    justify-content: center;
-                    display: flex;
-                    align-items: center;
-                    width: 20%;
-                    background-color: $third-color;
-                    border-radius: 50px;
-                    color: white;
-                    height: 35px;
-                    width: 35px;
-                }
+                width: 80%;
+                padding: 0;
+                height: 35px;
+                margin-left: 5px;
+            }
+            .icon-buscar {
+                float: right;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                width: 20%;
+                background-color: $third-color;
+                border-radius: 50px;
+                color: white;
+                height: 35px;
+                width: 35px;
             }
         }
-        .alert {
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            .alert-foto {
-                width: 15%;
-                align-content: right;
-                .alert-profilefoto {
-                    border-radius: 50px;
-                    height: 7vh;
-                    width: 7vh;
-                }
+    }
+    .alert {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        .alert-foto {
+            width: 15%;
+            align-content: right;
+            .alert-profilefoto {
+                border-radius: 50px;
+                height: 7vh;
+                width: 7vh;
             }
-            .alert-mensaje {
-                width: 55%;
-                margin-left: 10px;
-                .alert-mensaje-text {
-                    padding: 0;
-                    margin: 0;
-                    font-size: 1.75vh;
-                }
+        }
+        .alert-mensaje {
+            width: 55%;
+            margin-left: 10px;
+            .alert-mensaje-text {
+                padding: 0;
+                margin: 0;
+                font-size: 1.75vh;
             }
-            .alert-user {
-                width: 10%;
-                text-align: right;
-                .alert-user-btn {
-                    background-color: transparent;
-                    border-width: 0;
-                    font-size: 3vh;
-                }
+        }
+        .alert-user {
+            width: 10%;
+            text-align: right;
+            .alert-user-btn {
+                background-color: #E5E5E5;
+                border-width: 0;
+                font-size: 3vh;
             }
-            .alert-chat {
-                text-align: right;
-                width: 10%;
-                .alert-chat-btn {
-                    background-color: transparent;
-                    border-width: 0;
-                    font-size: 3vh;
-                }
+        }
+        .alert-chat {
+            text-align: right;
+            width: 10%;
+            .alert-chat-btn {
+                background-color: #E5E5E5;
+                border-width: 0;
+                font-size: 3vh;
             }
-            .alert-nada {
-                width: 10%;
-                text-align: right;
+        }
+        .alert-nada {
+            width: 10%;
+            text-align: right;
+            color: transparent;
+            .alert-nada-btn {
+                background-color: #E5E5E5;
+                border-width: 0;
+                font-size: 3vh;
                 color: transparent;
-                .alert-nada-btn {
-                    background-color: #E5E5E5;
-                    border-width: 0;
-                    font-size: 3vh;
-                    color: transparent;
-                }
             }
         }
-        .alert-linea {
-            width: 84vw;
-        }
+    }
+    .alert-linea {
+        width: 95vw;
     }
 }
 
@@ -1698,7 +1692,7 @@ body {
 
 ///////////////////PLANTILLAS/////////////////////////
 .region-plantillas {
-    >.row {
+    .row {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -1716,6 +1710,144 @@ body {
         img {
             width: 100%;
             transition: all 0.1s ease;
+        }
+    }
+}
+
+///////////////////////////////Prueba-tecnica//////////////////////////////////////
+.ptecnica {
+    @media only screen and (max-width: $tablet) {
+        margin-top: 1.5vh;
+    }
+    .content {
+        padding: 20px;
+        .crear-ptecnica {
+            padding: 15px;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            .crear-ptecnica-btn {
+                align-items: center;
+                appearance: none;
+                background-color: $grey;
+                border-radius: 1vh;
+                border-width: 0;
+                box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: inline-flex;
+                width: 25%;
+                height: 48px;
+                justify-content: center;
+                line-height: 1;
+                list-style: none;
+                padding-left: 16px;
+                padding-right: 16px;
+                text-align: center;
+                // touch-action: manipulation;
+                white-space: nowrap;
+                will-change: box-shadow, transform;
+                &:focus {
+                    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                }
+                &:active {
+                    box-shadow: #D6D6E7 0 3px 7px inset;
+                    transform: translateY(2px);
+                }
+                .button-text {
+                    font-weight: bolder;
+                    font-size: 15px;
+                }
+            }
+        }
+        .pruebas {
+            padding: 15px;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: #ffffff;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .ver-ptecnica {
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $grey;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #C6C6C6;
+                border-radius: 5px;
+                .estado-ptecnica {
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    &:active {
+                        background-color: #C6C6C6;
+                    }
+                    .title {
+                        width: 50%;
+                        font-weight: bold;
+                        .p-title {}
+                    }
+                    .text {
+                        width: 50%;
+                        .p-text-active {
+                            float: right;
+                            color: green;
+                        }
+                        .p-text-unactive {
+                            float: right;
+                            color: rgb(162, 63, 63);
+                        }
+                    }
+                }
+                .enunciado-ptecnica {
+                    background-color: #0076CA;
+                }
+                .desc-ptecnica {
+                    background-color: #0076CA;
+                }
+                .ins-ptecnica {
+                    background-color: #0076CA;
+                }
+                .des-ptecnica {
+                    .deshabilitar {
+                        padding: 10px;
+                        align-items: center;
+                        appearance: none;
+                        background-color: rgb(162, 63, 63);
+                        border-radius: 1vh;
+                        border-width: 0;
+                        cursor: pointer;
+                        justify-content: center;
+                        // touch-action: manipulation;
+                        white-space: nowrap;
+                        will-change: box-shadow, transform;
+                        &:focus {
+                            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+                        }
+                        &:active {
+                            box-shadow: #D6D6E7 0 3px 7px inset;
+                            transform: translateY(2px);
+                        }
+                        .button-text {
+                            font-weight: bolder;
+                            color: $white;
+                        }
+                        float: right;
+                    }
+                }
+            }
         }
     }
 }
