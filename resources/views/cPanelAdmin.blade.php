@@ -67,8 +67,43 @@
             <div class="navbar-right">
               {{-- MODAL USUARIO --}}
               <li class="div-btn-reportes">
+<<<<<<< HEAD
+                <button class="btn-reportes" id="myBtn"><i class="fa-solid fa-triangle-exclamation"></i></button>
+=======
                 <button class="btn-reportes" id="myBtnreportes"><i class="fa-solid fa-triangle-exclamation"></i></button>
+>>>>>>> 702f215cc4accf8e49955c89f92ade915cf74bba
               </li>
+              <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                    <form method="POST" onsubmit="reportesJS(); return false;">
+                        <br>
+                        <h2>Reportar a un usuario</h2>
+                        <br>
+                        <select name="incidencia" id="incidencia" >
+                          <option value="">Seleccione el motivo del reporte</option>
+                          <option value="Es spam">Es spam</option>
+                          <option value="Esta cuenta se hace pasar por mi u otra persona">Esta cuenta se hace pasar por mí o alguien más</option>
+                          <option value="Suicidio o autolesion">Suicidio o autolesión</option>
+                          <option value="Venta de productos ilegales o regulados">Venta de productos ilegales o regulados</option>
+                          <option value="Desnudos o actividad sexual">Desnudos o actividad sexual</option>
+                          <option value="Lenguaje o simbolos que incitan al odio">Lenguaje o símbolos que incitan al odio</option>
+                          <option value="Violencia u organizaciones peligrosas">Violencia u organizaciones peligrosas</option>
+                          <option value="Bullying o acoso">Bullying o acoso</option>
+                          <option value="Infracción de la propiedad intelectual">Infracción de la propiedad intelectual</option>
+                          <option value="Fraude">Fraude</option>
+                          <option value="Informacion falsa">Información falsa</option>
+                        </select>
+                        <br><br>
+                        <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Si es necesario puedes desarrollar aquí tu incidencia."></textarea>
+                        <br><br>
+                        <input type="hidden" name="id_reportado" id="id_reportado" value="60">
+                        <input type="hidden" name="id_reportador" id="id_reportador" value="61">
+                        <input type="submit" value="Enviar reporte"><br>
+                    </form>        
+                </div>
+              </div>
               <li class="div-btn-stats">
                 <button class="btn-stats" id="myBtnstats"><i class="fa-solid fa-chart-column"></i></button>
               </li>

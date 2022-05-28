@@ -336,9 +336,7 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 recarga += `</button>`;
                 recarga += `</div>`;
-
                 recarga += `<hr class="linea-divisoria">`;
-
                 recarga += `<div class="emp-categories">`;
                 //sobre empresa
                 recarga += `<div class="emp-div-category">`;
@@ -3631,37 +3629,85 @@ function form_editar_sobre_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_sobre_empresa>`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
-            if (!empresa.about_emp) {
-
-                recarga += `<input type="textarea" class="" id="about_emp" name="about_emp" placeholder="sin informar">`;
-            } else {
-
-                recarga += `<input type="textarea" class="" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
-            }
-
             if (!empresa.campo_emp) {
-
-                recarga += `<input type="text" class="" id="campo_emp" name="campo_emp" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">TIPO EMPRESA</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="campo_emp" name="campo_emp" placeholder="Introduzca el tipo de empresa">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="campo_emp" name="campo_emp" value="${empresa.campo_emp}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">TIPO EMPRESA</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="campo_emp" name="campo_emp" value="${empresa.campo_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!empresa.loc_emp) {
-
-                recarga += `<input type="text" class="" id="loc_emp" name="loc_emp" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">DONDE ESTAMOS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="loc_emp" name="loc_emp" placeholder="Donde encontrarnos">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="loc_emp" name="loc_emp" value="${empresa.loc_emp}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">DONDE ESTAMOS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="loc_emp" name="loc_emp" value="${empresa.loc_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+            }
+            if (!empresa.about_emp) {
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" placeholder="Introduzca una breve descripción">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+            } else {
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 

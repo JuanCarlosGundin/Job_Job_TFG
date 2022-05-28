@@ -177,8 +177,8 @@
                 .active {
                     background-color: $third-color;
                     .icon {
+                        background-color: $third-color !important;
                         color: black;
-                        background-color: $first-color !important;
                         border-top-left-radius: 0px !important;
                         // background-color: $first-color;
                         @media only screen and (max-width: $tablet) {
@@ -188,10 +188,10 @@
                     }
                 }
                 .active-center {
-                    background-color: $first-color !important;
+                    background-color: $third-color !important;
                     .icon {
                         color: white !important;
-                        background-color: $first-color !important;
+                        background-color: $third-color !important;
                         @media only screen and (max-width: $tablet) {
                             background-color: $first-color;
                         }

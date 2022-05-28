@@ -144,12 +144,30 @@ function leer_contenido() {
                 var trabajador = respuesta.trabajador;
                 var id_trabajador = respuesta.id_trabajador;
                 for (let i = 0; i < trabajador.length; i++) {
-                    var recarga = `<div class="content">
+                    var recarga = `<div class="content-user">
+                    <div class="div-crear-pt">
+                        <div class="titulo-ptecnica">
+                            <h1 class="h1-title">Pruebas tecnicas</h1>
+                        </div>
+                        <div class="subtitulo-ptecnica">
+                            <p class="p-subtitle">Las pruebas técnicas son pruebas creadas por las empresas para valorar los conocimientos de los usuarios. Pon a prueba tus habilidades completando las pruebas tecnicas en el tiempo indicado. No seas tímido, ¡Apuntate ya!</p>
+                        </div>
+                    </div>
                         <div class="ver-ptecnica">
                             <div class="pruebas">
-                            <p>${trabajador[i].nom_emp}</p>
-                            <p>${trabajador[i].enunciado}</p>
-                            <p>${trabajador[i].duracion}</p>
+                                <div class="prueba-header">
+                                    <div class="empresa-ptecnica">
+                                        <h1 class="title">${trabajador[i].nom_emp}</h1>
+                                    </div>
+                                </div>
+                                <div class="prueba-body">
+                                    <div class="enunciado-ptecnica">
+                                        <p class="text">${trabajador[i].enunciado}</p>
+                                    </div>
+                                    <div class="time-ptecnica">
+                                        <h3 class="time"><i class="fa-solid fa-clock"></i> ${trabajador[i].duracion} </h3>
+                                    </div>
+                                </div>  
                             </div>
                         </div>
                     </div>
@@ -580,7 +598,7 @@ function mostrar_prueba_tecnica_empresa(evt) {
                     } else {
                         recarga += `
                         <div class="pt-descargar">
-                            <button class="descargas"><p class="button-text">Descargar zip</p></button>
+                            <button class="descargas"><p class="button-text">Descargar zip <i class="fa-solid fa-download"></i></p></button>
                         </div>
                     </div>`
                     }
