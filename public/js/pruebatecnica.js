@@ -277,6 +277,9 @@ function iniciar_ptecnica_trabajador(evt) {
                     <p>${fecha_limite}</p>
                 </div>
                 <div>
+                    <button id="zip_prueba">Descargar zip</button>
+                </div>
+                <div>
                     <p>Formato de respuesta</p>
                     <p>Texto donde dice zip</p>
                 </div>
@@ -292,6 +295,8 @@ function iniciar_ptecnica_trabajador(evt) {
                 document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
                 document.getElementById("formarchivo").id_pt = trabajador.id;
                 document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
+                document.getElementById("zip_prueba").zip_prueba = trabajador.zip_prueba;
+                document.getElementById("zip_prueba").addEventListener("click", descargar_archivo_emp);
             } else {
                 swal.fire({
                     title: "Inscrito",
@@ -320,6 +325,7 @@ function entrar_ptecnica_trabajador(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
             var recarga = ``;
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
@@ -348,6 +354,9 @@ function entrar_ptecnica_trabajador(evt) {
                 <p>${fecha_limite}</p>
             </div>
             <div>
+                <button id="zip_prueba">Descargar zip</button>
+            </div>
+            <div>
                 <p>Formato de respuesta</p>
                 <p>Texto donde dice zip</p>
             </div>
@@ -363,10 +372,17 @@ function entrar_ptecnica_trabajador(evt) {
             document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
             document.getElementById("formarchivo").id_pt = trabajador.id;
             document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
+            document.getElementById("zip_prueba").zip_prueba = trabajador.zip_prueba;
+            document.getElementById("zip_prueba").addEventListener("click", descargar_archivo_emp);
 
         }
     }
     ajax.send(formData);
+}
+
+function descargar_archivo_emp(evt) {
+    var zip_prueba = evt.currentTarget.zip_prueba;
+    window.location.href = "./storage/" + zip_prueba;
 }
 
 function enviar_zip_trabajador(evt) {
