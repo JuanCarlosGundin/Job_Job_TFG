@@ -3529,27 +3529,73 @@ function form_editar_user_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_user_empresa>`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
-
-            recarga += `<input type="email" class="" id="mail" name="mail" value="${trabajador.mail}">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">EMAIL</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="email" class="input" id="mail" name="mail" value="${trabajador.mail}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             //antigua contraseña
-            recarga += `<input type="password" class="" id="contra_old" name="contra_old">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">CONTRASEÑA ANTIGUA</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra_old" name="contra_old">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             //nueva contra1
-            recarga += `<input type="password" class="" id="contra1" name="contra1">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">NUEVA CONTRASEÑA</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra1" name="contra1">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             //nueva contra2
-            recarga += `<input type="password" class="" id="contra2" name="contra2">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">REPITE CONTRASEÑA</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra2" name="contra2">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
-            recarga += `<input type="text" class="" id="nom_emp" name="nom_emp" value="${trabajador.nom_emp}">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">NOMBRE DE LA EMPRESA</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="nom_emp" name="nom_emp" value="${trabajador.nom_emp}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
 
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -4016,6 +4062,9 @@ function leer_buscamos_empresa() {
             recarga += `<div class="categoria-profile">`;
             if (!empresa.vacante) {
                 recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-signature"></i>`;
+                recarga += `</div>`;
                 recarga += `<div class="categoria-name">`;
                 recarga += `<p class="categoria-p-name">Vacante</p>`;
                 recarga += `</div>`;
@@ -4029,6 +4078,9 @@ function leer_buscamos_empresa() {
                 recarga += `</div>`;
             } else {
                 recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-signature"></i>`;
+                recarga += `</div>`;
                 recarga += `<div class="categoria-name">`;
                 recarga += `<p class="categoria-p-name">Vacante</p>`;
                 recarga += `</div>`;
@@ -4045,6 +4097,9 @@ function leer_buscamos_empresa() {
             if (!empresa.searching) {
 
                 recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-signature"></i>`;
+                recarga += `</div>`;
                 recarga += `<div class="categoria-name">`;
                 recarga += `<p class="categoria-p-name">Que buscamos?</p>`;
                 recarga += `</div>`;
@@ -4059,6 +4114,9 @@ function leer_buscamos_empresa() {
 
             } else {
                 recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-signature"></i>`;
+                recarga += `</div>`;
                 recarga += `<div class="categoria-name">`;
                 recarga += `<p class="categoria-p-name">Que buscamos?</p>`;
                 recarga += `</div>`;
@@ -4117,7 +4175,7 @@ function form_buscamos_empresa() {
             recarga += `<p class="return-text">VOLVER</p>`;
             recarga += `</button>`;
             recarga += `</div>`;
-            recarga += `<div class="edit-profile">`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_buscamos_empresa>`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
