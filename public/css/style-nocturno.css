@@ -200,11 +200,11 @@
 }
 
 .oscuro .region-navbar .active {
-  background-color: #0B4B78;
+  background-color: #012A4A !important;
 }
 
 .oscuro .region-navbar .active .icon {
-  background-color: #0B4B78 !important;
+  background-color: #012A4A !important;
   color: black;
   border-top-left-radius: 0px !important;
 }
@@ -217,12 +217,12 @@
 }
 
 .oscuro .region-navbar .active-center {
-  background-color: #0B4B78 !important;
+  background-color: #012A4A !important;
 }
 
 .oscuro .region-navbar .active-center .icon {
   color: white !important;
-  background-color: #0B4B78 !important;
+  background-color: #012A4A !important;
 }
 
 @media only screen and (max-width: 900px) {
@@ -248,6 +248,42 @@
 
 .page-home.oscuro {
   background-color: #012A4A;
+}
+
+.page-home.oscuro .region-swiper .user-vista .container-info {
+  background-color: #437EA9;
+}
+
+.page-home.oscuro .region-swiper .user-vista .container-info .p-name, .page-home.oscuro .region-swiper .user-vista .container-info .p-surname, .page-home.oscuro .region-swiper .user-vista .container-info .p-age {
+  color: white;
+}
+
+.page-home.oscuro .region-swiper .empresa-vista .container-info {
+  background: #437EA9 !important;
+}
+
+.page-home.oscuro .region-swiper .empresa-vista .container-info .p-name {
+  color: white;
+}
+
+.page-home.oscuro .region-swiper .empresa-vista .container-info .p-house {
+  color: white;
+}
+
+.page-home.oscuro .region-swiper .empresa-vista .container-info .divs-desc {
+  color: white;
+}
+
+.page-home.oscuro .region-swiper .empresa-vista .container-info .empresa-icon-desc {
+  color: white;
+}
+
+.page-home.oscuro .region-swiper .empresa-vista .container-info .empresa-icon-name {
+  color: white !important;
+}
+
+.page-home.oscuro .region-swiper .empresa-vista .return button {
+  color: white !important;
 }
 
 .page-home.oscuro .botones-home button {

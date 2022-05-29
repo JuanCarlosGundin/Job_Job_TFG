@@ -1,46 +1,47 @@
 ////////////////////////////GENERAL///////////////////////////////////////
 window.onload = function() {
+        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+        let vh = window.innerHeight * 0.01;
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
         estructura();
         reload();
-        mostrar();
-        get_session();
+        mostrar()
     }
     ////////////////////////////REDIRECCIONES/////////////////////////////////
-var navbarProfile = document.getElementById("navbar-profile-icon");
-var navbarMain = document.getElementById("navbar-main-icon");
-var navbarAlerts = document.getElementById("navbar-alerts-icon");
-var navbarCHAT = document.getElementById("navbar-chat-icon");
-var navbarPT = document.getElementById("navbar-PT-icon");
-
-navbarProfile.onclick = function() {
-
-    window.location.href = "./perfil";
-
-}
-
-navbarAlerts.onclick = function() {
-
-    window.location.href = "./notificaciones";
-
-}
-
-navbarMain.onclick = function() {
-
-    window.location.href = "./home";
-
-}
-
-navbarPT.onclick = function() {
-
-    window.location.href = "./pruebatecnica";
-
-}
-
-navbarCHAT.onclick = function() {
-
-    window.location.href = "./chat";
-
-}
+    var navbarProfile = document.getElementById("navbar-profile-icon");
+    var navbarMain = document.getElementById("navbar-main-icon");
+    var navbarAlerts = document.getElementById("navbar-alerts-icon");
+    var navbarPT = document.getElementById("navbar-PT-icon");
+    var navbarCHAT = document.getElementById("navbar-chat-icon");
+    
+    navbarProfile.onclick = function() {
+    
+        window.location.href = "./perfil";
+    
+    }
+    
+    navbarAlerts.onclick = function() {
+    
+        window.location.href = "./notificaciones";
+    
+    }
+    
+    navbarMain.onclick = function() {
+    
+        window.location.href = "./home";
+    
+    }
+    
+    navbarPT.onclick = function() {
+    
+        window.location.href = "./pruebatecnica";
+    }
+    
+    navbarCHAT.onclick = function() {
+    
+        window.location.href = "./chat";
+    }
 
 function estructura() {
     var carta = document.getElementById("carta");
@@ -56,16 +57,16 @@ function estructura() {
     recarga += '<div class="swiper--card" id="mainCard">';
     recarga += '</div>';
     recarga += '<div class="swiper--card no-swipe">';
-    recarga += '<img src="storage/img/jobjob_tarjeta.png">';
+    recarga += '<img src="./storage/uploads/jobjob_tarjeta.png">';
     recarga += '</div>';
     recarga += '<div class="swiper--card no-swipe">';
-    recarga += '<img src="storage/img/jobjob_tarjeta.png">';
+    recarga += '<img src="./storage/uploads/jobjob_tarjeta.png">';
     recarga += '</div>';
     recarga += '<div class="swiper--card no-swipe">';
-    recarga += '<img src="storage/img/jobjob_tarjeta.png">';
+    recarga += '<img src="./storage/uploads/jobjob_tarjeta.png">';
     recarga += '</div>';
     recarga += '<div class="swiper--card no-swipe">';
-    recarga += '<img src="storage/img/jobjob_tarjeta.png">';
+    recarga += '<img src="./storage/uploads/jobjob_tarjeta.png">';
     recarga += '</div>';
     recarga += '</div>';
     recarga += '</div>';
@@ -181,21 +182,21 @@ function reload() {
                     //console.log(carta)
                     // alert('primero entra estructura')
                     swiperCards.innerHTML = `
-            <div class="swiper--card mainCard" id="mainCard">
-            </div>
-            <div class="swiper--card no-swipe">
-                <img src="storage/img/jobjob_tarjeta.png">
-            </div>
-            <div class="swiper--card no-swipe">
-                <img src="storage/uploads/jobjob_tarjeta.png">
-            </div>
-            <div class="swiper--card no-swipe">
-                <img src="storage/uploads/jobjob_tarjeta.png">
-            </div>
-            <div class="swiper--card no-swipe">
-                <img src="storage/uploads/jobjob_tarjeta.png">
-            </div>
-            `;
+        <div class="swiper--card mainCard" id="mainCard">
+        </div>
+        <div class="swiper--card no-swipe">
+        <img src="./storage/uploads/jobjob_tarjeta.png">
+        </div>
+        <div class="swiper--card no-swipe">
+        <img src="./storage/uploads/jobjob_tarjeta.png">
+        </div>
+        <div class="swiper--card no-swipe">
+            <img src="./storage/uploads/jobjob_tarjeta.png">
+        </div>
+        <div class="swiper--card no-swipe">
+        <img src="./storage/uploads/jobjob_tarjeta.png">
+        </div>
+        `;
                     mostrar()
                     reload()
                 }, 500);
@@ -226,17 +227,17 @@ function reload() {
             initCards();
             setTimeout(function() {
                 swiperCards.innerHTML = `
-        <div class="swiper--card mainCard" id="mainCard">
-        </div>
-        <div class="swiper--card no-swipe">
-        </div>
-        <div class="swiper--card no-swipe">
-        </div>
-        <div class="swiper--card no-swipe">
-        </div>
-        <div class="swiper--card no-swipe">
-        </div>
-            `;
+    <div class="swiper--card mainCard" id="mainCard">
+    </div>
+    <div class="swiper--card no-swipe">
+    </div>
+    <div class="swiper--card no-swipe">
+    </div>
+    <div class="swiper--card no-swipe">
+    </div>
+    <div class="swiper--card no-swipe">
+    </div>
+        `;
                 mostrar()
                 reload()
             }, 500);
@@ -288,30 +289,30 @@ function mostrar() {
                 if (respuesta[0].id_perfil == 3) {
                     // alert('primero entra empresa')
                     recarga += `
-            <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
-            `;
+        <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
+        `;
                     if (respuesta[0].logo_emp != null) {
                         recarga += `
-                    <img src="./storage/${respuesta[0].logo_emp}">`;
+                <img src="./storage/${respuesta[0].logo_emp}">`;
                     } else {
                         recarga += `
-                    <img src="./storage/uploads/jobjob_logo_black.png">`;
+                <img src="../storage/uploads/jobjob_logo_black.png">`;
                     }
                     recarga += `
-            <div class="content--card content--empresa">
-              <div class="misc--card">
-                <h2 class="vacante--empresa">${respuesta[0].vacante}</h2>
-                <h5 class="campo--empresa">${respuesta[0].campo_emp}</h5>
-              </div>
-              <div class="cuerpo--card">
-                <p class="searching--empresa">${respuesta[0].searching}</p>
-              </div>
-              <div class="titulo--card">
-                <h3 class="nombre--usuario">${respuesta[0].nom_emp}</h3>
-                <h5 class="ubicacion--usuario">${respuesta[0].loc_emp}</h5>
-              </div>
-            </div>
-            `
+        <div class="content--card content--empresa">
+          <div class="misc--card">
+            <h2 class="vacante--empresa">${respuesta[0].vacante}</h2>
+            <h5 class="campo--empresa">${respuesta[0].campo_emp}</h5>
+          </div>
+          <div class="cuerpo--card">
+            <p class="searching--empresa">${respuesta[0].searching}</p>
+          </div>
+          <div class="titulo--card">
+            <h3 class="nombre--usuario">${respuesta[0].nom_emp}</h3>
+            <h5 class="ubicacion--usuario">${respuesta[0].loc_emp}</h5>
+          </div>
+        </div>
+        `
                 } else if (respuesta[0].id_perfil == 2) {
                     // alert('primero entra trabajador')
                     //console.log(JSON.parse(respuesta[0].curriculum));
@@ -328,50 +329,50 @@ function mostrar() {
                     var edad = getAge(respuesta[0].edad);
                     curriculum = JSON.parse(respuesta[0].curriculum);
                     recarga += `
-            <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
-            <div class="content--card content--trabajador">
-                <div class="img--card">
-                `;
+        <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
+        <div class="content--card content--trabajador">
+            <div class="img--card">
+            `;
                     if (respuesta[0].foto_perfil != null) {
                         recarga += `
-                    <img class="img--trabajador" src="./storage/${respuesta[0].foto_perfil}">`;
+                <img class="img--trabajador" src="./storage/${respuesta[0].foto_perfil}">`;
                     } else {
                         recarga += `
-                    <img class="img--trabajador" src="./storage/uploads/jobjob_logo_black.png">`;
+                <img class="img--trabajador" src="./storage/uploads/jobjob_logo_black.png">`;
                     }
                     recarga += `
+            </div>
+            <div class="cv--card">
+                <div class="objetivo--card">
+                    <h2 class="titulo--objetivo">Objetivo Profesional</h2>
+                    <p class="content--objetivo">${respuesta[0].about_user}</p>
                 </div>
-                <div class="cv--card">
-                    <div class="objetivo--card">
-                        <h2 class="titulo--objetivo">Objetivo Profesional</h2>
-                        <p class="content--objetivo">${respuesta[0].about_user}</p>
-                    </div>
-                    <div class="formacion--card">
-                        <h2 class="titulo--formacion">Formación</h2>
-                        <p class="content--formacion">${curriculum['estudios'][0].nombre_formación}</p>
-                        <h5 class="lugar--formacion">${curriculum['estudios'][0].lugar_formación}</h5>
-                    </div>
-                    <div class="experiencia--card">
-                        <h2 class="titulo--experiencia">Experiencia</h2>
-                        <p class="content--experiencia">${curriculum['experiencia'][0].nombre_experiencia}</p>
-                        <h5 class="lugar--experiencia">${curriculum['experiencia'][0].lugar_experiencia}</h5>
-                    </div>
+                <div class="formacion--card">
+                    <h2 class="titulo--formacion">Formación</h2>
+                    <p class="content--formacion">${curriculum['estudios'][0].nombre_formación}</p>
+                    <h5 class="lugar--formacion">${curriculum['estudios'][0].lugar_formación}</h5>
                 </div>
-                <div class="titulo--card">
-                    <h2 class="nombreEdad--usuario">${respuesta[0].nombre} ${respuesta[0].apellido}, ${edad}</h2>
-                    <h5 class="ubicacion--usuario">${respuesta[0].loc_trabajador}</h5>
+                <div class="experiencia--card">
+                    <h2 class="titulo--experiencia">Experiencia</h2>
+                    <p class="content--experiencia">${curriculum['experiencia'][0].nombre_experiencia}</p>
+                    <h5 class="lugar--experiencia">${curriculum['experiencia'][0].lugar_experiencia}</h5>
                 </div>
             </div>
-            `
+            <div class="titulo--card">
+                <h2 class="nombreEdad--usuario">${respuesta[0].nombre} ${respuesta[0].apellido}, ${edad}</h2>
+                <h5 class="ubicacion--usuario">${respuesta[0].loc_trabajador}</h5>
+            </div>
+        </div>
+        `
                 }
             } else {
                 recarga += `
-        <input type="hidden" id="userID" value="false">
-        <div class="content--card content--final">
-            <img src='https://acegif.com/wp-content/uploads/2022/4hv9xm/crying-emoji-9.gif'></img>
-            <h2>¡OH! Has agotado los usuarios, ¡Vuelve más tarde!</h2>
-        </div>
-        `
+    <input type="hidden" id="userID" value="false">
+    <div class="content--card content--final">
+        <img src='https://acegif.com/wp-content/uploads/2022/4hv9xm/crying-emoji-9.gif'></img>
+        <h2>¡OH! Has agotado los usuarios, ¡Vuelve más tarde!</h2>
+    </div>
+    `
                 contenedor.classList.add('no-swipe');
                 contenedor.style.pointerEvents = "none";
             }
@@ -400,25 +401,25 @@ function yes() {
             console.log(respuesta)
             if (respuesta == 1) {
                 swal("¡MATCH! ¿Qué quieres hacer ahora?", {
-                    icon: "success",
-                    buttons: {
-                        cancel: "Seguir swipeando",
-                        catch: {
-                            text: "Revisar matches",
-                            value: "chat",
+                        icon: "success",
+                        buttons: {
+                            cancel: "Seguir swipeando",
+                            catch: {
+                                text: "Revisar matches",
+                                value: "chat",
+                            }
+                        },
+                    })
+                    .then((value) => {
+                        switch (value) {
+
+                            case "chat":
+                                window.location.href = "./notificaciones";
+                                break;
+
+                            default:
                         }
-                    },
-                })
-                .then((value) => {
-                    switch (value) {
-
-                        case "chat":
-                            window.location.href = "./notificaciones";
-                            break;
-
-                        default:
-                    }
-                });
+                    });
             }
 
         }
@@ -445,7 +446,6 @@ function cumNO() {
 
 function perfilcarta(evt) {
 
-
     var carta = document.getElementById("carta");
     var id_usuario = evt.currentTarget.id_usuario;
     var id_perfil = evt.currentTarget.id_perfil;
@@ -463,18 +463,26 @@ function perfilcarta(evt) {
 
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
-            // var idreportado = respuesta.empresa[0].id
-            // console.log(idreportado);
             var id_perfil = respuesta.id_perfil;
             var recarga = '';
 
             if (id_perfil == 2) {
-                var idtrabajador = respuesta.trabajador[0].id;
-                console.log(idtrabajador);
+
                 var trabajador = respuesta.trabajador[0];
+
+                function getAge(dateString) {
+                    var today = new Date();
+                    var birthDate = new Date(dateString);
+                    var age = today.getFullYear() - birthDate.getFullYear();
+                    var m = today.getMonth() - birthDate.getMonth();
+                    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                        age--;
+                    }
+                    return age;
+                }
+                var edad = getAge(trabajador.edad);
                 console.log(trabajador);
 
-                // Foto
                 recarga += '<div class="user-vista">';
                 //Volver
                 recarga += '<div class="return">';
@@ -482,6 +490,8 @@ function perfilcarta(evt) {
                 recarga += '<i class="fa-solid fa-angle-left"></i>';
                 recarga += '</button>';
                 recarga += '</div>';
+                recarga += '<div class="container-info">';
+                // Foto
                 recarga += '<div class="user-ver-foto">';
                 recarga += '<div class="container-foto">';
 
@@ -501,18 +511,14 @@ function perfilcarta(evt) {
                 recarga += '<div class="user-ver">';
                 // Nombre, apellido y edad
                 recarga += '<div class="user-div-name">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-user"></i>';
-                recarga += '</div>';
                 recarga += '<div class="divs-name">';
                 recarga += '<span class="p-name">  ' + trabajador.nombre + ' </span>';
-                recarga += '<span class="p-surname">  ' + trabajador.apellido + ' </span>';
-                recarga += '<i class="fa-solid fa-cake-candles"></i>';
-                recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
+                recarga += '<span class="p-surname">  ' + trabajador.apellido + ', </span>';
+                recarga += '<span class="p-age"> ' + edad + '</span>';
                 recarga += '</div>';
                 recarga += '</div>';
-                recarga += '<hr>';
                 // mail
+                recarga += '<div class="user-misc">';
                 recarga += '<div class="user-div-house">';
                 recarga += '<div class="user-icon-name">';
                 recarga += '<i class="fa-solid fa-at"></i>';
@@ -541,11 +547,14 @@ function perfilcarta(evt) {
                         recarga += '<i class="fa-solid fa-book-open"></i>';
                         recarga += '</div>';
                         for (let i = 0; i < curriculum.estudios.length; i++) {
-                            recarga += '<div class="divs-house">';
+                            recarga += '<div class="divs-house div-formacion">';
                             recarga += '<span class="p-house">' + curriculum.estudios[i].nombre_formación + '</span>';
                             recarga += '<span class="p-house">' + curriculum.estudios[i].lugar_formación + '</span>';
+                            recarga += '<div class="duracion-item">';
                             recarga += '<span class="p-house">' + curriculum.estudios[i].año_entrada + '</span>';
+                            recarga += '<span class="separador-duracion"> - </span>';
                             recarga += '<span class="p-house">' + curriculum.estudios[i].año_salida + '</span>';
+                            recarga += '</div>';
                             recarga += '</div>';
                         }
                         recarga += '</div>';
@@ -557,26 +566,32 @@ function perfilcarta(evt) {
                         recarga += '<i class="fa-solid fa-briefcase"></i>';
                         recarga += '</div>';
                         for (let i = 0; i < curriculum.experiencia.length; i++) {
-                            recarga += '<div class="divs-house">';
+                            recarga += '<div class="divs-house div-experiencia">';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].nombre_experiencia + '</span>';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].lugar_experiencia + '</span>';
+                            recarga += '<div class="duracion-item">';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].año_entrada + '</span>';
+                            recarga += '<span class="separador-duracion"> - </span>';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].año_salida + '</span>';
+                            recarga += '</div>';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].funciones + '</span>';
                             recarga += '</div>';
                         }
                         recarga += '</div>';
                     }
+                    recarga += '<div class="niveles">';
                     if (curriculum.hasOwnProperty('idiomas')) {
                         // Idioma
-                        recarga += '<div>';
-                        recarga += '<div>';
-                        recarga += '<i class="fa-solid fa-language"></i>';
+                        recarga += '<div class="idiomas">';
+                        recarga += '<div class="titulo-niveles">';
+                        recarga += '<p>Idiomas</p>';
                         recarga += '</div>';
                         for (let i = 0; i < curriculum.idiomas.length; i++) {
                             recarga += '<div>';
-                            recarga += '<span>' + curriculum.idiomas[i].nombre_idioma + '</span>';
-                            recarga += '<span>' + curriculum.idiomas[i].nivel_idioma + '</span>';
+                            recarga += '<span class="nombre-item">' + curriculum.idiomas[i].nombre_idioma + '</span>';
+                            recarga += '<span class="percent">';
+                            recarga += '<div class="' + curriculum.idiomas[i].nivel_idioma + '"></div>';
+                            recarga += '</span>';
                             recarga += '</div>';
 
                         }
@@ -584,20 +599,23 @@ function perfilcarta(evt) {
                     }
                     if (curriculum.hasOwnProperty('habilidades')) {
                         // Habilidades
-                        recarga += '<div>';
-                        recarga += '<div>';
-                        recarga += '<i class="fa-solid fa-language"></i>';
+                        recarga += '<div class="habilidades">';
+                        recarga += '<div class="titulo-niveles">';
+                        recarga += '<p>Habilidades</p>';
                         recarga += '</div>';
                         for (let i = 0; i < curriculum.habilidades.length; i++) {
-                            recarga += '<div>';
-                            recarga += '<span>' + curriculum.habilidades[i].nombre_habilidad + '</span>';
-                            recarga += '<span>' + curriculum.habilidades[i].nivel_habilidad + '</span>';
+                            recarga += '<div class="niveles-item">';
+                            recarga += '<span class="nombre-item">' + curriculum.habilidades[i].nombre_habilidad + '</span>';
+                            recarga += '<span class="percent">';
+                            recarga += '<div class="' + curriculum.habilidades[i].nivel_habilidad + '"></div>';
+                            recarga += '</span>';
                             recarga += '</div>';
 
                         }
                         recarga += '</div>';
                     }
                 }
+                recarga += '</div>';
                 // Sector
                 recarga += '<div class="user-div-house">';
                 recarga += '<div class="user-icon-name">';
@@ -613,7 +631,7 @@ function perfilcarta(evt) {
                 recarga += '<i class="fa-solid fa-business-time"></i>';
                 recarga += '</div>';
                 recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.disponibilidad + '</span>';
+                recarga += '<span class="p-house disponibilidad">' + trabajador.disponibilidad + '</span>';
                 recarga += '</div>';
                 recarga += '</div>';
                 // Descripcion
@@ -628,41 +646,8 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
-                recarga += `
-            <button id="myBtntra" onclick=abrirtrabajador();>Reportar trabajador</button>
-            
-            <div id="myModaltra" class="modal">
-            
-              <div class="modal-content">
-                <span class="closetra" onclick=cerrartrabajador()>&times;</span>
-                
-                            <form method="POST" onsubmit="reportesJS(); return false;">
-                                <br>
-                                <h2>Reportar a trabajador</h2>
-                                <br>
-                                <select name="incidencia" id="incidencia" >
-                                    <option value="">Seleccione el motivo del reporte</option>
-                                    <option value="Es spam">Es spam</option>
-                                    <option value="Esta cuenta se hace pasar por mi u otra persona">Esta cuenta se hace pasar por mí o alguien más</option>
-                                    <option value="Suicidio o autolesion">Suicidio o autolesión</option>
-                                    <option value="Venta de productos ilegales o regulados">Venta de productos ilegales o regulados</option>
-                                    <option value="Desnudos o actividad sexual">Desnudos o actividad sexual</option>
-                                    <option value="Lenguaje o simbolos que incitan al odio">Lenguaje o símbolos que incitan al odio</option>
-                                    <option value="Violencia u organizaciones peligrosas">Violencia u organizaciones peligrosas</option>
-                                    <option value="Bullying o acoso">Bullying o acoso</option>
-                                    <option value="Infracción de la propiedad intelectual">Infracción de la propiedad intelectual</option>
-                                    <option value="Fraude">Fraude</option>
-                                    <option value="Informacion falsa">Información falsa</option>
-                                </select>
-                                <br><br>
-                                <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Desarrolla el reporte"></textarea>
-                                <br><br>
-                                <input type="hidden" id="id_reportador" name="id_reportador" value=${sesion}>
-                                <input type="hidden" id="id_reportado" name="id_reportado" value=${idtrabajador}>
-                                <input type="submit" value="Enviar reporte"><br>
-                            </form>
-              </div>
-            </div>`;
+                recarga += '</div>';
+                recarga += '</div>';
                 carta.innerHTML = recarga;
                 var volver = document.getElementById("volver");
                 volver.addEventListener("click", estructura);
@@ -672,8 +657,7 @@ function perfilcarta(evt) {
             }
 
             if (id_perfil == 3) {
-                var idempresa = respuesta.empresa[0].id;
-                console.log(idempresa);
+
                 var empresa = respuesta.empresa[0];
 
                 recarga += '<div class="empresa-vista">';
@@ -683,6 +667,8 @@ function perfilcarta(evt) {
                 recarga += '<i class="fa-solid fa-angle-left"></i>';
                 recarga += '</button>';
                 recarga += '</div>';
+                //INFO
+                recarga += '<div class="container-info">';
                 // Logo
                 recarga += '<div class="empresa-ver-foto">';
 
@@ -707,6 +693,7 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 // Sede
                 recarga += '<hr>';
+                recarga += '<div class="empresa-misc">';
                 recarga += '<div class="empresa-div-house">';
                 recarga += '<div class="empresa-icon-name">';
                 recarga += '<i class="fa-solid fa-building"></i>';
@@ -742,6 +729,7 @@ function perfilcarta(evt) {
                 recarga += '<span class="p-house">' + empresa.vacante + '</span>';
                 recarga += '</div>';
                 recarga += '</div>';
+                recarga += '</div>';
                 // Descripcion
                 recarga += '<hr>';
                 recarga += '<div class="empresa-div-desc">';
@@ -754,41 +742,7 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
-                recarga += `
-            <button id="myBtnemp" onclick=abrirempresa();>Reportar empresa</button>
-            
-            <div id="myModalemp" class="modal">
-            
-              <div class="modal-content">
-                <span class="closeemp" onclick=cerrarempresa();>&times;</span>
-                
-                            <form method="POST" onsubmit="reportesJS(); return false;">
-                                <br>
-                                <h2>Reportar a empresa</h2>
-                                <br>
-                                <select name="incidencia" id="incidencia" >
-                                    <option value="">Seleccione el motivo del reporte</option>
-                                    <option value="Es spam">Es spam</option>
-                                    <option value="Esta cuenta se hace pasar por mi u otra persona">Esta cuenta se hace pasar por mí o alguien más</option>
-                                    <option value="Suicidio o autolesion">Suicidio o autolesión</option>
-                                    <option value="Venta de productos ilegales o regulados">Venta de productos ilegales o regulados</option>
-                                    <option value="Desnudos o actividad sexual">Desnudos o actividad sexual</option>
-                                    <option value="Lenguaje o simbolos que incitan al odio">Lenguaje o símbolos que incitan al odio</option>
-                                    <option value="Violencia u organizaciones peligrosas">Violencia u organizaciones peligrosas</option>
-                                    <option value="Bullying o acoso">Bullying o acoso</option>
-                                    <option value="Infracción de la propiedad intelectual">Infracción de la propiedad intelectual</option>
-                                    <option value="Fraude">Fraude</option>
-                                    <option value="Informacion falsa">Información falsa</option>
-                                </select>
-                                <br><br>
-                                <textarea name="desarrollar_incidencia" rows="3" id="desarrollar_incidencia" placeholder="Desarrolla el reporte"></textarea>
-                                <br><br>
-                                <input type="hidden" id="id_reportador" name="id_reportador" value=${sesion}>
-                                <input type="hidden" id="id_reportado" name="id_reportado" value=${idempresa}>
-                                <input type="submit" value="Enviar reporte"><br>
-                            </form>
-              </div>
-            </div>`;
+                recarga += '</div>';
                 carta.innerHTML = recarga;
                 var volver = document.getElementById("volver");
                 volver.addEventListener("click", estructura);
@@ -804,150 +758,3 @@ function perfilcarta(evt) {
     ajax.send(formData);
 
 }
-//PARA ABRIR MODALES SOLUCION--------
-function abrirtrabajador() {
-    // alert("hola")
-    // Get the modal
-    modal = document.getElementById("myModaltra");
-    modal.style.display = "block";
-}
-// Get the <span> element that closes the modal
-function cerrartrabajador() {
-    modal = document.getElementById("myModaltra");
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    modal = document.getElementById("myModaltra");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-function abrirempresa() {
-    // alert("hola")
-    // Get the modal
-    modal = document.getElementById("myModalemp");
-    modal.style.display = "block";
-}
-// Get the <span> element that closes the modal
-function cerrarempresa() {
-    modal = document.getElementById("myModalemp");
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    modal = document.getElementById("myModalemp");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-function reportesJS() {
-    let incidencia = document.getElementById('incidencia').value;
-    let desarrollar_incidencia = document.getElementById('desarrollar_incidencia').value;
-
-    if (incidencia == '' || desarrollar_incidencia == '') {
-        swal.fire({
-            title: "Error",
-            text: "Tienes que rellenar todos los datos",
-            icon: "error",
-        });
-        return false;
-
-    }
-    /* Si hace falta obtenemos el elemento HTML donde introduciremos la recarga (datos o mensajes) */
-    /* Usar el objeto FormData para guardar los parámetros que se enviarán:
-       formData.append('clave', valor);
-       valor = elemento/s que se pasarán como parámetros: token, method, inputs... */
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'POST');
-    formData.append('id_reportador', document.getElementById('id_reportador').value);
-    formData.append('id_reportado', document.getElementById('id_reportado').value);
-    formData.append('incidencia', document.getElementById('incidencia').value);
-    formData.append('desarrollar_incidencia', document.getElementById('desarrollar_incidencia').value);
-
-    /* Inicializar un objeto AJAX */
-    var ajax = objetoAjax();
-
-    ajax.open("POST", "crearreporte", true);
-    ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            // /* Leerá la respuesta que es devuelta por el controlador: */
-            console.log(respuesta);
-            if (respuesta.resultado == 'OK') {
-                swal.fire({
-                    title: "Reporte enviado",
-                    text: "Hemos recibido tu reporte, enseguida nos pondremos a revisarlo.",
-                    showConfirmButton: true,
-                    icon: "success",
-
-                });
-            } else {
-                swal.fire({
-                    title: "Oops",
-                    text: "Parece que ha habido un error, inténtalo de nuevo.",
-                    icon: "error",
-                });
-            }
-
-        }
-    }
-
-    ajax.send(formData);
-}
-
-function get_session() {
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'POST');
-
-    var ajax = objetoAjax();
-
-    ajax.open("POST", "pillarsesion", true);
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
-            sesion = respuesta.resultado
-        }
-
-    }
-    ajax.send(formData);
-}
-
-// function openmodal() {
-//     /*CODIGO MODAL*/
-
-//     // Get the modal
-//     myModalemp = document.getElementById("myModalemp");
-
-//     // Get the button that opens the modal
-//     myBtnemp = document.getElementById("myBtnemp");
-
-//     // Get the <span> element that closes the modal
-//     closeemp = document.getElementsByClassName("closeemp")[0];
-
-//     // When the user clicks on the button, open the modal
-//     myBtnemp.onclick = function() {
-//         alert("hola")
-//         myModalemp.style.display = "block";
-//     }
-
-//     // When the user clicks on <span> (x), close the modal
-//     closeemp.onclick = function() {
-//         myModalemp.style.display = "none";
-//     }
-
-//     // When the user clicks anywhere outside of the modal, close it
-//     window.onclick = function(event) {
-//         if (event.target == modal) {
-//             myModalemp.style.display = "none";
-//         }
-//     }
-// }
