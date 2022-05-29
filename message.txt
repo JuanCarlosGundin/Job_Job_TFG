@@ -99,8 +99,6 @@ body {
                 .user-ver-foto {
                     width: 100%;
                     .user-profilefoto {
-                        object-fit: cover;
-                        object-position: center center;
                         border-radius: 50vh;
                         height: 34vh;
                         width: 34vh;
@@ -1066,10 +1064,6 @@ body {
     @media only screen and (max-width: $tablet) {
         margin-top: 1.5vh;
     }
-    .XD{
-        font-weight: bold;
-        text-align: center;
-    }
     .chats {
         padding: 15px;
         justify-content: center;
@@ -1089,8 +1083,6 @@ body {
                 .chat-foto {
                     align-content: right;
                     .chat-profilefoto {
-                        object-fit: cover;
-                        object-position: center center;
                         border-radius: 50px;
                         height: 7vh;
                         width: 7vh;
@@ -1190,8 +1182,6 @@ body {
                 align-items: center;
                 margin-right: 10px;
                 .chat-profilefoto {
-                    object-fit: cover;
-                    object-position: center center;
                     border-radius: 50px;
                     height: 7vh;
                     width: 7vh;

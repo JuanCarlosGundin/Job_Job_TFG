@@ -39,4 +39,5 @@ switchButton.addEventListener('click', () => {
 if (localStorage.getItem('darkMode') == 'enabled') {
     document.body.classList.toggle('oscuro');
     switchButton.classList.toggle('active');
+    document.getElementById('img_logo').innerHTML = '<img src="storage/uploads/jobjob_logo.png"></img>'
 }

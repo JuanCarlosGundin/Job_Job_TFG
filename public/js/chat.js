@@ -638,7 +638,7 @@ function cargarChats() {
                 }
             } if ((respuesta.hasOwnProperty('trabajadores') && respuesta.trabajadores.length == 0) || (respuesta.hasOwnProperty('empresas') && respuesta.empresas.length == 0) ){
 
-                recarga += '<p>No hay chats activos<p>'
+                recarga += '<p class="XD"> No hay chats activos <p>'
             } 
             ChatContent.innerHTML = recarga;
         }

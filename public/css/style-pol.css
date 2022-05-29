@@ -117,6 +117,10 @@ body {
 }
 
 .ver-perfil .user-fondo .container-user-poligon .div-foto .user-ver-foto .user-profilefoto {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
   border-radius: 50vh;
   height: 34vh;
   width: 34vh;
@@ -1426,6 +1430,11 @@ body {
   }
 }
 
+.chat .XD {
+  font-weight: bold;
+  text-align: center;
+}
+
 .chat .chats {
   padding: 15px;
   -webkit-box-pack: center;
@@ -1466,6 +1475,10 @@ body {
 }
 
 .chat .chats .chat-div-flex .chat-foto-btn .chat-foto .chat-profilefoto {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
   border-radius: 50px;
   height: 7vh;
   width: 7vh;
@@ -1615,6 +1628,10 @@ body {
 }
 
 .main-chat .chat-main-sticky .chat-main-user .chat-main-foto .chat-profilefoto {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
   border-radius: 50px;
   height: 7vh;
   width: 7vh;
@@ -2794,7 +2811,7 @@ body {
 
 @media only screen and (max-width: 1200px) {
   .ptecnica .ver-content .div-content .div-butons .pt-participante .participantes {
-    width: 65%;
+    width: 80%;
   }
 }
 
@@ -2851,7 +2868,7 @@ body {
 
 @media only screen and (max-width: 1200px) {
   .ptecnica .ver-content .div-content .div-butons .pt-descargar .descargas {
-    width: 65%;
+    width: 80%;
   }
 }
 

@@ -83,12 +83,13 @@ function leer_contenido() {
                     <h1 class="h1-title">Pruebas tecnicas</h1>
                 </div>
                 <div class="subtitulo-ptecnica">
-                    <p class="p-subtitle">Las pruebas técnicas son pruebas creadas por las empresas para valorar los conocimientos de los usuarios y así, poder saber que persona se adapta mejor y esta mas preparada para las necesidades de la empresa ¡Crear una ahora!</p>
-                </div>
-                <div class="crear-ptecnica">
+                    <p class="p-subtitle">Las pruebas técnicas son pruebas creadas por las empresas para valorar los conocimientos de los usuarios y así, poder saber que persona se adapta mejor y esta mas preparada para las necesidades de la empresa. </p>
+                </div>`
+                if (respuesta.hasOwnProperty('empresa')) {
+                recarga +=`<div class="crear-ptecnica">
                     <button class="crear-ptecnica-btn" id="crear"><p class="button-text">Nueva Prueba Técnica</p></button>
-                </div>
-            </div>
+                </div>`}
+                recarga +=`</div>
             <div class="ver-ptecnica">`;
             if (respuesta.hasOwnProperty('empresa')) {
                 var empresa = respuesta.empresa;

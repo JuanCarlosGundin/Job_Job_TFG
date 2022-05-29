@@ -1426,6 +1426,7 @@ function creartrabajadorJS() {
                 setTimeout(() => { window.location.href = './inicio'; }, 2000);
 
             } else {
+                
                 console.log(respuesta)
                 swal.fire({
                     title: "Error",

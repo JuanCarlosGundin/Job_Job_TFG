@@ -2051,7 +2051,7 @@ function form_editar_estudios(evt) {
             recarga += `</div>`;
             recarga += `</form>`;
             recarga += `<div class="eliminar-cuenta-edit">`;
-            recarga += `<button class="eliminar-cuenta-btn"><p class="button-text">ELIMINAR</p></button>`;
+            recarga += `<button id="eliminar" class="eliminar-cuenta-btn"><p class="button-text">ELIMINAR</p></button>`;
             recarga += `</div>`;
             recarga += `</div>`;
             recarga += `</div>`;
@@ -2724,8 +2724,23 @@ function leer_habilidades() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<button id="crear">crear</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="crear"><i class="fa-solid fa-plus"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
             if (trabajador.curriculum != null) {
 
                 var curriculum = JSON.parse(trabajador.curriculum);
@@ -2735,11 +2750,21 @@ function leer_habilidades() {
 
                         for (let i = 0; i < curriculum.habilidades.length; i++) {
 
-                            recarga += `<div>`;
-                            recarga += `<p>${curriculum.habilidades[i].nombre_habilidad}</p>`;
-                            recarga += `<p>${curriculum.habilidades[i].nivel_habilidad}</p>`;
-                            recarga += `<button class="editar">Editar</button>`;
+                            recarga += `<div class="categoria">`;
+                            recarga += `<div class="categoria-linea">`;
+                            recarga += `<hr class="linea-divisoria">`;
                             recarga += `</div>`;
+                            recarga += `<div class="categoria-name-idioma">`;
+                            recarga += `<p class="categoria-p-idioma">${curriculum.habilidades[i].nombre_habilidad}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<div class="categoria-text-idioma">`;
+                            recarga += `<p class="categoria-p-text">${curriculum.habilidades[i].nivel_habilidad}</p>`;
+                            recarga += `</div>`;
+                            recarga += `<div class="idioma-btn-div">`;
+                            recarga += `<button class="editar"><i class="fa-solid fa-pen"></i></button>`;
+                            recarga += `</div>`;
+                            recarga += `</div>`;
+
                         }
                     } else {
 
@@ -2778,19 +2803,48 @@ function form_crear_habilidades() {
 
     var contenidoajax = document.getElementById("contenidoajax");
     var recarga = ``;
-    recarga += `<button id="volver">Volver</button>`;
-    recarga += `<div>`;
+    recarga += `<div class="edit-profile">`;
+    //Return
+    recarga += `<div class="return">`;
+    recarga += `<button class="return-btn" id="volver">`;
+    recarga += `<div class="return-icon">`;
+    recarga += `<i class="fa-solid fa-angle-left"></i>`;
+    recarga += `</div>`;
+    recarga += `<p class="return-text">VOLVER</p>`;
+    recarga += `</button>`;
+    recarga += `</div>`;
+    recarga += `<div class="edit-inputs">`;
     recarga += `<form id=form_habilidades>`;
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
-    recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" placeholder="Introduce tu habilidad">`;
-    recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
+
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += '<p class="p-text">HABILIDAD</p>';
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<input type="text" class="input" id="nombre_habilidad" name="nombre_habilidad" placeholder="Introduce tu habilidad">`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+
+    recarga += `<div class="edit-input">`;
+    recarga += `<div class="input-text">`;
+    recarga += '<p class="p-text">NIVEL</p>';
+    recarga += `</div>`;
+    recarga += `<div class="input-edit">`;
+    recarga += `<select class="input" name="nivel_habilidad" id="nivel_habilidad">`;
     recarga += `<option value="" selected>- selecciona -</option>`;
     recarga += `<option value="medio">medio</option>`;
     recarga += `<option value="alto">alto</option>`;
     recarga += `<option value="experto">experto</option>`;
     recarga += `</select>`;
-    recarga += `<button>Realizar cambios</button>`;
+    recarga += `</div>`;
+    recarga += `</div>`;
+
+    recarga += `<div class="aceptar-cuenta-edit">`;
+    recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+    recarga += `</div>`;
     recarga += `</form>`;
+    recarga += `</div>`;
     recarga += `</div>`;
     contenidoajax.innerHTML = recarga;
 
@@ -2887,20 +2941,48 @@ function form_editar_habilidades(evt) {
             var habilidades = curriculum.habilidades[i];
             var recarga = ``;
 
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_habilidades>`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
-            recarga += `<input type="text" class="" id="nombre_habilidad" name="nombre_habilidad" value="${habilidades.nombre_habilidad}">`;
-            recarga += `<select class="" name="nivel_habilidad" id="nivel_habilidad">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">HABILIDAD</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="nombre_habilidad" name="nombre_habilidad" value="${habilidades.nombre_habilidad}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">NIVEL</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<select class="input" name="nivel_habilidad" id="nivel_habilidad">`;
             recarga += `<option value="${habilidades.nivel_habilidad}" selected>${habilidades.nivel_habilidad}</option>`;
             recarga += `<option value="medio">medio</option>`;
             recarga += `<option value="alto">alto</option>`;
             recarga += `<option value="experto">experto</option>`;
             recarga += `</select>`;
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
-            recarga += `<button id="eliminar">Eliminar idioma</button>`;
+            recarga += `<div class="eliminar-cuenta-edit">`;
+            recarga += `<button id="eliminar" class="eliminar-cuenta-btn"><p class="button-text">Eliminar</p></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -3035,15 +3117,63 @@ function leer_disponibilidad() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon-name">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-clock"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            //titulo
+            recarga += `<p class="categoria-p-name">Jornada</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            //contenido
             if (!trabajador.disponibilidad) {
+
 
                 recarga += `<p class="">sin informar</p>`;
             } else {
 
                 recarga += `<p class="">${trabajador.disponibilidad}</p>`;
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon-name">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-id-card"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            //titulo
+            recarga += `<p class="categoria-p-name">Carnet de conducir</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            //contenido
             if (!trabajador.carnet_conducir) {
 
                 recarga += `<p class="">sin informar</p>`;
@@ -3051,6 +3181,23 @@ function leer_disponibilidad() {
 
                 recarga += `<p class="">${trabajador.carnet_conducir}</p>`;
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon-name">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-car"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            //titulo
+            recarga += `<p class="categoria-p-name">Vehiculo propio</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            //contenido
             if (!trabajador.vehiculo_propio) {
 
                 recarga += `<p class="">sin informar</p>`;
@@ -3058,6 +3205,11 @@ function leer_disponibilidad() {
 
                 recarga += `<p class="">${trabajador.vehiculo_propio}</p>`;
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
+
+            recarga += `</div>`;
+            recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -3090,25 +3242,45 @@ function form_disponibilidad() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_disponibilidad>`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!trabajador.disponibilidad) {
-
-                recarga += `<select class="" name="disponibilidad" id="disponibilidad">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">JORDANA</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<select class="input" name="disponibilidad" id="disponibilidad">`;
                 recarga += `<option value="" selected>- selecciona -</option>`;
-                recarga += `<option value="jornada completa">jornada completa (8 horas)</option>`;
-                recarga += `<option value="jornada parcial">jornada parcial (4 horas)</option>`;
-                recarga += `<option value="turno mañana">turno mañana</option>`;
-                recarga += `<option value="turno noche">turno noche</option>`;
-                recarga += `<option value="turno partida">turno partida</option>`;
-                recarga += `<option value="fines de semana">fines de semana</option>`;
+                recarga += `<option value="jornada completa">Jornada completa (8 horas)</option>`;
+                recarga += `<option value="jornada parcial">Jornada parcial (4 horas)</option>`;
+                recarga += `<option value="turno mañana">Turno mañana</option>`;
+                recarga += `<option value="turno noche">Turno noche</option>`;
+                recarga += `<option value="turno partida">Turno partida</option>`;
+                recarga += `<option value="fines de semana">Fines de semana</option>`;
                 recarga += `</select>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
 
-                recarga += `<select class="" name="disponibilidad" id="disponibilidad">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">JORDANA</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<select class="input" name="disponibilidad" id="disponibilidad">`;
                 recarga += `<option value="${trabajador.disponibilidad}" selected>${trabajador.disponibilidad}</option>`;
                 recarga += `<option value="jornada completa">jornada completa (8 horas)</option>`;
                 recarga += `<option value="jornada parcial">jornada parcial (4 horas)</option>`;
@@ -3117,43 +3289,80 @@ function form_disponibilidad() {
                 recarga += `<option value="turno partida">turno partida</option>`;
                 recarga += `<option value="fines de semana">fines de semana</option>`;
                 recarga += `</select>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+
             }
 
             if (!trabajador.carnet_conducir) {
 
-                recarga += `<select class="" name="carnet_conducir" id="carnet_conducir">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">CARNET DE CONDUCIR</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<select class="input" name="carnet_conducir" id="carnet_conducir">`;
                 recarga += `<option value="" selected>- selecciona -</option>`;
                 recarga += `<option value="si">si</option>`;
                 recarga += `<option value="no">no</option>`;
                 recarga += `</select>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+
             } else {
 
-                recarga += `<select class="" name="carnet_conducir" id="carnet_conducir">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">CARNET DE CONDUCIR</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<select class="input" name="carnet_conducir" id="carnet_conducir">`;
                 recarga += `<option value="${trabajador.carnet_conducir}" selected>${trabajador.carnet_conducir}</option>`;
                 recarga += `<option value="si">si</option>`;
                 recarga += `<option value="no">no</option>`;
                 recarga += `</select>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+
             }
 
             if (!trabajador.vehiculo_propio) {
 
-                recarga += `<select class="" name="vehiculo_propio" id="vehiculo_propio">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">VEHICULO PROPIO</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<select class="input" name="vehiculo_propio" id="vehiculo_propio">`;
                 recarga += `<option value="" selected>- selecciona -</option>`;
                 recarga += `<option value="si">si</option>`;
                 recarga += `<option value="no">no</option>`;
                 recarga += `</select>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
 
             } else {
 
-                recarga += `<select class="" name="vehiculo_propio" id="vehiculo_propio">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">VEHICULO PROPIO</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<select class="input" name="vehiculo_propio" id="vehiculo_propio">`;
                 recarga += `<option value="${trabajador.vehiculo_propio}" selected>${trabajador.vehiculo_propio}</option>`;
                 recarga += `<option value="si">si</option>`;
                 recarga += `<option value="no">no</option>`;
                 recarga += `</select>`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+
             }
 
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -3491,11 +3700,71 @@ function leer_editar_user_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
-            recarga += `<p class="">${trabajador.mail}</p>`;
-            recarga += `<p class="">contraseña</p>`;
-            recarga += `<p class="">${trabajador.nom_emp}</p>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
+
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-at"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            recarga += `<p class="categoria-p-name">EMAIL</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            recarga += `<p class="categoria-p-text">${trabajador.mail}</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-asterisk"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            recarga += `<p class="categoria-p-name">CONTRASEÑA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            recarga += `<p class="categoria-p-text">*************</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+
+            recarga += `<div class="categoria">`;
+            recarga += `<div class="categoria-icon">`;
+            recarga += `<i class="fa-solid fa-building"></i>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-name">`;
+            recarga += `<p class="categoria-p-name">NOMBRE DE LA EMPRESA</p>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-linea">`;
+            recarga += `<hr class="linea-divisoria">`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-text">`;
+            recarga += `<p class="categoria-p-text">${trabajador.nom_emp}</p>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+
+            recarga += `</div>`;
+            recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -3529,27 +3798,73 @@ function form_editar_user_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var trabajador = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_user_empresa>`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
-
-            recarga += `<input type="email" class="" id="mail" name="mail" value="${trabajador.mail}">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">EMAIL</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="email" class="input" id="mail" name="mail" value="${trabajador.mail}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             //antigua contraseña
-            recarga += `<input type="password" class="" id="contra_old" name="contra_old">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">CONTRASEÑA ANTIGUA</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra_old" name="contra_old">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             //nueva contra1
-            recarga += `<input type="password" class="" id="contra1" name="contra1">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">NUEVA CONTRASEÑA</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra1" name="contra1">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
             //nueva contra2
-            recarga += `<input type="password" class="" id="contra2" name="contra2">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">REPITE CONTRASEÑA</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="password" class="input" id="contra2" name="contra2">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
-            recarga += `<input type="text" class="" id="nom_emp" name="nom_emp" value="${trabajador.nom_emp}">`;
+            recarga += `<div class="edit-input">`;
+            recarga += `<div class="input-text">`;
+            recarga += '<p class="p-text">NOMBRE DE LA EMPRESA</p>';
+            recarga += `</div>`;
+            recarga += `<div class="input-edit">`;
+            recarga += `<input type="text" class="input" id="nom_emp" name="nom_emp" value="${trabajador.nom_emp}">`;
+            recarga += `</div>`;
+            recarga += `</div>`;
 
 
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -3997,22 +4312,96 @@ function leer_buscamos_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button class="" id="volver">Volver</button>`;
-            recarga += `<button class="" id="editar">Editar</button>`;
+            recarga += `<div class="vista-profile">`;
+            recarga += `<div class="categoria-edit">`;
+            //volver a la vista anterior
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            //ir a vista editar
+            recarga += `<div class="logout">`;
+            recarga += `<button class="logout-btn" id="editar"><i class="fa-solid fa-pen"></i></button>`;
+            recarga += `</div>`;
+            recarga += `</div>`;
+            recarga += `<div class="categoria-profile">`;
             if (!empresa.vacante) {
-
-                recarga += `<p class="">sin informar</p>`;
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-person-digging"></i>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">Vacante</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">Sin informar</p>`;
+                recarga += `</div>`;
+                recarga += `<br>`;
+                recarga += `</div>`;
             } else {
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-person-digging"></i>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">Vacante</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">${empresa.vacante}</p>`;
+                recarga += `</div>`;
+                recarga += `<br>`;
+                recarga += `</div>`;
 
-                recarga += `<p class="">${empresa.vacante}</p>`;
             }
             if (!empresa.searching) {
 
-                recarga += `<p class="">sin informar</p>`;
-            } else {
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-magnifying-glass"></i>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">Que buscamos?</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">Sin informar</p>`;
+                recarga += `</div>`;
+                recarga += `<br>`;
+                recarga += `</div>`;
 
-                recarga += `<p class="">${empresa.searching}</p>`;
+            } else {
+                recarga += `<div class="categoria">`;
+                recarga += `<div class="categoria-icon">`;
+                recarga += `<i class="fa-solid fa-magnifying-glass"></i>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-name">`;
+                recarga += `<p class="categoria-p-name">Que buscamos?</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">${empresa.searching}</p>`;
+                recarga += `</div>`;
+                recarga += `<br>`;
+                recarga += `</div>`;
+
+
             }
+            recarga += `</div>`;
+            recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
             document.getElementById("volver").addEventListener("click", mostrarperfilJS);
@@ -4055,7 +4444,7 @@ function form_buscamos_empresa() {
             recarga += `<p class="return-text">VOLVER</p>`;
             recarga += `</button>`;
             recarga += `</div>`;
-            recarga += `<div class="edit-profile">`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_buscamos_empresa>`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
@@ -4091,7 +4480,7 @@ function form_buscamos_empresa() {
             } else {
                 recarga += `<div class="edit-input">`;
                 recarga += `<div class="input-text">`;
-                recarga += '<p class="p-text">VACANTE</p>';
+                recarga += '<p class="p-text">DESCRIPCIÓN</p>';
                 recarga += `</div>`;
                 recarga += `<div class="input-edit">`;
                 recarga += `<input type="textarea" class="text-area" id="searching" name="searching" value="${empresa.searching}">`;
