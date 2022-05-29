@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PtecnicaController extends Controller{
     public function vistaptecnica(){
@@ -135,6 +136,14 @@ class PtecnicaController extends Controller{
     }
 
     public function insertar_trabajador_ptecnica(Request $req, $id_pt) {
+
+        $validator = Validator::make($req->all(), [
+            'zip_participante'=>'required|file|mimes:zip,7z,rar',
+        ]);
+        if ($validator->fails()) {
+
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
         $id=session()->get('id_user');
 
         try {
@@ -151,7 +160,8 @@ class PtecnicaController extends Controller{
                     $inicio_participante=Carbon::parse($ini_participante);
                     // mirar como poner horas empresa, yo me entiendo
                     $inicio_participante_extra=$inicio_participante->addHours($horas);
-                    $fecha_actual = Carbon::now('+02:00');
+                    $fecha_actual = Carbon::now();
+                    $fecha_actual = $fecha_actual->addHours(2);
                     if ($fecha_actual < $inicio_participante_extra) {
                         $zip=$json_prueba[$i]->zip_participante;
                         if ($zip != null) {
@@ -174,6 +184,14 @@ class PtecnicaController extends Controller{
     }
 
     public function crear_prueba_tecnica(Request $req) {
+
+        $validator = Validator::make($req->all(), [
+            'zip_prueba'=>'required|file|mimes:zip,7z,rar',
+        ]);
+        if ($validator->fails()) {
+
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
         $id=session()->get('id_user');
         //obtener dia y hora
         $date = Carbon::now('+02:00');

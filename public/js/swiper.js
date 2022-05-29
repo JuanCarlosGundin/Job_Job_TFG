@@ -328,17 +328,10 @@ function mostrar() {
                     var edad = getAge(respuesta[0].edad);
                     curriculum = JSON.parse(respuesta[0].curriculum);
                     recarga += `
-<<<<<<< HEAD
-                    <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
-                    <div class="content--card content--trabajador">
-                        <div class="img--card">
-                        `;
-=======
             <input type="hidden" id="userID" value="${respuesta[0].id_usuario}">
             <div class="content--card content--trabajador">
                 <div class="img--card">
                 `;
->>>>>>> 1967d2044445036bcf8938590766b35ca44b0728
                     if (respuesta[0].foto_perfil != null) {
                         recarga += `
                     <img class="img--trabajador" src="./storage/${respuesta[0].foto_perfil}">`;

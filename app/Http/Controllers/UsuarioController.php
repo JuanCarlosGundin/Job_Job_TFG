@@ -159,7 +159,7 @@ public function logout(Request $req){
             }
 
             DB::commit();
-            return response()->json(array('resultado'=> $idusuario, 'baneo'=>$datos[0]->estado));
+            return response()->json(array('resultado'=> 'OK'));
 
         }   catch (\Exception $e) {
 

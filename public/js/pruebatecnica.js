@@ -64,6 +64,12 @@ function objetoAjax() {
 
 }
 
+function htmlEncode(str) {
+    return String(str).replace(/[^\w. ]/gi, function(c) {
+        return '&#' + c.charCodeAt(0) + ';';
+    });
+}
+
 function leer_contenido() {
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
@@ -73,7 +79,6 @@ function leer_contenido() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var recarga = `<div class="content">
             <div class="div-crear-pt">
                 <div class="titulo-ptecnica">
@@ -200,7 +205,6 @@ function mostrar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
             var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
@@ -272,11 +276,9 @@ function iniciar_ptecnica_trabajador(evt) {
     var ajax = objetoAjax();
     ajax.open("POST", "iniciar_ptecnica_trabajador/" + id_empresa, true);
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
-            console.log(respuesta);
             if (respuesta.hasOwnProperty('trabajador')) {
                 var trabajador = respuesta.trabajador;
                 var date_p = new Date(trabajador.fecha_publicacion);
@@ -309,6 +311,7 @@ function iniciar_ptecnica_trabajador(evt) {
                     <p>Texto donde dice zip</p>
                 </div>
                 <form id="formarchivo" enctype="multipart/form-data">
+                <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
                     <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
                     <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
                 </form>
@@ -348,7 +351,6 @@ function entrar_ptecnica_trabajador(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
-            console.log(respuesta);
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
             var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
@@ -380,6 +382,7 @@ function entrar_ptecnica_trabajador(evt) {
                 <p>Texto donde dice zip</p>
             </div>
             <form id="formarchivo" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
                 <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
                 <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
             </form>
@@ -412,8 +415,22 @@ function enviar_zip_trabajador(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
-            if (respuesta.resultado == "fuera") {
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "zip guardado",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+
+            } else if (respuesta.resultado == "fuera") {
                 swal.fire({
                     title: "Fuera",
                     text: "Fuera de tiempo",
@@ -426,6 +443,13 @@ function enviar_zip_trabajador(evt) {
                         leer_contenido();
                     }
                 });
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -513,11 +537,11 @@ function form_crear_prueba_tecnica() {
 function crear_prueba_tecnica(evt) {
     evt.preventDefault();
 
-    var lenguaje = document.getElementById("lenguaje").value;
+    var lenguaje = htmlEncode(document.getElementById("lenguaje").value);
     var fecha_limite = document.getElementById("fecha_limite").value;
     var duracion = document.getElementById("duracion").value;
-    var enunciado = document.getElementById("enunciado").value;
-    var descripcion = document.getElementById("descripcion").value;
+    var enunciado = htmlEncode(document.getElementById("enunciado").value);
+    var descripcion = htmlEncode(document.getElementById("descripcion").value);
     var zip_prueba = document.getElementById("zip_prueba").files[0];
 
     var formData = new FormData();
@@ -534,7 +558,29 @@ function crear_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Prueba creada",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
     }
@@ -544,7 +590,6 @@ function crear_prueba_tecnica(evt) {
 
 function mostrar_prueba_tecnica_empresa(evt) {
     var id_pt = evt.currentTarget.id_pt;
-    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -556,10 +601,8 @@ function mostrar_prueba_tecnica_empresa(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var empresa = respuesta.empresa;
             var json_prueba = JSON.parse(empresa.json_prueba);
-            console.log(json_prueba);
             var recarga = ``;
             recarga += `
             <div class="ver-content">
@@ -587,7 +630,6 @@ function mostrar_prueba_tecnica_empresa(evt) {
             `;
             if (json_prueba) {
                 for (let i = 0; i < json_prueba.length; i++) {
-                    console.log(json_prueba[i].zip_participante)
                     recarga += `
                     <div class="div-butons">
                         <div class="pt-participante">
@@ -632,7 +674,6 @@ function mostrar_prueba_tecnica_empresa(evt) {
 function mostrar_participantes(evt) {
     var id_participante = evt.currentTarget.id_participante;
     var id_pt = evt.currentTarget.id_pt;
-    console.log(id_pt);
     var contenidoajax = document.getElementById("contenidoajax");
 
     var formData = new FormData();
@@ -644,7 +685,6 @@ function mostrar_participantes(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var recarga = ``;
             var trabajador = respuesta.participante;
 
@@ -787,7 +827,6 @@ function deshabilitar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             leer_contenido();
 
         }

@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="storage/uploads/logo.png">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/style-pol.css')}}">
