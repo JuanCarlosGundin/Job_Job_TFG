@@ -1283,9 +1283,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
 }
 
 .alerts .contenido-alerts .alert .alert-foto {
@@ -1298,9 +1298,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 5%;
-  -ms-flex-line-pack: right;
-      align-content: right;
+  width: 7%;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -1316,6 +1314,15 @@ body {
 }
 
 .alerts .contenido-alerts .alert .alert-mensaje {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 85%;
   margin-left: 10px;
 }
@@ -1329,7 +1336,13 @@ body {
 .alerts .contenido-alerts .alert .alert-mensaje .alert-mensaje-text {
   padding: 0;
   margin: 0;
-  font-size: 1.75vh;
+  font-size: 2vh;
+}
+
+@media only screen and (max-width: 1200px) {
+  .alerts .contenido-alerts .alert .alert-mensaje .alert-mensaje-text {
+    font-size: 1.75vh;
+  }
 }
 
 .alerts .contenido-alerts .alert .alert-user {

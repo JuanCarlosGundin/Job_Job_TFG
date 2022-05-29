@@ -975,7 +975,7 @@ body {
         .alert {
             justify-content: center;
             display: flex;
-            align-items: center;
+            align-items: left;
             .alert-foto {
                 @media only screen and (max-width: $tablet) {
                     width: 15%;
@@ -983,8 +983,7 @@ body {
                 justify-content: center;
                 display: flex;
                 align-items: center;
-                width: 5%;
-                align-content: right;
+                width: 7%;
                 .alert-profilefoto {
                     border-radius: 50px;
                     height: 7vh;
@@ -992,6 +991,9 @@ body {
                 }
             }
             .alert-mensaje {
+                justify-content: left;
+                display: flex;
+                align-items: center;
                 @media only screen and (max-width: $tablet) {
                     width: 65%;
                 }
@@ -1000,7 +1002,10 @@ body {
                 .alert-mensaje-text {
                     padding: 0;
                     margin: 0;
-                    font-size: 1.75vh;
+                    font-size: 2vh;
+                    @media only screen and (max-width: $tablet) {
+                        font-size: 1.75vh;
+                    }
                 }
             }
             .alert-user {

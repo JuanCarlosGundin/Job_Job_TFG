@@ -4017,14 +4017,26 @@ function leer_buscamos_empresa() {
             if (!empresa.vacante) {
                 recarga += `<div class="categoria">`;
                 recarga += `<div class="categoria-name">`;
-                recarga += `<p class="categoria-p-name">Sin informar</p>`;
+                recarga += `<p class="categoria-p-name">Vacante</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">Sin informar</p>`;
                 recarga += `</div>`;
                 recarga += `<br>`;
                 recarga += `</div>`;
             } else {
                 recarga += `<div class="categoria">`;
                 recarga += `<div class="categoria-name">`;
-                recarga += `<p class="categoria-p-name">${empresa.vacante}</p>`;
+                recarga += `<p class="categoria-p-name">Vacante</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">${empresa.vacante}</p>`;
                 recarga += `</div>`;
                 recarga += `<br>`;
                 recarga += `</div>`;
@@ -4034,7 +4046,13 @@ function leer_buscamos_empresa() {
 
                 recarga += `<div class="categoria">`;
                 recarga += `<div class="categoria-name">`;
-                recarga += `<p class="categoria-p-name">Sin informar</p>`;
+                recarga += `<p class="categoria-p-name">Que buscamos?</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">Sin informar</p>`;
                 recarga += `</div>`;
                 recarga += `<br>`;
                 recarga += `</div>`;
@@ -4042,7 +4060,13 @@ function leer_buscamos_empresa() {
             } else {
                 recarga += `<div class="categoria">`;
                 recarga += `<div class="categoria-name">`;
-                recarga += `<p class="categoria-p-name">${empresa.searching}</p>`;
+                recarga += `<p class="categoria-p-name">Que buscamos?</p>`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-linea">`;
+                recarga += `<hr class="linea-divisoria">`;
+                recarga += `</div>`;
+                recarga += `<div class="categoria-text">`;
+                recarga += `<p class="categoria-p-text">${empresa.searching}</p>`;
                 recarga += `</div>`;
                 recarga += `<br>`;
                 recarga += `</div>`;
@@ -4129,7 +4153,7 @@ function form_buscamos_empresa() {
             } else {
                 recarga += `<div class="edit-input">`;
                 recarga += `<div class="input-text">`;
-                recarga += '<p class="p-text">VACANTE</p>';
+                recarga += '<p class="p-text">DESCRIPCIÓN</p>';
                 recarga += `</div>`;
                 recarga += `<div class="input-edit">`;
                 recarga += `<input type="textarea" class="text-area" id="searching" name="searching" value="${empresa.searching}">`;
