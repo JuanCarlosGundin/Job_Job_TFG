@@ -2059,7 +2059,7 @@ function form_editar_estudios(evt) {
             recarga += `</div>`;
             recarga += `</form>`;
             recarga += `<div class="eliminar-cuenta-edit">`;
-            recarga += `<button class="eliminar-cuenta-btn"><p class="button-text">ELIMINAR</p></button>`;
+            recarga += `<button class="eliminar-cuenta-btn" id="eliminar"><p class="button-text">ELIMINAR</p></button>`;
             recarga += `</div>`;
             recarga += `</div>`;
             recarga += `</div>`;
@@ -3304,7 +3304,7 @@ function leer_configuracion() {
             var editar = document.getElementById("editar");
             editar.addEventListener("click", form_configuracion);
             var desactivar = document.getElementById("desactivar");
-            desactivar.id = trabajador.id;
+            desactivar.id_user = trabajador.id;
             desactivar.addEventListener("click", desactivar_cuenta)
         }
     }
@@ -3427,7 +3427,7 @@ function editar_configuracion(evt) {
                     allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        leer_sobre_mi();
+                        leer_configuracion();
                     }
                 });
 
@@ -3647,6 +3647,10 @@ function modificar_editar_user_empresa(evt) {
                     confirmButtonText: "OK",
                     allowOutsideClick: false,
                     allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_editar_user_empresa();
+                    }
                 });
 
             } else {
@@ -4059,9 +4063,9 @@ function form_buscamos_empresa() {
                 recarga += `</div>`;
             }
 
-            recarga += `</div>`;
             recarga += `<div class="aceptar-cuenta-edit">`;
             recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             recarga += `</form>`;
             recarga += `</div>`;
@@ -4203,7 +4207,7 @@ function leer_configuracion_empresa() {
             var editar = document.getElementById("editar");
             editar.addEventListener("click", form_configuracion_empresa);
             var desactivar = document.getElementById("desactivar");
-            desactivar.id = empresa.id;
+            desactivar.id_user = empresa.id;
             desactivar.addEventListener("click", desactivar_cuenta)
         }
     }
@@ -4266,9 +4270,9 @@ function form_configuracion_empresa() {
                 recarga += `</div>`;
 
             }
-            recarga += `</div>`;
             recarga += `<div class="aceptar-cuenta-edit">`;
             recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             recarga += `</form>`;
             recarga += `</div>`;
@@ -4326,7 +4330,7 @@ function editar_configuracion_empresa(evt) {
                     allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        leer_sobre_mi();
+                        leer_configuracion_empresa();
                     }
                 });
 
@@ -4341,7 +4345,7 @@ function editar_configuracion_empresa(evt) {
 }
 
 function desactivar_cuenta(evt) {
-    var id = evt.currentTarget.id;
+    var id = evt.currentTarget.id_user;
 
     var formData = new FormData();
 
