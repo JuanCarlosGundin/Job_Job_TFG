@@ -133,7 +133,7 @@ function mostrarperfilJS() {
                 recarga += `<div class="edit-foto">`;
                 recarga += `<label class="input-file">`;
                 recarga += `<i class="fa-solid fa-image"></i>`;
-                recarga += `<input type="file" class="input" id="foto_perfil" name="foto_perfil">`;
+                recarga += `<input type="file" accept="image/*" class="input" id="foto_perfil" name="foto_perfil">`;
                 recarga += `</label>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-ver-foto">`;
@@ -309,7 +309,7 @@ function mostrarperfilJS() {
                 recarga += `<div class="edit-foto">`;
                 recarga += `<label class="input-file">`;
                 recarga += `<i class="fa-solid fa-image"></i>`;
-                recarga += `<input type="file" class="input" id="logo_emp" name="logo_emp">`;
+                recarga += `<input type="file" accept="image/*" class="input" id="logo_emp" name="logo_emp">`;
                 recarga += `</label>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-ver-foto">`;
@@ -332,12 +332,11 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 recarga += `<div class="user-edit-div">`;
                 recarga += '<button class="user-edit-btn" id="boton_editar_user"><p class="edit-btn-p">EDITAR</p></button>';
+                recarga += `<button class="user-logout-btn" onClick="window.location.href='logout';"><p class="logout-btn-p">LOGOUT</p></button>`;
                 recarga += `</div>`;
                 recarga += `</button>`;
                 recarga += `</div>`;
-
                 recarga += `<hr class="linea-divisoria">`;
-
                 recarga += `<div class="emp-categories">`;
                 //sobre empresa
                 recarga += `<div class="emp-div-category">`;
@@ -437,7 +436,18 @@ function editar_foto_perfil() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            mostrarperfilJS();
+            if (respuesta.hasOwnProperty('errors')) {
+                swal.fire({
+                    title: "Error",
+                    text: `${respuesta.errors[0]}`,
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+            } else {
+                mostrarperfilJS();
+            }
 
         }
     }
@@ -775,6 +785,10 @@ function modificar_editar_user(evt) {
                     confirmButtonText: "OK",
                     allowOutsideClick: false,
                     allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_editar_user();
+                    }
                 });
 
             } else {
@@ -1265,11 +1279,25 @@ function editar_sobre_mi(evt) {
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Sobre mí",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_sobre_mi();
+                    }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
 
         }
@@ -1466,15 +1494,29 @@ function crear_idiomas(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Idiomas",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_idiomas();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_idiomas();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
 
@@ -1613,15 +1655,29 @@ function editar_idiomas(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Idiomas",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_idiomas();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_idiomas();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -1890,15 +1946,29 @@ function crear_estudios(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Estudios",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_estudios();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_estudios();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
 
@@ -2060,15 +2130,29 @@ function editar_estudios(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Estudios",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_estudios();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_estudios();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -2356,15 +2440,25 @@ function crear_experiencia(evt) {
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Experiencia",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos creados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         leer_experiencia();
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
         }
 
@@ -2538,15 +2632,25 @@ function editar_experiencias(evt) {
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Experiencia",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         leer_experiencia();
                     }
                 });
 
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
         }
 
@@ -2728,15 +2832,29 @@ function crear_habilidades(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Habilidades",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_habilidades();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos creados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_habilidades();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -2825,15 +2943,29 @@ function editar_habilidades(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Habilidades",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_habilidades();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_habilidades();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -3081,15 +3213,29 @@ function editar_disponibilidad(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Disponibilidad",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_disponibilidad();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_disponibilidad();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -3265,12 +3411,15 @@ function editar_configuracion(evt) {
             if (respuesta.resultado == "OK") {
 
                 swal.fire({
-                    title: "Configuración",
-                    text: "Datos guardados",
+                    title: "Exito",
+                    text: "Datos actualizados",
                     icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        leer_configuracion();
+                        leer_sobre_mi();
                     }
                 });
 
@@ -3303,7 +3452,18 @@ function editar_logo_emp() {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
-            mostrarperfilJS();
+            if (respuesta.hasOwnProperty('errors')) {
+                swal.fire({
+                    title: "Error",
+                    text: `${respuesta.errors[0]}`,
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+            } else {
+                mostrarperfilJS();
+            }
 
         }
     }
@@ -3470,6 +3630,25 @@ function modificar_editar_user_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
+            }
 
         }
 
@@ -3630,37 +3809,85 @@ function form_editar_sobre_empresa() {
             var respuesta = JSON.parse(this.responseText);
             var empresa = respuesta.resultado;
             var recarga = ``;
-            recarga += `<button id="volver">Volver</button>`;
-            recarga += `<div>`;
+            recarga += `<div class="edit-profile">`;
+            //Return
+            recarga += `<div class="return">`;
+            recarga += `<button class="return-btn" id="volver">`;
+            recarga += `<div class="return-icon">`;
+            recarga += `<i class="fa-solid fa-angle-left"></i>`;
+            recarga += `</div>`;
+            recarga += `<p class="return-text">VOLVER</p>`;
+            recarga += `</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="edit-inputs">`;
             recarga += `<form id=form_editar_sobre_empresa>`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
-            if (!empresa.about_emp) {
-
-                recarga += `<input type="textarea" class="" id="about_emp" name="about_emp" placeholder="sin informar">`;
-            } else {
-
-                recarga += `<input type="textarea" class="" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
-            }
-
             if (!empresa.campo_emp) {
-
-                recarga += `<input type="text" class="" id="campo_emp" name="campo_emp" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">TIPO EMPRESA</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="campo_emp" name="campo_emp" placeholder="Introduzca el tipo de empresa">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="campo_emp" name="campo_emp" value="${empresa.campo_emp}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">TIPO EMPRESA</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="campo_emp" name="campo_emp" value="${empresa.campo_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
             if (!empresa.loc_emp) {
-
-                recarga += `<input type="text" class="" id="loc_emp" name="loc_emp" placeholder="sin informar">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">DONDE ESTAMOS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="loc_emp" name="loc_emp" placeholder="Donde encontrarnos">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             } else {
-
-                recarga += `<input type="text" class="" id="loc_emp" name="loc_emp" value="${empresa.loc_emp}">`;
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">DONDE ESTAMOS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="text" class="input" id="loc_emp" name="loc_emp" value="${empresa.loc_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+            }
+            if (!empresa.about_emp) {
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" placeholder="Introduzca una breve descripción">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
+            } else {
+                recarga += `<div class="edit-input">`;
+                recarga += `<div class="input-text">`;
+                recarga += '<p class="p-text">SOBRE NOSOTROS</p>';
+                recarga += `</div>`;
+                recarga += `<div class="input-edit">`;
+                recarga += `<input type="textarea" class="text-area" id="about_emp" name="about_emp" value="${empresa.about_emp}">`;
+                recarga += `</div>`;
+                recarga += `</div>`;
             }
 
-            recarga += `<button>Realizar cambios</button>`;
+            recarga += `</div>`;
+            recarga += `<div class="aceptar-cuenta-edit">`;
+            recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</form>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             contenidoajax.innerHTML = recarga;
 
@@ -3719,15 +3946,29 @@ function editar_sobre_empresa(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Empresa",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_sobre_empresa();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_sobre_empresa();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -3917,15 +4158,29 @@ function editar_buscamos_empresa(evt) {
             var respuesta = JSON.parse(this.responseText);
             if (respuesta.resultado == "OK") {
 
-                swal.fire({
-                    title: "Buscar empresa",
-                    text: "Datos guardados",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_buscamos_empresa();
+                if (respuesta.resultado == "OK") {
+
+                    swal.fire({
+                        title: "Exito",
+                        text: "Datos actualizados",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_buscamos_empresa();
+                        }
+                    });
+
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
+                }
 
             }
         }
@@ -4100,6 +4355,22 @@ function editar_configuracion_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            if (respuesta.resultado == "OK") {
+
+                swal.fire({
+                    title: "Exito",
+                    text: "Datos actualizados",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_sobre_mi();
+                    }
+                });
+
+            }
 
         }
 

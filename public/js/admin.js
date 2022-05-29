@@ -826,7 +826,7 @@ function modificarJS(id, id_perfil) {
     var contra = document.getElementById("contra").value;
     var estado = document.getElementById("estado").value;
     var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
+    // var apellido = document.getElementById("apellido").value;
     var mostrado = document.getElementById("mostrado").value;
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
@@ -870,13 +870,6 @@ function modificarJS(id, id_perfil) {
         swal.fire({
             title: "Error",
             text: "Debes añadir un nombre",
-            icon: "error",
-        });
-        return false;
-    } else if (/^ *$/.test(apellido)) {
-        swal.fire({
-            title: "Error",
-            text: "Debes añadir un apellido",
             icon: "error",
         });
         return false;
@@ -979,6 +972,7 @@ function estadouserJS(id) {
 // ------------------------------------------CORREOS ADMIN---------------------------------------------------------
 
 function enviarcorreoadminJS() {
+    console.log("hola");
     let destinatario = document.getElementById('destinatario').value;
     let asunto = document.getElementById('asunto').value;
     let mensaje = document.getElementById('mensaje').value;

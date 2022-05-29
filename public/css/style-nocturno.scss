@@ -159,9 +159,6 @@
             }
             .region-navbar {
                 background-color: $third-color;
-                .main-icon {
-                    // background-color: $third-color;
-                }
                 .icon {
                     color: $white;
                     // background-color: $third-color;
@@ -180,8 +177,8 @@
                 .active {
                     background-color: $third-color;
                     .icon {
+                        background-color: $third-color !important;
                         color: black;
-                        background-color: $first-color !important;
                         border-top-left-radius: 0px !important;
                         // background-color: $first-color;
                         @media only screen and (max-width: $tablet) {
@@ -191,6 +188,16 @@
                     }
                 }
                 .active-center {
+                    background-color: $third-color !important;
+                    .icon {
+                        color: white !important;
+                        background-color: $third-color !important;
+                        @media only screen and (max-width: $tablet) {
+                            background-color: $first-color;
+                        }
+                    }
+                }
+                .active-left {
                     background-color: $first-color !important;
                     .icon {
                         color: white !important;
@@ -229,6 +236,26 @@
                             color: white;
                         }
                     }
+                }
+            }
+            input[type=submit] {
+                background-color: $second-color;
+                box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+            }
+            .modal-content {
+                background-color: $fourth-color;
+                h2 {
+                    color: white;
+                }
+                select {
+                    color: black;
+                    background-color: white;
+                }
+                textarea {
+                    background-color: white;
+                }
+                .closeemp {
+                    color: white;
                 }
             }
         }
@@ -337,6 +364,13 @@
         
         ///////////////////////////////////////////CHAT/////////////////////////////////////////
         .oscuro {
+            .chat {
+                p {
+                    color: white;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
             .main-chat {
                 .chat-main-sticky {
                     background-color: $first-color;
@@ -390,5 +424,57 @@
             }
             .chat-main-send {
                 background-color: $fourth-color;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////PRUEBA TÉCNICA///////////////////////////////////////////////////////////
+        .oscuro {
+            .ptecnica {
+                .content {
+                    .ver-ptecnica {
+                        .pruebas {
+                            background-color: $fifth-color;
+                            .pruebas-header {
+                                background-color: $fifth-color;
+                            }
+                        }
+                    }
+                    h1 {
+                        color: white;
+                    }
+                    p {
+                        color: white;
+                    }
+                    .button-text {
+                        color: black;
+                    }
+                    .div-crear-pt {
+                        background-color: $first-color !important;
+                    }
+                    .crear-ptecnica, .pruebas {
+                        background-color: $first-color;
+                    }
+                }
+                .content-user {
+                    .div-crear-pt {
+                        background-color: $first-color;
+                        h1 {
+                            color:white;
+                        }
+                        p {
+                            color: white;
+                        }
+                    }
+                }
+                .ver-content {
+                    .div-content {
+                        background-color: $fifth-color;
+                    }
+                    .div-return {
+                        .return-btn {
+                            color: white;
+                        }
+                    }
+                }
             }
         }
