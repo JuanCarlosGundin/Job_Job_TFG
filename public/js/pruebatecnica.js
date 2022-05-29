@@ -243,6 +243,9 @@ function mostrar_prueba_tecnica(evt) {
                         <p>${fecha_limite}</p>
                     </div>
                     <div>
+                        <button id="zip_prueba">Descargar zip</button>
+                    </div>
+                    <div>
                         <p>Habilidades requeridas:</p>
                         <p>Lo que sea</p>
                     </div>
@@ -264,6 +267,8 @@ function mostrar_prueba_tecnica(evt) {
             `;
             contenidoajax.innerHTML = recarga;
             document.getElementById("volver").addEventListener("click", leer_contenido)
+            document.getElementById("zip_prueba").zip_prueba = trabajador.zip_prueba;
+            document.getElementById("zip_prueba").addEventListener("click", descargar_archivo_emp);
             if (respuesta.hasOwnProperty('existe')) {
                 document.getElementById("entrar_prueba").id_empresa = trabajador.id_empresa;
                 document.getElementById("entrar_prueba").addEventListener("click", entrar_ptecnica_trabajador)
@@ -318,6 +323,9 @@ function iniciar_ptecnica_trabajador(evt) {
                     <p>${fecha_limite}</p>
                 </div>
                 <div>
+                    <button id="zip_prueba">Descargar zip</button>
+                </div>
+                <div>
                     <p>Formato de respuesta</p>
                     <p>Texto donde dice zip</p>
                 </div>
@@ -333,6 +341,8 @@ function iniciar_ptecnica_trabajador(evt) {
                 document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
                 document.getElementById("formarchivo").id_pt = trabajador.id;
                 document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
+                document.getElementById("zip_prueba").zip_prueba = trabajador.zip_prueba;
+                document.getElementById("zip_prueba").addEventListener("click", descargar_archivo_emp);
             } else {
                 swal.fire({
                     title: "Inscrito",
@@ -501,6 +511,7 @@ function form_crear_prueba_tecnica() {
         </div>
         <div class="edit-inputs">
             <form id="form_crear_prueba_tecnica" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
             <div class="edit-input">
                 <div class="input-text">
                     <p class="p-text">Lenguaje de la prueba</p>
@@ -883,4 +894,9 @@ function habilitar_prueba_tecnica(evt) {
         }
     }
     ajax.send(formData);
+}
+
+function descargar_archivo_emp(evt) {
+    var zip_prueba = evt.currentTarget.zip_prueba;
+    window.location.href = "./storage/" + zip_prueba;
 }
