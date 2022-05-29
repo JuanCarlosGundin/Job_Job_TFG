@@ -449,9 +449,20 @@ function perfilcarta(evt) {
             if (id_perfil == 2) {
 
                 var trabajador = respuesta.trabajador[0];
+
+                function getAge(dateString) {
+                    var today = new Date();
+                    var birthDate = new Date(dateString);
+                    var age = today.getFullYear() - birthDate.getFullYear();
+                    var m = today.getMonth() - birthDate.getMonth();
+                    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                        age--;
+                    }
+                    return age;
+                }
+                var edad = getAge(trabajador.edad);
                 console.log(trabajador);
 
-                // Foto
                 recarga += '<div class="user-vista">';
                 //Volver
                 recarga += '<div class="return">';
@@ -459,6 +470,8 @@ function perfilcarta(evt) {
                 recarga += '<i class="fa-solid fa-angle-left"></i>';
                 recarga += '</button>';
                 recarga += '</div>';
+                recarga += '<div class="container-info">';
+                // Foto
                 recarga += '<div class="user-ver-foto">';
                 recarga += '<div class="container-foto">';
 
@@ -478,18 +491,15 @@ function perfilcarta(evt) {
                 recarga += '<div class="user-ver">';
                 // Nombre, apellido y edad
                 recarga += '<div class="user-div-name">';
-                recarga += '<div class="user-icon-name">';
-                recarga += '<i class="fa-solid fa-user"></i>';
-                recarga += '</div>';
                 recarga += '<div class="divs-name">';
                 recarga += '<span class="p-name">  ' + trabajador.nombre + ' </span>';
-                recarga += '<span class="p-surname">  ' + trabajador.apellido + ' </span>';
-                recarga += '<i class="fa-solid fa-cake-candles"></i>';
-                recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
+                recarga += '<span class="p-surname">  ' + trabajador.apellido + ', </span>';
+                recarga += '<span class="p-age"> ' + edad + '</span>';
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '<hr>';
                 // mail
+                recarga += '<div class="user-misc">';
                 recarga += '<div class="user-div-house">';
                 recarga += '<div class="user-icon-name">';
                 recarga += '<i class="fa-solid fa-at"></i>';
@@ -518,11 +528,14 @@ function perfilcarta(evt) {
                         recarga += '<i class="fa-solid fa-book-open"></i>';
                         recarga += '</div>';
                         for (let i = 0; i < curriculum.estudios.length; i++) {
-                            recarga += '<div class="divs-house">';
+                            recarga += '<div class="divs-house div-formacion">';
                             recarga += '<span class="p-house">' + curriculum.estudios[i].nombre_formación + '</span>';
                             recarga += '<span class="p-house">' + curriculum.estudios[i].lugar_formación + '</span>';
+                            recarga += '<div class="duracion-item">';
                             recarga += '<span class="p-house">' + curriculum.estudios[i].año_entrada + '</span>';
+                            recarga += '<span class="separador-duracion"> - </span>';
                             recarga += '<span class="p-house">' + curriculum.estudios[i].año_salida + '</span>';
+                            recarga += '</div>';
                             recarga += '</div>';
                         }
                         recarga += '</div>';
@@ -534,26 +547,32 @@ function perfilcarta(evt) {
                         recarga += '<i class="fa-solid fa-briefcase"></i>';
                         recarga += '</div>';
                         for (let i = 0; i < curriculum.experiencia.length; i++) {
-                            recarga += '<div class="divs-house">';
+                            recarga += '<div class="divs-house div-experiencia">';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].nombre_experiencia + '</span>';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].lugar_experiencia + '</span>';
+                            recarga += '<div class="duracion-item">';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].año_entrada + '</span>';
+                            recarga += '<span class="separador-duracion"> - </span>';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].año_salida + '</span>';
+                            recarga += '</div>';
                             recarga += '<span class="p-house">' + curriculum.experiencia[i].funciones + '</span>';
                             recarga += '</div>';
                         }
                         recarga += '</div>';
                     }
+                    recarga += '<div class="niveles">';
                     if (curriculum.hasOwnProperty('idiomas')) {
                         // Idioma
-                        recarga += '<div>';
-                        recarga += '<div>';
-                        recarga += '<i class="fa-solid fa-language"></i>';
+                        recarga += '<div class="idiomas">';
+                        recarga += '<div class="titulo-niveles">';
+                        recarga += '<p>Idiomas</p>';
                         recarga += '</div>';
                         for (let i = 0; i < curriculum.idiomas.length; i++) {
                             recarga += '<div>';
-                            recarga += '<span>' + curriculum.idiomas[i].nombre_idioma + '</span>';
-                            recarga += '<span>' + curriculum.idiomas[i].nivel_idioma + '</span>';
+                            recarga += '<span class="nombre-item">' + curriculum.idiomas[i].nombre_idioma + '</span>';
+                            recarga += '<span class="percent">';
+                            recarga += '<div class="' + curriculum.idiomas[i].nivel_idioma + '"></div>';
+                            recarga += '</span>';
                             recarga += '</div>';
 
                         }
@@ -561,20 +580,23 @@ function perfilcarta(evt) {
                     }
                     if (curriculum.hasOwnProperty('habilidades')) {
                         // Habilidades
-                        recarga += '<div>';
-                        recarga += '<div>';
-                        recarga += '<i class="fa-solid fa-language"></i>';
+                        recarga += '<div class="habilidades">';
+                        recarga += '<div class="titulo-niveles">';
+                        recarga += '<p>Habilidades</p>';
                         recarga += '</div>';
                         for (let i = 0; i < curriculum.habilidades.length; i++) {
-                            recarga += '<div>';
-                            recarga += '<span>' + curriculum.habilidades[i].nombre_habilidad + '</span>';
-                            recarga += '<span>' + curriculum.habilidades[i].nivel_habilidad + '</span>';
+                            recarga += '<div class="niveles-item">';
+                            recarga += '<span class="nombre-item">' + curriculum.habilidades[i].nombre_habilidad + '</span>';
+                            recarga += '<span class="percent">';
+                            recarga += '<div class="' + curriculum.habilidades[i].nivel_habilidad + '"></div>';
+                            recarga += '</span>';
                             recarga += '</div>';
 
                         }
                         recarga += '</div>';
                     }
                 }
+                recarga += '</div>';
                 // Sector
                 recarga += '<div class="user-div-house">';
                 recarga += '<div class="user-icon-name">';
@@ -590,7 +612,7 @@ function perfilcarta(evt) {
                 recarga += '<i class="fa-solid fa-business-time"></i>';
                 recarga += '</div>';
                 recarga += '<div class="divs-house">';
-                recarga += '<span class="p-house">' + trabajador.disponibilidad + '</span>';
+                recarga += '<span class="p-house disponibilidad">' + trabajador.disponibilidad + '</span>';
                 recarga += '</div>';
                 recarga += '</div>';
                 // Descripcion
@@ -601,6 +623,8 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '<div class="divs-desc">';
                 recarga += '<span class="p-desc">' + trabajador.about_user + '</span>';
+                recarga += '</div>';
+                recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
@@ -650,6 +674,7 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 // Sede
                 recarga += '<hr>';
+                recarga += '<div class="empresa-misc">';
                 recarga += '<div class="empresa-div-house">';
                 recarga += '<div class="empresa-icon-name">';
                 recarga += '<i class="fa-solid fa-building"></i>';
@@ -683,6 +708,7 @@ function perfilcarta(evt) {
                 recarga += '</div>';
                 recarga += '<div class="divs-house">';
                 recarga += '<span class="p-house">' + empresa.vacante + '</span>';
+                recarga += '</div>';
                 recarga += '</div>';
                 recarga += '</div>';
                 // Descripcion
