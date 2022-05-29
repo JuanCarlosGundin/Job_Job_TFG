@@ -27,6 +27,30 @@ body {
 }
 
 /////////////////////////////////VER-PERFIL////////////////////////////////////
+.body-perfil {
+    .botones-perfil {
+        display: flex;
+        flex-direction: column;
+        float: right;
+        justify-content: center;
+        align-items: center;
+    }
+    .darkmode-btn {
+        padding: 1.5vh;
+        @media(max-width: $tablet) {
+            button {
+                display: flex!important;
+            }
+            .darkmodeswitch:after {
+                height: 100%;
+            }
+        }
+        @media(min-width: $tablet) {
+            display: none;
+        }
+
+    }
+}
 .ver-perfil {
     .user-fondo {
         width: 100%;

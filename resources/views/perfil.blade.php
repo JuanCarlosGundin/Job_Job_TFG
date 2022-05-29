@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">
     <title>PERFIL</title>
 </head>
-<body>
+<body class="body-perfil">
     <div class="row principal">
         <div class="column region-navbar">
             <div id='img_logo' class="row barra-navbar-img">
@@ -67,7 +67,7 @@
         </div>
     </div>
     <script src="js/perfil.js"></script>
-    <script src="js/modo_nocturno.js"></script>
+    <!-- <script src="js/modo_nocturno.js"></script> -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

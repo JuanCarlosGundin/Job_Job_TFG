@@ -13,6 +13,44 @@ body {
   background-color: #E5E5E5;
 }
 
+.body-perfil .botones-perfil {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  float: right;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.body-perfil .darkmode-btn {
+  padding: 1.5vh;
+}
+
+@media (max-width: 1200px) {
+  .body-perfil .darkmode-btn button {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+  .body-perfil .darkmode-btn .darkmodeswitch:after {
+    height: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .body-perfil .darkmode-btn {
+    display: none;
+  }
+}
+
 .ver-perfil .user-fondo {
   width: 100%;
   float: left;

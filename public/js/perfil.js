@@ -1,5 +1,11 @@
 window.onload = function() {
 
+    const switchButton = document.getElementById('switch');
+    if (localStorage.getItem('darkMode') == 'enabled') {
+        document.body.classList.toggle('oscuro');
+        switchButton.classList.toggle('active');
+    }
+
     leeridiomas();
     JSONidiomas = {};
     mostrarperfilJS();
@@ -124,8 +130,17 @@ function mostrarperfilJS() {
                 /* Foto */
                 recarga += `<div class="user-fondo">`;
                 recarga += `<div class="container-user-poligon">`;
+                recarga += `<div class="botones-perfil">`;
                 recarga += `<div class="logout">`;
                 recarga += `<button class="logout-btn" onClick="window.location.href='logout';"><i class="fa-solid fa-right-from-bracket"></i></button>`;
+                recarga += `</div>`;
+                recarga += `
+                <div class="darkmode-btn">
+                    <button type="button" class="darkmodeswitch" id="switch2">
+                        <span><i class="fa fa-sun-o"></i></span>   
+                        <span><i class="fa fa-moon-o"></i></span>
+                    </button>
+                </div>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-poligon">`;
                 recarga += `</div>`;
@@ -266,6 +281,39 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
 
+                const switchButton2 = document.getElementById('switch2');
+                console.log(switchButton2);
+                switchButton2.addEventListener('click', () => {
+                    document.body.classList.toggle('oscuro'); //body del html se cambia a la clase 'oscuro'
+                    switchButton2.classList.toggle('active'); //el boton se cambia a la clase "active"
+                    document.getElementById('switch').classList.toggle('active');
+
+                    if (document.body.classList.contains('oscuro')) { //si el body tiene la clase 'oscuro'
+                        localStorage.setItem('darkMode', 'enabled'); //activa el modo oscuro
+                    } else {
+                        localStorage.setItem('darkMode', 'disabled'); //si no, desactiva el modo oscuro
+                    }
+                });
+                const switchButton = document.getElementById('switch');
+
+                console.log(switchButton);
+                const workContainer = document.getElementById('work');
+
+                switchButton.addEventListener('click', () => {
+                    document.body.classList.toggle('oscuro'); //body del html se cambia a la clase 'oscuro'
+                    switchButton.classList.toggle('active'); //el boton se cambia a la clase "active"
+                    document.getElementById('switch2').classList.toggle('active');
+
+                    if (document.body.classList.contains('oscuro')) { //si el body tiene la clase 'oscuro'
+                        localStorage.setItem('darkMode', 'enabled'); //activa el modo oscuro
+                    } else {
+                        localStorage.setItem('darkMode', 'disabled'); //si no, desactiva el modo oscuro
+                    }
+                });
+                if (switchButton.classList.contains('active')) {
+                    switchButton2.classList.add('active');
+                }
+
                 document.getElementById("foto_perfil").addEventListener("change", editar_foto_perfil);
 
                 var boton_editar_user = document.getElementById("boton_editar_user");
@@ -300,8 +348,17 @@ function mostrarperfilJS() {
                 /* Foto */
                 recarga += `<div class="user-fondo">`;
                 recarga += `<div class="container-user-poligon">`;
+                recarga +=`<div class="botones-perfil">`
                 recarga += `<div class="logout">`;
                 recarga += `<button class="logout-btn" onClick="window.location.href='logout';"><i class="fa-solid fa-right-from-bracket"></i></button>`;
+                recarga += `</div>`;
+                recarga += `
+                <div class="darkmode-btn">
+                    <button type="button" class="darkmodeswitch" id="switch2">
+                        <span><i class="fa fa-sun-o"></i></span>   
+                        <span><i class="fa fa-moon-o"></i></span>
+                    </button>
+                </div>`;
                 recarga += `</div>`;
                 recarga += `<div class="user-poligon">`;
                 recarga += `</div>`;
@@ -382,6 +439,39 @@ function mostrarperfilJS() {
                 recarga += `</div>`;
                 recarga += `</div>`;
                 contenidoajax.innerHTML = recarga;
+
+                const switchButton2 = document.getElementById('switch2');
+                console.log(switchButton2);
+                switchButton2.addEventListener('click', () => {
+                    document.body.classList.toggle('oscuro'); //body del html se cambia a la clase 'oscuro'
+                    switchButton2.classList.toggle('active'); //el boton se cambia a la clase "active"
+                    document.getElementById('switch').classList.toggle('active');
+
+                    if (document.body.classList.contains('oscuro')) { //si el body tiene la clase 'oscuro'
+                        localStorage.setItem('darkMode', 'enabled'); //activa el modo oscuro
+                    } else {
+                        localStorage.setItem('darkMode', 'disabled'); //si no, desactiva el modo oscuro
+                    }
+                });
+                const switchButton = document.getElementById('switch');
+
+                console.log(switchButton);
+                const workContainer = document.getElementById('work');
+
+                switchButton.addEventListener('click', () => {
+                    document.body.classList.toggle('oscuro'); //body del html se cambia a la clase 'oscuro'
+                    switchButton.classList.toggle('active'); //el boton se cambia a la clase "active"
+                    document.getElementById('switch2').classList.toggle('active');
+
+                    if (document.body.classList.contains('oscuro')) { //si el body tiene la clase 'oscuro'
+                        localStorage.setItem('darkMode', 'enabled'); //activa el modo oscuro
+                    } else {
+                        localStorage.setItem('darkMode', 'disabled'); //si no, desactiva el modo oscuro
+                    }
+                });
+                if (switchButton.classList.contains('active')) {
+                    switchButton2.classList.add('active');
+                }
 
                 document.getElementById("logo_emp").addEventListener("change", editar_logo_emp);
 
@@ -3954,6 +4044,10 @@ function modificar_editar_user_empresa(evt) {
                     confirmButtonText: "OK",
                     allowOutsideClick: false,
                     allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_editar_user();
+                    }
                 });
 
             } else {
@@ -4196,10 +4290,9 @@ function form_editar_sobre_empresa() {
                 recarga += `</div>`;
                 recarga += `</div>`;
             }
-
-            recarga += `</div>`;
             recarga += `<div class="aceptar-cuenta-edit">`;
             recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             recarga += `</form>`;
             recarga += `</div>`;
@@ -4445,7 +4538,7 @@ function form_buscamos_empresa() {
             recarga += `</button>`;
             recarga += `</div>`;
             recarga += `<div class="edit-inputs">`;
-            recarga += `<form id=form_buscamos_empresa>`;
+            recarga += `<form id="form_buscamos_empresa">`;
             recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
             if (!empresa.vacante) {
@@ -4487,10 +4580,9 @@ function form_buscamos_empresa() {
                 recarga += `</div>`;
                 recarga += `</div>`;
             }
-
-            recarga += `</div>`;
             recarga += `<div class="aceptar-cuenta-edit">`;
             recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             recarga += `</form>`;
             recarga += `</div>`;
@@ -4511,7 +4603,7 @@ function form_buscamos_empresa() {
 function editar_buscamos_empresa(evt) {
 
     evt.preventDefault();
-
+    console.log('hola')
     var vacante = document.getElementById("vacante").value;
     var searching = document.getElementById("searching").value;
     var formData = new FormData();
@@ -4545,6 +4637,7 @@ function editar_buscamos_empresa(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta)
             if (respuesta.resultado == "OK") {
 
                 if (respuesta.resultado == "OK") {
@@ -4695,9 +4788,9 @@ function form_configuracion_empresa() {
                 recarga += `</div>`;
 
             }
-            recarga += `</div>`;
             recarga += `<div class="aceptar-cuenta-edit">`;
             recarga += `<button class="aceptar-cuenta-btn"><p class="button-text">Guardar</p></button>`;
+            recarga += `</div>`;
             recarga += `</div>`;
             recarga += `</form>`;
             recarga += `</div>`;
@@ -4755,7 +4848,7 @@ function editar_configuracion_empresa(evt) {
                     allowEscapeKey: false,
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        leer_sobre_mi();
+                        leer_configuracion_empresa();
                     }
                 });
 
