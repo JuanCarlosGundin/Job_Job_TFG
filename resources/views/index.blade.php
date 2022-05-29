@@ -8,7 +8,6 @@
     <link rel="icon" href="storage/uploads/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>JobJob</title>
-
     <link rel="stylesheet" href="{{asset('css/style-laura.css')}}">
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
 </head>
@@ -67,7 +66,6 @@
         <div class="footer-2">
         <h2>Más información</h2>
         <a href="">Home</a><br><br>
-        <a href="">FAQ</a><br><br>
         <a href="paginacontacto">Contacto</a>
         </div>
         <div class="footer-3">

@@ -662,18 +662,21 @@ function formtrabajador3() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     //loc_trabajador
+    recarga += '<label for="loc_trabajador">Localización</label>';
     recarga += '<input type="text" class="inputregister" id="loc_trabajador" name="loc_trabajador" placeholder="Introduce tu localizacion...">';
     //disponibilidad
+    recarga += '<label for="disponibilidad">Disponibilidad</label>';
     recarga += '<select class="inputregister" name="disponibilidad" id="disponibilidad">';
-    recarga += '<option value="" selected>- selecciona -</option>';
-    recarga += '<option value="jornada completa">jornada completa (8 horas)</option>';
-    recarga += '<option value="jornada parcial">jornada parcial (4 horas)</option>';
-    recarga += '<option value="turno mañana">turno mañana</option>';
-    recarga += '<option value="turno noche">turno noche</option>';
-    recarga += '<option value="turno partida">turno partida</option>';
-    recarga += '<option value="fines de semana">fines de semana</option>';
+    recarga += '<option value="" selected>- Selecciona -</option>';
+    recarga += '<option value="jornada completa">Jornada completa (8 horas)</option>';
+    recarga += '<option value="jornada parcial">Jornada parcial (4 horas)</option>';
+    recarga += '<option value="turno mañana">Turno de mañana</option>';
+    recarga += '<option value="turno noche">Turno de noche</option>';
+    recarga += '<option value="turno partida">turno partido</option>';
+    recarga += '<option value="fines de semana">Fines de semana</option>';
     recarga += '</select>';
     //Foto
+    recarga += '<label for="foto_perfil">Imagen de Perfil</label>';
     recarga += '<input type="file" class="foto" name="foto_perfil" id="foto_perfil">';
     recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
     recarga += '</form>';
@@ -793,34 +796,43 @@ function formtrabajador4() {
     /* Estructura linea */
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
-    recarga += '<div id="lineaidioma-0">';
+    recarga += '<div id="lineaidioma-0" class="linea-registro">';
     //nombre_idioma
-    recarga += '<div class="column-2">';
-    recarga += '<p>Idioma</p>';
-    recarga += '<select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
-    recarga += '<option selected>- selecciona -</option>';
+    recarga += '<div class="mas-menos">'
+    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
+    recarga += '</div>'
+    recarga += `
+                <div class="fila-linea-idioma">
+                    <div class="column-2">
+                        <p>Idioma</p>
+                        <select class="inputregister inputcolumn2" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">
+                            <option selected>- Selecciona -</option>
+
+    `
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
-    recarga += '</select>';
+    recarga += `
+                        </select>
+    `
     recarga += '</div>';
     //nivel_idioma
     recarga += '<div class="column-2">';
     recarga += '<p>Nivel</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nivel_idioma[]" id="nivel_idioma">';
-    recarga += '<option value="" selected>- selecciona -</option>';
-    recarga += '<option value="bajo">bajo</option>';
-    recarga += '<option value="medio">medio</option>';
-    recarga += '<option value="alto">alto</option>';
-    recarga += '<option value="nativo">nativo</option>';
+    recarga += '<option value="" selected>- Selecciona -</option>';
+    recarga += '<option value="bajo">Bajo</option>';
+    recarga += '<option value="medio">Medio</option>';
+    recarga += '<option value="alto">Alto</option>';
+    recarga += '<option value="nativo">Nativo</option>';
     recarga += '</select>';
-    recarga += '</div>';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '</div>';
-    recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
+    // recarga += '<button class="mas" type="button" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -845,10 +857,10 @@ function insertaridioma() {
     var recarga = "";
     recarga += '<div id="lineaidioma-' + k + '">';
     //nombre_idioma
-    recarga += '<div class="column-2">';
+    recarga += '<div class="fila-linea-idioma"><div class="column-2">';
     recarga += '<p>Idioma</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nombre_idioma[]" id="nombre_idioma" data-show-subtext="false" data-live-search="true">';
-    recarga += '<option value="" selected>- selecciona -</option>';
+    recarga += '<option value="" selected>- Selecciona -</option>';
     for (let i = 0; i < JSONidiomas.length; i++) {
         recarga += '<option value="' + JSONidiomas[i].nombre_idioma + '">' + JSONidiomas[i].nombre_idioma + '</option>';
     }
@@ -858,13 +870,13 @@ function insertaridioma() {
     recarga += '<div class="column-2">';
     recarga += '<p>Nivel</p>';
     recarga += '<select class="inputcolumn2 inputregister" name="nivel_idioma[]" id="nivel_idioma">';
-    recarga += '<option value="" selected>- selecciona -</option>';
-    recarga += '<option value="bajo">bajo</option>';
-    recarga += '<option value="medio">medio</option>';
-    recarga += '<option value="alto">alto</option>';
-    recarga += '<option value="nativo">nativo</option>';
+    recarga += '<option value="" selected>- Selecciona -</option>';
+    recarga += '<option value="bajo">Bajo</option>';
+    recarga += '<option value="medio">Medio</option>';
+    recarga += '<option value="alto">Alto</option>';
+    recarga += '<option value="nativo">Nativo</option>';
     recarga += '</select>';
-    recarga += '</div>';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
     recarga += '</div>';
@@ -976,7 +988,7 @@ function formtrabajador5() {
     recarga += '<button class="btn-signin registrar-activo" id="loginclick">Sign In</button>'
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
-    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="modal-content-register"><div class="">';
     //Flechas registro
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
@@ -987,7 +999,9 @@ function formtrabajador5() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     /* Estructura linea */
-    recarga += '<div id="lineaestudio-0">';
+    recarga += '<div id="lineaestudio-0" class="linea-registro">';
+    recarga += '<div class="fila-linea-expfor">';
+
 
     //nombre_formación
     recarga += '<div class="column-2">';
@@ -1008,13 +1022,13 @@ function formtrabajador5() {
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
     recarga += '<input type="date" class="inputregister inputcolumn2" id="año_salida" name="año_salida[]">';
-    recarga += '</div>';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1037,7 +1051,8 @@ function insertarestudio() {
     var lestudio = "lineaestudio-" + (k - 1);
     var lineaestudio = document.getElementById(lestudio);
     var recarga = "";
-    recarga += '<div id="lineaestudio-' + k + '">';
+    recarga += '<div id="lineaestudio-' + k + '" class="linea-registro">';
+    recarga += '<div class="fila-linea-expfor">';
     //nombre_formación
     recarga += '<div class="column-2">';
     recarga += '<p>Nombre de formación</p>';
@@ -1057,7 +1072,7 @@ function insertarestudio() {
     recarga += '<div class="column-2">';
     recarga += '<p>Año de salida</p>';
     recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]">';
-    recarga += '</div>';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
     recarga += '</div>';
@@ -1184,9 +1199,10 @@ function formtrabajador6() {
     recarga += '<button class="btn-register" id="registrarclick">Register</button>'
     recarga += '</div>';
     //Flechas registro
-    recarga += '<div class="modal-content-register"><div class="scrollbar">';
+    recarga += '<div class="modal-content-register"><div class="">';
     recarga += '<div class="izquierda-derecha">';
     recarga += '<button class="izquierda" id="izquierda"><i class="fa-solid fa-left-long"></i></button>';
+    recarga += '<button class="derecha" id="derecha" style="opacity:0;pointer-events:none;"><i class="fa-solid fa-right-long"></i></button>';
     recarga += '</div>';
     recarga += '<h3>¿Dónde has trabajado?</h3>';
     recarga += '<form method="POST" id="formtrabajador6" enctype="multipart/form-data">';
@@ -1194,11 +1210,12 @@ function formtrabajador6() {
     recarga += '<div class="alert alert-danger" id="alert-danger" style="display:none"></div>';
 
     /* Estructura linea */
-    recarga += '<div id="lineaexperiencia-0">';
+    recarga += '<div id="lineaexperiencia-0" class="linea-registro">';
+    recarga += '<div class="fila-linea-expfor">';
 
     //nombre_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>Nombre de empresa</p>';
+    recarga += '<p>Experiencia</p>';
     recarga += '<input type="text" class="inputcolumn2 inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto">';
     recarga += '</div>';
     //lugar_experiencia
@@ -1220,13 +1237,13 @@ function formtrabajador6() {
     recarga += '<div class="column-1">';
     recarga += '<p>funciones</p>';
     recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
-    recarga += '</div>';
+    recarga += '</div></div>';
     recarga += '<div>';
     recarga += '<button type="button" class="mas" id="mas"><i class="fa-solid fa-plus"></i></button>';
     recarga += '</div>';
     recarga += '</div>';
     /* Estructura linea */
-    recarga += '<input type="submit" class="botonregister" value="Guardar datos">';
+    recarga += '<input type="submit" class="botonregister" value="Registrarse">';
     recarga += '</form>';
     recarga += '</div>';
     recarga += '</div>';
@@ -1248,31 +1265,33 @@ function insertarexperiencia() {
     var lexperiencia = "lineaexperiencia-" + (k - 1);
     var lineaexperiencia = document.getElementById(lexperiencia);
     var recarga = "";
-    recarga += '<div id="lineaexperiencia-' + k + '">';
+    recarga += '<div id="lineaexperiencia-' + k + '" class="linea-registro">';
+    recarga += '<div class="fila-linea-expfor">';
     //nombre_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>nombre_experiencia</p>';
+    recarga += '<p>Experiencia</p>';
     recarga += '<input type="text" class="inputregister" id="nombre_experiencia" name="nombre_experiencia[]" placeholder="Nombre puesto">';
     recarga += '</div>';
     //lugar_experiencia
     recarga += '<div class="column-2">';
-    recarga += '<p>lugar_experiencia</p>';
+    recarga += '<p>Lugar experiencia</p>';
     recarga += '<input type="text" class="inputregister" id="lugar_experiencia" name="lugar_experiencia[]" placeholder="Empresa">';
-    recarga += '</div>';
-    //funciones
-    recarga += '<div class="column-1">';
-    recarga += '<p>funciones</p>';
-    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
     recarga += '</div>';
     //año_entrada
     recarga += '<div class="column-2">';
-    recarga += '<p>año_entrada</p>';
+    recarga += '<p>Año entrada</p>';
     recarga += '<input type="date" class="inputregister" id="año_entrada" name="año_entrada[]">';
     recarga += '</div>';
     //año_salida
     recarga += '<div class="column-2">';
-    recarga += '<p>año_salida</p>';
+    recarga += '<p>Año salida</p>';
     recarga += '<input type="date" class="inputregister" id="año_salida" name="año_salida[]">';
+    recarga += '</div>';
+    //funciones
+    recarga += '<div class="column-1">';
+    recarga += '<p>Funciones</p>';
+    recarga += '<input type="textarea" class="inputregister" id="funciones" name="funciones[]" placeholder="Funciones dentro de la empresa">';
+    recarga += '</div>';
     recarga += '</div>';
     recarga += '<div>';
     recarga += '<button type="button" class="menos" id="menos' + k + '"><i class="fa-solid fa-minus"></i></button>';
@@ -1426,7 +1445,7 @@ function creartrabajadorJS() {
                 setTimeout(() => { window.location.href = './inicio'; }, 2000);
 
             } else {
-                
+
                 console.log(respuesta)
                 swal.fire({
                     title: "Error",

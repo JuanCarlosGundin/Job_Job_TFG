@@ -20,8 +20,12 @@ body {
 
 .ver-perfil .user-fondo .container-user-poligon {
   position: relative;
-  -webkit-animation: an1 1s;
-          animation: an1 1s;
+}
+
+@media only screen and (min-width: 1200px) {
+  .ver-perfil .user-fondo .container-user-poligon .botones-perfil {
+    display: none;
+  }
 }
 
 .ver-perfil .user-fondo .container-user-poligon .logout {
@@ -117,10 +121,11 @@ body {
 }
 
 .ver-perfil .user-fondo .container-user-poligon .div-foto .user-ver-foto .user-profilefoto {
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   -o-object-position: center center;
      object-position: center center;
+  border-radius: 50vh;
   height: 34vh;
   width: 34vh;
 }
@@ -1444,6 +1449,11 @@ body {
   }
 }
 
+.chat .XD {
+  font-weight: bold;
+  text-align: center;
+}
+
 .chat .chats {
   padding: 15px;
   -webkit-box-pack: center;
@@ -2481,7 +2491,7 @@ body {
   padding-right: 16px;
   text-align: center;
   white-space: nowrap;
-  will-change: box-shadow, transform;
+  will-change: box-shadow, transform;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -2864,7 +2874,7 @@ body {
   padding-right: 16px;
   text-align: center;
   white-space: nowrap;
-  will-change: box-shadow, transform;
+  will-change: box-shadow, transform;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -2921,7 +2931,7 @@ body {
   padding-right: 16px;
   text-align: center;
   white-space: nowrap;
-  will-change: box-shadow, transform;
+  will-change: box-shadow, transform;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -3270,12 +3280,6 @@ body {
   border-radius: 30px;
 }
 
-@media only screen and (max-width: 1200px) {
-  .ptecnica .content-ver-prueba-user {
-    padding-top: 20px;
-  }
-}
-
 .ptecnica .content-ver-prueba-user .zip-prueba {
   float: left;
   -webkit-box-align: center;
@@ -3326,13 +3330,14 @@ body {
 }
 
 .ptecnica .content-ver-prueba-user .entrar-prueba {
+  float: right;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: #0076CA;
+  background-color: #92AFD7;
   border-radius: 1vh;
   border-width: 0;
   -webkit-box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
@@ -3371,11 +3376,11 @@ body {
 .ptecnica .content-ver-prueba-user .entrar-prueba .button-text {
   font-weight: bolder;
   font-size: 15px;
-  color: #ffffff;
+  color: white;
 }
 
 .ptecnica .content-ver-prueba-user .iniciar-prueba {
-  float: right;
+  float: left;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -3421,6 +3426,624 @@ body {
 .ptecnica .content-ver-prueba-user .iniciar-prueba .button-text {
   font-weight: bolder;
   font-size: 15px;
-  color: #ffffff;
+}
+
+.ptecnica .content-ver-prueba-user .file-prueba {
+  float: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #ffffff;
+  border-radius: 1vh;
+  border-width: 0;
+  -webkit-box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+          box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 48px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 1;
+  list-style: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+}
+
+.ptecnica .content-ver-prueba-user .file-prueba .input[type="file"] {
+  display: none;
+}
+
+.ptecnica .content-ver-prueba-user .file-prueba:focus {
+  -webkit-box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+          box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.ptecnica .content-ver-prueba-user .file-prueba:active {
+  -webkit-box-shadow: #D6D6E7 0 3px 7px inset;
+          box-shadow: #D6D6E7 0 3px 7px inset;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.ptecnica .content-ver-prueba-user .file-prueba .button-text {
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.empresa-vista .btn-reporte,
+.user-vista .btn-reporte {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .empresa-vista,
+  .user-vista {
+    -webkit-box-pack: end !important;
+        -ms-flex-pack: end !important;
+            justify-content: flex-end !important;
+  }
+  .empresa-vista .container-info,
+  .user-vista .container-info {
+    width: 100% !important;
+  }
+}
+
+.empresa-vista .return,
+.user-vista .return {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+}
+
+.empresa-vista .return button,
+.user-vista .return button {
+  background: transparent;
+  border: none;
+  font-size: calc(40px + 0.2vw);
+}
+
+@media (max-width: 768px) {
+  .empresa-vista .return,
+  .user-vista .return {
+    top: 10px;
+    left: 20px;
+  }
+  .empresa-vista .return button,
+  .user-vista .return button {
+    font-size: calc(25px + 0.2vw);
+  }
+}
+
+.empresa-vista .idiomas,
+.empresa-vista .habilidades,
+.user-vista .idiomas,
+.user-vista .habilidades {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.empresa-vista .idiomas > div,
+.empresa-vista .habilidades > div,
+.user-vista .idiomas > div,
+.user-vista .habilidades > div {
+  width: 100%;
+}
+
+.empresa-vista {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.empresa-vista .container-info::-webkit-scrollbar {
+  display: none;
+}
+
+.empresa-vista .container-info {
+  overflow-y: scroll;
+  max-height: 90%;
+  width: 50%;
+  background: white;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
+.empresa-vista .container-info .empresa-ver-foto {
+  text-align: center;
+  width: 70%;
+  padding-bottom: 20px;
+}
+
+.empresa-vista .container-info .empresa-ver-foto img {
+  max-width: 100%;
+  max-height: 300px;
+  min-width: 150px;
+}
+
+.empresa-vista .container-info .p-name {
+  font-size: calc(30px + 0.2vw);
+  font-weight: bold;
+}
+
+.empresa-vista .container-info .empresa-misc {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.empresa-vista .container-info .empresa-misc .empresa-div-house {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+.empresa-vista .container-info .empresa-misc .empresa-div-house .empresa-icon-name {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  text-align: center;
+  font-size: calc(20px + 0.2vw);
+}
+
+.empresa-vista .container-info .empresa-misc .empresa-div-house .empresa-icon-name i {
+  color: black;
+}
+
+.empresa-vista .container-info .empresa-misc .empresa-div-house .p-house {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
+}
+
+.empresa-vista .container-info .empresa-div-desc {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+.empresa-vista .container-info .empresa-div-desc .empresa-icon-desc {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  text-align: center;
+}
+
+.empresa-vista .container-info .empresa-div-desc .empresa-icon-desc span {
+  font-weight: bold;
+}
+
+.empresa-vista .container-info .empresa-div-desc .divs-desc {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
+}
+
+#zonaalerts {
+  overflow-y: scroll;
+  height: 80.3vh;
+}
+
+.body-notificaciones #content,
+.body-ptecnica #content {
+  height: 90%;
+}
+
+.body-notificaciones #content #contenidoajax,
+.body-ptecnica #content #contenidoajax {
+  height: 100%;
+}
+
+.body-notificaciones .user-vista,
+.body-ptecnica .user-vista {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.body-notificaciones .user-vista .container-info::-webkit-scrollbar,
+.body-ptecnica .user-vista .container-info::-webkit-scrollbar {
+  display: none;
+}
+
+.body-notificaciones .user-vista .container-info,
+.body-ptecnica .user-vista .container-info {
+  overflow-y: scroll;
+  height: 90%;
+  width: 50%;
+  background: white;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
+.body-notificaciones .user-vista .container-info .user-ver-foto,
+.body-ptecnica .user-vista .container-info .user-ver-foto {
+  text-align: center;
+  width: 70%;
+  padding-bottom: 20px;
+}
+
+.body-notificaciones .user-vista .container-info .user-ver-foto img,
+.body-ptecnica .user-vista .container-info .user-ver-foto img {
+  max-width: 100%;
+  max-height: 300px;
+  min-width: 150px;
+}
+
+.body-notificaciones .user-vista .container-info .p-name,
+.body-notificaciones .user-vista .container-info .p-surname,
+.body-notificaciones .user-vista .container-info .p-age,
+.body-ptecnica .user-vista .container-info .p-name,
+.body-ptecnica .user-vista .container-info .p-surname,
+.body-ptecnica .user-vista .container-info .p-age {
+  font-size: calc(30px + 0.2vw);
+  font-weight: bold;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc,
+.body-ptecnica .user-vista .container-info .user-misc {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .user-icon-name,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .user-icon-name {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  text-align: center;
+  font-size: calc(20px + 0.2vw);
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .user-icon-name i,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .user-icon-name i {
+  color: black;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .divs-house,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .divs-house {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-experiencia,
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-formacion,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-experiencia,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-formacion {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+  grid-auto-rows: minmax(40px, auto);
+  margin-bottom: 32px;
+  background: aliceblue;
+  padding: 10px;
+  border-radius: 20px;
+  grid-gap: 20px;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-experiencia > span,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-experiencia > span {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-experiencia > span:nth-child(2),
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-experiencia > span:nth-child(2) {
+  font-style: italic;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-experiencia > span:nth-child(1),
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-experiencia > span:nth-child(1) {
+  font-weight: bold;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-experiencia .duracion-item,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-experiencia .duracion-item {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-row: 1/4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-experiencia .duracion-item .separador-duracion,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-experiencia .duracion-item .separador-duracion {
+  margin: 0 3px;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-formacion > span,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-formacion > span {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-formacion > span:nth-child(2),
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-formacion > span:nth-child(2) {
+  font-style: italic;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-formacion > span:nth-child(1),
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-formacion > span:nth-child(1) {
+  font-weight: bold;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-formacion .duracion-item,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-formacion .duracion-item {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .user-div-house .div-formacion .duracion-item .separador-duracion,
+.body-ptecnica .user-vista .container-info .user-misc .user-div-house .div-formacion .duracion-item .separador-duracion {
+  margin: 0 3px;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles,
+.body-ptecnica .user-vista .container-info .user-misc .niveles {
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles > div > div:not(.titulo-niveles),
+.body-ptecnica .user-vista .container-info .user-misc .niveles > div > div:not(.titulo-niveles) {
+  margin-bottom: 10px;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .titulo-niveles p,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .titulo-niveles p {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .body-notificaciones .user-vista .container-info .user-misc .niveles,
+  .body-ptecnica .user-vista .container-info .user-misc .niveles {
+    padding: 0;
+  }
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .idiomas,
+.body-notificaciones .user-vista .container-info .user-misc .niveles .habilidades,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .idiomas,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .habilidades {
+  width: 50%;
+  padding: 15px;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #aaaaaa;
+  display: block;
+  margin-top: 5px;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #0076CA;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.bajo,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.bajo {
+  width: 40%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.Medio,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.Medio {
+  width: 60%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.medio,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.medio {
+  width: 60%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.Avanzado,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.Avanzado {
+  width: 80%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.avanzado,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.avanzado {
+  width: 80%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.Alto,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.Alto {
+  width: 80%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.alto,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.alto {
+  width: 80%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.Experto,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.Experto {
+  width: 100%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.experto,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.experto {
+  width: 100%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.Nativo,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.Nativo {
+  width: 100%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .niveles .percent div.nativo,
+.body-ptecnica .user-vista .container-info .user-misc .niveles .percent div.nativo {
+  width: 100%;
+}
+
+.body-notificaciones .user-vista .container-info .user-misc .disponibilidad,
+.body-ptecnica .user-vista .container-info .user-misc .disponibilidad {
+  text-transform: capitalize;
+}
+
+.body-notificaciones .user-vista .container-info .user-div-desc,
+.body-ptecnica .user-vista .container-info .user-div-desc {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+.body-notificaciones .user-vista .container-info .user-div-desc .user-icon-desc,
+.body-ptecnica .user-vista .container-info .user-div-desc .user-icon-desc {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  text-align: center;
+}
+
+.body-notificaciones .user-vista .container-info .user-div-desc .user-icon-desc span,
+.body-ptecnica .user-vista .container-info .user-div-desc .user-icon-desc span {
+  font-weight: bold;
+}
+
+.body-notificaciones .user-vista .container-info .user-div-desc .divs-desc,
+.body-ptecnica .user-vista .container-info .user-div-desc .divs-desc {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
 }
 /*# sourceMappingURL=style-pol.css.map */

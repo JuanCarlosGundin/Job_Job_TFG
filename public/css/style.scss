@@ -145,11 +145,31 @@ body {
                 height: 100%;
                 border-top-left-radius: 30px;
                 &:hover {
-                    color: blue;
+                    color: black;
                 }
                 @media only screen and (max-width: $tablet) {
                     background-color: $background;
                     font-size: calc(#{'35px + 1vw'});
+                }
+            }
+        }
+        .active-left {
+            background-color: #005EA0;
+            color: $black;
+            height: 100%;
+            .icon {
+                font-size: calc(#{'15px + 1vw'});
+                color: black;
+                background-color: $white;
+                border-width: 0px;
+                height: 100%;
+                &:hover {
+                    color: black;
+                }
+                @media only screen and (max-width: $tablet) {
+                    background-color: $background;
+                    font-size: calc(#{'35px + 1vw'});
+                    border-top-right-radius: 30px;
                 }
             }
         }

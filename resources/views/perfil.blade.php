@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="storage/uploads/logo.png">
     <link rel="stylesheet" href="{{asset('css/style-pol.css')}}">
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/style-nocturno.css') !!}">

@@ -14,6 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gráficas admin</title>
     <script src="https://kit.fontawesome.com/15d3106c42.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="storage/uploads/logo.png">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 
 </head>

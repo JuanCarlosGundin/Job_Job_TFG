@@ -203,13 +203,39 @@ body {
 }
 
 .region-navbar .menu .active .icon:hover {
-  color: blue;
+  color: black;
 }
 
 @media only screen and (max-width: 1200px) {
   .region-navbar .menu .active .icon {
     background-color: #E5E5E5;
     font-size: calc(35px + 1vw);
+  }
+}
+
+.region-navbar .menu .active-left {
+  background-color: #005EA0;
+  color: #000000;
+  height: 100%;
+}
+
+.region-navbar .menu .active-left .icon {
+  font-size: calc(15px + 1vw);
+  color: black;
+  background-color: #ffffff;
+  border-width: 0px;
+  height: 100%;
+}
+
+.region-navbar .menu .active-left .icon:hover {
+  color: black;
+}
+
+@media only screen and (max-width: 1200px) {
+  .region-navbar .menu .active-left .icon {
+    background-color: #E5E5E5;
+    font-size: calc(35px + 1vw);
+    border-top-right-radius: 30px;
   }
 }
 

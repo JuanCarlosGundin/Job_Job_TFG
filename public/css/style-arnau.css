@@ -423,6 +423,15 @@ body {
   color: #0076CA;
 }
 
+.page-home .region-swiper .empresa-vista .btn-reporte,
+.page-home .region-swiper .user-vista .btn-reporte {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
 @media (max-width: 768px) {
   .page-home .region-swiper .empresa-vista,
   .page-home .region-swiper .user-vista {

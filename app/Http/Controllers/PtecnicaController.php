@@ -42,27 +42,27 @@ class PtecnicaController extends Controller{
         }
     }
 
-    public function mostrar_ptecnica_trabajador($id_empresa) {
-        $id=session()->get('id_user');
+    public function mostrar_ptecnica_trabajador($id) {
+        $id_user=session()->get('id_user');
         try {
-            $existejson= DB::table('tbl_ptecnica')->select('json_prueba')->where('id_empresa','=',$id_empresa)->first();
-            if ($existejson->json_prueba!=null) {
+            $existejson= DB::table('tbl_ptecnica')->where('id','=',$id)->get();
+            if ($existejson[0]->json_prueba!=null) {
                 // si en json_prueba hay alguien inscrito
-                $json_prueba=json_decode($existejson->json_prueba);
+                $json_prueba=json_decode($existejson[0]->json_prueba);
                 $contador=count($json_prueba);
                 for ($i=0; $i < $contador; $i++) { 
                     $id_participante=$json_prueba[$i]->id_participante;
-                    if ($id_participante==strval($id)){
+                    if ($id_participante==strval($id_user)){
                         // si el trabajador actual se ha inscrito previamente
                         $empresa=DB::table('tbl_ptecnica')
                         ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
-                        ->where('id_empresa', '=', $id_empresa)->first();
+                        ->where('id', '=', $id)->first();
                         return response()->json(array('trabajador' => $empresa, 'existe' => 'existe'));
                     } else {
                         // si no aparece inscrito
                         $empresa=DB::table('tbl_ptecnica')
                         ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
-                        ->where('id_empresa', '=', $id_empresa)->first();
+                        ->where('id', '=', $id)->first();
                         return response()->json(array('trabajador' => $empresa));
                     }
                 }
@@ -70,7 +70,7 @@ class PtecnicaController extends Controller{
                 //si json_prueba es null, es decir que nadie se ha inscrito
                 $empresa=DB::table('tbl_ptecnica')
                 ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
-                ->where('id_empresa', '=', $id_empresa)->first();
+                ->where('id', '=', $id)->first();
                 return response()->json(array('trabajador' => $empresa));
             }
         } catch (\Exception $e) {
@@ -78,8 +78,8 @@ class PtecnicaController extends Controller{
         }
     }
 
-    public function iniciar_ptecnica_trabajador($id_empresa) {
-        $id=session()->get('id_user');
+    public function iniciar_ptecnica_trabajador($id) {
+        $id_user=session()->get('id_user');
 
         //obtener dia y hora
         $date = Carbon::now('+02:00');
@@ -89,33 +89,33 @@ class PtecnicaController extends Controller{
         try {
             DB::beginTransaction();
             // inicio_ptecnica
-            $existejson= DB::table('tbl_ptecnica')->select('json_prueba')->where('id_empresa','=',$id_empresa)->first();
+            $existejson= DB::table('tbl_ptecnica')->where('id','=',$id)->first();
             if ($existejson->json_prueba==null) {
                 $json_prueba='[{
-                    "id_participante": "'.$id.'",
+                    "id_participante": "'.$id_user.'",
                     "inicio_participante": "'.$inicio_participante.'",
                     "zip_participante": null
                 }]';
-                DB::select("UPDATE tbl_ptecnica SET json_prueba=? WHERE id_empresa=?",[$json_prueba,$id_empresa]);
+                DB::select("UPDATE tbl_ptecnica SET json_prueba=? WHERE id=?",[$json_prueba,$id]);
             } else{
                 $json_prueba=json_decode($existejson->json_prueba);
                 $contador=count($json_prueba);
                 for ($i=0; $i < $contador; $i++) {
                     $id_participante=$json_prueba[$i]->id_participante;
-                    if ($id_participante==strval($id)){
+                    if ($id_participante==strval($id_user)){
                         return response()->json(array('existe' => 'existe'));
                     } else {
-                        $json_prueba="JSON_ARRAY_APPEND(json_prueba, '$', JSON_OBJECT('id_participante', '".$id."', 'inicio_participante', '".$inicio_participante."', 'zip_participante', NULL))";
+                        $json_prueba="JSON_ARRAY_APPEND(json_prueba, '$', JSON_OBJECT('id_participante', '".$id_user."', 'inicio_participante', '".$inicio_participante."', 'zip_participante', NULL))";
                     }
                 }
 
                 //no puedo usar ? en json_prueba por un bug en php
-                DB::select("UPDATE tbl_ptecnica SET json_prueba=".$json_prueba." WHERE id_empresa=?",[$id_empresa]);
+                DB::select("UPDATE tbl_ptecnica SET json_prueba=".$json_prueba." WHERE id=?",[$id]);
             }
             // mostrar contenida_ptecnica
             $empresa=DB::table('tbl_ptecnica')
                 ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
-                ->where('id_empresa', '=', $id_empresa)->first();
+                ->where('id', '=', $id)->first();
             DB::commit();
             return response()->json(array('trabajador' => $empresa));
         } catch (\Exception $e) {
@@ -124,11 +124,11 @@ class PtecnicaController extends Controller{
         }
     }
 
-    public function entrar_ptecnica_trabajador($id_empresa) {
+    public function entrar_ptecnica_trabajador($id) {
         try {
             $empresa=DB::table('tbl_ptecnica')
                 ->join('tbl_empresa', 'tbl_ptecnica.id_empresa', '=', 'tbl_empresa.id_usuario')
-                ->where('id_empresa', '=', $id_empresa)->first();
+                ->where('id', '=', $id)->first();
             return response()->json(array('trabajador' => $empresa));
         } catch (\Exception $e) {
             return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
