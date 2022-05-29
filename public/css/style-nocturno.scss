@@ -1,0 +1,515 @@
+        /////////////////////////////////MIXINS-IMPORTS////////////////////////////////
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        $first-color:#012A4A;
+        $second-color: #0060A4;
+        $third-color: #0B4B78;
+        $fourth-color:#03365E;
+        $fifth-color: #437EA9;
+        //Colores basicos//
+        $black:#000000;
+        $white:#ffffff;
+        $grey: #F0F0F0;
+        //Tamaños//
+        $movil:450px;
+        $tablet:900px;
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+        
+        ////BOTON MODO DIA-NOCTURNO////
+        .area-botones {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            &.horizontal {
+                flex-direction: row;
+            }
+        }
+        
+        .volver {
+            color: white;
+            font-size: 40px;
+        }
+        
+        .darkmodeswitch {
+            position: relative;
+            z-index: 2;
+            margin-left: 2%;
+            margin-top: 1.5%;
+            background: #3494b1;
+            display: flex;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            border-radius: 1rem;
+        }
+        
+        .darkmodeswitch span {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+        }
+        
+        .darkmodeswitch::after {
+            display: block;
+            background: #fffbf5;
+            width: 2rem;
+            height: 2rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: unset;
+            border-radius: 3rem;
+            transition: all .5s ease;
+            box-shadow: 0 0 2px 2px rgba(0, 0, 0, .5);
+            content: "";
+        }
+        
+        .darkmodeswitch.active {
+            background: #fdd384;
+        }
+        
+        .darkmodeswitch.active::after {
+            left: unset;
+            right: 0;
+        }
+        
+        ////////////////////////////////////LOGIN-REGISTRAR//////////////////////////////////
+        .bodylogin.oscuro {
+            background-color: $first-color;
+            .modal-login {
+                background-color: $third-color;
+                box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+                .card {
+                    color: white;
+                }
+                .card button {
+                    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+                }
+                .botones {
+                    .inicio-activo {
+                        background-color: $fourth-color !important;
+                    }
+                    .registrar-activo {
+                        background-color: $fourth-color !important;
+                    }
+                }
+                .modal-content {
+                    background-color: $third-color;
+                }
+                h2,
+                h3,
+                .contraseña,
+                .izquierda,
+                .derecha,
+                p {
+                    color: white !important;
+                }
+                .inputlogin,
+                .inputregister {
+                    background-color: white;
+                    border: white;
+                }
+                .botonlogin,
+                .botonregister {
+                    background-color: $second-color;
+                    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+                }
+                .btn-signin {
+                    /*PROVISIONAL*/
+                    background-color: $third-color !important;
+                    box-shadow: none !important;
+                    color: white;
+                }
+                .btn-register {
+                    /*PROVISIONAL*/
+                    background-color: $third-color !important;
+                    box-shadow: none !important;
+                    color: white;
+                }
+                .cuadrado {
+                    box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+                    background: $second-color;
+                    border: $second-color solid 1.5px;
+                }
+                .izquierda,
+                .derecha {
+                    color: white;
+                }
+                .mas,
+                .menos {
+                    color: white;
+                }
+            }
+        }
+        
+        ///////////////////////////////////////NAVBAR////////////////////////////////////
+        .oscuro {
+            background-color: $first-color;
+            .barra-navbar {
+                background-color: $third-color;
+            }
+            .region-navbar {
+                background-color: $third-color;
+                .icon {
+                    color: $white;
+                    // background-color: $third-color;
+                }
+                .menu-item {
+                    // background-color: $third-color;
+                    .icon {
+                        color: white !important;
+                        background-color: $third-color !important;
+                    }
+                }
+                .main-icon {
+                    color: white;
+                    background-color: $third-color;
+                }
+                .active {
+                    background-color: $first-color !important;
+                    .icon {
+                        background-color: $first-color !important;
+                        color: black;
+                        border-top-left-radius: 0px !important;
+                        // background-color: $first-color;
+                        @media only screen and (max-width: $tablet) {
+                            background-color: $first-color;
+                            border-top-left-radius: 30px !important;
+                        }
+                    }
+                }
+                .active-center {
+                    background-color: $first-color !important;
+                    .icon {
+                        color: white !important;
+                        background-color: $first-color !important;
+                        @media only screen and (max-width: $tablet) {
+                            background-color: $first-color;
+                        }
+                    }
+                }
+                .active-left {
+                    background-color: $first-color !important;
+                    .icon {
+                        color: white !important;
+                        background-color: $first-color !important;
+                        @media only screen and (max-width: $tablet) {
+                            background-color: $first-color;
+                        }
+                    }
+                }
+            }
+        }
+        
+        /////////////////////////////////////////HOME////////////////////////////////////
+        .page-home.oscuro {
+            background-color: $first-color;
+            .region-swiper {
+                .user-vista {
+                    .container-info {
+                        background-color: $fifth-color;
+                        .p-name, .p-surname, .p-age {
+                            color: white;
+                        }
+                    }
+                }
+                .empresa-vista {
+                    .container-info {
+                        background: $fifth-color !important;
+                        .p-name {
+                            color: white;
+                        }
+                        .p-house {
+                            color: white;
+                        }
+                        .divs-desc {
+                            color: white;
+                        }
+                        .empresa-icon-desc {
+                            color: white;
+                        }
+                        .empresa-icon-name {
+                            color: white !important;
+                        }
+                    }
+                    .return {
+                        button {
+                            color: white !important;
+                        }
+                    }
+                }
+            }
+            .botones-home {
+                button {
+                    background-color: $third-color;
+                    box-shadow: none;
+                }
+                .boton-info,
+                .boton-maletin,
+                .boton-cruz {
+                    .icono-maletin {
+                        i {
+                            color: white;
+                        }
+                    }
+                    .icono-info {
+                        i {
+                            color: white;
+                        }
+                    }
+                    .icono-cruz {
+                        i {
+                            color: white;
+                        }
+                    }
+                }
+            }
+            input[type=submit] {
+                background-color: $second-color;
+                box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
+            }
+            .modal-content {
+                background-color: $fourth-color;
+                h2 {
+                    color: white;
+                }
+                select {
+                    color: black;
+                    background-color: white;
+                }
+                textarea {
+                    background-color: white;
+                }
+                .closeemp {
+                    color: white;
+                }
+            }
+        }
+        
+        /////////////////////////////////////////VER-PERFIL//////////////////////////////
+        .oscuro {
+            .ver-perfil {
+                .user-poligon2 {
+                    background-color: $fourth-color !important;
+                }
+                .user-div-category {
+                    background-color: $first-color !important;
+                    border-color: $first-color !important;
+                }
+                .user-poligon {
+                    background-color: $first-color !important;
+                }
+                .user-btn-category {
+                    background-color: $third-color !important;
+                    border-color: $third-color !important;
+                }
+                .p-name,
+                .p-surname,
+                .p-age,
+                .p-category,
+                .user-category-icon {
+                    color: white !important;
+                }
+                .logout-btn,
+                .input-file {
+                    background-color: $fifth-color !important;
+                }
+                .linea-divisoria {
+                    background-color: grey !important;
+                }
+            }
+        }
+        
+        ////////////////////////////////////////////////VER-PERFIL/////////////////////////////////
+        .oscuro {
+            .edit-profile {
+                .aceptar-cuenta-btn {
+                    color: black !important;
+                }
+                .p-text,
+                .return-text,
+                i {
+                    color: white !important;
+                }
+            }
+        }
+        
+        /////////////////////////////////VER-CATEGORIA-PERFIL////////////////////////////////////
+        .oscuro {
+            .vista-profile {
+                p {
+                    color: white;
+                }
+                .categoria-edit {
+                    .return {
+                        .return-btn {
+                            color: white;
+                        }
+                    }
+                }
+                .categoria-profile {
+                    .categoria {
+                        .categoria-icon,
+                        .categoria-name,
+                        .categoria-text {
+                            color: white;
+                            .categoria-p-text {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        ////////////////////////////////////////NOTIFICACIONES///////////////////////////////////////
+        .oscuro {
+            .buscador {
+                background-color: $first-color !important;
+            }
+            .alerts {
+                .alert {
+                    .alert-user {
+                        .alert-user-btn {
+                            color: white;
+                        }
+                    }
+                    .alert-chat {
+                        .alert-chat-btn {
+                            color: white;
+                        }
+                    }
+                    .alert-mensaje {
+                        .alert-mensaje-text {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+        
+        ///////////////////////////////////////////CHAT/////////////////////////////////////////
+        .oscuro {
+            .chat {
+                .XD {
+                    color: white;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+            .main-chat {
+                .chat-main-sticky {
+                    background-color: $first-color;
+                    .chat-main-curve {
+                        background-color: $fourth-color;
+                    }
+                    .chat-main-curve:before {
+                        display: none;
+                    }
+                    .chat-main-user {
+                        background-color: $first-color;
+                        .chat-main-name {
+                            color: white;
+                        }
+                        .chat-main-return {
+                            .return-btn {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            .chat {
+                .chats {
+                    .chat-div-flex {
+                        .chat-content {
+                            .chat-name {
+                                .chat-name-text {
+                                    color: white;
+                                }
+                            }
+                            .chat-mensaje {
+                                .chat-mensaje-text {
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                    .chat-div-right {
+                        .chat-alert {
+                            .chat-hora {
+                                background-color: transparent;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            .chat-main-content {
+                background-color: $fourth-color;
+            }
+            .chat-main-send {
+                background-color: $fourth-color;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////PRUEBA TÉCNICA///////////////////////////////////////////////////////////
+        .oscuro {
+            .ptecnica {
+                .content {
+                    .ver-ptecnica {
+                        .pruebas {
+                            background-color: $fifth-color;
+                            .pruebas-header {
+                                background-color: $fifth-color;
+                            }
+                        }
+                    }
+                    h1 {
+                        color: white;
+                    }
+                    p {
+                        color: white;
+                    }
+                    .button-text {
+                        color: black;
+                    }
+                    .div-crear-pt {
+                        background-color: $first-color !important;
+                    }
+                    .crear-ptecnica, .pruebas {
+                        background-color: $first-color;
+                    }
+                }
+                .content-user {
+                    .div-crear-pt {
+                        background-color: $first-color;
+                        h1 {
+                            color:white;
+                        }
+                        p {
+                            color: white;
+                        }
+                    }
+                }
+                .ver-content {
+                    .div-content {
+                        background-color: $fifth-color;
+                    }
+                    .div-return {
+                        .return-btn {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }

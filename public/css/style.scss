@@ -1,0 +1,286 @@
+/////////////////////////////////MIXINS-IMPORTS////////////////////////////////
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+//Colores principales
+$first-color:#186CA7;
+$second-color: #005EA0;
+$third-color:#0076CA;
+$fourth-color:#042944;
+$fifth-color: #92AFD7;
+//Colores basicos//
+$black:#000000;
+$white:#ffffff;
+$grey: #F0F0F0;
+$background: #E5E5E5;
+//Medidas
+$movil:768px;
+$tablet:1200px;
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    background-color: $background;
+}
+
+////////////////////////////////GENERAL///////////////////////////////////
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.principal {
+    height: 100vh;
+    @media only screen and (max-width: $tablet) {
+        flex-direction: column;
+    }
+}
+
+.column {
+    @media only screen and (max-width: $tablet) {
+        width: 100% !important;
+    }
+}
+
+.region-content {
+    height: 90vh;
+    width: 85vw;
+    @media(min-width: $tablet) {
+        height: 100%;
+    }
+}
+
+///////////////////////////////NAVBAR//////////////////////////////////////
+.region-navbar {
+    background-color: $white;
+    height: 100%;
+    width: 15vw;
+    // padding-top: 5%;
+    // padding-left: 2%;
+    /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
+    /* DIVS NAVBAR*/
+    /* Curriculum */
+    position: sticky;
+    @media only screen and (max-width: $tablet) {
+        border-bottom-left-radius: 30px !important;
+        flex-direction: row;
+    }
+    .barra-navbar-img {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        float: left;
+        @media only screen and (max-width: $tablet) {
+            display: none;
+        }
+        img {
+            margin-top: 10px;
+            width: 80px;
+            float: left;
+        }
+    }
+    .menu {
+        display: flex;
+        flex-direction: column;
+        margin-top: 150px;
+        gap: 20px;
+        @media only screen and (max-width: $tablet) {
+            margin-top: 0;
+            flex-direction: row;
+            gap: 0px;
+        }
+        .menu-item {
+            display: flex;
+            background-color: $white;
+            @media only screen and (max-width: $tablet) {
+                height: 100%;
+                border-radius: 30px;
+            }
+            .text {
+                padding-left: 20px;
+                float: right;
+                font-size: calc(#{'10px + 0.5vw'});
+                margin: 0;
+            }
+            .icon {
+                color: #c0c0c0;
+                text-align: center;
+                font-size: calc(#{'15px + 1vw'});
+                border-width: 0px;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                background-color: transparent;
+                display: flex;
+                justify-content: flex-start;
+                padding-left: 30px;
+                align-items: center;
+                &:hover {
+                    color: rgb(132, 132, 132);
+                    cursor: pointer;
+                    transition: 0.25s;
+                }
+                @media only screen and (max-width: $tablet) {
+                    justify-content: center;
+                    padding-left: 0;
+                    font-size: calc(#{'30px + 1vw'});
+                }
+            }
+        }
+        .active {
+            color: $black;
+            height: 100%;
+            .icon {
+                font-size: calc(#{'15px + 1vw'});
+                color: black;
+                background-color: $white;
+                border-width: 0px;
+                height: 100%;
+                border-top-left-radius: 30px;
+                &:hover {
+                    color: blue;
+                }
+                @media only screen and (max-width: $tablet) {
+                    background-color: $background;
+                    font-size: calc(#{'35px + 1vw'});
+                }
+            }
+        }
+        .active-center {
+            color: $black;
+            height: 100%;
+            .icon {
+                font-size: calc(#{'15px + 1vw'});
+                color: #000000;
+                background-color: $white;
+                border-width: 0px;
+                height: 100%;
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+                @media only screen and (max-width: $tablet) {
+                    background-color: $background;
+                    font-size: calc(#{'35px + 1vw'});
+                }
+            }
+        }
+    }
+}
+
+.barra-navbar {
+    background-color: white;
+    height: 10%;
+    z-index: 100;
+    position: sticky;
+    .barra-navbar-btn {
+        width: 100%;
+        height: 10vh;
+        float: right;
+        .darkmode-btn {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            float: right;
+            height: 100%;
+            margin-right: 10px;
+            .darkmodeswitch {
+                margin: 0;
+            }
+        }
+    }
+    @media only screen and (max-width: $tablet) {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: $tablet) {
+    .barra-navbar {
+        display: none;
+        img {
+            display: none;
+        }
+        .darkmodeswitch {
+            display: none;
+        }
+    }
+    .region-navbar {
+        display: flex !important;
+        height: 15vh !important;
+        width: 100% !important;
+        height: #{"calc(var(--vh, 1vh) * 10)"} !important;
+        padding: 0 !important;
+        border-bottom-left-radius: 30px !important;
+        border-bottom-right-radius: 30px !important;
+        /*--------------------------------------------------------------- MENU NAV BAR ---------------------------------------------------------------- */
+        /* DIVS NAVBAR*/
+        /* Curriculum */
+        p {
+            display: none;
+        }
+        .curriculum-navbar {
+            width: 20% !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+        }
+        /* Alertas */
+        .alerts-navbar {
+            width: 20% !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+        }
+        /* Main */
+        .main-navbar {
+            width: 20% !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+            height: 10vh !important;
+        }
+        /* Chat */
+        .chat-navbar {
+            padding: 1% !important;
+            width: 20% !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+        }
+        /* Perfil */
+        .profile-navbar {
+            width: 20% !important;
+            padding-bottom: 0 !important;
+            display: absolute !important;
+        }
+        // DIVS ACTIVE //
+        .active-left {
+            background-color: $background;
+            box-shadow: none;
+            border-top-right-radius: 30px;
+        }
+        .active-right {
+            background-color: $background;
+            box-shadow: none;
+            border-top-left-radius: 30px;
+        }
+        .active-center {
+            background-color: #C5D1EB;
+            box-shadow: none;
+            border-top-right-radius: 30px;
+            border-top-left-radius: 30px;
+        }
+        /* ICONS */
+        .active-icon {
+            color: #000000 !important;
+            background-color: $background !important;
+            font-size: 4.5vh !important;
+        }
+        .active-icon-center {
+            background-color: #C5D1EB !important;
+            font-size: 4.5vh !important;
+        }
+    }
+}
