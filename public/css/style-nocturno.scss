@@ -175,9 +175,9 @@
                     background-color: $third-color;
                 }
                 .active {
-                    background-color: $third-color;
+                    background-color: $first-color !important;
                     .icon {
-                        background-color: $third-color !important;
+                        background-color: $first-color !important;
                         color: black;
                         border-top-left-radius: 0px !important;
                         // background-color: $first-color;
@@ -188,10 +188,10 @@
                     }
                 }
                 .active-center {
-                    background-color: $third-color !important;
+                    background-color: $first-color !important;
                     .icon {
                         color: white !important;
-                        background-color: $third-color !important;
+                        background-color: $first-color !important;
                         @media only screen and (max-width: $tablet) {
                             background-color: $first-color;
                         }
@@ -213,6 +213,41 @@
         /////////////////////////////////////////HOME////////////////////////////////////
         .page-home.oscuro {
             background-color: $first-color;
+            .region-swiper {
+                .user-vista {
+                    .container-info {
+                        background-color: $fifth-color;
+                        .p-name, .p-surname, .p-age {
+                            color: white;
+                        }
+                    }
+                }
+                .empresa-vista {
+                    .container-info {
+                        background: $fifth-color !important;
+                        .p-name {
+                            color: white;
+                        }
+                        .p-house {
+                            color: white;
+                        }
+                        .divs-desc {
+                            color: white;
+                        }
+                        .empresa-icon-desc {
+                            color: white;
+                        }
+                        .empresa-icon-name {
+                            color: white !important;
+                        }
+                    }
+                    .return {
+                        button {
+                            color: white !important;
+                        }
+                    }
+                }
+            }
             .botones-home {
                 button {
                     background-color: $third-color;
