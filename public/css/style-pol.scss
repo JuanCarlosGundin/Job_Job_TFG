@@ -977,7 +977,13 @@ body {
             display: flex;
             align-items: center;
             .alert-foto {
-                width: 15%;
+                @media only screen and (max-width: $tablet) {
+                    width: 15%;
+                }
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                width: 5%;
                 align-content: right;
                 .alert-profilefoto {
                     border-radius: 50px;
@@ -986,7 +992,10 @@ body {
                 }
             }
             .alert-mensaje {
-                width: 55%;
+                @media only screen and (max-width: $tablet) {
+                    width: 65%;
+                }
+                width: 85%;
                 margin-left: 10px;
                 .alert-mensaje-text {
                     padding: 0;
@@ -995,7 +1004,13 @@ body {
                 }
             }
             .alert-user {
-                width: 10%;
+                @media only screen and (max-width: $tablet) {
+                    width: 10%;
+                }
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                width: 5%;
                 text-align: right;
                 .alert-user-btn {
                     background-color: transparent;
@@ -1004,8 +1019,11 @@ body {
                 }
             }
             .alert-chat {
+                justify-content: center;
+                display: flex;
+                align-items: center;
                 text-align: right;
-                width: 10%;
+                width: 5%;
                 .alert-chat-btn {
                     background-color: transparent;
                     border-width: 0;
@@ -1013,7 +1031,10 @@ body {
                 }
             }
             .alert-nada {
-                width: 10%;
+                @media only screen and (max-width: $tablet) {
+                    width: 10%;
+                }
+                width: 5%;
                 text-align: right;
                 color: transparent;
                 .alert-nada-btn {
@@ -1026,6 +1047,9 @@ body {
         }
         .alert-linea {
             width: 84vw;
+            @media only screen and (max-width: $tablet) {
+                width: 95vw;
+            }
         }
     }
 }
@@ -1191,7 +1215,7 @@ body {
             display: none;
         }
         @media only screen and (max-width: $tablet) {
-            height: 100%;
+            height: 70vh;
         }
         .chat-mensaje-inicio {
             justify-content: center;
@@ -2084,6 +2108,113 @@ body {
                             color: $white;
                             font-weight: bolder;
                             font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .content-user {
+        @media only screen and (max-width: $tablet) {
+            padding-top: 20px;
+        }
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        height: 90vh;
+        .div-crear-pt {
+            width: 100%;
+            background-color: #C6C6C6;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+            @media only screen and (max-width: $tablet) {
+                border-radius: 30px;
+            }
+            .titulo-ptecnica {
+                padding: 25px;
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                .h1-title {
+                    margin: 0;
+                }
+            }
+            .subtitulo-ptecnica {
+                margin: 0 auto;
+                position: relative;
+                padding: 25px;
+                width: 50%;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                @media only screen and (max-width: $tablet) {
+                    width: 100%;
+                }
+                .p-subtitle {
+                    margin: 0;
+                }
+            }
+        }
+        .ver-ptecnica {
+            padding: 20px;
+            width: 100%;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            @media only screen and (max-width: $tablet) {
+                grid-template-columns: 1fr;
+            }
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .pruebas {
+                .prueba-header {
+                    padding: 10px;
+                    border-radius: 10px;
+                    background-color: $fifth-color;
+                    border-radius: 5px;
+                    box-shadow: 0px 5px 5px #C6C6C6;
+                    z-index: 100;
+                    .empresa-ptecnica {
+                        justify-content: center;
+                        display: flex;
+                        align-items: center;
+                        .title {
+                            color: #ffffff;
+                            font-weight: bold;
+                            margin: 0;
+                        }
+                    }
+                }
+                .prueba-body {
+                    z-index: 1;
+                    margin: 0 auto;
+                    position: relative;
+                    width: 95%;
+                    padding: 10px;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    background-color: $white;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-color: #C6C6C6;
+                    .enunciado-ptecnica {
+                        margin-top: 10px;
+                        margin-bottom: 30px;
+                        .text {
+                            color: grey;
+                            margin-bottom: 10px;
+                            font-size: medium;
+                            margin-top: 0;
+                        }
+                    }
+                    .time-ptecnica {
+                        margin-top: 30px;
+                        .time {
+                            margin: 0;
                         }
                     }
                 }

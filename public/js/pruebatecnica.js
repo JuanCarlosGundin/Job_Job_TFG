@@ -62,6 +62,12 @@ function objetoAjax() {
 
 }
 
+function htmlEncode(str) {
+    return String(str).replace(/[^\w. ]/gi, function(c) {
+        return '&#' + c.charCodeAt(0) + ';';
+    });
+}
+
 function leer_contenido() {
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
@@ -71,7 +77,6 @@ function leer_contenido() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var recarga = `<div class="content">
             <div class="div-crear-pt">
                 <div class="titulo-ptecnica">
@@ -200,7 +205,6 @@ function mostrar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
             var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
@@ -283,11 +287,9 @@ function iniciar_ptecnica_trabajador(evt) {
     var ajax = objetoAjax();
     ajax.open("POST", "iniciar_ptecnica_trabajador/" + id_empresa, true);
     ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
-            console.log(respuesta);
             if (respuesta.hasOwnProperty('trabajador')) {
                 var trabajador = respuesta.trabajador;
                 var date_p = new Date(trabajador.fecha_publicacion);
@@ -295,45 +297,35 @@ function iniciar_ptecnica_trabajador(evt) {
                 var date_l = new Date(trabajador.fecha_limite);
                 var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
                 recarga += `
-                <div class="ver-content">
-                    <div class="div-return">
-                        <div class="return">
-                            <button class="return-btn" id="volver">
-                            <div class="return-icon">
-                                <i class="fa-solid fa-angle-left"></i>
-                            </div>
-                            <p class="return-text">VOLVER</p>
-                            </button>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Prueba tecnica para:</p>
-                        <p>${trabajador.enunciado}</p>
-                        <div>
-                            <p>Empresa</p>
-                            <p>${trabajador.nom_emp}</p>
-                        </div>
-                        <div>
-                            <p>Duración</p>
-                            <p>${trabajador.duracion}</p>
-                        </div>
-                        <div>
-                            <p>Fecha de publicación</p>
-                            <p>${fecha_publicacion}</p>
-                        </div>
-                        <div>
-                            <p>Fecha limite</p>
-                            <p>${fecha_limite}</p>
-                        </div>
-                        <div>
-                            <p>Formato de respuesta</p>
-                            <p>Texto donde dice zip</p>
-                        </div>
-                        <form id="formarchivo" enctype="multipart/form-data">
-                            <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
-                            <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
-                        </form>
-                    </div>
+                <button id="volver">Volver</button>
+                <div>
+                <p>Prueba tecnica para:</p>
+                <p>${trabajador.enunciado}</p>
+                <div>
+                    <p>Empresa</p>
+                    <p>${trabajador.nom_emp}</p>
+                </div>
+                <div>
+                    <p>Duración</p>
+                    <p>${trabajador.duracion}</p>
+                </div>
+                <div>
+                    <p>Fecha de publicación</p>
+                    <p>${fecha_publicacion}</p>
+                </div>
+                <div>
+                    <p>Fecha limite</p>
+                    <p>${fecha_limite}</p>
+                </div>
+                <div>
+                    <p>Formato de respuesta</p>
+                    <p>Texto donde dice zip</p>
+                </div>
+                <form id="formarchivo" enctype="multipart/form-data">
+                <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
+                    <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                    <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
+                </form>
                 </div>
                 `;
                 contenidoajax.innerHTML = recarga;
@@ -370,7 +362,6 @@ function entrar_ptecnica_trabajador(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = ``;
-            console.log(respuesta);
             var trabajador = respuesta.trabajador;
             var date_p = new Date(trabajador.fecha_publicacion);
             var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
@@ -412,6 +403,7 @@ function entrar_ptecnica_trabajador(evt) {
                     <p>Texto donde dice zip</p>
                 </div>
                 <form id="formarchivo" enctype="multipart/form-data">
+                <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
                     <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
                     <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
                 </form>
@@ -445,46 +437,52 @@ function enviar_zip_trabajador(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+
             console.log(respuesta);
             if (respuesta.resultado == "OK") {
-                swal.fire({
-                    title: "Exito",
-                    text: "zip guardado",
-                    icon: "success",
-                    confirmButtonText: "OK",
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_contenido();
-                    }
-                });
 
-            } else if (respuesta.resultado == "fuera") {
-                swal.fire({
-                    title: "Fuera",
-                    text: "Fuera de tiempo",
-                    icon: "error",
-                    confirmButtonText: "OK",
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        leer_contenido();
+                if (respuesta.resultado == "OK") {
+
+                    f3561e35b38d40587896e504036820045d7556c6
+                    swal.fire({
+                        title: "Exito",
+                        text: "zip guardado",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_contenido();
+                        }
+                    });
+
+                } else if (respuesta.resultado == "fuera") {
+                    swal.fire({
+                        title: "Fuera",
+                        text: "Fuera de tiempo",
+                        icon: "error",
+                        confirmButtonText: "OK",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            leer_contenido();
+                        }
+                    });
+                } else {
+                    var container_error = document.getElementById('alert-danger');
+                    container_error.innerHTML = "";
+                    for (let i = 0; i < respuesta.errors.length; i++) {
+                        container_error.style.display = "block";
+                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                     }
-                });
-            } else {
-                var container_error = document.getElementById('alert-danger');
-                container_error.innerHTML = "";
-                for (let i = 0; i < respuesta.errors.length; i++) {
-                    container_error.style.display = "block";
-                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
                 }
-            }
 
+            }
         }
+        ajax.send(formData);
     }
-    ajax.send(formData);
 }
 
 function form_crear_prueba_tecnica() {
@@ -567,11 +565,11 @@ function form_crear_prueba_tecnica() {
 function crear_prueba_tecnica(evt) {
     evt.preventDefault();
 
-    var lenguaje = document.getElementById("lenguaje").value;
+    var lenguaje = htmlEncode(document.getElementById("lenguaje").value);
     var fecha_limite = document.getElementById("fecha_limite").value;
     var duracion = document.getElementById("duracion").value;
-    var enunciado = document.getElementById("enunciado").value;
-    var descripcion = document.getElementById("descripcion").value;
+    var enunciado = htmlEncode(document.getElementById("enunciado").value);
+    var descripcion = htmlEncode(document.getElementById("descripcion").value);
     var zip_prueba = document.getElementById("zip_prueba").files[0];
 
     var formData = new FormData();
@@ -857,6 +855,8 @@ function deshabilitar_prueba_tecnica(evt) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+
+            HEAD
             leer_contenido();
 
         }
@@ -877,6 +877,7 @@ function habilitar_prueba_tecnica(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta);
+            f3561e35b38d40587896e504036820045d7556c6
             leer_contenido();
 
         }

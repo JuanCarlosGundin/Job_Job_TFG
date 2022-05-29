@@ -127,7 +127,7 @@ body {
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card img {
-  max-width: 100%;
+  max-height: 100%;
   pointer-events: none;
 }
 
@@ -140,9 +140,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card.content--empresa {
@@ -224,6 +224,12 @@ body {
           align-items: center;
 }
 
+@media (max-width: 768px) {
+  .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card .cv--card {
+    padding-bottom: 15px;
+  }
+}
+
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card .cv--card h2 {
   text-align: left;
 }
@@ -234,7 +240,13 @@ body {
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card .img--card {
   max-height: 20%;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+  .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card .img--card {
+    max-height: 15%;
+  }
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card .img--card img {
@@ -245,12 +257,13 @@ body {
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card h2 {
   padding: 0 16px;
   margin: 3px 0;
+  font-size: calc(20px + 0.2vw);
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card h3 {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 20px;
+  font-size: calc(15px + 0.2vw);
   padding: 0 16px;
   pointer-events: none;
 }
@@ -271,14 +284,18 @@ body {
   text-align: justify;
 }
 
+@media (max-width: 768px) {
+  .page-home .region-swiper .swiper .swiper--cards .swiper--card .content--card p {
+    margin-top: 10px;
+  }
+}
+
 .page-home .region-swiper .swiper .swiper--cards .swiper--card:nth-child(1) {
   padding-top: 15px;
 }
 
 .page-home .region-swiper .swiper .swiper--cards .swiper--card:nth-child(1) img {
   max-height: 20%;
-  margin-bottom: 20px;
-  margin-top: 15px;
 }
 
 .page-home .region-swiper .swiper .moving.swiper--card {
@@ -404,5 +421,502 @@ body {
 
 .page-home .region-swiper .botones-home .boton-cruz .icono-cruz i {
   color: #0076CA;
+}
+
+@media (max-width: 768px) {
+  .page-home .region-swiper .empresa-vista,
+  .page-home .region-swiper .user-vista {
+    -webkit-box-pack: end !important;
+        -ms-flex-pack: end !important;
+            justify-content: flex-end !important;
+  }
+  .page-home .region-swiper .empresa-vista .container-info,
+  .page-home .region-swiper .user-vista .container-info {
+    width: 100% !important;
+  }
+}
+
+.page-home .region-swiper .empresa-vista .return,
+.page-home .region-swiper .user-vista .return {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+}
+
+.page-home .region-swiper .empresa-vista .return button,
+.page-home .region-swiper .user-vista .return button {
+  background: transparent;
+  border: none;
+  font-size: calc(40px + 0.2vw);
+}
+
+@media (max-width: 768px) {
+  .page-home .region-swiper .empresa-vista .return,
+  .page-home .region-swiper .user-vista .return {
+    top: 10px;
+    left: 20px;
+  }
+  .page-home .region-swiper .empresa-vista .return button,
+  .page-home .region-swiper .user-vista .return button {
+    font-size: calc(25px + 0.2vw);
+  }
+}
+
+.page-home .region-swiper .empresa-vista .idiomas,
+.page-home .region-swiper .empresa-vista .habilidades,
+.page-home .region-swiper .user-vista .idiomas,
+.page-home .region-swiper .user-vista .habilidades {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.page-home .region-swiper .empresa-vista .idiomas > div,
+.page-home .region-swiper .empresa-vista .habilidades > div,
+.page-home .region-swiper .user-vista .idiomas > div,
+.page-home .region-swiper .user-vista .habilidades > div {
+  width: 100%;
+}
+
+.page-home .region-swiper .empresa-vista {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.page-home .region-swiper .empresa-vista .container-info::-webkit-scrollbar {
+  display: none;
+}
+
+.page-home .region-swiper .empresa-vista .container-info {
+  overflow-y: scroll;
+  max-height: 90%;
+  width: 50%;
+  background: white;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-ver-foto {
+  text-align: center;
+  width: 70%;
+  padding-bottom: 20px;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-ver-foto img {
+  max-width: 100%;
+  max-height: 300px;
+  min-width: 150px;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .p-name {
+  font-size: calc(30px + 0.2vw);
+  font-weight: bold;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-misc {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-misc .empresa-div-house {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-misc .empresa-div-house .empresa-icon-name {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  text-align: center;
+  font-size: calc(20px + 0.2vw);
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-misc .empresa-div-house .empresa-icon-name i {
+  color: black;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-misc .empresa-div-house .p-house {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-div-desc {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-div-desc .empresa-icon-desc {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  text-align: center;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-div-desc .empresa-icon-desc span {
+  font-weight: bold;
+}
+
+.page-home .region-swiper .empresa-vista .container-info .empresa-div-desc .divs-desc {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
+}
+
+.page-home .region-swiper .user-vista {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.page-home .region-swiper .user-vista .container-info::-webkit-scrollbar {
+  display: none;
+}
+
+.page-home .region-swiper .user-vista .container-info {
+  overflow-y: scroll;
+  max-height: 90%;
+  width: 50%;
+  background: white;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-ver-foto {
+  text-align: center;
+  width: 70%;
+  padding-bottom: 20px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-ver-foto img {
+  max-width: 100%;
+  max-height: 300px;
+  min-width: 150px;
+}
+
+.page-home .region-swiper .user-vista .container-info .p-name,
+.page-home .region-swiper .user-vista .container-info .p-surname,
+.page-home .region-swiper .user-vista .container-info .p-age {
+  font-size: calc(30px + 0.2vw);
+  font-weight: bold;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .user-icon-name {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  text-align: center;
+  font-size: calc(20px + 0.2vw);
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .user-icon-name i {
+  color: black;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .divs-house {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-experiencia,
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-formacion {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+  grid-auto-rows: minmax(40px, auto);
+  margin-bottom: 32px;
+  background: aliceblue;
+  padding: 10px;
+  border-radius: 20px;
+  grid-gap: 20px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-experiencia > span {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-experiencia > span:nth-child(2) {
+  font-style: italic;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-experiencia > span:nth-child(1) {
+  font-weight: bold;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-experiencia .duracion-item {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-row: 1/4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-experiencia .duracion-item .separador-duracion {
+  margin: 0 3px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-formacion > span {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-formacion > span:nth-child(2) {
+  font-style: italic;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-formacion > span:nth-child(1) {
+  font-weight: bold;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-formacion .duracion-item {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .user-div-house .div-formacion .duracion-item .separador-duracion {
+  margin: 0 3px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles {
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles > div > div:not(.titulo-niveles) {
+  margin-bottom: 10px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .titulo-niveles p {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .page-home .region-swiper .user-vista .container-info .user-misc .niveles {
+    padding: 0;
+  }
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .idiomas,
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .habilidades {
+  width: 50%;
+  padding: 15px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #aaaaaa;
+  display: block;
+  margin-top: 5px;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #0076CA;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.bajo {
+  width: 40%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.Medio {
+  width: 60%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.medio {
+  width: 60%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.Avanzado {
+  width: 80%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.avanzado {
+  width: 80%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.Alto {
+  width: 80%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.alto {
+  width: 80%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.Experto {
+  width: 100%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.experto {
+  width: 100%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.Nativo {
+  width: 100%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .niveles .percent div.nativo {
+  width: 100%;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-misc .disponibilidad {
+  text-transform: capitalize;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-div-desc {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-div-desc .user-icon-desc {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  text-align: center;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-div-desc .user-icon-desc span {
+  font-weight: bold;
+}
+
+.page-home .region-swiper .user-vista .container-info .user-div-desc .divs-desc {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
 }
 /*# sourceMappingURL=style-arnau.css.map */

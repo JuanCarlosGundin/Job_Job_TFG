@@ -9,7 +9,7 @@ $fifth-color: #92AFD7;
 $black:#000000;
 $white:#ffffff;
 $grey: #F0F0F0;
-//TamaÃ±os//
+//Tamaños//
 $movil:768px;
 $tablet:1200px;
 *,
@@ -102,14 +102,14 @@ body {
                     cursor: -moz-grab;
                     cursor: grab;
                     img {
-                        max-width: 100%;
+                        max-height: 100%;
                         pointer-events: none;
                     }
                     .content--card {
                         pointer-events: none;
                         display: flex;
                         flex-direction: column;
-                        justify-content: space-between;
+                        justify-content: flex-start;
                         &.content--empresa {
                             height: 70%;
                         }
@@ -155,6 +155,9 @@ body {
                             justify-content: space-between;
                             padding-bottom: 30px;
                             align-items: center;
+                            @media(max-width: $movil) {
+                                padding-bottom: 15px;
+                            }
                             h2 {
                                 text-align: left;
                             }
@@ -164,7 +167,10 @@ body {
                         }
                         .img--card {
                             max-height: 20%;
-                            margin-bottom: 30px;
+                            margin-bottom: 10px;
+                            @media(max-width: $tablet) {
+                                max-height: 15%;
+                            }
                             img {
                                 max-height: none;
                                 height: 100%;
@@ -174,11 +180,13 @@ body {
                         h2 {
                             padding: 0 16px;
                             margin: 3px 0;
+                            font-size: calc(20px + 0.2vw);
                         }
                         h3 {
                             margin-top: 0;
                             margin-bottom: 0;
-                            font-size: 20px;
+                            // font-size: 20px;
+                            font-size: calc(15px + 0.2vw);
                             padding: 0 16px;
                             pointer-events: none;
                         }
@@ -195,14 +203,17 @@ body {
                             padding: 0 16px;
                             pointer-events: none;
                             text-align: justify;
+                            @media(max-width: $movil) {
+                                margin-top: 10px;
+                            }
                         }
                     }
                     &:nth-child(1) {
                         padding-top: 15px;
                         img {
                             max-height: 20%;
-                            margin-bottom: 20px;
-                            margin-top: 15px;
+                            // margin-bottom: 20px;
+                            // margin-top: 15px;
                         }
                     }
                 }
@@ -310,6 +321,328 @@ body {
                 .icono-cruz {
                     i {
                         color: $third-color;
+                    }
+                }
+            }
+        }
+        .empresa-vista,
+        .user-vista {
+            @media(max-width: $movil) {
+                justify-content: flex-end!important;
+                .container-info {
+                    width: 100%!important;
+                }
+            }
+            .return {
+                position: absolute;
+                top: 15px;
+                left: 25px;
+                button {
+                    background: transparent;
+                    border: none;
+                    font-size: calc(40px + 0.2vw);
+                }
+                @media(max-width:$movil) {
+                    top: 10px;
+                    left: 20px;
+                    button {
+                        font-size: calc(25px + 0.2vw);
+                    }
+                }
+            }
+            .idiomas,
+            .habilidades {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                >div {
+                    width: 100%;
+                }
+            }
+        }
+        .empresa-vista {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            .container-info::-webkit-scrollbar {
+                display: none;
+            }
+            .container-info {
+                overflow-y: scroll;
+                max-height: 90%;
+                width: 50%;
+                background: white;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 20px;
+                .empresa-ver-foto {
+                    text-align: center;
+                    width: 70%;
+                    padding-bottom: 20px;
+                    img {
+                        max-width: 100%;
+                        max-height: 300px;
+                        min-width: 150px;
+                    }
+                }
+                .p-name {
+                    font-size: calc(30px + 0.2vw);
+                    font-weight: bold;
+                }
+                .empresa-misc {
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    .empresa-div-house {
+                        display: grid;
+                        grid-template-columns: 1fr 5fr;
+                        .empresa-icon-name {
+                            grid-column: 1;
+                            text-align: center;
+                            font-size: calc(20px + 0.2vw);
+                            i {
+                                color: black;
+                            }
+                        }
+                        .p-house {
+                            grid-column: 2/6;
+                        }
+                    }
+                }
+                .empresa-div-desc {
+                    display: grid;
+                    grid-template-columns: 1fr 5fr;
+                    .empresa-icon-desc {
+                        grid-column: 1;
+                        text-align: center;
+                        span {
+                            font-weight: bold;
+                        }
+                    }
+                    .divs-desc {
+                        grid-column: 2/6;
+                    }
+                }
+            }
+        }
+        .user-vista {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            // .return {
+            //     position: absolute;
+            //     top: 15px;
+            //     left: 25px;
+            //     button {
+            //         background: transparent;
+            //         border: none;
+            //         font-size: calc(40px + 0.2vw);
+            //     }
+            // }
+            .container-info::-webkit-scrollbar {
+                display: none;
+            }
+            .container-info {
+                overflow-y: scroll;
+                max-height: 90%;
+                width: 50%;
+                background: white;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 20px;
+                .user-ver-foto {
+                    text-align: center;
+                    width: 70%;
+                    padding-bottom: 20px;
+                    img {
+                        max-width: 100%;
+                        max-height: 300px;
+                        min-width: 150px;
+                    }
+                }
+                .p-name,
+                .p-surname,
+                .p-age {
+                    font-size: calc(30px + 0.2vw);
+                    font-weight: bold;
+                }
+                .user-misc {
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    .user-div-house {
+                        display: grid;
+                        grid-template-columns: 1fr 5fr;
+                        .user-icon-name {
+                            grid-column: 1;
+                            text-align: center;
+                            font-size: calc(20px + 0.2vw);
+                            i {
+                                color: black;
+                            }
+                        }
+                        .divs-house {
+                            grid-column: 2/6;
+                        }
+                        .div-experiencia,
+                        .div-formacion {
+                            display: grid;
+                            grid-template-columns: 3fr 1fr;
+                            grid-auto-rows: minmax(40px, auto);
+                            margin-bottom: 32px;
+                            background: aliceblue;
+                            padding: 10px;
+                            border-radius: 20px;
+                            grid-gap: 20px;
+                        }
+                        .div-experiencia {
+                            >span {
+                                grid-column: 1;
+                                &:nth-child(2) {
+                                    font-style: italic;
+                                }
+                                &:nth-child(1) {
+                                    font-weight: bold;
+                                }
+                            }
+                            .duracion-item {
+                                grid-column: 2;
+                                grid-row: 1/4;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                flex-flow: row wrap;
+                                .separador-duracion {
+                                    margin: 0 3px;
+                                }
+                            }
+                        }
+                        .div-formacion {
+                            >span {
+                                grid-column: 1;
+                                &:nth-child(2) {
+                                    font-style: italic;
+                                }
+                                &:nth-child(1) {
+                                    font-weight: bold;
+                                }
+                            }
+                            .duracion-item {
+                                grid-column: 2;
+                                grid-row: 1/3;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                flex-flow: row wrap;
+                                .separador-duracion {
+                                    margin: 0 3px;
+                                }
+                            }
+                        }
+                    }
+                    .niveles {
+                        >div>div:not(.titulo-niveles) {
+                            margin-bottom: 10px;
+                        }
+                        .titulo-niveles {
+                            p {
+                                font-weight: bold;
+                            }
+                        }
+                        padding: 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-start;
+                        @media(max-width:$movil) {
+                            padding: 0;
+                        }
+                        .idiomas,
+                        .habilidades {
+                            width: 50%;
+                            padding: 15px;
+                        }
+                        .percent {
+                            position: relative;
+                            width: 100%;
+                            height: 6px;
+                            background-color: #aaaaaa;
+                            display: block;
+                            margin-top: 5px;
+                            div {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                height: 100%;
+                                background-color: $third-color;
+                                &.bajo {
+                                    width: 40%;
+                                }
+                                &.Medio {
+                                    width: 60%;
+                                }
+                                &.medio {
+                                    width: 60%;
+                                }
+                                &.Avanzado {
+                                    width: 80%;
+                                }
+                                &.avanzado {
+                                    width: 80%;
+                                }
+                                &.Alto {
+                                    width: 80%;
+                                }
+                                &.alto {
+                                    width: 80%;
+                                }
+                                &.Experto {
+                                    width: 100%;
+                                }
+                                &.experto {
+                                    width: 100%;
+                                }
+                                &.Nativo {
+                                    width: 100%;
+                                }
+                                &.nativo {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                    .disponibilidad {
+                        text-transform: capitalize;
+                    }
+                }
+                .user-div-desc {
+                    display: grid;
+                    grid-template-columns: 1fr 5fr;
+                    .user-icon-desc {
+                        grid-column: 1;
+                        text-align: center;
+                        span {
+                            font-weight: bold;
+                        }
+                    }
+                    .divs-desc {
+                        grid-column: 2/6;
                     }
                 }
             }
