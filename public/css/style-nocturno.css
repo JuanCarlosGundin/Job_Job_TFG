@@ -97,6 +97,10 @@
           box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.4);
 }
 
+.bodylogin.oscuro .modal-login label {
+  color: white;
+}
+
 .bodylogin.oscuro .modal-login .card {
   color: white;
 }

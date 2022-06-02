@@ -136,40 +136,43 @@ public function logout(Request $req){
     }
 
 
-    //cambiamos el estado del usuario si queremos banearlo o restaurarlo
-    public function estadouser($id) {
+//cambiamos el estado del usuario si queremos banearlo o restaurarlo
+public function estadouser($id) {
 
-        $datos=DB::select("SELECT estado FROM tbl_usuarios
-        WHERE id = ?",[$id]);
+    $datos=DB::select("SELECT estado FROM tbl_usuarios
+    WHERE id = ?",[$id]);
+
+    try{
         DB::beginTransaction();
 
-        try{
-
-            if ($datos[0]->estado == 1){
-                $idusuario=DB::select("SELECT mail FROM tbl_usuarios
-                WHERE id = ?",[$id]);
-                DB::select("UPDATE tbl_usuarios SET estado = '0'
-                WHERE id = ?",[$id]);
-
-            }else{
-
-                DB::select("UPDATE tbl_usuarios SET estado = '1'
-                WHERE id = ?",[$id]);
-
-            }
-
+        if ($datos[0]->estado == 1){
+            //para banear cuenta
+            $idusuario=DB::select("SELECT mail FROM tbl_usuarios
+            WHERE id = ?",[$id]);
+            DB::select("UPDATE tbl_usuarios SET estado = '0'
+            WHERE id = ?",[$id]);
             DB::commit();
             return response()->json(array('resultado'=> 'OK','id_usuario'=> $idusuario, 'baneo'=>$datos[0]->estado));
 
-        }   catch (\Exception $e) {
-
-            DB::rollback();
-            return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+        }else{
+            //para reactivar cuenta
+            $idusuario=DB::select("SELECT mail FROM tbl_usuarios
+            WHERE id = ?",[$id]);
+            DB::select("UPDATE tbl_usuarios SET estado = '1'
+            WHERE id = ?",[$id]);
+            DB::commit();
+            return response()->json(array('resultado'=> 'OK','id_usuario'=> $idusuario, 'reactivar'=>$datos[0]->estado));
 
         }
 
+    }   catch (\Exception $e) {
+
+        DB::rollback();
+        return response()->json(array('resultado'=> 'NOK: '.$e->getMessage()));
+
     }
 
+}
     //mostrar el contenido del modal al querer modificar un registro
     public function mostrarmodaluser($id, $id_perfil) {
 

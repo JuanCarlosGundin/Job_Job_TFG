@@ -86,6 +86,9 @@
         .bodylogin.oscuro {
             background-color: $first-color;
             .modal-login {
+                label {
+                    color: white;
+                }
                 background-color: $third-color;
                 box-shadow: 6px 4px 4px rgba(31, 31, 31, 0.400);
                 .card {

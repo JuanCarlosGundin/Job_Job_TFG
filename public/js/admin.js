@@ -887,11 +887,11 @@ function estadouserJS(id) {
         if (ajax.readyState == 4 && ajax.status == 200) {
 
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta);
             mailusuario = respuesta.id_usuario[0].mail
-            if (respuesta.baneo) {
+            if (respuesta.hasOwnProperty('baneo')) {
                 enviarcorreobaneo();
             }
-
             leerJS();
 
         }

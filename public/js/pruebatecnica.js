@@ -77,26 +77,25 @@ function leer_contenido() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta)
-            var recarga = ``
-            recarga += `<div class="content">
-            <div class="div-crear-pt">
-                <div class="titulo-ptecnica">
-                    <h1 class="h1-title">Pruebas tecnicas</h1>
-                </div>
-                <div class="subtitulo-ptecnica">
-                    <p class="p-subtitle">Las pruebas técnicas son pruebas creadas por las empresas para valorar los conocimientos de los usuarios y así, poder saber que persona se adapta mejor y esta mas preparada para las necesidades de la empresa. </p>
-                </div>`
-                if (respuesta.hasOwnProperty('empresa')) {
-                recarga +=`<div class="crear-ptecnica">
-                    <button class="crear-ptecnica-btn" id="crear"><p class="button-text">Nueva Prueba Técnica</p></button>
-                </div>`}
-                recarga +=`</div>
-            <div class="ver-ptecnica">`;
+            var recarga = ``;
             if (respuesta.hasOwnProperty('empresa')) {
+                var recarga = `<div class="content">
+                                    <div class="div-crear-pt">
+                                        <div class="titulo-ptecnica">
+                                            <h1 class="h1-title">Pruebas tecnicas</h1>
+                                        </div>
+                                        <div class="subtitulo-ptecnica">
+                                            <p class="p-subtitle">Las pruebas técnicas son pruebas creadas por las empresas para valorar los conocimientos de los usuarios y así, poder saber que persona se adapta mejor y esta mas preparada para las necesidades de la empresa ¡Crear una ahora!</p>
+                                        </div>
+                                        <div class="crear-ptecnica">
+                                            <button class="crear-ptecnica-btn" id="crear"><p class="button-text">Nueva Prueba Técnica</p></button>
+                                        </div>
+                                    </div>
+                                    <div class="ver-ptecnica">`;
                 var empresa = respuesta.empresa;
                 for (let i = 0; i < empresa.length; i++) {
                     recarga += `
+                    <div class="prueba-tecnica">
                         <div class="pruebas">
                             <div class="estado-ptecnica">
                                 <div class="title">
@@ -127,65 +126,69 @@ function leer_contenido() {
 
                     }
                     recarga += `</div>
+                            </div>
+                            <div class="botones-prueba">
+                                <div class="entrar-ptecnica">
+                                    <button class="entrar"><p class="button-text"><i class="fa-solid fa-arrow-right-to-bracket"></i></p></button>
+                                </div>
                                 <div class="des-ptecnica">
                                     <button class="deshabilitar"><p class="button-text"><i class="fa-solid fa-trash-can"></i></p></button>
                                 </div>
-                            </div>`;
+                            </div>
+                        </div>`;
                 }
                 recarga += `</div>                     
                         </div> `;
                 contenidoajax.innerHTML = recarga;
                 document.getElementById("crear").addEventListener("click", form_crear_prueba_tecnica)
                 for (let i = 0; i < empresa.length; i++) {
-                    document.getElementsByClassName("pruebas")[i].id_pt = empresa[i].id;
-                    document.getElementsByClassName("pruebas")[i].addEventListener("click", mostrar_prueba_tecnica_empresa);
+                    document.getElementsByClassName("entrar")[i].id_pt = empresa[i].id;
+                    document.getElementsByClassName("entrar")[i].addEventListener("click", mostrar_prueba_tecnica_empresa);
                     document.getElementsByClassName("deshabilitar")[i].id_pt = empresa[i].id;
                     document.getElementsByClassName("deshabilitar")[i].addEventListener("click", deshabilitar_prueba_tecnica);
-                    document.getElementsByClassName("habilitar")[i].addEventListener("click", habilitar_prueba_tecnica);
 
                 }
             }
             if (respuesta.hasOwnProperty('trabajador')) {
-
+                var recarga = `<div class="content-user">
+                                    <div class="div-crear-pt">
+                                        <div class="titulo-ptecnica">
+                                            <h1 class="h1-title">Pruebas tecnicas</h1>
+                                        </div>
+                                        <div class="subtitulo-ptecnica">
+                                            <p class="p-subtitle">Las pruebas técnicas son pruebas creadas por las empresas para valorar los conocimientos de los usuarios y así, poder saber que persona se adapta mejor y esta mas preparada para las necesidades de la empresa ¡Crear una ahora!</p>
+                                        </div>
+                                    </div>
+                                    <div class="ver-ptecnica">`;
                 var trabajador = respuesta.trabajador;
                 var id_trabajador = respuesta.id_trabajador;
-                recarga += `<div class="content-user">
-                            <div class="div-crear-pt">
-                        <div class="titulo-ptecnica">
-                            <h1 class="h1-title">Pruebas tecnicas</h1>
-                        </div>
-                        <div class="subtitulo-ptecnica">
-                            <p class="p-subtitle">Las pruebas técnicas son pruebas creadas por las empresas para valorar los conocimientos de los usuarios. Pon a prueba tus habilidades completando las pruebas tecnicas en el tiempo indicado. No seas tímido, ¡Apuntate ya!</p>
-                        </div>
-                    </div>`
                 for (let i = 0; i < trabajador.length; i++) {
-                    recarga += `<div class="ver-ptecnica">
-                            <div class="pruebas">
-                                <div class="prueba-header">
-                                    <div class="empresa-ptecnica">
-                                        <h1 class="title">${trabajador[i].nom_emp}</h1>
-                                    </div>
-                                </div>
-                                <div class="prueba-body">
-                                    <div class="enunciado-ptecnica">
-                                        <p class="text">${trabajador[i].enunciado}</p>
-                                    </div>
-                                    <div class="linea-ptecnica">
-                                        <hr class="linea">
-                                    </div>
-                                    <div class="time-ptecnica">
-                                        <h3 class="time"><i class="fa-solid fa-clock"></i> ${trabajador[i].duracion} </h3>
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>`;
+                    recarga += `
+                                    <div class="pruebas">
+                                        <div class="prueba-header">
+                                            <div class="empresa-ptecnica">
+                                                <h1 class="title">${trabajador[i].nom_emp}</h1>
+                                            </div>
+                                        </div>
+                                        <div class="prueba-body">
+                                            <div class="enunciado-ptecnica">
+                                                <p class="text">${trabajador[i].enunciado}</p>
+                                            </div>
+                                            <div class="linea-ptecnica">
+                                                <hr class="linea">
+                                            </div>
+                                            <div class="time-ptecnica">
+                                                <h3 class="time"><i class="fa-solid fa-clock"></i> ${trabajador[i].duracion} </h3>
+                                            </div>
+                                        </div>  
+                                    </div>`;
                 }
-                recarga += `</div>`;
+                recarga += `</div>  
+                        </div>`
                 contenidoajax.innerHTML = recarga;
                 for (let i = 0; i < trabajador.length; i++) {
-                    document.getElementsByClassName("pruebas")[i].id_empresa = trabajador[i].id_empresa;
+                    document.getElementsByClassName("pruebas")[i].id_empresa = trabajador[i].id;
                     document.getElementsByClassName("pruebas")[i].addEventListener("click", mostrar_prueba_tecnica)
-
                 }
 
             }
@@ -196,13 +199,13 @@ function leer_contenido() {
 }
 
 function mostrar_prueba_tecnica(evt) {
-    var id_empresa = evt.currentTarget.id_empresa;
+    var id = evt.currentTarget.id_empresa;
 
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     var ajax = objetoAjax();
-    ajax.open("POST", "mostrar_ptecnica_trabajador/" + id_empresa, true);
+    ajax.open("POST", "mostrar_ptecnica_trabajador/" + id, true);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
@@ -214,24 +217,111 @@ function mostrar_prueba_tecnica(evt) {
             var recarga = ``;
             recarga += `
             <div class="ver-content">
-            <div class="div-return">
-                <div class="return">
-                    <button class="return-btn" id="volver">
-                    <div class="return-icon">
-                        <i class="fa-solid fa-angle-left"></i>
+                <div class="div-return">
+                    <div class="return">
+                        <button class="return-btn" id="volver">
+                        <div class="return-icon">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </div>
+                        <p class="return-text">VOLVER</p>
+                        </button>
                     </div>
-                    <p class="return-text">VOLVER</p>
-                    </button>
                 </div>
+                <div class="content-ver-prueba-user">
+                    <p><b>Prueba tecnica para:</b></p>
+                    <p>${trabajador.enunciado}</p>
+                    <div>
+                    <div>
+                        <p><b>Descripción:</b></p>
+                        <p>${trabajador.descripcion}</p>
+                    </div>
+                        <p><b>Empresa</b></p>
+                        <p>${trabajador.nom_emp}</p>
+                    </div>
+                    <div>
+                        <p><b>Duración</b></p>
+                        <p>${trabajador.duracion}</p>
+                    </div>
+                    <div>
+                        <p><b>Fecha de publicación</b></p>
+                        <p>${fecha_publicacion}</p>
+                    </div>
+                    <div>
+                        <p><b>Fecha limite</b></p>
+                        <p>${fecha_limite}</p>
+                    </div>
+                    <div>
+                        <p><b>Habilidades requeridas:</b></p>
+                        <p>Lo que sea</p>
+                    </div>
+                    <div>
+                        <button class="zip-prueba" id="zip_prueba"><p class="button-text">Descargar zip</p></button>
+                    </div>`;
+
+            if (respuesta.hasOwnProperty('existe')) {
+                recarga += `
+                    <button class="entrar-prueba" id="entrar_prueba"><p class="button-text">Entrar prueba</p></button>
+                    `;
+            } else {
+                recarga += `
+                    <button class="iniciar-prueba" id="iniciar_prueba"><p class="button-text">Iniciar prueba</p></button>
+                    `;
+            }
+            recarga += `</div>
             </div>
-            <div class="content-ver-prueba-user">
-                <p><b>Prueba tecnica para:</b></p>
+            `;
+            contenidoajax.innerHTML = recarga;
+            document.getElementById("volver").addEventListener("click", leer_contenido)
+            document.getElementById("zip_prueba").zip_prueba = trabajador.zip_prueba;
+            document.getElementById("zip_prueba").addEventListener("click", descargar_archivo_emp);
+            if (respuesta.hasOwnProperty('existe')) {
+                document.getElementById("entrar_prueba").id_empresa = trabajador.id;
+                document.getElementById("entrar_prueba").addEventListener("click", entrar_ptecnica_trabajador)
+            } else {
+                document.getElementById("iniciar_prueba").id_empresa = trabajador.id;
+                document.getElementById("iniciar_prueba").addEventListener("click", iniciar_ptecnica_trabajador)
+            }
+
+        }
+    }
+    ajax.send(formData);
+
+}
+
+function iniciar_ptecnica_trabajador(evt) {
+    var id = evt.currentTarget.id_empresa;
+
+    var contenidoajax = document.getElementById("contenidoajax");
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    var ajax = objetoAjax();
+    ajax.open("POST", "iniciar_ptecnica_trabajador/" + id, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            var recarga = ``;
+            if (respuesta.hasOwnProperty('trabajador')) {
+                var trabajador = respuesta.trabajador;
+                var date_p = new Date(trabajador.fecha_publicacion);
+                var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
+                var date_l = new Date(trabajador.fecha_limite);
+                var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
+                recarga += `
+                <div class="ver-content">
+                <div class="div-return">
+                    <div class="return">
+                        <button class="return-btn" id="volver">
+                        <div class="return-icon">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </div>
+                        <p class="return-text">VOLVER</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-ver-prueba-user">
+                <p>Prueba tecnica para:</b></p>
                 <p>${trabajador.enunciado}</p>
                 <div>
-                <div>
-                    <p><b>Descripción:</b></p>
-                    <p>${trabajador.descripcion}</p>
-                </div>
                     <p><b>Empresa</b></p>
                     <p>${trabajador.nom_emp}</p>
                 </div>
@@ -248,83 +338,7 @@ function mostrar_prueba_tecnica(evt) {
                     <p>${fecha_limite}</p>
                 </div>
                 <div>
-                    <p><b>Habilidades requeridas:</b></p>
-                    <p>Lo que sea</p>
-                </div>
-                <div>
-                    <button class="zip-prueba" id="zip_prueba"><p class="button-text">Descargar zip</p></button>
-                </div>`;
-
-        if (respuesta.hasOwnProperty('existe')) {
-            recarga += `<div class="ver-content">
-            <div class="content-ver-prueba-user">
-                <button class="entrar_prueba" id="entrar_prueba"><p class="button-text">Entrar prueba</p></button>
-                </div>
-                </div>`;
-        } else {
-            recarga += `<div class="ver-content">
-            <div class="content-ver-prueba-user">
-                    <button class="iniciar_prueba" id="iniciar_prueba"><p class="button-text">Iniciar prueba</p></button>
-                </div>
-                </div>`;
-        }
-        recarga += `</div>
-        </div>
-        `;
-            contenidoajax.innerHTML = recarga;
-            document.getElementById("volver").addEventListener("click", leer_contenido)
-            if (respuesta.hasOwnProperty('existe')) {
-                document.getElementById("entrar_prueba").id_empresa = trabajador.id_empresa;
-                document.getElementById("entrar_prueba").addEventListener("click", entrar_ptecnica_trabajador)
-            } else {
-                document.getElementById("iniciar_prueba").id_empresa = trabajador.id_empresa;
-                document.getElementById("iniciar_prueba").addEventListener("click", iniciar_ptecnica_trabajador)
-            }
-
-        }
-    }
-    ajax.send(formData);
-
-}
-
-function iniciar_ptecnica_trabajador(evt) {
-    var id_empresa = evt.currentTarget.id_empresa;
-
-    var contenidoajax = document.getElementById("contenidoajax");
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    var ajax = objetoAjax();
-    ajax.open("POST", "iniciar_ptecnica_trabajador/" + id_empresa, true);
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            var recarga = ``;
-            if (respuesta.hasOwnProperty('trabajador')) {
-                var trabajador = respuesta.trabajador;
-                var date_p = new Date(trabajador.fecha_publicacion);
-                var fecha_publicacion = date_p.getDate() + "/" + (date_p.getMonth() + 1) + "/" + date_p.getFullYear();
-                var date_l = new Date(trabajador.fecha_limite);
-                var fecha_limite = date_l.getDate() + "/" + (date_l.getMonth() + 1) + "/" + date_l.getFullYear();
-                recarga += `
-                <button id="volver">Volver</button>
-                <div>
-                <p>Prueba tecnica para:</p>
-                <p>${trabajador.enunciado}</p>
-                <div>
-                    <p>Empresa</p>
-                    <p>${trabajador.nom_emp}</p>
-                </div>
-                <div>
-                    <p>Duración</p>
-                    <p>${trabajador.duracion}</p>
-                </div>
-                <div>
-                    <p>Fecha de publicación</p>
-                    <p>${fecha_publicacion}</p>
-                </div>
-                <div>
-                    <p>Fecha limite</p>
-                    <p>${fecha_limite}</p>
+                    <button class="zip-prueba" id="zip_prueba">Descargar zip</button>
                 </div>
                 <div>
                     <p>Formato de respuesta</p>
@@ -332,9 +346,10 @@ function iniciar_ptecnica_trabajador(evt) {
                 </div>
                 <form id="formarchivo" enctype="multipart/form-data">
                 <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
-                    <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
-                    <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
+                    <input type="file" class="zip-prueba" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                    <button type="submit" class="entrar-prueba" id="enviar_respuesta"><p class="button-text">Enviar respuesta</p></button>
                 </form>
+                </div>
                 </div>
                 `;
                 contenidoajax.innerHTML = recarga;
@@ -342,6 +357,8 @@ function iniciar_ptecnica_trabajador(evt) {
                 document.getElementById("volver").addEventListener("click", mostrar_prueba_tecnica)
                 document.getElementById("formarchivo").id_pt = trabajador.id;
                 document.getElementById("formarchivo").addEventListener("submit", enviar_zip_trabajador);
+                document.getElementById("zip_prueba").zip_prueba = trabajador.zip_prueba;
+                document.getElementById("zip_prueba").addEventListener("click", descargar_archivo_emp);
             } else {
                 swal.fire({
                     title: "Inscrito",
@@ -360,13 +377,13 @@ function iniciar_ptecnica_trabajador(evt) {
 }
 
 function entrar_ptecnica_trabajador(evt) {
-    var id_empresa = evt.currentTarget.id_empresa;
+    var id = evt.currentTarget.id_empresa;
 
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     var ajax = objetoAjax();
-    ajax.open("POST", "entrar_ptecnica_trabajador/" + id_empresa, true);
+    ajax.open("POST", "entrar_ptecnica_trabajador/" + id, true);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
@@ -388,33 +405,33 @@ function entrar_ptecnica_trabajador(evt) {
                         </button>
                     </div>
                 </div>
-                <div>
-                <p>Prueba tecnica para:</p>
+                <div class="content-ver-prueba-user">
+                <p><b>Prueba tecnica para: </b></p>
                 <p>${trabajador.enunciado}</p>
                 <div>
-                    <p>Empresa</p>
+                    <p><b>Empresa </b></p>
                     <p>${trabajador.nom_emp}</p>
                 </div>
                 <div>
-                    <p>Duración</p>
+                    <p><b>Duración</b></p>
                     <p>${trabajador.duracion}</p>
                 </div>
                 <div>
-                    <p>Fecha de publicación</p>
+                    <p><b>Fecha de publicación </b></p>
                     <p>${fecha_publicacion}</p>
                 </div>
                 <div>
-                    <p>Fecha limite</p>
+                    <p><b>Fecha limite </b></p>
                     <p>${fecha_limite}</p>
                 </div>
                 <div>
-                    <p>Formato de respuesta</p>
+                    <p><b>Formato de respuesta</b></p>
                     <p>Texto donde dice zip</p>
                 </div>
                 <form id="formarchivo" enctype="multipart/form-data">
                 <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
-                    <input type="file" class="" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
-                    <button type="submit" id="enviar_respuesta">Enviar respuesta</button>
+                    <input type="file" class="file-prueba" name="zip_participante" id="zip_participante" accept=".zip,.rar,.7zip">
+                    <button type="submit" class="entrar-prueba" id="enviar_respuesta"><p class="button-text">Enviar respuesta</p></button>
                 </form>
                 </div>
             </div>
@@ -434,64 +451,60 @@ function enviar_zip_trabajador(evt) {
 
     evt.preventDefault();
     var id_pt = evt.currentTarget.id_pt;
-    var zip_participante = document.getElementById("zip_participante").files[0]
+    var zip_participante = document.getElementById("zip_participante").files[0];
 
     var contenidoajax = document.getElementById("contenidoajax");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('_method', 'POST');
     formData.append('zip_participante', zip_participante);
+
     var ajax = objetoAjax();
+
     ajax.open("POST", "insertar_trabajador_ptecnica/" + id_pt, true);
+
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
 
-            console.log(respuesta);
             if (respuesta.resultado == "OK") {
-
-                if (respuesta.resultado == "OK") {
-
-                    f3561e35b38d40587896e504036820045d7556c6
-                    swal.fire({
-                        title: "Exito",
-                        text: "zip guardado",
-                        icon: "success",
-                        confirmButtonText: "OK",
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            leer_contenido();
-                        }
-                    });
-
-                } else if (respuesta.resultado == "fuera") {
-                    swal.fire({
-                        title: "Fuera",
-                        text: "Fuera de tiempo",
-                        icon: "error",
-                        confirmButtonText: "OK",
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            leer_contenido();
-                        }
-                    });
-                } else {
-                    var container_error = document.getElementById('alert-danger');
-                    container_error.innerHTML = "";
-                    for (let i = 0; i < respuesta.errors.length; i++) {
-                        container_error.style.display = "block";
-                        container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                swal.fire({
+                    title: "Exito",
+                    text: "zip guardado",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
                     }
-                }
+                });
 
+            } else if (respuesta.resultado == "fuera") {
+                swal.fire({
+                    title: "Fuera",
+                    text: "Fuera de tiempo",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        leer_contenido();
+                    }
+                });
+            } else {
+                var container_error = document.getElementById('alert-danger');
+                container_error.innerHTML = "";
+                for (let i = 0; i < respuesta.errors.length; i++) {
+                    container_error.style.display = "block";
+                    container_error.innerHTML += ('<p>' + respuesta.errors[i] + '</p>');
+                }
             }
         }
-        ajax.send(formData);
     }
+    ajax.send(formData);
 }
 
 function form_crear_prueba_tecnica() {
@@ -510,6 +523,7 @@ function form_crear_prueba_tecnica() {
         </div>
         <div class="edit-inputs">
             <form id="form_crear_prueba_tecnica" enctype="multipart/form-data">
+            <div class="alert alert-danger" id="alert-danger" style="display:none"></div>
             <div class="edit-input">
                 <div class="input-text">
                     <p class="p-text">Lenguaje de la prueba</p>
@@ -725,45 +739,56 @@ function mostrar_participantes(evt) {
             var recarga = ``;
             var trabajador = respuesta.participante;
 
-            /* Foto */
+            function getAge(dateString) {
+                var today = new Date();
+                var birthDate = new Date(dateString);
+                var age = today.getFullYear() - birthDate.getFullYear();
+                var m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+            var edad = getAge(trabajador.edad);
+            console.log(trabajador);
+
             recarga += '<div class="user-vista">';
             //Volver
             recarga += '<div class="return">';
-            recarga += '<button id="volver">';
+            recarga += '<button class="return-btn" id="volver">';
             recarga += '<i class="fa-solid fa-angle-left"></i>';
             recarga += '</button>';
             recarga += '</div>';
+            recarga += '<div class="container-info">';
+            // Foto
             recarga += '<div class="user-ver-foto">';
             recarga += '<div class="container-foto">';
 
             if (trabajador.foto_perfil != null) {
 
-                recarga += '<img class="user-profilefoto" src="storage/' + trabajador.foto_perfil + '">';
+                recarga += '<img class="img--trabajador" src="storage/' + trabajador.foto_perfil + '">';
 
             } else {
 
-                recarga += '<img class="user-profilefoto" src="storage/img/usuario.png">';
+                recarga += '<img class="img--trabajador" src="storage/img/usuario.png" width="100px">';
 
             }
 
             recarga += '</div>';
             recarga += '</div>';
-            /* Inputs para editar el usuario */
+            // Inputs para editar el usuario
             recarga += '<div class="user-ver">';
-            /* Nombre, apellido y edad */
+            // Nombre, apellido y edad
             recarga += '<div class="user-div-name">';
-            recarga += '<div class="user-icon-name">';
-            recarga += '<i class="fa-solid fa-user"></i>';
-            recarga += '</div>';
             recarga += '<div class="divs-name">';
             recarga += '<span class="p-name">  ' + trabajador.nombre + ' </span>';
-            recarga += '<span class="p-surname">  ' + trabajador.apellido + ' </span>';
-            recarga += '<i class="fa-solid fa-cake-candles"></i>';
-            recarga += '<span class="p-age"> ' + trabajador.edad + '</span>';
+            recarga += '<span class="p-surname">  ' + trabajador.apellido + ', </span>';
+            recarga += '<span class="p-age"> ' + edad + '</span>';
             recarga += '</div>';
             recarga += '</div>';
             recarga += '<hr>';
-            /* Correo */
+            // mail
+            recarga += '<div class="user-misc">';
             recarga += '<div class="user-div-house">';
             recarga += '<div class="user-icon-name">';
             recarga += '<i class="fa-solid fa-at"></i>';
@@ -772,7 +797,7 @@ function mostrar_participantes(evt) {
             recarga += '<span class="p-house">' + trabajador.mail + '</span>';
             recarga += '</div>';
             recarga += '</div>';
-            /* Vivienda */
+            // loc_trabajador
             recarga += '<div class="user-div-house">';
             recarga += '<div class="user-icon-name">';
             recarga += '<i class="fa-solid fa-house-chimney"></i>';
@@ -781,34 +806,87 @@ function mostrar_participantes(evt) {
             recarga += '<span class="p-house">' + trabajador.loc_trabajador + '</span>';
             recarga += '</div>';
             recarga += '</div>';
-            /* Estudios y cursos */
-            recarga += '<div class="user-div-house">';
-            recarga += '<div class="user-icon-name">';
-            recarga += '<i class="fa-solid fa-book-open"></i>';
+            //si JSON curriculum existe dentro de trabajador 
+            if (trabajador.hasOwnProperty('curriculum')) {
+                var curriculum = JSON.parse(trabajador.curriculum);
+                console.log(curriculum);
+                if (curriculum.hasOwnProperty('estudios')) {
+                    // Estudios
+                    recarga += '<div class="user-div-house">';
+                    recarga += '<div class="user-icon-name">';
+                    recarga += '<i class="fa-solid fa-book-open"></i>';
+                    recarga += '</div>';
+                    for (let i = 0; i < curriculum.estudios.length; i++) {
+                        recarga += '<div class="divs-house div-formacion">';
+                        recarga += '<span class="p-house">' + curriculum.estudios[i].nombre_formación + '</span>';
+                        recarga += '<span class="p-house">' + curriculum.estudios[i].lugar_formación + '</span>';
+                        recarga += '<div class="duracion-item">';
+                        recarga += '<span class="p-house">' + curriculum.estudios[i].año_entrada + '</span>';
+                        recarga += '<span class="separador-duracion"> - </span>';
+                        recarga += '<span class="p-house">' + curriculum.estudios[i].año_salida + '</span>';
+                        recarga += '</div>';
+                        recarga += '</div>';
+                    }
+                    recarga += '</div>';
+                }
+                if (curriculum.hasOwnProperty('experiencia')) {
+                    // Experiencia
+                    recarga += '<div class="user-div-house">';
+                    recarga += '<div class="user-icon-name">';
+                    recarga += '<i class="fa-solid fa-briefcase"></i>';
+                    recarga += '</div>';
+                    for (let i = 0; i < curriculum.experiencia.length; i++) {
+                        recarga += '<div class="divs-house div-experiencia">';
+                        recarga += '<span class="p-house">' + curriculum.experiencia[i].nombre_experiencia + '</span>';
+                        recarga += '<span class="p-house">' + curriculum.experiencia[i].lugar_experiencia + '</span>';
+                        recarga += '<div class="duracion-item">';
+                        recarga += '<span class="p-house">' + curriculum.experiencia[i].año_entrada + '</span>';
+                        recarga += '<span class="separador-duracion"> - </span>';
+                        recarga += '<span class="p-house">' + curriculum.experiencia[i].año_salida + '</span>';
+                        recarga += '</div>';
+                        recarga += '<span class="p-house">' + curriculum.experiencia[i].funciones + '</span>';
+                        recarga += '</div>';
+                    }
+                    recarga += '</div>';
+                }
+                recarga += '<div class="niveles">';
+                if (curriculum.hasOwnProperty('idiomas')) {
+                    // Idioma
+                    recarga += '<div class="idiomas">';
+                    recarga += '<div class="titulo-niveles">';
+                    recarga += '<p>Idiomas</p>';
+                    recarga += '</div>';
+                    for (let i = 0; i < curriculum.idiomas.length; i++) {
+                        recarga += '<div>';
+                        recarga += '<span class="nombre-item">' + curriculum.idiomas[i].nombre_idioma + '</span>';
+                        recarga += '<span class="percent">';
+                        recarga += '<div class="' + curriculum.idiomas[i].nivel_idioma + '"></div>';
+                        recarga += '</span>';
+                        recarga += '</div>';
+
+                    }
+                    recarga += '</div>';
+                }
+                if (curriculum.hasOwnProperty('habilidades')) {
+                    // Habilidades
+                    recarga += '<div class="habilidades">';
+                    recarga += '<div class="titulo-niveles">';
+                    recarga += '<p>Habilidades</p>';
+                    recarga += '</div>';
+                    for (let i = 0; i < curriculum.habilidades.length; i++) {
+                        recarga += '<div class="niveles-item">';
+                        recarga += '<span class="nombre-item">' + curriculum.habilidades[i].nombre_habilidad + '</span>';
+                        recarga += '<span class="percent">';
+                        recarga += '<div class="' + curriculum.habilidades[i].nivel_habilidad + '"></div>';
+                        recarga += '</span>';
+                        recarga += '</div>';
+
+                    }
+                    recarga += '</div>';
+                }
+            }
             recarga += '</div>';
-            recarga += '<div class="divs-house">';
-            recarga += '<span class="p-house">' + trabajador.estudios + '</span>';
-            recarga += '</div>';
-            recarga += '</div>';
-            /* Experiencia */
-            recarga += '<div class="user-div-house">';
-            recarga += '<div class="user-icon-name">';
-            recarga += '<i class="fa-solid fa-briefcase"></i>';
-            recarga += '</div>';
-            recarga += '<div class="divs-house">';
-            recarga += '<span class="p-house">' + trabajador.experiencia + '</span>';
-            recarga += '</div>';
-            recarga += '</div>';
-            /* Idioma */
-            recarga += '<div class="user-div-house">';
-            recarga += '<div class="user-icon-name">';
-            recarga += '<i class="fa-solid fa-language"></i>';
-            recarga += '</div>';
-            recarga += '<div class="divs-house">';
-            recarga += '<span class="p-house">' + trabajador.idiomas + '</span>';
-            recarga += '</div>';
-            recarga += '</div>';
-            /* Sector */
+            // Sector
             recarga += '<div class="user-div-house">';
             recarga += '<div class="user-icon-name">';
             recarga += '<i class="fa-solid fa-building"></i>';
@@ -817,16 +895,16 @@ function mostrar_participantes(evt) {
             recarga += '<span class="p-house">' + trabajador.campo_user + '</span>';
             recarga += '</div>';
             recarga += '</div>';
-            /* Jornada */
+            // Jornada
             recarga += '<div class="user-div-house">';
             recarga += '<div class="user-icon-name">';
             recarga += '<i class="fa-solid fa-business-time"></i>';
             recarga += '</div>';
             recarga += '<div class="divs-house">';
-            recarga += '<span class="p-house">' + trabajador.disponibilidad + '</span>';
+            recarga += '<span class="p-house disponibilidad">' + trabajador.disponibilidad + '</span>';
             recarga += '</div>';
             recarga += '</div>';
-            /* Descripcion */
+            // Descripcion
             recarga += '<hr>';
             recarga += '<div class="user-div-desc">';
             recarga += '<div class="user-icon-desc">';
@@ -834,6 +912,8 @@ function mostrar_participantes(evt) {
             recarga += '</div>';
             recarga += '<div class="divs-desc">';
             recarga += '<span class="p-desc">' + trabajador.about_user + '</span>';
+            recarga += '</div>';
+            recarga += '</div>';
             recarga += '</div>';
             recarga += '</div>';
             recarga += '</div>';
@@ -865,7 +945,6 @@ function deshabilitar_prueba_tecnica(evt) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
 
-            HEAD
             leer_contenido();
 
         }
@@ -873,23 +952,7 @@ function deshabilitar_prueba_tecnica(evt) {
     ajax.send(formData);
 }
 
-function habilitar_prueba_tecnica(evt) {
-    var id_pt = evt.currentTarget.id_pt;
-
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', 'POST');
-
-    var ajax = objetoAjax();
-    ajax.open("POST", "habilitar_prueba_tecnica/" + id_pt, true);
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(this.responseText);
-            console.log(respuesta);
-            f3561e35b38d40587896e504036820045d7556c6
-            leer_contenido();
-
-        }
-    }
-    ajax.send(formData);
+function descargar_archivo_emp(evt) {
+    var zip_prueba = evt.currentTarget.zip_prueba;
+    window.location.href = "./storage/" + zip_prueba;
 }

@@ -922,6 +922,7 @@ body {
     }
     //contenido del modal
     .modal-content-register {
+        padding: 0 10vw;
         overflow-y: scroll;
         border: white;
         text-align: center;
@@ -949,6 +950,9 @@ body {
         justify-content: center;
         align-items: center;
         flex-flow: row wrap;
+        input {
+            margin-bottom: 10px;
+        }
     }
     .izquierda-derecha {
         .izquierda,
@@ -1009,7 +1013,7 @@ body {
         font-size: 15px;
         border-radius: 15px;
         border: $first-color solid 1.5px;
-        width: 60% !important;
+        width: 100% !important;
         height: 7vh !important;
     }
     .inputregister::placeholder {
@@ -1042,7 +1046,7 @@ body {
         box-shadow: 6px 4px 4px rgba(206, 203, 203, 0.993);
         color: white;
         font-weight: bold;
-        width: 60% !important;
+        width: 100% !important;
         height: 40px;
         margin-bottom: 20px;
     }
