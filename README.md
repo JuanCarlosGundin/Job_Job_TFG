@@ -71,5 +71,5 @@ está sokcetweb.py donde deberemos ejecutarlo para así teener el websocket en m
     Si te ha quedado alguna duda sobre el proyecto no dudes en contactarnos por correo ->   David Ortega Colomo         -   100006394.joan23@fje.edu
                                                                                             Diego Soledispa Campozano   -   31966.joan23@fje.edu
                                                                                             Pol García Moreno           -   6244.joan23@fje.edu
-                                                                                            Pol García Moreno           -   34016.joan23@fje.edu
+                                                                                            Arnau Balart Correa          -   34016.joan23@fje.edu
   ```  
